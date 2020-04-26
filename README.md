@@ -32,13 +32,25 @@ Server
 cd server && npm install
 ```
 
-### Technologies
+### Deployment
 
+Not Deployed Yet
 
-## Contribute
+### Built With
 
-Want to contribute to Motion? Our [contributing guide](https://github.com/framer/motion/blob/master/CONTRIBUTING.md) has you covered.
+* [React](https://reactjs.org/) - Javascript library
+* [PostgreSQL](https://www.postgresql.org) - Database
+* [Sequelize](https://sequelize.org) - Object relational wrapper
+* [Apollo Server](https://www.apollographql.com/server/) - Graphql server
+
+## Authors
+
+* **kokoaj** - [kokoaj](https://github.com/kokiebisu)
 
 ## License
 
-Motion is MIT licensed.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* [slack](https://slack.com) - inspiration & images
