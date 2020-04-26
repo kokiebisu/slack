@@ -1,0 +1,26 @@
+module.exports = (sequelize, DataTypes) => {
+  const Channel = sequelize.define('channel', {
+    name: DataTypes.STRING,
+    public: DataTypes.BOOLEAN,
+  });
+
+  Channel.associate = function (models) {
+    // 1:M
+    Channel.belongsTo(models.Team, {
+      foreignKey: {
+        name: 'teamId',
+        field: 'team_id',
+      },
+    });
+    // N:M
+    Channel.belongsToMany(models.User, {
+      through: 'channel_member',
+      foreignKey: {
+        name: 'userId',
+        field: 'user_id',
+      },
+    });
+  };
+
+  return Channel;
+};
