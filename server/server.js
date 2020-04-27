@@ -25,6 +25,9 @@ const resolvers = mergeResolvers(resolverTypes);
 
 const app = express();
 
+const secret = 'slack';
+const secret2 = 'slack2';
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -32,7 +35,10 @@ const server = new ApolloServer({
     const user = req.user;
     return { models, user, secret, secret2 };
   },
+  introspection: true,
 });
+
+app.use(cors());
 
 server.applyMiddleware({ app });
 
