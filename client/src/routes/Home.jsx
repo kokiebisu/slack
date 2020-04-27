@@ -24,28 +24,65 @@ export default () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error!</p>;
   return (
-    <Flex>
-      <TeamSectionWrapper>
-        <TeamSection />
-      </TeamSectionWrapper>
-      <NavSectionWrapper>
-        <NavSection />
-      </NavSectionWrapper>
-      <Box height='100vh' width='100%' bg='#F9F9F9'>
-        <div>content</div>
-      </Box>
-    </Flex>
+    <>
+      <Wrapper>
+        <TopHeader />
+        <MainContent>
+          <SectionWrapper>
+            <TeamSectionWrapper>
+              <TeamSection />
+            </TeamSectionWrapper>
+            <NavSectionWrapper>
+              <NavSection />
+            </NavSectionWrapper>
+            <ContentWrapper>
+              <div>content</div>
+            </ContentWrapper>
+          </SectionWrapper>
+        </MainContent>
+      </Wrapper>
+    </>
   );
 };
 
-const TeamSectionWrapper = styled.div`
+const Wrapper = styled.div`
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
+
+const TopHeader = styled.div`
+  background-color: red;
+  flex:none
+  width: 100vw;
+  height: 34px;
+`;
+
+const SectionWrapper = styled.div`
+  display: flex;
+  height: 100%;
+`;
+
+const MainContent = styled.div`
+  flex-grow: 1;
+  height: 100%;
+`;
+
+const TeamSectionWrapper = styled.div`
+  height: 100%;
   min-width: 4.6rem;
-  background-color: #261c25;
+  border-right: 0.5px solid #552d56;
+  background-color: #27042a;
 `;
 
 const NavSectionWrapper = styled.div`
-  height: 100vh;
+  height: 100%;
   min-width: 17.4rem;
   background-color: #3f0e40;
+  border-right: 0.5px solid #552d56;
+`;
+
+const ContentWrapper = styled.div`
+  height: 100%;
+  flex-grow: 1;
 `;

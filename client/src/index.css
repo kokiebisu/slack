@@ -18,6 +18,9 @@
   src: url('./assets/fonts/circular-book.ttf');
 }
 
+html {
+}
+
 body {
   margin: 0;
   padding: 0;

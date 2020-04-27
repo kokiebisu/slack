@@ -12,16 +12,6 @@ import { LayoutWrapper } from '../../Blocks';
 import * as s from './NavSection.styles';
 
 export const NavSection = () => {
-  // const [rotated, setRotated] = useState(false);
-  // const rotateArrow = () => {
-  //   if (!rotated) {
-  //     TweenLite.to(arrow, 0.3, { rotation: 90 });
-  //     setRotated(true);
-  //     return;
-  //   }
-  //   TweenLite.to(arrow, 0.3, { rotation: 0 });
-  //   setRotated(false);
-  // };
   return (
     <s.Wrapper>
       <NavHeader />

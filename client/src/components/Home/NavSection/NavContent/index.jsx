@@ -1,15 +1,11 @@
 import React from 'react';
-import { useRef } from 'react';
-import { TweenLite } from 'gsap';
 import styled from 'styled-components';
 
 // Components
 import { NavOptions } from './NavOptions';
 import { NavChannels } from './NavChannels';
 
-export const NavContent = ({ arrow }) => {
-  arrow = useRef(null);
-
+export const NavContent = () => {
   return (
     <Wrapper>
       <NavOptions />

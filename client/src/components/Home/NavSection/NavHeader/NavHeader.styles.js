@@ -8,4 +8,5 @@ export const Wrapper = styled.div`
   padding: 1rem;
   position: sticky;
   top: 0;
+  border-bottom: 0.5px solid #552d56;
 `;

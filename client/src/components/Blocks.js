@@ -37,6 +37,7 @@ export const Button = styled.button`
 export const Flex = styled.div`
   display: flex;
   ${flexbox}
+  height: 100%;
 `;
 
 export const Grid = styled.div`

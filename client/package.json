@@ -12,7 +12,6 @@
     "apollo-link-context": "^1.0.20",
     "babel-eslint": "^10.1.0",
     "graphql": "^15.0.0",
-    "gsap": "^3.2.6",
     "jwt-decode": "^2.2.0",
     "mobx": "^5.15.4",
     "mobx-react": "^6.2.2",
