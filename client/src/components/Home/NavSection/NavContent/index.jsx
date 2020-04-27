@@ -15,7 +15,6 @@ export const NavContent = () => {
 };
 
 const Wrapper = styled.div`
-  background-color: blue;
-  height: 1rem;
+  height: 100%;
   overflow-y: scroll;
 `;

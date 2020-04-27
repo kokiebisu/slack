@@ -5,5 +5,5 @@ export const Wrapper = styled.div`
   background-color: transparent;
   border: none;
   width: 100%;
-  height: 40px;
+  height: 100%;
 `;
