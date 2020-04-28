@@ -2,11 +2,11 @@ import React from 'react';
 
 import { Box, Flex, Text } from '../../../../../Blocks';
 
-export const ChannelSection = ({ title }) => {
+export const ChannelSection = ({ title, subtitle }) => {
   return (
-    <Box mb={1} py={2} pl={3} pr={4}>
+    <Box mb={1} pl={3} pr={4}>
       <Flex justifyContent='space-between' alignItems='center'>
-        <Box>
+        <Box py={2}>
           <Flex>
             <Box>
               <svg height={10} width={10} viewBox='0 0 494.148 494.148'>
@@ -33,7 +33,7 @@ export const ChannelSection = ({ title }) => {
           </Flex>
         </Box>
         <Flex alignItems='center'>
-          <Box height={16} width={16}>
+          <Box mt={1} height={16} width={16}>
             <svg viewBox='0 0 512 512'>
               <g>
                 <g>
@@ -52,6 +52,34 @@ export const ChannelSection = ({ title }) => {
           </Box>
         </Flex>
       </Flex>
+      {subtitle === '' ? null : (
+        <Box ml={2} py={2} pl={3} pr={4}>
+          <Flex alignItems='center'>
+            <Box>
+              <svg height={10} width={10} viewBox='0 0 512 512'>
+                <g>
+                  <g>
+                    <g>
+                      <path
+                        d='M492,236H276V20c0-11.046-8.954-20-20-20c-11.046,0-20,8.954-20,20v216H20c-11.046,0-20,8.954-20,20s8.954,20,20,20h216    v216c0,11.046,8.954,20,20,20s20-8.954,20-20V276h216c11.046,0,20-8.954,20-20C512,244.954,503.046,236,492,236z'
+                        data-original='#000000'
+                        class='active-path'
+                        data-old_color='#000000'
+                        fill='#CFC3CF'
+                      />
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </Box>
+            <Box ml={2}>
+              <Text fontFamily='Lato' color='#CFC3CF'>
+                {subtitle}
+              </Text>
+            </Box>
+          </Flex>
+        </Box>
+      )}
     </Box>
   );
 };
