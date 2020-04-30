@@ -4,7 +4,7 @@ import { Box, Flex, Text } from '../../../../../Blocks';
 
 export const Option = ({ children, name }) => {
   return (
-    <Box py={2} px={3}>
+    <Box py={1} px={3}>
       <Flex alignItems='center'>
         <Box>{children}</Box>
         <Box ml={3}>

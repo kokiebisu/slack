@@ -11,7 +11,7 @@ export const NavOptions = () => {
   return (
     <>
       <Wrapper>
-        <Option name='Thread'>
+        <Option name='Threads'>
           <Box mt={1}>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -44,7 +44,7 @@ export const NavOptions = () => {
             </svg>
           </Box>
         </Option>
-        <Option name='Mention & Reaction'>
+        <Option name='Mention & reaction'>
           <Box mt={1}>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -63,7 +63,7 @@ export const NavOptions = () => {
             </svg>
           </Box>
         </Option>
-        <Option name='Draft'>
+        <Option name='Drafts'>
           <Box mt={1}>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -124,7 +124,7 @@ export const NavOptions = () => {
             </svg>
           </Box>
         </Option>
-        <Option name='Bookmark'>
+        <Option name='Saved items'>
           <Box mt={1}>
             <svg height={18} width={18} viewBox='0 0 512 512'>
               <g>
@@ -143,7 +143,7 @@ export const NavOptions = () => {
             </svg>
           </Box>
         </Option>
-        <Option name='Member Directory'>
+        <Option name='People'>
           <Box mt={1}>
             <svg width={18} height={18} viewBox='0 0 496 496'>
               <g>
@@ -158,7 +158,7 @@ export const NavOptions = () => {
             </svg>
           </Box>
         </Option>
-        <Option name='App'>
+        <Option name='Apps'>
           <Box mt={2}>
             <svg height={18} width={18} viewBox='0 0 512 512'>
               <g>
@@ -199,6 +199,47 @@ export const NavOptions = () => {
                   <g>
                     <path
                       d='M452,276H336c-33.084,0-60,26.916-60,60v116c0,33.084,26.916,60,60,60h116c33.084,0,60-26.916,60-60V336    C512,302.916,485.084,276,452,276z M472,452c0,11.028-8.972,20-20,20H336c-11.028,0-20-8.972-20-20V336c0-11.028,8.972-20,20-20    h116c11.028,0,20,8.972,20,20V452z'
+                      data-original='#000000'
+                      class='active-path'
+                      data-old_color='#000000'
+                      fill='#A0A0A4'
+                    />
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </Box>
+        </Option>
+        <Option name='Files'>
+          <Box mt={2}>
+            <svg width={18} height={18} viewBox='0 0 386.617 386.617'>
+              <g>
+                <g>
+                  <g>
+                    <path
+                      d='M349.869,84.591L228.748,9.142c-19.564-12.187-51.306-12.192-70.879,0L36.748,84.591    c-19.564,12.187-19.573,31.96,0,44.152l121.121,75.449c19.564,12.187,51.306,12.192,70.879,0l121.121-75.449    C369.433,116.556,369.442,96.783,349.869,84.591z M211.584,168.669c-9.98,6.333-26.202,6.307-36.14,0l-97.578-61.923    l97.578-61.734c9.98-6.314,26.202-6.287,36.14,0l97.578,61.734L211.584,168.669z'
+                      data-original='#000000'
+                      class='active-path'
+                      data-old_color='#000000'
+                      fill='#A0A0A4'
+                    />
+                  </g>
+                </g>
+                <g>
+                  <g>
+                    <path
+                      d='M349.869,172.542l-2.527-1.574l-127.273,80.305l-0.047-0.007l-8.438,5.354c-9.98,6.333-26.202,6.307-36.14,0    l-97.578-61.923l0.022-0.014l-38.131-24.017l-3.01,1.875c-19.564,12.187-19.573,31.96,0,44.152l121.121,75.449    c19.564,12.187,51.306,12.192,70.879,0l121.121-75.449C369.433,204.507,369.442,184.734,349.869,172.542z'
+                      data-original='#000000'
+                      class='active-path'
+                      data-old_color='#000000'
+                      fill='#A0A0A4'
+                    />
+                  </g>
+                </g>
+                <g>
+                  <g>
+                    <path
+                      d='M349.869,257.875l-2.527-1.574l-127.273,80.305l-0.047-0.007l-8.438,5.354c-9.98,6.333-26.202,6.307-36.14,0    L77.867,280.03l0.022-0.014L39.758,256l-3.01,1.875c-19.564,12.187-19.573,31.96,0,44.152l121.121,75.449    c19.564,12.187,51.306,12.192,70.879,0l121.121-75.449C369.433,289.84,369.442,270.067,349.869,257.875z'
                       data-original='#000000'
                       class='active-path'
                       data-old_color='#000000'

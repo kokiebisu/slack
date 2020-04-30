@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import { NavSection } from '../components/Home/NavSection';
 import { TeamSection } from '../components/Home/TeamSection';
 
-import { Box, Flex, Input } from '../components/Blocks';
+import { Content } from '../components/Home/Content';
 
 const ALL_USERS = gql`
   query {
@@ -36,7 +36,7 @@ export default () => {
               <NavSection />
             </NavSectionWrapper>
             <ContentWrapper>
-              <div>content</div>
+              <Content type='App' />
             </ContentWrapper>
           </SectionWrapper>
         </MainContent>
