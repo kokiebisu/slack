@@ -1,15 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// Styled
-import * as s from './NavHeader.styles';
-
 // Blocks
-import { Box, Flex, Text, LayoutWrapper } from '../../../Blocks';
+import { Box, Flex, Text, LayoutWrapper } from '../../Blocks';
 
 export const NavHeader = () => {
   return (
-    <s.Wrapper>
+    <Wrapper>
       <Flex alignItems='center' justifyContent='space-between'>
         <Box width='100%'>
           <LayoutWrapper>
@@ -67,6 +64,15 @@ export const NavHeader = () => {
           </Box>
         </Box>
       </Flex>
-    </s.Wrapper>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  width: 100%;
+  padding: 1.5rem 1rem;
+  position: sticky;
+  top: 0;
+  background-color: #3f0f40;
+  border-bottom: 0.5px solid #552d56;
+`;

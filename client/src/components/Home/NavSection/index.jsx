@@ -1,21 +1,24 @@
 import React from 'react';
-import { useState } from 'react';
 
 // Component
 import { NavHeader } from './NavHeader';
 import { NavContent } from './NavContent';
 
-// Block
-import { LayoutWrapper } from '../../Blocks';
-
-// Custom
-import * as s from './NavSection.styles';
+import styled from 'styled-components';
 
 export const NavSection = () => {
   return (
-    <s.Wrapper>
+    <Wrapper>
       <NavHeader />
       <NavContent />
-    </s.Wrapper>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  height: 100%;
+`;
