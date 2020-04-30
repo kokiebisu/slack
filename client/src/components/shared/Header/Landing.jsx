@@ -1,8 +1,9 @@
 import React from 'react';
-import * as s from './Landing.styles';
 
 // Blocks
 import { Box, Flex } from '../../Blocks';
+
+import styled from 'styled-components';
 
 export const LandingHeader = () => {
   return (
@@ -10,7 +11,7 @@ export const LandingHeader = () => {
       <Box py={18} mx={58}>
         <Flex alignItems='center' justifyContent='space-between'>
           <Flex alignItems='center'>
-            <s.Logo>
+            <Logo>
               <svg
                 style={{ width: '100%', height: '100%' }}
                 viewBox='0 0 240 60'>
@@ -28,31 +29,31 @@ export const LandingHeader = () => {
                   style={{ fill: '#e01e5a' }}
                   d='m0 38.054a5.979 5.979 0 0 0 5.973 5.985 5.98 5.98 0 0 0 5.974-5.985v-5.985h-5.974c-3.299 0-5.973 2.68-5.973 5.985m15.929 0v15.96c0 3.306 2.674 5.986 5.973 5.986a5.98 5.98 0 0 0 5.974-5.985v-15.961a5.979 5.979 0 0 0 -5.974-5.985c-3.299 0-5.973 2.68-5.973 5.985'></path>
               </svg>
-            </s.Logo>
-            <s.Nav>
+            </Logo>
+            <Nav>
               <Box mx={3}>
-                <s.NavItem>Why Slack?</s.NavItem>
+                <NavItem>Why Slack?</NavItem>
               </Box>
               <Box mx={3}>
-                <s.NavItem>Solutions</s.NavItem>
+                <NavItem>Solutions</NavItem>
               </Box>
               <Box mx={3}>
-                <s.NavItem>Resources</s.NavItem>
+                <NavItem>Resources</NavItem>
               </Box>
               <Box mx={3}>
-                <s.NavItem>Enterprise</s.NavItem>
+                <NavItem>Enterprise</NavItem>
               </Box>
               <Box mx={3}>
-                <s.NavItem>Pricing</s.NavItem>
+                <NavItem>Pricing</NavItem>
               </Box>
-            </s.Nav>
+            </Nav>
           </Flex>
           <Flex alignItems='center'>
             <Box ml={4}>
-              <s.SignIn>Sign in</s.SignIn>
+              <SignIn>Sign in</SignIn>
             </Box>
             <Box ml={4}>
-              <s.GetStartedButton>Get Started</s.GetStartedButton>
+              <GetStartedButton>Get Started</GetStartedButton>
             </Box>
           </Flex>
         </Flex>
@@ -60,3 +61,32 @@ export const LandingHeader = () => {
     </Box>
   );
 };
+
+const Logo = styled.div`
+  position: relative;
+  top: 3px;
+  width: 108px;
+  margin-right: 20px;
+`;
+const SignIn = styled.a`
+  font-family: 'Lato';
+  color: #3e3e3e;
+`;
+const GetStartedButton = styled.a`
+  background-color: #611f69;
+  border: none;
+  color: #ffffff;
+  font-family: 'Lato';
+  font-size: 14px;
+  padding: 0.75rem 1rem;
+  border-radius: 0.2rem;
+  text-transform: uppercase;
+`;
+const Nav = styled.nav`
+  display: flex;
+`;
+const NavItem = styled.a`
+  list-style: none;
+  font-family: 'Lato';
+  color: #3e3e3e;
+`;
