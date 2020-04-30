@@ -11,6 +11,7 @@
     "apollo-client": "^2.6.8",
     "apollo-link-context": "^1.0.20",
     "babel-eslint": "^10.1.0",
+    "framer-motion": "^1.10.3",
     "graphql": "^15.0.0",
     "jwt-decode": "^2.2.0",
     "mobx": "^5.15.4",

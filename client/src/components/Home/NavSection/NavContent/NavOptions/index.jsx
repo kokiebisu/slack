@@ -4,6 +4,8 @@ import { Box, Flex, Text } from '../../../../Blocks';
 
 import styled from 'styled-components';
 
+import { motion } from 'framer-motion';
+
 // Component
 import { Option } from './Option';
 
@@ -247,11 +249,11 @@ export const NavOptions = () => {
                     />
                   </g>
                 </g>
-              </g>{' '}
+              </g>
             </svg>
           </Box>
         </Option>
-        <Option name='Display fewer'>
+        <Option name='Show less'>
           <Box mt={2}>
             <svg height={18} width={18} viewBox='0 0 64 64'>
               <g>
