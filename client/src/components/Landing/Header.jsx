@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion } from 'framer-motion';
 
-// Blocks
-import { Box, Container, Flex, Text, device } from '../../styles/Blocks';
+// Global Styles
+import { Box, Container, Flex, Text } from '../../styles/blocks';
+import { device } from '../../styles/sizes';
 
 // Svg
 import { SlackLogo } from '../../assets/svg/Logo';
@@ -138,10 +139,10 @@ export const Header = () => {
                 ) : null}
               </NavItem>
               <NavItem>
-                <Text>Enterprise</Text>
+                <Link>Enterprise</Link>
               </NavItem>
               <NavItem>
-                <Text>Pricing</Text>
+                <Link>Pricing</Link>
               </NavItem>
             </Nav>
             <LaunchButtonWrapper
@@ -168,6 +169,7 @@ export const Header = () => {
 };
 
 const Wrapper = styled.div`
+  background-color: white;
   height: 70px;
   border-bottom: 0.5px solid #ebeaeb;
 `;

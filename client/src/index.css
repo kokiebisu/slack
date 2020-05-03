@@ -32,6 +32,13 @@
   src: url('./assets/fonts/CircularStd-Medium.ttf');
 }
 
+@font-face {
+  font-family: 'LitSans-Medium';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./assets/fonts/LitSans-Medium.otf');
+}
+
 body {
   margin: 0;
   padding: 0;

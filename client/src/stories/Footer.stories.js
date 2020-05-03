@@ -3,9 +3,9 @@ import { GetStartedFooter } from '../components/shared/Footer/GetStartedFooter';
 import '../index.css';
 
 export default {
-  title: 'Footer'
+  title: 'Footer',
 };
 
-export const General = () => {
-  return <GetStartedFooter />;
-};
+// export const General = () => {
+//   return <GetStartedFooter />;
+// };

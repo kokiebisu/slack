@@ -1,4 +1,7 @@
 import styled, { css } from 'styled-components';
+import { motion } from 'framer-motion';
+
+import { size, device } from './sizes';
 
 import {
   space,
@@ -13,25 +16,7 @@ import {
   typography,
 } from 'styled-system';
 
-// Breakpoints
-export const size = {
-  xs: '805px',
-  sm: '810px',
-  md: '960px',
-  lg: '1084px',
-  xl: '1220px',
-  '2xl': '1345px',
-};
-
-export const device = {
-  sm: `(min-width: ${size['sm']})`,
-  md: `(min-width: ${size['md']})`,
-  lg: `(min-width: ${size['lg']})`,
-  xl: `(min-width: ${size['xl']})`,
-  '2xl': `(min-width: ${size['2xl']})`,
-};
-
-export const Box = styled.div`
+export const Box = styled(motion.div)`
   position: relative;
   ${space}
   ${color}
@@ -55,6 +40,18 @@ export const Button = styled.button`
   ${border}
   ${shadow}
   ${grid}
+
+  ${({ wp }) =>
+    wp &&
+    css`
+      width: ${wp}%;
+    `}
+
+  ${({ hp }) =>
+    hp &&
+    css`
+      height: ${hp}%;
+    `}
 `;
 
 export const Container = styled.div`
@@ -65,22 +62,6 @@ export const Container = styled.div`
   width: auto;
   height: 100%;
   padding: 0 calc(5%);
-
-  /* @media ${device['sm']} {
-    padding: 0 10px;
-  }
-
-  @media ${device['md']} {
-    max-width: ${size['sm']};
-  }
-
-  @media ${device['lg']} {
-    max-width: ${size['md']};
-  }
-*/
-  /* @media ${device['xl']} {
-    padding: 0 60px;
-  } */
 
   @media ${device['2xl']} {
     max-width: ${size['xl']};
@@ -122,6 +103,12 @@ export const Text = styled.p`
   ${color}
   padding: 0;
   margin: 0;
+
+  ${({ uppercase }) =>
+    uppercase &&
+    css`
+      text-transform: uppercase;
+    `}
 `;
 
 export const LayoutWrapper = styled.div`

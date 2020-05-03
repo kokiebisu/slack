@@ -3,7 +3,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 // Blocks
-import { Box, Flex, Text, LayoutWrapper } from '../Blocks';
+import { Box, Flex, Text, LayoutWrapper } from '../../styles/Blocks';
 
 export const Channel = ({ title }) => {
   const [selected, setSelected] = useState(false);
