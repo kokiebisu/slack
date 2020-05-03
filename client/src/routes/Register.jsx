@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 import { useState } from 'react';
 
-import { Box, Flex, Input, Button } from '../components/Blocks';
+import { Box, Flex, Input, Button } from '../styles/Blocks';
 
 export default () => {
   const [username, setUsername] = useState('');

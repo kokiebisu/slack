@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Team } from './Team';
 
 // Block
-import { Box, Flex } from '../../Blocks';
+import { Box, Flex } from '../../../styles/Blocks';
 
 export const TeamSection = () => {
   return (

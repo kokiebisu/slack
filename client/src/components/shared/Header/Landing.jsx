@@ -7,8 +7,8 @@ import styled from 'styled-components';
 
 export const LandingHeader = () => {
   return (
-    <Box borderBottom='1px solid #ebeaeb'>
-      <Box py={18} mx={58}>
+    <Wrapper>
+      {/* <Box mx={58}>
         <Flex alignItems='center' justifyContent='space-between'>
           <Flex alignItems='center'>
             <Logo>
@@ -57,10 +57,14 @@ export const LandingHeader = () => {
             </Box>
           </Flex>
         </Flex>
-      </Box>
-    </Box>
+      </Box> */}
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  border-bottom: 1px solid #ebeaeb;
+`;
 
 const Logo = styled.div`
   position: relative;
