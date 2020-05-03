@@ -25,21 +25,12 @@ export const Box = styled(motion.div)`
   ${border}
   ${shadow}
   ${grid}
+
   top: ${({ top }) => `${top}px`};
   bottom: ${({ bottom }) => `${bottom}px`};
   right: ${({ right }) => `${right}px`};
   left: ${({ left }) => `${left}px`};
-`;
 
-export const Button = styled.button`
-  position: relative;
-  ${space}
-  ${color}
-  ${layout}
-  ${background}
-  ${border}
-  ${shadow}
-  ${grid}
 
   ${({ wp }) =>
     wp &&
@@ -52,6 +43,38 @@ export const Button = styled.button`
     css`
       height: ${hp}%;
     `}
+`;
+
+export const Button = styled(motion.button)`
+  position: relative;
+  ${space}
+  ${color}
+  ${layout}
+  ${border}
+  ${shadow}
+  ${grid}
+  cursor: pointer;
+
+  ${({ noborder }) =>
+    noborder &&
+    css`
+      border: none;
+    `}
+
+  ${({ uppercase }) =>
+    uppercase &&
+    css`
+      text-transform: uppercase;
+    `}
+
+  ${({ transparent, bgColor }) =>
+    transparent &&
+    css`
+      background-color: white;
+      border-style: solid;
+      border-color: ${bgColor};
+    `}
+
 `;
 
 export const Container = styled.div`

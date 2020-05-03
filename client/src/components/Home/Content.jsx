@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import { Box, Text, Flex } from '../../styles/Blocks';
+import { Box, Text, Flex } from '../../styles/blocks';
 
 const renderHeader = (type) => {
   switch (type) {

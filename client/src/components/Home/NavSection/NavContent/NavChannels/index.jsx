@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Text, Flex } from '../../../../../styles/Blocks';
+import { Box, Text, Flex } from '../../../../../styles/blocks';
 
 import styled from 'styled-components';
 

@@ -33,10 +33,17 @@
 }
 
 @font-face {
-  font-family: 'LitSans-Medium';
+  font-family: 'OpenSans-Bold';
   font-style: normal;
   font-weight: normal;
-  src: url('./assets/fonts/LitSans-Medium.otf');
+  src: url('./assets/fonts/OpenSans-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'KeepCalm-Medium';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./assets/fonts/KeepCalm-Medium.ttf');
 }
 
 body {

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 // Blocks
-import { Box, Flex, Text, LayoutWrapper } from '../../../styles/Blocks';
+import { Box, Flex, Text, LayoutWrapper } from '../../../styles/blocks';
 
 export const NavHeader = () => {
   return (
