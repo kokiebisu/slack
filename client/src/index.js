@@ -13,15 +13,15 @@ import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 const httpLink = new HttpLink({
-  uri: 'http://localhost:4000/graphql'
+  uri: 'http://localhost:4000/graphql',
 });
 
 const tokenMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext(({ headers = {} }) => ({
     headers: {
       ...headers,
-      token: localStorage.getItem('token') || null
-    }
+      token: localStorage.getItem('token') || null,
+    },
   }));
 
   return forward(operation);
@@ -31,8 +31,8 @@ const refreshTokenMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext(({ headers = {} }) => ({
     headers: {
       ...headers,
-      refreshToken: localStorage.getItem('refreshToken') || null
-    }
+      refreshToken: localStorage.getItem('refreshToken') || null,
+    },
   }));
 
   return forward(operation);
@@ -57,9 +57,9 @@ const client = new ApolloClient({
     tokenMiddleware,
     refreshTokenMiddleware,
     logoutMiddleware,
-    httpLink
+    httpLink,
   ]),
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 });
 
 ReactDOM.render(

@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 
-import { Box, Flex, Text } from '../../../../Blocks';
+import { Box, Flex, Text } from '../../../../../styles/Blocks';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 export const ChannelSection = ({ title, subtitle }) => {
+  const [channelInput, setChannelInput] = useState('');
+
   const [hovered, setHovered] = useState({
+    subtitle: false,
+    plus: false,
+    cancel: false,
+  });
+
+  const [clicked, setClicked] = useState({
     subtitle: false,
     plus: false,
     cancel: false,

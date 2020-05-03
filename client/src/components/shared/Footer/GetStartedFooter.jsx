@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Box, Flex } from '../../Blocks';
+import { Box, Flex } from '../../../styles/Blocks';
 
 export const GetStartedFooter = () => {
   return (

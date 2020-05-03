@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // Shared
-import { Text, Box } from '../../Blocks';
+import { Text, Box } from '../../../styles/Blocks';
 
 export const Team = () => {
   return (

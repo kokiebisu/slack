@@ -18,9 +18,25 @@
   src: url('./assets/fonts/circular-book.ttf');
 }
 
+@font-face {
+  font-family: 'CircularStd-Book';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./assets/fonts/CircularStd-Book.ttf');
+}
+
+@font-face {
+  font-family: 'CircularStd-Medium';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./assets/fonts/CircularStd-Medium.ttf');
+}
+
 body {
   margin: 0;
   padding: 0;
   font-size: 16px;
+  color: #3e3e3e;
+  font-family: 'CircularStd-Book';
   box-sizing: inherit;
 }
