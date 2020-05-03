@@ -6,7 +6,7 @@ import { observer } from 'mobx-react';
 import { graphql } from 'react-apollo';
 import { gql } from 'apollo-boost';
 
-import { Box, Flex, Input, Button } from '../styles/Blocks';
+import { Box, Flex, Input, Button } from '../styles/blocks';
 
 class Login extends React.Component {
   constructor(props) {

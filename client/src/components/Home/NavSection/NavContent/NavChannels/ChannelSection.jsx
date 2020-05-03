@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Box, Flex, Text } from '../../../../../styles/Blocks';
+import { Box, Flex, Text } from '../../../../../styles/blocks';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
