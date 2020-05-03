@@ -42,6 +42,9 @@ Not Deployed Yet
 * [PostgreSQL](https://www.postgresql.org) - Database
 * [Sequelize](https://sequelize.org) - Object relational wrapper
 * [Apollo Server](https://www.apollographql.com/server/) - Graphql server
+* [Styled Components](https://styled-components.com) - Styling
+* [Styled System](https://styled-system.com) - Consistency in Styles
+* [Framer Motion](https://www.framer.com/motion/) - Animations
 
 ## Authors
 
