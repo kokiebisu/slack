@@ -25,6 +25,13 @@
   src: url('./assets/fonts/CircularStd-Book.ttf');
 }
 
+@font-face {
+  font-family: 'CircularStd-Medium';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./assets/fonts/CircularStd-Medium.ttf');
+}
+
 body {
   margin: 0;
   padding: 0;

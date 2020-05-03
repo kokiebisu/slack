@@ -20,7 +20,7 @@ export const size = {
   md: '960px',
   lg: '1084px',
   xl: '1220px',
-  '2xl': '1330px',
+  '2xl': '1345px',
 };
 
 export const device = {
@@ -84,7 +84,7 @@ export const Container = styled.div`
 
   @media ${device['2xl']} {
     max-width: ${size['xl']};
-    padding: 0 10px;
+    padding: 0 0;
   }
 
   ${({ fluid }) =>
