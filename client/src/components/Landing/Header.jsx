@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react';
+import styled, { keyframes } from 'styled-components';
 import { motion } from 'framer-motion';
 
 // Blocks
@@ -30,13 +30,15 @@ export const Header = () => {
           </Left>
           <Right justifyContent='space-between' alignItems='center'>
             <Nav>
-              <NavItem>
-                <motion.div
-                  onHoverStart={() => setHovered({ ...hovered, why: true })}
-                  onHoverEnd={() => setHovered({ ...hovered, why: false })}>
-                  <Text>Why Slack?</Text>
-                </motion.div>
-                {hovered.why ? (
+              <NavItem
+                onHoverStart={() => {
+                  setHovered({ ...hovered, why: true });
+                }}
+                onHoverEnd={() => {
+                  setHovered({ ...hovered, why: false });
+                }}>
+                <Text>Why Slack?</Text>
+                {!hovered.solutions && hovered.why ? (
                   <Dropdown>
                     <LinkWrapper>
                       <Link>Features</Link>
@@ -53,17 +55,15 @@ export const Header = () => {
                   </Dropdown>
                 ) : null}
               </NavItem>
-              <NavItem>
-                <motion.div
-                  onHoverStart={() =>
-                    setHovered({ ...hovered, solutions: true })
-                  }
-                  onHoverEnd={() =>
-                    setHovered({ ...hovered, solutions: false })
-                  }>
-                  <Text>Solutions</Text>
-                </motion.div>
-                {hovered.solutions ? (
+              <NavItem
+                onHoverStart={() => {
+                  setHovered({ ...hovered, solutions: true });
+                }}
+                onHoverEnd={() => {
+                  setHovered({ ...hovered, solutions: false });
+                }}>
+                <Text>Solutions</Text>
+                {!hovered.resources && hovered.solutions ? (
                   <Dropdown>
                     <LinkWrapper>
                       <Link>Remote Work</Link>
@@ -101,17 +101,11 @@ export const Header = () => {
                   </Dropdown>
                 ) : null}
               </NavItem>
-              <NavItem>
-                <motion.div
-                  onHoverStart={() =>
-                    setHovered({ ...hovered, resources: true })
-                  }
-                  onHoverEnd={() =>
-                    setHovered({ ...hovered, resources: false })
-                  }>
-                  <Text>Resources</Text>
-                </motion.div>
-                {hovered.resources ? (
+              <NavItem
+                onHoverStart={() => setHovered({ ...hovered, resources: true })}
+                onHoverEnd={() => setHovered({ ...hovered, resources: false })}>
+                <Text>Resources</Text>
+                {!hovered.why && hovered.resources ? (
                   <Dropdown>
                     <LinkWrapper>
                       <Link>Resources Library</Link>
@@ -150,14 +144,19 @@ export const Header = () => {
                 <Text>Pricing</Text>
               </NavItem>
             </Nav>
-            <LaunchButton>
-              <Flex alignItems='center'>
-                <Text>Launch Slack</Text>
-                <Box ml={2}>
-                  <BottomArrow height={10} width={10} />
-                </Box>
-              </Flex>
-            </LaunchButton>
+            <LaunchButtonWrapper
+              initial='rest'
+              whileHover='hovered'
+              animate='rest'>
+              <LaunchButton variants={launchMotion}>
+                <Flex alignItems='center'>
+                  <Text>Launch Slack</Text>
+                  <Box ml={2}>
+                    <BottomArrow height={10} width={10} />
+                  </Box>
+                </Flex>
+              </LaunchButton>
+            </LaunchButtonWrapper>
             <HamburgerWrapper>
               <HamburgerButton width={24} height={17} />
             </HamburgerWrapper>
@@ -197,23 +196,26 @@ const NavItem = styled(motion.div)`
   position: relative;
   border: none;
   background-color: transparent;
-  padding: 15px;
+  padding: 12px 0px;
+  margin: 0px 15px;
   font-size: 16px;
   font-family: 'CircularStd-Book';
   cursor: pointer;
 `;
 
-const LaunchButton = styled.button`
+const LaunchButtonWrapper = styled(motion.div)``;
+
+const LaunchButton = styled(motion.a)`
   display: none;
   padding: 13px 15px;
   text-transform: uppercase;
   font-size: 14px;
   color: white;
-  background-color: #612069;
   border: none;
   font-family: 'CircularStd-Medium';
   border-radius: 3px;
   letter-spacing: 1px;
+  cursor: pointer;
 
   @media ${device.lg} {
     display: block;
@@ -225,7 +227,7 @@ const Dropdown = styled.div`
   background-color: white;
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
   position: absolute;
-  top: 50px;
+  top: 45px;
   padding: 13px 20px;
   border-radius: 5px;
 `;
@@ -237,6 +239,10 @@ const LinkWrapper = styled.div`
 
 const Link = styled.a`
   text-transform: none;
+
+  &:hover {
+    color: #1264a3;
+  }
 `;
 
 const HamburgerWrapper = styled.div`
@@ -244,3 +250,24 @@ const HamburgerWrapper = styled.div`
     display: none;
   }
 `;
+
+// Motion
+
+const launchMotion = {
+  rest: {
+    backgroundColor: '#612069',
+    transition: {
+      duration: 0.2,
+      type: 'tween',
+      ease: 'easeIn',
+    },
+  },
+  hovered: {
+    backgroundColor: '#18071A',
+    transition: {
+      duration: 0.2,
+      type: 'tween',
+      ease: 'easeOut',
+    },
+  },
+};
