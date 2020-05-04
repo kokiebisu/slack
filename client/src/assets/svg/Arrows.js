@@ -11,11 +11,11 @@ export const BottomArrow = (props) => {
               data-original='#000000'
               class='active-path'
               data-old_color='#000000'
-              fill='#FFFFFF'
+              fill={props.fill}
             />
           </g>
         </g>
-      </g>{' '}
+      </g>
     </svg>
   );
 };

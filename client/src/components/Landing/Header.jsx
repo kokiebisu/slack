@@ -11,6 +11,9 @@ import { HeaderLogo } from '../../assets/svg/Logo';
 import { BottomArrow } from '../../assets/svg/Arrows';
 import { HamburgerButton } from '../../assets/svg/Buttons';
 
+// Components
+import { Link } from './Landing.styles';
+
 export const Header = () => {
   const [hovered, setHovered] = useState({
     why: false,
@@ -158,7 +161,7 @@ export const Header = () => {
                   <Flex alignItems='center'>
                     <Text>Launch Slack</Text>
                     <Box ml={2}>
-                      <BottomArrow height={10} width={10} />
+                      <BottomArrow height={10} width={10} fill='#ffffff' />
                     </Box>
                   </Flex>
                 </LaunchButton>
@@ -249,14 +252,6 @@ const Dropdown = styled.div`
 const LinkWrapper = styled.div`
   padding: 8px 0;
   display: flex;
-`;
-
-const Link = styled.a`
-  text-transform: none;
-
-  &:hover {
-    color: #1264a3;
-  }
 `;
 
 const HamburgerWrapper = styled.div`

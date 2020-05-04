@@ -1,11 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// Components
+import { Link } from './Landing.styles';
+
 // Sizes
 import { landing } from '../../styles/sizes';
 
 // SVG
 import { FooterLogo } from '../../assets/svg/Logo';
+import { BottomArrow } from '../../assets/svg/Arrows';
+import {
+  Globe,
+  Twitter,
+  Facebook,
+  Youtube,
+  Linkedin,
+} from '../../assets/svg/Footer';
 
 import * as b from '../../styles/blocks';
 
@@ -31,22 +42,22 @@ export const Footer = () => {
                 </b.Box>
                 <Items>
                   <Item>
-                    <b.Text>Features</b.Text>
+                    <Link>Features</Link>
                   </Item>
                   <Item>
-                    <b.Text>Enterprise</b.Text>
+                    <Link>Enterprise</Link>
                   </Item>
                   <Item>
-                    <b.Text>Security</b.Text>
+                    <Link>Security</Link>
                   </Item>
                   <Item>
-                    <b.Text>Customer Stories</b.Text>
+                    <Link>Customer Stories</Link>
                   </Item>
                   <Item>
-                    <b.Text>Pricing</b.Text>
+                    <Link>Pricing</Link>
                   </Item>
                   <Item>
-                    <b.Text>Slack Demo</b.Text>
+                    <Link>Slack Demo</Link>
                   </Item>
                 </Items>
               </Section>
@@ -57,27 +68,36 @@ export const Footer = () => {
                     uppercase
                     fontSize={14}
                     fontFamily='CircularStd-Medium'>
-                    Product
+                    Slack for teams
                   </b.Text>
                 </b.Box>
                 <Items>
                   <Item>
-                    <b.Text>Features</b.Text>
+                    <Link>Engineering</Link>
                   </Item>
                   <Item>
-                    <b.Text>Enterprise</b.Text>
+                    <Link>Financial Services</Link>
                   </Item>
                   <Item>
-                    <b.Text>Security</b.Text>
+                    <Link>Sales</Link>
                   </Item>
                   <Item>
-                    <b.Text>Customer Stories</b.Text>
+                    <Link>IT</Link>
                   </Item>
                   <Item>
-                    <b.Text>Pricing</b.Text>
+                    <Link>Marketing</Link>
                   </Item>
                   <Item>
-                    <b.Text>Slack Demo</b.Text>
+                    <Link>Customer Support</Link>
+                  </Item>
+                  <Item>
+                    <Link>Human Resources</Link>
+                  </Item>
+                  <Item>
+                    <Link>Project Management</Link>
+                  </Item>
+                  <Item>
+                    <Link>Media</Link>
                   </Item>
                 </Items>
               </Section>
@@ -90,27 +110,36 @@ export const Footer = () => {
                     uppercase
                     fontSize={14}
                     fontFamily='CircularStd-Medium'>
-                    Product
+                    Resources
                   </b.Text>
                 </b.Box>
                 <Items>
                   <Item>
-                    <b.Text>Features</b.Text>
+                    <Link>Slack Tips</Link>
                   </Item>
                   <Item>
-                    <b.Text>Enterprise</b.Text>
+                    <Link>Blog</Link>
                   </Item>
                   <Item>
-                    <b.Text>Security</b.Text>
+                    <Link>Events</Link>
                   </Item>
                   <Item>
-                    <b.Text>Customer Stories</b.Text>
+                    <Link>Slack Certified Program</Link>
                   </Item>
                   <Item>
-                    <b.Text>Pricing</b.Text>
+                    <Link>Help Center</Link>
                   </Item>
                   <Item>
-                    <b.Text>Slack Demo</b.Text>
+                    <Link>API</Link>
+                  </Item>
+                  <Item>
+                    <Link>App Directory</Link>
+                  </Item>
+                  <Item>
+                    <Link>Download Slack</Link>
+                  </Item>
+                  <Item>
+                    <Link>Partners</Link>
                   </Item>
                 </Items>
               </Section>
@@ -121,27 +150,24 @@ export const Footer = () => {
                     uppercase
                     fontSize={14}
                     fontFamily='CircularStd-Medium'>
-                    Product
+                    Company
                   </b.Text>
                 </b.Box>
                 <Items>
                   <Item>
-                    <b.Text>Features</b.Text>
+                    <Link>About Us</Link>
                   </Item>
                   <Item>
-                    <b.Text>Enterprise</b.Text>
+                    <Link>Leadership</Link>
                   </Item>
                   <Item>
-                    <b.Text>Security</b.Text>
+                    <Link>News</Link>
                   </Item>
                   <Item>
-                    <b.Text>Customer Stories</b.Text>
+                    <Link>Media Kit</Link>
                   </Item>
                   <Item>
-                    <b.Text>Pricing</b.Text>
-                  </Item>
-                  <Item>
-                    <b.Text>Slack Demo</b.Text>
+                    <Link>Careers</Link>
                   </Item>
                 </Items>
               </Section>
@@ -151,19 +177,51 @@ export const Footer = () => {
       </b.Container>
       <b.Box py={4} backgroundColor='#F5F5F5'>
         <b.Container>
-          <b.Flex>
-            <b.Box>
-              <b.Text>Status</b.Text>
-            </b.Box>
-            <b.Box>
-              <b.Text>Status</b.Text>
-            </b.Box>
-            <b.Box>
-              <b.Text>Status</b.Text>
-            </b.Box>
-            <b.Box>
-              <b.Text>Status</b.Text>
-            </b.Box>
+          <b.Flex alignItems='center' justifyContent='space-between'>
+            <b.Flex>
+              <b.Box mr={3}>
+                <Link fontSize={14} fontFamily='CircularStd-Medium'>
+                  Status
+                </Link>
+              </b.Box>
+              <b.Box mr={3}>
+                <Link fontSize={14} fontFamily='CircularStd-Medium'>
+                  Privacy & Terms
+                </Link>
+              </b.Box>
+              <b.Box mr={3}>
+                <Link fontSize={14} fontFamily='CircularStd-Medium'>
+                  Contact Us
+                </Link>
+              </b.Box>
+              <b.Box mr={3}>
+                <b.Flex alignItems='center'>
+                  <LinkBox mr={1}>
+                    <Globe width={20} height={20} />
+                  </LinkBox>
+                  <Link fontSize={14} fontFamily='CircularStd-Medium'>
+                    Change Region
+                  </Link>
+                  <LinkBox ml={1}>
+                    <BottomArrow width={15} height={10} fill='#000000' />
+                  </LinkBox>
+                </b.Flex>
+              </b.Box>
+            </b.Flex>
+            <b.Flex alignItems='center'>
+              <b.Box mx={2}>
+                <Twitter width={20} height={20} fill='#454545' />
+              </b.Box>
+              <b.Box mx={2}>
+                <Facebook width={20} height={20} fill='#454545' />
+              </b.Box>
+              <b.Box mx={2}>
+                <Youtube width={20} height={20} fill='#454545' />
+              </b.Box>
+              <b.Box mx={2}>
+                <Linkedin width={20} height={20} fill='#454545' />
+              </b.Box>
+            </b.Flex>
           </b.Flex>
         </b.Container>
       </b.Box>
@@ -222,9 +280,18 @@ const Items = styled.ul`
   color: #767676;
   list-style: none;
   padding: 0;
+  margin: 0;
 `;
 
 const Item = styled.li`
   padding: 10px 0;
   font-size: 14px;
+`;
+
+const LinkBox = styled(b.Box)`
+  cursor: pointer;
+
+  &:hover {
+    color: #1264a3;
+  }
 `;

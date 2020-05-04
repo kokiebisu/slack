@@ -14,3 +14,12 @@ export const Title = styled(b.Text)`
     font-size: 46px;
   }
 `;
+
+export const Link = styled.a`
+  text-transform: none;
+  cursor: pointer;
+
+  &:hover {
+    color: #1264a3;
+  }
+`;
