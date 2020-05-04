@@ -7,7 +7,7 @@ import { Box, Container, Flex, Text } from '../../styles/blocks';
 import { landing } from '../../styles/sizes';
 
 // Svg
-import { SlackLogo } from '../../assets/svg/Logo';
+import { HeaderLogo } from '../../assets/svg/Logo';
 import { BottomArrow } from '../../assets/svg/Arrows';
 import { HamburgerButton } from '../../assets/svg/Buttons';
 
@@ -21,152 +21,164 @@ export const Header = () => {
   });
 
   return (
-    <Wrapper>
-      <Container>
-        <Flex alignItems='center' justifyContent='space-between'>
-          <Left alignItems='center'>
-            <Box top={2} mr={4}>
-              <SlackLogo width={100} height={60} />
-            </Box>
-          </Left>
-          <Right justifyContent='space-between' alignItems='center'>
-            <Nav>
-              <NavItem
-                onHoverStart={() => {
-                  setHovered({ ...hovered, why: true });
-                }}
-                onHoverEnd={() => {
-                  setHovered({ ...hovered, why: false });
-                }}>
-                <Text>Why Slack?</Text>
-                {!hovered.solutions && hovered.why ? (
-                  <Dropdown>
-                    <LinkWrapper>
-                      <Link>Features</Link>
-                    </LinkWrapper>
-                    <LinkWrapper>
-                      <Link>How it replaces email</Link>
-                    </LinkWrapper>
-                    <LinkWrapper>
-                      <Link>Security</Link>
-                    </LinkWrapper>
-                    <LinkWrapper>
-                      <Link>Customers</Link>
-                    </LinkWrapper>
-                  </Dropdown>
-                ) : null}
-              </NavItem>
-              <NavItem
-                onHoverStart={() => {
-                  setHovered({ ...hovered, solutions: true });
-                }}
-                onHoverEnd={() => {
-                  setHovered({ ...hovered, solutions: false });
-                }}>
-                <Text>Solutions</Text>
-                {!hovered.resources && hovered.solutions ? (
-                  <Dropdown>
-                    <LinkWrapper>
-                      <Link>Remote Work</Link>
-                    </LinkWrapper>
-                    <LinkWrapper>
-                      <Link>Distance Learning</Link>
-                    </LinkWrapper>
-                    <LinkWrapper>
-                      <Link>Engineering</Link>
-                    </LinkWrapper>
-                    <LinkWrapper>
-                      <Link>Financial Services</Link>
-                    </LinkWrapper>
-                    <LinkWrapper>
-                      <Link>Sales</Link>
-                    </LinkWrapper>
-                    <LinkWrapper>
-                      <Link>IT</Link>
-                    </LinkWrapper>
-                    <LinkWrapper>
-                      <Link>Marketing</Link>
-                    </LinkWrapper>
-                    <LinkWrapper>
-                      <Link>Customer Support</Link>
-                    </LinkWrapper>
-                    <LinkWrapper>
-                      <Link>Human Resources</Link>
-                    </LinkWrapper>
-                    <LinkWrapper>
-                      <Link>Project Management</Link>
-                    </LinkWrapper>
-                    <LinkWrapper>
-                      <Link>Media</Link>
-                    </LinkWrapper>
-                  </Dropdown>
-                ) : null}
-              </NavItem>
-              <NavItem
-                onHoverStart={() => setHovered({ ...hovered, resources: true })}
-                onHoverEnd={() => setHovered({ ...hovered, resources: false })}>
-                <Text>Resources</Text>
-                {!hovered.why && hovered.resources ? (
-                  <Dropdown>
-                    <LinkWrapper>
-                      <Link>Resources Library</Link>
-                    </LinkWrapper>
-                    <LinkWrapper>
-                      <Link>Slack Tips</Link>
-                    </LinkWrapper>
-                    <LinkWrapper>
-                      <Link>Blog</Link>
-                    </LinkWrapper>
-                    <LinkWrapper>
-                      <Link>Webinars</Link>
-                    </LinkWrapper>
-                    <LinkWrapper>
-                      <Link>Slack Certified Program</Link>
-                    </LinkWrapper>
-                    <LinkWrapper>
-                      <Link>Help Center</Link>
-                    </LinkWrapper>
-                    <LinkWrapper>
-                      <Link>API</Link>
-                    </LinkWrapper>
-                    <LinkWrapper>
-                      <Link>App Directory</Link>
-                    </LinkWrapper>
-                    <LinkWrapper>
-                      <Link>Download</Link>
-                    </LinkWrapper>
-                  </Dropdown>
-                ) : null}
-              </NavItem>
-              <NavItem>
-                <Link>Enterprise</Link>
-              </NavItem>
-              <NavItem>
-                <Link>Pricing</Link>
-              </NavItem>
-            </Nav>
-            <LaunchButtonWrapper
-              initial='rest'
-              whileHover='hovered'
-              animate='rest'>
-              <LaunchButton variants={launchMotion}>
-                <Flex alignItems='center'>
-                  <Text>Launch Slack</Text>
-                  <Box ml={2}>
-                    <BottomArrow height={10} width={10} />
-                  </Box>
-                </Flex>
-              </LaunchButton>
-            </LaunchButtonWrapper>
-            <HamburgerWrapper>
-              <HamburgerButton width={24} height={17} />
-            </HamburgerWrapper>
-          </Right>
-        </Flex>
-      </Container>
-    </Wrapper>
+    <HeaderWrapper>
+      <Wrapper>
+        <Container>
+          <Flex alignItems='center' justifyContent='space-between'>
+            <Left alignItems='center'>
+              <Box top={2} mr={4}>
+                <HeaderLogo width={100} height={60} />
+              </Box>
+            </Left>
+            <Right justifyContent='space-between' alignItems='center'>
+              <Nav>
+                <NavItem
+                  onHoverStart={() => {
+                    setHovered({ ...hovered, why: true });
+                  }}
+                  onHoverEnd={() => {
+                    setHovered({ ...hovered, why: false });
+                  }}>
+                  <Text>Why Slack?</Text>
+                  {!hovered.solutions && hovered.why ? (
+                    <Dropdown>
+                      <LinkWrapper>
+                        <Link>Features</Link>
+                      </LinkWrapper>
+                      <LinkWrapper>
+                        <Link>How it replaces email</Link>
+                      </LinkWrapper>
+                      <LinkWrapper>
+                        <Link>Security</Link>
+                      </LinkWrapper>
+                      <LinkWrapper>
+                        <Link>Customers</Link>
+                      </LinkWrapper>
+                    </Dropdown>
+                  ) : null}
+                </NavItem>
+                <NavItem
+                  onHoverStart={() => {
+                    setHovered({ ...hovered, solutions: true });
+                  }}
+                  onHoverEnd={() => {
+                    setHovered({ ...hovered, solutions: false });
+                  }}>
+                  <Text>Solutions</Text>
+                  {!hovered.resources && hovered.solutions ? (
+                    <Dropdown>
+                      <LinkWrapper>
+                        <Link>Remote Work</Link>
+                      </LinkWrapper>
+                      <LinkWrapper>
+                        <Link>Distance Learning</Link>
+                      </LinkWrapper>
+                      <LinkWrapper>
+                        <Link>Engineering</Link>
+                      </LinkWrapper>
+                      <LinkWrapper>
+                        <Link>Financial Services</Link>
+                      </LinkWrapper>
+                      <LinkWrapper>
+                        <Link>Sales</Link>
+                      </LinkWrapper>
+                      <LinkWrapper>
+                        <Link>IT</Link>
+                      </LinkWrapper>
+                      <LinkWrapper>
+                        <Link>Marketing</Link>
+                      </LinkWrapper>
+                      <LinkWrapper>
+                        <Link>Customer Support</Link>
+                      </LinkWrapper>
+                      <LinkWrapper>
+                        <Link>Human Resources</Link>
+                      </LinkWrapper>
+                      <LinkWrapper>
+                        <Link>Project Management</Link>
+                      </LinkWrapper>
+                      <LinkWrapper>
+                        <Link>Media</Link>
+                      </LinkWrapper>
+                    </Dropdown>
+                  ) : null}
+                </NavItem>
+                <NavItem
+                  onHoverStart={() =>
+                    setHovered({ ...hovered, resources: true })
+                  }
+                  onHoverEnd={() =>
+                    setHovered({ ...hovered, resources: false })
+                  }>
+                  <Text>Resources</Text>
+                  {!hovered.why && hovered.resources ? (
+                    <Dropdown>
+                      <LinkWrapper>
+                        <Link>Resources Library</Link>
+                      </LinkWrapper>
+                      <LinkWrapper>
+                        <Link>Slack Tips</Link>
+                      </LinkWrapper>
+                      <LinkWrapper>
+                        <Link>Blog</Link>
+                      </LinkWrapper>
+                      <LinkWrapper>
+                        <Link>Webinars</Link>
+                      </LinkWrapper>
+                      <LinkWrapper>
+                        <Link>Slack Certified Program</Link>
+                      </LinkWrapper>
+                      <LinkWrapper>
+                        <Link>Help Center</Link>
+                      </LinkWrapper>
+                      <LinkWrapper>
+                        <Link>API</Link>
+                      </LinkWrapper>
+                      <LinkWrapper>
+                        <Link>App Directory</Link>
+                      </LinkWrapper>
+                      <LinkWrapper>
+                        <Link>Download</Link>
+                      </LinkWrapper>
+                    </Dropdown>
+                  ) : null}
+                </NavItem>
+                <NavItem>
+                  <Link>Enterprise</Link>
+                </NavItem>
+                <NavItem>
+                  <Link>Pricing</Link>
+                </NavItem>
+              </Nav>
+              <LaunchButtonWrapper
+                initial='rest'
+                whileHover='hovered'
+                animate='rest'>
+                <LaunchButton variants={launchMotion}>
+                  <Flex alignItems='center'>
+                    <Text>Launch Slack</Text>
+                    <Box ml={2}>
+                      <BottomArrow height={10} width={10} />
+                    </Box>
+                  </Flex>
+                </LaunchButton>
+              </LaunchButtonWrapper>
+              <HamburgerWrapper>
+                <HamburgerButton width={24} height={17} />
+              </HamburgerWrapper>
+            </Right>
+          </Flex>
+        </Container>
+      </Wrapper>
+    </HeaderWrapper>
   );
 };
+
+const HeaderWrapper = styled.div`
+  position: sticky;
+  top: 0;
+  z-index: 99;
+`;
 
 const Wrapper = styled.div`
   background-color: white;

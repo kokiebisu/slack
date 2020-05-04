@@ -104,9 +104,12 @@ export const Flex = styled.div`
 
 export const Grid = styled.div`
   display: grid;
-  height: 100%;
-  width: 100%;
-  ${grid}
+
+  ${({ gridGap }) =>
+    gridGap &&
+    css`
+      grid-column-gap: gridGap;
+    `}
 `;
 
 export const Input = styled.input`

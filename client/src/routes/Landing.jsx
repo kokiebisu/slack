@@ -5,23 +5,17 @@ import styled from 'styled-components';
 import { Header } from '../components/Landing/Header';
 import { Banner } from '../components/Landing/Banner';
 import { BreakOut } from '../components/Landing/BreakOut';
+import { Choose } from '../components/Landing/Choose';
 import { Footer } from '../components/Landing/Footer';
 
 export default () => {
   return (
     <>
-      <HeaderWrapper>
-        <Header />
-      </HeaderWrapper>
+      <Header />
       <Banner />
       <BreakOut />
+      <Choose />
       <Footer />
     </>
   );
 };
-
-const HeaderWrapper = styled.div`
-  position: sticky;
-  top: 0;
-  z-index: 99;
-`;
