@@ -32,7 +32,7 @@ const cards = [
 export const BreakOut = () => {
   return (
     <Wrapper>
-      <Container>
+      <b.Container>
         <b.Box>
           <b.Flex flexDirection='column' alignItems='center'>
             <b.Box>
@@ -65,27 +65,36 @@ export const BreakOut = () => {
             </VideoWrapper>
           </b.Flex>
         </b.Box>
-        <b.Box pt={100} pb={62}>
-          <Grid>
-            <ColumnCard title={cards[0].title} subtitle={cards[0].subtitle}>
+        <b.Box pt={50} pb={62}>
+          <Columns>
+            <ColumnCard
+              mr={10}
+              title={cards[0].title}
+              subtitle={cards[0].subtitle}>
               <Organized width={48} height={48} />
             </ColumnCard>
-            <ColumnCard title={cards[1].title} subtitle={cards[1].subtitle}>
+            <ColumnCard
+              mr={10}
+              title={cards[1].title}
+              subtitle={cards[1].subtitle}>
               <Looped width={48} height={48} />
             </ColumnCard>
-            <ColumnCard title={cards[2].title} subtitle={cards[2].subtitle}>
+            <ColumnCard
+              mr={0}
+              title={cards[2].title}
+              subtitle={cards[2].subtitle}>
               <Focus width={48} height={48} />
             </ColumnCard>
-          </Grid>
+          </Columns>
         </b.Box>
-      </Container>
+      </b.Container>
     </Wrapper>
   );
 };
 
-const ColumnCard = ({ title, subtitle, children }) => {
+const ColumnCard = ({ title, subtitle, mr, children }) => {
   return (
-    <b.Box>
+    <ColumnWrapper>
       <b.Box>{children}</b.Box>
       <b.Box my={3}>
         <b.Text fontFamily='CircularStd-Medium' color='#1D1C1D' fontSize={18}>
@@ -97,7 +106,7 @@ const ColumnCard = ({ title, subtitle, children }) => {
           {subtitle}
         </b.Text>
       </b.Box>
-    </b.Box>
+    </ColumnWrapper>
   );
 };
 
@@ -105,13 +114,6 @@ const Wrapper = styled.section`
   padding-top: 100px;
   padding-bottom: 30px;
   border-bottom: 0.5px solid lightgray;
-`;
-
-const Container = styled(b.Container)`
-  max-width: 570px;
-  @media ${landing.sm} {
-    max-width: none;
-  }
 `;
 
 const VideoWrapper = styled(b.Box)`
@@ -128,8 +130,19 @@ const VideoWrapper = styled(b.Box)`
   }
 `;
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 45px;
+const Columns = styled(b.Flex)`
+  flex-wrap: wrap;
+`;
+
+const ColumnWrapper = styled(b.Box)`
+  width: 100%;
+  margin-top: 50px;
+
+  @media ${landing.lg} {
+    width: 50%;
+  }
+
+  @media ${landing.xl} {
+    width: 33%;
+  }
 `;
