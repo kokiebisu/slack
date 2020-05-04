@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { Header } from '../components/Landing/Header';
 import { Banner } from '../components/Landing/Banner';
 import { BreakOut } from '../components/Landing/BreakOut';
+import { Footer } from '../components/Landing/Footer';
 
 export default () => {
   return (
@@ -14,6 +15,7 @@ export default () => {
       </HeaderWrapper>
       <Banner />
       <BreakOut />
+      <Footer />
     </>
   );
 };

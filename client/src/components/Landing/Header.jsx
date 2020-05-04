@@ -171,7 +171,6 @@ export const Header = () => {
 const Wrapper = styled.div`
   background-color: white;
   height: 70px;
-  border-bottom: 0.5px solid #ebeaeb;
 `;
 
 const Left = styled(Flex)``;
