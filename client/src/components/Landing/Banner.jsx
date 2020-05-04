@@ -1,15 +1,20 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-import { motion } from 'framer-motion';
+import styled from 'styled-components';
 
 // Blocks
 import * as b from '../../styles/blocks';
+
+// Shared Components
+import { Title } from './Landing.styles';
 
 // Motions
 import {
   ButtonMotion,
   TransparentButtonMotion,
 } from '../../animations/Buttons';
+
+// Breakpoints
+import { landing } from '../../styles/sizes';
 
 export const Banner = () => {
   return (
@@ -81,9 +86,45 @@ export const Banner = () => {
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   padding-top: 50px;
   padding-bottom: 30px;
+`;
+
+const Container = styled(b.Container)`
+  max-width: 570px;
+  @media ${landing.sm} {
+    max-width: none;
+  }
+`;
+
+const ContentWrapper = styled(b.Flex)`
+  display: block;
+
+  @media ${landing.sm} {
+    display: flex;
+  }
+`;
+
+const BannerLeft = styled(b.Box)`
+  width: 100%;
+  @media ${landing.sm} {
+    width: 45%;
+  }
+`;
+
+const Buttons = styled(b.Flex)`
+  display: block;
+  @media ${landing.lg} {
+    display: flex;
+  }
+`;
+
+const ButtonWrapper = styled(b.Box)`
+  margin-top: 15px;
+  @media ${landing.lg} {
+    margin-top: 0;
+  }
 `;
 
 const Link = styled.a`
@@ -103,24 +144,19 @@ const Button = styled(b.Button)`
   width: 100%;
   padding: 20px 0;
 
-  @media (min-width: 1163px) {
+  @media ${landing.lg} {
     width: auto;
     height: 60px;
     padding: 20px 40px;
   }
 `;
 
-const Title = styled(b.Text)`
-  font-size: 5vw;
-  line-height: 40px;
-
-  @media (min-width: 768px) {
-    font-size: 42px;
-    line-height: 55px;
-  }
-
-  @media (min-width: 1163px) {
-    font-size: 46px;
+const BannerRight = styled(b.Box)`
+  width: 100%;
+  margin-top: 20px;
+  @media ${landing.sm} {
+    width: 55%;
+    margin-top: 0;
   }
 `;
 
@@ -128,46 +164,4 @@ const ImageWrapper = styled(b.Flex)`
   img {
     width: 100%;
   }
-`;
-
-const ContentWrapper = styled(b.Flex)`
-  display: block;
-
-  @media (min-width: 768px) {
-    display: flex;
-  }
-`;
-
-const Container = styled(b.Container)`
-  max-width: 570px;
-  @media (min-width: 768px) {
-    max-width: none;
-  }
-`;
-
-const Buttons = styled(b.Flex)`
-  display: block;
-  @media (min-width: 1163px) {
-    display: flex;
-  }
-`;
-
-const BannerLeft = styled(b.Box)`
-  width: 100%;
-  @media (min-width: 768px) {
-    width: 45%;
-  }
-`;
-
-const BannerRight = styled(b.Box)`
-  width: 100%;
-  margin-top: 20px;
-  @media (min-width: 768px) {
-    width: 55%;
-    margin-top: 0;
-  }
-`;
-
-const ButtonWrapper = styled(b.Box)`
-  margin-top: 15px;
 `;

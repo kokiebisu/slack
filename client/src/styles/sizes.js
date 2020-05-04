@@ -1,17 +1,12 @@
-// Breakpoints
-export const size = {
-  xs: '805px',
-  sm: '810px',
-  md: '960px',
-  lg: '1084px',
-  xl: '1220px',
-  '2xl': '1345px',
+// Landing
+const landing_size = {
+  sm: '768px',
+  md: '962px',
+  lg: '1163px',
 };
 
-export const device = {
-  sm: `(min-width: ${size['sm']})`,
-  md: `(min-width: ${size['md']})`,
-  lg: `(min-width: ${size['lg']})`,
-  xl: `(min-width: ${size['xl']})`,
-  '2xl': `(min-width: ${size['2xl']})`,
+export const landing = {
+  sm: `(min-width: ${landing_size['sm']})`,
+  md: `(min-width: ${landing_size['md']})`,
+  lg: `(min-width: ${landing_size['lg']})`,
 };

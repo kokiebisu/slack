@@ -4,6 +4,7 @@ import styled from 'styled-components';
 // Components
 import { Header } from '../components/Landing/Header';
 import { Banner } from '../components/Landing/Banner';
+import { BreakOut } from '../components/Landing/BreakOut';
 
 export default () => {
   return (
@@ -12,6 +13,7 @@ export default () => {
         <Header />
       </HeaderWrapper>
       <Banner />
+      <BreakOut />
     </>
   );
 };

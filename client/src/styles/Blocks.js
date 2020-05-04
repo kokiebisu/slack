@@ -1,15 +1,12 @@
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 
-import { size, device } from './sizes';
-
 import {
   space,
   color,
   layout,
   background,
   border,
-  position,
   shadow,
   grid,
   flexbox,
@@ -86,11 +83,6 @@ export const Container = styled.div`
   height: 100%;
   padding: 0 calc(5%);
 
-  @media ${device['2xl']} {
-    max-width: ${size['xl']};
-    padding: 0 0;
-  }
-
   ${({ fluid }) =>
     fluid &&
     css`
@@ -131,6 +123,18 @@ export const Text = styled.p`
     uppercase &&
     css`
       text-transform: uppercase;
+    `}
+
+  ${({ center }) =>
+    center &&
+    css`
+      text-align: center;
+    `}
+
+  ${({ right }) =>
+    right &&
+    css`
+      text-align: right;
     `}
 `;
 

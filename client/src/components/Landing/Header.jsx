@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 // Global Styles
 import { Box, Container, Flex, Text } from '../../styles/blocks';
-import { device } from '../../styles/sizes';
+import { landing } from '../../styles/sizes';
 
 // Svg
 import { SlackLogo } from '../../assets/svg/Logo';
@@ -180,7 +180,7 @@ const Right = styled(Flex)`
   flex-grow: 1;
   justify-content: flex-end;
 
-  @media ${device.lg} {
+  @media ${landing.lg} {
     justify-content: space-between;
   }
 `;
@@ -189,7 +189,7 @@ const Nav = styled.div`
   display: none;
   align-items: center;
 
-  @media ${device.lg} {
+  @media ${landing.lg} {
     display: flex;
   }
 `;
@@ -219,7 +219,7 @@ const LaunchButton = styled(motion.a)`
   letter-spacing: 1px;
   cursor: pointer;
 
-  @media ${device.lg} {
+  @media ${landing.lg} {
     display: block;
   }
 `;
@@ -248,7 +248,7 @@ const Link = styled.a`
 `;
 
 const HamburgerWrapper = styled.div`
-  @media ${device.lg} {
+  @media ${landing.lg} {
     display: none;
   }
 `;
