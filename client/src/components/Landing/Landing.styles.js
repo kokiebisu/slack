@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import * as b from '../../styles/blocks';
 
 export const Title = styled(b.Text)`
@@ -22,4 +22,16 @@ export const Link = styled.a`
   &:hover {
     color: #1264a3;
   }
+
+  ${({ fontSize }) =>
+    fontSize &&
+    css`
+      font-size: ${fontSize}px;
+    `}
+
+  ${({ fontFamily }) =>
+    fontFamily &&
+    css`
+      font-family: ${fontFamily};
+    `}
 `;
