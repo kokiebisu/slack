@@ -74,6 +74,15 @@ export const Button = styled(motion.button)`
 
 `;
 
+export const Anchor = styled.div`
+   position: relative;
+  ${space}
+  ${color}
+  ${layout}
+  ${background}
+  ${border}
+`;
+
 export const Container = styled.div`
   ${space}
   position: relative;

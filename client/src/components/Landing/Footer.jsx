@@ -23,7 +23,7 @@ import * as b from '../../styles/blocks';
 export const Footer = () => {
   return (
     <Wrapper>
-      <b.Container>
+      <Container>
         <b.Flex>
           <LogoWrapper>
             <FooterLogo height={54} width={54} />
@@ -174,7 +174,7 @@ export const Footer = () => {
             </Sections>
           </SectionsWrapper>
         </b.Flex>
-      </b.Container>
+      </Container>
       <b.Box py={4} backgroundColor='#F5F5F5'>
         <b.Container>
           <b.Flex alignItems='center' justifyContent='space-between'>
@@ -238,7 +238,7 @@ export const Footer = () => {
 };
 
 const Wrapper = styled.footer`
-  padding: 50px 0;
+  padding: 50px 0 0 0;
 
   @media ${landing.lg} {
     padding-top: 80px;
@@ -248,6 +248,10 @@ const Wrapper = styled.footer`
     /* padding-top: 160px; */
     height: calc(100vh - 130px);
   }
+`;
+
+const Container = styled(b.Container)`
+  padding-bottom: 50px;
 `;
 
 const LogoWrapper = styled(b.Box)`
