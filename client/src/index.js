@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import Route from './routes';
 import * as serviceWorker from './serviceWorker';
 
+import { GlobalFonts } from './styles/globalFonts';
 import { GlobalStyles } from './styles/globalStyles';
 
 // Apollo
@@ -66,6 +66,7 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <ApolloProvider client={client}>
+    <GlobalFonts />
     <GlobalStyles />
     <Route />
   </ApolloProvider>,

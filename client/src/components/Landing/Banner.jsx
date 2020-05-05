@@ -115,8 +115,11 @@ const Buttons = styled(b.Flex)`
 
 const ButtonWrapper = styled(b.Box)`
   margin-top: 15px;
+  margin-left: 0px;
+
   @media ${landing.lg} {
     margin-top: 0;
+    margin-left: 15px;
   }
 `;
 

@@ -137,6 +137,7 @@ const Columns = styled(b.Flex)`
 const ColumnWrapper = styled(b.Box)`
   width: 100%;
   margin-top: 50px;
+  padding-right: 15px;
 
   @media ${landing.lg} {
     width: 50%;

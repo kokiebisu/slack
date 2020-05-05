@@ -225,14 +225,14 @@ export const Footer = () => {
           </b.Flex>
         </b.Container>
       </b.Box>
-      <b.Box py={2} backgroundColor='#EBEAEB'>
-        <b.Container>
-          <b.Text fontSize={11}>
+      <CopyrightWrapper>
+        <CopyrightContainer>
+          <Copyright center>
             © Copyright 2020 Slack Technologies, Inc. All rights reserved.
             Various trademarks held by their respective owners.
-          </b.Text>
-        </b.Container>
-      </b.Box>
+          </Copyright>
+        </CopyrightContainer>
+      </CopyrightWrapper>
     </Wrapper>
   );
 };
@@ -305,4 +305,20 @@ const LinkBox = styled(b.Box)`
   &:hover {
     color: #1264a3;
   }
+`;
+
+const CopyrightWrapper = styled(b.Box)`
+  padding: 35px 0;
+  background-color: '#EBEAEB';
+`;
+
+const CopyrightContainer = styled(b.Box)`
+  padding: 0;
+  @media ${landing.md} {
+    padding: inherit;
+  }
+`;
+
+const Copyright = styled(b.Text)`
+  font-size: 3vw;
 `;
