@@ -4,6 +4,8 @@ import './index.css';
 import Route from './routes';
 import * as serviceWorker from './serviceWorker';
 
+import { GlobalStyles } from './styles/globalStyles';
+
 // Apollo
 import { ApolloClient } from 'apollo-client';
 import { ApolloProvider } from '@apollo/react-hooks';
@@ -64,6 +66,7 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <ApolloProvider client={client}>
+    <GlobalStyles />
     <Route />
   </ApolloProvider>,
   document.getElementById('root')

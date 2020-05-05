@@ -24,7 +24,7 @@ export const Footer = () => {
   return (
     <Wrapper>
       <Container>
-        <b.Flex>
+        <ContentWrapper>
           <LogoWrapper>
             <FooterLogo height={54} width={54} />
           </LogoWrapper>
@@ -173,7 +173,7 @@ export const Footer = () => {
               </Section>
             </Sections>
           </SectionsWrapper>
-        </b.Flex>
+        </ContentWrapper>
       </Container>
       <b.Box py={4} backgroundColor='#F5F5F5'>
         <b.Container>
@@ -259,6 +259,13 @@ const LogoWrapper = styled(b.Box)`
 
   @media ${landing.lg} {
     width: 35%;
+  }
+`;
+
+const ContentWrapper = styled(b.Flex)`
+  display: block;
+  @media ${landing.lg} {
+    display: flex;
   }
 `;
 

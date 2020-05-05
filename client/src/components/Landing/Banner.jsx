@@ -19,7 +19,7 @@ import { landing } from '../../styles/sizes';
 export const Banner = () => {
   return (
     <Wrapper>
-      <Container>
+      <b.Container>
         <ContentWrapper justifyContent='space-between'>
           <BannerLeft>
             <b.Box wp={95}>
@@ -81,7 +81,7 @@ export const Banner = () => {
             </ImageWrapper>
           </BannerRight>
         </ContentWrapper>
-      </Container>
+      </b.Container>
     </Wrapper>
   );
 };
@@ -89,13 +89,6 @@ export const Banner = () => {
 const Wrapper = styled.section`
   padding-top: 50px;
   padding-bottom: 30px;
-`;
-
-const Container = styled(b.Container)`
-  max-width: 570px;
-  @media ${landing.sm} {
-    max-width: none;
-  }
 `;
 
 const ContentWrapper = styled(b.Flex)`

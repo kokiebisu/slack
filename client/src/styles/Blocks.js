@@ -13,6 +13,9 @@ import {
   typography,
 } from 'styled-system';
 
+// Sizes
+import { landing } from './sizes';
+
 export const Box = styled(motion.div)`
   position: relative;
   ${space}
@@ -97,6 +100,10 @@ export const Container = styled.div`
     css`
       margin: 0;
     `}
+
+  @media ${landing.xl} {
+    max-width: 1400px;
+  }
 `;
 
 export const Flex = styled.div`
