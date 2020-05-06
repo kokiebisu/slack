@@ -177,24 +177,26 @@ export const Footer = () => {
       </Container>
       <b.Box py={4} backgroundColor='#F5F5F5'>
         <b.Container>
-          <b.Flex alignItems='center' justifyContent='space-between'>
-            <b.Flex>
-              <b.Box mr={3}>
-                <Link fontSize={14} fontFamily='CircularStd-Medium'>
-                  Status
-                </Link>
-              </b.Box>
-              <b.Box mr={3}>
-                <Link fontSize={14} fontFamily='CircularStd-Medium'>
-                  Privacy & Terms
-                </Link>
-              </b.Box>
-              <b.Box mr={3}>
-                <Link fontSize={14} fontFamily='CircularStd-Medium'>
-                  Contact Us
-                </Link>
-              </b.Box>
-              <b.Box mr={3}>
+          <FooterContentWrapper>
+            <OptionsWrapper>
+              <b.Flex>
+                <b.Box mr={3}>
+                  <Link fontSize={14} fontFamily='CircularStd-Medium'>
+                    Status
+                  </Link>
+                </b.Box>
+                <b.Box mr={3}>
+                  <Link fontSize={14} fontFamily='CircularStd-Medium'>
+                    Privacy & Terms
+                  </Link>
+                </b.Box>
+                <b.Box>
+                  <Link fontSize={14} fontFamily='CircularStd-Medium'>
+                    Contact Us
+                  </Link>
+                </b.Box>
+              </b.Flex>
+              <RegionContainer>
                 <b.Flex alignItems='center'>
                   <LinkBox mr={1}>
                     <Globe width={20} height={20} />
@@ -202,13 +204,13 @@ export const Footer = () => {
                   <Link fontSize={14} fontFamily='CircularStd-Medium'>
                     Change Region
                   </Link>
-                  <LinkBox ml={1}>
+                  <ArrowWrapper ml={1}>
                     <BottomArrow width={15} height={10} fill='#000000' />
-                  </LinkBox>
+                  </ArrowWrapper>
                 </b.Flex>
-              </b.Box>
-            </b.Flex>
-            <b.Flex alignItems='center'>
+              </RegionContainer>
+            </OptionsWrapper>
+            <SocialMediaWrapper>
               <b.Box mx={2}>
                 <Twitter width={20} height={20} fill='#454545' />
               </b.Box>
@@ -221,13 +223,13 @@ export const Footer = () => {
               <b.Box mx={2}>
                 <Linkedin width={20} height={20} fill='#454545' />
               </b.Box>
-            </b.Flex>
-          </b.Flex>
+            </SocialMediaWrapper>
+          </FooterContentWrapper>
         </b.Container>
       </b.Box>
       <CopyrightWrapper>
         <CopyrightContainer>
-          <Copyright center>
+          <Copyright>
             © Copyright 2020 Slack Technologies, Inc. All rights reserved.
             Various trademarks held by their respective owners.
           </Copyright>
@@ -307,18 +309,58 @@ const LinkBox = styled(b.Box)`
   }
 `;
 
-const CopyrightWrapper = styled(b.Box)`
-  padding: 35px 0;
-  background-color: '#EBEAEB';
-`;
-
-const CopyrightContainer = styled(b.Box)`
-  padding: 0;
-  @media ${landing.md} {
-    padding: inherit;
+const ArrowWrapper = styled(LinkBox)`
+  display: none;
+  @media ${landing.sm} {
+    display: block;
   }
 `;
 
+const FooterContentWrapper = styled(b.Flex)`
+  display: flex;
+  flex-direction: column;
+  @media ${landing.sm} {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+`;
+
+const OptionsWrapper = styled(b.Flex)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media ${landing.sm} {
+    flex-direction: row;
+  }
+`;
+
+const RegionContainer = styled(b.Box)`
+  margin: 30px 0;
+  @media ${landing.sm} {
+    margin: 0px;
+    margin-left: 15px;
+  }
+`;
+
+const CopyrightWrapper = styled(b.Box)`
+  background-color: '#EBEAEB';
+  padding: 20px 0;
+`;
+
+const CopyrightContainer = styled(b.Container)``;
+
 const Copyright = styled(b.Text)`
-  font-size: 3vw;
+  font-size: 12px;
+  text-align: center;
+  @media ${landing.sm} {
+    text-align: left;
+  }
+`;
+
+const SocialMediaWrapper = styled(b.Flex)`
+  justify-content: center;
+  align-items: center;
+  @media ${landing.sm} {
+  }
 `;

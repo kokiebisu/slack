@@ -77,13 +77,19 @@ export const Button = styled(motion.button)`
 
 `;
 
-export const Anchor = styled.div`
-   position: relative;
+export const Anchor = styled(motion.a)`
+  position: relative;
   ${space}
   ${color}
   ${layout}
   ${background}
   ${border}
+
+  ${({ uppercase }) =>
+    uppercase &&
+    css`
+      text-transform: uppercase;
+    `}
 `;
 
 export const Container = styled.div`

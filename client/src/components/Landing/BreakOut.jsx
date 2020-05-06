@@ -95,17 +95,19 @@ export const BreakOut = () => {
 const ColumnCard = ({ title, subtitle, mr, children }) => {
   return (
     <ColumnWrapper>
-      <b.Box>{children}</b.Box>
-      <b.Box my={3}>
-        <b.Text fontFamily='CircularStd-Medium' color='#1D1C1D' fontSize={18}>
-          {title}
-        </b.Text>
-      </b.Box>
-      <b.Box>
-        <b.Text fontSize={18} lineHeight={1.6}>
-          {subtitle}
-        </b.Text>
-      </b.Box>
+      <CardWrapper>
+        <b.Box>{children}</b.Box>
+        <b.Box my={3}>
+          <b.Text fontFamily='CircularStd-Medium' color='#1D1C1D' fontSize={18}>
+            {title}
+          </b.Text>
+        </b.Box>
+        <b.Box>
+          <b.Text fontSize={18} lineHeight={1.6}>
+            {subtitle}
+          </b.Text>
+        </b.Box>
+      </CardWrapper>
     </ColumnWrapper>
   );
 };
@@ -137,7 +139,6 @@ const Columns = styled(b.Flex)`
 const ColumnWrapper = styled(b.Box)`
   width: 100%;
   margin-top: 50px;
-  padding-right: 15px;
 
   @media ${landing.lg} {
     width: 50%;
@@ -146,4 +147,8 @@ const ColumnWrapper = styled(b.Box)`
   @media ${landing.xl} {
     width: 33%;
   }
+`;
+
+const CardWrapper = styled(b.Box)`
+  padding-right: 15px;
 `;

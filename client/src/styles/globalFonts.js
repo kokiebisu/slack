@@ -1,8 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
 // Fonts
-import CircularBook from '../assets/fonts/CircularBook.ttf';
-import CircularMedium from '../assets/fonts/CircularMedium.ttf';
+import CircularBook from '../assets/fonts/Circular-Book.ttf';
+import CircularMedium from '../assets/fonts/Circular-Medium.ttf';
 import CircularStdBook from '../assets/fonts/CircularStd-Book.ttf';
 import CircularStdMedium from '../assets/fonts/CircularStd-Medium.ttf';
 import OpenSansBold from '../assets/fonts/OpenSans-Bold.ttf';

@@ -12,4 +12,5 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'CircularStd-Book';
     box-sizing: inherit;
     }
+    
 `;
