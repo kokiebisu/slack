@@ -275,17 +275,16 @@ const ContentContainer = styled(b.Flex)`
 const SectionsWrapper = styled(b.Flex)`
   width: 100%;
   flex-direction: column;
-  @media ${landing.md} {
+  @media ${landing.sm} {
     flex-direction: row;
-    width: 65%;
+    width: 100%;
   }
 `;
 
 const Sections = styled(b.Flex)`
   width: 100%;
-
+  flex-direction: row;
   @media ${landing.sm} {
-    flex-direction: column;
     width: 50%;
   }
 `;

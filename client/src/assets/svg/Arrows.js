@@ -11,7 +11,7 @@ export const BottomArrow = (props) => {
               data-original='#000000'
               class='active-path'
               data-old_color='#000000'
-              fill={props.fill}
+              fill={props.color}
             />
           </g>
         </g>

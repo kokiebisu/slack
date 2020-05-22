@@ -15,7 +15,9 @@
     "pg": "^8.0.3",
     "sequelize": "^5.21.7"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
   "scripts": {
     "dev": "nodemon server",
     "start": "node server"

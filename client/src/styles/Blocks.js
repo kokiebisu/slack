@@ -50,9 +50,13 @@ export const Button = styled(motion.button)`
   ${space}
   ${color}
   ${layout}
+  ${background}
   ${border}
   ${shadow}
   ${grid}
+  border: none;
+  
+
   cursor: pointer;
 
   ${({ noborder }) =>

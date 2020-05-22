@@ -6,7 +6,11 @@ import CircularMedium from '../assets/fonts/Circular-Medium.ttf';
 import CircularStdBook from '../assets/fonts/CircularStd-Book.ttf';
 import CircularStdMedium from '../assets/fonts/CircularStd-Medium.ttf';
 import OpenSansBold from '../assets/fonts/OpenSans-Bold.ttf';
+import OpenSansSemibold from '../assets/fonts/OpenSans-SemiBold.ttf';
+import OpenSansLight from '../assets/fonts/OpenSans-Light.ttf';
 import KeepCalmMedium from '../assets/fonts/KeepCalm-Medium.ttf';
+import Segoe from '../assets/fonts/Segoe.ttf';
+import SegoeLight from '../assets/fonts/Segoe-Light.ttf';
 
 export const GlobalFonts = createGlobalStyle`
     
@@ -48,9 +52,37 @@ export const GlobalFonts = createGlobalStyle`
     }
 
     @font-face {
+        font-family: 'OpenSans-Semibold';
+        font-style: normal;
+        font-weight: normal;
+        src: url(${OpenSansSemibold});
+    }
+
+    @font-face {
         font-family: 'KeepCalm-Medium';
         font-style: normal;
         font-weight: normal;
         src: url(${KeepCalmMedium});
+    }
+
+    @font-face {
+        font-family: 'OpenSans-Light';
+        font-style: normal;
+        font-weight: normal;
+        src: url(${OpenSansLight});
+    }
+
+    @font-face {
+        font-family: 'Segoe';
+        font-style: normal;
+        font-weight: normal;
+        src: url(${Segoe});
+    }
+
+    @font-face {
+        font-family: 'Segoe-Light';
+        font-style: normal;
+        font-weight: normal;
+        src: url(${SegoeLight});
     }
 `;
