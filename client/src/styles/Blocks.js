@@ -88,11 +88,18 @@ export const Anchor = styled(motion.a)`
   ${layout}
   ${background}
   ${border}
+  text-decoration: none;
 
   ${({ uppercase }) =>
     uppercase &&
     css`
       text-transform: uppercase;
+    `}
+
+  ${({ underline }) =>
+    underline &&
+    css`
+      text-decoration: underline;
     `}
 `;
 

@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components';
 import { motion } from 'framer-motion';
 
 // Global Styles
-import { Box, Container, Flex, Text } from '../../styles/blocks';
+import { Box, Anchor, Container, Flex, Text } from '../../styles/blocks';
 import { landing } from '../../styles/sizes';
 
 // Svg
@@ -154,6 +154,7 @@ export const Header = () => {
                 </NavItem>
               </Nav>
               <LaunchButtonWrapper
+                href='/home'
                 initial='rest'
                 whileHover='hovered'
                 animate='rest'>
@@ -220,9 +221,9 @@ const NavItem = styled(motion.div)`
   cursor: pointer;
 `;
 
-const LaunchButtonWrapper = styled(motion.div)``;
+const LaunchButtonWrapper = styled(Anchor)``;
 
-const LaunchButton = styled(motion.a)`
+const LaunchButton = styled(Anchor)`
   display: none;
   padding: 13px 15px;
   text-transform: uppercase;
