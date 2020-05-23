@@ -6,12 +6,7 @@ import styled from 'styled-components';
 import { HomeHeader } from '../components/Home/HomeHeader';
 import { Sidebar } from '../components/Home/Sidebar';
 // Block
-import { Box, Flex, Text } from '../styles/blocks';
-
-// Svg
-
-import { Write } from '../assets/svg/Write';
-import { BottomArrow } from '../assets/svg/Arrows';
+import { Box } from '../styles/blocks';
 
 const ALL_USERS = gql`
   query {

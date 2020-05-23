@@ -4,17 +4,17 @@ import styled from 'styled-components';
 import { Box } from '../../styles/blocks';
 
 import { Profile } from './Profile';
+import { Options } from './Options';
+import { Channels } from './Channels';
 
 export const Sidebar = () => {
   return (
     <SideBarWrapper>
-      <Box>
-        <Profile />
+      <Profile />
+      <Options />
+      <Box style={{ backgroundColor: 'yellow' }}>
+        <Channels />
       </Box>
-      <Box style={{ backgroundColor: 'blue' }}>
-        <Box></Box>
-      </Box>
-      <Box style={{ backgroundColor: 'yellow' }}>hw</Box>
     </SideBarWrapper>
   );
 };
