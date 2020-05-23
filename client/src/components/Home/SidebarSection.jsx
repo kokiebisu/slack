@@ -44,5 +44,5 @@ export const SidebarSection = ({ title, subtitle, children }) => {
 };
 
 const Wrapper = styled(Box)`
-  padding: 10px 15px;
+  padding: 10px 20px 10px 18px;
 `;

@@ -9,6 +9,9 @@ import { Info } from '../../assets/svg/Info';
 // Styles
 import { Box, Flex, Text, Button } from '../../styles/blocks';
 
+// Sizes
+import { home } from '../../styles/sizes';
+
 export const HomeHeader = () => {
   return (
     <Box height={37} background='#350D36'>
@@ -18,10 +21,7 @@ export const HomeHeader = () => {
             <Clock width={18} height={18} color='white' />
           </Flex>
         </Box>
-        <Input
-          style={{ maxWidth: 500, flex: 5 }}
-          borderRadius={5}
-          background='#431E44'>
+        <Input borderRadius={5} background='#431E44'>
           <Box>
             <Flex alignItems='center' justifyContent='center'>
               <Box px={1}>
@@ -65,4 +65,9 @@ const Input = styled(Button)`
   height: 24px;
   border: 1.3px solid #684a68;
   padding: 0 8px;
+  width: 320px;
+
+  @media ${home.lg} {
+    width: 500px;
+  }
 `;

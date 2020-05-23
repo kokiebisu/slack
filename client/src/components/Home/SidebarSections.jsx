@@ -14,6 +14,7 @@ export const SidebarSections = () => {
       <SidebarSection title='Direct mesages'>
         <Messages />
       </SidebarSection>
+      <SidebarSection title='Apps'></SidebarSection>
     </Wrapper>
   );
 };
