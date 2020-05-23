@@ -8,6 +8,8 @@ import { Sidebar } from '../components/Home/Sidebar';
 // Block
 import { Box } from '../styles/blocks';
 
+import { home } from '../styles/sizes';
+
 const ALL_USERS = gql`
   query {
     allUsers {
@@ -43,6 +45,11 @@ const Wrapper = styled(Box)`
 `;
 
 const ContentWrapper = styled(Box)`
+  height: calc(100vh - 37px);
   display: grid;
-  grid-template-columns: 270px auto;
+  grid-template-columns: 220px auto;
+
+  @media ${home.lg} {
+    grid-template-columns: 270px auto;
+  }
 `;

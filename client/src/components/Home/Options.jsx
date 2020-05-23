@@ -49,8 +49,9 @@ export const Options = () => {
 };
 
 const OptionsWrapper = styled(Box)`
-  border-top: 1.3px solid #532653;
-  padding: 15px 0;
+  position: relative;
+  margin: 5px 0;
+  padding: 5px 0;
 `;
 
 const Container = styled(Box)`

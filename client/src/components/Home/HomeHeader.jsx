@@ -39,14 +39,14 @@ export const HomeHeader = () => {
           <Flex style={{ justifyContent: 'flex-end' }}>
             <Button background='#CD2553' borderRadius={4}>
               <Flex alignItems='center' justifyContent='center'>
-                <Box pr={2} style={{ top: 1 }}>
+                <Box style={{ top: 1 }}>
                   <Present width={14} height={14} color='white' />
                 </Box>
-                <Box style={{ top: 2 }}>
+                <WhatsNewText pl={2} style={{ top: 2 }}>
                   <Text fontFamily='Segoe' fontSize={13} color='white'>
                     See what's new
                   </Text>
-                </Box>
+                </WhatsNewText>
               </Flex>
             </Button>
             <Button ml={2} background='transparent'>
@@ -69,5 +69,13 @@ const Input = styled(Button)`
 
   @media ${home.lg} {
     width: 500px;
+  }
+`;
+
+const WhatsNewText = styled(Box)`
+  display: none;
+
+  @media ${home.md} {
+    display: block;
   }
 `;

@@ -21,12 +21,14 @@ export const Sidebar = () => {
 
 const SideBarWrapper = styled(Box)`
   background-color: #3f0f40;
-  border-top: 1px solid #532754;
   display: grid;
   grid-template-rows: 65px auto;
+  position: relative;
+  overflow: hidden;
 `;
 
 const SideBarContainer = styled(Box)`
+  position: relative;
+  height: calc(100vh - 87px);
   overflow-y: scroll;
-  overflow: hidden;
 `;

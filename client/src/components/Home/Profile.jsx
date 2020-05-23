@@ -8,7 +8,7 @@ import { Write } from '../../assets/svg/Write';
 
 export const Profile = () => {
   return (
-    <ProfileWrapper>
+    <Wrapper>
       <Container>
         <Box>
           <Box>
@@ -39,20 +39,23 @@ export const Profile = () => {
           <Write width={16} height={16} color='#431E44' />
         </Avatar>
       </Container>
-    </ProfileWrapper>
+    </Wrapper>
   );
 };
 
-const ProfileWrapper = styled(Box)`
-  height: 100%;
+const Wrapper = styled(Box)`
+  height: 50px;
   display: grid;
-  margin: 0 15px;
-  background-color: 'yellow';
+  padding: 5px 0;
+  background-color: #3f0f40;
   align-items: center;
+  border-bottom: 1px solid #532754;
+  z-index: 10;
 `;
 
 const Container = styled(Box)`
   height: 100%;
+  padding: 0 15px;
   display: grid;
   align-items: center;
   grid-template-columns: auto min-content;

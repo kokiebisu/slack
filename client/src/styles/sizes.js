@@ -7,6 +7,7 @@ const landing_size = {
 };
 
 const home_size = {
+  md: '850px',
   lg: '1071px',
 };
 
@@ -18,5 +19,6 @@ export const landing = {
 };
 
 export const home = {
+  md: `(min-width: ${home_size['md']})`,
   lg: `(min-width: ${home_size['lg']})`,
 };
