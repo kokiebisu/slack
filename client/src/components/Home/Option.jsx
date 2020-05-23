@@ -7,12 +7,12 @@ export const Option = ({ name, children }) => {
   return (
     <OptionWrapper>
       <Flex>
-        <Icon>{children}</Icon>
-        <Box>
-          <Text fontFamily='OpenSans-Medium' color='#CFC3CF' fontSize={13}>
+        <Icon style={{ top: 2 }}>{children}</Icon>
+        <TextWrapper>
+          <Text fontFamily='Segoe' color='#CFC3CF' fontSize={15}>
             {name}
           </Text>
-        </Box>
+        </TextWrapper>
       </Flex>
     </OptionWrapper>
   );
@@ -25,4 +25,9 @@ const OptionWrapper = styled(Box)`
 
 const Icon = styled(Box)`
   margin-right: 8px;
+`;
+
+const TextWrapper = styled(Box)`
+  position: relative;
+  top: 2px;
 `;

@@ -20,28 +20,28 @@ export const Options = () => {
     <OptionsWrapper>
       <Container>
         <Option name='Threads'>
-          <Threads width={15} height={15} color='#A0A0A4' />
+          <Threads width={15} height={15} color='#CFC3CF' />
         </Option>
         <Option name='Mention & reaction'>
-          <MentionReaction width={15} height={15} color='#A0A0A4' />
+          <MentionReaction width={15} height={15} color='#CFC3CF' />
         </Option>
         <Option name='Drafts'>
-          <Drafts width={15} height={15} color='#A0A0A4' />
+          <Drafts width={15} height={15} color='#CFC3CF' />
         </Option>
         <Option name='Saved items'>
-          <SavedItems width={15} height={15} color='#A0A0A4' />
+          <SavedItems width={15} height={15} color='#CFC3CF' />
         </Option>
         <Option name='People'>
-          <People width={15} height={15} color='#A0A0A4' />
+          <People width={15} height={15} color='#CFC3CF' />
         </Option>
         <Option name='Apps'>
-          <Apps width={15} height={15} color='#A0A0A4' />
+          <Apps width={15} height={15} color='#CFC3CF' />
         </Option>
         <Option name='Files'>
-          <Files width={15} height={15} color='#A0A0A4' />
+          <Files width={15} height={15} color='#CFC3CF' />
         </Option>
         <Option name='Show less'>
-          <ShowLess />
+          <ShowLess width={15} height={15} color='#CFC3CF' />
         </Option>
       </Container>
     </OptionsWrapper>
@@ -50,8 +50,9 @@ export const Options = () => {
 
 const OptionsWrapper = styled(Box)`
   border-top: 1.3px solid #532653;
+  padding: 15px 0;
 `;
 
 const Container = styled(Box)`
-  margin: 10px 15px;
+  padding: 0 15px;
 `;

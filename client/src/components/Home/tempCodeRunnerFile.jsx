@@ -1,1 +1,0 @@
-  padding: 3px 15px;
