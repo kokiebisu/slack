@@ -54,6 +54,4 @@ const OptionsWrapper = styled(Box)`
   padding: 5px 0;
 `;
 
-const Container = styled(Box)`
-  padding: 0 15px;
-`;
+const Container = styled(Box)``;

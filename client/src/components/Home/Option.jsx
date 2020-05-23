@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { Flex, Box, Text } from '../../styles/blocks';
+import { Flex, Box, Text, Button } from '../../styles/blocks';
 
 export const Option = ({ name, children }) => {
+  const [hovered, setHovered] = useState(false);
+
+  console.log('called');
+
   return (
-    <OptionWrapper>
+    <Wrapper
+      className={hovered ? `hovered` : ``}
+      onMouseEnter={() => {
+        setHovered(true);
+        console.log('hovered', hovered);
+      }}
+      onMouseLeave={() => {
+        setHovered(false);
+        console.log('hovered', hovered);
+      }}>
       <Flex>
         <Icon style={{ top: 2 }}>{children}</Icon>
         <TextWrapper>
@@ -14,13 +27,18 @@ export const Option = ({ name, children }) => {
           </Text>
         </TextWrapper>
       </Flex>
-    </OptionWrapper>
+    </Wrapper>
   );
 };
 
-const OptionWrapper = styled(Box)`
-  padding: 5px 0;
+const Wrapper = styled(Button)`
+  padding: 5px 15px;
+  width: 100%;
   cursor: pointer;
+
+  &.hovered {
+    background: #350d36;
+  }
 `;
 
 const Icon = styled(Box)`

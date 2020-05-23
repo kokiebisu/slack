@@ -29,6 +29,6 @@ const SideBarWrapper = styled(Box)`
 
 const SideBarContainer = styled(Box)`
   position: relative;
-  height: calc(100vh - 87px);
+  height: calc(100vh - c87px);
   overflow-y: scroll;
 `;

@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 // Components
 import { Header } from '../components/Landing/Header';

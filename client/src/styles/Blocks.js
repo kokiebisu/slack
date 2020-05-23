@@ -55,7 +55,7 @@ export const Button = styled(motion.button)`
   ${shadow}
   ${grid}
   border: none;
-  
+  background-color: transparent;
 
   cursor: pointer;
 
