@@ -23,5 +23,5 @@ const SideBarWrapper = styled(Box)`
   background-color: #3f0f40;
   border-top: 1px solid #532754;
   display: grid;
-  grid-template-rows: 65px 280px auto;
+  grid-template-rows: 65px min-content auto;
 `;
