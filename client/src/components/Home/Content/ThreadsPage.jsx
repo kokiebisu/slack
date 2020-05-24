@@ -5,11 +5,13 @@ import { Box, Text } from '../../../styles/blocks';
 
 // Image
 import Leaf from '../../../assets/img/leaf.png';
+import { useTabTitle } from '../../../hooks/useTabTitle';
 
 export const ThreadsPage = ({ group }) => {
-  useEffect(() => {
-    document.title = `Slack | Threads | ${group}`;
-  }, []);
+  // useEffect(() => {
+  //   document.title = `Slack | Threads | ${group}`;
+  // }, []);
+  useTabTitle('Threads', group);
 
   return (
     <Wrapper>

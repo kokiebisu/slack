@@ -15,6 +15,10 @@ import MacklinSans from '../assets/fonts/MacklinSans.ttf';
 import MacklinSansMedium from '../assets/fonts/MacklinSans-Medium.ttf';
 import MacklinSansBold from '../assets/fonts/MacklinSans-Bold.ttf';
 
+import SlackLatoLight from '../assets/fonts/SlackLato-Light.woff';
+import SlackLatoRegular from '../assets/fonts/SlackLato-Regular.woff';
+import SlackLatoBold from '../assets/fonts/SlackLato-Bold.woff';
+
 export const GlobalFonts = createGlobalStyle`
     
     @import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap');
@@ -103,4 +107,21 @@ export const GlobalFonts = createGlobalStyle`
         font-family: 'MacklinSans-Bold';
         src: url(${MacklinSansBold});
     }
+
+    @font-face {
+        font-family: 'SlackLato-Light';
+        src: url(${SlackLatoLight});
+    }
+
+    @font-face {
+        font-family: 'SlackLato-Regular';
+        src: url(${SlackLatoRegular});
+    }
+
+    @font-face {
+        font-family: 'SlackLato-Bold';
+        src: url(${SlackLatoBold})
+    }
+
+
 `;
