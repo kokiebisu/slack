@@ -33,72 +33,60 @@ export const Footer = () => {
               <Sections>
                 <Section>
                   <b.Box py={2}>
-                    <b.Text
-                      color='#1d1d1d'
-                      uppercase
-                      fontSize={14}
-                      fontFamily='CircularStd-Medium'>
-                      Product
-                    </b.Text>
+                    <SectionName>Product</SectionName>
                   </b.Box>
                   <Items>
                     <Item>
-                      <Link>Features</Link>
+                      <ItemLink>Features</ItemLink>
                     </Item>
                     <Item>
-                      <Link>Enterprise</Link>
+                      <ItemLink>Enterprise</ItemLink>
                     </Item>
                     <Item>
-                      <Link>Security</Link>
+                      <ItemLink>Security</ItemLink>
                     </Item>
                     <Item>
-                      <Link>Customer Stories</Link>
+                      <ItemLink>Customer Stories</ItemLink>
                     </Item>
                     <Item>
-                      <Link>Pricing</Link>
+                      <ItemLink>Pricing</ItemLink>
                     </Item>
                     <Item>
-                      <Link>Slack Demo</Link>
+                      <ItemLink>Slack Demo</ItemLink>
                     </Item>
                   </Items>
                 </Section>
                 <Section>
                   <b.Box py={2}>
-                    <b.Text
-                      color='#1d1d1d'
-                      uppercase
-                      fontSize={14}
-                      fontFamily='CircularStd-Medium'>
-                      Slack for teams
-                    </b.Text>
+                    <SectionName>Slack for teams</SectionName>
                   </b.Box>
                   <Items>
                     <Item>
-                      <Link>Engineering</Link>
+                      <ItemLink>Engineering</ItemLink>
                     </Item>
                     <Item>
-                      <Link>Financial Services</Link>
+                      <ItemLink>Financial Services</ItemLink>
                     </Item>
                     <Item>
-                      <Link>Sales</Link>
+                      <ItemLink>Sales</ItemLink>
                     </Item>
                     <Item>
-                      <Link>IT</Link>
+                      <ItemLink>IT</ItemLink>
                     </Item>
                     <Item>
-                      <Link>Marketing</Link>
+                      <ItemLink>Marketing</ItemLink>
                     </Item>
                     <Item>
-                      <Link>Customer Support</Link>
+                      <ItemLink>Customer Support</ItemLink>
                     </Item>
                     <Item>
-                      <Link>Human Resources</Link>
+                      <ItemLink>Human Resources</ItemLink>
                     </Item>
                     <Item>
-                      <Link>Project Management</Link>
+                      <ItemLink>Project Management</ItemLink>
                     </Item>
                     <Item>
-                      <Link>Media</Link>
+                      <ItemLink>Media</ItemLink>
                     </Item>
                   </Items>
                 </Section>
@@ -106,69 +94,57 @@ export const Footer = () => {
               <Sections>
                 <Section>
                   <b.Box py={2}>
-                    <b.Text
-                      color='#1d1d1d'
-                      uppercase
-                      fontSize={14}
-                      fontFamily='CircularStd-Medium'>
-                      Resources
-                    </b.Text>
+                    <SectionName>Resources</SectionName>
                   </b.Box>
                   <Items>
                     <Item>
-                      <Link>Slack Tips</Link>
+                      <ItemLink>Slack Tips</ItemLink>
                     </Item>
                     <Item>
-                      <Link>Blog</Link>
+                      <ItemLink>Blog</ItemLink>
                     </Item>
                     <Item>
-                      <Link>Events</Link>
+                      <ItemLink>Events</ItemLink>
                     </Item>
                     <Item>
-                      <Link>Slack Certified Program</Link>
+                      <ItemLink>Slack Certified Program</ItemLink>
                     </Item>
                     <Item>
-                      <Link>Help Center</Link>
+                      <ItemLink>Help Center</ItemLink>
                     </Item>
                     <Item>
-                      <Link>API</Link>
+                      <ItemLink>API</ItemLink>
                     </Item>
                     <Item>
-                      <Link>App Directory</Link>
+                      <ItemLink>App Directory</ItemLink>
                     </Item>
                     <Item>
-                      <Link>Download Slack</Link>
+                      <ItemLink>Download Slack</ItemLink>
                     </Item>
                     <Item>
-                      <Link>Partners</Link>
+                      <ItemLink>Partners</ItemLink>
                     </Item>
                   </Items>
                 </Section>
                 <Section>
                   <b.Box py={2}>
-                    <b.Text
-                      color='#1d1d1d'
-                      uppercase
-                      fontSize={14}
-                      fontFamily='CircularStd-Medium'>
-                      Company
-                    </b.Text>
+                    <SectionName>Company</SectionName>
                   </b.Box>
                   <Items>
                     <Item>
-                      <Link>About Us</Link>
+                      <ItemLink>About Us</ItemLink>
                     </Item>
                     <Item>
-                      <Link>Leadership</Link>
+                      <ItemLink>Leadership</ItemLink>
                     </Item>
                     <Item>
-                      <Link>News</Link>
+                      <ItemLink>News</ItemLink>
                     </Item>
                     <Item>
-                      <Link>Media Kit</Link>
+                      <ItemLink>Media Kit</ItemLink>
                     </Item>
                     <Item>
-                      <Link>Careers</Link>
+                      <ItemLink>Careers</ItemLink>
                     </Item>
                   </Items>
                 </Section>
@@ -183,19 +159,28 @@ export const Footer = () => {
             <OptionsWrapper>
               <b.Flex>
                 <b.Box mr={3}>
-                  <Link fontSize={14} fontFamily='CircularStd-Medium'>
+                  <ItemLink
+                    fontSize={14}
+                    color='#454545'
+                    fontFamily='CircularPro-Bold'>
                     Status
-                  </Link>
+                  </ItemLink>
                 </b.Box>
                 <b.Box mr={3}>
-                  <Link fontSize={14} fontFamily='CircularStd-Medium'>
+                  <ItemLink
+                    fontSize={14}
+                    color='#454545'
+                    fontFamily='CircularPro-Bold'>
                     Privacy & Terms
-                  </Link>
+                  </ItemLink>
                 </b.Box>
                 <b.Box>
-                  <Link fontSize={14} fontFamily='CircularStd-Medium'>
+                  <ItemLink
+                    fontSize={14}
+                    color='#454545'
+                    fontFamily='CircularPro-Bold'>
                     Contact Us
-                  </Link>
+                  </ItemLink>
                 </b.Box>
               </b.Flex>
               <RegionContainer>
@@ -203,7 +188,10 @@ export const Footer = () => {
                   <LinkBox mr={1}>
                     <Globe width={20} height={20} />
                   </LinkBox>
-                  <Link fontSize={14} fontFamily='CircularStd-Medium'>
+                  <Link
+                    fontSize={14}
+                    color='#454545'
+                    fontFamily='CircularPro-Bold'>
                     Change Region
                   </Link>
                   <ArrowWrapper ml={1}>
@@ -293,14 +281,23 @@ const Section = styled(b.Box)`
   width: 50%;
 `;
 
+const SectionName = styled(b.Text)`
+  color: #464646;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: 'CircularPro-Bold';
+`;
+
 const Items = styled.ul`
-  color: #767676;
+  color: #696969;
   list-style: none;
   padding: 0;
   margin: 0;
 `;
 
 const Item = styled.li`
+  color: #868686;
+  font-family: 'SlackLato-Regular';
   padding: 10px 0;
   font-size: 14px;
 `;
@@ -308,6 +305,13 @@ const Item = styled.li`
 const LinkBox = styled(b.Box)`
   cursor: pointer;
 
+  &:hover {
+    color: #1264a3;
+  }
+`;
+
+const ItemLink = styled(b.Text)`
+  cursor: pointer;
   &:hover {
     color: #1264a3;
   }
@@ -348,7 +352,7 @@ const RegionContainer = styled(b.Box)`
 `;
 
 const CopyrightWrapper = styled(b.Box)`
-  background-color: '#EBEAEB';
+  background-color: #ebeaeb;
   padding: 20px 0;
 `;
 

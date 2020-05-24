@@ -36,7 +36,10 @@ export const BreakOut = () => {
         <b.Box>
           <b.Flex flexDirection='column' alignItems='center'>
             <b.Box>
-              <Title fontFamily='KeepCalm-Medium' lineHeight={1.4}>
+              <Title
+                fontFamily='CircularPro-Bold'
+                color='#1D1D1D'
+                lineHeight={1.4}>
                 Break out of the inbox
               </Title>
             </b.Box>
