@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { HomeHeader } from '../components/Home/HomeHeader';
 import { Sidebar } from '../components/Home/Sidebar';
-// import { Content } from '../components/Home/Content';
+
 import { ThreadsPage } from '../components/Home/Content/ThreadsPage';
 import { MentionPage } from '../components/Home/Content/MentionPage';
 
