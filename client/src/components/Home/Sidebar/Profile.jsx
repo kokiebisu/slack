@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import * as b from '../../../styles/blocks';
 
 import { BottomArrow } from '../../../assets/svg/Arrows';
-import { Write } from '../../../assets/svg/Write';
+import { Write } from '../../../assets/svg/Reaction';
 
 export const Profile = () => {
   const [hovered, setHovered] = useState(false);

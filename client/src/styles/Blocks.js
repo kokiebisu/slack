@@ -145,6 +145,15 @@ export const Grid = styled.div`
     `}
 `;
 
+export const Span = styled(motion.span)`
+  ${space}
+  ${color}
+  ${layout}
+  ${background}
+  ${border}
+  ${typography}
+`;
+
 export const Input = styled.input`
   ${space}
 `;
