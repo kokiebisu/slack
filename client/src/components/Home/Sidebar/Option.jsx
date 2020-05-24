@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { useHistory } from 'react-router-dom';
 
-import { Flex, Box, Text, Button } from '../../../styles/blocks';
+import * as b from '../../../styles/blocks';
 
 import {
   Threads,
@@ -56,17 +56,17 @@ export const Option = ({ name, link }) => {
       onClick={() => {
         history.push(`/client/${link}`);
       }}>
-      <Flex>
-        <Icon style={{ top: 1 }}>{renderOption(name, clicked)}</Icon>
+      <b.Flex>
+        <Icon style={{ top: 2 }}>{renderOption(name, clicked)}</Icon>
         <TextWrapper>
           <Title
             className={clicked ? `clicked` : ``}
-            fontFamily='Segoe'
-            fontSize={15}>
+            fontFamily='SlackLato-Light'
+            fontSize={14}>
             {displayingName}
           </Title>
         </TextWrapper>
-      </Flex>
+      </b.Flex>
     </Wrapper>
   );
 };
@@ -118,7 +118,7 @@ const renderOption = (option, clicked) => {
   }
 };
 
-const Wrapper = styled(Button)`
+const Wrapper = styled(b.Button)`
   padding: 5px 15px;
   width: 100%;
   cursor: pointer;
@@ -132,16 +132,16 @@ const Wrapper = styled(Button)`
   }
 `;
 
-const Icon = styled(Box)`
+const Icon = styled(b.Box)`
   margin-right: 8px;
 `;
 
-const TextWrapper = styled(Box)`
+const TextWrapper = styled(b.Box)`
   position: relative;
   top: 2px;
 `;
 
-const Title = styled(Text)`
+const Title = styled(b.Text)`
   color: #cfc3cf;
 
   &.clicked {

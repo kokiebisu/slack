@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Box } from '../../../styles/blocks';
+import * as b from '../../../styles/blocks';
 
 import { Profile } from './Profile';
 import { Options } from './Options';
@@ -19,7 +19,7 @@ export const Sidebar = () => {
   );
 };
 
-const SideBarWrapper = styled(Box)`
+const SideBarWrapper = styled(b.Box)`
   background-color: #3f0f40;
   display: grid;
   grid-template-rows: 65px auto;
@@ -27,7 +27,7 @@ const SideBarWrapper = styled(Box)`
   overflow: hidden;
 `;
 
-const SideBarContainer = styled(Box)`
+const SideBarContainer = styled(b.Box)`
   position: relative;
   height: calc(100vh - 87px);
   overflow-y: scroll;

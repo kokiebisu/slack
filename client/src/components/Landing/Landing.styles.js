@@ -15,12 +15,13 @@ export const Title = styled(b.Text)`
   }
 `;
 
-export const Link = styled.a`
+export const Link = styled(b.Anchor)`
   text-transform: none;
-  cursor: pointer;
 
-  &:hover {
+  &.hovered {
     color: #1264a3;
+    border-bottom: 1px solid #1264a3;
+    cursor: pointer !important;
   }
 
   ${({ fontSize }) =>

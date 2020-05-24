@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { Box, Flex, Text } from '../../../styles/blocks';
+import * as b from '../../../styles/blocks';
 
 import { BottomArrow } from '../../../assets/svg/Arrows';
 import { Write } from '../../../assets/svg/Write';
@@ -15,34 +15,31 @@ export const Profile = () => {
       onMouseLeave={() => setHovered(false)}
       className={hovered ? `hovered` : ``}>
       <Container>
-        <Box>
-          <Box>
-            <Flex alignItems='center'>
-              <Box mr={1}>
-                <Text
-                  fontFamily='OpenSans-Semibold'
-                  fontSize={14}
-                  color='white'>
+        <b.Box>
+          <b.Box>
+            <b.Flex alignItems='center'>
+              <b.Box mr={1}>
+                <b.Text fontFamily='SlackLato-Bold' fontSize={14} color='white'>
                   bcit-cst-sept2018
-                </Text>
-              </Box>
-              <Box mb={1}>
+                </b.Text>
+              </b.Box>
+              <b.Box mb={1}>
                 <BottomArrow width={8} height={8} color='white' />
-              </Box>
-            </Flex>
-          </Box>
-          <Box>
-            <Flex alignItems='center'>
+              </b.Box>
+            </b.Flex>
+          </b.Box>
+          <b.Box>
+            <b.Flex alignItems='center'>
               <StatusIcon />
               <Name
                 className={hovered ? `hovered` : ``}
                 fontSize={13}
-                fontFamily='OpenSans-Light'>
+                fontFamily='SlackLato-Regular'>
                 Kenichi Okiebisu
               </Name>
-            </Flex>
-          </Box>
-        </Box>
+            </b.Flex>
+          </b.Box>
+        </b.Box>
         <Avatar>
           <Write width={16} height={16} color='#431E44' />
         </Avatar>
@@ -51,7 +48,7 @@ export const Profile = () => {
   );
 };
 
-const Wrapper = styled(Box)`
+const Wrapper = styled(b.Box)`
   display: grid;
   padding: 10px 0;
   background-color: #3f0f40;
@@ -65,7 +62,7 @@ const Wrapper = styled(Box)`
   }
 `;
 
-const Container = styled(Box)`
+const Container = styled(b.Box)`
   height: 100%;
   padding: 0 15px;
   display: grid;
@@ -73,7 +70,7 @@ const Container = styled(Box)`
   grid-template-columns: auto min-content;
 `;
 
-const StatusIcon = styled(Box)`
+const StatusIcon = styled(b.Box)`
   width: 10px;
   height: 10px;
   border-radius: 100%;
@@ -81,7 +78,7 @@ const StatusIcon = styled(Box)`
   margin-right: 4px;
 `;
 
-const Avatar = styled(Box)`
+const Avatar = styled(b.Box)`
   display: grid;
   align-items: center;
   justify-content: center;
@@ -91,7 +88,7 @@ const Avatar = styled(Box)`
   height: 35px;
 `;
 
-const Name = styled(Text)`
+const Name = styled(b.Text)`
   color: #d8cfd9;
 
   &.hovered {

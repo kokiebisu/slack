@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Box, Flex, Text, Button } from '../../../styles/blocks';
+import * as b from '../../../styles/blocks';
 
 import { Play, Plus, Close } from '../../../assets/svg/SidebarSections';
 import { home } from '../../../styles/sizes';
@@ -31,7 +31,7 @@ export const SidebarSection = ({ title, subtitle, children, onReveal }) => {
           onReveal();
         }}>
         <TitleWrapper alignItems='center' justifyContent='space-between'>
-          <Flex alignItems='center'>
+          <b.Flex alignItems='center'>
             <PlayWrapper
               animate={clicked ? 'animate' : 'initial'}
               variants={arrow}
@@ -39,11 +39,11 @@ export const SidebarSection = ({ title, subtitle, children, onReveal }) => {
               <Play width={8} height={8} color='#CFC3CF' />
             </PlayWrapper>
             <TitleContainer>
-              <Text fontFamily='Segoe' color='#CFC3CF' fontSize={15}>
+              <b.Text fontFamily='Segoe' color='#CFC3CF' fontSize={15}>
                 {title}
-              </Text>
+              </b.Text>
             </TitleContainer>
-          </Flex>
+          </b.Flex>
           <PlusWrapper
             className={hovered.plus ? `hovered` : ``}
             onMouseEnter={() => setHovered({ ...hovered, plus: true })}
@@ -61,17 +61,17 @@ export const SidebarSection = ({ title, subtitle, children, onReveal }) => {
           my={1}
           py={2}
           pl={2}>
-          <Flex alignItems='center' justifyContent='space-between'>
-            <Flex>
-              <Box pr={2} style={{ bottom: 4 }}>
+          <b.Flex alignItems='center' justifyContent='space-between'>
+            <b.Flex>
+              <b.Box pr={2} style={{ bottom: 4 }}>
                 <Plus width={8} height={8} color='white' />
-              </Box>
-              <Box>
-                <Text fontFamily='Segoe' color='#CFC3CF' fontSize={15}>
+              </b.Box>
+              <b.Box>
+                <b.Text fontFamily='Segoe' color='#CFC3CF' fontSize={15}>
                   {subtitle}
-                </Text>
-              </Box>
-            </Flex>
+                </b.Text>
+              </b.Box>
+            </b.Flex>
             {hovered.subtitle ? (
               <CloseWrapper
                 onMouseEnter={() => setHovered({ ...hovered, close: true })}
@@ -83,19 +83,19 @@ export const SidebarSection = ({ title, subtitle, children, onReveal }) => {
                 />
               </CloseWrapper>
             ) : null}
-          </Flex>
+          </b.Flex>
         </SubtitleWrapper>
       ) : null}
     </Wrapper>
   );
 };
 
-const Wrapper = styled(Box)`
+const Wrapper = styled(b.Box)`
   padding: 10px 0;
   cursor: pointer;
 `;
 
-const TopColumnWrapper = styled(Button)`
+const TopColumnWrapper = styled(b.Button)`
   width: 100%;
   height: 25px;
   padding: 0 18px 0 20px;
@@ -104,25 +104,25 @@ const TopColumnWrapper = styled(Button)`
   }
 `;
 
-const TitleWrapper = styled(Flex)`
+const TitleWrapper = styled(b.Flex)`
   position: relative;
 `;
 
-const TitleContainer = styled(Box)`
+const TitleContainer = styled(b.Box)`
   position: relative;
   bottom: 2px;
 `;
 
-const ContentWrapper = styled(Box)`
+const ContentWrapper = styled(b.Box)`
   padding: 0 20px;
 `;
 
-const PlayWrapper = styled(Box)`
+const PlayWrapper = styled(b.Box)`
   position: relative;
   bottom: 6px;
 `;
 
-const SubtitleWrapper = styled(Box)`
+const SubtitleWrapper = styled(b.Box)`
   padding: 7px 19px 3px 28.5px;
 
   &.hovered {
@@ -130,7 +130,7 @@ const SubtitleWrapper = styled(Box)`
   }
 `;
 
-const PlusWrapper = styled(Box)`
+const PlusWrapper = styled(b.Box)`
   position: absolute;
   right: -2px;
   bottom: 3px;
@@ -141,7 +141,7 @@ const PlusWrapper = styled(Box)`
   }
 `;
 
-const CloseWrapper = styled(Box)`
+const CloseWrapper = styled(b.Box)`
   position: relative;
   bottom: 3px;
   right: 7px;

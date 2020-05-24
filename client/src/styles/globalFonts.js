@@ -1,113 +1,35 @@
 import { createGlobalStyle } from 'styled-components';
 
 // Fonts
-import CircularBook from '../assets/fonts/Circular-Book.ttf';
-import CircularMedium from '../assets/fonts/Circular-Medium.ttf';
-import CircularStdBook from '../assets/fonts/CircularStd-Book.ttf';
-import CircularStdMedium from '../assets/fonts/CircularStd-Medium.ttf';
-import OpenSansBold from '../assets/fonts/OpenSans-Bold.ttf';
-import OpenSansSemibold from '../assets/fonts/OpenSans-SemiBold.ttf';
-import OpenSansLight from '../assets/fonts/OpenSans-Light.ttf';
-import KeepCalmMedium from '../assets/fonts/KeepCalm-Medium.ttf';
-import Segoe from '../assets/fonts/Segoe.ttf';
-import SegoeLight from '../assets/fonts/Segoe-Light.ttf';
-import MacklinSans from '../assets/fonts/MacklinSans.ttf';
-import MacklinSansMedium from '../assets/fonts/MacklinSans-Medium.ttf';
-import MacklinSansBold from '../assets/fonts/MacklinSans-Bold.ttf';
+import CircularProBook from '../assets/fonts/CircularPro-Book.woff2';
+import CircularProBold from '../assets/fonts/CircularPro-Bold.woff2';
+import LarsseitBold from '../assets/fonts/Larsseit-Bold.woff2';
 
 import SlackLatoLight from '../assets/fonts/SlackLato-Light.woff';
 import SlackLatoRegular from '../assets/fonts/SlackLato-Regular.woff';
 import SlackLatoBold from '../assets/fonts/SlackLato-Bold.woff';
+import SlackLatoBlack from '../assets/fonts/SlackLato-Black.woff2';
+import SlackIcons from '../assets/fonts/SlackIcons.woff2';
 
 export const GlobalFonts = createGlobalStyle`
-    
-    @import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap');
 
+    /* Landing */
     @font-face {
-        font-family: 'CircularBook';
-        font-style: normal;
-        font-weight: normal;
-        src: url(${CircularBook});
+        font-family: 'CircularPro-Book';
+        src: url(${CircularProBook});
     }
 
     @font-face {
-        font-family: 'CircularMedium';
-        font-style: normal;
-        font-weight: normal;
-        src: url(${CircularMedium});
+        font-family: 'CircularPro-Bold';
+        src: url(${CircularProBold});
     }
 
     @font-face {
-        font-family: 'CircularStd-Book';
-        font-style: normal;
-        font-weight: normal;
-        src: url(${CircularStdBook});
+        font-family: 'Larsseit-Bold';
+        src: url(${LarsseitBold});
     }
 
-    @font-face {
-        font-family: 'CircularStd-Medium';
-        font-style: normal;
-        font-weight: normal;
-        src: url(${CircularStdMedium});
-    }
-
-    @font-face {
-        font-family: 'OpenSans-Bold';
-        font-style: normal;
-        font-weight: normal;
-        src: url(${OpenSansBold});
-    }
-
-    @font-face {
-        font-family: 'OpenSans-Semibold';
-        font-style: normal;
-        font-weight: normal;
-        src: url(${OpenSansSemibold});
-    }
-
-    @font-face {
-        font-family: 'KeepCalm-Medium';
-        font-style: normal;
-        font-weight: normal;
-        src: url(${KeepCalmMedium});
-    }
-
-    @font-face {
-        font-family: 'OpenSans-Light';
-        font-style: normal;
-        font-weight: normal;
-        src: url(${OpenSansLight});
-    }
-
-    @font-face {
-        font-family: 'Segoe';
-        font-style: normal;
-        font-weight: normal;
-        src: url(${Segoe});
-    }
-
-    @font-face {
-        font-family: 'Segoe-Light';
-        font-style: normal;
-        font-weight: normal;
-        src: url(${SegoeLight});
-    }
-
-    @font-face {
-        font-family: 'MacklinSans';
-        src: url(${MacklinSans});
-    }
-
-    @font-face {
-        font-family: 'MacklinSans-Medium';
-        src: url(${MacklinSansMedium});
-    }
-
-    @font-face {
-        font-family: 'MacklinSans-Bold';
-        src: url(${MacklinSansBold});
-    }
-
+    /* Client */
     @font-face {
         font-family: 'SlackLato-Light';
         src: url(${SlackLatoLight});
@@ -121,6 +43,16 @@ export const GlobalFonts = createGlobalStyle`
     @font-face {
         font-family: 'SlackLato-Bold';
         src: url(${SlackLatoBold})
+    }
+
+    @font-face {
+        font-family: 'SlackLato-Black';
+        src: url(${SlackLatoBlack})
+    }
+
+    @font-face {
+        font-family: 'SlackIcons';
+        src: url(${SlackIcons});
     }
 
 

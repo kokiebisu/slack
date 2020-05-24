@@ -17,7 +17,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     font-size: 16px;
     color: #3e3e3e;
-    font-family: 'CircularStd-Book';
+    font-family: 'SlackLato-Regular';
     box-sizing: inherit;
     }
     

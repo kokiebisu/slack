@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { Box } from '../../../styles/blocks';
+import * as b from '../../../styles/blocks';
 import { SidebarSection } from './SidebarSection';
 import { Messages } from './Messages';
 import { Channels } from './Channels';
@@ -33,7 +33,7 @@ export const SidebarSections = () => {
   );
 };
 
-const Wrapper = styled(Box)`
+const Wrapper = styled(b.Box)`
   border-top: 1.3px solid #532653;
   padding: 15px 0;
 `;

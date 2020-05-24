@@ -13,11 +13,7 @@ export const Choose = () => {
     <Wrapper>
       <b.Container>
         <b.Box mb={4}>
-          <b.Text
-            fontFamily='CircularStd-Medium'
-            fontSize={48}
-            center
-            color='white'>
+          <b.Text fontFamily='Larsseit-Bold' fontSize={48} center color='white'>
             Choose a better way to work
           </b.Text>
         </b.Box>
