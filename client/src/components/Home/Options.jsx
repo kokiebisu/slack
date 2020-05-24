@@ -40,7 +40,7 @@ export const Options = () => {
         <Option name='Files'>
           <Files width={15} height={15} color='#CFC3CF' />
         </Option>
-        <Option name='Show less'>
+        <Option name='Show less' hoverLetter>
           <ShowLess width={15} height={15} color='#CFC3CF' />
         </Option>
       </Container>

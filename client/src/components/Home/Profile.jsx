@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { Box, Flex, Text } from '../../styles/blocks';
@@ -7,8 +7,13 @@ import { BottomArrow } from '../../assets/svg/Arrows';
 import { Write } from '../../assets/svg/Write';
 
 export const Profile = () => {
+  const [hovered, setHovered] = useState(false);
+
   return (
-    <Wrapper>
+    <Wrapper
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className={hovered ? `hovered` : ``}>
       <Container>
         <Box>
           <Box>
@@ -29,9 +34,12 @@ export const Profile = () => {
           <Box>
             <Flex alignItems='center'>
               <StatusIcon />
-              <Text fontSize={13} color='#D8CFD9' fontFamily='OpenSans-Light'>
+              <Name
+                className={hovered ? `hovered` : ``}
+                fontSize={13}
+                fontFamily='OpenSans-Light'>
                 Kenichi Okiebisu
-              </Text>
+              </Name>
             </Flex>
           </Box>
         </Box>
@@ -51,6 +59,11 @@ const Wrapper = styled(Box)`
   align-items: center;
   border-bottom: 1px solid #532754;
   z-index: 10;
+  cursor: pointer;
+
+  &.hovered {
+    background-color: #350d36 !important;
+  }
 `;
 
 const Container = styled(Box)`
@@ -77,4 +90,12 @@ const Avatar = styled(Box)`
   background: white;
   width: 35px;
   height: 35px;
+`;
+
+const Name = styled(Text)`
+  color: #d8cfd9;
+
+  &.hovered {
+    color: white !important;
+  }
 `;

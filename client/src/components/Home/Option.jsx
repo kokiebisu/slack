@@ -3,22 +3,14 @@ import styled from 'styled-components';
 
 import { Flex, Box, Text, Button } from '../../styles/blocks';
 
-export const Option = ({ name, children }) => {
+export const Option = ({ name, children, hoverLetter }) => {
   const [hovered, setHovered] = useState(false);
-
-  console.log('called');
 
   return (
     <Wrapper
       className={hovered ? `hovered` : ``}
-      onMouseEnter={() => {
-        setHovered(true);
-        console.log('hovered', hovered);
-      }}
-      onMouseLeave={() => {
-        setHovered(false);
-        console.log('hovered', hovered);
-      }}>
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}>
       <Flex>
         <Icon style={{ top: 2 }}>{children}</Icon>
         <TextWrapper>
