@@ -16,9 +16,12 @@ export const MentionPage = ({ group }) => {
     <Wrapper>
       <TopWrapper>
         <TopContainer>
-          <b.Text color='#1D1C1D' fontFamily='SlackLato-Black' fontSize={15}>
-            Mentions & reactions
-          </b.Text>
+          <b.Box>
+            <b.Text color='#1D1C1D' fontFamily='SlackLato-Black' fontSize={15}>
+              Mentions & reactions
+            </b.Text>
+          </b.Box>
+          <b.Box></b.Box>
         </TopContainer>
       </TopWrapper>
       <BottomWrapper>
@@ -55,6 +58,7 @@ export const MentionPage = ({ group }) => {
               </b.Text>
             </b.Box>
           </Notice>
+          <Activity />
           <Activity />
         </BottomContainer>
       </BottomWrapper>
