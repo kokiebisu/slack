@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { Box } from '../../styles/blocks';
+import { Box } from '../../../styles/blocks';
 import { Option } from './Option';
 
 import {
@@ -13,7 +13,7 @@ import {
   Apps,
   Files,
   ShowLess,
-} from '../../assets/svg/SidebarOptions';
+} from '../../../assets/svg/SidebarOptions';
 
 export const Options = () => {
   return (

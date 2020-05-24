@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { Box } from '../../styles/blocks';
+import { Box } from '../../../styles/blocks';
 import { SidebarSection } from './SidebarSection';
 import { Messages } from './Messages';
 import { Channels } from './Channels';

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Box } from '../../styles/blocks';
+import { Box } from '../../../styles/blocks';
 
 import { Profile } from './Profile';
 import { Options } from './Options';
@@ -29,6 +29,6 @@ const SideBarWrapper = styled(Box)`
 
 const SideBarContainer = styled(Box)`
   position: relative;
-  height: calc(100vh - c87px);
+  height: calc(100vh - 87px);
   overflow-y: scroll;
 `;

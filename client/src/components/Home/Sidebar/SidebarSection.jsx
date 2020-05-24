@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Box, Flex, Text, Button } from '../../styles/blocks';
+import { Box, Flex, Text, Button } from '../../../styles/blocks';
 
-import { Play, Plus, Close } from '../../assets/svg/SidebarSections';
-import { home } from '../../styles/sizes';
+import { Play, Plus, Close } from '../../../assets/svg/SidebarSections';
+import { home } from '../../../styles/sizes';
 
 export const SidebarSection = ({ title, subtitle, children, onReveal }) => {
   const [clicked, setClicked] = useState(false);
@@ -25,12 +25,12 @@ export const SidebarSection = ({ title, subtitle, children, onReveal }) => {
 
   return (
     <Wrapper>
-      <TitleWrapper
+      <TopColumnWrapper
         onClick={() => {
           setClicked(!clicked);
           onReveal();
         }}>
-        <Flex alignItems='center' justifyContent='space-between'>
+        <TitleWrapper alignItems='center' justifyContent='space-between'>
           <Flex alignItems='center'>
             <PlayWrapper
               animate={clicked ? 'animate' : 'initial'}
@@ -50,8 +50,8 @@ export const SidebarSection = ({ title, subtitle, children, onReveal }) => {
             onMouseLeave={() => setHovered({ ...hovered, plus: false })}>
             <Plus width={14} height={14} color='#CFC3CF' />
           </PlusWrapper>
-        </Flex>
-      </TitleWrapper>
+        </TitleWrapper>
+      </TopColumnWrapper>
       <ContentWrapper>{children}</ContentWrapper>
       {subtitle ? (
         <SubtitleWrapper
@@ -95,12 +95,17 @@ const Wrapper = styled(Box)`
   cursor: pointer;
 `;
 
-const TitleWrapper = styled(Button)`
+const TopColumnWrapper = styled(Button)`
   width: 100%;
+  height: 25px;
   padding: 0 18px 0 20px;
   @media ${home.lg} {
     padding: 0 30px 0 20px;
   }
+`;
+
+const TitleWrapper = styled(Flex)`
+  position: relative;
 `;
 
 const TitleContainer = styled(Box)`
@@ -126,10 +131,11 @@ const SubtitleWrapper = styled(Box)`
 `;
 
 const PlusWrapper = styled(Box)`
-  position: relative;
-  bottom: 4px;
+  position: absolute;
+  right: -2px;
+  bottom: 3px;
   border-radius: 5px;
-  padding: 6px 6px 4px 6px;
+  padding: 6px 8px 4px 7px;
   &.hovered {
     background: #532754 !important;
   }
@@ -138,7 +144,7 @@ const PlusWrapper = styled(Box)`
 const CloseWrapper = styled(Box)`
   position: relative;
   bottom: 3px;
-  right: 6px;
+  right: 7px;
 
   @media ${home.lg} {
     bottom: 2px;

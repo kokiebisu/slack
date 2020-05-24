@@ -4,7 +4,7 @@ import { gql } from 'apollo-boost';
 import styled from 'styled-components';
 
 import { HomeHeader } from '../components/Home/HomeHeader';
-import { Sidebar } from '../components/Home/Sidebar';
+import { Sidebar } from '../components/Home/Sidebar/Sidebar';
 // Block
 import { Box } from '../styles/blocks';
 

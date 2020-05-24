@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Heart } from '../../assets/svg/SidebarSections';
+import { Heart } from '../../../assets/svg/SidebarSections';
 
-import { Flex, Text, Box } from '../../styles/blocks';
+import { Flex, Text, Box } from '../../../styles/blocks';
 import { Message } from './Message';
 
 export const Messages = () => {

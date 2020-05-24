@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { Flex, Box, Text, Button } from '../../styles/blocks';
+import { Flex, Box, Text, Button } from '../../../styles/blocks';
 
 export const Option = ({ name, children, hoverLetter }) => {
   const [hovered, setHovered] = useState(false);

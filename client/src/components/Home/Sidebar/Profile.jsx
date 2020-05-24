@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { Box, Flex, Text } from '../../styles/blocks';
+import { Box, Flex, Text } from '../../../styles/blocks';
 
-import { BottomArrow } from '../../assets/svg/Arrows';
-import { Write } from '../../assets/svg/Write';
+import { BottomArrow } from '../../../assets/svg/Arrows';
+import { Write } from '../../../assets/svg/Write';
 
 export const Profile = () => {
   const [hovered, setHovered] = useState(false);
