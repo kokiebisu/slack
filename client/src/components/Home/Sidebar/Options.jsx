@@ -5,30 +5,18 @@ import { Box } from '../../../styles/blocks';
 import { Option } from './Option';
 
 export const Options = () => {
-  const defaultState = {
-    threads: false,
-    mention: false,
-    drafts: false,
-    saved: false,
-    people: false,
-    app: false,
-    files: false,
-  };
-
-  const [selected, setSelected] = useState(defaultState);
-
   return (
     <OptionsWrapper>
-      <Container>
-        <Option name='threads' />
-        <Option name='mention & reaction' />
-        <Option name='drafts' />
-        <Option name='saved items' />
-        <Option name='people' />
-        <Option name='apps' />
-        <Option name='files' />
-        <Option name='show less' />
-      </Container>
+      <Box>
+        <Option name='threads' link='threads' />
+        <Option name='mentions & reactions' link='activity-page' />
+        <Option name='drafts' link='drafts' />
+        <Option name='saved items' link='saved-page' />
+        <Option name='people' link='browse-channels' />
+        <Option name='apps' link='browse-people' />
+        <Option name='files' link='apps' />
+        <Option name='show less' link='browse-files' />
+      </Box>
     </OptionsWrapper>
   );
 };
@@ -38,5 +26,3 @@ const OptionsWrapper = styled(Box)`
   margin: 5px 0;
   padding: 5px 0;
 `;
-
-const Container = styled(Box)``;

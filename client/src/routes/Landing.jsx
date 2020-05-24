@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // Components
 import { Header } from '../components/Landing/Header';
@@ -8,6 +8,10 @@ import { Choose } from '../components/Landing/Choose';
 import { Footer } from '../components/Landing/Footer';
 
 export default () => {
+  useEffect(() => {
+    document.title = 'Where work happens | Slack';
+  }, []);
+
   return (
     <>
       <Header />

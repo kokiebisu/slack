@@ -15,10 +15,13 @@ import {
   Files,
   ShowLess,
 } from '../../../assets/svg/SidebarOptions';
+import { display } from 'styled-system';
 
-export const Option = ({ name }) => {
+export const Option = ({ name, link }) => {
   const [hovered, setHovered] = useState(false);
   const [clicked, setClicked] = useState(false);
+
+  const displayingName = name.charAt(0).toUpperCase() + name.slice(1);
   const history = useHistory();
 
   function useOutsideAlerter(ref) {
@@ -51,7 +54,7 @@ export const Option = ({ name }) => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={() => {
-        history.push(`/client/${name}`);
+        history.push(`/client/${link}`);
       }}>
       <Flex>
         <Icon style={{ top: 1 }}>{renderOption(name, clicked)}</Icon>
@@ -60,7 +63,7 @@ export const Option = ({ name }) => {
             className={clicked ? `clicked` : ``}
             fontFamily='Segoe'
             fontSize={15}>
-            {name}
+            {displayingName}
           </Title>
         </TextWrapper>
       </Flex>
@@ -74,7 +77,7 @@ const renderOption = (option, clicked) => {
       return (
         <Threads width={15} height={15} color={clicked ? 'white' : '#CFC3CF'} />
       );
-    case 'mention & reaction':
+    case 'mentions & reactions':
       return (
         <MentionReaction
           width={15}
@@ -142,7 +145,6 @@ const TextWrapper = styled(Box)`
 
 const Title = styled(Text)`
   color: #cfc3cf;
-  text-transform: capitalize;
 
   &.clicked {
     color: white !important;

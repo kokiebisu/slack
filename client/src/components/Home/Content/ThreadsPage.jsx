@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 import { Box, Text } from '../../../styles/blocks';
@@ -6,15 +6,17 @@ import { Box, Text } from '../../../styles/blocks';
 // Image
 import Leaf from '../../../assets/img/leaf.png';
 
-export const ThreadsPage = () => {
-  console.log('called');
+export const ThreadsPage = ({ group }) => {
+  useEffect(() => {
+    document.title = `Slack | Threads | ${group}`;
+  }, []);
 
   return (
     <Wrapper>
       <TopWrapper>
         <TopContainer>
           <Box>
-            <Text color='black' fontFamily='MacklinSans-Bold'>
+            <Text color='black' fontFamily='MacklinSans-Medium'>
               Threads
             </Text>
           </Box>
