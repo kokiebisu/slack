@@ -15,6 +15,10 @@ import MacklinSans from '../assets/fonts/MacklinSans.ttf';
 import MacklinSansMedium from '../assets/fonts/MacklinSans-Medium.ttf';
 import MacklinSansBold from '../assets/fonts/MacklinSans-Bold.ttf';
 
+import CircularProBook from '../assets/fonts/CircularPro-Book.woff2';
+import CircularProBold from '../assets/fonts/CircularPro-Bold.woff2';
+import LarsseitBold from '../assets/fonts/Larsseit-Bold.woff2';
+
 import SlackLatoLight from '../assets/fonts/SlackLato-Light.woff';
 import SlackLatoRegular from '../assets/fonts/SlackLato-Regular.woff';
 import SlackLatoBold from '../assets/fonts/SlackLato-Bold.woff';
@@ -22,6 +26,21 @@ import SlackLatoBold from '../assets/fonts/SlackLato-Bold.woff';
 export const GlobalFonts = createGlobalStyle`
     
     @import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap');
+
+    @font-face {
+        font-family: 'CircularPro-Book';
+        src: url(${CircularProBook});
+    }
+
+    @font-face {
+        font-family: 'CircularPro-Bold';
+        src: url(${CircularProBold});
+    }
+
+    @font-face {
+        font-family: 'Larsseit-Bold';
+        src: url(${LarsseitBold});
+    }
 
     @font-face {
         font-family: 'CircularBook';

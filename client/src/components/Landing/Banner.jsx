@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 // Blocks
 import * as b from '../../styles/blocks';
 
 // Shared Components
-import { Title } from './Landing.styles';
+import { Title, Link } from './Landing.styles';
 
 // Motions
 import {
@@ -17,6 +17,10 @@ import {
 import { landing } from '../../styles/sizes';
 
 export const Banner = () => {
+  const [hovered, setHovered] = useState({
+    started: false,
+  });
+
   return (
     <Wrapper>
       <b.Container>
@@ -24,12 +28,19 @@ export const Banner = () => {
           <BannerLeft>
             <b.Box wp={95}>
               <b.Box mb={3}>
-                <b.Text fontFamily='CircularStd-Medium' fontSize={14} uppercase>
+                <b.Text
+                  fontFamily='CircularPro-Bold'
+                  color='#1D1D1D'
+                  fontSize={13}
+                  uppercase>
                   Work from home
                 </b.Text>
               </b.Box>
               <b.Box>
-                <Title fontFamily='KeepCalm-Medium' lineHeight={1.4}>
+                <Title
+                  fontFamily='Larsseit-Bold'
+                  lineHeight={1.4}
+                  color='#1D1D1D'>
                   Slack brings the team together, wherever you are
                 </Title>
               </b.Box>
@@ -67,7 +78,16 @@ export const Banner = () => {
               <b.Box mt={3}>
                 <b.Text fontSize={14} color='#1d1d1d'>
                   Need to create a workspace? &nbsp;
-                  <Link>Get started</Link>
+                  <Link
+                    className={hovered.started ? `hovered` : ``}
+                    onMouseEnter={() =>
+                      setHovered({ ...hovered, started: true })
+                    }
+                    onMouseLeave={() =>
+                      setHovered({ ...hovered, started: false })
+                    }>
+                    Get started
+                  </Link>
                 </b.Text>
               </b.Box>
             </b.Box>
@@ -120,15 +140,6 @@ const ButtonWrapper = styled(b.Box)`
   @media ${landing.lg} {
     margin-top: 0;
     margin-left: 15px;
-  }
-`;
-
-const Link = styled.a`
-  color: #1264a3;
-  border-bottom: 1px solid #1264a3;
-
-  &:hover {
-    border-width: 2px;
   }
 `;
 
