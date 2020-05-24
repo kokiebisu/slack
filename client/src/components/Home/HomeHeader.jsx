@@ -37,7 +37,7 @@ export const HomeHeader = () => {
         </Input>
         <Box style={{ flex: 1 }} pr={3} pl={3}>
           <Flex style={{ justifyContent: 'flex-end' }}>
-            <Button background='#CD2553' borderRadius={4}>
+            <WhatsNewWrapper borderRadius={4}>
               <Flex alignItems='center' justifyContent='center'>
                 <Box style={{ top: 1 }}>
                   <Present width={14} height={14} color='white' />
@@ -48,7 +48,7 @@ export const HomeHeader = () => {
                   </Text>
                 </WhatsNewText>
               </Flex>
-            </Button>
+            </WhatsNewWrapper>
             <Button ml={2} background='transparent'>
               <Flex alignItems='center'>
                 <Info width={18} height={18} color='white' />
@@ -70,6 +70,10 @@ const Input = styled(Button)`
   @media ${home.lg} {
     width: 500px;
   }
+`;
+
+const WhatsNewWrapper = styled(Button)`
+  background-color: #cd2553;
 `;
 
 const WhatsNewText = styled(Box)`

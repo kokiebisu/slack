@@ -50,6 +50,6 @@ const ContentWrapper = styled(Box)`
   grid-template-columns: 220px auto;
 
   @media ${home.lg} {
-    grid-template-columns: 270px auto;
+    grid-template-columns: 260px auto;
   }
 `;

@@ -12,7 +12,7 @@ export const Option = ({ name, children, hoverLetter }) => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}>
       <Flex>
-        <Icon style={{ top: 2 }}>{children}</Icon>
+        <Icon style={{ top: 1 }}>{children}</Icon>
         <TextWrapper>
           <Text fontFamily='Segoe' color='#CFC3CF' fontSize={15}>
             {name}
