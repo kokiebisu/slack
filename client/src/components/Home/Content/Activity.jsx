@@ -5,55 +5,55 @@ import Thumbsup from '../../../assets/img/thumbsup.png';
 
 import { Reactions } from '../../shared/Reactions';
 
-import { Box, Flex, Text } from '../../../styles/blocks';
+import * as b from '../../../styles/blocks';
 
 export const Activity = () => {
   return (
     <ActivityWrapper p={3}>
-      <Box>
-        <Text fontSize={14} fontFamily='OpenSans-SemiBold'>
+      <b.Box>
+        <b.Text fontSize={14} fontFamily='OpenSans-SemiBold'>
           Thomas Bui - Set E reacted to your message
-        </Text>
-      </Box>
-      <Box mt={2}>
+        </b.Text>
+      </b.Box>
+      <b.Box mt={2}>
         <ActivityContent>
-          <Box>
+          <b.Box>
             <img width={30} height={30} src={Thumbsup} />
-          </Box>
-          <Box>
-            <Box>
-              <Flex alignItems='center'>
+          </b.Box>
+          <b.Box>
+            <b.Box>
+              <b.Flex alignItems='center'>
                 <UserWrapper mr={2}>
-                  <Text
+                  <b.Text
                     color='#1D1C1D'
                     fontFamily='OpenSans-Bold'
                     letterSpacing='-0.025em'>
                     ken
-                  </Text>
+                  </b.Text>
                 </UserWrapper>
-                <Box>
-                  <Text color='#616061' fontFamily='Segoe' fontSize={13}>
+                <b.Box>
+                  <b.Text color='#616061' fontFamily='Segoe' fontSize={13}>
                     Yesterday at 2:44 PM
-                  </Text>
-                </Box>
-              </Flex>
-            </Box>
-            <Box mt={2}>
-              <Text color='#616061' fontFamily='Segoe' fontSize={13}>
+                  </b.Text>
+                </b.Box>
+              </b.Flex>
+            </b.Box>
+            <b.Box mt={2}>
+              <b.Text color='#616061' fontFamily='Segoe' fontSize={13}>
                 Too
-              </Text>
-            </Box>
-            <Box mt={1}>
+              </b.Text>
+            </b.Box>
+            <b.Box mt={1}>
               <Reactions />
-            </Box>
-          </Box>
+            </b.Box>
+          </b.Box>
         </ActivityContent>
-      </Box>
+      </b.Box>
     </ActivityWrapper>
   );
 };
 
-const ActivityWrapper = styled(Box)`
+const ActivityWrapper = styled(b.Box)`
   background-color: #ffffff;
   border: 1px solid #dcdcdc;
   padding: 10px;
@@ -61,12 +61,12 @@ const ActivityWrapper = styled(Box)`
   margin-bottom: 25px;
 `;
 
-const ActivityContent = styled(Box)`
+const ActivityContent = styled(b.Box)`
   display: grid;
   grid-template-columns: 35px auto;
 `;
 
-const UserWrapper = styled(Box)`
+const UserWrapper = styled(b.Box)`
   position: relative;
   bottom: 3px;
 `;

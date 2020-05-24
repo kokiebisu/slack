@@ -1,26 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Box, Flex, Text } from '../../../styles/blocks';
+import * as b from '../../../styles/blocks';
 
 export const Message = () => {
   return (
-    <Box py={2}>
-      <Flex alignItems='center'>
-        <Box pr={2}>
+    <b.Box py={2}>
+      <b.Flex alignItems='center'>
+        <b.Box pr={2}>
           <Status />
-        </Box>
-        <Box style={{ top: 3 }}>
-          <Text fontFamily='Segoe' color='#CFC3CF' fontSize={15}>
+        </b.Box>
+        <b.Box style={{ top: 3 }}>
+          <b.Text fontFamily='Segoe' color='#CFC3CF' fontSize={15}>
             Slackbot
-          </Text>
-        </Box>
-      </Flex>
-    </Box>
+          </b.Text>
+        </b.Box>
+      </b.Flex>
+    </b.Box>
   );
 };
 
-const Status = styled(Box)`
+const Status = styled(b.Box)`
   width: 10px;
   height: 10px;
   background-color: #2bac76;

@@ -7,7 +7,7 @@ import { Option } from './Option';
 import { ShowLess } from '../../../assets/svg/SidebarOptions';
 
 // Blocks
-import { Flex, Text, Button } from '../../../styles/blocks';
+import * as b from '../../../styles/blocks';
 
 export const Options = () => {
   const [display, setDisplay] = useState(true);
@@ -15,14 +15,14 @@ export const Options = () => {
 
   const arrow = {
     initial: {
-      y: 0,
+      y: 3,
       rotate: 0,
       transition: {
         duration: 0.3,
       },
     },
     animate: {
-      y: -2.5,
+      y: 0,
       rotate: 180,
       transition: {
         duration: 0.3,
@@ -32,7 +32,7 @@ export const Options = () => {
 
   return (
     <OptionsWrapper>
-      <Box>
+      <b.Box>
         <Option name='threads' link='threads' />
         <Option name='mentions & reactions' link='activity-page' />
         {display ? (
@@ -50,11 +50,8 @@ export const Options = () => {
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
           onClick={() => setDisplay(!display)}>
-          <Flex>
-            <Icon
-              animate={display ? 'initial' : 'animate'}
-              style={{ top: 1 }}
-              variants={arrow}>
+          <b.Flex>
+            <Icon animate={display ? 'initial' : 'animate'} variants={arrow}>
               <ShowLess
                 width={15}
                 height={15}
@@ -64,39 +61,39 @@ export const Options = () => {
             <TextWrapper>
               <Title
                 className={hovered ? `hovered` : ``}
-                fontFamily='Segoe'
+                fontFamily='SlackLato-Light'
                 fontSize={15}>
                 Show less
               </Title>
             </TextWrapper>
-          </Flex>
+          </b.Flex>
         </ShowLessWrapper>
-      </Box>
+      </b.Box>
     </OptionsWrapper>
   );
 };
 
-const OptionsWrapper = styled(Box)`
+const OptionsWrapper = styled(b.Box)`
   position: relative;
   margin: 5px 0;
   padding: 5px 0;
 `;
 
-const ShowLessWrapper = styled(Button)`
+const ShowLessWrapper = styled(b.Button)`
   padding: 5px 15px;
   width: 100%;
 `;
 
-const TextWrapper = styled(Box)`
+const TextWrapper = styled(b.Box)`
   position: relative;
   top: 2px;
 `;
 
-const Icon = styled(Box)`
+const Icon = styled(b.Box)`
   margin-right: 8px;
 `;
 
-const Title = styled(Text)`
+const Title = styled(b.Text)`
   color: #cfc3cf;
 
   &.hovered {
