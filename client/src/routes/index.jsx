@@ -45,7 +45,7 @@ export default () => {
         <Route path='/register' exact component={Register} />
         <Route path='/login' exact component={Login} />
         <PrivateRoute path='/createteam' exact component={CreateTeam} />
-        <PrivateRoute path='/home' exact component={Home} />
+        <PrivateRoute path='/client' exact component={Home} />
       </Switch>
     </BrowserRouter>
   );

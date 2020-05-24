@@ -154,7 +154,7 @@ export const Header = () => {
                 </NavItem>
               </Nav>
               <LaunchButtonWrapper
-                href='/home'
+                href='/client'
                 initial='rest'
                 whileHover='hovered'
                 animate='rest'>

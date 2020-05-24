@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import styled from 'styled-components';
 
 import { HomeHeader } from '../components/Home/HomeHeader';
-import { Sidebar } from '../components/Home/Sidebar/Sidebar';
+import { Sidebar } from '../components/Home/Sidebar';
+import { Content } from '../components/Home/Content';
+
 // Block
 import { Box } from '../styles/blocks';
 
@@ -22,6 +24,8 @@ const ALL_USERS = gql`
 export default () => {
   const { data, loading, error } = useQuery(ALL_USERS);
 
+  const [selected, setSelected] = useState('threads');
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error!</p>;
   return (
@@ -30,7 +34,7 @@ export default () => {
         <HomeHeader />
         <ContentWrapper>
           <Sidebar />
-          <Box style={{ backgroundColor: 'red' }}>he</Box>
+          <Content selected='threads' />
         </ContentWrapper>
       </Wrapper>
     </>
