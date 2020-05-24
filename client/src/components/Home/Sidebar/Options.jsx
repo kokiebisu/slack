@@ -16,31 +16,51 @@ import {
 } from '../../../assets/svg/SidebarOptions';
 
 export const Options = () => {
+  const defaultState = {
+    threads: false,
+    mention: false,
+    drafts: false,
+    saved: false,
+    people: false,
+    app: false,
+    files: false,
+  };
+
+  const [selected, setSelected] = useState(defaultState);
+
+  const onSelect = (select) => {
+    setSelected(defaultState);
+    setSelected({
+      ...selected,
+      [select]: true,
+    });
+  };
+
   return (
     <OptionsWrapper>
       <Container>
-        <Option name='Threads'>
+        <Option name='threads'>
           <Threads width={15} height={15} color='#CFC3CF' />
         </Option>
-        <Option name='Mention & reaction'>
+        <Option name='mention & reaction'>
           <MentionReaction width={15} height={15} color='#CFC3CF' />
         </Option>
-        <Option name='Drafts'>
+        <Option name='drafts'>
           <Drafts width={15} height={15} color='#CFC3CF' />
         </Option>
-        <Option name='Saved items'>
+        <Option name='saved items' select={onSelect}>
           <SavedItems width={15} height={15} color='#CFC3CF' />
         </Option>
-        <Option name='People'>
+        <Option name='people' select={onSelect}>
           <People width={15} height={15} color='#CFC3CF' />
         </Option>
-        <Option name='Apps'>
+        <Option name='apps' select={onSelect}>
           <Apps width={15} height={15} color='#CFC3CF' />
         </Option>
-        <Option name='Files'>
+        <Option name='files' select={onSelect}>
           <Files width={15} height={15} color='#CFC3CF' />
         </Option>
-        <Option name='Show less' hoverLetter>
+        <Option name='show less'>
           <ShowLess width={15} height={15} color='#CFC3CF' />
         </Option>
       </Container>

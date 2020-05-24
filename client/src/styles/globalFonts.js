@@ -11,6 +11,9 @@ import OpenSansLight from '../assets/fonts/OpenSans-Light.ttf';
 import KeepCalmMedium from '../assets/fonts/KeepCalm-Medium.ttf';
 import Segoe from '../assets/fonts/Segoe.ttf';
 import SegoeLight from '../assets/fonts/Segoe-Light.ttf';
+import MacklinSans from '../assets/fonts/MacklinSans.ttf';
+import MacklinSansMedium from '../assets/fonts/MacklinSans-Medium.ttf';
+import MacklinSansBold from '../assets/fonts/MacklinSans-Bold.ttf';
 
 export const GlobalFonts = createGlobalStyle`
     
@@ -84,5 +87,20 @@ export const GlobalFonts = createGlobalStyle`
         font-style: normal;
         font-weight: normal;
         src: url(${SegoeLight});
+    }
+
+    @font-face {
+        font-family: 'MacklinSans';
+        src: url(${MacklinSans});
+    }
+
+    @font-face {
+        font-family: 'MacklinSans-Medium';
+        src: url(${MacklinSansMedium});
+    }
+
+    @font-face {
+        font-family: 'MacklinSans-Bold';
+        src: url(${MacklinSansBold});
     }
 `;

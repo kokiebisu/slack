@@ -5,7 +5,10 @@ import styled from 'styled-components';
 
 import { HomeHeader } from '../components/Home/HomeHeader';
 import { Sidebar } from '../components/Home/Sidebar';
-import { Content } from '../components/Home/Content';
+// import { Content } from '../components/Home/Content';
+import { ThreadsPage } from '../components/Home/Content/ThreadsPage';
+
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // Block
 import { Box } from '../styles/blocks';
@@ -21,22 +24,29 @@ const ALL_USERS = gql`
   }
 `;
 
-export default () => {
+export default ({ location }) => {
   const { data, loading, error } = useQuery(ALL_USERS);
 
-  const [selected, setSelected] = useState('threads');
+  console.log('params', location);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error!</p>;
+
   return (
     <>
-      <Wrapper>
-        <HomeHeader />
-        <ContentWrapper>
-          <Sidebar />
-          <Content selected='threads' />
-        </ContentWrapper>
-      </Wrapper>
+      <BrowserRouter>
+        <Wrapper>
+          <HomeHeader />
+          <ContentWrapper>
+            <Sidebar />
+            <Switch>
+              <Route path='/client/threads'>
+                <ThreadsPage />
+              </Route>
+            </Switch>
+          </ContentWrapper>
+        </Wrapper>
+      </BrowserRouter>
     </>
   );
 };

@@ -41,11 +41,11 @@ export default () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path='/' exact component={Landing} />
-        <Route path='/register' exact component={Register} />
-        <Route path='/login' exact component={Login} />
-        <PrivateRoute path='/createteam' exact component={CreateTeam} />
-        <PrivateRoute path='/client' exact component={Home} />
+        <PrivateRoute path='/createteam' component={CreateTeam} />
+        <PrivateRoute path='/client' component={Home} />
+        <Route path='/register' component={Register} />
+        <Route path='/login' component={Login} />
+        <Route path='/' component={Landing} />
       </Switch>
     </BrowserRouter>
   );

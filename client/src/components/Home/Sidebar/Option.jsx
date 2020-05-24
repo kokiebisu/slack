@@ -1,20 +1,28 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import { useHistory } from 'react-router-dom';
+
 import { Flex, Box, Text, Button } from '../../../styles/blocks';
 
-export const Option = ({ name, children, hoverLetter }) => {
+export const Option = ({ name, children, select, location }) => {
   const [hovered, setHovered] = useState(false);
+  const history = useHistory();
 
   return (
     <Wrapper
       className={hovered ? `hovered` : ``}
       onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}>
+      onMouseLeave={() => setHovered(false)}
+      onClick={() => history.push(`/client/${name}`)}>
       <Flex>
         <Icon style={{ top: 1 }}>{children}</Icon>
         <TextWrapper>
-          <Text fontFamily='Segoe' color='#CFC3CF' fontSize={15}>
+          <Text
+            style={{ textTransform: 'capitalize' }}
+            fontFamily='Segoe'
+            color='#CFC3CF'
+            fontSize={15}>
             {name}
           </Text>
         </TextWrapper>
@@ -30,6 +38,10 @@ const Wrapper = styled(Button)`
 
   &.hovered {
     background: #350d36;
+  }
+
+  &.clicked {
+    background: red;
   }
 `;
 

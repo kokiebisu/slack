@@ -52,9 +52,8 @@ export const Profile = () => {
 };
 
 const Wrapper = styled(Box)`
-  height: 50px;
   display: grid;
-  padding: 5px 0;
+  padding: 10px 0;
   background-color: #3f0f40;
   align-items: center;
   border-bottom: 1px solid #532754;

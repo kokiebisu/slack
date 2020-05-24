@@ -13,15 +13,9 @@ export const Content = ({ selected }) => {
         return <ThreadsPage />;
     }
   };
-  return (
-    <Wrapper>
-      <Bo>Hello</Bo>
-      {renderContent(selected)}
-    </Wrapper>
-  );
+  return <Wrapper>{renderContent(selected)}</Wrapper>;
 };
 
 const Wrapper = styled(Box)`
-  display: grid;
-  grid-template-rows: 50px auto;
+  height: inherit;
 `;
