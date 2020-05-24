@@ -13,9 +13,9 @@ import {
   SavedItems,
   Apps,
   Files,
-  ShowLess,
 } from '../../../assets/svg/SidebarOptions';
 import { display } from 'styled-system';
+import { Hashtag } from '../../../assets/svg/SidebarSections';
 
 export const Option = ({ name, link }) => {
   const [hovered, setHovered] = useState(false);
@@ -97,6 +97,10 @@ const renderOption = (option, clicked) => {
           color={clicked ? 'white' : '#CFC3CF'}
         />
       );
+    case 'channel browser':
+      return (
+        <Hashtag width={15} height={15} color={clicked ? 'white' : '#CFC3CF'} />
+      );
     case 'people':
       return (
         <People width={15} height={15} color={clicked ? 'white' : '#CFC3CF'} />
@@ -109,14 +113,8 @@ const renderOption = (option, clicked) => {
       return (
         <Files width={15} height={15} color={clicked ? 'white' : '#CFC3CF'} />
       );
-    case 'show less':
-      return (
-        <ShowLess
-          width={15}
-          height={15}
-          color={clicked ? 'white' : '#CFC3CF'}
-        />
-      );
+    default:
+      return;
   }
 };
 
