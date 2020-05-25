@@ -217,7 +217,7 @@ const NavItem = styled(motion.div)`
   padding: 12px 0px;
   margin: 0px 15px;
   font-size: 16px;
-  font-family: 'CircularStd-Book';
+  font-family: 'CircularPro-Book';
   cursor: pointer;
 `;
 
@@ -230,7 +230,7 @@ const LaunchButton = styled(Anchor)`
   font-size: 14px;
   color: white;
   border: none;
-  font-family: 'CircularStd-Medium';
+  font-family: 'CircularPro-Bold';
   border-radius: 3px;
   letter-spacing: 1px;
   cursor: pointer;
