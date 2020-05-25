@@ -11,8 +11,8 @@ export const Message = () => {
           <Status />
         </b.Box>
         <b.Box style={{ top: 3 }}>
-          <b.Text fontFamily='Segoe' color='#CFC3CF' fontSize={15}>
-            Slackbot
+          <b.Text fontFamily='SlackLato-Light' color='#CFC3CF' fontSize={15}>
+            ken
           </b.Text>
         </b.Box>
       </b.Flex>

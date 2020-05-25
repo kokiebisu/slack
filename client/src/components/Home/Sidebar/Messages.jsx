@@ -14,7 +14,7 @@ export const Messages = () => {
             <Heart width={10} height={10} color='#2BAC76' />
           </b.Box>
           <b.Box style={{ top: 3 }}>
-            <b.Text fontFamily='Segoe' color='#CFC3CF' fontSize={15}>
+            <b.Text fontFamily='SlackLato-Light' color='#CFC3CF' fontSize={15}>
               Slackbot
             </b.Text>
           </b.Box>
