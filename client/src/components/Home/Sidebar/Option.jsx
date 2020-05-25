@@ -18,7 +18,6 @@ import { display } from 'styled-system';
 import { Hashtag } from '../../../assets/svg/SidebarSections';
 
 export const Option = ({ name, link }) => {
-  const [hovered, setHovered] = useState(false);
   const [clicked, setClicked] = useState(false);
 
   const displayingName = name.charAt(0).toUpperCase() + name.slice(1);
@@ -50,9 +49,7 @@ export const Option = ({ name, link }) => {
   return (
     <Wrapper
       ref={wrapperRef}
-      className={clicked ? `clicked` : hovered ? `hovered` : ``}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      className={clicked ? `clicked` : ``}
       onClick={() => {
         history.push(`/client/${link}`);
       }}>
@@ -123,7 +120,7 @@ const Wrapper = styled(b.Button)`
   width: 100%;
   cursor: pointer;
 
-  &.hovered {
+  &:hover {
     background: #350d36;
   }
 

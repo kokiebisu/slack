@@ -16,9 +16,11 @@ export const SidebarSection = ({ title, subtitle, children, onReveal }) => {
 
   const arrow = {
     initial: {
+      y: 2,
       rotate: 0,
     },
     animate: {
+      y: 3,
       rotate: 90,
     },
   };
@@ -39,7 +41,10 @@ export const SidebarSection = ({ title, subtitle, children, onReveal }) => {
               <Play width={8} height={8} color='#CFC3CF' />
             </PlayWrapper>
             <TitleContainer>
-              <b.Text fontFamily='Segoe' color='#CFC3CF' fontSize={15}>
+              <b.Text
+                fontFamily='SlackLato-Light'
+                color='#CFC3CF'
+                fontSize={15}>
                 {title}
               </b.Text>
             </TitleContainer>
@@ -63,11 +68,14 @@ export const SidebarSection = ({ title, subtitle, children, onReveal }) => {
           pl={2}>
           <b.Flex alignItems='center' justifyContent='space-between'>
             <b.Flex>
-              <b.Box pr={2} style={{ bottom: 4 }}>
+              <b.Box pr={2} style={{ bottom: 2.75 }}>
                 <Plus width={8} height={8} color='white' />
               </b.Box>
               <b.Box>
-                <b.Text fontFamily='Segoe' color='#CFC3CF' fontSize={15}>
+                <b.Text
+                  fontFamily='SlackLato-Light'
+                  color='#CFC3CF'
+                  fontSize={15}>
                   {subtitle}
                 </b.Text>
               </b.Box>
