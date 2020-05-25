@@ -58,7 +58,7 @@ export const Banner = () => {
                     uppercase
                     color='white'
                     variants={ButtonMotion}>
-                    Learn More
+                    Try Slack for free
                   </Button>
                 </b.Box>
                 <ButtonWrapper
@@ -71,7 +71,7 @@ export const Banner = () => {
                     borderColor='#612069'
                     color='#612069'
                     variants={TransparentButtonMotion}>
-                    Contact Us
+                    Learn more
                   </Button>
                 </ButtonWrapper>
               </Buttons>
@@ -145,7 +145,7 @@ const ButtonWrapper = styled(b.Box)`
 
 const Button = styled(b.Button)`
   font-size: 14px;
-  font-family: 'CircularStd-Medium';
+  font-family: 'CircularPro-Bold';
   border-radius: 3px;
   letter-spacing: 1px;
   width: 100%;
