@@ -7,6 +7,8 @@ import { AtSign, Close } from '../../../assets/svg/SidebarContent';
 
 import { Activity } from './Activity';
 
+import { Settings, Transition } from '../../../assets/svg/MentionPage';
+
 export const MentionPage = ({ group }) => {
   useEffect(() => {
     document.title = `Mentions & reactions | ${group}`;
@@ -21,7 +23,14 @@ export const MentionPage = ({ group }) => {
               Mentions & reactions
             </b.Text>
           </b.Box>
-          <b.Box></b.Box>
+          <b.Flex alignItems='center'>
+            <SideOption mr={2}>
+              <Settings width={17} height={17} color='#606060' />
+            </SideOption>
+            <SideOption>
+              <Transition width={17} height={17} color='#606060' />
+            </SideOption>
+          </b.Flex>
         </TopContainer>
       </TopWrapper>
       <BottomWrapper>
@@ -77,9 +86,10 @@ const TopWrapper = styled(b.Box)`
 `;
 
 const TopContainer = styled(b.Flex)`
+  justify-content: space-between;
+  align-items: center;
   height: inherit;
   padding: 0 19px;
-  align-items: center;
 `;
 
 const BottomWrapper = styled(b.Box)`
@@ -100,4 +110,13 @@ const Notice = styled(b.Box)`
   padding: 25px;
   border-radius: 10px;
   margin-bottom: 25px;
+`;
+
+const SideOption = styled(b.Box)`
+  padding: 8px 10px 6px 10px;
+  background-color: transparent;
+  &:hover {
+    background-color: #f6f6f6;
+    border-radius: 3px;
+  }
 `;
