@@ -8,6 +8,7 @@ import { Sidebar } from '../components/Home/Sidebar';
 
 import { ThreadsPage } from '../components/Home/Content/ThreadsPage';
 import { MentionPage } from '../components/Home/Content/MentionPage';
+import { DraftPage } from '../components/Home/Content/DraftPage';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
@@ -45,6 +46,9 @@ export default ({ location }) => {
               </Route>
               <Route path='/client/activity-page'>
                 <MentionPage group={groupName} />
+              </Route>
+              <Route path='/client/drafts'>
+                <DraftPage group={groupName} />
               </Route>
             </Switch>
           </ContentWrapper>
