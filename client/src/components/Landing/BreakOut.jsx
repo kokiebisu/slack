@@ -101,7 +101,7 @@ const ColumnCard = ({ title, subtitle, mr, children }) => {
       <CardWrapper>
         <b.Box>{children}</b.Box>
         <b.Box my={3}>
-          <b.Text fontFamily='CircularStd-Medium' color='#1D1C1D' fontSize={18}>
+          <b.Text fontFamily='CircularPro-Bold' color='#1D1C1D' fontSize={18}>
             {title}
           </b.Text>
         </b.Box>
