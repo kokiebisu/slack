@@ -8,7 +8,7 @@ import { landing } from '../../styles/sizes';
 
 // Svg
 import { HeaderLogo } from '../../assets/svg/Logo';
-import { BottomArrow } from '../../assets/svg/Arrows';
+import { BottomArrow, RightArrow } from '../../assets/svg/Arrows';
 import { HamburgerButton } from '../../assets/svg/Buttons';
 
 // Images
@@ -24,6 +24,7 @@ export const Header = () => {
     resources: false,
     enterprise: false,
     pricing: false,
+    launch: false,
   });
 
   const [pressed, setPressed] = useState(false);
@@ -180,28 +181,48 @@ export const Header = () => {
           {pressed ? (
             <LaunchOptionWrapper>
               <LaunchOption>
-                <b.Box
-                  pb={2}
-                  px={2}
-                  style={{ borderBottom: '1px solid black' }}>
-                  <b.Flex justifyContent='space-between'>
-                    <b.Box>
-                      <b.Flex alignItems='center'>
-                        <b.Box>
-                          <img
-                            style={{ borderRadius: '5px' }}
-                            width={50}
-                            height={50}
-                            src={BCIT}
-                          />
-                        </b.Box>
-                        <b.Box>bcit-sept-2018</b.Box>
-                      </b.Flex>
-                    </b.Box>
-                    <b.Box>arr</b.Box>
-                  </b.Flex>
-                </b.Box>
-                <b.Box py={4}>
+                <b.Anchor href='/client'>
+                  <b.Box
+                    onMouseEnter={() => {
+                      setHovered({ ...hovered, launch: true });
+                    }}
+                    onMouseLeave={() => {
+                      setHovered({ ...hovered, launch: false });
+                    }}
+                    href='/client'
+                    pb={2}
+                    px={2}
+                    style={{ borderBottom: '0.5px solid #E2E1E2' }}>
+                    <b.Flex alignItems='center' justifyContent='space-between'>
+                      <b.Box>
+                        <b.Flex alignItems='center'>
+                          <b.Box mr={3}>
+                            <img
+                              style={{ borderRadius: '5px' }}
+                              width={50}
+                              height={50}
+                              src={BCIT}
+                            />
+                          </b.Box>
+                          <b.Box>
+                            <TeamName
+                              fontFamily='CircularPro-Bold'
+                              fontSize={17}
+                              className={hovered.launch ? `hovered` : ``}>
+                              bcit-cst-sept-2018
+                            </TeamName>
+                          </b.Box>
+                        </b.Flex>
+                      </b.Box>
+                      <b.Box
+                        variants={launchArrow}
+                        animate={hovered.launch ? 'animate' : 'initial'}>
+                        <RightArrow width={15} height={15} color='#1766A4' />
+                      </b.Box>
+                    </b.Flex>
+                  </b.Box>
+                </b.Anchor>
+                <b.Box pt={4} pb={3}>
                   <b.Box>
                     <b.Text
                       textAlign='center'
@@ -232,12 +253,14 @@ const LaunchOptionWrapper = styled(b.Box)`
   position: absolute;
   top: 80px;
   right: calc(5%);
+  border-radius: 3px;
 `;
 
 const LaunchOption = styled(b.Box)`
   padding: 10px;
   min-width: 380px;
-  background-color: red;
+  background-color: #ffffff;
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.1);
 `;
 
 const HeaderWrapper = styled.div`
@@ -246,10 +269,19 @@ const HeaderWrapper = styled.div`
   z-index: 99;
 `;
 
+const TeamName = styled(b.Text)`
+  color: #1d1d1d;
+
+  &.hovered {
+    color: #1766a4;
+  }
+`;
+
 const Wrapper = styled.div`
   background-color: white;
   height: 70px;
   border-bottom: 0.5px solid lightgray;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 `;
 
 const Left = styled(b.Flex)``;
@@ -330,16 +362,27 @@ const launchMotion = {
     backgroundColor: '#612069',
     transition: {
       duration: 0.2,
-      type: 'tween',
-      ease: 'easeIn',
     },
   },
   hovered: {
     backgroundColor: '#18071A',
     transition: {
       duration: 0.2,
-      type: 'tween',
-      ease: 'easeOut',
+    },
+  },
+};
+
+const launchArrow = {
+  initial: {
+    x: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+  animate: {
+    x: 5,
+    transition: {
+      duration: 0.5,
     },
   },
 };
