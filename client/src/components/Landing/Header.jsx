@@ -252,10 +252,15 @@ export const Header = () => {
 };
 
 const LaunchOptionWrapper = styled(b.Box)`
-  position: absolute;
-  top: 80px;
-  right: calc(5%);
-  border-radius: 3px;
+  display: none;
+
+  @media ${landing.lg} {
+    display: block;
+    position: absolute;
+    top: 80px;
+    right: calc(5%);
+    border-radius: 3px;
+  }
 `;
 
 const LaunchOption = styled(b.Box)`
