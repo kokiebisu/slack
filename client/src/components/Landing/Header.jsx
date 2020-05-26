@@ -224,20 +224,22 @@ export const Header = () => {
                 </b.Anchor>
                 <b.Box pt={4} pb={3}>
                   <b.Box>
-                    <b.Text
-                      textAlign='center'
+                    <LaunchOptionLink
+                      href='/create-team'
                       color='#1264A3'
                       fontFamily='CircularPro-Book'>
-                      Create a new workspace
-                    </b.Text>
+                      <b.Text textAlign='center'>Create a new workspace</b.Text>
+                    </LaunchOptionLink>
                   </b.Box>
                   <b.Box mt={3}>
-                    <b.Text
-                      textAlign='center'
+                    <LaunchOptionLink
+                      href='/signin-workspace'
                       color='#1264A3'
                       fontFamily='CircularPro-Book'>
-                      Sign in to another workspace
-                    </b.Text>
+                      <b.Text textAlign='center'>
+                        Sign in to another workspace
+                      </b.Text>
+                    </LaunchOptionLink>
                   </b.Box>
                 </b.Box>
               </LaunchOption>
@@ -261,6 +263,12 @@ const LaunchOption = styled(b.Box)`
   min-width: 380px;
   background-color: #ffffff;
   box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.1);
+`;
+
+const LaunchOptionLink = styled(b.Anchor)`
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const HeaderWrapper = styled.div`
