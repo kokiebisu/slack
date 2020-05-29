@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { Clock } from '../../assets/svg/Clock';
@@ -13,12 +13,18 @@ import * as b from '../../styles/blocks';
 import { home } from '../../styles/sizes';
 
 export const HomeHeader = () => {
+  const [hovered, setHovered] = useState({
+    clock: false,
+  });
+
   return (
     <b.Box height={37} background='#350D36'>
       <b.Flex alignItems='center' justifyContent='center'>
         <b.Box style={{ flex: 1 }} pr={4} pl={3}>
           <b.Flex style={{ justifyContent: 'flex-end' }}>
-            <Clock width={18} height={18} color='white' />
+            <ClockWrapper>
+              <Clock width={18} height={18} color='white' />
+            </ClockWrapper>
           </b.Flex>
         </b.Box>
         <Input borderRadius={5}>
@@ -93,5 +99,13 @@ const WhatsNewText = styled(b.Box)`
 
   @media ${home.md} {
     display: block;
+  }
+`;
+
+const ClockWrapper = styled(b.Button)`
+  border-radius: 5px;
+  padding: 6px 6px 3px 7px;
+  &:hover {
+    background-color: #49244a;
   }
 `;
