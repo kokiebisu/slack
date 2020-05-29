@@ -16,6 +16,9 @@ import BCIT from '../../assets/img/bcit.png';
 // Components
 import { Link } from './Landing.styles';
 
+// Util
+import { isAuthenticated } from '../../util/isAuthenticated';
+
 export const Header = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [hovered, setHovered] = useState({
@@ -159,7 +162,7 @@ export const Header = () => {
                   <Link>Pricing</Link>
                 </NavItem>
               </Nav>
-              {loggedIn ? (
+              {isAuthenticated() ? (
                 <LaunchButtonWrapper
                   initial='rest'
                   whileHover='hovered'
@@ -176,9 +179,11 @@ export const Header = () => {
                 </LaunchButtonWrapper>
               ) : (
                 <GetStartedButtonWrapper alignItems='center'>
-                  <b.Box mr={3}>
-                    <b.Text fontFamily='CircularPro-Book'>Sign in</b.Text>
-                  </b.Box>
+                  <b.Anchor href='/register'>
+                    <SignInButton mr={3}>
+                      <b.Text fontFamily='CircularPro-Book'>Sign in</b.Text>
+                    </SignInButton>
+                  </b.Anchor>
                   <GetStartedButton href='/get-started'>
                     <b.Text
                       fontSize={14}
@@ -344,6 +349,15 @@ const NavItem = styled(b.Box)`
   font-size: 16px;
   font-family: 'CircularPro-Book';
   cursor: pointer;
+`;
+
+const SignInButton = styled(b.Box)`
+  color: black;
+
+  &:hover {
+    color: #1766a4;
+    text-decoration: underline;
+  }
 `;
 
 const LaunchButtonWrapper = styled(b.Box)``;

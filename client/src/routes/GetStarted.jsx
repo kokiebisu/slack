@@ -3,8 +3,10 @@ import styled from 'styled-components';
 
 import * as b from '../styles/blocks';
 
+// Svg
 import { HeaderLogo } from '../assets/svg/Logo';
 import { BoldPlus } from '../assets/svg/Shared';
+import { Globe } from '../assets/svg/Globe';
 
 // Image
 import workspace from '../assets/img/slack-workspace.png';
@@ -19,7 +21,7 @@ export default () => {
             <HeaderLogo width={140} height={60} />
           </LogoWrapper>
         </GetStartedHeader>
-        <SelectOptionWrapper py={4}>
+        <SelectOptionWrapper animate={{ y: -4 }} py={4}>
           <b.Flex justifyContent='center'>
             <SelectOptionContainer>
               <b.Flex>
@@ -48,7 +50,7 @@ export default () => {
                         Create a brand-new workspace for you and your team.
                       </b.Text>
                     </b.Box>
-                    <b.Anchor>
+                    <b.Anchor href='/get-started/create'>
                       <b.Box backgroundColor='white' borderRadius={5} py={3}>
                         <b.Flex alignItems='center' justifyContent='center'>
                           <b.Box mr={2}>
@@ -88,7 +90,7 @@ export default () => {
                         Find and sign in to your team's existing workspace.
                       </b.Text>
                     </b.Box>
-                    <b.Anchor>
+                    <b.Anchor href='/get-started/find'>
                       <SignInButton>
                         <b.Flex justifyContent='center'>
                           <b.Box>
@@ -110,7 +112,7 @@ export default () => {
         </SelectOptionWrapper>
         <WhatIsSlackWrapper>
           <b.Flex justifyContent='center'>
-            <WhatIsSlackContainer py={5}>
+            <WhatIsSlackContainer py={4}>
               <b.Flex justifyContent='center' alignItems='center'>
                 <b.Box>
                   <b.Box>
@@ -144,7 +146,26 @@ export default () => {
             </WhatIsSlackContainer>
           </b.Flex>
         </WhatIsSlackWrapper>
-        <Footer />
+        <b.Box py={4}>
+          <b.Flex justifyContent='center'>
+            <b.Box mr={2}>
+              <FooterLink href='/legal'>Privacy & terms</FooterLink>
+            </b.Box>
+            <b.Box mr={2}>
+              <FooterLink href='/help'>Contact us</FooterLink>
+            </b.Box>
+            <b.Box mr={2}>
+              <b.Flex>
+                <GlobeWrapper mr={1}>
+                  <Globe width={12} height={12} color='gray' />
+                </GlobeWrapper>
+                <b.Box>
+                  <ChangeRegion>Change region</ChangeRegion>
+                </b.Box>
+              </b.Flex>
+            </b.Box>
+          </b.Flex>
+        </b.Box>
       </b.Container>
     </Wrapper>
   );
@@ -209,4 +230,29 @@ const WhatIsSlackContainer = styled(b.Box)`
   max-width: 550px;
 `;
 
-const Footer = styled(b.Box)``;
+const GlobeWrapper = styled(b.Box)`
+  position: relative;
+  top: 0.5px;
+`;
+
+const FooterLink = styled(b.Anchor)`
+  font-size: 14px;
+  font-family: 'SlackLato-Regular';
+  color: #7e7e7e;
+
+  &:hover {
+    color: #205893;
+    text-decoration: underline;
+  }
+`;
+
+const ChangeRegion = styled(b.Button)`
+  font-size: 14px;
+  font-family: 'SlackLato-Regular';
+  color: #7e7e7e;
+
+  &:hover {
+    color: #205893;
+    text-decoration: underline;
+  }
+`;
