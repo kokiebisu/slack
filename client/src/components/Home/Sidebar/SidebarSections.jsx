@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import * as b from '../../../styles/blocks';
+
+// Components
 import { SidebarSection } from './SidebarSection';
 import { Messages } from './Messages';
 import { Channels } from './Channels';
@@ -12,12 +14,16 @@ export const SidebarSections = () => {
     messages: false,
   });
 
+  console.log('channels', revealed.channels);
+
   return (
     <Wrapper>
       <SidebarSection
         title='Channels'
         subtitle='Add a channel'
-        onReveal={() => setRevealed(!revealed)}>
+        onReveal={() =>
+          setRevealed({ ...revealed, channels: !revealed.channels })
+        }>
         {revealed.channels ? <Channels /> : null}
       </SidebarSection>
       <SidebarSection

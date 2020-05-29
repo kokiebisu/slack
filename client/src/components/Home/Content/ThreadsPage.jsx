@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import * as b from '../../../styles/blocks';
@@ -8,9 +8,6 @@ import Leaf from '../../../assets/img/leaf.png';
 import { useTabTitle } from '../../../hooks/useTabTitle';
 
 export const ThreadsPage = ({ group }) => {
-  // useEffect(() => {
-  //   document.title = `Slack | Threads | ${group}`;
-  // }, []);
   useTabTitle('Threads', group);
 
   return (
