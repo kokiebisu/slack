@@ -179,7 +179,7 @@ export const Header = () => {
                   <b.Box mr={3}>
                     <b.Text fontFamily='CircularPro-Book'>Sign in</b.Text>
                   </b.Box>
-                  <GetStartedButton>
+                  <GetStartedButton href='/get-started'>
                     <b.Text
                       fontSize={14}
                       fontFamily='CircularPro-Book'

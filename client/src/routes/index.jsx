@@ -8,6 +8,7 @@ import Home from './Home';
 import Register from './Register';
 import Login from './Login';
 import CreateTeam from './CreateTeam';
+import GetStarted from './GetStarted';
 
 const isAuthenticated = () => {
   const token = localStorage.getItem('token');
@@ -45,6 +46,7 @@ export default () => {
         <PrivateRoute path='/client' component={Home} />
         <Route path='/register' component={Register} />
         <Route path='/login' component={Login} />
+        <Route path='/get-started' component={GetStarted} />
         <Route path='/' component={Landing} />
       </Switch>
     </BrowserRouter>
