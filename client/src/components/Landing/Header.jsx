@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import styled, { keyframes } from 'styled-components';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
 // Global Styles
 import * as b from '../../styles/blocks';
@@ -202,6 +201,7 @@ export const Header = () => {
                               width={50}
                               height={50}
                               src={BCIT}
+                              alt='channel'
                             />
                           </b.Box>
                           <b.Box>

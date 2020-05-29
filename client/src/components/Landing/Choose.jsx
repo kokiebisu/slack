@@ -1,9 +1,6 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import * as b from '../../styles/blocks';
-
-// Components
-import { Title } from './Landing.styles';
 
 // Sizes
 import { landing } from '../../styles/sizes';

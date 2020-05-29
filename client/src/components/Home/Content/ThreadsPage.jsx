@@ -32,7 +32,7 @@ export const ThreadsPage = ({ group }) => {
       <BottomWrapper>
         <BottomContainer>
           <b.Box>
-            <img src={Leaf} />
+            <img src={Leaf} alt='leaf' />
           </b.Box>
           <b.Box pt={3} pb={2}>
             <b.Text fontSize={17} fontFamily='SlackLato-Bold' color='black'>

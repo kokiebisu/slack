@@ -14,8 +14,6 @@ export const SidebarSections = () => {
     messages: false,
   });
 
-  console.log('channels', revealed.channels);
-
   return (
     <Wrapper>
       <SidebarSection
