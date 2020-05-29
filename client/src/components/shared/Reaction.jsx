@@ -11,7 +11,7 @@ export const Reaction = () => {
     <Wrapper>
       <Container alignItems='center'>
         <EmojiWrapper mr={1}>
-          <img width={14} height={14} src={Thumbsup} />
+          <img width={14} height={14} src={Thumbsup} alt='icon' />
         </EmojiWrapper>
         <CountWrapper>
           <b.Text fontSize={11} fontFamily='SlackLato-Regular'>

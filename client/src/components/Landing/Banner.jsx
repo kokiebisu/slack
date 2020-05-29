@@ -97,6 +97,7 @@ export const Banner = () => {
               <img
                 src='https://a.slack-edge.com/dd0405/marketing/img/solutions/remote-work/img-hero-remote.jpg'
                 srcSet='https://a.slack-edge.com/dd0405/marketing/img/solutions/remote-work/img-hero-remote.jpg 1x, https://a.slack-edge.com/dd0405/marketing/img/solutions/remote-work/img-hero-remote@2x.jpg 2x'
+                alt='hero'
               />
             </ImageWrapper>
           </BannerRight>

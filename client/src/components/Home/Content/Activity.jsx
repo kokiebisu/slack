@@ -6,7 +6,6 @@ import Thumbsup from '../../../assets/img/thumbsup.png';
 import { Reactions } from '../../shared/Reactions';
 
 import * as b from '../../../styles/blocks';
-import { SmilePlus } from '../../../assets/svg/Reaction';
 
 import { ToolBox } from './ToolBox';
 
@@ -29,7 +28,7 @@ export const Activity = () => {
       <b.Box mt={2}>
         <ActivityContent>
           <b.Box>
-            <img width={30} height={30} src={Thumbsup} />
+            <img width={30} height={30} src={Thumbsup} alt='icon' />
           </b.Box>
           <b.Box>
             <b.Box>

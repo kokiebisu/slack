@@ -14,7 +14,6 @@ import {
   Apps,
   Files,
 } from '../../../assets/svg/SidebarOptions';
-import { display } from 'styled-system';
 import { Hashtag } from '../../../assets/svg/SidebarSections';
 
 export const Option = ({ name, link }) => {

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { Box } from '../../../styles/blocks';
 import { Option } from './Option';
 
 import { ShowLess } from '../../../assets/svg/SidebarOptions';
