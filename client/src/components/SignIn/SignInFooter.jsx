@@ -208,6 +208,7 @@ const ListContainer = styled(b.Box)`
   border-bottom: 1px solid #f2f2f2;
   width: 100%;
   @media ${signin.sm} {
+    border-bottom: 0;
     width: 25%;
   }
 `;
@@ -227,6 +228,11 @@ const Item = styled.li`
   font-size: 0.79rem;
   font-family: 'SlackLato-Light';
   margin: 5px 0;
+
+  &:hover {
+    color: #9e9ea5;
+    cursor: pointer;
+  }
 `;
 
 const BottomContainer = styled(b.Box)`

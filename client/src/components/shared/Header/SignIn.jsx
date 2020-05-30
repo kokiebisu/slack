@@ -96,11 +96,16 @@ const SmallNav = styled(b.Box)`
 
 const NavItem = styled(b.Anchor)`
   border: none;
-  padding: 12px 0px;
-  margin: 0px 12px;
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin: 0px 3px;
   font-size: 15px;
   font-family: 'SlackLato-Regular';
   color: #848384;
+
+  &:hover {
+    background-color: #e8e8e8;
+  }
 `;
 
 const SignInItem = styled(b.Box)`
@@ -109,4 +114,9 @@ const SignInItem = styled(b.Box)`
   border-radius: 3px;
   color: #848384;
   margin-left: 10px;
+
+  &:hover {
+    color: #616061;
+    border-color: #616061;
+  }
 `;
