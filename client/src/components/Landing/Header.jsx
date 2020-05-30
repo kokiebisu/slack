@@ -179,7 +179,7 @@ export const Header = () => {
                 </LaunchButtonWrapper>
               ) : (
                 <GetStartedButtonWrapper alignItems='center'>
-                  <b.Anchor href='/register'>
+                  <b.Anchor href='/signin'>
                     <SignInButton mr={3}>
                       <b.Text fontFamily='CircularPro-Book'>Sign in</b.Text>
                     </SignInButton>

@@ -7,9 +7,15 @@ const landing_size = {
   xl: '1280px',
 };
 
+// Client
 const home_size = {
   md: '850px',
   lg: '1071px',
+};
+
+// Signin
+const signin_size = {
+  sm: '768px',
 };
 
 export const landing = {
@@ -23,4 +29,8 @@ export const landing = {
 export const home = {
   md: `(min-width: ${home_size['md']})`,
   lg: `(min-width: ${home_size['lg']})`,
+};
+
+export const signin = {
+  sm: `(min-width: ${signin_size['sm']})`,
 };

@@ -127,6 +127,17 @@ export const Container = styled.div`
   @media ${landing.xl} {
     max-width: 1400px;
   }
+
+  ${({ signin }) =>
+    signin &&
+    css`
+      padding: 0 20px;
+
+      @media ${landing.xl} {
+        max-width: none;
+      }
+    `}
+
 `;
 
 export const Flex = styled.div`

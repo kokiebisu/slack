@@ -4,23 +4,19 @@ import styled from 'styled-components';
 import * as b from '../styles/blocks';
 
 // Svg
-import { HeaderLogo } from '../assets/svg/Logo';
 import { BoldPlus } from '../assets/svg/Shared';
 import { Globe } from '../assets/svg/Globe';
 
 // Image
 import workspace from '../assets/img/slack-workspace.png';
 import lightbulb from '../assets/img/lightbulb.png';
+import { LogoCenterHeader } from '../components/shared/Header/LogoCenter';
 
 export default () => {
   return (
     <Wrapper>
       <b.Container>
-        <GetStartedHeader>
-          <LogoWrapper justifyContent='center'>
-            <HeaderLogo width={140} height={60} />
-          </LogoWrapper>
-        </GetStartedHeader>
+        <LogoCenterHeader />
         <SelectOptionWrapper animate={{ y: -4 }} py={4}>
           <b.Flex justifyContent='center'>
             <SelectOptionContainer>
@@ -174,12 +170,6 @@ export default () => {
 const Wrapper = styled(b.Box)`
   height: 100vh;
   padding: 30px 0;
-`;
-
-const GetStartedHeader = styled(b.Box)``;
-
-const LogoWrapper = styled(b.Flex)`
-  padding: 5px;
 `;
 
 const SelectOptionWrapper = styled(b.Box)``;
