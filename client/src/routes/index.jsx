@@ -9,6 +9,7 @@ import Login from './Login';
 import CreateTeam from './CreateTeam';
 import GetStarted from './GetStarted';
 import FindTeam from './FindTeam';
+import SignIn from './SignIn';
 
 // Util
 import { isAuthenticated } from '../util/isAuthenticated';
@@ -35,6 +36,7 @@ export default () => {
         <PrivateRoute path='/client' component={Home} />
         <Route path='/register' component={Register} />
         <Route path='/login' component={Login} />
+        <Route path='/signin' component={SignIn} />
         <PrivateRoute exact path='/get-started/create' component={CreateTeam} />
         <Route exact path='/get-started/find' component={FindTeam} />
         <Route exact path='/get-started' component={GetStarted} />
