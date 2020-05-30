@@ -118,6 +118,12 @@ export const Container = styled.div`
       margin: 0;
     `}
 
+  ${({ noHeight }) =>
+    noHeight &&
+    css`
+      height: 0;
+    `}
+
   @media ${landing.xl} {
     max-width: 1400px;
   }

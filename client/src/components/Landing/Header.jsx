@@ -16,7 +16,11 @@ import BCIT from '../../assets/img/bcit.png';
 // Components
 import { Link } from './Landing.styles';
 
+// Util
+import { isAuthenticated } from '../../util/isAuthenticated';
+
 export const Header = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
   const [hovered, setHovered] = useState({
     why: false,
     solutions: false,
@@ -158,20 +162,39 @@ export const Header = () => {
                   <Link>Pricing</Link>
                 </NavItem>
               </Nav>
-              <LaunchButtonWrapper
-                initial='rest'
-                whileHover='hovered'
-                animate='rest'
-                onClick={() => setPressed(!pressed)}>
-                <LaunchButton variants={launchMotion}>
-                  <b.Flex alignItems='center'>
-                    <b.Text>Launch Slack</b.Text>
-                    <b.Box ml={2}>
-                      <BottomArrow height={10} width={10} fill='#ffffff' />
-                    </b.Box>
-                  </b.Flex>
-                </LaunchButton>
-              </LaunchButtonWrapper>
+              {isAuthenticated() ? (
+                <LaunchButtonWrapper
+                  initial='rest'
+                  whileHover='hovered'
+                  animate='rest'
+                  onClick={() => setPressed(!pressed)}>
+                  <LaunchButton variants={launchMotion}>
+                    <b.Flex alignItems='center'>
+                      <b.Text>Launch Slack</b.Text>
+                      <b.Box ml={2}>
+                        <BottomArrow height={10} width={10} fill='#ffffff' />
+                      </b.Box>
+                    </b.Flex>
+                  </LaunchButton>
+                </LaunchButtonWrapper>
+              ) : (
+                <GetStartedButtonWrapper alignItems='center'>
+                  <b.Anchor href='/register'>
+                    <SignInButton mr={3}>
+                      <b.Text fontFamily='CircularPro-Book'>Sign in</b.Text>
+                    </SignInButton>
+                  </b.Anchor>
+                  <GetStartedButton href='/get-started'>
+                    <b.Text
+                      fontSize={14}
+                      fontFamily='CircularPro-Book'
+                      color='white'
+                      uppercase>
+                      Get Started
+                    </b.Text>
+                  </GetStartedButton>
+                </GetStartedButtonWrapper>
+              )}
               <HamburgerWrapper>
                 <HamburgerButton width={24} height={17} />
               </HamburgerWrapper>
@@ -328,6 +351,15 @@ const NavItem = styled(b.Box)`
   cursor: pointer;
 `;
 
+const SignInButton = styled(b.Box)`
+  color: black;
+
+  &:hover {
+    color: #1766a4;
+    text-decoration: underline;
+  }
+`;
+
 const LaunchButtonWrapper = styled(b.Box)``;
 
 const LaunchButton = styled(b.Anchor)`
@@ -345,6 +377,21 @@ const LaunchButton = styled(b.Anchor)`
   @media ${landing.lg} {
     display: block;
   }
+`;
+
+const GetStartedButtonWrapper = styled(b.Flex)`
+  display: none;
+
+  @media ${landing.lg} {
+    display: flex;
+  }
+`;
+
+const GetStartedButton = styled(b.Anchor)`
+  letter-spacing: 0.1em;
+  background-color: #611f69;
+  border-radius: 5px;
+  padding: 13px 13px;
 `;
 
 const Dropdown = styled.div`

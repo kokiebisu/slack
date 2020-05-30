@@ -13,10 +13,6 @@ import * as b from '../../styles/blocks';
 import { home } from '../../styles/sizes';
 
 export const HomeHeader = () => {
-  const [hovered, setHovered] = useState({
-    clock: false,
-  });
-
   return (
     <b.Box height={37} background='#350D36'>
       <b.Flex alignItems='center' justifyContent='center'>

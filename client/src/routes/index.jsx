@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import decode from 'jwt-decode';
 
 // Pages
 import Landing from './Landing';
@@ -8,19 +7,11 @@ import Home from './Home';
 import Register from './Register';
 import Login from './Login';
 import CreateTeam from './CreateTeam';
+import GetStarted from './GetStarted';
+import FindTeam from './FindTeam';
 
-const isAuthenticated = () => {
-  const token = localStorage.getItem('token');
-  const refreshToken = localStorage.getItem('refreshToken');
-  try {
-    decode(token);
-    decode(refreshToken);
-  } catch (err) {
-    return false;
-  }
-
-  return true;
-};
+// Util
+import { isAuthenticated } from '../util/isAuthenticated';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -41,10 +32,12 @@ export default () => {
   return (
     <BrowserRouter>
       <Switch>
-        <PrivateRoute path='/createteam' component={CreateTeam} />
         <PrivateRoute path='/client' component={Home} />
         <Route path='/register' component={Register} />
         <Route path='/login' component={Login} />
+        <PrivateRoute exact path='/get-started/create' component={CreateTeam} />
+        <Route exact path='/get-started/find' component={FindTeam} />
+        <Route exact path='/get-started' component={GetStarted} />
         <Route path='/' component={Landing} />
       </Switch>
     </BrowserRouter>
