@@ -20,20 +20,34 @@ export const SignInHeader = () => {
               </b.Box>
             </Left>
             <Right alignItems='center'>
-              <Nav>
+              <LargeNav>
                 <NavItem>
-                  <b.Text>Why Slack?</b.Text>
+                  <b.Text>Product</b.Text>
                 </NavItem>
                 <NavItem>
-                  <b.Text>Solutions</b.Text>
+                  <b.Text>Pricing</b.Text>
                 </NavItem>
                 <NavItem>
-                  <b.Text>Resources</b.Text>
+                  <b.Text>Support</b.Text>
                 </NavItem>
-              </Nav>
-              <HamburgerWrapper>
-                <HamburgerButton width={24} height={17} />
-              </HamburgerWrapper>
+                <NavItem>
+                  <b.Text>Create a new workspace</b.Text>
+                </NavItem>
+                <NavItem>
+                  <b.Text>Find your workspace</b.Text>
+                </NavItem>
+                <SignInItem>
+                  <b.Text>Sign in</b.Text>
+                </SignInItem>
+              </LargeNav>
+              <SmallNav>
+                <NavItem>
+                  <b.Text>Download Slack</b.Text>
+                </NavItem>
+                <SignInItem>
+                  <b.Text>Menu</b.Text>
+                </SignInItem>
+              </SmallNav>
             </Right>
           </b.Flex>
         </b.Container>
@@ -62,24 +76,37 @@ const Right = styled(b.Flex)`
   justify-content: flex-end;
 `;
 
-const Nav = styled.div`
+const LargeNav = styled(b.Box)`
+  display: none;
+
+  @media ${signin.md} {
+    display: flex;
+    align-items: center;
+  }
+`;
+
+const SmallNav = styled(b.Box)`
   display: flex;
   align-items: center;
-`;
 
-const NavItem = styled(b.Box)`
-  position: relative;
-  border: none;
-  background-color: transparent;
-  padding: 12px 0px;
-  margin: 0px 15px;
-  font-size: 16px;
-  font-family: 'CircularPro-Book';
-  cursor: pointer;
-`;
-
-const HamburgerWrapper = styled.div`
-  @media ${signin.sm} {
+  @media ${signin.md} {
     display: none;
   }
+`;
+
+const NavItem = styled(b.Anchor)`
+  border: none;
+  padding: 12px 0px;
+  margin: 0px 12px;
+  font-size: 15px;
+  font-family: 'SlackLato-Regular';
+  color: #848384;
+`;
+
+const SignInItem = styled(b.Box)`
+  border: 2px solid #838283;
+  padding: 8px 13px;
+  border-radius: 3px;
+  color: #848384;
+  margin-left: 10px;
 `;

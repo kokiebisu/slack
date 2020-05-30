@@ -16,6 +16,7 @@ const home_size = {
 // Signin
 const signin_size = {
   sm: '768px',
+  md: '831px',
 };
 
 export const landing = {
@@ -33,4 +34,5 @@ export const home = {
 
 export const signin = {
   sm: `(min-width: ${signin_size['sm']})`,
+  md: `(min-width: ${signin_size['md']})`,
 };
