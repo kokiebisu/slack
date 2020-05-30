@@ -9,6 +9,8 @@ import { TwitterLogo, YoutubeLogo } from '../../assets/svg/SocialMedia';
 
 import { signin } from '../../styles/sizes';
 
+import { Plus, Minus } from '../../assets/svg/Shared';
+
 export const SignInFooter = () => {
   const [revealed, setRevealed] = useState({
     usingslack: false,
@@ -33,6 +35,15 @@ export const SignInFooter = () => {
                   }>
                   <SectionNameWrapper>
                     <SectionName color='#de4e2b'>Using Slack</SectionName>
+                    {revealed.usingslack ? (
+                      <RevealButton>
+                        <Minus width={15} height={15} color='#616061' />
+                      </RevealButton>
+                    ) : (
+                      <RevealButton>
+                        <Plus width={15} height={15} color='#616061' />
+                      </RevealButton>
+                    )}
                   </SectionNameWrapper>
                   <LargeList>
                     <Item>
@@ -93,6 +104,15 @@ export const SignInFooter = () => {
                         </b.Box>
                       </HeartIconWrapper>
                     </SectionWrapper>
+                    {revealed.slack ? (
+                      <RevealButton>
+                        <Minus width={15} height={15} color='#616061' />
+                      </RevealButton>
+                    ) : (
+                      <RevealButton>
+                        <Plus width={15} height={15} color='#616061' />
+                      </RevealButton>
+                    )}
                   </SectionNameWrapper>
                   <LargeList>
                     <Item>
@@ -141,6 +161,15 @@ export const SignInFooter = () => {
                   }>
                   <SectionNameWrapper>
                     <SectionName color='#007a5a'>Legal</SectionName>
+                    {revealed.legal ? (
+                      <RevealButton>
+                        <Minus width={15} height={15} color='#616061' />
+                      </RevealButton>
+                    ) : (
+                      <RevealButton>
+                        <Plus width={15} height={15} color='#616061' />
+                      </RevealButton>
+                    )}
                   </SectionNameWrapper>
                   <LargeList>
                     <Item>
@@ -181,9 +210,16 @@ export const SignInFooter = () => {
                     })
                   }>
                   <SectionNameWrapper>
-                    <SectionWrapper>
-                      <SectionName color='#4b6bc6'>Handy Links</SectionName>
-                    </SectionWrapper>
+                    <SectionName color='#4b6bc6'>Handy Links</SectionName>
+                    {revealed.handylinks ? (
+                      <RevealButton>
+                        <Minus width={15} height={15} color='#616061' />
+                      </RevealButton>
+                    ) : (
+                      <RevealButton>
+                        <Plus width={15} height={15} color='#616061' />
+                      </RevealButton>
+                    )}
                   </SectionNameWrapper>
                   <LargeList>
                     <Item>
@@ -277,10 +313,15 @@ const TopContainer = styled(b.Box)`
   }
 `;
 
-const SectionNameWrapper = styled(b.Box)`
+const SectionNameWrapper = styled(b.Flex)`
+  align-items: center;
+  justify-content: space-between;
   padding: 20px 0;
+
   @media ${signin.sm} {
     padding: 0;
+    height: auto;
+    display: block;
   }
 `;
 
@@ -298,6 +339,15 @@ const SectionName = styled(b.Text)`
 
   @media ${signin.sm} {
     font-size: 0.65rem;
+  }
+`;
+
+const RevealButton = styled(b.Box)`
+  display: block;
+
+  @media ${signin.sm} {
+    padding: 0;
+    display: none;
   }
 `;
 
