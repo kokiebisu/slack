@@ -9,6 +9,14 @@ import { HamburgerButton } from '../../../assets/svg/Buttons';
 import { signin } from '../../../styles/sizes';
 
 export const SignInHeader = () => {
+  const navItems = [
+    { name: 'Product', url: '/product' },
+    { name: 'Pricing', url: '/pricing' },
+    { name: 'Support', url: '/support' },
+    { name: 'Create a new workspace', url: '/create' },
+    { name: 'Find your workspace', url: '/get-started' },
+  ];
+
   return (
     <HeaderWrapper>
       <Wrapper>
@@ -21,21 +29,13 @@ export const SignInHeader = () => {
             </Left>
             <Right alignItems='center'>
               <LargeNav>
-                <NavItem>
-                  <b.Text>Product</b.Text>
-                </NavItem>
-                <NavItem>
-                  <b.Text>Pricing</b.Text>
-                </NavItem>
-                <NavItem>
-                  <b.Text>Support</b.Text>
-                </NavItem>
-                <NavItem>
-                  <b.Text>Create a new workspace</b.Text>
-                </NavItem>
-                <NavItem>
-                  <b.Text>Find your workspace</b.Text>
-                </NavItem>
+                {navItems.map((navItem, index) => {
+                  return (
+                    <NavItem href={navItem.url} key={index}>
+                      <b.Text>{navItem.name}</b.Text>
+                    </NavItem>
+                  );
+                })}
                 <SignInItem>
                   <b.Text>Sign in</b.Text>
                 </SignInItem>
