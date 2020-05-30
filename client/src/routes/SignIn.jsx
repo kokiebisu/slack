@@ -10,7 +10,7 @@ export default () => {
   return (
     <Wrapper>
       <SignInHeader />
-      <b.Box></b.Box>
+      <b.Box>content</b.Box>
       <SignInFooter />
     </Wrapper>
   );

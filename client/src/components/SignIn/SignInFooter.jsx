@@ -3,6 +3,10 @@ import styled from 'styled-components';
 
 import * as b from '../../styles/blocks';
 
+import { SignInHeart } from '../../assets/svg/Hearts';
+import { SignInFooterLogo } from '../../assets/svg/Logo';
+import { TwitterLogo, YoutubeLogo } from '../../assets/svg/SocialMedia';
+
 export const SignInFooter = () => {
   return (
     <Wrapper>
@@ -34,23 +38,14 @@ export const SignInFooter = () => {
                 </List>
               </b.Box>
               <b.Box width={1 / 4}>
-                <StyledFlex alignItems='center'>
+                <SectionWrapper alignItems='center'>
                   <SectionName color='#e32072'>Slack</SectionName>
-                  <b.Box>
+                  <HeartIconWrapper>
                     <b.Box ml={1}>
-                      <svg
-                        width={10}
-                        height={10}
-                        viewBox='0 0 512 512'
-                        xmlns='http://www.w3.org/2000/svg'>
-                        <path
-                          style={{ fill: '#e32072' }}
-                          d='m471.382812 44.578125c-26.503906-28.746094-62.871093-44.578125-102.410156-44.578125-29.554687 0-56.621094 9.34375-80.449218 27.769531-12.023438 9.300781-22.917969 20.679688-32.523438 33.960938-9.601562-13.277344-20.5-24.660157-32.527344-33.960938-23.824218-18.425781-50.890625-27.769531-80.445312-27.769531-39.539063 0-75.910156 15.832031-102.414063 44.578125-26.1875 28.410156-40.613281 67.222656-40.613281 109.292969 0 43.300781 16.136719 82.9375 50.78125 124.742187 30.992188 37.394531 75.535156 75.355469 127.117188 119.3125 17.613281 15.011719 37.578124 32.027344 58.308593 50.152344 5.476563 4.796875 12.503907 7.4375 19.792969 7.4375 7.285156 0 14.316406-2.640625 19.785156-7.429687 20.730469-18.128907 40.707032-35.152344 58.328125-50.171876 51.574219-43.949218 96.117188-81.90625 127.109375-119.304687 34.644532-41.800781 50.777344-81.4375 50.777344-124.742187 0-42.066407-14.425781-80.878907-40.617188-109.289063zm0 0'
-                        />
-                      </svg>
+                      <SignInHeart width={10} height={10} color='#e32072' />
                     </b.Box>
-                  </b.Box>
-                </StyledFlex>
+                  </HeartIconWrapper>
+                </SectionWrapper>
                 <List>
                   <Item>
                     <b.Box pb={1}>Jobs</b.Box>
@@ -87,7 +82,9 @@ export const SignInFooter = () => {
                 </List>
               </b.Box>
               <b.Box width={1 / 4}>
-                <SectionName color='#4b6bc6'>Handy Links</SectionName>
+                <SectionWrapper>
+                  <SectionName color='#4b6bc6'>Handy Links</SectionName>
+                </SectionWrapper>
                 <List>
                   <Item>
                     <b.Box pb={1}>Download desktop app</b.Box>
@@ -110,26 +107,59 @@ export const SignInFooter = () => {
           </b.Box>
         </b.Flex>
       </b.Box>
+      <b.Box backgroundColor='#F4F4F4' py={3}>
+        <b.Flex justifyContent='center'>
+          <BottomContainer>
+            <b.Flex justifyContent='space-between'>
+              <b.Box>
+                <SignInFooterLogo width={20} height={20} color='#868686' />
+              </b.Box>
+              <b.Box>
+                <b.Flex alignItems='center'>
+                  <ContactWrapper mx={2}>
+                    <b.Text fontSize={13} fontFamily='SlackLato-Regular'>
+                      Contact us
+                    </b.Text>
+                  </ContactWrapper>
+                  <LogoWrapper mx={2} className='twitter'>
+                    <TwitterLogo width={20} height={20} color='#868686' />
+                  </LogoWrapper>
+                  <LogoWrapper mx={2} className='youtube'>
+                    <YoutubeLogo width={20} height={20} color='#868686' />
+                  </LogoWrapper>
+                </b.Flex>
+              </b.Box>
+            </b.Flex>
+          </BottomContainer>
+        </b.Flex>
+      </b.Box>
     </Wrapper>
   );
 };
 
 const Wrapper = styled(b.Box)`
+  width: 100%;
   position: absolute;
   bottom: 0;
 `;
 
+const SectionWrapper = styled(b.Box)`
+  position: relative;
+  height: 10px;
+`;
+
 const SectionName = styled(b.Text)`
-  font-family: 'Lato';
-  font-weight: 600;
+  font-family: 'SlackLato-Bold';
   color: ${({ color }) => color};
   margin: 0;
   text-transform: uppercase;
   font-size: 0.65rem;
 `;
 
-const StyledFlex = styled(b.Flex)`
-  height: auto;
+const HeartIconWrapper = styled(b.Box)`
+  position: absolute;
+  top: -4px;
+  left: 32px;
 `;
 
 const List = styled.ul`
@@ -140,6 +170,25 @@ const Item = styled.li`
   list-style: none;
   color: #696969;
   font-size: 0.79rem;
-  font-family: 'Lato';
-  font-weight: 300;
+  font-family: 'SlackLato-Light';
+  margin: 5px 0;
+`;
+
+const BottomContainer = styled(b.Box)`
+  width: 100%;
+  max-width: 1000px;
+`;
+
+const ContactWrapper = styled(b.Anchor)`
+  position: relative;
+  bottom: 1px;
+
+  &:hover {
+    color: #bababe;
+  }
+`;
+
+const LogoWrapper = styled(b.Anchor)`
+  position: relative;
+  top: 2px;
 `;
