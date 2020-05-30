@@ -10,7 +10,7 @@ export default () => {
   return (
     <Wrapper>
       <SignInHeader />
-      <b.Box>content</b.Box>
+      <b.Box backgroundColor='#F8F8F8'>content</b.Box>
       <SignInFooter />
     </Wrapper>
   );
@@ -18,4 +18,7 @@ export default () => {
 
 const Wrapper = styled(b.Box)`
   height: 100vh;
+  display: grid;
+  grid-template-rows: 70px auto min-content;
+  overflow-y: scroll;
 `;

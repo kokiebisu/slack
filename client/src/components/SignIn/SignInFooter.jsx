@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import * as b from '../../styles/blocks';
@@ -10,6 +10,13 @@ import { TwitterLogo, YoutubeLogo } from '../../assets/svg/SocialMedia';
 import { signin } from '../../styles/sizes';
 
 export const SignInFooter = () => {
+  const [revealed, setRevealed] = useState({
+    usingslack: false,
+    slack: false,
+    legal: false,
+    handylinks: false,
+  });
+
   return (
     <Wrapper>
       <b.Box borderTop='1px solid' borderColor='#ddd'>
@@ -17,11 +24,17 @@ export const SignInFooter = () => {
           <TopContainer>
             <b.Box px={3}>
               <ListWrapper>
-                <ListContainer>
+                <ListContainer
+                  onClick={() =>
+                    setRevealed({
+                      ...revealed,
+                      usingslack: !revealed.usingslack,
+                    })
+                  }>
                   <SectionNameWrapper>
                     <SectionName color='#de4e2b'>Using Slack</SectionName>
                   </SectionNameWrapper>
-                  <List>
+                  <LargeList>
                     <Item>
                       <b.Box pb={1}>Product</b.Box>
                     </Item>
@@ -40,9 +53,37 @@ export const SignInFooter = () => {
                     <Item>
                       <b.Box py={1}>Slack Demo</b.Box>
                     </Item>
-                  </List>
+                  </LargeList>
+                  {revealed.usingslack ? (
+                    <SmallList>
+                      <Item>
+                        <b.Box pb={1}>Product</b.Box>
+                      </Item>
+                      <Item>
+                        <b.Box py={1}>Enterprise</b.Box>
+                      </Item>
+                      <Item>
+                        <b.Box py={1}>Pricing</b.Box>
+                      </Item>
+                      <Item>
+                        <b.Box py={1}>Customer Stories</b.Box>
+                      </Item>
+                      <Item>
+                        <b.Box py={1}>Pricing</b.Box>
+                      </Item>
+                      <Item>
+                        <b.Box py={1}>Slack Demo</b.Box>
+                      </Item>
+                    </SmallList>
+                  ) : null}
                 </ListContainer>
-                <ListContainer>
+                <ListContainer
+                  onClick={() =>
+                    setRevealed({
+                      ...revealed,
+                      slack: !revealed.slack,
+                    })
+                  }>
                   <SectionNameWrapper>
                     <SectionWrapper alignItems='center'>
                       <SectionName color='#e32072'>Slack</SectionName>
@@ -53,7 +94,7 @@ export const SignInFooter = () => {
                       </HeartIconWrapper>
                     </SectionWrapper>
                   </SectionNameWrapper>
-                  <List>
+                  <LargeList>
                     <Item>
                       <b.Box pb={1}>Jobs</b.Box>
                     </Item>
@@ -69,13 +110,39 @@ export const SignInFooter = () => {
                     <Item>
                       <b.Box py={1}>Blog</b.Box>
                     </Item>
-                  </List>
+                  </LargeList>
+
+                  {revealed.slack ? (
+                    <SmallList>
+                      <Item>
+                        <b.Box pb={1}>Jobs</b.Box>
+                      </Item>
+                      <Item>
+                        <b.Box py={1}>Customers</b.Box>
+                      </Item>
+                      <Item>
+                        <b.Box py={1}>Developers</b.Box>
+                      </Item>
+                      <Item>
+                        <b.Box py={1}>Events</b.Box>
+                      </Item>
+                      <Item>
+                        <b.Box py={1}>Blog</b.Box>
+                      </Item>
+                    </SmallList>
+                  ) : null}
                 </ListContainer>
-                <ListContainer>
+                <ListContainer
+                  onClick={() =>
+                    setRevealed({
+                      ...revealed,
+                      legal: !revealed.legal,
+                    })
+                  }>
                   <SectionNameWrapper>
                     <SectionName color='#007a5a'>Legal</SectionName>
                   </SectionNameWrapper>
-                  <List>
+                  <LargeList>
                     <Item>
                       <b.Box pb={1}>Privacy</b.Box>
                     </Item>
@@ -88,15 +155,37 @@ export const SignInFooter = () => {
                     <Item>
                       <b.Box py={1}>Policies</b.Box>
                     </Item>
-                  </List>
+                  </LargeList>
+                  {revealed.legal ? (
+                    <SmallList>
+                      <Item>
+                        <b.Box pb={1}>Privacy</b.Box>
+                      </Item>
+                      <Item>
+                        <b.Box py={1}>Security</b.Box>
+                      </Item>
+                      <Item>
+                        <b.Box py={1}>Terms of Service</b.Box>
+                      </Item>
+                      <Item>
+                        <b.Box py={1}>Policies</b.Box>
+                      </Item>
+                    </SmallList>
+                  ) : null}
                 </ListContainer>
-                <ListContainer>
+                <ListContainer
+                  onClick={() =>
+                    setRevealed({
+                      ...revealed,
+                      handylinks: !revealed.handylinks,
+                    })
+                  }>
                   <SectionNameWrapper>
                     <SectionWrapper>
                       <SectionName color='#4b6bc6'>Handy Links</SectionName>
                     </SectionWrapper>
                   </SectionNameWrapper>
-                  <List>
+                  <LargeList>
                     <Item>
                       <b.Box pb={1}>Download desktop app</b.Box>
                     </Item>
@@ -112,7 +201,27 @@ export const SignInFooter = () => {
                     <Item>
                       <b.Box py={1}>Status</b.Box>
                     </Item>
-                  </List>
+                  </LargeList>
+
+                  {revealed.handylinks ? (
+                    <SmallList>
+                      <Item>
+                        <b.Box pb={1}>Download desktop app</b.Box>
+                      </Item>
+                      <Item>
+                        <b.Box py={1}>Download mobile app</b.Box>
+                      </Item>
+                      <Item>
+                        <b.Box py={1}>Brand Guidelines</b.Box>
+                      </Item>
+                      <Item>
+                        <b.Box py={1}>Slack at Work</b.Box>
+                      </Item>
+                      <Item>
+                        <b.Box py={1}>Status</b.Box>
+                      </Item>
+                    </SmallList>
+                  ) : null}
                 </ListContainer>
               </ListWrapper>
             </b.Box>
@@ -155,6 +264,7 @@ const Wrapper = styled(b.Box)`
   width: 100%;
   position: absolute;
   bottom: 0;
+  background-color: white;
 `;
 
 const TopContainer = styled(b.Box)`
@@ -207,18 +317,33 @@ const ListWrapper = styled(b.Flex)`
 const ListContainer = styled(b.Box)`
   border-bottom: 1px solid #f2f2f2;
   width: 100%;
+  cursor: pointer;
+
   @media ${signin.sm} {
     border-bottom: 0;
     width: 25%;
   }
 `;
 
-const List = styled.ul`
+const LargeList = styled.ul`
   display: none;
 
   @media ${signin.sm} {
     display: block;
     padding: 0;
+  }
+`;
+
+const SmallList = styled.ul`
+  display: block;
+  padding-left: 10px;
+
+  @media ${signin.sm} {
+    display: none;
+  }
+
+  div {
+    font-family: 'SlackLato-Regular';
   }
 `;
 
