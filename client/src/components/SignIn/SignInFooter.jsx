@@ -12,6 +12,38 @@ import { signin } from '../../styles/sizes';
 import { Plus, Minus } from '../../assets/svg/Shared';
 
 export const SignInFooter = () => {
+  const sections = {
+    'Using Slack': [
+      { name: 'Product', url: '/' },
+      { name: 'Enterprise', url: '/' },
+      { name: 'Pricing', url: '/' },
+      { name: 'Support', url: '/' },
+      { name: 'Slack guides', url: '/' },
+      { name: 'App Directory', url: '/' },
+      { name: 'API', url: '/' },
+    ],
+    Slack: [
+      { name: 'Jobs', url: '/' },
+      { name: 'Customers', url: '/' },
+      { name: 'Developers', url: '/' },
+      { name: 'Events', url: '/' },
+      { name: 'Blog', url: '/' },
+    ],
+    Legal: [
+      { name: 'Privacy', url: '/' },
+      { name: 'Security', url: '/' },
+      { name: 'Terms of Service', url: '/' },
+      { name: 'Policies', url: '/' },
+    ],
+    'Handy Links': [
+      { name: 'Download desktop app', url: '/' },
+      { name: 'Download mobile app', url: '/' },
+      { name: 'Brand guidelines', url: '/' },
+      { name: 'Slack at work', url: '/' },
+      { name: 'Status', url: '/' },
+    ],
+  };
+
   const [revealed, setRevealed] = useState({
     usingslack: false,
     slack: false,
@@ -46,45 +78,27 @@ export const SignInFooter = () => {
                     )}
                   </SectionNameWrapper>
                   <LargeList>
-                    <Item>
-                      <b.Box pb={1}>Product</b.Box>
-                    </Item>
-                    <Item>
-                      <b.Box py={1}>Enterprise</b.Box>
-                    </Item>
-                    <Item>
-                      <b.Box py={1}>Pricing</b.Box>
-                    </Item>
-                    <Item>
-                      <b.Box py={1}>Customer Stories</b.Box>
-                    </Item>
-                    <Item>
-                      <b.Box py={1}>Pricing</b.Box>
-                    </Item>
-                    <Item>
-                      <b.Box py={1}>Slack Demo</b.Box>
-                    </Item>
+                    {sections['Using Slack'].map((section, index) => {
+                      return (
+                        <Item href={section.url} key={index}>
+                          <b.Anchor>
+                            <b.Box py={1}>{section.name}</b.Box>
+                          </b.Anchor>
+                        </Item>
+                      );
+                    })}
                   </LargeList>
                   {revealed.usingslack ? (
                     <SmallList>
-                      <Item>
-                        <b.Box pb={1}>Product</b.Box>
-                      </Item>
-                      <Item>
-                        <b.Box py={1}>Enterprise</b.Box>
-                      </Item>
-                      <Item>
-                        <b.Box py={1}>Pricing</b.Box>
-                      </Item>
-                      <Item>
-                        <b.Box py={1}>Customer Stories</b.Box>
-                      </Item>
-                      <Item>
-                        <b.Box py={1}>Pricing</b.Box>
-                      </Item>
-                      <Item>
-                        <b.Box py={1}>Slack Demo</b.Box>
-                      </Item>
+                      {sections['Using Slack'].map((section, index) => {
+                        return (
+                          <Item href={section.url} key={index}>
+                            <b.Anchor>
+                              <b.Box py={1}>{section.name}</b.Box>
+                            </b.Anchor>
+                          </Item>
+                        );
+                      })}
                     </SmallList>
                   ) : null}
                 </ListContainer>
@@ -115,40 +129,28 @@ export const SignInFooter = () => {
                     )}
                   </SectionNameWrapper>
                   <LargeList>
-                    <Item>
-                      <b.Box pb={1}>Jobs</b.Box>
-                    </Item>
-                    <Item>
-                      <b.Box py={1}>Customers</b.Box>
-                    </Item>
-                    <Item>
-                      <b.Box py={1}>Developers</b.Box>
-                    </Item>
-                    <Item>
-                      <b.Box py={1}>Events</b.Box>
-                    </Item>
-                    <Item>
-                      <b.Box py={1}>Blog</b.Box>
-                    </Item>
+                    {sections['Slack'].map((section, index) => {
+                      return (
+                        <Item href={section.url} key={index}>
+                          <b.Anchor>
+                            <b.Box py={1}>{section.name}</b.Box>
+                          </b.Anchor>
+                        </Item>
+                      );
+                    })}
                   </LargeList>
 
                   {revealed.slack ? (
                     <SmallList>
-                      <Item>
-                        <b.Box pb={1}>Jobs</b.Box>
-                      </Item>
-                      <Item>
-                        <b.Box py={1}>Customers</b.Box>
-                      </Item>
-                      <Item>
-                        <b.Box py={1}>Developers</b.Box>
-                      </Item>
-                      <Item>
-                        <b.Box py={1}>Events</b.Box>
-                      </Item>
-                      <Item>
-                        <b.Box py={1}>Blog</b.Box>
-                      </Item>
+                      {sections['Slack'].map((section, index) => {
+                        return (
+                          <Item href={section.url} key={index}>
+                            <b.Anchor>
+                              <b.Box py={1}>{section.name}</b.Box>
+                            </b.Anchor>
+                          </Item>
+                        );
+                      })}
                     </SmallList>
                   ) : null}
                 </ListContainer>
@@ -172,33 +174,27 @@ export const SignInFooter = () => {
                     )}
                   </SectionNameWrapper>
                   <LargeList>
-                    <Item>
-                      <b.Box pb={1}>Privacy</b.Box>
-                    </Item>
-                    <Item>
-                      <b.Box py={1}>Security</b.Box>
-                    </Item>
-                    <Item>
-                      <b.Box py={1}>Terms of Service</b.Box>
-                    </Item>
-                    <Item>
-                      <b.Box py={1}>Policies</b.Box>
-                    </Item>
+                    {sections['Legal'].map((section, index) => {
+                      return (
+                        <Item href={section.url} key={index}>
+                          <b.Anchor>
+                            <b.Box py={1}>{section.name}</b.Box>
+                          </b.Anchor>
+                        </Item>
+                      );
+                    })}
                   </LargeList>
                   {revealed.legal ? (
                     <SmallList>
-                      <Item>
-                        <b.Box pb={1}>Privacy</b.Box>
-                      </Item>
-                      <Item>
-                        <b.Box py={1}>Security</b.Box>
-                      </Item>
-                      <Item>
-                        <b.Box py={1}>Terms of Service</b.Box>
-                      </Item>
-                      <Item>
-                        <b.Box py={1}>Policies</b.Box>
-                      </Item>
+                      {sections['Legal'].map((section, index) => {
+                        return (
+                          <Item href={section.url} key={index}>
+                            <b.Anchor>
+                              <b.Box py={1}>{section.name}</b.Box>
+                            </b.Anchor>
+                          </Item>
+                        );
+                      })}
                     </SmallList>
                   ) : null}
                 </ListContainer>
@@ -222,40 +218,28 @@ export const SignInFooter = () => {
                     )}
                   </SectionNameWrapper>
                   <LargeList>
-                    <Item>
-                      <b.Box pb={1}>Download desktop app</b.Box>
-                    </Item>
-                    <Item>
-                      <b.Box py={1}>Download mobile app</b.Box>
-                    </Item>
-                    <Item>
-                      <b.Box py={1}>Brand Guidelines</b.Box>
-                    </Item>
-                    <Item>
-                      <b.Box py={1}>Slack at Work</b.Box>
-                    </Item>
-                    <Item>
-                      <b.Box py={1}>Status</b.Box>
-                    </Item>
+                    {sections['Handy Links'].map((section, index) => {
+                      return (
+                        <Item href={section.url} key={index}>
+                          <b.Anchor>
+                            <b.Box py={1}>{section.name}</b.Box>
+                          </b.Anchor>
+                        </Item>
+                      );
+                    })}
                   </LargeList>
 
                   {revealed.handylinks ? (
                     <SmallList>
-                      <Item>
-                        <b.Box pb={1}>Download desktop app</b.Box>
-                      </Item>
-                      <Item>
-                        <b.Box py={1}>Download mobile app</b.Box>
-                      </Item>
-                      <Item>
-                        <b.Box py={1}>Brand Guidelines</b.Box>
-                      </Item>
-                      <Item>
-                        <b.Box py={1}>Slack at Work</b.Box>
-                      </Item>
-                      <Item>
-                        <b.Box py={1}>Status</b.Box>
-                      </Item>
+                      {sections['Handy Links'].map((section, index) => {
+                        return (
+                          <Item href={section.url} key={index}>
+                            <b.Anchor>
+                              <b.Box py={1}>{section.name}</b.Box>
+                            </b.Anchor>
+                          </Item>
+                        );
+                      })}
                     </SmallList>
                   ) : null}
                 </ListContainer>
@@ -264,7 +248,7 @@ export const SignInFooter = () => {
           </TopContainer>
         </b.Flex>
       </b.Box>
-      <b.Box backgroundColor='#F4F4F4' py={3}>
+      <b.Box backgroundColor='#f4f4f4' py={3}>
         <b.Flex justifyContent='center'>
           <BottomContainer>
             <b.Box px={3}>
@@ -296,10 +280,9 @@ export const SignInFooter = () => {
   );
 };
 
-const Wrapper = styled(b.Box)`
+const Wrapper = styled.footer`
   width: 100%;
-  position: absolute;
-  bottom: 0;
+  height: 350px;
   background-color: white;
 `;
 
