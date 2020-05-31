@@ -16,17 +16,48 @@ const {
 } = require('merge-graphql-schemas');
 
 // Schemas
-const typeDefs = mergeTypes(fileLoader(path.join(__dirname, '/schemas')));
+const schemaTypes = fileLoader(path.join(__dirname, '/schemas'));
+const typeDefs = mergeTypes(schemaTypes);
 
 // Resolvers
-const resolvers = mergeResolvers(
-  fileLoader(path.join(__dirname, '/resolvers'))
-);
+const resolverTypes = fileLoader(path.join(__dirname, '/resolvers'));
+const resolvers = mergeResolvers(resolverTypes);
 
 const app = express();
 
 const secret = 'slack';
 const secret2 = 'slack2';
+
+const addUser = async (req, res, next) => {
+  const token = req.headers['token'];
+  if (token) {
+    try {
+      const { user } = jwt.verify(token, secret);
+      req.user = user;
+    } catch (err) {
+      const refreshToken = req.header['refreshToken'];
+      try {
+        const newTokens = await refreshTokens(
+          token,
+          refreshToken,
+          models,
+          secret,
+          secret2
+        );
+        if (newTokens.token && newTokens.refreshToken) {
+          res.set('Access-Control-Expose-Headers', 'token, refreshToken');
+          res.set('token', newTokens.token);
+          res.set('refreshToken', newTokens.refreshToken);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  }
+  next();
+};
+
+app.use(addUser);
 
 const server = new ApolloServer({
   typeDefs,
@@ -38,34 +69,8 @@ const server = new ApolloServer({
   introspection: true,
 });
 
-const addUser = async (req, res, next) => {
-  const token = req.headers['token'];
-  if (token) {
-    try {
-      const { user } = jwt.verify(token, secret);
-      req.user = user;
-    } catch (err) {
-      const refreshToken = req.header['refreshToken'];
-      const newTokens = await refreshTokens(
-        token,
-        refreshToken,
-        models,
-        secret,
-        secret2
-      );
-      if (newTokens.token && newTokens.refreshToken) {
-        res.set('Access-Control-Expose-Headers', 'token, refreshToken');
-        res.set('token', newTokens.token);
-        res.set('refreshToken', newTokens.refreshToken);
-      }
-    }
-    next();
-  }
-};
-
-app.use(cors('*'));
 app.use(express.json());
-app.use(addUser);
+app.use(cors('*'));
 
 server.applyMiddleware({ app });
 

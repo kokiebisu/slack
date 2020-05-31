@@ -15,6 +15,7 @@ import { ApolloLink, from } from 'apollo-link';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 const httpLink = new HttpLink({
+  headers: { authorization: localStorage.getItem('token') },
   uri: 'http://localhost:4000/graphql',
 });
 
