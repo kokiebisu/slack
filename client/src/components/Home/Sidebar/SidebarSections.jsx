@@ -8,11 +8,35 @@ import { SidebarSection } from './SidebarSection';
 import { Messages } from './Messages';
 import { Channels } from './Channels';
 
+// Graphql
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/react-hooks';
+
+import _ from 'lodash';
+import decode from 'jwt-decode';
+
+const GET_ALL_TEAMS = gql`
+  query {
+    allTeams {
+      id
+    }
+  }
+`;
+
 export const SidebarSections = () => {
+  const { loading, error, data } = useQuery(GET_ALL_TEAMS);
+
   const [revealed, setRevealed] = useState({
     channels: false,
     messages: false,
   });
+
+  if (loading) return null;
+  if (error) return `Error! ${error}`;
+
+  if (data) {
+    console.log(data);
+  }
 
   return (
     <Wrapper>

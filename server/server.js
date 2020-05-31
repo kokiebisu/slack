@@ -16,12 +16,12 @@ const {
 } = require('merge-graphql-schemas');
 
 // Schemas
-const schemaTypes = fileLoader(path.join(__dirname, '/schemas'));
-const typeDefs = mergeTypes(schemaTypes);
+const typeDefs = mergeTypes(fileLoader(path.join(__dirname, '/schemas')));
 
 // Resolvers
-const resolverTypes = fileLoader(path.join(__dirname, '/resolvers'));
-const resolvers = mergeResolvers(resolverTypes);
+const resolvers = mergeResolvers(
+  fileLoader(path.join(__dirname, '/resolvers'))
+);
 
 const app = express();
 
@@ -38,7 +38,34 @@ const server = new ApolloServer({
   introspection: true,
 });
 
-app.use(cors());
+const addUser = async (req, res, next) => {
+  const token = req.headers['token'];
+  if (token) {
+    try {
+      const { user } = jwt.verify(token, secret);
+      req.user = user;
+    } catch (err) {
+      const refreshToken = req.header['refreshToken'];
+      const newTokens = await refreshTokens(
+        token,
+        refreshToken,
+        models,
+        secret,
+        secret2
+      );
+      if (newTokens.token && newTokens.refreshToken) {
+        res.set('Access-Control-Expose-Headers', 'token, refreshToken');
+        res.set('token', newTokens.token);
+        res.set('refreshToken', newTokens.refreshToken);
+      }
+    }
+    next();
+  }
+};
+
+app.use(cors('*'));
+app.use(express.json());
+app.use(addUser);
 
 server.applyMiddleware({ app });
 
