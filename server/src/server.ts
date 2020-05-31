@@ -1,4 +1,6 @@
+require('dotenv').config();
 import 'reflect-metadata';
+
 import { ApolloServer } from 'apollo-server-express';
 import Express from 'express';
 
@@ -10,6 +12,7 @@ import session from 'express-session';
 import { redis } from './redis';
 import cors from 'cors';
 import connectRedis from 'connect-redis';
+import { Context } from './types/context';
 
 (async () => {
   await createConnection();
@@ -20,7 +23,7 @@ import connectRedis from 'connect-redis';
     schema: await buildSchema({
       resolvers: [__dirname + '/graphql/**/*.ts'],
     }),
-    context: ({ req, res }: any) => ({ req, res }),
+    context: ({ req, res }: Context) => ({ req, res }),
   });
 
   const RedisStore = connectRedis(session);

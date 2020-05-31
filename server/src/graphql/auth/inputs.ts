@@ -12,6 +12,9 @@ export class RegisterInput extends PasswordMixin(class {}) {
   @Field()
   @IsEmail()
   email: string;
+
+  @Field()
+  password: string;
 }
 
 @InputType()

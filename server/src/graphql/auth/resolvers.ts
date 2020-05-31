@@ -4,30 +4,38 @@ import {
   Mutation,
   Arg,
   Ctx,
-  UseMiddleware,
   ObjectType,
   Field,
 } from 'type-graphql';
 
-// Middleware
-import { logger } from '../../middleware/logger';
-import { isAuth } from '../../middleware/isAuthenticated';
-
+// Helper
 import { createConfirmationUrl } from '../../util/createConfirmationUrl';
-
-import { ChangePasswordInput, RegisterInput } from './inputs';
-import { v4 } from 'uuid';
 import { sendEmail } from '../../util/sendEmail';
 
+// Custom Inputs
+import { ChangePasswordInput, RegisterInput } from './inputs';
+
+import { v4 } from 'uuid';
 import bcrypt from 'bcryptjs';
 
+// Entity
 import { User } from '../../models/User';
+
+// Cache
 import { redis } from '../../redis';
+
+// Prefixes
 import {
   forgotPasswordPrefix,
   confirmationPrefix,
 } from '../../constants/redisPrefixes';
-import { Context } from '../../types/Context';
+
+// Types
+import { Context } from '../../types/context';
+import {
+  createAccessToken,
+  createRefreshToken,
+} from '../../util/tokenGenerator';
 
 @Resolver()
 export class MeResolver {
@@ -72,7 +80,8 @@ export class LoginResolver {
   @Mutation(() => LoginResponse, { nullable: true })
   async login(
     @Arg('email') email: string,
-    @Arg('password') password: string
+    @Arg('password') password: string,
+    @Ctx() { req, res }: Context
   ): Promise<LoginResponse | Error> {
     const user = await User.findOne({ where: { email } });
 
@@ -91,8 +100,11 @@ export class LoginResolver {
       return new Error('You must confirm via email');
     }
 
+    res.cookie('rtoken', createRefreshToken(user), { httpOnly: true });
+
     return {
-      accessToken: '',
+      // sign method will create the token
+      accessToken: createAccessToken(user),
     };
   }
 }
