@@ -13,25 +13,16 @@ import { useHistory } from 'react-router-dom';
 const LOGIN_USER = gql`
   mutation Login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
-      ok
-      token
-      refreshToken
-      errors {
-        path
-        message
-      }
+      id
+      username
     }
   }
 `;
 
 const Login = () => {
-  const client = useApolloClient();
   const router = useHistory();
   const [login, { data }] = useMutation(LOGIN_USER, {
     onCompleted({ login }) {
-      localStorage.setItem('token', login.token);
-      localStorage.setItem('refreshToken', login.refreshToken);
-      client.writeData({ data: { isLoggedIn: true } });
       router.push('/');
     },
   });

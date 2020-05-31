@@ -11,17 +11,15 @@ import { redis } from './redis';
 import cors from 'cors';
 import connectRedis from 'connect-redis';
 
-const main = async () => {
+(async () => {
   await createConnection();
 
   const app = Express();
 
-  const schema = await buildSchema({
-    resolvers: [__dirname + '/graphql/**/*.ts'],
-  });
-
   const apolloServer = new ApolloServer({
-    schema,
+    schema: await buildSchema({
+      resolvers: [__dirname + '/graphql/**/*.ts'],
+    }),
     context: ({ req, res }: any) => ({ req, res }),
   });
 
@@ -30,7 +28,7 @@ const main = async () => {
   app.use(
     cors({
       credentials: true,
-      origin: 'http://localhost:3000',
+      // origin: 'http://localhost:3000/',
     })
   );
 
@@ -44,7 +42,7 @@ const main = async () => {
       resave: false,
       saveUninitialized: false,
       cookie: {
-        httpOnly: true,
+        // httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         maxAge: 1000 * 60 * 60 * 24 * 7,
       },
@@ -58,6 +56,4 @@ const main = async () => {
   app.listen(PORT, () => {
     console.log(`Server is running on http://localhost${PORT}`);
   });
-};
-
-main();
+})();

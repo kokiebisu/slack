@@ -13,3 +13,9 @@ export class RegisterInput extends PasswordMixin(class {}) {
   @IsEmail()
   email: string;
 }
+
+@InputType()
+export class ChangePasswordInput extends PasswordMixin(class {}) {
+  @Field()
+  token: string;
+}
