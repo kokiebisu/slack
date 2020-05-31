@@ -11,13 +11,6 @@ import { redis } from './redis';
 import cors from 'cors';
 import connectRedis from 'connect-redis';
 
-// Resolver
-import { RegisterResolver } from './graphql/user/Register';
-import { LoginResolver } from './graphql/user/Login';
-import { MeResolver } from './graphql/user/Me';
-import { ConfirmLoginResolver } from './graphql/user/ConfirmLogin';
-import { ForgetPasswordResolver } from './graphql/user/ForgetPassword';
-
 const main = async () => {
   await createConnection();
 
@@ -29,7 +22,7 @@ const main = async () => {
 
   const apolloServer = new ApolloServer({
     schema,
-    context: ({ req }: any) => ({ req }),
+    context: ({ req, res }: any) => ({ req, res }),
   });
 
   const RedisStore = connectRedis(session);
