@@ -38,13 +38,25 @@ Not Deployed Yet
 
 ### Built With
 
+Language
+* [Typescript](https://reactjs.org/) - Javascript library
+
+Client
 * [React](https://reactjs.org/) - Javascript library
-* [PostgreSQL](https://www.postgresql.org) - Database
-* [Sequelize](https://sequelize.org) - Object relational wrapper
-* [Apollo Server](https://www.apollographql.com/server/) - Graphql server
+* [Apollo Client](https://www.apollographql.com/docs/react/) - Graphql Client
 * [Styled Components](https://styled-components.com) - Styling
 * [Styled System](https://styled-system.com) - Consistency in Styles
 * [Framer Motion](https://www.framer.com/motion/) - Animations
+
+
+Server
+* [TypeGraphql]() - Graphql Server
+* [TypeORM](https://typeorm.io/) - Object Relational Mapper
+* [Express](https://expressjs.com/) - Node Server
+* [Apollo Server](https://www.apollographql.com/server/) - Graphql server
+* [PostgreSQL](https://www.typescriptlang.org/) - Superset of Javascript
+
+
 
 ## Authors
 
