@@ -248,7 +248,7 @@ export const Header = () => {
                 <b.Box pt={4} pb={3}>
                   <b.Box>
                     <LaunchOptionLink
-                      href='/create-team'
+                      href='/get-started/create'
                       color='#1264A3'
                       fontFamily='CircularPro-Book'>
                       <b.Text textAlign='center'>Create a new workspace</b.Text>

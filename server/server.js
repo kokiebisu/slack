@@ -3,6 +3,8 @@ const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const jwt = require('jsonwebtoken');
 
+const refreshTokens = require('./authentication/refreshTokens');
+
 // Cors
 const cors = require('cors');
 
@@ -35,22 +37,19 @@ const addUser = async (req, res, next) => {
       const { user } = jwt.verify(token, secret);
       req.user = user;
     } catch (err) {
-      const refreshToken = req.header['refreshToken'];
-      try {
-        const newTokens = await refreshTokens(
-          token,
-          refreshToken,
-          models,
-          secret,
-          secret2
-        );
-        if (newTokens.token && newTokens.refreshToken) {
-          res.set('Access-Control-Expose-Headers', 'token, refreshToken');
-          res.set('token', newTokens.token);
-          res.set('refreshToken', newTokens.refreshToken);
-        }
-      } catch (err) {
-        console.log(err);
+      const refreshToken = req.header['refreshtoken'];
+
+      const newTokens = await refreshTokens(
+        token,
+        refreshToken,
+        models,
+        secret,
+        secret2
+      );
+      if (newTokens.token && newTokens.refreshToken) {
+        res.set('Access-Control-Expose-Headers', 'token, refreshToken');
+        res.set('token', newTokens.token);
+        res.set('refreshToken', newTokens.refreshToken);
       }
     }
   }
