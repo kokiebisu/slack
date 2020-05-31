@@ -1,12 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import _ from 'lodash';
+
+// Graphql
+import { gql } from 'apollo-boost';
+
 import * as b from '../../../styles/blocks';
 
 // Icons
 import { Lock, ChannelHashtag } from '../../../assets/svg/SidebarSections';
 
-export const Channels = () => {
+export const Channels = ({ channels }) => {
   const tempChannels = [
     {
       id: 1,

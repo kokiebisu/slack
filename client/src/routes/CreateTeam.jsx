@@ -1,87 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { extendObservable } from 'mobx';
 import { observer } from 'mobx-react';
 
 // Graphql
-import { graphql } from 'react-apollo';
-import { gql } from 'apollo-boost';
+// import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
+import { useApolloClient, useMutation } from '@apollo/react-hooks';
 
 import { Box, Flex, Input, Button } from '../styles/blocks';
 
-class CreateTeam extends React.Component {
-  constructor(props) {
-    super(props);
+const CreateTeam = () => {
+  const client = useApolloClient();
+  const [create, { data }] = useMutation(CREATE_TEAM, {
+    onCompleted(response) {
+      console.log('completed', response);
+      client.writeData({ data: { isLoggedIn: true } });
+    },
+  });
 
-    extendObservable(this, {
-      name: '',
-      errors: {
-        nameError: '',
-      },
-    });
-  }
+  const [team, setTeam] = useState('');
 
-  onSubmit = async () => {
-    const { name } = this;
-    const response = await this.props.mutate({
-      variables: { name },
-    });
-    console.log(response);
-    const { ok, errors } = response.data.createTeam;
-    if (ok) {
-      this.props.history.push('/');
-    } else {
-      const err = {};
-      errors.forEach(({ path, message }) => {
-        err[`${path}Error`] = message;
-      });
-
-      this.errors = err;
-    }
-  };
-
-  onChange = (e) => {
-    const { name, value } = e.target;
-    this[name] = value;
-  };
-
-  render() {
-    const {
-      name,
-      errors: { nameError },
-    } = this;
-
-    return (
-      <Box bg='white' width={512} px={5} py={2}>
+  return (
+    <Box bg='white' width={512} px={5} py={2}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          create({ variables: { name: team } });
+        }}>
         <div>
           <h1>Create team</h1>
         </div>
 
         <Flex flexDirection='column'>
           <label>name</label>
-          <Input
-            onChange={this.onChange}
-            px={2}
-            value={name}
+          <input
+            onChange={(e) => setTeam(e.target.value)}
+            value={team}
             type='text'
-            name='name'
+            name='team'
           />
         </Flex>
-        {!!nameError ? <div>there was a error in team name</div> : null}
-        <div>
-          <Button
-            onClick={() => {
-              this.onSubmit();
-            }}
-            px={2}>
-            Submit
-          </Button>
-        </div>
-      </Box>
-    );
-  }
-}
 
-const createTeamMutation = gql`
+        <div>
+          <Button type='submit'>Submit</Button>
+        </div>
+      </form>
+    </Box>
+  );
+};
+
+const CREATE_TEAM = gql`
   mutation($name: String!) {
     createTeam(name: $name) {
       ok
@@ -93,4 +61,4 @@ const createTeamMutation = gql`
   }
 `;
 
-export default graphql(createTeamMutation)(observer(CreateTeam));
+export default CreateTeam;

@@ -1,12 +1,10 @@
-import decode from 'jwt-decode';
+import Cookies from 'js-cookie';
+import { navigate } from 'react';
 
 export const isAuthenticated = () => {
-  const token = localStorage.getItem('token');
-  const refreshToken = localStorage.getItem('refreshToken');
-  try {
-    decode(token);
-    decode(refreshToken);
-  } catch (err) {
+  const qid = document.cookie('qid');
+  console.log('isauthenticated', qid);
+  if (!Cookies.get('qid')) {
     return false;
   }
 

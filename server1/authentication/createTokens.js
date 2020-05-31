@@ -1,13 +1,13 @@
 const jwt = require('jsonwebtoken');
 const _ = require('lodash');
 
-module.exports = (user, secret, refreshSecret) => {
+module.exports = async (user, secret, refreshSecret) => {
   const createToken = jwt.sign(
     {
       user: _.pick(user, ['id']),
     },
     secret,
-    { expiresIn: '1m' }
+    { expiresIn: '1h' }
   );
 
   const createRefreshToken = jwt.sign(
