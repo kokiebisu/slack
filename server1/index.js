@@ -35,6 +35,7 @@ const addUser = async (req, res, next) => {
   if (token) {
     try {
       const { user } = jwt.verify(token, secret);
+      console.log('jwt user', user);
       req.user = user;
     } catch (err) {
       const refreshToken = req.header['refreshtoken'];
@@ -58,18 +59,18 @@ const addUser = async (req, res, next) => {
 
 app.use(addUser);
 
+app.use(express.json());
+app.use(cors('*'));
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: ({ req }) => {
-    const user = req.user;
+    const { user } = req;
     return { models, user, secret, secret2 };
   },
   introspection: true,
 });
-
-app.use(express.json());
-app.use(cors('*'));
 
 server.applyMiddleware({ app });
 

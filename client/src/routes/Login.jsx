@@ -43,31 +43,6 @@ const Login = () => {
     password: '',
   });
 
-  // const onSubmit = async (e) => {
-  //   // const response = await this.props.mutate({
-  //   //   variables: { email, password },
-  //   // });
-
-  //   respond({ variables: { email, password } });
-
-  //   const { data } = response;
-  //   console.log('entered', data);
-  //   // const { ok, errors } = response.data.login;
-  //   // if (ok) {
-  //   //   const { token, refreshToken } = response.data.login;
-  //   //   localStorage.setItem('token', token);
-  //   //   localStorage.setItem('refreshToken', refreshToken);
-  //   //   console.log('successful');
-  //   // } else {
-  //   //   const err = {};
-  //   //   errors.forEach(({ path, message }) => {
-  //   //     err[`${path}Error`] = message;
-  //   //   });
-
-  //   //   this.errors = err;
-  //   // }
-  // };
-
   return (
     <Box bg='white' width={512} px={5} py={2}>
       <form
