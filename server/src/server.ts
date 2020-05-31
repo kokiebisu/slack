@@ -16,6 +16,7 @@ import { RegisterResolver } from './graphql/user/Register';
 import { LoginResolver } from './graphql/user/Login';
 import { MeResolver } from './graphql/user/Me';
 import { ConfirmLoginResolver } from './graphql/user/ConfirmLogin';
+import { ForgetPasswordResolver } from './graphql/user/ForgetPassword';
 
 const main = async () => {
   await createConnection();
@@ -23,12 +24,7 @@ const main = async () => {
   const app = Express();
 
   const schema = await buildSchema({
-    resolvers: [
-      RegisterResolver,
-      LoginResolver,
-      MeResolver,
-      ConfirmLoginResolver,
-    ],
+    resolvers: [__dirname + '/graphql/**/*.ts'],
   });
 
   const apolloServer = new ApolloServer({

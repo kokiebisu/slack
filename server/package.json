@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "@types/nodemailer": "^6.4.0",
+    "@types/uuid": "^8.0.0",
     "apollo-server-express": "^2.14.1",
     "bcryptjs": "^2.4.3",
     "class-validator": "^0.12.2",
