@@ -21,4 +21,7 @@ export class User extends BaseEntity {
 
   @Column('bool', { default: false })
   confirmed: boolean;
+
+  @Column('int', { default: 0 })
+  tokenVersion: number;
 }
