@@ -3,16 +3,11 @@ import { useState } from 'react';
 // import { extendObservable } from 'mobx';
 // import { observer } from 'mobx-react';
 
-// Graphql
-import gql from 'graphql-tag';
-import { useApolloClient, useMutation } from '@apollo/react-hooks';
-
 import { Box, Flex, Input, Button } from '../styles/blocks';
 
-import { useHistory, RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom';
 import { useLoginMutation } from '../generated/graphql';
-
-interface Props {}
+import { setAccessToken } from '../global/token';
 
 export const Login: React.FC<RouteComponentProps> = ({ history }) => {
   const [login] = useLoginMutation();
@@ -26,7 +21,12 @@ export const Login: React.FC<RouteComponentProps> = ({ history }) => {
         onSubmit={async (e) => {
           e.preventDefault();
           const response = await login({ variables: { email, password } });
-          console.log(response.data?.login);
+
+          if (response && response.data) {
+            setAccessToken(response.data.login?.accessToken!);
+          }
+
+          history.push('/');
         }}>
         <div>
           <h1>Login</h1>

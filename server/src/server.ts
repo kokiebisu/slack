@@ -67,7 +67,7 @@ import { Team } from './models/Team';
     context: ({ req, res }: Context) => ({ req, res }),
   });
 
-  const RedisStore = connectRedis(session);
+  // const RedisStore = connectRedis(session);
 
   app.use(
     cors({

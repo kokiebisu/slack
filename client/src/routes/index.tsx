@@ -13,6 +13,7 @@ import SignIn from './SignIn';
 
 // Util
 import { isAuthenticated } from '../util/isAuthenticated';
+import { Bye } from './Bye';
 
 // const PrivateRoute = ({ component: any, ...rest }) => (
 //   <Route
@@ -33,6 +34,7 @@ export const Routes: React.FC<{}> = () => {
   return (
     <BrowserRouter>
       <Switch>
+        <Route path='/bye' component={Bye} />
         <Route path='/client' component={Home} />
         <Route path='/register' component={Register} />
         <Route path='/signin' component={SignIn} />
