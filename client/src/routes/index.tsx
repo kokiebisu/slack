@@ -12,10 +12,10 @@ import FindTeam from './FindTeam';
 import SignIn from './SignIn';
 
 // Util
-import { isAuthenticated } from '../util/isAuthenticated';
+// import { isAuthenticated } from '../util/useAuthenticated';
 import { Bye } from './Bye';
 
-// const PrivateRoute = ({ component: any, ...rest }) => (
+// const PrivateRoute = ({ Component, ...rest }) => (
 //   <Route
 //     {...rest}
 //     render={(props) =>

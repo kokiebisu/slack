@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useAuthenticated } from '../hooks/useCheckLoggedIn';
 
 // Components
 import { Header } from '../components/Landing/Header';
@@ -15,7 +16,7 @@ export default () => {
     document.title = 'Where work happens | Slack';
   }, []);
 
-  console.log('access', getAccessToken());
+  // const [authenticated, setAuthenticated] = useState(useAuthenticated());
 
   return (
     <>
