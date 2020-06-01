@@ -8,7 +8,9 @@ import { useState } from 'react';
 
 import { Box, Flex, Input, Button } from '../styles/blocks';
 
-export default () => {
+interface Props {}
+
+export const Register: React.FC<Props> = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

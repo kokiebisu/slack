@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 // import { extendObservable } from 'mobx';
 // import { observer } from 'mobx-react';
 
@@ -19,7 +20,9 @@ const LOGIN_USER = gql`
   }
 `;
 
-const Login = () => {
+interface Props {}
+
+export const Login: React.FC<Props> = () => {
   const router = useHistory();
   const [login, { data }] = useMutation(LOGIN_USER, {
     onCompleted({ login }) {
@@ -74,5 +77,3 @@ const Login = () => {
     </Box>
   );
 };
-
-export default Login;

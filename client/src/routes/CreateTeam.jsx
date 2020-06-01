@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { extendObservable } from 'mobx';
-import { observer } from 'mobx-react';
 
 // Graphql
 // import { graphql } from 'react-apollo';

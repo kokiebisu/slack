@@ -7,6 +7,8 @@ import { BreakOut } from '../components/Landing/BreakOut';
 import { Choose } from '../components/Landing/Choose';
 import { Footer } from '../components/Landing/Footer';
 
+import { useHelloQuery } from '../generated/graphql.tsx';
+
 export default () => {
   useEffect(() => {
     document.title = 'Where work happens | Slack';

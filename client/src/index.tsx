@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Route from './routes';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
+import { Routes } from './routes';
 import { GlobalFonts } from './styles/globalFonts';
 import { GlobalStyles } from './styles/globalStyles';
 
@@ -10,8 +10,6 @@ import { GlobalStyles } from './styles/globalStyles';
 import ApolloClient from 'apollo-client';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { HttpLink } from 'apollo-link-http';
-import { ApolloLink, from } from 'apollo-link';
-// import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 const httpLink = new HttpLink({
@@ -19,7 +17,7 @@ const httpLink = new HttpLink({
 });
 
 const client = new ApolloClient({
-  link: from([httpLink]),
+  link: httpLink,
   cache: new InMemoryCache(),
 });
 
@@ -27,7 +25,7 @@ ReactDOM.render(
   <ApolloProvider client={client}>
     <GlobalFonts />
     <GlobalStyles />
-    <Route />
+    <Routes />
   </ApolloProvider>,
   document.getElementById('root')
 );
