@@ -5,6 +5,11 @@ import { isAuth } from '../../middleware/isAuthenticated';
 
 @Resolver()
 export class UsersResolver {
+  @Query(() => String)
+  async hello() {
+    return 'hello';
+  }
+
   @Query(() => [User])
   async users() {
     const users = await User.find();

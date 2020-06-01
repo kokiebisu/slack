@@ -40,7 +40,7 @@ import {
 
 import { sendRefreshToken } from '../../util/sendRefreshToken';
 
-import { createConnection } from 'typeorm';
+import { getConnection } from 'typeorm';
 
 @Resolver()
 export class MeResolver {
