@@ -5,7 +5,7 @@ export const Bye = () => {
   const { data, error } = useByeQuery();
 
   if (error) {
-    <div>error</div>;
+    return <div>error</div>;
   }
 
   return <div>{data}</div>;
