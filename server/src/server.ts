@@ -13,11 +13,51 @@ import { redis } from './redis';
 import cors from 'cors';
 import connectRedis from 'connect-redis';
 import { Context } from './types/context';
+import cookieParser from 'cookie-parser';
+
+import { verify } from 'jsonwebtoken';
+import { User } from './models/User';
+import { createAccessToken, createRefreshToken } from './util/tokenGenerator';
 
 (async () => {
   await createConnection();
 
   const app = Express();
+
+  app.use(cookieParser());
+
+  /**
+   * Retrieves a new access token based on the given refresh token
+   */
+  app.post('/refresh_token', async (req, res) => {
+    const token = req.cookies.rtoken;
+
+    if (!token) {
+      return res.send({ ok: false, accessToken: '' });
+    }
+
+    let payload: any = null;
+    try {
+      payload = verify(token, process.env.REFRESH_TOKEN_SECRET!);
+    } catch (err) {
+      console.log(err);
+      return res.send({ ok: false, accessToken: '' });
+    }
+
+    const user = await User.findOne({ id: payload.userId });
+
+    if (!user) {
+      return res.send({ ok: false, accessToken: '' });
+    }
+
+    if (user.tokenVersion !== payload.tokenVersion) {
+      return res.send({ ok: false, accessToken: '' });
+    }
+
+    res.cookie('rtoken', createRefreshToken(user), { httpOnly: true });
+
+    return res.send({ ok: true, accessToken: createAccessToken(user) });
+  });
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({

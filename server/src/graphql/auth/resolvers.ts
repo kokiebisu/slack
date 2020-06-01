@@ -6,6 +6,7 @@ import {
   Ctx,
   ObjectType,
   Field,
+  Int,
 } from 'type-graphql';
 
 // Helper
@@ -36,6 +37,10 @@ import {
   createAccessToken,
   createRefreshToken,
 } from '../../util/tokenGenerator';
+
+import { sendRefreshToken } from '../../util/sendRefreshToken';
+
+import { createConnection } from 'typeorm';
 
 @Resolver()
 export class MeResolver {
@@ -77,6 +82,15 @@ class LoginResponse {
 
 @Resolver()
 export class LoginResolver {
+  @Mutation(() => Boolean)
+  async revokeRefreshToken(@Arg('userId', () => Int) userId: number) {
+    await getConnection()
+      .getRepository(User)
+      .increment({ id: userId }, 'tokenVersion', 1);
+
+    return true;
+  }
+
   @Mutation(() => LoginResponse, { nullable: true })
   async login(
     @Arg('email') email: string,
@@ -100,7 +114,7 @@ export class LoginResolver {
       return new Error('You must confirm via email');
     }
 
-    res.cookie('rtoken', createRefreshToken(user), { httpOnly: true });
+    sendRefreshToken(res, createRefreshToken(user));
 
     return {
       // sign method will create the token
