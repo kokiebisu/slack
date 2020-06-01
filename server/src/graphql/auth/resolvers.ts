@@ -58,7 +58,9 @@ export class MeResolver {
 export class RegisterResolver {
   @Mutation(() => User)
   async register(
-    @Arg('data') { username, email, password }: RegisterInput
+    @Arg('username') username: string,
+    @Arg('email') email: string,
+    @Arg('password') password: string
   ): Promise<User | ErrorConstructor> {
     const hashedPassword = await bcrypt.hash(password, 12);
 
@@ -68,7 +70,8 @@ export class RegisterResolver {
       password: hashedPassword,
     }).save();
 
-    await sendEmail(email, await createConfirmationUrl(user.id));
+    // await sendEmail(email, await createConfirmationUrl(user.id));
+    User.update({ id: user.id }, { confirmed: true });
 
     return user;
   }

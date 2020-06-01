@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Landing from './Landing';
 import Home from './Home';
 import { Register } from './Register';
-import Login from './Login';
+import { Login } from './Login';
 import CreateTeam from './CreateTeam';
 import GetStarted from './GetStarted';
 import FindTeam from './FindTeam';

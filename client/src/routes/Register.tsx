@@ -1,111 +1,70 @@
 import * as React from 'react';
+import { useState } from 'react';
 
 import { useMutation } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import { useHistory } from 'react-router-dom';
 
-import { useState } from 'react';
-
 import { Box, Flex, Input, Button } from '../styles/blocks';
+import { useRegisterMutation } from '../generated/graphql';
+
+import { RouteComponentProps } from 'react-router-dom';
 
 interface Props {}
 
-export const Register: React.FC<Props> = () => {
+export const Register: React.FC<RouteComponentProps> = ({ history }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [state, setState] = useState({
-    usernameError: '',
-    emailError: '',
-    passwordError: '',
-  });
 
-  let history = useHistory();
-
-  const REGISTER = gql`
-    mutation($username: String!, $email: String!, $password: String!) {
-      register(username: $username, email: $email, password: $password) {
-        ok
-        errors {
-          path
-          message
-        }
-      }
-    }
-  `;
-
-  const [register] = useMutation(REGISTER);
-
-  const onSubmit = async (username, email, password) => {
-    const response = await register({
-      variables: { username, email, password },
-    });
-    console.log(response);
-    const { ok, errors } = response.data.register;
-
-    if (ok) {
-      history.push('/home');
-    } else {
-      let err = {};
-      errors.forEach(({ path, message }) => {
-        err[`${path}Error`] = message;
-      });
-      setState(err);
-    }
-  };
-
-  const { usernameError, emailError, passwordError } = state;
+  const [register] = useRegisterMutation();
 
   return (
-    <Box bg='white' width={512} px={5} py={2}>
+    <form
+      onSubmit={async (e) => {
+        e.preventDefault();
+        console.log('form submitted');
+        const response = await register({
+          variables: {
+            username,
+            email,
+            password,
+          },
+        });
+
+        history.push('/');
+      }}>
       <div>
-        <h1>Register</h1>
-      </div>
-      <Flex flexDirection='column'>
-        <label>username</label>
-        <Input
-          onChange={(e) => setUsername(e.target.value)}
-          px={2}
+        <input
           value={username}
-          type='text'
-          name='username'
-        />
-      </Flex>
-      {!!usernameError ? <div>there was a username error</div> : null}
-      <Flex flexDirection='column'>
-        <label>email</label>
-        <Input
-          onChange={(e) => setEmail(e.target.value)}
-          px={2}
-          value={email}
-          type='text'
-          name='email'
-        />
-      </Flex>
-      {!!emailError ? <div>there was a email error</div> : null}
-      <Flex flexDirection='column'>
-        <label>password</label>
-        <Input
-          onChange={(e) => setPassword(e.target.value)}
-          px={2}
-          value={password}
-          type='password'
-          name='password'
-        />
-      </Flex>
-      {!!passwordError ? <div>there was a password error</div> : null}
-      <div>
-        <Button
-          onClick={() => {
-            onSubmit(username, email, password);
-            setUsername('');
-            setEmail('');
-            setPassword('');
+          placeholder='username'
+          onChange={(e) => {
+            setUsername(e.target.value);
           }}
-          px={2}>
-          Submit
-        </Button>
+        />
       </div>
-    </Box>
+      <div>
+        <input
+          value={email}
+          placeholder='email'
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+        />
+      </div>
+      <div>
+        <input
+          value={password}
+          placeholder='password'
+          type='password'
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        />
+      </div>
+      <div>
+        <button type='submit'>submit</button>
+      </div>
+    </form>
   );
 };
