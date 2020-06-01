@@ -35,10 +35,9 @@ export const Routes: React.FC<{}> = () => {
       <Switch>
         <Route path='/client' component={Home} />
         <Route path='/register' component={Register} />
-        <Route path='/login' component={Login} />
         <Route path='/signin' component={SignIn} />
         <Route exact path='/get-started/create' component={CreateTeam} />
-        <Route exact path='/get-started/find' component={FindTeam} />
+        <Route exact path='/get-started/find' component={Login} />
         <Route exact path='/get-started' component={GetStarted} />
         <Route path='/' component={Landing} />
       </Switch>

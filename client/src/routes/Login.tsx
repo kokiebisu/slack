@@ -9,40 +9,24 @@ import { useApolloClient, useMutation } from '@apollo/react-hooks';
 
 import { Box, Flex, Input, Button } from '../styles/blocks';
 
-import { useHistory } from 'react-router-dom';
-
-const LOGIN_USER = gql`
-  mutation Login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      id
-      username
-    }
-  }
-`;
+import { useHistory, RouteComponentProps } from 'react-router-dom';
+import { useLoginMutation } from '../generated/graphql';
 
 interface Props {}
 
-export const Login: React.FC<Props> = () => {
-  const router = useHistory();
-  const [login, { data }] = useMutation(LOGIN_USER, {
-    onCompleted({ login }) {
-      router.push('/');
-    },
-  });
+export const Login: React.FC<RouteComponentProps> = ({ history }) => {
+  const [login] = useLoginMutation();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState({
-    email: '',
-    password: '',
-  });
 
   return (
     <Box bg='white' width={512} px={5} py={2}>
       <form
         onSubmit={async (e) => {
           e.preventDefault();
-          login({ variables: { email, password } });
+          const response = await login({ variables: { email, password } });
+          console.log(response.data?.login);
         }}>
         <div>
           <h1>Login</h1>
@@ -66,12 +50,9 @@ export const Login: React.FC<Props> = () => {
             name='password'
           />
         </Flex>
-        {console.log('data', data)}
 
         <div>
-          <Button type='submit' px={2}>
-            Submit
-          </Button>
+          <button type='submit'>Submit</button>
         </div>
       </form>
     </Box>

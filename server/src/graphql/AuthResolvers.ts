@@ -10,35 +10,32 @@ import {
 } from 'type-graphql';
 
 // Helper
-import { createConfirmationUrl } from '../../util/createConfirmationUrl';
-import { sendEmail } from '../../util/sendEmail';
+import { createConfirmationUrl } from '../util/createConfirmationUrl';
+import { sendEmail } from '../util/sendEmail';
 
 // Custom Inputs
-import { ChangePasswordInput, RegisterInput } from './inputs';
+import { ChangePasswordInput } from './auth/inputs';
 
 import { v4 } from 'uuid';
 import bcrypt from 'bcryptjs';
 
 // Entity
-import { User } from '../../models/User';
+import { User } from '../models/User';
 
 // Cache
-import { redis } from '../../redis';
+import { redis } from '../redis';
 
 // Prefixes
 import {
   forgotPasswordPrefix,
   confirmationPrefix,
-} from '../../constants/redisPrefixes';
+} from '../constants/redisPrefixes';
 
 // Types
-import { Context } from '../../types/context';
-import {
-  createAccessToken,
-  createRefreshToken,
-} from '../../util/tokenGenerator';
+import { Context } from '../types/context';
+import { createAccessToken, createRefreshToken } from '../util/tokenGenerator';
 
-import { sendRefreshToken } from '../../util/sendRefreshToken';
+import { sendRefreshToken } from '../util/sendRefreshToken';
 
 import { getConnection } from 'typeorm';
 
@@ -148,7 +145,8 @@ export class LogoutResolver {
 export class ChangePasswordResolver {
   @Mutation(() => User, { nullable: true })
   async changePassword(
-    @Arg('data') { token, password }: ChangePasswordInput,
+    @Arg('token') token: string,
+    @Arg('password') password: string,
     @Ctx() context: Context
   ): Promise<User | null> {
     const userId = await redis.get(forgotPasswordPrefix + token);

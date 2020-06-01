@@ -1,4 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  BaseEntity,
+  OneToMany,
+  JoinTable,
+} from 'typeorm';
 import { ObjectType, Field, Int } from 'type-graphql';
 
 @ObjectType()

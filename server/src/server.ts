@@ -18,6 +18,7 @@ import cookieParser from 'cookie-parser';
 import { verify } from 'jsonwebtoken';
 import { User } from './models/User';
 import { createAccessToken, createRefreshToken } from './util/tokenGenerator';
+import { Team } from './models/Team';
 
 (async () => {
   await createConnection();
@@ -61,7 +62,7 @@ import { createAccessToken, createRefreshToken } from './util/tokenGenerator';
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [__dirname + '/graphql/**/*.ts'],
+      resolvers: [__dirname + '/graphql/*.ts'],
     }),
     context: ({ req, res }: Context) => ({ req, res }),
   });
@@ -71,30 +72,30 @@ import { createAccessToken, createRefreshToken } from './util/tokenGenerator';
   app.use(
     cors({
       credentials: true,
-      // origin: 'http://localhost:3000/',
+      origin: 'http://localhost:3000',
     })
   );
 
-  app.use(
-    session({
-      store: new RedisStore({
-        client: redis as any,
-      }),
-      name: 'qid',
-      secret: 'secret',
-      resave: false,
-      saveUninitialized: false,
-      cookie: {
-        // httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        maxAge: 1000 * 60 * 60 * 24 * 7,
-      },
-    })
-  );
+  // app.use(
+  //   session({
+  //     store: new RedisStore({
+  //       client: redis as any,
+  //     }),
+  //     name: 'qid',
+  //     secret: 'secret',
+  //     resave: false,
+  //     saveUninitialized: false,
+  //     cookie: {
+  //       // httpOnly: true,
+  //       secure: process.env.NODE_ENV === 'production',
+  //       maxAge: 1000 * 60 * 60 * 24 * 7,
+  //     },
+  //   })
+  // );
 
   const PORT = process.env.PORT || 4000;
 
-  apolloServer.applyMiddleware({ app });
+  apolloServer.applyMiddleware({ app, cors: false });
 
   app.listen(PORT, () => {
     console.log(`Server is running on http://localhost${PORT}`);

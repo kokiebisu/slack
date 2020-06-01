@@ -1,7 +1,7 @@
 import { Query, Resolver, Ctx, UseMiddleware } from 'type-graphql';
-import { User } from '../../models/User';
-import { Context } from '../../types/context';
-import { isAuth } from '../../middleware/isAuthenticated';
+import { User } from '../models/User';
+import { Context } from '../types/context';
+import { isAuth } from '../middleware/isAuthenticated';
 
 @Resolver()
 export class UsersResolver {
