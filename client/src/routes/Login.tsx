@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { useState } from 'react';
-// import { extendObservable } from 'mobx';
-// import { observer } from 'mobx-react';
 
 import { Box, Flex, Input, Button } from '../styles/blocks';
 
@@ -23,7 +21,7 @@ export const Login: React.FC<RouteComponentProps> = ({ history }) => {
           const response = await login({ variables: { email, password } });
 
           if (response && response.data) {
-            setAccessToken(response.data.login?.accessToken!);
+            setAccessToken(response.data.login!.accessToken);
           }
 
           history.push('/');

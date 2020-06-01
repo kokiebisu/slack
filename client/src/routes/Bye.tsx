@@ -8,5 +8,5 @@ export const Bye = () => {
     return <div>error</div>;
   }
 
-  return <div>{data}</div>;
+  return <div>{JSON.stringify(data)}</div>;
 };
