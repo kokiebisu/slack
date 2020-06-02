@@ -11,7 +11,6 @@ import { CreateTeam } from './CreateTeam';
 import { GetStarted } from './GetStarted';
 import { FindTeam } from './FindTeam';
 import { SignIn } from './SignIn';
-import { TeamName } from './CreateTeam/TeamName';
 
 export const Routes: React.FC<{}> = () => {
   return (
@@ -22,11 +21,10 @@ export const Routes: React.FC<{}> = () => {
         <Route path='/client' component={Home} />
         <Route path='/register' component={Register} />
         <Route path='/signin' component={SignIn} />
-        <Route path='/get-started/create' component={CreateTeam} />
+        <Route path='/create' component={CreateTeam} />
         <Route path='/get-started/find' component={FindTeam} />
         <Route path='/login' component={Login} />
         <Route path='/get-started' component={GetStarted} />
-        <Route path='/create' component={TeamName} />
       </Switch>
     </BrowserRouter>
   );
