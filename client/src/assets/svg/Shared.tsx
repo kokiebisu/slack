@@ -1,6 +1,7 @@
-import React from 'react';
+import * as React from 'react';
+import { SVG } from './interface';
 
-export const BoldPlus = (props) => {
+export const BoldPlus: React.FC<SVG> = (props) => {
   return (
     <svg {...props} viewBox='0 0 448 448'>
       <path
@@ -11,7 +12,7 @@ export const BoldPlus = (props) => {
   );
 };
 
-export const Plus = (props) => {
+export const Plus: React.FC<SVG> = (props) => {
   return (
     <svg {...props} viewBox='0 0 512 512'>
       <g>
@@ -27,7 +28,7 @@ export const Plus = (props) => {
   );
 };
 
-export const Minus = (props) => {
+export const Minus: React.FC<SVG> = (props) => {
   return (
     <svg {...props} viewBox='0 0 409.6 409.6'>
       <g>

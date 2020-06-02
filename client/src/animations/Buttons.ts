@@ -1,4 +1,23 @@
-export const ButtonMotion = {
+interface Props {
+  rest: {
+    backgroundColor: string;
+    transition: {
+      duration: number;
+      type: string;
+      ease: string;
+    };
+  };
+  hovered: {
+    backgroundColor: string;
+    transition: {
+      duration: number;
+      type: string;
+      ease: string;
+    };
+  };
+}
+
+export const ButtonMotion: Props = {
   rest: {
     backgroundColor: '#612069',
     transition: {

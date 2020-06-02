@@ -1,6 +1,7 @@
-import React from 'react';
+import * as React from 'react';
+import { SVG } from './interface';
 
-export const Organized = (props) => {
+export const Organized: React.FC<SVG> = (props) => {
   return (
     <svg {...props} viewBox='0 0 32 32'>
       <path
@@ -11,7 +12,7 @@ export const Organized = (props) => {
   );
 };
 
-export const Looped = (props) => {
+export const Looped: React.FC<SVG> = (props) => {
   return (
     <svg {...props} viewBox='0 0 32 32'>
       <path
@@ -46,7 +47,7 @@ export const Looped = (props) => {
   );
 };
 
-export const Focus = (props) => {
+export const Focus: React.FC<SVG> = (props) => {
   return (
     <svg {...props} viewBox='0 0 32 32'>
       <path

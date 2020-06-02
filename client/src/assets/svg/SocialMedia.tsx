@@ -1,7 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
+import { SVG } from './interface';
 
-export const TwitterLogo = (props) => {
+export const TwitterLogo: React.FC<SVG> = (props) => {
   return (
     <Wrapper className='twitter' {...props} viewBox='0 0 512 512'>
       <g>
@@ -23,7 +24,7 @@ export const TwitterLogo = (props) => {
   );
 };
 
-export const YoutubeLogo = (props) => {
+export const YoutubeLogo: React.FC<SVG> = (props) => {
   return (
     <Wrapper className='youtube' {...props} viewBox='-21 -117 682.66672 682'>
       <path

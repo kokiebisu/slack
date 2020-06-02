@@ -8,7 +8,7 @@ import { Register } from './Register';
 import { Login } from './Login';
 import CreateTeam from './CreateTeam';
 import GetStarted from './GetStarted';
-import FindTeam from './FindTeam';
+import { FindTeam } from './FindTeam';
 import SignIn from './SignIn';
 
 // Util
@@ -41,6 +41,7 @@ export const Routes: React.FC<{}> = () => {
         <Route exact path='/get-started/create' component={CreateTeam} />
         <Route exact path='/get-started/find' component={Login} />
         <Route exact path='/get-started' component={GetStarted} />
+        <Route exact path='/find-team' component={FindTeam} />
         <Route path='/' component={Landing} />
       </Switch>
     </BrowserRouter>

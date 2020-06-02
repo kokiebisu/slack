@@ -1,17 +1,18 @@
-import React from 'react';
+import * as React from 'react';
+import { SVG } from './interface';
 
-export const Magnify = (props) => {
+export const Magnify: React.FC<SVG> = (props) => {
   return (
     <svg viewBox='0 0 512 512' {...props}>
       <g>
         <g>
           <g>
             <path
+              fill={props.color}
               d='M225.474,0C101.151,0,0,101.151,0,225.474c0,124.33,101.151,225.474,225.474,225.474    c124.33,0,225.474-101.144,225.474-225.474C450.948,101.151,349.804,0,225.474,0z M225.474,409.323    c-101.373,0-183.848-82.475-183.848-183.848S124.101,41.626,225.474,41.626s183.848,82.475,183.848,183.848    S326.847,409.323,225.474,409.323z'
               data-original='#000000'
               className='active-path'
               data-old_color='#000000'
-              fill={props.color}
             />
           </g>
         </g>
