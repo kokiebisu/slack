@@ -5,7 +5,7 @@ import { Clipboard } from '../../../assets/svg/DraftPage';
 
 import * as b from '../../../styles/blocks';
 
-export const DraftPage = () => {
+export const DraftPage = ({ group }) => {
   return (
     <Wrapper>
       <TopWrapper>

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 // Blocks
@@ -16,7 +17,9 @@ import {
 // Breakpoints
 import { landing } from '../../styles/sizes';
 
-export const Banner = () => {
+interface Props {}
+
+export const Banner: React.FC<Props> = () => {
   const [hovered, setHovered] = useState({
     started: false,
   });

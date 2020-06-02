@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 // Global Styles
@@ -19,7 +20,9 @@ import { Link } from './Landing.styles';
 // Util
 import { isAuthenticated } from '../../util/isAuthenticated';
 
-export const Header = () => {
+interface Props {}
+
+export const Header: React.FC<Props> = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [hovered, setHovered] = useState({
     why: false,
@@ -172,7 +175,7 @@ export const Header = () => {
                     <b.Flex alignItems='center'>
                       <b.Text>Launch Slack</b.Text>
                       <b.Box ml={2}>
-                        <BottomArrow height={10} width={10} fill='#ffffff' />
+                        <BottomArrow height={10} width={10} color='#ffffff' />
                       </b.Box>
                     </b.Flex>
                   </LaunchButton>
@@ -211,7 +214,6 @@ export const Header = () => {
                     onMouseLeave={() => {
                       setHovered({ ...hovered, launch: false });
                     }}
-                    href='/client'
                     pb={2}
                     px={2}
                     style={{ borderBottom: '0.5px solid #E2E1E2' }}>

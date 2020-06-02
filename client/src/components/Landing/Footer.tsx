@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 
 // Components
@@ -20,7 +20,9 @@ import {
 
 import * as b from '../../styles/blocks';
 
-export const Footer = () => {
+interface Props {}
+
+export const Footer: React.FC<Props> = () => {
   return (
     <Wrapper>
       <ContentWrapper>
@@ -195,23 +197,23 @@ export const Footer = () => {
                     Change Region
                   </Link>
                   <ArrowWrapper ml={1}>
-                    <BottomArrow width={15} height={10} fill='#000000' />
+                    <BottomArrow width={15} height={10} color='#000000' />
                   </ArrowWrapper>
                 </b.Flex>
               </RegionContainer>
             </OptionsWrapper>
             <SocialMediaWrapper>
               <b.Box mx={2}>
-                <Twitter width={20} height={20} fill='#454545' />
+                <Twitter width={20} height={20} color='#454545' />
               </b.Box>
               <b.Box mx={2}>
-                <Facebook width={20} height={20} fill='#454545' />
+                <Facebook width={20} height={20} color='#454545' />
               </b.Box>
               <b.Box mx={2}>
-                <Youtube width={20} height={20} fill='#454545' />
+                <Youtube width={20} height={20} color='#454545' />
               </b.Box>
               <b.Box mx={2}>
-                <Linkedin width={20} height={20} fill='#454545' />
+                <Linkedin width={20} height={20} color='#454545' />
               </b.Box>
             </SocialMediaWrapper>
           </FooterContentWrapper>

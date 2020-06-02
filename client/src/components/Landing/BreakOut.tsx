@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 
 // Blocks
@@ -29,7 +29,36 @@ const cards = [
   },
 ];
 
-export const BreakOut = () => {
+interface Props {}
+
+interface ColumnCardProps {
+  title: string;
+  subtitle: string;
+  mr: number;
+  children: React.ReactChild;
+}
+
+const ColumnCard = ({ title, subtitle, mr, children }: ColumnCardProps) => {
+  return (
+    <ColumnWrapper>
+      <CardWrapper>
+        <b.Box>{children}</b.Box>
+        <b.Box my={3}>
+          <b.Text fontFamily='CircularPro-Bold' color='#1D1C1D' fontSize={18}>
+            {title}
+          </b.Text>
+        </b.Box>
+        <b.Box>
+          <b.Text fontSize={18} lineHeight={1.6}>
+            {subtitle}
+          </b.Text>
+        </b.Box>
+      </CardWrapper>
+    </ColumnWrapper>
+  );
+};
+
+export const BreakOut: React.FC<Props> = () => {
   return (
     <Wrapper>
       <b.Container>
@@ -92,26 +121,6 @@ export const BreakOut = () => {
         </b.Box>
       </b.Container>
     </Wrapper>
-  );
-};
-
-const ColumnCard = ({ title, subtitle, mr, children }) => {
-  return (
-    <ColumnWrapper>
-      <CardWrapper>
-        <b.Box>{children}</b.Box>
-        <b.Box my={3}>
-          <b.Text fontFamily='CircularPro-Bold' color='#1D1C1D' fontSize={18}>
-            {title}
-          </b.Text>
-        </b.Box>
-        <b.Box>
-          <b.Text fontSize={18} lineHeight={1.6}>
-            {subtitle}
-          </b.Text>
-        </b.Box>
-      </CardWrapper>
-    </ColumnWrapper>
   );
 };
 

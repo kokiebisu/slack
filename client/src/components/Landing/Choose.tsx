@@ -1,11 +1,13 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 import * as b from '../../styles/blocks';
 
 // Sizes
 import { landing } from '../../styles/sizes';
 
-export const Choose = () => {
+interface Props {}
+
+export const Choose: React.FC<Props> = () => {
   return (
     <Wrapper>
       <b.Container>

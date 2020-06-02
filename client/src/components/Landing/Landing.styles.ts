@@ -24,12 +24,6 @@ export const Link = styled(b.Anchor)`
     cursor: pointer !important;
   }
 
-  ${({ fontSize }) =>
-    fontSize &&
-    css`
-      font-size: ${fontSize}px;
-    `}
-
   ${({ fontFamily }) =>
     fontFamily &&
     css`
