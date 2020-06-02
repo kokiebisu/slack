@@ -105,7 +105,7 @@ export const CreateTeamLayout: React.FC<Props> = ({
         <Right pl={5}>
           <b.Flex alignItems='center'>
             <RightWrapper>
-              <b.Box opacity={opacity}>
+              <b.Box animate={{ opacity: opacity }} initial={{ opacity: 0 }}>
                 <LeftMock>
                   <b.Box>
                     <TeamWrapper px={2}>
