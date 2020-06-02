@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import * as b from '../styles/blocks';
@@ -16,6 +17,15 @@ import { CreateTeamLayout } from '../components/shared/CreateTeam/layout';
 interface Props {}
 
 export const CreateTeam: React.FC<RouteComponentProps> = ({ location }) => {
+  const [data, setData] = useState({
+    team: '',
+    channel: '',
+  });
+
+  const addData = (input, name) => {
+    setData({ ...data, [name]: input });
+  };
+
   return (
     <BrowserRouter>
       <Wrapper>
@@ -35,6 +45,15 @@ export const CreateTeam: React.FC<RouteComponentProps> = ({ location }) => {
             <CreateTeamLayout
               title="What's the name of your company or team?"
               requirePolicy
+              opacity={0.15}
+              name='team'
+              sendInput={addData}
+            />
+          </Route>
+          <Route path='/create/channelname'>
+            <CreateTeamLayout
+              title="What's a project your team is working on?"
+              opacity={0.3}
             />
           </Route>
         </Switch>

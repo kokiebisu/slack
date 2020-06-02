@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import * as b from '../../../styles/blocks';
@@ -14,14 +15,25 @@ import { size } from '../../../styles/sizes';
 interface Props {
   title: string;
   requirePolicy?: boolean;
+  opacity: number;
+  name: string;
+  sendInput: (input: string, name: string) => void;
 }
 
 const MockHashTag = () => {
   return <HashTag width={8} height={8} color='#caadcd' />;
 };
 
-export const CreateTeamLayout: React.FC<Props> = ({ title, requirePolicy }) => {
+export const CreateTeamLayout: React.FC<Props> = ({
+  title,
+  requirePolicy,
+  opacity,
+  name,
+  sendInput,
+}) => {
+  const [input, setInput] = useState('');
   const history = useHistory();
+
   return (
     <Wrapper>
       <b.Flex>
@@ -36,14 +48,25 @@ export const CreateTeamLayout: React.FC<Props> = ({ title, requirePolicy }) => {
                   {title}
                 </b.Text>
               </b.Box>
-              <b.Box mt={4} mb={3} width={1}>
-                <Input placeholder='Ex. Acme or Acme Marketing' />
-              </b.Box>
-              <b.Box width={1}>
-                <NextButton>
-                  <b.Text>Next</b.Text>
-                </NextButton>
-              </b.Box>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  sendInput(input, name);
+                }}>
+                <b.Box mt={4} mb={3} width={1}>
+                  <Input
+                    onChange={(e) => {
+                      setInput(e.target.value);
+                    }}
+                    placeholder='Ex. Acme or Acme Marketing'
+                  />
+                </b.Box>
+                <b.Box width={1}>
+                  <NextButton name={name} type='submit'>
+                    <b.Text>Next</b.Text>
+                  </NextButton>
+                </b.Box>
+              </form>
               {requirePolicy ? (
                 <Policy my={4}>
                   <b.Text fontSize={12} fontFamily='SlackLato-Light'>
@@ -59,7 +82,7 @@ export const CreateTeamLayout: React.FC<Props> = ({ title, requirePolicy }) => {
         <Right pl={5}>
           <b.Flex alignItems='center'>
             <RightWrapper>
-              <b.Box>
+              <b.Box opacity={opacity}>
                 <LeftMock>
                   <b.Box>
                     <b.Box>
@@ -187,7 +210,7 @@ const RightWrapper = styled(b.Box)`
     height: 100%;
     display: grid;
     grid-template-columns: 125px auto;
-    opacity: 0.15;
+    opacity: ${({ opacity }) => `${opacity}`};
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
   }
