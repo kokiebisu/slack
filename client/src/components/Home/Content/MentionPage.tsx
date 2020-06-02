@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import * as React from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 
 import * as b from '../../../styles/blocks';
@@ -9,7 +10,11 @@ import { Activity } from './Activity';
 
 import { Settings, Transition } from '../../../assets/svg/MentionPage';
 
-export const MentionPage = ({ group }) => {
+interface Props {
+  group: string;
+}
+
+export const MentionPage: React.FC<Props> = ({ group }) => {
   useEffect(() => {
     document.title = `Mentions & reactions | ${group}`;
   }, []);

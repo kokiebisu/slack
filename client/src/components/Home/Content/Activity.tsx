@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import Thumbsup from '../../../assets/img/thumbsup.png';
@@ -9,7 +10,9 @@ import * as b from '../../../styles/blocks';
 
 import { ToolBox } from './ToolBox';
 
-export const Activity = () => {
+interface Props {}
+
+export const Activity: React.FC<Props> = () => {
   const [hovered, setHovered] = useState(false);
 
   return (

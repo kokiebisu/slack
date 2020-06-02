@@ -1,11 +1,15 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 
 import { Clipboard } from '../../../assets/svg/DraftPage';
 
 import * as b from '../../../styles/blocks';
 
-export const DraftPage = ({ group }) => {
+interface Props {
+  group: string;
+}
+
+export const DraftPage: React.FC<Props> = ({ group }) => {
   return (
     <Wrapper>
       <TopWrapper>
@@ -48,7 +52,6 @@ export const DraftPage = ({ group }) => {
             <b.Text
               fontSize={15}
               fontFamily='SlackLato-Regular'
-              border='1px solid '
               color='#1D1C1D'>
               New Message
             </b.Text>

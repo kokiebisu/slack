@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 
 import * as b from '../../../styles/blocks';
@@ -6,7 +6,9 @@ import * as b from '../../../styles/blocks';
 import { SmilePlus } from '../../../assets/svg/Reaction';
 import { Move, StartThread, Bookmark, More } from '../../../assets/svg/Tools';
 
-export const ToolBox = () => {
+interface Props {}
+
+export const ToolBox: React.FC<Props> = () => {
   return (
     <Wrapper py={1} px={2}>
       <b.Flex alignItems='center'>

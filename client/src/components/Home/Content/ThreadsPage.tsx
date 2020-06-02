@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 
 import * as b from '../../../styles/blocks';
@@ -7,7 +7,11 @@ import * as b from '../../../styles/blocks';
 import Leaf from '../../../assets/img/leaf.png';
 import { useTabTitle } from '../../../hooks/useTabTitle';
 
-export const ThreadsPage = ({ group }) => {
+interface Props {
+  group: string;
+}
+
+export const ThreadsPage: React.FC<Props> = ({ group }) => {
   useTabTitle('Threads', group);
 
   return (

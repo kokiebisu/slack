@@ -6,7 +6,11 @@ import { Transition } from '../../../assets/svg/MentionPage';
 
 import * as b from '../../../styles/blocks';
 
-export const SavedPage = (props) => {
+interface Props {
+  group: string;
+}
+
+export const SavedPage: React.FC<Props> = ({ group }) => {
   return (
     <Wrapper>
       <TopWrapper>
