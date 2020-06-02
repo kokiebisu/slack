@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import * as b from '../../../styles/blocks';
@@ -23,7 +24,9 @@ const GET_ALL_TEAMS = gql`
   }
 `;
 
-export const SidebarSections = () => {
+interface Props {}
+
+export const SidebarSections: React.FC<Props> = () => {
   const { loading, error, data } = useQuery(GET_ALL_TEAMS);
 
   const [revealed, setRevealed] = useState({

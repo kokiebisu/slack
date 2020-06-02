@@ -1,11 +1,13 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 
 import { Heart } from '../../../assets/svg/SidebarSections';
 
 import * as b from '../../../styles/blocks';
 
-export const Messages = () => {
+interface Props {}
+
+export const Messages: React.FC<Props> = () => {
   return (
     <b.Box pl={2}>
       <b.Box py={2}>

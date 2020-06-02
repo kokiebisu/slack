@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import * as React from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 import { useHistory } from 'react-router-dom';
@@ -16,7 +17,9 @@ import {
 } from '../../../assets/svg/SidebarOptions';
 import { Hashtag } from '../../../assets/svg/SidebarSections';
 
-export const Option = ({ name, link }) => {
+interface Props {}
+
+export const Option: React.FC<Props> = ({ name, link }) => {
   const [clicked, setClicked] = useState(false);
 
   const displayingName = name.charAt(0).toUpperCase() + name.slice(1);

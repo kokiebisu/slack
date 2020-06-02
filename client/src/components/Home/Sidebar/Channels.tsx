@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 
 import _ from 'lodash';
@@ -11,7 +11,9 @@ import * as b from '../../../styles/blocks';
 // Icons
 import { Lock, ChannelHashtag } from '../../../assets/svg/SidebarSections';
 
-export const Channels = ({ channels }) => {
+interface Props {}
+
+export const Channels: React.FC<Props> = ({ channels }) => {
   const tempChannels = [
     {
       id: 1,
