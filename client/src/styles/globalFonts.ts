@@ -54,6 +54,4 @@ export const GlobalFonts = createGlobalStyle`
         font-family: 'SlackIcons';
         src: url(${SlackIcons});
     }
-
-
 `;
