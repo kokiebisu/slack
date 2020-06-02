@@ -32,7 +32,7 @@ import {
 } from '../constants/redisPrefixes';
 
 // Types
-import { Context } from '../types/context';
+import { Context } from '../interface/context';
 import { createAccessToken, createRefreshToken } from '../util/tokenGenerator';
 
 import { sendRefreshToken } from '../util/sendRefreshToken';

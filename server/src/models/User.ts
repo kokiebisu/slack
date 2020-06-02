@@ -7,6 +7,7 @@ import {
   JoinTable,
 } from 'typeorm';
 import { ObjectType, Field, Int } from 'type-graphql';
+import { Team } from './Team';
 
 @ObjectType()
 @Entity('users')
@@ -31,4 +32,7 @@ export class User extends BaseEntity {
 
   @Column('int', { default: 0 })
   tokenVersion: number;
+
+  @OneToMany(() => Team, (team) => team.ownerId)
+  teams: Team[];
 }

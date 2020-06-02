@@ -12,7 +12,7 @@ import { createConnection } from 'typeorm';
 // import { redis } from './redis';
 import cors from 'cors';
 // import connectRedis from 'connect-redis';
-import { Context } from './types/context';
+import { Context } from './interface/context';
 import cookieParser from 'cookie-parser';
 
 import { verify } from 'jsonwebtoken';
