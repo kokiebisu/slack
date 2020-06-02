@@ -13,6 +13,8 @@ import * as b from '../../styles/blocks';
 // Sizes
 import { home } from '../../styles/sizes';
 
+interface Props {}
+
 export const HomeHeader: React.FC<Props> = () => {
   return (
     <b.Box height={37} background='#350D36'>

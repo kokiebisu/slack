@@ -16,30 +16,14 @@ import { useQuery } from '@apollo/react-hooks';
 import _ from 'lodash';
 import decode from 'jwt-decode';
 
-const GET_ALL_TEAMS = gql`
-  query {
-    allTeams {
-      id
-    }
-  }
-`;
-
 interface Props {}
 
 export const SidebarSections: React.FC<Props> = () => {
-  const { loading, error, data } = useQuery(GET_ALL_TEAMS);
-
   const [revealed, setRevealed] = useState({
     channels: false,
     messages: false,
+    apps: false,
   });
-
-  if (loading) return null;
-  if (error) return `Error! ${error}`;
-
-  if (data) {
-    console.log(data);
-  }
 
   return (
     <Wrapper>
@@ -49,7 +33,7 @@ export const SidebarSections: React.FC<Props> = () => {
         onReveal={() =>
           setRevealed({ ...revealed, channels: !revealed.channels })
         }>
-        {revealed.channels ? <Channels /> : null}
+        <>{revealed.channels ? <Channels /> : null}</>
       </SidebarSection>
       <SidebarSection
         title='Direct mesages'
@@ -59,7 +43,11 @@ export const SidebarSections: React.FC<Props> = () => {
         }>
         {revealed.messages ? <Messages /> : null}
       </SidebarSection>
-      <SidebarSection title='Apps'></SidebarSection>
+      <SidebarSection
+        title='Apps'
+        onReveal={() =>
+          setRevealed({ ...revealed, apps: !revealed.apps })
+        }></SidebarSection>
     </Wrapper>
   );
 };

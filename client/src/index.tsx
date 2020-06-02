@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as serviceWorker from './serviceWorker';
 
 import { Loading } from './Loading';
 import { GlobalFonts } from './styles/globalFonts';
@@ -115,5 +114,3 @@ ReactDOM.render(
   </ApolloProvider>,
   document.getElementById('root')
 );
-
-serviceWorker.unregister();

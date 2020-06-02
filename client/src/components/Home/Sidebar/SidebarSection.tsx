@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, ReactPortal } from 'react';
 import styled from 'styled-components';
 import * as b from '../../../styles/blocks';
 
@@ -9,8 +9,7 @@ import { home } from '../../../styles/sizes';
 interface Props {
   title: string;
   subtitle?: string;
-  children: Element | null;
-  onReveal?: () => void;
+  onReveal: () => void;
 }
 
 export const SidebarSection: React.FC<Props> = ({

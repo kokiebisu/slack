@@ -17,7 +17,10 @@ import {
 } from '../../../assets/svg/SidebarOptions';
 import { Hashtag } from '../../../assets/svg/SidebarSections';
 
-interface Props {}
+interface Props {
+  name: string;
+  link: string;
+}
 
 export const Option: React.FC<Props> = ({ name, link }) => {
   const [clicked, setClicked] = useState(false);
@@ -25,12 +28,12 @@ export const Option: React.FC<Props> = ({ name, link }) => {
   const displayingName = name.charAt(0).toUpperCase() + name.slice(1);
   const history = useHistory();
 
-  function useOutsideAlerter(ref) {
+  function useOutsideAlerter(ref: any) {
     useEffect(() => {
       /**
        * Alert if clicked on outside of element
        */
-      function handleClick(event) {
+      function handleClick(event: Event) {
         if (ref.current && !ref.current.contains(event.target)) {
           setClicked(false);
           return;
@@ -45,7 +48,7 @@ export const Option: React.FC<Props> = ({ name, link }) => {
     }, [ref]);
   }
 
-  const wrapperRef = useRef(null);
+  const wrapperRef = useRef<HTMLButtonElement>(null);
   useOutsideAlerter(wrapperRef);
 
   return (
@@ -70,7 +73,7 @@ export const Option: React.FC<Props> = ({ name, link }) => {
   );
 };
 
-const renderOption = (option, clicked) => {
+const renderOption = (option: string, clicked: boolean) => {
   switch (option) {
     case 'threads':
       return (

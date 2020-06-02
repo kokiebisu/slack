@@ -13,7 +13,7 @@ import { Lock, ChannelHashtag } from '../../../assets/svg/SidebarSections';
 
 interface Props {}
 
-export const Channels: React.FC<Props> = ({ channels }) => {
+export const Channels: React.FC<Props> = () => {
   const tempChannels = [
     {
       id: 1,
@@ -42,7 +42,12 @@ export const Channels: React.FC<Props> = ({ channels }) => {
   );
 };
 
-const Channel = ({ channelName, isPrivate }) => {
+interface ChannelProps {
+  channelName: string;
+  isPrivate: boolean;
+}
+
+const Channel: React.FC<ChannelProps> = ({ channelName, isPrivate }) => {
   return (
     <b.Box py={2}>
       <b.Flex alignItems='center'>
