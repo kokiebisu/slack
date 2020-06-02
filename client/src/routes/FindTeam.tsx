@@ -1,13 +1,16 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { useState } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps, useHistory } from 'react-router-dom';
 
 import * as b from '../styles/blocks';
 
 import { LogoCenterLayout } from '../components/shared/LogoCenter/layout';
 
-export const FindTeam: React.FC<RouteComponentProps> = ({ history }) => {
+interface Props {}
+
+export const FindTeam: React.FC<Props> = () => {
+  const history = useHistory();
   return (
     <LogoCenterLayout>
       <b.Box py={4}>

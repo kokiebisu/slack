@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import * as b from '../styles/blocks';
 
-import { RouteComponentProps } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import {
   useLoginMutation,
   MeDocument,
@@ -12,7 +12,10 @@ import {
 } from '../generated/graphql';
 import { setAccessToken } from '../global/token';
 
-export const Login: React.FC<RouteComponentProps> = ({ history }) => {
+interface Props {}
+
+export const Login: React.FC<Props> = () => {
+  const history = useHistory();
   const [login] = useLoginMutation();
 
   const { data, loading } = useMeQuery();

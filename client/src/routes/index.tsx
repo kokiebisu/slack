@@ -12,7 +12,9 @@ import { GetStarted } from './GetStarted';
 import { FindTeam } from './FindTeam';
 import { SignIn } from './SignIn';
 
-export const Routes: React.FC<{}> = () => {
+interface Props {}
+
+export const Routes: React.FC<Props> = () => {
   return (
     <BrowserRouter>
       <Switch>

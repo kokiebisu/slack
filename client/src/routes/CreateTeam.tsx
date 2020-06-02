@@ -15,7 +15,7 @@ import { CreateTeamLayout } from '../components/shared/CreateTeam/layout';
 
 interface Props {}
 
-export const CreateTeam: React.FC<RouteComponentProps> = () => {
+export const CreateTeam: React.FC<RouteComponentProps> = ({ location }) => {
   return (
     <BrowserRouter>
       <Wrapper>
@@ -32,7 +32,10 @@ export const CreateTeam: React.FC<RouteComponentProps> = () => {
         </HeaderWrapper>
         <Switch>
           <Route path='/create/teamname'>
-            <CreateTeamLayout />
+            <CreateTeamLayout
+              title="What's the name of your company or team?"
+              requirePolicy
+            />
           </Route>
         </Switch>
       </Wrapper>

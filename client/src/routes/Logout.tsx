@@ -1,10 +1,14 @@
 import React from 'react';
 
-import { RouteComponentProps } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useLogoutMutation } from '../generated/graphql';
 import { setAccessToken } from '../global/token';
 
-export const Logout: React.FC<RouteComponentProps> = ({ history }) => {
+interface Props {}
+
+export const Logout: React.FC<Props> = () => {
+  const history = useHistory();
+
   const [logout, { client }] = useLogoutMutation();
   return (
     <>

@@ -23,9 +23,5 @@ export const Loading = () => {
     fetchToken();
   }, []);
 
-  if (loading) {
-    return <div>loading...</div>;
-  }
-
   return <Routes />;
 };
