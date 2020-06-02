@@ -8,7 +8,7 @@ import { HeaderLogo } from '../../../assets/svg/Logo';
 
 interface Props {}
 
-export const LogoCenterHeader: React.FC<Props> = ({ children }) => {
+export const LogoCenterLayout: React.FC<Props> = ({ children }) => {
   return (
     <Wrapper>
       <Container>

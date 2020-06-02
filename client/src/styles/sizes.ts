@@ -19,6 +19,11 @@ const signin_size = {
   md: '831px',
 };
 
+// Get Started
+const getstarted_size = {
+  xs: '768px',
+};
+
 export const landing = {
   sm: `(min-width: ${landing_size['sm']})`,
   md: `(min-width: ${landing_size['md']})`,
@@ -35,4 +40,8 @@ export const home = {
 export const signin = {
   sm: `(min-width: ${signin_size['sm']})`,
   md: `(min-width: ${signin_size['md']})`,
+};
+
+export const getstarted = {
+  xs: `(min-width: ${getstarted_size['xs']})`,
 };

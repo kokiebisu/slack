@@ -4,15 +4,13 @@ import { useState } from 'react';
 
 import * as b from '../styles/blocks';
 
-import { LogoCenterHeader } from '../components/shared/LogoCenter/layout';
+import { LogoCenterLayout } from '../components/shared/LogoCenter/layout';
 
 interface Props {}
 
 export const CreateTeam: React.FC<Props> = () => {
-  const [team, setTeam] = useState('');
-
   return (
-    <LogoCenterHeader>
+    <LogoCenterLayout>
       <b.Box py={4}>
         <b.Flex flexDirection='column' alignItems='center'>
           <Wrapper>
@@ -75,7 +73,7 @@ export const CreateTeam: React.FC<Props> = () => {
           </Wrapper>
         </b.Flex>
       </b.Box>
-    </LogoCenterHeader>
+    </LogoCenterLayout>
   );
 };
 
