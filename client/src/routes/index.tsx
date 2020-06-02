@@ -8,38 +8,19 @@ import { Register } from './Register';
 import { Login } from './Login';
 import CreateTeam from './CreateTeam';
 import GetStarted from './GetStarted';
-import FindTeam from './FindTeam';
+import { FindTeam } from './FindTeam';
 import SignIn from './SignIn';
-
-// Util
-// import { isAuthenticated } from '../util/useAuthenticated';
-import { Bye } from './Bye';
-
-// const PrivateRoute = ({ Component, ...rest }) => (
-//   <Route
-//     {...rest}
-//     render={(props) =>
-//       isAuthenticated() ? (
-//         <Component {...props} />
-//       ) : (
-//         <Redirect
-//           to={{ pathname: '/login', state: { from: props.location } }}
-//         />
-//       )
-//     }
-//   />
-// );
 
 export const Routes: React.FC<{}> = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path='/bye' component={Bye} />
         <Route path='/client' component={Home} />
         <Route path='/register' component={Register} />
         <Route path='/signin' component={SignIn} />
         <Route exact path='/get-started/create' component={CreateTeam} />
         <Route exact path='/get-started/find' component={Login} />
+        <Route exact path='/get-started/logout' component={FindTeam} />
         <Route exact path='/get-started' component={GetStarted} />
         <Route path='/' component={Landing} />
       </Switch>

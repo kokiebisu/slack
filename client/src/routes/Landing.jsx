@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useAuthenticated } from '../hooks/useCheckLoggedIn';
 
 // Components
 import { Header } from '../components/Landing/Header';
@@ -10,17 +9,18 @@ import { Footer } from '../components/Landing/Footer';
 
 import { useHelloQuery } from '../generated/graphql.tsx';
 import { getAccessToken } from '../global/token';
+import { useMeQuery } from '../generated/graphql';
 
 export default () => {
   useEffect(() => {
     document.title = 'Where work happens | Slack';
   }, []);
 
-  // const [authenticated, setAuthenticated] = useState(useAuthenticated());
+  const { data, loading } = useMeQuery();
 
   return (
     <>
-      <Header />
+      <Header data={data} />
       <Banner />
       <BreakOut />
       <Choose />

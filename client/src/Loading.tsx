@@ -15,6 +15,7 @@ export const Loading = () => {
         credentials: 'include',
       });
       const { accessToken } = await response.json();
+      console.log(accessToken);
       setAccessToken(accessToken);
       setLoading(false);
     };

@@ -19,10 +19,8 @@ import { Link } from './Landing.styles';
 // Util
 // import { useAuthenticated } from '../../hooks/useAuthenticated';
 import { useMeQuery } from '../../generated/graphql';
-import { useCheckLoggedIn } from '../../hooks/useCheckLoggedIn';
 
-export const Header = () => {
-  const authenticated = useCheckLoggedIn();
+export const Header = ({ data }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [hovered, setHovered] = useState({
     why: false,
@@ -165,7 +163,7 @@ export const Header = () => {
                   <Link>Pricing</Link>
                 </NavItem>
               </Nav>
-              {authenticated ? (
+              {data && data.me ? (
                 <LaunchButtonWrapper
                   initial='rest'
                   whileHover='hovered'
