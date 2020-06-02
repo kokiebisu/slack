@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import * as b from '../../styles/blocks';
@@ -11,7 +12,9 @@ import { signin } from '../../styles/sizes';
 
 import { Plus, Minus } from '../../assets/svg/Shared';
 
-export const SignInFooter = () => {
+interface Props {}
+
+export const SignInFooter: React.FC<Props> = () => {
   const sections = {
     'Using Slack': [
       { name: 'Product', url: '/' },
@@ -80,11 +83,13 @@ export const SignInFooter = () => {
                   <LargeList>
                     {sections['Using Slack'].map((section, index) => {
                       return (
-                        <Item href={section.url} key={index}>
-                          <b.Anchor>
-                            <b.Box py={1}>{section.name}</b.Box>
-                          </b.Anchor>
-                        </Item>
+                        <React.Fragment key={index}>
+                          <Item>
+                            <b.Anchor href={section.url}>
+                              <b.Box py={1}>{section.name}</b.Box>
+                            </b.Anchor>
+                          </Item>
+                        </React.Fragment>
                       );
                     })}
                   </LargeList>
@@ -92,11 +97,13 @@ export const SignInFooter = () => {
                     <SmallList>
                       {sections['Using Slack'].map((section, index) => {
                         return (
-                          <Item href={section.url} key={index}>
-                            <b.Anchor>
-                              <b.Box py={1}>{section.name}</b.Box>
-                            </b.Anchor>
-                          </Item>
+                          <React.Fragment key={index}>
+                            <Item>
+                              <b.Anchor href={section.url}>
+                                <b.Box py={1}>{section.name}</b.Box>
+                              </b.Anchor>
+                            </Item>
+                          </React.Fragment>
                         );
                       })}
                     </SmallList>
@@ -110,13 +117,19 @@ export const SignInFooter = () => {
                     })
                   }>
                   <SectionNameWrapper>
-                    <SectionWrapper alignItems='center'>
-                      <SectionName color='#e32072'>Slack</SectionName>
-                      <HeartIconWrapper>
-                        <b.Box ml={1}>
-                          <SignInHeart width={10} height={10} color='#e32072' />
-                        </b.Box>
-                      </HeartIconWrapper>
+                    <SectionWrapper>
+                      <b.Flex alignItems='center'>
+                        <SectionName color='#e32072'>Slack</SectionName>
+                        <HeartIconWrapper>
+                          <b.Box ml={1}>
+                            <SignInHeart
+                              width={10}
+                              height={10}
+                              color='#e32072'
+                            />
+                          </b.Box>
+                        </HeartIconWrapper>
+                      </b.Flex>
                     </SectionWrapper>
                     {revealed.slack ? (
                       <RevealButton>
@@ -131,11 +144,13 @@ export const SignInFooter = () => {
                   <LargeList>
                     {sections['Slack'].map((section, index) => {
                       return (
-                        <Item href={section.url} key={index}>
-                          <b.Anchor>
-                            <b.Box py={1}>{section.name}</b.Box>
-                          </b.Anchor>
-                        </Item>
+                        <React.Fragment key={index}>
+                          <Item>
+                            <b.Anchor href={section.url}>
+                              <b.Box py={1}>{section.name}</b.Box>
+                            </b.Anchor>
+                          </Item>
+                        </React.Fragment>
                       );
                     })}
                   </LargeList>
@@ -144,11 +159,13 @@ export const SignInFooter = () => {
                     <SmallList>
                       {sections['Slack'].map((section, index) => {
                         return (
-                          <Item href={section.url} key={index}>
-                            <b.Anchor>
-                              <b.Box py={1}>{section.name}</b.Box>
-                            </b.Anchor>
-                          </Item>
+                          <React.Fragment key={index}>
+                            <Item>
+                              <b.Anchor href={section.url}>
+                                <b.Box py={1}>{section.name}</b.Box>
+                              </b.Anchor>
+                            </Item>
+                          </React.Fragment>
                         );
                       })}
                     </SmallList>
@@ -176,11 +193,13 @@ export const SignInFooter = () => {
                   <LargeList>
                     {sections['Legal'].map((section, index) => {
                       return (
-                        <Item href={section.url} key={index}>
-                          <b.Anchor>
-                            <b.Box py={1}>{section.name}</b.Box>
-                          </b.Anchor>
-                        </Item>
+                        <React.Fragment key={index}>
+                          <Item>
+                            <b.Anchor href={section.url}>
+                              <b.Box py={1}>{section.name}</b.Box>
+                            </b.Anchor>
+                          </Item>
+                        </React.Fragment>
                       );
                     })}
                   </LargeList>
@@ -188,11 +207,13 @@ export const SignInFooter = () => {
                     <SmallList>
                       {sections['Legal'].map((section, index) => {
                         return (
-                          <Item href={section.url} key={index}>
-                            <b.Anchor>
-                              <b.Box py={1}>{section.name}</b.Box>
-                            </b.Anchor>
-                          </Item>
+                          <React.Fragment key={index}>
+                            <Item>
+                              <b.Anchor href={section.url}>
+                                <b.Box py={1}>{section.name}</b.Box>
+                              </b.Anchor>
+                            </Item>
+                          </React.Fragment>
                         );
                       })}
                     </SmallList>
@@ -220,11 +241,13 @@ export const SignInFooter = () => {
                   <LargeList>
                     {sections['Handy Links'].map((section, index) => {
                       return (
-                        <Item href={section.url} key={index}>
-                          <b.Anchor>
-                            <b.Box py={1}>{section.name}</b.Box>
-                          </b.Anchor>
-                        </Item>
+                        <React.Fragment key={index}>
+                          <Item>
+                            <b.Anchor href={section.url}>
+                              <b.Box py={1}>{section.name}</b.Box>
+                            </b.Anchor>
+                          </Item>
+                        </React.Fragment>
                       );
                     })}
                   </LargeList>
@@ -233,11 +256,13 @@ export const SignInFooter = () => {
                     <SmallList>
                       {sections['Handy Links'].map((section, index) => {
                         return (
-                          <Item href={section.url} key={index}>
-                            <b.Anchor>
-                              <b.Box py={1}>{section.name}</b.Box>
-                            </b.Anchor>
-                          </Item>
+                          <React.Fragment key={index}>
+                            <Item>
+                              <b.Anchor href={section.url}>
+                                <b.Box py={1}>{section.name}</b.Box>
+                              </b.Anchor>
+                            </Item>
+                          </React.Fragment>
                         );
                       })}
                     </SmallList>

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 
 import * as b from '../../styles/blocks';
@@ -6,7 +6,9 @@ import * as b from '../../styles/blocks';
 // Sizes
 import { signin } from '../../styles/sizes';
 
-export const SignInContent = () => {
+interface Props {}
+
+export const SignInContent: React.FC<Props> = () => {
   return (
     <ContentWrapper backgroundColor='#F8F8F8'>
       <b.Box py={5}>
@@ -26,7 +28,7 @@ export const SignInContent = () => {
                   <b.Box mt={2} mb={3}>
                     <b.Text
                       fontSize={16}
-                      FontFamily='SlackLato-Regular'
+                      fontFamily='SlackLato-Regular'
                       textAlign='center'>
                       Enter your workspace's Slack URL
                     </b.Text>
