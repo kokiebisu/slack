@@ -6,7 +6,7 @@ import * as b from '../../styles/blocks';
 import { HashTag } from '../../assets/svg/HashTag';
 
 export const MockHashTag = () => {
-  return <HashTag width={8} height={8} color='#caadcd' />;
+  return <HashTag width={8} height={8} color='#caadcd' bottom={1} />;
 };
 
 export const SkeletonLine = styled(b.Box)`

@@ -25,8 +25,10 @@ export const CreateTeam: React.FC<RouteComponentProps> = ({ location }) => {
     channel: '',
   });
 
-  const addData = (input: string, name: string) => {
-    setData({ ...data, [name]: input });
+  const addData = (input: string, name: string | undefined) => {
+    if (name) {
+      setData({ ...data, [name]: input });
+    }
   };
 
   console.log('team', data.team);
@@ -55,22 +57,8 @@ export const CreateTeam: React.FC<RouteComponentProps> = ({ location }) => {
               opacity={0.15}
               name='team'
               sendInput={addData}
-              nextLink='/create/channelname'>
-              <TeamWrapper>
-                <SkeletonLine width={90} />
-              </TeamWrapper>
-              <b.Box>
-                <SkeletonLine width={60} />
-              </b.Box>
-              <b.Box mt={2}>
-                <b.Flex alignItems='center'>
-                  <b.Box mr={1}>
-                    <MockHashTag />
-                  </b.Box>
-                  <SkeletonLine width={80} top={2} />
-                </b.Flex>
-              </b.Box>
-            </CreateTeamLayout>
+              nextLink='/create/channelname'
+            />
           </Route>
           <Route path='/create/channelname'>
             <CreateTeamLayout
@@ -78,25 +66,22 @@ export const CreateTeam: React.FC<RouteComponentProps> = ({ location }) => {
               inputPlaceholder='Ex. The very exciting project'
               opacity={0.8}
               name='channel'
+              team={data.team}
               sendInput={addData}
-              nextLink='/create/invites'>
-              <TeamWrapper>
-                <b.Text color='white' fontFamily='SlackLato-Black'>
-                  {data.team}
-                </b.Text>
-              </TeamWrapper>
-              <b.Box>
-                <SkeletonLine width={60} />
-              </b.Box>
-              <b.Box mt={2}>
-                <b.Flex alignItems='center'>
-                  <b.Box mr={1}>
-                    <MockHashTag />
-                  </b.Box>
-                  <SkeletonLine width={80} top={2} />
-                </b.Flex>
-              </b.Box>
-            </CreateTeamLayout>
+              nextLink='/create/tada'
+            />
+          </Route>
+          <Route path='/create/tada'>
+            <CreateTeamLayout
+              title={`Tada! Meet your team's first channel: #${data.channel}`}
+              description="You're leaving those unending email threads in the past. Channels give every project, topic, and team a dedicated space for all their messages and files"
+              opacity={1}
+              sendInput={addData}
+              team={data.team}
+              channel={data.channel}
+              buttonName='See your channel in Slack'
+              nextLink='/client'
+            />
           </Route>
         </Switch>
       </Wrapper>
@@ -121,8 +106,4 @@ const HeaderContainer = styled.div`
   height: 70px;
   border-bottom: 0.5px solid lightgray;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-`;
-
-const TeamWrapper = styled(b.Box)`
-  height: 35px;
 `;

@@ -5,31 +5,43 @@ import styled, { css } from 'styled-components';
 import * as b from '../../styles/blocks';
 import { HeaderLogo } from '../../assets/svg/Logo';
 
-import { BrowserRouter, Switch, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { MockHashTag, SkeletonLine } from './mockup';
+
+import teamphoto_1 from '../../assets/img/createteam_1.png';
+import teamphoto_2 from '../../assets/img/createteam_2.png';
+import teamphoto_3 from '../../assets/img/createteam_3.png';
 
 // Sizes
 import { size } from '../../styles/sizes';
 
 interface Props {
   title: string;
-  inputPlaceholder: string;
+  inputPlaceholder?: string;
   requirePolicy?: boolean;
   opacity: number;
-  name: string;
-  sendInput: (input: string, name: string) => void;
+  name?: string;
+  description?: string;
+  buttonName?: string;
+  sendInput: (input: string, name: string | undefined) => void;
   nextLink: string;
+  team?: string;
+  channel?: string;
 }
 
 export const CreateTeamLayout: React.FC<Props> = ({
   title,
   inputPlaceholder,
+  team,
+  channel,
   requirePolicy,
   opacity,
   name,
+  description,
   sendInput,
   nextLink,
+  buttonName,
   children,
 }) => {
   const [input, setInput] = useState('');
@@ -52,22 +64,29 @@ export const CreateTeamLayout: React.FC<Props> = ({
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
-                  sendInput(input, name);
+                  sendInput(input, name!);
                   setInput('');
                   history.push(nextLink);
                 }}>
-                <b.Box mt={4} mb={3} width={1}>
-                  <Input
-                    value={input}
-                    onChange={(e) => {
-                      setInput(e.target.value);
-                    }}
-                    placeholder={inputPlaceholder}
-                  />
-                </b.Box>
+                {inputPlaceholder && (
+                  <b.Box mt={4} mb={3} width={1}>
+                    <Input
+                      value={input}
+                      onChange={(e) => {
+                        setInput(e.target.value);
+                      }}
+                      placeholder={inputPlaceholder}
+                    />
+                  </b.Box>
+                )}
+                {description && (
+                  <b.Box mt={4} mb={3} width={1}>
+                    <b.Text lineHeight={1.7}>{description}</b.Text>
+                  </b.Box>
+                )}
                 <b.Box width={1}>
                   <NextButton name={name} type='submit'>
-                    <b.Text>Next</b.Text>
+                    <b.Text>{buttonName ? `${buttonName}` : `Next`}</b.Text>
                   </NextButton>
                 </b.Box>
               </form>
@@ -89,8 +108,46 @@ export const CreateTeamLayout: React.FC<Props> = ({
               <b.Box opacity={opacity}>
                 <LeftMock>
                   <b.Box>
+                    <TeamWrapper px={2}>
+                      {team ? (
+                        <b.Text color='white' fontFamily='SlackLato-Black'>
+                          {team}
+                        </b.Text>
+                      ) : (
+                        <SkeletonLine width={90} />
+                      )}
+                    </TeamWrapper>
+                    <ChannelWrapper px={2}>
+                      {channel ? (
+                        <b.Text
+                          color='#E8E8E8'
+                          fontFamily='SlackLato-Black'
+                          fontSize={15}>
+                          Channel
+                        </b.Text>
+                      ) : (
+                        <SkeletonLine width={60} />
+                      )}
+                    </ChannelWrapper>
+                    <b.Box backgroundColor={channel && `#2EA683`} mt={2} px={2}>
+                      <b.Flex alignItems='center'>
+                        <b.Box mr={1}>
+                          <MockHashTag />
+                        </b.Box>
+                        {channel ? (
+                          <b.Text
+                            color='#E8E8E8'
+                            fontFamily='SlackLato-Black'
+                            fontSize={13}>
+                            {channel}
+                          </b.Text>
+                        ) : (
+                          <SkeletonLine width={80} top={2} />
+                        )}
+                      </b.Flex>
+                    </b.Box>
                     {children}
-                    <b.Box>
+                    <b.Box px={2}>
                       <b.Flex alignItems='center'>
                         <b.Box mr={1}>
                           <MockHashTag />
@@ -98,7 +155,7 @@ export const CreateTeamLayout: React.FC<Props> = ({
                         <SkeletonLine width={80} top={2} />
                       </b.Flex>
                     </b.Box>
-                    <b.Box>
+                    <b.Box px={2}>
                       <b.Flex alignItems='center'>
                         <b.Box mr={1}>
                           <MockHashTag />
@@ -106,7 +163,7 @@ export const CreateTeamLayout: React.FC<Props> = ({
                         <SkeletonLine width={80} top={2} />
                       </b.Flex>
                     </b.Box>
-                    <b.Box mt={4}>
+                    <b.Box mt={4} px={2}>
                       <b.Box>
                         <b.Flex alignItems='center'>
                           <b.Box mr={1}>
@@ -116,7 +173,7 @@ export const CreateTeamLayout: React.FC<Props> = ({
                         </b.Flex>
                       </b.Box>
                     </b.Box>
-                    <BulletSection>
+                    <BulletSection px={2}>
                       <b.Box>
                         <b.Flex alignItems='center'>
                           <b.Box mr={1}>
@@ -126,7 +183,7 @@ export const CreateTeamLayout: React.FC<Props> = ({
                         </b.Flex>
                       </b.Box>
                     </BulletSection>
-                    <BulletSection>
+                    <BulletSection px={2}>
                       <b.Box>
                         <b.Flex alignItems='center'>
                           <b.Box mr={1}>
@@ -140,10 +197,36 @@ export const CreateTeamLayout: React.FC<Props> = ({
                 </LeftMock>
                 <RightMock>
                   <b.Box>
-                    <SkeletonLine width={70} color='#E8E8E8' />
-                    <b.Box mt={3}>
+                    <SectionTitle>
+                      {channel ? (
+                        <b.Text
+                          color='#121212'
+                          fontFamily='SlackLato-Black'
+                          fontSize={17}>
+                          {channel}
+                        </b.Text>
+                      ) : (
+                        <SkeletonLine width={70} color='#E8E8E8' />
+                      )}
+                    </SectionTitle>
+                    <b.Box>
                       <Line />
                     </b.Box>
+                    {channel && (
+                      <ContentWrapper>
+                        <Content mt={2}>
+                          <b.Box pt={3} pb={3}>
+                            <img src={teamphoto_1} />
+                          </b.Box>
+                          <b.Box py={3}>
+                            <img src={teamphoto_2} />
+                          </b.Box>
+                          <b.Box py={3}>
+                            <img src={teamphoto_3} />
+                          </b.Box>
+                        </Content>
+                      </ContentWrapper>
+                    )}
                   </b.Box>
                 </RightMock>
               </b.Box>
@@ -207,11 +290,21 @@ const RightWrapper = styled(b.Box)`
   }
 `;
 
+const TeamWrapper = styled(b.Box)`
+  height: 35px;
+`;
+
+const ChannelWrapper = styled(b.Box)`
+  display: flex;
+  align-items: center;
+  height: 20px;
+`;
+
 const LeftMock = styled(b.Box)`
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   background-color: #573a5a;
-  padding: 18px 15px;
+  padding: 18px 0;
 
   & > div {
     height: 100%;
@@ -273,3 +366,14 @@ const Policy = styled(b.Box)`
     color: #3a71a9;
   }
 `;
+
+const SectionTitle = styled(b.Box)`
+  height: 30px;
+`;
+
+const ContentWrapper = styled(b.Box)`
+  display: grid;
+  grid-template-rows: repeat(3, 30px);
+`;
+
+const Content = styled(b.Box)``;
