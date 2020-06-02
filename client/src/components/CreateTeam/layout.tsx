@@ -2,34 +2,35 @@ import * as React from 'react';
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
 
-import * as b from '../../../styles/blocks';
-import { HeaderLogo } from '../../../assets/svg/Logo';
+import * as b from '../../styles/blocks';
+import { HeaderLogo } from '../../assets/svg/Logo';
 
 import { BrowserRouter, Switch, useHistory } from 'react-router-dom';
 
-import { HashTag } from '../../../assets/svg/HashTag';
+import { MockHashTag, SkeletonLine } from './mockup';
 
 // Sizes
-import { size } from '../../../styles/sizes';
+import { size } from '../../styles/sizes';
 
 interface Props {
   title: string;
+  inputPlaceholder: string;
   requirePolicy?: boolean;
   opacity: number;
   name: string;
   sendInput: (input: string, name: string) => void;
+  nextLink: string;
 }
-
-const MockHashTag = () => {
-  return <HashTag width={8} height={8} color='#caadcd' />;
-};
 
 export const CreateTeamLayout: React.FC<Props> = ({
   title,
+  inputPlaceholder,
   requirePolicy,
   opacity,
   name,
   sendInput,
+  nextLink,
+  children,
 }) => {
   const [input, setInput] = useState('');
   const history = useHistory();
@@ -40,7 +41,7 @@ export const CreateTeamLayout: React.FC<Props> = ({
         <Left>
           <b.Flex>
             <LeftWrapper>
-              <b.Box mt={5}>
+              <b.Box>
                 <b.Text
                   fontFamily='SlackLato-Black'
                   fontSize={26}
@@ -52,13 +53,16 @@ export const CreateTeamLayout: React.FC<Props> = ({
                 onSubmit={(e) => {
                   e.preventDefault();
                   sendInput(input, name);
+                  setInput('');
+                  history.push(nextLink);
                 }}>
                 <b.Box mt={4} mb={3} width={1}>
                   <Input
+                    value={input}
                     onChange={(e) => {
                       setInput(e.target.value);
                     }}
-                    placeholder='Ex. Acme or Acme Marketing'
+                    placeholder={inputPlaceholder}
                   />
                 </b.Box>
                 <b.Box width={1}>
@@ -85,20 +89,7 @@ export const CreateTeamLayout: React.FC<Props> = ({
               <b.Box opacity={opacity}>
                 <LeftMock>
                   <b.Box>
-                    <b.Box>
-                      <SkeletonLine width={90} />
-                    </b.Box>
-                    <b.Box mt={4}>
-                      <SkeletonLine width={60} />
-                    </b.Box>
-                    <b.Box mt={2}>
-                      <b.Flex alignItems='center'>
-                        <b.Box mr={1}>
-                          <MockHashTag />
-                        </b.Box>
-                        <SkeletonLine width={80} top={2} />
-                      </b.Flex>
-                    </b.Box>
+                    {children}
                     <b.Box>
                       <b.Flex alignItems='center'>
                         <b.Box mr={1}>
@@ -149,7 +140,7 @@ export const CreateTeamLayout: React.FC<Props> = ({
                 </LeftMock>
                 <RightMock>
                   <b.Box>
-                    <SkeletonLine width={70} />
+                    <SkeletonLine width={70} color='#E8E8E8' />
                     <b.Box mt={3}>
                       <Line />
                     </b.Box>
@@ -227,31 +218,11 @@ const LeftMock = styled(b.Box)`
   }
 `;
 
-const SkeletonLine = styled(b.Box)`
-  position: relative;
-  background-color: #caadcd;
-  height: 7px;
-  border-radius: 5px;
-  width: ${({ width }) => `${width}%`};
-
-  ${({ top }) =>
-    top &&
-    css`
-      top: ${top}px;
-    `}
-
-  ${({ bottom }) =>
-    bottom &&
-    css`
-      bottom: ${bottom}px;
-    `}
-`;
-
 const Line = styled(b.Box)`
   height: 2px;
   width: 100%;
   border-radius: 9999px;
-  background-color: #4e4e4e;
+  background-color: #e8e8e8;
 `;
 
 const BulletSection = styled(b.Box)`
