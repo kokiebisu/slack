@@ -233,10 +233,12 @@ export const Span = styled(motion.span)<SpanProps>`
   ${typography}
 `;
 
-type InputProps = SpaceProps;
+type InputProps = SpaceProps & BorderProps & TypographyProps;
 
-export const Input = styled.input`
+export const Input = styled.input<InputProps>`
   ${space}
+  ${border}
+  ${typography}
 `;
 
 type TextProps = TypographyProps &
@@ -269,6 +271,6 @@ export const Text = styled(motion.p)<TextProps>`
 
 type LayoutWrapperProps = SpaceProps;
 
-export const LayoutWrapper = styled.div`
+export const LayoutWrapper = styled.div<LayoutWrapperProps>`
   ${space}
 `;
