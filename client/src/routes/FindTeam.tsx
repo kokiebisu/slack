@@ -1,5 +1,7 @@
 import React from 'react';
 
-export const FindTeam: React.FC<{}> = () => {
+interface Props {}
+
+export const FindTeam: React.FC<Props> = () => {
   return <div>findteam</div>;
 };

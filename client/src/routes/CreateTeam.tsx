@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 
 // Graphql
 // import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
 import { useApolloClient, useMutation } from '@apollo/react-hooks';
 
 import { Box, Flex, Input, Button } from '../styles/blocks';
 
-const CreateTeam = () => {
+interface Props {}
+
+export const CreateTeam: React.FC<Props> = () => {
   const client = useApolloClient();
-  const [create, { data }] = useMutation(CREATE_TEAM, {
-    onCompleted(response) {
-      console.log('completed', response);
-      client.writeData({ data: { isLoggedIn: true } });
-    },
-  });
+  // const [create, { data }] = useMutation(CREATE_TEAM, {
+  //   onCompleted(response) {
+  //     console.log('completed', response);
+  //     client.writeData({ data: { isLoggedIn: true } });
+  //   },
+  // });
 
   const [team, setTeam] = useState('');
 
@@ -23,7 +25,7 @@ const CreateTeam = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          create({ variables: { name: team } });
+          // create({ variables: { name: team } });
         }}>
         <div>
           <h1>Create team</h1>
@@ -46,17 +48,3 @@ const CreateTeam = () => {
     </Box>
   );
 };
-
-const CREATE_TEAM = gql`
-  mutation($name: String!) {
-    createTeam(name: $name) {
-      ok
-      errors {
-        path
-        message
-      }
-    }
-  }
-`;
-
-export default CreateTeam;

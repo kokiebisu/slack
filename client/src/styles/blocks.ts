@@ -122,7 +122,7 @@ type AnchorProps = SpaceProps &
   ColorProps &
   LayoutProps &
   BackgroundProps &
-  BorderProps & { uppercase: boolean; underline?: boolean };
+  BorderProps & { uppercase?: boolean; underline?: boolean };
 
 export const Anchor = styled(motion.a)<AnchorProps>`
   position: relative;

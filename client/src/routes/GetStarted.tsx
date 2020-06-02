@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 
 import * as b from '../styles/blocks';
@@ -12,7 +12,9 @@ import workspace from '../assets/img/slack-workspace.png';
 import lightbulb from '../assets/img/lightbulb.png';
 import { LogoCenterHeader } from '../components/shared/Header/LogoCenter';
 
-export default () => {
+interface Props {}
+
+export const GetStarted: React.FC<Props> = () => {
   return (
     <Wrapper>
       <b.Container>
@@ -36,15 +38,15 @@ export default () => {
                       </b.Text>
                     </b.Box>
                     <b.Box my={3} mb={4}>
-                      <b.Text
-                        lineHeight={1.4}
-                        mt={1}
-                        mb={2}
-                        fontSize={18}
-                        color='#EDE9EE'
-                        fontFamily='SlackLato-Light'>
-                        Create a brand-new workspace for you and your team.
-                      </b.Text>
+                      <b.Box mt={1} mb={2}>
+                        <b.Text
+                          lineHeight={1.4}
+                          fontSize={18}
+                          color='#EDE9EE'
+                          fontFamily='SlackLato-Light'>
+                          Create a brand-new workspace for you and your team.
+                        </b.Text>
+                      </b.Box>
                     </b.Box>
                     <b.Anchor href='/get-started/create'>
                       <b.Box backgroundColor='white' borderRadius={5} py={3}>
@@ -76,15 +78,15 @@ export default () => {
                       </b.Text>
                     </b.Box>
                     <b.Box my={3} mb={4}>
-                      <b.Text
-                        lineHeight={1.4}
-                        mt={1}
-                        mb={2}
-                        fontSize={18}
-                        color='#1D1C1D'
-                        fontFamily='SlackLato-Regular'>
-                        Find and sign in to your team's existing workspace.
-                      </b.Text>
+                      <b.Box mt={1} mb={2}>
+                        <b.Text
+                          lineHeight={1.4}
+                          fontSize={18}
+                          color='#1D1C1D'
+                          fontFamily='SlackLato-Regular'>
+                          Find and sign in to your team's existing workspace.
+                        </b.Text>
+                      </b.Box>
                     </b.Box>
                     <b.Anchor href='/get-started/find'>
                       <SignInButton>

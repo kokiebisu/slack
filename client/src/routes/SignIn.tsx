@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 
 import * as b from '../styles/blocks';
@@ -7,7 +7,9 @@ import { SignInHeader } from '../components/shared/Header/SignIn';
 import { SignInContent } from '../components/SignIn/SignInContent';
 import { SignInFooter } from '../components/SignIn/SignInFooter';
 
-export default () => {
+interface Props {}
+
+export const SignIn: React.FC<Props> = () => {
   return (
     <Wrapper>
       <SignInHeader />

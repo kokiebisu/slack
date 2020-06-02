@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import styled from 'styled-components';
@@ -11,28 +11,26 @@ import { MentionPage } from '../components/Home/Content/MentionPage';
 import { DraftPage } from '../components/Home/Content/DraftPage';
 import { SavedPage } from '../components/Home/Content/SavedPage';
 
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  RouteComponentProps,
+} from 'react-router-dom';
 
 // Block
 import { Box } from '../styles/blocks';
 
 import { home } from '../styles/sizes';
 
-const ALL_USERS = gql`
-  query {
-    allUsers {
-      username
-      email
-    }
-  }
-`;
+interface Props {}
 
-export default ({ location }) => {
-  const { data, loading, error } = useQuery(ALL_USERS);
+export const Home: React.FC<RouteComponentProps> = ({ location }) => {
+  // const { data, loading, error } = useQuery(ALL_USERS);
   const groupName = 'bcit-sept-2018';
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error!</p>;
+  // if (loading) return <p>Loading...</p>;
+  // if (error) return <p>Error!</p>;
 
   return (
     <>
