@@ -11,6 +11,13 @@ export type Scalars = {
   Float: number;
 };
 
+export type Team = {
+  __typename?: 'Team';
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  ownerId: Scalars['Float'];
+};
+
 export type User = {
   __typename?: 'User';
   id: Scalars['Int'];
@@ -26,6 +33,7 @@ export type LoginResponse = {
 
 export type Query = {
   __typename?: 'Query';
+  teams: Array<Team>;
   me?: Maybe<User>;
   users: Array<User>;
 };
@@ -33,12 +41,13 @@ export type Query = {
 export type Mutation = {
   __typename?: 'Mutation';
   register: User;
-  revokeRefreshToken: Scalars['Boolean'];
   login?: Maybe<LoginResponse>;
-  logout: Scalars['Boolean'];
-  changePassword?: Maybe<User>;
-  confirmUser: Scalars['Boolean'];
+  revokeRefreshToken: Scalars['Boolean'];
   forgotPassword: Scalars['Boolean'];
+  confirmUser: Scalars['Boolean'];
+  changePassword?: Maybe<User>;
+  logout: Scalars['Boolean'];
+  createTeam?: Maybe<Team>;
 };
 
 
@@ -49,14 +58,24 @@ export type MutationRegisterArgs = {
 };
 
 
+export type MutationLoginArgs = {
+  password: Scalars['String'];
+  email: Scalars['String'];
+};
+
+
 export type MutationRevokeRefreshTokenArgs = {
   userId: Scalars['Int'];
 };
 
 
-export type MutationLoginArgs = {
-  password: Scalars['String'];
+export type MutationForgotPasswordArgs = {
   email: Scalars['String'];
+};
+
+
+export type MutationConfirmUserArgs = {
+  token: Scalars['String'];
 };
 
 
@@ -66,14 +85,22 @@ export type MutationChangePasswordArgs = {
 };
 
 
-export type MutationConfirmUserArgs = {
-  token: Scalars['String'];
+export type MutationCreateTeamArgs = {
+  name: Scalars['String'];
+};
+
+export type CreateTeamMutationVariables = {
+  name: Scalars['String'];
 };
 
 
-export type MutationForgotPasswordArgs = {
-  email: Scalars['String'];
-};
+export type CreateTeamMutation = (
+  { __typename?: 'Mutation' }
+  & { createTeam?: Maybe<(
+    { __typename?: 'Team' }
+    & Pick<Team, 'id' | 'name' | 'ownerId'>
+  )> }
+);
 
 export type LoginMutationVariables = {
   email: Scalars['String'];
@@ -139,6 +166,40 @@ export type UsersQuery = (
 );
 
 
+export const CreateTeamDocument = gql`
+    mutation CreateTeam($name: String!) {
+  createTeam(name: $name) {
+    id
+    name
+    ownerId
+  }
+}
+    `;
+export type CreateTeamMutationFn = ApolloReactCommon.MutationFunction<CreateTeamMutation, CreateTeamMutationVariables>;
+
+/**
+ * __useCreateTeamMutation__
+ *
+ * To run a mutation, you first call `useCreateTeamMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateTeamMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createTeamMutation, { data, loading, error }] = useCreateTeamMutation({
+ *   variables: {
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useCreateTeamMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CreateTeamMutation, CreateTeamMutationVariables>) {
+        return ApolloReactHooks.useMutation<CreateTeamMutation, CreateTeamMutationVariables>(CreateTeamDocument, baseOptions);
+      }
+export type CreateTeamMutationHookResult = ReturnType<typeof useCreateTeamMutation>;
+export type CreateTeamMutationResult = ApolloReactCommon.MutationResult<CreateTeamMutation>;
+export type CreateTeamMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateTeamMutation, CreateTeamMutationVariables>;
 export const LoginDocument = gql`
     mutation Login($email: String!, $password: String!) {
   login(email: $email, password: $password) {

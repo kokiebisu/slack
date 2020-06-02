@@ -5,10 +5,11 @@ import { useState } from 'react';
 import * as b from '../styles/blocks';
 
 import { LogoCenterLayout } from '../components/shared/LogoCenter/layout';
+import { RouteComponentProps } from 'react-router-dom';
 
 interface Props {}
 
-export const CreateTeam: React.FC<Props> = () => {
+export const CreateTeam: React.FC<RouteComponentProps> = () => {
   return (
     <LogoCenterLayout>
       <b.Box py={4}>
