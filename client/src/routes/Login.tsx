@@ -1,16 +1,21 @@
 import * as React from 'react';
 import { useState } from 'react';
-// import { extendObservable } from 'mobx';
-// import { observer } from 'mobx-react';
 
 import { Box, Flex, Input, Button } from '../styles/blocks';
 
 import { RouteComponentProps } from 'react-router-dom';
-import { useLoginMutation } from '../generated/graphql';
+import {
+  useLoginMutation,
+  MeDocument,
+  MeQuery,
+  useMeQuery,
+} from '../generated/graphql';
 import { setAccessToken } from '../global/token';
 
 export const Login: React.FC<RouteComponentProps> = ({ history }) => {
   const [login] = useLoginMutation();
+
+  const { data, loading } = useMeQuery();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,10 +25,24 @@ export const Login: React.FC<RouteComponentProps> = ({ history }) => {
       <form
         onSubmit={async (e) => {
           e.preventDefault();
-          const response = await login({ variables: { email, password } });
+          const response = await login({
+            variables: { email, password },
+            update: (store, { data }) => {
+              if (!data) {
+                return null;
+              }
+              store.writeQuery<MeQuery>({
+                query: MeDocument,
+                data: {
+                  __typename: 'Query',
+                  me: data.login?.user,
+                },
+              });
+            },
+          });
 
           if (response && response.data) {
-            setAccessToken(response.data.login?.accessToken!);
+            setAccessToken(response.data.login!.accessToken);
           }
 
           history.push('/');

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 // Global Styles
@@ -17,9 +17,10 @@ import BCIT from '../../assets/img/bcit.png';
 import { Link } from './Landing.styles';
 
 // Util
-import { isAuthenticated } from '../../util/isAuthenticated';
+// import { useAuthenticated } from '../../hooks/useAuthenticated';
+import { useMeQuery } from '../../generated/graphql';
 
-export const Header = () => {
+export const Header = ({ data }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [hovered, setHovered] = useState({
     why: false,
@@ -162,7 +163,7 @@ export const Header = () => {
                   <Link>Pricing</Link>
                 </NavItem>
               </Nav>
-              {isAuthenticated() ? (
+              {data && data.me ? (
                 <LaunchButtonWrapper
                   initial='rest'
                   whileHover='hovered'

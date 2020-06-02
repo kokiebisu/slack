@@ -8,17 +8,26 @@ import { buildSchema } from 'type-graphql';
 
 import { createConnection } from 'typeorm';
 
-import session from 'express-session';
-import { redis } from './redis';
+// import session from 'express-session';
+// import { redis } from './redis';
 import cors from 'cors';
-import connectRedis from 'connect-redis';
+// import connectRedis from 'connect-redis';
 import { Context } from './types/context';
 import cookieParser from 'cookie-parser';
 
 import { verify } from 'jsonwebtoken';
 import { User } from './models/User';
 import { createAccessToken, createRefreshToken } from './util/tokenGenerator';
-import { Team } from './models/Team';
+// import { Team } from './models/Team';
+
+import { Request, Response, NextFunction } from 'express';
+
+const allowCrossDomain = (req: Request, res: Response, next: NextFunction) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Headers', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  next();
+};
 
 (async () => {
   await createConnection();
@@ -26,6 +35,8 @@ import { Team } from './models/Team';
   const app = Express();
 
   app.use(cookieParser());
+
+  app.use(allowCrossDomain);
 
   /**
    * Retrieves a new access token based on the given refresh token
