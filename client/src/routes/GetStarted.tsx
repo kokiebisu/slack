@@ -14,9 +14,11 @@ import { Globe } from '../assets/svg/Footer';
 
 import { getstarted } from '../styles/sizes';
 
+import { RouteComponentProps } from 'react-router-dom';
+
 interface Props {}
 
-export const GetStarted: React.FC<Props> = () => {
+export const GetStarted: React.FC<RouteComponentProps> = () => {
   return (
     <Wrapper>
       <b.Container>

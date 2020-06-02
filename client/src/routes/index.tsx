@@ -21,10 +21,9 @@ export const Routes: React.FC<{}> = () => {
         <Route path='/register' component={Register} />
         <Route path='/signin' component={SignIn} />
         <Route exact path='/get-started/create' component={CreateTeam} />
-        <Route exact path='/get-started/find' component={Login} />
-
+        <Route exact path='/get-started/find' component={FindTeam} />
+        <Route exact path='/login' component={Login} />
         <Route exact path='/get-started' component={GetStarted} />
-        <Route exact path='/find-team' component={FindTeam} />
         <Route path='/' component={Landing} />
       </Switch>
     </BrowserRouter>

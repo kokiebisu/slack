@@ -20,7 +20,7 @@ export const FindTeam: React.FC<RouteComponentProps> = ({ history }) => {
                   color='#1D1C1D'
                   fontFamily='Larsseit-Bold'
                   textAlign='center'>
-                  First, enter your email
+                  Let’s find your team
                 </b.Text>
               </b.Box>
               <b.Box pt={2} pb={4}>
@@ -30,8 +30,7 @@ export const FindTeam: React.FC<RouteComponentProps> = ({ history }) => {
                   color='#454245'
                   fontFamily='SlackLato-Regular'
                   fontSize={20}>
-                  Just one more email — a quick confirmation — before you say
-                  goodbye to overstuffed inboxes for good.
+                  Enter the email you usually collaborate with
                 </b.Text>
               </b.Box>
               <b.Box>
@@ -52,22 +51,6 @@ export const FindTeam: React.FC<RouteComponentProps> = ({ history }) => {
                   </ConfirmButton>
                 </b.Flex>
               </b.Box>
-              <b.Box>
-                <b.Flex justifyContent='center'>
-                  <CheckboxArea>
-                    <b.Flex>
-                      <CheckboxWrapper mr={3}>
-                        <input type='checkbox' />
-                      </CheckboxWrapper>
-                      <b.Box>
-                        <b.Text>
-                          It’s okay to send me emails about Slack.
-                        </b.Text>
-                      </b.Box>
-                    </b.Flex>
-                  </CheckboxArea>
-                </b.Flex>
-              </b.Box>
             </b.Box>
           </Wrapper>
         </b.Flex>
@@ -82,16 +65,20 @@ const Wrapper = styled(b.Box)`
 `;
 
 const EmailInput = styled(b.Input)`
-  width: 350px;
-  padding: 10px 0 10px 10px;
+  width: 370px;
+  padding: 13px 0 13px 13px;
 `;
 
 const ConfirmButton = styled(b.Button)`
-  width: 350px;
+  width: 370px;
   border-radius: 5px;
   padding: 13px 0;
   text-align: center;
   background-color: #4a144b;
+
+  &:hover {
+    background-color: #5c2c5d;
+  }
 `;
 
 const CheckboxArea = styled(b.Box)`
