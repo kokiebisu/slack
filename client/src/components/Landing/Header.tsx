@@ -18,11 +18,14 @@ import BCIT from '../../assets/img/bcit.png';
 import { Link } from './Landing.styles';
 
 // Util
-import { isAuthenticated } from '../../util/isAuthenticated';
+// import { useAuthenticated } from '../../hooks/useAuthenticated';
+import { useMeQuery, MeQuery } from '../../generated/graphql';
 
-interface Props {}
+interface Props {
+  data: MeQuery | undefined;
+}
 
-export const Header: React.FC<Props> = () => {
+export const Header: React.FC<Props> = ({ data }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [hovered, setHovered] = useState({
     why: false,
@@ -165,7 +168,7 @@ export const Header: React.FC<Props> = () => {
                   <Link>Pricing</Link>
                 </NavItem>
               </Nav>
-              {isAuthenticated() ? (
+              {data && data.me ? (
                 <LaunchButtonWrapper
                   initial='rest'
                   whileHover='hovered'

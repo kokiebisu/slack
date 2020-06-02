@@ -39,20 +39,17 @@ import { sendRefreshToken } from '../util/sendRefreshToken';
 
 import { getConnection } from 'typeorm';
 
-@Resolver()
-export class MeResolver {
-  @Query(() => User, { nullable: true })
-  async me(@Ctx() context: Context): Promise<User | undefined> {
-    if (!context.req.session!.userId) {
-      return undefined;
-    }
+@ObjectType()
+class LoginResponse {
+  @Field()
+  accessToken: string;
 
-    return User.findOne(context.req.session!.userId);
-  }
+  @Field(() => User)
+  user: User;
 }
 
 @Resolver()
-export class RegisterResolver {
+export class AuthResolver {
   @Mutation(() => User)
   async register(
     @Arg('username') username: string,
@@ -71,24 +68,6 @@ export class RegisterResolver {
     User.update({ id: user.id }, { confirmed: true });
 
     return user;
-  }
-}
-
-@ObjectType()
-class LoginResponse {
-  @Field()
-  accessToken: string;
-}
-
-@Resolver()
-export class LoginResolver {
-  @Mutation(() => Boolean)
-  async revokeRefreshToken(@Arg('userId', () => Int) userId: number) {
-    await getConnection()
-      .getRepository(User)
-      .increment({ id: userId }, 'tokenVersion', 1);
-
-    return true;
   }
 
   @Mutation(() => LoginResponse, { nullable: true })
@@ -119,30 +98,53 @@ export class LoginResolver {
     return {
       // sign method will create the token
       accessToken: createAccessToken(user),
+      user,
     };
   }
-}
 
-@Resolver()
-export class LogoutResolver {
   @Mutation(() => Boolean)
-  async logout(@Ctx() context: Context): Promise<boolean> {
-    return new Promise((res, rej) => {
-      context.req.session!.destroy((err) => {
-        if (err) {
-          console.log(err);
-          return rej(false);
-        }
-      });
+  async revokeRefreshToken(@Arg('userId', () => Int) userId: number) {
+    await getConnection()
+      .getRepository(User)
+      .increment({ id: userId }, 'tokenVersion', 1);
 
-      context.res.clearCookie('quid');
-      return res(true);
-    });
+    return true;
   }
-}
 
-@Resolver()
-export class ChangePasswordResolver {
+  @Mutation(() => Boolean)
+  async forgotPassword(@Arg('email') email: string): Promise<boolean> {
+    const user = await User.findOne({ where: { email } });
+
+    if (!user) {
+      return false;
+    }
+
+    const token = v4();
+    await redis.set(forgotPasswordPrefix + token, user.id, 'ex', 60 * 60 * 24);
+
+    await sendEmail(
+      email,
+      `http://localhost:3000/user/change-password/${token}`
+    );
+
+    return true;
+  }
+
+  @Mutation(() => Boolean)
+  async confirmUser(@Arg('token') token: string): Promise<boolean> {
+    const userId = await redis.get(confirmationPrefix + token);
+
+    if (!userId) {
+      return false;
+    }
+
+    User.update({ id: parseInt(userId, 10) }, { confirmed: true });
+
+    await redis.del(token);
+
+    return true;
+  }
+
   @Mutation(() => User, { nullable: true })
   async changePassword(
     @Arg('token') token: string,
@@ -171,44 +173,12 @@ export class ChangePasswordResolver {
 
     return user;
   }
-}
 
-@Resolver()
-export class ConfirmLoginResolver {
   @Mutation(() => Boolean)
-  async confirmUser(@Arg('token') token: string): Promise<boolean> {
-    const userId = await redis.get(confirmationPrefix + token);
-
-    if (!userId) {
-      return false;
-    }
-
-    User.update({ id: parseInt(userId, 10) }, { confirmed: true });
-
-    await redis.del(token);
-
-    return true;
-  }
-}
-
-@Resolver()
-export class ForgetPasswordResolver {
-  @Mutation(() => Boolean)
-  async forgotPassword(@Arg('email') email: string): Promise<boolean> {
-    const user = await User.findOne({ where: { email } });
-
-    if (!user) {
-      return false;
-    }
-
-    const token = v4();
-    await redis.set(forgotPasswordPrefix + token, user.id, 'ex', 60 * 60 * 24);
-
-    await sendEmail(
-      email,
-      `http://localhost:3000/user/change-password/${token}`
-    );
-
+  async logout(@Ctx() { res }: Context): Promise<boolean> {
+    console.log('called logout');
+    sendRefreshToken(res, '');
+    console.log('called sendrefresh');
     return true;
   }
 }

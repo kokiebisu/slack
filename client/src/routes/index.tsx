@@ -12,7 +12,7 @@ import { FindTeam } from './FindTeam';
 import { SignIn } from './SignIn';
 
 // Util
-import { isAuthenticated } from '../util/isAuthenticated';
+// import { isAuthenticated } from '../util/isAuthenticated';
 
 // const PrivateRoute = ({ component: any, ...rest }) => (
 //   <Route
@@ -38,6 +38,7 @@ export const Routes: React.FC<{}> = () => {
         <Route path='/signin' component={SignIn} />
         <Route exact path='/get-started/create' component={CreateTeam} />
         <Route exact path='/get-started/find' component={Login} />
+        <Route exact path='/get-started/logout' component={FindTeam} />
         <Route exact path='/get-started' component={GetStarted} />
         <Route exact path='/find-team' component={FindTeam} />
         <Route path='/' component={Landing} />

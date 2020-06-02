@@ -7,6 +7,7 @@ import { Banner } from '../components/Landing/Banner';
 import { BreakOut } from '../components/Landing/BreakOut';
 import { Choose } from '../components/Landing/Choose';
 import { Footer } from '../components/Landing/Footer';
+import { useMeQuery } from '../generated/graphql';
 
 interface Props {}
 
@@ -15,9 +16,11 @@ export const Landing: React.FC<Props> = () => {
     document.title = 'Where work happens | Slack';
   }, []);
 
+  const { data, loading } = useMeQuery();
+
   return (
     <>
-      <Header />
+      <Header data={data} />
       <Banner />
       <BreakOut />
       <Choose />
