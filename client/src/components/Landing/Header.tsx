@@ -19,15 +19,13 @@ import { Link } from './Landing.styles';
 
 // Util
 // import { useAuthenticated } from '../../hooks/useAuthenticated';
-import { useMeQuery } from '../../generated/graphql';
+import { useMeQuery, MeQuery } from '../../generated/graphql';
 
-<<<<<<< HEAD:client/src/components/Landing/Header.jsx
-export const Header = ({ data }) => {
-=======
-interface Props {}
+interface Props {
+  data: MeQuery | undefined;
+}
 
-export const Header: React.FC<Props> = () => {
->>>>>>> types-client:client/src/components/Landing/Header.tsx
+export const Header: React.FC<Props> = ({ data }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [hovered, setHovered] = useState({
     why: false,

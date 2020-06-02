@@ -16,7 +16,6 @@ export const Landing: React.FC<Props> = () => {
     document.title = 'Where work happens | Slack';
   }, []);
 
-
   const { data, loading } = useMeQuery();
 
   return (

@@ -63,6 +63,7 @@
     "@storybook/preset-create-react-app": "^2.1.1",
     "@storybook/react": "^5.3.18",
     "@types/graphql": "^14.5.0",
+    "@types/jwt-decode": "^2.2.1",
     "@types/styled-components": "^5.1.0",
     "@types/styled-system": "^5.1.9"
   }
