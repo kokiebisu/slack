@@ -10,7 +10,7 @@ interface Props {}
 
 export const SignInContent: React.FC<Props> = () => {
   return (
-    <ContentWrapper backgroundColor='#F8F8F8'>
+    <b.Box backgroundColor='#F8F8F8'>
       <b.Box py={5}>
         <b.Container>
           <b.Flex flexDirection='column' alignItems='center'>
@@ -90,13 +90,9 @@ export const SignInContent: React.FC<Props> = () => {
           </b.Flex>
         </b.Container>
       </b.Box>
-    </ContentWrapper>
+    </b.Box>
   );
 };
-
-const ContentWrapper = styled(b.Box)`
-  height: calc(100vh - 420px);
-`;
 
 const Content = styled(b.Box)`
   width: 100%;
