@@ -11,12 +11,7 @@ import { MentionPage } from '../components/Home/Content/MentionPage';
 import { DraftPage } from '../components/Home/Content/DraftPage';
 import { SavedPage } from '../components/Home/Content/SavedPage';
 
-import {
-  BrowserRouter,
-  Route,
-  Switch,
-  RouteComponentProps,
-} from 'react-router-dom';
+import { BrowserRouter, Route, Switch, useLocation } from 'react-router-dom';
 
 // Block
 import { Box } from '../styles/blocks';
@@ -25,12 +20,9 @@ import { home } from '../styles/sizes';
 
 interface Props {}
 
-export const Home: React.FC<RouteComponentProps> = ({ location }) => {
-  // const { data, loading, error } = useQuery(ALL_USERS);
+export const Home: React.FC<Props> = () => {
+  const location = useLocation();
   const groupName = 'bcit-sept-2018';
-
-  // if (loading) return <p>Loading...</p>;
-  // if (error) return <p>Error!</p>;
 
   return (
     <>

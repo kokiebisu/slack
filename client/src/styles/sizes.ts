@@ -19,6 +19,12 @@ const signin_size = {
   md: '831px',
 };
 
+const sizes = {
+  xs: '768px',
+  sm: '831px',
+  md: '962px',
+};
+
 // Get Started
 const getstarted_size = {
   xs: '768px',
@@ -44,4 +50,10 @@ export const signin = {
 
 export const getstarted = {
   xs: `(min-width: ${getstarted_size['xs']})`,
+};
+
+export const size = {
+  xs: `(min-width: ${sizes['xs']})`,
+  sm: `(min-width: ${sizes['sm']})`,
+  md: `(min-width: ${sizes['md']})`,
 };

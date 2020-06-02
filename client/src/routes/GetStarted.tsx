@@ -14,11 +14,13 @@ import { Globe } from '../assets/svg/Footer';
 
 import { getstarted } from '../styles/sizes';
 
-import { RouteComponentProps } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 interface Props {}
 
-export const GetStarted: React.FC<RouteComponentProps> = () => {
+export const GetStarted: React.FC<Props> = () => {
+  const history = useHistory();
+
   return (
     <Wrapper>
       <b.Container>
@@ -56,7 +58,7 @@ export const GetStarted: React.FC<RouteComponentProps> = () => {
                         </b.Text>
                       </b.Box>
                     </b.Box>
-                    <b.Anchor href='/get-started/create'>
+                    <b.Anchor href='/create/teamname'>
                       <b.Box backgroundColor='white' borderRadius={5} py={3}>
                         <b.Flex alignItems='center' justifyContent='center'>
                           <b.Box mr={2}>

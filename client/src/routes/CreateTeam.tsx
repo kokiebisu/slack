@@ -1,105 +1,109 @@
 import * as React from 'react';
-import styled from 'styled-components';
 import { useState } from 'react';
+import styled from 'styled-components';
 
 import * as b from '../styles/blocks';
+import { HeaderLogo } from '../assets/svg/Logo';
 
-import { LogoCenterLayout } from '../components/shared/LogoCenter/layout';
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  RouteComponentProps,
+} from 'react-router-dom';
+
+import { CreateTeamLayout } from '../components/CreateTeam/layout';
+
+// Partials
+import { SkeletonLine, MockHashTag } from '../components/CreateTeam/mockup';
 
 interface Props {}
 
-export const CreateTeam: React.FC<Props> = () => {
+export const CreateTeam: React.FC<RouteComponentProps> = ({ location }) => {
+  const [data, setData] = useState({
+    team: '',
+    channel: '',
+  });
+
+  const addData = (input: string, name: string | undefined) => {
+    if (name) {
+      setData({ ...data, [name]: input });
+    }
+  };
+
+  console.log('team', data.team);
+  console.log('channel', data.channel);
+
   return (
-    <LogoCenterLayout>
-      <b.Box py={4}>
-        <b.Flex flexDirection='column' alignItems='center'>
-          <Wrapper>
-            <b.Box>
-              <b.Box>
-                <b.Text
-                  fontSize={48}
-                  color='#1D1C1D'
-                  fontFamily='Larsseit-Bold'
-                  textAlign='center'>
-                  First, enter your email
-                </b.Text>
-              </b.Box>
-              <b.Box pt={2} pb={4}>
-                <b.Text
-                  lineHeight={1.5}
-                  textAlign='center'
-                  color='#454245'
-                  fontFamily='SlackLato-Regular'
-                  fontSize={20}>
-                  Just one more email — a quick confirmation — before you say
-                  goodbye to overstuffed inboxes for good.
-                </b.Text>
-              </b.Box>
-              <b.Box>
-                <b.Flex justifyContent='center'>
-                  <EmailInput
-                    border='1px solid #868686'
-                    borderRadius={3}
-                    placeholder='name@work-email.com'
-                  />
-                </b.Flex>
-              </b.Box>
-              <b.Box my={3}>
-                <b.Flex justifyContent='center'>
-                  <ConfirmButton>
-                    <b.Text color='white' fontFamily='SlackLato-Bold'>
-                      Confirm
-                    </b.Text>
-                  </ConfirmButton>
-                </b.Flex>
-              </b.Box>
-              <b.Box>
-                <b.Flex justifyContent='center'>
-                  <CheckboxArea>
-                    <b.Flex>
-                      <CheckboxWrapper mr={3}>
-                        <input type='checkbox' />
-                      </CheckboxWrapper>
-                      <b.Box>
-                        <b.Text>
-                          It’s okay to send me emails about Slack.
-                        </b.Text>
-                      </b.Box>
-                    </b.Flex>
-                  </CheckboxArea>
-                </b.Flex>
-              </b.Box>
-            </b.Box>
-          </Wrapper>
-        </b.Flex>
-      </b.Box>
-    </LogoCenterLayout>
+    <BrowserRouter>
+      <Wrapper>
+        <HeaderWrapper>
+          <HeaderContainer>
+            <b.Container>
+              <b.Flex alignItems='center' justifyContent='center'>
+                <b.Box top={2} mr={4}>
+                  <HeaderLogo width={100} height={60} />
+                </b.Box>
+              </b.Flex>
+            </b.Container>
+          </HeaderContainer>
+        </HeaderWrapper>
+        <Switch>
+          <Route path='/create/teamname'>
+            <CreateTeamLayout
+              title="What's the name of your company or team?"
+              inputPlaceholder='Ex. Tesla or Tesla Motors'
+              requirePolicy
+              opacity={0.15}
+              name='team'
+              sendInput={addData}
+              nextLink='/create/channelname'
+            />
+          </Route>
+          <Route path='/create/channelname'>
+            <CreateTeamLayout
+              title="What's a project your team is working on?"
+              inputPlaceholder='Ex. The very exciting project'
+              opacity={0.8}
+              name='channel'
+              team={data.team}
+              sendInput={addData}
+              nextLink='/create/tada'
+            />
+          </Route>
+          <Route path='/create/tada'>
+            <CreateTeamLayout
+              title={`Tada! Meet your team's first channel: #${data.channel}`}
+              description="You're leaving those unending email threads in the past. Channels give every project, topic, and team a dedicated space for all their messages and files"
+              opacity={1}
+              sendInput={addData}
+              team={data.team}
+              channel={data.channel}
+              buttonName='See your channel in Slack'
+              nextLink='/client'
+            />
+          </Route>
+        </Switch>
+      </Wrapper>
+    </BrowserRouter>
   );
 };
 
 const Wrapper = styled(b.Box)`
-  max-width: 768px;
-  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 70px auto;
 `;
 
-const EmailInput = styled(b.Input)`
-  width: 350px;
-  padding: 10px 0 10px 10px;
+const HeaderWrapper = styled.div`
+  position: sticky;
+  top: 0;
+  z-index: 99;
 `;
 
-const ConfirmButton = styled(b.Button)`
-  width: 350px;
-  border-radius: 5px;
-  padding: 13px 0;
-  text-align: center;
-  background-color: #4a144b;
-`;
-
-const CheckboxArea = styled(b.Box)`
-  width: 350px;
-`;
-
-const CheckboxWrapper = styled(b.Box)`
-  position: relative;
-  top: 1.25px;
+const HeaderContainer = styled.div`
+  background-color: white;
+  height: 70px;
+  border-bottom: 0.5px solid lightgray;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 `;

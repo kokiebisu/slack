@@ -12,7 +12,8 @@ import { RouteComponentProps } from 'react-router-dom';
 
 interface Props {}
 
-export const Register: React.FC<RouteComponentProps> = ({ history }) => {
+export const Register: React.FC<Props> = () => {
+  const history = useHistory();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
