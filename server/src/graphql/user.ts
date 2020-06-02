@@ -1,14 +1,14 @@
 import { Query, Resolver, Ctx, UseMiddleware } from 'type-graphql';
 import { User } from '../models/User';
-import { Context } from '../types/context';
+import { Context } from '../interface/context';
 import { isAuth } from '../middleware/isAuthenticated';
 import { verify } from 'jsonwebtoken';
 
 @Resolver()
 export class UsersResolver {
   @Query(() => User, { nullable: true })
-  me(@Ctx() context: Context) {
-    const authorization = context.req.headers.authorization;
+  me(@Ctx() { req }: Context) {
+    const authorization = req.headers.authorization;
 
     if (!authorization) {
       return null;
@@ -16,8 +16,8 @@ export class UsersResolver {
 
     try {
       const token = authorization.split(' ')[1];
-      const payload: any = verify(token, process.env.ACCESS_TOKEN_SECRET!);
-      return User.findOne(payload.userId);
+      const { userId }: any = verify(token, process.env.ACCESS_TOKEN_SECRET!);
+      return User.findOne(userId);
     } catch (err) {
       console.log(err);
       return null;
