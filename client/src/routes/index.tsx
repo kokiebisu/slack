@@ -2,14 +2,32 @@ import * as React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 // Pages
-import Landing from './Landing';
-import Home from './Home';
+import { Landing } from './Landing';
+import { Home } from './Home';
 import { Register } from './Register';
 import { Login } from './Login';
-import CreateTeam from './CreateTeam';
-import GetStarted from './GetStarted';
+import { CreateTeam } from './CreateTeam';
+import { GetStarted } from './GetStarted';
 import { FindTeam } from './FindTeam';
-import SignIn from './SignIn';
+import { SignIn } from './SignIn';
+
+// Util
+// import { isAuthenticated } from '../util/isAuthenticated';
+
+// const PrivateRoute = ({ component: any, ...rest }) => (
+//   <Route
+//     {...rest}
+//     render={(props) =>
+//       isAuthenticated() ? (
+//         <Component {...props} />
+//       ) : (
+//         <Redirect
+//           to={{ pathname: '/login', state: { from: props.location } }}
+//         />
+//       )
+//     }
+//   />
+// );
 
 export const Routes: React.FC<{}> = () => {
   return (
@@ -22,6 +40,7 @@ export const Routes: React.FC<{}> = () => {
         <Route exact path='/get-started/find' component={Login} />
         <Route exact path='/get-started/logout' component={FindTeam} />
         <Route exact path='/get-started' component={GetStarted} />
+        <Route exact path='/find-team' component={FindTeam} />
         <Route path='/' component={Landing} />
       </Switch>
     </BrowserRouter>

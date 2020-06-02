@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import * as b from '../../../styles/blocks.js';
+import * as b from '../../../styles/blocks';
 
 import { HeaderLogo } from '../../../assets/svg/Logo';
 

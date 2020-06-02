@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 
-import { Box, Flex, Input, Button } from '../styles/blocks';
+import * as b from '../styles/blocks';
 
 import { RouteComponentProps } from 'react-router-dom';
 import {
@@ -21,7 +21,7 @@ export const Login: React.FC<RouteComponentProps> = ({ history }) => {
   const [password, setPassword] = useState('');
 
   return (
-    <Box bg='white' width={512} px={5} py={2}>
+    <b.Box mx={5}>
       <form
         onSubmit={async (e) => {
           e.preventDefault();
@@ -51,7 +51,7 @@ export const Login: React.FC<RouteComponentProps> = ({ history }) => {
           <h1>Login</h1>
         </div>
 
-        <Flex flexDirection='column'>
+        <b.Flex flexDirection='column'>
           <label>email</label>
           <input
             onChange={(e) => setEmail(e.target.value)}
@@ -59,8 +59,8 @@ export const Login: React.FC<RouteComponentProps> = ({ history }) => {
             type='text'
             name='email'
           />
-        </Flex>
-        <Flex flexDirection='column'>
+        </b.Flex>
+        <b.Flex flexDirection='column'>
           <label>password</label>
           <input
             onChange={(e) => setPassword(e.target.value)}
@@ -68,12 +68,12 @@ export const Login: React.FC<RouteComponentProps> = ({ history }) => {
             type='password'
             name='password'
           />
-        </Flex>
+        </b.Flex>
 
         <div>
           <button type='submit'>Submit</button>
         </div>
       </form>
-    </Box>
+    </b.Box>
   );
 };
