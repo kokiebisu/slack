@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import * as b from '../../../styles/blocks';
@@ -6,7 +7,9 @@ import * as b from '../../../styles/blocks';
 import { BottomArrow } from '../../../assets/svg/Arrows';
 import { Write } from '../../../assets/svg/Reaction';
 
-export const Profile = () => {
+interface Props {}
+
+export const Profile: React.FC<Props> = () => {
   const [hovered, setHovered] = useState(false);
 
   return (

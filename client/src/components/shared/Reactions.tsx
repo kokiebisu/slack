@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 
 import * as b from '../../styles/blocks';
@@ -7,7 +7,9 @@ import { Reaction } from './Reaction';
 
 import { SmilePlus } from '../../assets/svg/Reaction';
 
-export const Reactions = () => {
+interface Props {}
+
+export const Reactions: React.FC<Props> = () => {
   return (
     <b.Box>
       <b.Flex>

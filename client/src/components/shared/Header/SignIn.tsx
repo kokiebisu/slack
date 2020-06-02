@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 
 import * as b from '../../../styles/blocks';
@@ -8,7 +8,9 @@ import { HamburgerButton } from '../../../assets/svg/Buttons';
 
 import { signin } from '../../../styles/sizes';
 
-export const SignInHeader = () => {
+interface Props {}
+
+export const SignInHeader: React.FC<Props> = () => {
   const navItems = [
     { name: 'Product', url: '/product' },
     { name: 'Pricing', url: '/pricing' },

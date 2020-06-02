@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 
 import Thumbsup from '../../assets/img/thumbsup.png';
@@ -6,18 +6,20 @@ import Thumbsup from '../../assets/img/thumbsup.png';
 // Blocks
 import * as b from '../../styles/blocks';
 
-export const Reaction = () => {
+interface Props {}
+
+export const Reaction: React.FC<Props> = () => {
   return (
     <Wrapper>
       <Container alignItems='center'>
-        <EmojiWrapper mr={1}>
+        <b.Box mr={1}>
           <img width={14} height={14} src={Thumbsup} alt='icon' />
-        </EmojiWrapper>
-        <CountWrapper>
+        </b.Box>
+        <b.Box>
           <b.Text fontSize={11} fontFamily='SlackLato-Regular'>
             1
           </b.Text>
-        </CountWrapper>
+        </b.Box>
       </Container>
     </Wrapper>
   );
@@ -41,7 +43,3 @@ const Wrapper = styled(b.Box)`
 const Container = styled(b.Flex)`
   height: auto;
 `;
-
-const EmojiWrapper = styled(b.Box)``;
-
-const CountWrapper = styled(b.Box)``;

@@ -1,21 +1,21 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 
 import * as b from '../../../styles/blocks';
 
 import { HeaderLogo } from '../../../assets/svg/Logo';
 
-export const LogoCenterHeader = () => {
+interface Props {}
+
+export const LogoCenterHeader: React.FC<Props> = () => {
   return (
-    <GetStartedHeader>
+    <b.Box>
       <LogoWrapper justifyContent='center'>
         <HeaderLogo width={140} height={60} />
       </LogoWrapper>
-    </GetStartedHeader>
+    </b.Box>
   );
 };
-
-const GetStartedHeader = styled(b.Box)``;
 
 const LogoWrapper = styled(b.Flex)`
   padding: 5px;

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import { Clock } from '../../assets/svg/Clock';
@@ -12,7 +13,7 @@ import * as b from '../../styles/blocks';
 // Sizes
 import { home } from '../../styles/sizes';
 
-export const HomeHeader = () => {
+export const HomeHeader: React.FC<Props> = () => {
   return (
     <b.Box height={37} background='#350D36'>
       <b.Flex alignItems='center' justifyContent='center'>

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 
 import * as b from '../../../styles/blocks';
@@ -7,7 +7,9 @@ import { Profile } from './Profile';
 import { Options } from './Options';
 import { SidebarSections } from './SidebarSections';
 
-export const Sidebar = () => {
+interface Props {}
+
+export const Sidebar: React.FC<Props> = () => {
   return (
     <SideBarWrapper>
       <Profile />

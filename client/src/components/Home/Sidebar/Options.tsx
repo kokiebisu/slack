@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import { Option } from './Option';
@@ -8,7 +9,9 @@ import { ShowLess } from '../../../assets/svg/SidebarOptions';
 // Blocks
 import * as b from '../../../styles/blocks';
 
-export const Options = () => {
+interface Props {}
+
+export const Options: React.FC<Props> = () => {
   const [display, setDisplay] = useState(true);
   const [hovered, setHovered] = useState(false);
 

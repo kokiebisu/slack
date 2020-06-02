@@ -1,11 +1,24 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import * as b from '../../../styles/blocks';
 
 import { Play, Plus, Close } from '../../../assets/svg/SidebarSections';
 import { home } from '../../../styles/sizes';
 
-export const SidebarSection = ({ title, subtitle, children, onReveal }) => {
+interface Props {
+  title: string;
+  subtitle?: string;
+  children: Element | null;
+  onReveal?: () => void;
+}
+
+export const SidebarSection: React.FC<Props> = ({
+  title,
+  subtitle,
+  children,
+  onReveal,
+}) => {
   const [clicked, setClicked] = useState(false);
 
   const [hovered, setHovered] = useState({
