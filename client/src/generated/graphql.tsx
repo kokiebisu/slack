@@ -30,7 +30,7 @@ export type LoginResponse = {
   ok: Scalars['Boolean'];
   accessToken?: Maybe<Scalars['String']>;
   user?: Maybe<User>;
-  error?: Maybe<Scalars['String']>;
+  errorType?: Maybe<Scalars['String']>;
 };
 
 export type Query = {
@@ -114,7 +114,7 @@ export type LoginMutation = (
   { __typename?: 'Mutation' }
   & { login?: Maybe<(
     { __typename?: 'LoginResponse' }
-    & Pick<LoginResponse, 'ok' | 'accessToken' | 'error'>
+    & Pick<LoginResponse, 'ok' | 'accessToken' | 'errorType'>
     & { user?: Maybe<(
       { __typename?: 'User' }
       & Pick<User, 'id' | 'username' | 'email'>
@@ -212,7 +212,7 @@ export const LoginDocument = gql`
       username
       email
     }
-    error
+    errorType
   }
 }
     `;

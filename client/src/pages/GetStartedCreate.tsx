@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { RouteComponentProps, useHistory } from 'react-router-dom';
 
 import * as b from '../styles/blocks';
@@ -14,16 +14,35 @@ import {
   useMeQuery,
 } from '../generated/graphql';
 import { setAccessToken } from '../global/token';
+import { Warning } from '../assets/svg/Warning';
 
 interface Props {}
 
+interface Error {
+  user: any;
+  password: any;
+}
+
 export const GetStartedCreate: React.FC<Props> = () => {
   const history = useHistory();
+  const [error, setError] = useState<Error>({
+    user: false,
+    password: false,
+  });
+
+  let response: any;
 
   const [login] = useLoginMutation();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  // useEffect(() => {
+  //   setError({ user: false, password: false });
+  // }, [error.user, error.password]);
+
+  console.log('user', error.user);
+  console.log('password', error.password);
 
   return (
     <LogoCenterLayout>
@@ -54,9 +73,8 @@ export const GetStartedCreate: React.FC<Props> = () => {
               <form
                 onSubmit={async (e) => {
                   e.preventDefault();
-                  console.log('email', email);
-                  console.log('password', password);
-                  const response = await login({
+
+                  response = await login({
                     variables: { email, password },
                     update: (store, { data }) => {
                       if (!data) {
@@ -71,6 +89,13 @@ export const GetStartedCreate: React.FC<Props> = () => {
                       });
                     },
                   });
+
+                  if (response && response.data.login) {
+                    const errorType = response.data.login.errorType;
+
+                    setError({ user: false, password: false });
+                    setError({ ...error, [errorType]: true });
+                  }
 
                   if (response && response.data?.login?.ok) {
                     setAccessToken(response.data.login!.accessToken);
@@ -87,6 +112,22 @@ export const GetStartedCreate: React.FC<Props> = () => {
                         placeholder='name@work-email.com'
                       />
                     </b.Box>
+                    {error.user && (
+                      <ErrorBox backgroundColor='red' width={1}>
+                        <b.Flex>
+                          <b.Box mr={2}>
+                            <Warning width={15} height={15} color='#efa0b7' />
+                          </b.Box>
+                          <b.Box>
+                            <b.Text
+                              fontFamily='SlackLato-Regular'
+                              fontSize={14}>
+                              Sorry, but that email is invalid
+                            </b.Text>
+                          </b.Box>
+                        </b.Flex>
+                      </ErrorBox>
+                    )}
                     <b.Box mt={3}>
                       <Input
                         onChange={(e) => setPassword(e.target.value)}
@@ -96,6 +137,22 @@ export const GetStartedCreate: React.FC<Props> = () => {
                         placeholder='password here...'
                       />
                     </b.Box>
+                    {error.password && (
+                      <ErrorBox backgroundColor='red' width={1}>
+                        <b.Flex>
+                          <b.Box mr={2}>
+                            <Warning width={15} height={15} color='#efa0b7' />
+                          </b.Box>
+                          <b.Box>
+                            <b.Text
+                              fontFamily='SlackLato-Regular'
+                              fontSize={14}>
+                              Sorry, but the password doesn't match
+                            </b.Text>
+                          </b.Box>
+                        </b.Flex>
+                      </ErrorBox>
+                    )}
                   </b.Flex>
                 </b.Box>
                 <b.Box my={3}>
@@ -124,6 +181,15 @@ const Wrapper = styled(b.Box)`
 const Input = styled(b.Input)`
   width: 370px;
   padding: 13px 0 13px 13px;
+`;
+
+const ErrorBox = styled(b.Box)`
+  width: 370px;
+  background-color: #fbebef;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 1px solid #efa0b7;
+  padding: 10px 0 10px 10px;
 `;
 
 const ConfirmButton = styled(b.Button)`
