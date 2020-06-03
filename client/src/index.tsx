@@ -18,6 +18,7 @@ import { ApolloLink, Observable } from 'apollo-link';
 
 import { TokenRefreshLink } from 'apollo-link-token-refresh';
 import JwtDecode from 'jwt-decode';
+import { ContextProvider } from './context';
 
 const cache = new InMemoryCache({});
 
@@ -109,9 +110,11 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <GlobalFonts />
-    <GlobalStyles />
-    <Loading />
+    <ContextProvider>
+      <GlobalFonts />
+      <GlobalStyles />
+      <Loading />
+    </ContextProvider>
   </ApolloProvider>,
   document.getElementById('root')
 );

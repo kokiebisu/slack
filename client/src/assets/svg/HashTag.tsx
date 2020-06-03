@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import * as b from '../../styles/blocks';
 
 // Interface
-import { Wrapper, SVG } from './interface';
+import { Wrapper, SVG } from '../../util/svgUtil';
 
 export const ThinHashTag: React.FC<SVG> = (props) => {
   return (

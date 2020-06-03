@@ -10,8 +10,7 @@ import { SignIn } from '../pages/SignIn';
 import { GetStartedRoutes } from './GetStarted';
 import { ClientRoutes } from './Client';
 import { Logout } from '../pages/Logout';
-
-interface Props {}
+import { Test } from './test';
 
 export const AppRoutes: React.SFC = (): JSX.Element => {
   return (
@@ -23,6 +22,7 @@ export const AppRoutes: React.SFC = (): JSX.Element => {
         <Route path='/client' component={ClientRoutes} />
         <Route path='/signin' component={SignIn} />
         <Route path='/logout' component={Logout} />
+        <Route path='/test' component={Test} />
       </Switch>
     </BrowserRouter>
   );

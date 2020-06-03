@@ -28,9 +28,3 @@ export const Plus: React.FC<SVG> = (props) => {
     </Wrapper>
   );
 };
-
-const Wrapper = styled.svg`
-  position: relative;
-
-  ${positionMixin}
-`;
