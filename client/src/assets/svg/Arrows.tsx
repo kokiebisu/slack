@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { motion } from 'framer-motion';
 
-import { SVG } from './interface';
+import { Wrapper, SVG } from '../../util/svgUtil';
 
 export const BottomArrow: React.FC<SVG> = (props) => {
   return (
-    <svg {...props} viewBox='0 0 491.996 491.996'>
+    <Wrapper {...props} viewBox='0 0 491.996 491.996'>
       <g>
         <g>
           <g>
@@ -19,17 +19,17 @@ export const BottomArrow: React.FC<SVG> = (props) => {
           </g>
         </g>
       </g>
-    </svg>
+    </Wrapper>
   );
 };
 
 export const RightArrow: React.FC<SVG> = (props) => {
   return (
-    <motion.svg {...props} viewBox='0 0 448 512'>
+    <Wrapper {...props} viewBox='0 0 448 512'>
       <path
         fill={props.color}
         d='M218.101 38.101L198.302 57.9c-4.686 4.686-4.686 12.284 0 16.971L353.432 230H12c-6.627 0-12 5.373-12 12v28c0 6.627 5.373 12 12 12h341.432l-155.13 155.13c-4.686 4.686-4.686 12.284 0 16.971l19.799 19.799c4.686 4.686 12.284 4.686 16.971 0l209.414-209.414c4.686-4.686 4.686-12.284 0-16.971L235.071 38.101c-4.686-4.687-12.284-4.687-16.97 0z'
       />
-    </motion.svg>
+    </Wrapper>
   );
 };

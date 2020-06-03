@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { SVG } from './interface';
+import { SVG, Wrapper } from '../../util/svgUtil';
 
 export const Minus: React.FC<SVG> = (props) => {
   return (
-    <svg {...props} viewBox='0 0 409.6 409.6'>
+    <Wrapper {...props} viewBox='0 0 409.6 409.6'>
       <g>
         <g>
           <path
@@ -13,6 +13,6 @@ export const Minus: React.FC<SVG> = (props) => {
           />
         </g>
       </g>
-    </svg>
+    </Wrapper>
   );
 };

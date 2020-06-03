@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { SVG, positionMixin } from './interface';
+import { SVG, Wrapper } from '../../util/svgUtil';
 
 /**
  * Shared
@@ -673,9 +673,3 @@ export const AtSign: React.FC<SVG> = (props) => {
     </Wrapper>
   );
 };
-
-const Wrapper = styled.svg`
-  position: relative;
-
-  ${positionMixin}
-`;

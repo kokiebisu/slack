@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { SVG } from './interface';
+import { SVG, Wrapper } from '../../util/svgUtil';
 
 export const NameLogo: React.FC<SVG> = (props) => {
   return (
@@ -144,35 +144,3 @@ export const LinkedinLogo: React.FC<SVG> = (props) => {
     </Wrapper>
   );
 };
-
-const Wrapper = styled.svg`
-  &.linkedin {
-    &:hover {
-      path {
-        fill: #1264a3;
-      }
-    }
-  }
-  &.facebook {
-    &:hover {
-      path {
-        fill: #1264a3;
-      }
-    }
-  }
-  &.twitter {
-    &:hover {
-      path {
-        fill: #50a9f1;
-      }
-    }
-  }
-
-  &.youtube {
-    &:hover {
-      path {
-        fill: #d12011;
-      }
-    }
-  }
-`;
