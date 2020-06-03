@@ -28,6 +28,7 @@ const requestLink = new ApolloLink(
       Promise.resolve(operation)
         .then((operation) => {
           const accessToken = getAccessToken();
+          console.log('index', accessToken);
           if (accessToken) {
             operation.setContext({
               headers: {
@@ -54,49 +55,49 @@ const requestLink = new ApolloLink(
 // Passes through this on every graphql query
 const client = new ApolloClient({
   link: ApolloLink.from([
-    // Requests for a refresh token if the token is not valid anymore
-    new TokenRefreshLink({
-      // Checks whether if the token is still valid
-      isTokenValidOrUndefined: () => {
-        const token = getAccessToken();
+    // // Requests for a refresh token if the token is not valid anymore
+    // new TokenRefreshLink({
+    //   // Checks whether if the token is still valid
+    //   isTokenValidOrUndefined: () => {
+    //     const token = getAccessToken();
 
-        if (!token) {
-          return true;
-        }
+    //     if (!token) {
+    //       return true;
+    //     }
 
-        try {
-          // The token may still be expired
-          const { exp } = JwtDecode(token);
-          if (Date.now() >= exp * 1000) {
-            return false;
-          } else {
-            return true;
-          }
-        } catch {
-          return false;
-        }
-      },
-      fetchAccessToken: () => {
-        return fetch('http://localhost:4000/refresh_token', {
-          method: 'POST',
-          credentials: 'include',
-        });
-      },
-      handleFetch: (accessToken) => {
-        setAccessToken(accessToken);
-      },
-      handleError: (err) => {
-        // full control over handling token fetch Error
-        console.warn('Your refresh token is invalid. Try to relogin');
-        console.error(err);
+    //     try {
+    //       // The token may still be expired
+    //       const { exp } = JwtDecode(token);
+    //       if (Date.now() >= exp * 1000) {
+    //         return false;
+    //       } else {
+    //         return true;
+    //       }
+    //     } catch {
+    //       return false;
+    //     }
+    //   },
+    //   fetchAccessToken: () => {
+    //     return fetch('http://localhost:4000/refresh_token', {
+    //       method: 'POST',
+    //       credentials: 'include',
+    //     });
+    //   },
+    //   handleFetch: (accessToken) => {
+    //     setAccessToken(accessToken);
+    //   },
+    //   handleError: (err) => {
+    //     // full control over handling token fetch Error
+    //     console.warn('Your refresh token is invalid. Try to relogin');
+    //     console.error(err);
 
-        // // your custom action here
-        // user.logout();
-      },
-    }) as any,
-    onError(({ graphQLErrors, networkError }) => {
-      console.log(networkError);
-    }),
+    //     // // your custom action here
+    //     // user.logout();
+    //   },
+    // }) as any,
+    // onError(({ graphQLErrors, networkError }) => {
+    //   console.log(networkError);
+    // }),
     requestLink,
     new HttpLink({
       uri: 'http://localhost:4000/graphql',

@@ -44,8 +44,8 @@ class LoginResponse {
   @Field()
   ok: boolean;
 
-  @Field(() => String, { nullable: true })
-  accessToken: string | null;
+  @Field(() => String)
+  accessToken: string;
 
   @Field(() => User, { nullable: true })
   user: User | null;
@@ -87,7 +87,7 @@ export class AuthResolver {
     if (!user) {
       return {
         ok: false,
-        accessToken: null,
+        accessToken: '',
         user: null,
         errorType: 'user',
       };
@@ -99,7 +99,7 @@ export class AuthResolver {
     if (!valid) {
       return {
         ok: false,
-        accessToken: null,
+        accessToken: '',
         user: null,
         errorType: 'password',
       };
@@ -194,9 +194,7 @@ export class AuthResolver {
 
   @Mutation(() => Boolean)
   async logout(@Ctx() { res }: Context): Promise<boolean> {
-    console.log('called logout');
     sendRefreshToken(res, '');
-    console.log('called sendrefresh');
     return true;
   }
 }
