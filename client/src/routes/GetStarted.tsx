@@ -58,7 +58,7 @@ export const GetStarted: React.FC<Props> = () => {
                         </b.Text>
                       </b.Box>
                     </b.Box>
-                    <b.Anchor href='/create/teamname'>
+                    <b.Anchor href='/create/confirm'>
                       <b.Box backgroundColor='white' borderRadius={5} py={3}>
                         <b.Flex alignItems='center' justifyContent='center'>
                           <b.Box mr={2}>

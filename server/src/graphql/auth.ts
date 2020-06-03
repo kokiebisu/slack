@@ -42,10 +42,16 @@ import { getConnection } from 'typeorm';
 @ObjectType()
 class LoginResponse {
   @Field()
-  accessToken: string;
+  ok: boolean;
 
-  @Field(() => User)
-  user: User;
+  @Field(() => String, { nullable: true })
+  accessToken: string | null;
+
+  @Field(() => User, { nullable: true })
+  user: User | null;
+
+  @Field(() => String, { nullable: true })
+  error: string | null;
 }
 
 @Resolver()
@@ -79,26 +85,38 @@ export class AuthResolver {
     const user = await User.findOne({ where: { email } });
 
     if (!user) {
-      return new Error('Cannot find user');
+      return {
+        ok: false,
+        accessToken: null,
+        user: null,
+        error: 'User not found',
+      };
     }
 
     // Check it the given password is the same as the user's password in database
     const valid = await bcrypt.compare(password, user.password);
 
     if (!valid) {
-      return new Error('Password is incorrect');
+      return {
+        ok: false,
+        accessToken: null,
+        user: null,
+        error: 'Password not found',
+      };
     }
 
-    if (!user.confirmed) {
-      return new Error('You must confirm via email');
-    }
+    // if (!user.confirmed) {
+    //   return new Error('You must confirm via email');
+    // }
 
     sendRefreshToken(res, createRefreshToken(user));
 
     return {
       // sign method will create the token
+      ok: true,
       accessToken: createAccessToken(user),
       user,
+      error: null,
     };
   }
 

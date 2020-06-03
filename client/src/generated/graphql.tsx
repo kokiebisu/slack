@@ -27,8 +27,10 @@ export type User = {
 
 export type LoginResponse = {
   __typename?: 'LoginResponse';
-  accessToken: Scalars['String'];
-  user: User;
+  ok: Scalars['Boolean'];
+  accessToken?: Maybe<Scalars['String']>;
+  user?: Maybe<User>;
+  error?: Maybe<Scalars['String']>;
 };
 
 export type Query = {
@@ -112,11 +114,11 @@ export type LoginMutation = (
   { __typename?: 'Mutation' }
   & { login?: Maybe<(
     { __typename?: 'LoginResponse' }
-    & Pick<LoginResponse, 'accessToken'>
-    & { user: (
+    & Pick<LoginResponse, 'ok' | 'accessToken' | 'error'>
+    & { user?: Maybe<(
       { __typename?: 'User' }
       & Pick<User, 'id' | 'username' | 'email'>
-    ) }
+    )> }
   )> }
 );
 
@@ -203,12 +205,14 @@ export type CreateTeamMutationOptions = ApolloReactCommon.BaseMutationOptions<Cr
 export const LoginDocument = gql`
     mutation Login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
+    ok
     accessToken
     user {
       id
       username
       email
     }
+    error
   }
 }
     `;

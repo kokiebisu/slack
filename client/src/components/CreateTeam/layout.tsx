@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import styled, { css } from 'styled-components';
 
 import * as b from '../../styles/blocks';
@@ -47,6 +47,23 @@ export const CreateTeamLayout: React.FC<Props> = ({
   const [input, setInput] = useState('');
   const history = useHistory();
 
+  // function Ci(e) {
+  //   Array.from(document.getElementsByClassName("p-tractor__mini_confetti")).forEach(function(e) {
+  //       e.removeAttribute("width")
+  //   });
+  //   var t = document.getElementById(e);
+  //   if (t) {
+  //       var r = new wi(e, {
+  //           start_x: t.getBoundingClientRect().width / 3,
+  //           start_y: 15,
+  //           height: 4,
+  //           width: 4,
+  //           max_speed: 3,
+  //           max_particles: 26
+  //       });
+  //       r.render()
+  //   }
+
   return (
     <Wrapper>
       <b.Flex>
@@ -66,6 +83,7 @@ export const CreateTeamLayout: React.FC<Props> = ({
                   e.preventDefault();
                   sendInput(input, name!);
                   setInput('');
+
                   history.push(nextLink);
                 }}>
                 {inputPlaceholder && (
@@ -117,6 +135,7 @@ export const CreateTeamLayout: React.FC<Props> = ({
                         <SkeletonLine width={90} />
                       )}
                     </TeamWrapper>
+
                     <ChannelWrapper px={2}>
                       {channel ? (
                         <b.Text
@@ -377,3 +396,10 @@ const ContentWrapper = styled(b.Box)`
 `;
 
 const Content = styled(b.Box)``;
+
+const CanvasWrapper = styled(b.Box)`
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  left: 0;
+`;
