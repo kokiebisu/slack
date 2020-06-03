@@ -27,7 +27,7 @@ interface Props {
   name?: string;
   description?: string;
   buttonName?: string;
-  sendInput: (input: string, name: string | undefined) => void;
+  sendInput: (input: string) => void;
   nextLink: string;
   team?: string;
   channel?: string;
@@ -100,7 +100,7 @@ export const CreateTeamLayout: React.FC<Props> = ({
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
-                    sendInput(input, name!);
+                    sendInput(input);
                     setInput('');
 
                     history.push(nextLink);
@@ -243,7 +243,7 @@ export const CreateTeamLayout: React.FC<Props> = ({
                         {channel ? (
                           <b.Text
                             color='#121212'
-                            fontFamily='SlackLato-Black'
+                            fontFamily='SlackLato-Bold'
                             fontSize={17}>
                             {channel}
                           </b.Text>

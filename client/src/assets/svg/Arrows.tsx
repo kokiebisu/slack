@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { motion } from 'framer-motion';
-
 import { Wrapper, SVG } from '../../util/svgUtil';
 
 export const BottomArrow: React.FC<SVG> = (props) => {
