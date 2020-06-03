@@ -1,41 +1,27 @@
 import * as React from 'react';
-import { useState } from 'react';
-import styled from 'styled-components';
-
-import * as b from '../styles/blocks';
-
-import {
-  Switch,
-  Route,
-  Redirect,
-  useHistory,
-  useRouteMatch,
-} from 'react-router-dom';
+import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
 import { CreateTeamLayout } from '../components/CreateTeam/layout';
-
-// Query
 import { useMeQuery } from '../generated/graphql';
-import { GetStarted } from '../pages/GetStarted';
+import {
+  useNewTeamState,
+  useNewTeamDispatch,
+} from '../context/newTeam-context';
 
 interface Props {}
 
 export const CreateRoutes: React.SFC = () => {
   const match = useRouteMatch();
-  const history = useHistory();
-  const [info, setInfo] = useState({
-    team: '',
-    channel: '',
-  });
 
-  console.log('match', match);
+  /**
+   * Context
+   */
+  const { team, channel } = useNewTeamState();
+  const dispatch = useNewTeamDispatch();
 
+  /**
+   * Query
+   */
   const { data, loading, error } = useMeQuery();
-
-  const addData = (input: string, name: string | undefined) => {
-    if (name) {
-      setInfo({ ...info, [name]: input });
-    }
-  };
 
   return (
     <>
@@ -48,7 +34,9 @@ export const CreateRoutes: React.SFC = () => {
               requirePolicy
               opacity={0.15}
               name='team'
-              sendInput={addData}
+              sendInput={(input) =>
+                dispatch({ type: 'add_team', payload: input })
+              }
               nextLink='/create/channelname'
               authenticated={data?.me?.id}
             />
@@ -57,14 +45,16 @@ export const CreateRoutes: React.SFC = () => {
           )}
         </Route>
         <Route path={match.url + '/channelname'}>
-          {info.team ? (
+          {team ? (
             <CreateTeamLayout
               title="What's a project your team is working on?"
               inputPlaceholder='Ex. The very exciting project'
               opacity={0.8}
               name='channel'
-              team={info.team}
-              sendInput={addData}
+              team={team}
+              sendInput={(input) =>
+                dispatch({ type: 'add_channel', payload: input })
+              }
               nextLink='/create/tada'
             />
           ) : (
@@ -72,14 +62,14 @@ export const CreateRoutes: React.SFC = () => {
           )}
         </Route>
         <Route path={match.url + '/tada'}>
-          {info.team && info.channel ? (
+          {team && channel ? (
             <CreateTeamLayout
-              title={`Tada! Meet your team's first channel: #${info.channel}`}
+              title={`Tada! Meet your team's first channel: #${channel}`}
               description="You're leaving those unending email threads in the past. Channels give every project, topic, and team a dedicated space for all their messages and files"
               opacity={1}
-              sendInput={addData}
-              team={info.team}
-              channel={info.channel}
+              sendInput={() => dispatch}
+              team={team}
+              channel={channel}
               buttonName='See your channel in Slack'
               nextLink='/client'
             />
