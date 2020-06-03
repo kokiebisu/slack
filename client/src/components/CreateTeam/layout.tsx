@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { useState, useRef, useEffect } from 'react';
+import {
+  useState,
+  useRef,
+  useEffect,
+  Dispatch,
+  SetStateAction,
+  FormEvent,
+} from 'react';
 import styled, { css } from 'styled-components';
 
 import * as b from '../../styles/blocks';
@@ -27,11 +34,12 @@ interface Props {
   name?: string;
   description?: string;
   buttonName?: string;
-  sendInput: (input: string) => void;
-  nextLink: string;
   team?: string;
   channel?: string;
   authenticated?: number | undefined | null;
+  transaction: (e: FormEvent<HTMLFormElement>) => void;
+  input: string;
+  modifyInput: Dispatch<SetStateAction<string>>;
 }
 
 export const CreateTeamLayout: React.FC<Props> = ({
@@ -43,13 +51,13 @@ export const CreateTeamLayout: React.FC<Props> = ({
   opacity,
   name,
   description,
-  sendInput,
-  nextLink,
   buttonName,
   children,
   authenticated,
+  transaction,
+  input,
+  modifyInput,
 }) => {
-  const [input, setInput] = useState('');
   const history = useHistory();
 
   // function Ci(e) {
@@ -68,6 +76,8 @@ export const CreateTeamLayout: React.FC<Props> = ({
   //       });
   //       r.render()
   //   }
+
+  console.log('layout input', input);
 
   return (
     <Wrapper exit={{ opacity: 0 }} initial='initial' animate='animate'>
@@ -97,20 +107,13 @@ export const CreateTeamLayout: React.FC<Props> = ({
                     {title}
                   </b.Text>
                 </b.Box>
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    sendInput(input);
-                    setInput('');
-
-                    history.push(nextLink);
-                  }}>
+                <form onSubmit={transaction}>
                   {inputPlaceholder && (
                     <b.Box mt={4} mb={3} width={1}>
                       <Input
                         value={input}
                         onChange={(e) => {
-                          setInput(e.target.value);
+                          modifyInput(e.target.value);
                         }}
                         placeholder={inputPlaceholder}
                       />
