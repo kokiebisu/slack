@@ -16,6 +16,9 @@ import teamphoto_3 from '../../assets/img/createteam_3.png';
 // Sizes
 import { size } from '../../styles/sizes';
 
+// Animations
+import { stagger, fadeInUp } from '../../animations/FadeInStagger';
+
 interface Props {
   title: string;
   inputPlaceholder?: string;
@@ -67,7 +70,7 @@ export const CreateTeamLayout: React.FC<Props> = ({
   //   }
 
   return (
-    <Wrapper>
+    <Wrapper exit={{ opacity: 0 }} initial='initial' animate='animate'>
       <HeaderWrapper>
         <HeaderContainer>
           <b.Container>
@@ -250,15 +253,15 @@ export const CreateTeamLayout: React.FC<Props> = ({
                         <Line />
                       </b.Box>
                       {channel && (
-                        <ContentWrapper>
+                        <ContentWrapper variants={stagger}>
                           <Content mt={2}>
-                            <b.Box pt={3} pb={3}>
+                            <b.Box pt={3} pb={3} variants={fadeInUp}>
                               <img src={teamphoto_1} />
                             </b.Box>
-                            <b.Box py={3}>
+                            <b.Box py={3} variants={fadeInUp}>
                               <img src={teamphoto_2} />
                             </b.Box>
-                            <b.Box py={3}>
+                            <b.Box py={3} variants={fadeInUp}>
                               <img src={teamphoto_3} />
                             </b.Box>
                           </Content>

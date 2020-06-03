@@ -29,7 +29,9 @@ export const GetStarted: React.FC<Props> = () => {
             <HeaderLogo width={140} height={60} />
           </LogoWrapper>
         </b.Box>
-        <SelectOptionWrapper animate={{ y: -4 }} py={4}>
+        <SelectOptionWrapper
+          animate={{ y: -20, transition: { duration: 0.2 } }}
+          py={4}>
           <b.Flex justifyContent='center'>
             <SelectOptionContainer>
               <b.Flex>
