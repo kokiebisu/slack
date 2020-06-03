@@ -4,13 +4,18 @@ import styled from 'styled-components';
 
 import * as b from '../../styles/blocks';
 
-import { SignInHeart } from '../../assets/svg/Hearts';
-import { SignInFooterLogo } from '../../assets/svg/Logo';
-import { TwitterLogo, YoutubeLogo } from '../../assets/svg/SocialMedia';
+import { RoundedHeart } from '../../assets/svg/Heart';
+
+import {
+  NoNameLogoMono,
+  TwitterLogo,
+  YoutubeLogo,
+} from '../../assets/svg/Logo';
 
 import { signin } from '../../styles/sizes';
 
-import { Plus, Minus } from '../../assets/svg/Shared';
+import { Minus } from '../../assets/svg/Minus';
+import { Plus } from '../../assets/svg/Plus';
 
 interface Props {}
 
@@ -122,7 +127,7 @@ export const SignInFooter: React.FC<Props> = () => {
                         <SectionName color='#e32072'>Slack</SectionName>
                         <HeartIconWrapper>
                           <b.Box ml={1}>
-                            <SignInHeart
+                            <RoundedHeart
                               width={10}
                               height={10}
                               color='#e32072'
@@ -279,7 +284,7 @@ export const SignInFooter: React.FC<Props> = () => {
             <b.Box px={3}>
               <b.Flex justifyContent='space-between'>
                 <b.Box>
-                  <SignInFooterLogo width={20} height={20} color='#868686' />
+                  <NoNameLogoMono width={20} height={20} color='#868686' />
                 </b.Box>
                 <b.Box>
                   <b.Flex alignItems='center'>

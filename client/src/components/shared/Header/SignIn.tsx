@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 import * as b from '../../../styles/blocks';
 
-import { HeaderLogo } from '../../../assets/svg/Logo';
-import { HamburgerButton } from '../../../assets/svg/Buttons';
+import { NameLogo } from '../../../assets/svg/Logo';
+import { HamburgerButton } from '../../../assets/svg';
 
 import { signin } from '../../../styles/sizes';
 
@@ -26,7 +26,7 @@ export const SignInHeader: React.FC<Props> = () => {
           <b.Flex alignItems='center' justifyContent='space-between'>
             <Left alignItems='center'>
               <b.Box top={2} mr={4}>
-                <HeaderLogo width={105} height={60} />
+                <NameLogo width={105} height={60} />
               </b.Box>
             </Left>
             <Right alignItems='center'>

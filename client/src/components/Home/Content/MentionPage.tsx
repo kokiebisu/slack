@@ -4,11 +4,9 @@ import styled from 'styled-components';
 
 import * as b from '../../../styles/blocks';
 
-import { AtSign, Close } from '../../../assets/svg/SidebarContent';
-
 import { Activity } from './Activity';
 
-import { Settings, Transition } from '../../../assets/svg/MentionPage';
+import { AtSign, Close, Settings, Transition } from '../../../assets/svg';
 
 interface Props {
   group: string;

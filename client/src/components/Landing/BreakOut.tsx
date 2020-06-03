@@ -9,7 +9,7 @@ import { landing } from '../../styles/sizes';
 import { Title } from './Landing.styles';
 
 // SVG
-import { Organized, Looped, Focus } from '../../assets/svg/BreakOut';
+import { Organized, Looped, Focus } from '../../assets/svg';
 
 const cards = [
   {

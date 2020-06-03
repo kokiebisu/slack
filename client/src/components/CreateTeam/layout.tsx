@@ -3,9 +3,9 @@ import { useState, useRef, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
 import * as b from '../../styles/blocks';
-import { HeaderLogo } from '../../assets/svg/Logo';
+import { NameLogo } from '../../assets/svg/Logo';
 
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 import { MockHashTag, SkeletonLine } from './mockup';
 
@@ -75,9 +75,11 @@ export const CreateTeamLayout: React.FC<Props> = ({
         <HeaderContainer>
           <b.Container>
             <b.Flex alignItems='center' justifyContent='center'>
-              <b.Box top={2} mr={4}>
-                <HeaderLogo width={100} height={60} />
-              </b.Box>
+              <Link to='/'>
+                <b.Box top={2} mr={4}>
+                  <NameLogo width={100} height={60} />
+                </b.Box>
+              </Link>
             </b.Flex>
           </b.Container>
         </HeaderContainer>

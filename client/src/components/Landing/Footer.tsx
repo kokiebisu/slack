@@ -8,16 +8,15 @@ import { Link } from './Landing.styles';
 import { landing } from '../../styles/sizes';
 
 // SVG
-import { FooterLogo } from '../../assets/svg/Logo';
 import { BottomArrow } from '../../assets/svg/Arrows';
 import {
-  Globe,
-  Twitter,
-  Facebook,
-  Youtube,
-  Linkedin,
-} from '../../assets/svg/Footer';
-
+  NoNameLogo,
+  TwitterLogo,
+  FacebookLogo,
+  YoutubeLogo,
+  LinkedinLogo,
+} from '../../assets/svg/Logo';
+import { Globe } from '../../assets/svg';
 import * as b from '../../styles/blocks';
 
 interface Props {}
@@ -29,7 +28,7 @@ export const Footer: React.FC<Props> = () => {
         <b.Container>
           <ContentContainer>
             <LogoWrapper>
-              <FooterLogo height={54} width={54} />
+              <NoNameLogo height={54} width={54} />
             </LogoWrapper>
             <SectionsWrapper>
               <Sections>
@@ -204,16 +203,16 @@ export const Footer: React.FC<Props> = () => {
             </OptionsWrapper>
             <SocialMediaWrapper>
               <b.Box mx={2}>
-                <Twitter width={20} height={20} color='#454545' />
+                <TwitterLogo width={20} height={20} color='#454545' />
               </b.Box>
               <b.Box mx={2}>
-                <Facebook width={20} height={20} color='#454545' />
+                <FacebookLogo width={20} height={20} color='#454545' />
               </b.Box>
               <b.Box mx={2}>
-                <Youtube width={20} height={20} color='#454545' />
+                <YoutubeLogo width={20} height={20} color='#454545' />
               </b.Box>
               <b.Box mx={2}>
-                <Linkedin width={20} height={20} color='#454545' />
+                <LinkedinLogo width={20} height={20} color='#454545' />
               </b.Box>
             </SocialMediaWrapper>
           </FooterContentWrapper>

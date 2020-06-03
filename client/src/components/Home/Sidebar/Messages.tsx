@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Heart } from '../../../assets/svg/SidebarSections';
+import { Heart } from '../../../assets/svg/Heart';
 
 import * as b from '../../../styles/blocks';
 

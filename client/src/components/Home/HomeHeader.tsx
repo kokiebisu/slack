@@ -2,10 +2,10 @@ import * as React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { Clock } from '../../assets/svg/Clock';
-import { Magnify } from '../../assets/svg/Magnify';
-import { Present } from '../../assets/svg/Present';
-import { Info } from '../../assets/svg/Info';
+import { Clock } from '../../assets/svg';
+import { Magnify } from '../../assets/svg';
+import { Present } from '../../assets/svg';
+import { Info } from '../../assets/svg';
 
 // Styles
 import * as b from '../../styles/blocks';

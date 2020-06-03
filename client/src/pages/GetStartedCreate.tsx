@@ -14,7 +14,7 @@ import {
   useMeQuery,
 } from '../generated/graphql';
 import { setAccessToken } from '../global/token';
-import { Warning } from '../assets/svg/Warning';
+import { Warning } from '../assets/svg';
 
 interface Props {}
 

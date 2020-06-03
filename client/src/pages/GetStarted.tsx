@@ -4,13 +4,13 @@ import styled from 'styled-components';
 import * as b from '../styles/blocks';
 
 // Svg
-import { BoldPlus } from '../assets/svg/Shared';
+import { BoldPlus } from '../assets/svg/Plus';
 
 // Image
 import workspace from '../assets/img/slack-workspace.png';
 import lightbulb from '../assets/img/lightbulb.png';
-import { HeaderLogo } from '../assets/svg/Logo';
-import { Globe } from '../assets/svg/Footer';
+import { NameLogo } from '../assets/svg/Logo';
+import { Globe } from '../assets/svg';
 
 import { getstarted } from '../styles/sizes';
 
@@ -26,7 +26,7 @@ export const GetStarted: React.FC<Props> = () => {
       <b.Container>
         <b.Box>
           <LogoWrapper justifyContent='center'>
-            <HeaderLogo width={140} height={60} />
+            <NameLogo width={140} height={60} />
           </LogoWrapper>
         </b.Box>
         <SelectOptionWrapper
