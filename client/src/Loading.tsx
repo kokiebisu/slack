@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 
-import { Routes } from './routes';
+import { AppRoutes } from './routes/App';
 import { setAccessToken } from './global/token';
 
 export const Loading = () => {
@@ -23,5 +23,5 @@ export const Loading = () => {
     fetchToken();
   }, []);
 
-  return <Routes />;
+  return <AppRoutes />;
 };

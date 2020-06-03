@@ -9,7 +9,7 @@ import { LogoCenterLayout } from '../components/shared/LogoCenter/layout';
 
 interface Props {}
 
-export const ConfirmAccount: React.FC<Props> = () => {
+export const GetStartedFind: React.FC<Props> = () => {
   const history = useHistory();
   return (
     <LogoCenterLayout>
@@ -23,7 +23,7 @@ export const ConfirmAccount: React.FC<Props> = () => {
                   color='#1D1C1D'
                   fontFamily='Larsseit-Bold'
                   textAlign='center'>
-                  First, enter your email and password
+                  Let’s find your team
                 </b.Text>
               </b.Box>
               <b.Box pt={2} pb={4}>
@@ -33,27 +33,16 @@ export const ConfirmAccount: React.FC<Props> = () => {
                   color='#454245'
                   fontFamily='SlackLato-Regular'
                   fontSize={20}>
-                  Just one more email — a quick confirmation — before you say
-                  goodbye to overstuffed inboxes for good.
+                  Enter the email you usually collaborate with
                 </b.Text>
               </b.Box>
               <b.Box>
-                <b.Flex alignItems='center' flexDirection='column'>
-                  <b.Box>
-                    <Input
-                      border='1px solid #868686'
-                      borderRadius={3}
-                      placeholder='name@work-email.com'
-                    />
-                  </b.Box>
-                  <b.Box mt={3}>
-                    <Input
-                      type='password'
-                      border='1px solid #868686'
-                      borderRadius={3}
-                      placeholder='password here...'
-                    />
-                  </b.Box>
+                <b.Flex justifyContent='center'>
+                  <EmailInput
+                    border='1px solid #868686'
+                    borderRadius={3}
+                    placeholder='name@work-email.com'
+                  />
                 </b.Flex>
               </b.Box>
               <b.Box my={3}>
@@ -78,7 +67,7 @@ const Wrapper = styled(b.Box)`
   width: 100%;
 `;
 
-const Input = styled(b.Input)`
+const EmailInput = styled(b.Input)`
   width: 370px;
   padding: 13px 0 13px 13px;
 `;

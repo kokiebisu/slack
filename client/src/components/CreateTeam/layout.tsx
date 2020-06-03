@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
 import * as b from '../../styles/blocks';
@@ -28,6 +28,7 @@ interface Props {
   nextLink: string;
   team?: string;
   channel?: string;
+  authenticated?: number | undefined | null;
 }
 
 export const CreateTeamLayout: React.FC<Props> = ({
@@ -43,6 +44,7 @@ export const CreateTeamLayout: React.FC<Props> = ({
   nextLink,
   buttonName,
   children,
+  authenticated,
 }) => {
   const [input, setInput] = useState('');
   const history = useHistory();
@@ -66,198 +68,234 @@ export const CreateTeamLayout: React.FC<Props> = ({
 
   return (
     <Wrapper>
-      <b.Flex>
-        <Left>
-          <b.Flex>
-            <LeftWrapper>
-              <b.Box>
-                <b.Text
-                  fontFamily='SlackLato-Black'
-                  fontSize={26}
-                  color='#1D1C1D'>
-                  {title}
-                </b.Text>
+      <HeaderWrapper>
+        <HeaderContainer>
+          <b.Container>
+            <b.Flex alignItems='center' justifyContent='center'>
+              <b.Box top={2} mr={4}>
+                <HeaderLogo width={100} height={60} />
               </b.Box>
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  sendInput(input, name!);
-                  setInput('');
-
-                  history.push(nextLink);
-                }}>
-                {inputPlaceholder && (
-                  <b.Box mt={4} mb={3} width={1}>
-                    <Input
-                      value={input}
-                      onChange={(e) => {
-                        setInput(e.target.value);
-                      }}
-                      placeholder={inputPlaceholder}
-                    />
-                  </b.Box>
-                )}
-                {description && (
-                  <b.Box mt={4} mb={3} width={1}>
-                    <b.Text lineHeight={1.7}>{description}</b.Text>
-                  </b.Box>
-                )}
-                <b.Box width={1}>
-                  <NextButton name={name} type='submit'>
-                    <b.Text>{buttonName ? `${buttonName}` : `Next`}</b.Text>
-                  </NextButton>
-                </b.Box>
-              </form>
-              {requirePolicy ? (
-                <Policy my={4}>
-                  <b.Text fontSize={12} fontFamily='SlackLato-Light'>
-                    By continuing, you're agreeing to our{' '}
-                    <span>Customer Terms of Service</span>,{' '}
-                    <span>Privacy Policy</span>, and <span>Cookie Policy</span>.
+            </b.Flex>
+          </b.Container>
+        </HeaderContainer>
+      </HeaderWrapper>
+      <InnerWrapper>
+        <b.Flex>
+          <Left>
+            <b.Flex>
+              <LeftWrapper>
+                <b.Box>
+                  <b.Text
+                    fontFamily='SlackLato-Black'
+                    fontSize={26}
+                    color='#1D1C1D'>
+                    {title}
                   </b.Text>
-                </Policy>
-              ) : null}
-            </LeftWrapper>
-          </b.Flex>
-        </Left>
-        <Right pl={5}>
-          <b.Flex alignItems='center'>
-            <RightWrapper>
-              <b.Box animate={{ opacity: opacity }} initial={{ opacity: 0 }}>
-                <LeftMock>
-                  <b.Box>
-                    <TeamWrapper px={2}>
-                      {team ? (
-                        <b.Text color='white' fontFamily='SlackLato-Black'>
-                          {team}
-                        </b.Text>
-                      ) : (
-                        <SkeletonLine width={90} />
-                      )}
-                    </TeamWrapper>
+                </b.Box>
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    sendInput(input, name!);
+                    setInput('');
 
-                    <ChannelWrapper px={2}>
-                      {channel ? (
-                        <b.Text
-                          color='#E8E8E8'
-                          fontFamily='SlackLato-Black'
-                          fontSize={15}>
-                          Channel
-                        </b.Text>
-                      ) : (
-                        <SkeletonLine width={60} />
-                      )}
-                    </ChannelWrapper>
-                    <b.Box backgroundColor={channel && `#2EA683`} mt={2} px={2}>
-                      <b.Flex alignItems='center'>
-                        <b.Box mr={1}>
-                          <MockHashTag />
-                        </b.Box>
+                    history.push(nextLink);
+                  }}>
+                  {inputPlaceholder && (
+                    <b.Box mt={4} mb={3} width={1}>
+                      <Input
+                        value={input}
+                        onChange={(e) => {
+                          setInput(e.target.value);
+                        }}
+                        placeholder={inputPlaceholder}
+                      />
+                    </b.Box>
+                  )}
+                  {description && (
+                    <b.Box mt={4} mb={3} width={1}>
+                      <b.Text lineHeight={1.7}>{description}</b.Text>
+                    </b.Box>
+                  )}
+                  <b.Box width={1}>
+                    <NextButton name={name} type='submit'>
+                      <b.Text>{buttonName ? `${buttonName}` : `Next`}</b.Text>
+                    </NextButton>
+                  </b.Box>
+                </form>
+                {requirePolicy ? (
+                  <Policy my={4}>
+                    <b.Text fontSize={12} fontFamily='SlackLato-Light'>
+                      By continuing, you're agreeing to our{' '}
+                      <span>Customer Terms of Service</span>,{' '}
+                      <span>Privacy Policy</span>, and{' '}
+                      <span>Cookie Policy</span>.
+                    </b.Text>
+                  </Policy>
+                ) : null}
+              </LeftWrapper>
+            </b.Flex>
+          </Left>
+          <Right pl={5}>
+            <b.Flex alignItems='center'>
+              <RightWrapper>
+                <b.Box animate={{ opacity: opacity }} initial={{ opacity: 0 }}>
+                  <LeftMock>
+                    <b.Box>
+                      <TeamWrapper px={2}>
+                        {team ? (
+                          <b.Text color='white' fontFamily='SlackLato-Black'>
+                            {team}
+                          </b.Text>
+                        ) : (
+                          <SkeletonLine width={90} />
+                        )}
+                      </TeamWrapper>
+
+                      <ChannelWrapper px={2}>
                         {channel ? (
                           <b.Text
                             color='#E8E8E8'
                             fontFamily='SlackLato-Black'
-                            fontSize={13}>
+                            fontSize={15}>
+                            Channel
+                          </b.Text>
+                        ) : (
+                          <SkeletonLine width={60} />
+                        )}
+                      </ChannelWrapper>
+                      <b.Box
+                        backgroundColor={channel && `#2EA683`}
+                        mt={2}
+                        px={2}>
+                        <b.Flex alignItems='center'>
+                          <b.Box mr={1}>
+                            <MockHashTag />
+                          </b.Box>
+                          {channel ? (
+                            <b.Text
+                              color='#E8E8E8'
+                              fontFamily='SlackLato-Bold'
+                              fontSize={12}>
+                              {channel}
+                            </b.Text>
+                          ) : (
+                            <SkeletonLine width={80} top={2} />
+                          )}
+                        </b.Flex>
+                      </b.Box>
+                      {children}
+                      <b.Box px={2}>
+                        <b.Flex alignItems='center'>
+                          <b.Box mr={1}>
+                            <MockHashTag />
+                          </b.Box>
+                          <SkeletonLine width={80} top={2} />
+                        </b.Flex>
+                      </b.Box>
+                      <b.Box px={2}>
+                        <b.Flex alignItems='center'>
+                          <b.Box mr={1}>
+                            <MockHashTag />
+                          </b.Box>
+                          <SkeletonLine width={80} top={2} />
+                        </b.Flex>
+                      </b.Box>
+                      <b.Box mt={4} px={2}>
+                        <b.Box>
+                          <b.Flex alignItems='center'>
+                            <b.Box mr={1}>
+                              <BulletPoint />
+                            </b.Box>
+                            <SkeletonLine width={80} />
+                          </b.Flex>
+                        </b.Box>
+                      </b.Box>
+                      <BulletSection px={2}>
+                        <b.Box>
+                          <b.Flex alignItems='center'>
+                            <b.Box mr={1}>
+                              <BulletPoint />
+                            </b.Box>
+                            <SkeletonLine width={80} />
+                          </b.Flex>
+                        </b.Box>
+                      </BulletSection>
+                      <BulletSection px={2}>
+                        <b.Box>
+                          <b.Flex alignItems='center'>
+                            <b.Box mr={1}>
+                              <BulletPoint />
+                            </b.Box>
+                            <SkeletonLine width={80} />
+                          </b.Flex>
+                        </b.Box>
+                      </BulletSection>
+                    </b.Box>
+                  </LeftMock>
+                  <RightMock>
+                    <b.Box>
+                      <SectionTitle>
+                        {channel ? (
+                          <b.Text
+                            color='#121212'
+                            fontFamily='SlackLato-Black'
+                            fontSize={17}>
                             {channel}
                           </b.Text>
                         ) : (
-                          <SkeletonLine width={80} top={2} />
+                          <SkeletonLine width={70} color='#E8E8E8' />
                         )}
-                      </b.Flex>
-                    </b.Box>
-                    {children}
-                    <b.Box px={2}>
-                      <b.Flex alignItems='center'>
-                        <b.Box mr={1}>
-                          <MockHashTag />
-                        </b.Box>
-                        <SkeletonLine width={80} top={2} />
-                      </b.Flex>
-                    </b.Box>
-                    <b.Box px={2}>
-                      <b.Flex alignItems='center'>
-                        <b.Box mr={1}>
-                          <MockHashTag />
-                        </b.Box>
-                        <SkeletonLine width={80} top={2} />
-                      </b.Flex>
-                    </b.Box>
-                    <b.Box mt={4} px={2}>
+                      </SectionTitle>
                       <b.Box>
-                        <b.Flex alignItems='center'>
-                          <b.Box mr={1}>
-                            <BulletPoint />
-                          </b.Box>
-                          <SkeletonLine width={80} />
-                        </b.Flex>
+                        <Line />
                       </b.Box>
-                    </b.Box>
-                    <BulletSection px={2}>
-                      <b.Box>
-                        <b.Flex alignItems='center'>
-                          <b.Box mr={1}>
-                            <BulletPoint />
-                          </b.Box>
-                          <SkeletonLine width={80} />
-                        </b.Flex>
-                      </b.Box>
-                    </BulletSection>
-                    <BulletSection px={2}>
-                      <b.Box>
-                        <b.Flex alignItems='center'>
-                          <b.Box mr={1}>
-                            <BulletPoint />
-                          </b.Box>
-                          <SkeletonLine width={80} />
-                        </b.Flex>
-                      </b.Box>
-                    </BulletSection>
-                  </b.Box>
-                </LeftMock>
-                <RightMock>
-                  <b.Box>
-                    <SectionTitle>
-                      {channel ? (
-                        <b.Text
-                          color='#121212'
-                          fontFamily='SlackLato-Black'
-                          fontSize={17}>
-                          {channel}
-                        </b.Text>
-                      ) : (
-                        <SkeletonLine width={70} color='#E8E8E8' />
+                      {channel && (
+                        <ContentWrapper>
+                          <Content mt={2}>
+                            <b.Box pt={3} pb={3}>
+                              <img src={teamphoto_1} />
+                            </b.Box>
+                            <b.Box py={3}>
+                              <img src={teamphoto_2} />
+                            </b.Box>
+                            <b.Box py={3}>
+                              <img src={teamphoto_3} />
+                            </b.Box>
+                          </Content>
+                        </ContentWrapper>
                       )}
-                    </SectionTitle>
-                    <b.Box>
-                      <Line />
                     </b.Box>
-                    {channel && (
-                      <ContentWrapper>
-                        <Content mt={2}>
-                          <b.Box pt={3} pb={3}>
-                            <img src={teamphoto_1} />
-                          </b.Box>
-                          <b.Box py={3}>
-                            <img src={teamphoto_2} />
-                          </b.Box>
-                          <b.Box py={3}>
-                            <img src={teamphoto_3} />
-                          </b.Box>
-                        </Content>
-                      </ContentWrapper>
-                    )}
-                  </b.Box>
-                </RightMock>
-              </b.Box>
-            </RightWrapper>
-          </b.Flex>
-        </Right>
-      </b.Flex>
+                  </RightMock>
+                </b.Box>
+              </RightWrapper>
+            </b.Flex>
+          </Right>
+        </b.Flex>
+      </InnerWrapper>
     </Wrapper>
   );
 };
 
 const Wrapper = styled(b.Box)`
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 70px auto;
+`;
+
+const HeaderWrapper = styled.div`
+  position: sticky;
+  top: 0;
+  z-index: 99;
+`;
+
+const HeaderContainer = styled.div`
+  background-color: white;
+  height: 70px;
+  border-bottom: 0.5px solid lightgray;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+`;
+
+const InnerWrapper = styled(b.Box)`
   width: 100%;
   height: 100%;
 `;
