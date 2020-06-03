@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 
 import { AppRoutes } from './routes/App';
-import { setAccessToken } from './global/token';
+import { setAccessToken, getAccessToken } from './global/token';
 
 export const Loading = () => {
   const [loading, setLoading] = useState(true);
@@ -22,6 +22,10 @@ export const Loading = () => {
 
     fetchToken();
   }, []);
+
+  if (loading) {
+    return <div></div>;
+  }
 
   return <AppRoutes />;
 };

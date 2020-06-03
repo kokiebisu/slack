@@ -37,13 +37,6 @@ export const GetStartedCreate: React.FC<Props> = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // useEffect(() => {
-  //   setError({ user: false, password: false });
-  // }, [error.user, error.password]);
-
-  console.log('user', error.user);
-  console.log('password', error.password);
-
   return (
     <LogoCenterLayout>
       <b.Box py={4}>

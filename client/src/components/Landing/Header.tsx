@@ -206,6 +206,7 @@ export const Header: React.FC<Props> = ({ data }) => {
               </HamburgerWrapper>
             </Right>
           </b.Flex>
+
           {pressed ? (
             <LaunchOptionWrapper>
               <LaunchOption>

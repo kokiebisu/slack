@@ -28,7 +28,7 @@ export type User = {
 export type LoginResponse = {
   __typename?: 'LoginResponse';
   ok: Scalars['Boolean'];
-  accessToken?: Maybe<Scalars['String']>;
+  accessToken: Scalars['String'];
   user?: Maybe<User>;
   errorType?: Maybe<Scalars['String']>;
 };
