@@ -51,7 +51,7 @@ class LoginResponse {
   user: User | null;
 
   @Field(() => String, { nullable: true })
-  error: string | null;
+  errorType: string | null;
 }
 
 @Resolver()
@@ -80,8 +80,8 @@ export class AuthResolver {
   async login(
     @Arg('email') email: string,
     @Arg('password') password: string,
-    @Ctx() { req, res }: Context
-  ): Promise<LoginResponse | Error> {
+    @Ctx() { res }: Context
+  ): Promise<LoginResponse> {
     const user = await User.findOne({ where: { email } });
 
     if (!user) {
@@ -89,7 +89,7 @@ export class AuthResolver {
         ok: false,
         accessToken: null,
         user: null,
-        error: 'User not found',
+        errorType: 'user',
       };
     }
 
@@ -101,7 +101,7 @@ export class AuthResolver {
         ok: false,
         accessToken: null,
         user: null,
-        error: 'Password not found',
+        errorType: 'password',
       };
     }
 
@@ -116,7 +116,7 @@ export class AuthResolver {
       ok: true,
       accessToken: createAccessToken(user),
       user,
-      error: null,
+      errorType: null,
     };
   }
 
