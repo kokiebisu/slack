@@ -12,7 +12,11 @@ export class TeamResolvers {
   }
 
   @Mutation(() => Team, { nullable: true })
-  async createTeam(@Arg('name') name: string, @Ctx() { req }: Context) {
+  async createTeam(
+    @Arg('name') name: string,
+    @Arg('channel') channel: string,
+    @Ctx() { req }: Context
+  ) {
     const authorization = req.headers.authorization;
 
     if (!authorization) {
