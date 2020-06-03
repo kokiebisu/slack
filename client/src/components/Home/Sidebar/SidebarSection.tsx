@@ -66,7 +66,7 @@ export const SidebarSection: React.FC<Props> = ({
             className={hovered.plus ? `hovered` : ``}
             onMouseEnter={() => setHovered({ ...hovered, plus: true })}
             onMouseLeave={() => setHovered({ ...hovered, plus: false })}>
-            <Plus width={14} height={14} color='#CFC3CF' />
+            <Plus width={14} height={14} color='#CFC3CF' top={2.5} />
           </PlusWrapper>
         </TitleWrapper>
       </TopColumnWrapper>
@@ -120,6 +120,11 @@ const TopColumnWrapper = styled(b.Button)`
   width: 100%;
   height: 25px;
   padding: 0 18px 0 20px;
+
+  &:focus {
+    outline: 0;
+  }
+
   @media ${home.lg} {
     padding: 0 30px 0 20px;
   }

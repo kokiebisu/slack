@@ -134,7 +134,11 @@ const Wrapper = styled(b.Button)`
   }
 
   &.clicked {
-    background: #1264a3;
+    background: #1265a3;
+  }
+
+  &:focus {
+    outline: 0;
   }
 `;
 
