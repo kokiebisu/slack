@@ -1,10 +1,13 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Globe } from '../../../assets/svg/Footer';
 
 import * as b from '../../../styles/blocks';
 
-import { HeaderLogo } from '../../../assets/svg/Logo';
+import { Link } from 'react-router-dom';
+
+// Svg
+import { Globe } from '../../../assets/svg';
+import { NameLogo } from '../../../assets/svg/Logo';
 
 interface Props {}
 
@@ -12,11 +15,13 @@ export const LogoCenterLayout: React.FC<Props> = ({ children }) => {
   return (
     <Wrapper>
       <Container>
-        <b.Box pt={4}>
-          <LogoWrapper justifyContent='center'>
-            <HeaderLogo width={140} height={60} />
-          </LogoWrapper>
-        </b.Box>
+        <Link to='/'>
+          <b.Box pt={4}>
+            <LogoWrapper justifyContent='center'>
+              <NameLogo width={140} height={60} />
+            </LogoWrapper>
+          </b.Box>
+        </Link>
         <ChildWrapper>{children}</ChildWrapper>
         <b.Box py={4}>
           <b.Flex alignItems='center' justifyContent='center'>

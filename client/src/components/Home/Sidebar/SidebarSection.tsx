@@ -3,7 +3,8 @@ import { useState, ReactPortal } from 'react';
 import styled from 'styled-components';
 import * as b from '../../../styles/blocks';
 
-import { Play, Plus, Close } from '../../../assets/svg/SidebarSections';
+import { Play, Close } from '../../../assets/svg';
+import { Plus } from '../../../assets/svg/Plus';
 import { home } from '../../../styles/sizes';
 
 interface Props {

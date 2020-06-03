@@ -14,8 +14,8 @@ import {
   SavedItems,
   Apps,
   Files,
-} from '../../../assets/svg/SidebarOptions';
-import { Hashtag } from '../../../assets/svg/SidebarSections';
+} from '../../../assets/svg';
+import { ThinHashTag } from '../../../assets/svg/HashTag';
 
 interface Props {
   name: string;
@@ -101,7 +101,11 @@ const renderOption = (option: string, clicked: boolean) => {
       );
     case 'channel browser':
       return (
-        <Hashtag width={15} height={15} color={clicked ? 'white' : '#CFC3CF'} />
+        <ThinHashTag
+          width={15}
+          height={15}
+          color={clicked ? 'white' : '#CFC3CF'}
+        />
       );
     case 'people':
       return (

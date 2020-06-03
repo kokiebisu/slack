@@ -9,7 +9,8 @@ import { gql } from 'apollo-boost';
 import * as b from '../../../styles/blocks';
 
 // Icons
-import { Lock, ChannelHashtag } from '../../../assets/svg/SidebarSections';
+import { Lock } from '../../../assets/svg';
+import { ChannelHashtag } from '../../../assets/svg/HashTag';
 
 interface Props {}
 

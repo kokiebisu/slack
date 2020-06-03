@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Bookmark } from '../../../assets/svg/Tools';
-import { Transition } from '../../../assets/svg/MentionPage';
+import { Bookmark } from '../../../assets/svg';
+import { Transition } from '../../../assets/svg';
 
 import * as b from '../../../styles/blocks';
 

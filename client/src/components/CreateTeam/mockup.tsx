@@ -3,10 +3,10 @@ import styled, { css } from 'styled-components';
 
 import * as b from '../../styles/blocks';
 
-import { HashTag } from '../../assets/svg/HashTag';
+import { ThinHashTag } from '../../assets/svg/HashTag';
 
 export const MockHashTag = () => {
-  return <HashTag width={8} height={8} color='#caadcd' bottom={1} />;
+  return <ThinHashTag width={8} height={8} color='#caadcd' bottom={1.5} />;
 };
 
 export const SkeletonLine = styled(b.Box)`

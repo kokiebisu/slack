@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { Option } from './Option';
 
-import { ShowLess } from '../../../assets/svg/SidebarOptions';
+import { ShowLess } from '../../../assets/svg';
 
 // Blocks
 import * as b from '../../../styles/blocks';

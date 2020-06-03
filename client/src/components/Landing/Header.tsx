@@ -7,9 +7,9 @@ import * as b from '../../styles/blocks';
 import { landing } from '../../styles/sizes';
 
 // Svg
-import { HeaderLogo } from '../../assets/svg/Logo';
+import { NameLogo } from '../../assets/svg/Logo';
 import { BottomArrow, RightArrow } from '../../assets/svg/Arrows';
-import { HamburgerButton } from '../../assets/svg/Buttons';
+import { HamburgerButton } from '../../assets/svg';
 
 // Images
 import BCIT from '../../assets/img/bcit.png';
@@ -45,7 +45,7 @@ export const Header: React.FC<Props> = ({ data }) => {
           <b.Flex alignItems='center' justifyContent='space-between'>
             <Left alignItems='center'>
               <b.Box top={2} mr={4}>
-                <HeaderLogo width={100} height={60} />
+                <NameLogo width={100} height={60} />
               </b.Box>
             </Left>
             <Right justifyContent='space-between' alignItems='center'>

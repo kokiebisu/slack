@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import * as b from '../../../styles/blocks';
 
 import { SmilePlus } from '../../../assets/svg/Reaction';
-import { Move, StartThread, Bookmark, More } from '../../../assets/svg/Tools';
+import { Move, StartThread, Bookmark, More } from '../../../assets/svg';
 
 interface Props {}
 
