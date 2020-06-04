@@ -84,6 +84,10 @@ const OptionsWrapper = styled(b.Box)`
 const ShowLessWrapper = styled(b.Button)`
   padding: 5px 15px;
   width: 100%;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 const TextWrapper = styled(b.Box)`

@@ -20,6 +20,9 @@ import { TokenRefreshLink } from 'apollo-link-token-refresh';
 import JwtDecode from 'jwt-decode';
 import { ContextProvider } from './context';
 
+import { main } from './styles/colors';
+import { ThemeProvider } from 'styled-components';
+
 const cache = new InMemoryCache({});
 
 const requestLink = new ApolloLink(
@@ -112,7 +115,9 @@ ReactDOM.render(
     <ContextProvider>
       <GlobalFonts />
       <GlobalStyles />
-      <Loading />
+      <ThemeProvider theme={main}>
+        <Loading />
+      </ThemeProvider>
     </ContextProvider>
   </ApolloProvider>,
   document.getElementById('root')

@@ -1,4 +1,27 @@
-export const colors = {
+interface ThemeProps {
+  [key: string]: { [key: string]: string };
+}
+
+interface AvatarBackgroundProps {
+  [key: string]: string;
+}
+
+const fontSizes = {};
+
+export const main: ThemeProps = {
+  colors: {
+    white: '#FFFFFF',
+    white__dark: '#F8F8F8',
+    primary: '#3F0F40',
+    primary__dark: '#350D36',
+    blue: '#005A9D',
+    black__light: '#272626',
+    black: '#000000',
+  },
+  fontSizes,
+};
+
+export const avatar: AvatarBackgroundProps = {
   oldlavendar: '#776885',
   tyrianpurple: '#5F1A37',
   lapislazuli: '#33658A',
@@ -17,9 +40,4 @@ export const colors = {
   crimson: '#D72638',
   lightgreen: '#8FF7A7',
   mayablue: '#51BBFE',
-};
-
-export const randomColor = (obj: any) => {
-  var keys = Object.keys(obj);
-  return obj[keys[(keys.length * Math.random()) << 0]];
 };

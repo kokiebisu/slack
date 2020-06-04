@@ -23,8 +23,6 @@ export const SidebarSection: React.FC<Props> = ({
 
   const [hovered, setHovered] = useState({
     subtitle: false,
-    plus: false,
-    close: false,
   });
 
   const arrow = {
@@ -62,23 +60,14 @@ export const SidebarSection: React.FC<Props> = ({
               </b.Text>
             </TitleContainer>
           </b.Flex>
-          <PlusWrapper
-            className={hovered.plus ? `hovered` : ``}
-            onMouseEnter={() => setHovered({ ...hovered, plus: true })}
-            onMouseLeave={() => setHovered({ ...hovered, plus: false })}>
+          <PlusWrapper>
             <Plus width={14} height={14} color='#CFC3CF' top={2.5} />
           </PlusWrapper>
         </TitleWrapper>
       </TopColumnWrapper>
       <ContentWrapper>{children}</ContentWrapper>
       {subtitle ? (
-        <SubtitleWrapper
-          className={hovered.subtitle ? `hovered` : ``}
-          onMouseEnter={() => setHovered({ ...hovered, subtitle: true })}
-          onMouseLeave={() => setHovered({ ...hovered, subtitle: false })}
-          my={1}
-          py={2}
-          pl={2}>
+        <SubtitleWrapper my={1} py={2} pl={2}>
           <b.Flex alignItems='center' justifyContent='space-between'>
             <b.Flex>
               <b.Box pr={2} style={{ bottom: 2.75 }}>
@@ -94,14 +83,8 @@ export const SidebarSection: React.FC<Props> = ({
               </b.Box>
             </b.Flex>
             {hovered.subtitle ? (
-              <CloseWrapper
-                onMouseEnter={() => setHovered({ ...hovered, close: true })}
-                onMouseLeave={() => setHovered({ ...hovered, close: false })}>
-                <Close
-                  width={12}
-                  height={12}
-                  color={hovered.close ? `white` : `#978198`}
-                />
+              <CloseWrapper>
+                <Close width={12} height={12} />
               </CloseWrapper>
             ) : null}
           </b.Flex>
@@ -151,8 +134,8 @@ const PlayWrapper = styled(b.Box)`
 const SubtitleWrapper = styled(b.Box)`
   padding: 7px 19px 3px 28.5px;
 
-  &.hovered {
-    background-color: #350d36 !important;
+  &:hover {
+    background-color: #350d36;
   }
 `;
 
@@ -162,8 +145,9 @@ const PlusWrapper = styled(b.Box)`
   bottom: 3px;
   border-radius: 5px;
   padding: 6px 8px 4px 7px;
-  &.hovered {
-    background: #532754 !important;
+
+  &:hover {
+    background: #532754;
   }
 `;
 
@@ -171,6 +155,20 @@ const CloseWrapper = styled(b.Box)`
   position: relative;
   bottom: 3px;
   right: 7px;
+
+  svg {
+    path {
+      fill: #978198;
+    }
+  }
+
+  &:hover {
+    svg {
+      path {
+        fill: white;
+      }
+    }
+  }
 
   @media ${home.lg} {
     bottom: 2px;
