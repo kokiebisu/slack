@@ -120,6 +120,19 @@ export type MutationCreateTeamArgs = {
   name: Scalars['String'];
 };
 
+export type ChannelsQueryVariables = {
+  teamId: Scalars['String'];
+};
+
+
+export type ChannelsQuery = (
+  { __typename?: 'Query' }
+  & { channels: Array<(
+    { __typename?: 'Channel' }
+    & Pick<Channel, 'id' | 'name' | 'public'>
+  )> }
+);
+
 export type CreateChannelMutationVariables = {
   name: Scalars['String'];
   teamId: Scalars['String'];
@@ -239,6 +252,41 @@ export type UsersQuery = (
 );
 
 
+export const ChannelsDocument = gql`
+    query Channels($teamId: String!) {
+  channels(teamId: $teamId) {
+    id
+    name
+    public
+  }
+}
+    `;
+
+/**
+ * __useChannelsQuery__
+ *
+ * To run a query within a React component, call `useChannelsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useChannelsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useChannelsQuery({
+ *   variables: {
+ *      teamId: // value for 'teamId'
+ *   },
+ * });
+ */
+export function useChannelsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<ChannelsQuery, ChannelsQueryVariables>) {
+        return ApolloReactHooks.useQuery<ChannelsQuery, ChannelsQueryVariables>(ChannelsDocument, baseOptions);
+      }
+export function useChannelsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<ChannelsQuery, ChannelsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<ChannelsQuery, ChannelsQueryVariables>(ChannelsDocument, baseOptions);
+        }
+export type ChannelsQueryHookResult = ReturnType<typeof useChannelsQuery>;
+export type ChannelsLazyQueryHookResult = ReturnType<typeof useChannelsLazyQuery>;
+export type ChannelsQueryResult = ApolloReactCommon.QueryResult<ChannelsQuery, ChannelsQueryVariables>;
 export const CreateChannelDocument = gql`
     mutation CreateChannel($name: String!, $teamId: String!) {
   createChannel(name: $name, teamId: $teamId) {

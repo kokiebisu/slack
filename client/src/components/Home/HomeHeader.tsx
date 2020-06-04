@@ -12,7 +12,6 @@ import * as b from '../../styles/blocks';
 
 // Sizes
 import { home } from '../../styles/sizes';
-import { useClientState } from '../../context/client-context';
 import { useTeamQuery } from '../../generated/graphql';
 
 interface Props {

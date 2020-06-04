@@ -6,7 +6,7 @@ import { Team } from '../models/Team';
 export class ChannelResolver {
   @Query(() => [Channel])
   async channels(@Arg('teamId') teamId: string) {
-    return await Channel.find({ where: { id: teamId } });
+    return await Channel.find({ where: { teamId } });
   }
 
   @Mutation(() => Channel)

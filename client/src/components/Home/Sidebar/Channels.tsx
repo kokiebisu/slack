@@ -3,18 +3,24 @@ import styled from 'styled-components';
 
 import _ from 'lodash';
 
-// Graphql
-import { gql } from 'apollo-boost';
-
 import * as b from '../../../styles/blocks';
 
 // Icons
 import { Lock } from '../../../assets/svg';
 import { ChannelHashtag } from '../../../assets/svg/HashTag';
+import { useParams } from 'react-router-dom';
 
-interface Props {}
+interface Props {
+  data: ChannelProps[];
+}
 
-export const Channels: React.FC<Props> = () => {
+interface ChannelProps {
+  id: string;
+  name: string;
+  public: boolean;
+}
+
+export const Channels: React.FC<any> = ({ data }) => {
   const tempChannels = [
     {
       id: 1,
@@ -30,12 +36,12 @@ export const Channels: React.FC<Props> = () => {
 
   return (
     <b.Box pl={2}>
-      {tempChannels.map((channel) => {
+      {data.map((channel: ChannelProps) => {
         return (
           <Channel
-            key={channel.id}
-            channelName={channel.channelName}
-            isPrivate={channel.isPrivate}
+            id={channel.id}
+            name={channel.name}
+            public={channel.public}
           />
         );
       })}
@@ -43,12 +49,7 @@ export const Channels: React.FC<Props> = () => {
   );
 };
 
-interface ChannelProps {
-  channelName: string;
-  isPrivate: boolean;
-}
-
-const Channel: React.FC<ChannelProps> = ({ channelName, isPrivate }) => {
+const Channel: React.FC<ChannelProps> = ({ id, name, public }) => {
   return (
     <b.Box py={2}>
       <b.Flex alignItems='center'>

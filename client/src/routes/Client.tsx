@@ -49,7 +49,7 @@ export const ClientRoutes: React.FC<Props> = () => {
     <>
       <BrowserRouter>
         <Wrapper>
-          {data && data.team && (
+          {!loading && data && (
             <>
               <HomeHeader team={data.team.name} />
               <ContentWrapper>

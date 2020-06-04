@@ -9,6 +9,8 @@ import { SidebarSections } from './SidebarSections';
 import { BottomArrow } from '../../../assets/svg/Arrows';
 import { Write } from '../../../assets/svg/Reaction';
 import { useState } from 'react';
+import { useMeQuery } from '../../../generated/graphql';
+import { useParams } from 'react-router-dom';
 
 interface Props {
   team?: string;
@@ -16,6 +18,9 @@ interface Props {
 
 export const Sidebar: React.FC<Props> = ({ team }) => {
   const [hovered, setHovered] = useState(false);
+  const { data, loading, error } = useMeQuery();
+
+  const { id } = useParams();
 
   return (
     <SideBarWrapper>
@@ -43,12 +48,14 @@ export const Sidebar: React.FC<Props> = ({ team }) => {
             <b.Box>
               <b.Flex alignItems='center'>
                 <StatusIcon />
-                <Name
-                  className={hovered ? `hovered` : ``}
-                  fontSize={13}
-                  fontFamily='SlackLato-Regular'>
-                  Kenichi Okiebisu
-                </Name>
+                {!loading && data && (
+                  <Name
+                    className={hovered ? `hovered` : ``}
+                    fontSize={13}
+                    fontFamily='SlackLato-Regular'>
+                    {data.me?.username}
+                  </Name>
+                )}
               </b.Flex>
             </b.Box>
           </b.Box>
