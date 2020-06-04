@@ -26,6 +26,7 @@ import { Box } from '../styles/blocks';
 
 import { home } from '../styles/sizes';
 import { useTeamQuery } from '../generated/graphql';
+import { useClientState, useClientDispatch } from '../context/client-context';
 
 type Props = RouteComponentProps<
   {},
@@ -35,41 +36,41 @@ type Props = RouteComponentProps<
 
 export const ClientRoutes: React.FC<Props> = () => {
   const match = useRouteMatch();
-  const location = useLocation();
   const { id } = useParams();
   const groupName = 'bcit-sept-2018';
-  const [state, setState] = useState({});
 
-  console.log('params', id);
-
-  // const { data, loading, error } = useTeamQuery({
-  //   variables: {
-  //     teamId: location.state,
-  //   },
-  // });
+  const { data, loading, error } = useTeamQuery({
+    variables: {
+      teamId: id,
+    },
+  });
 
   return (
     <>
       <BrowserRouter>
         <Wrapper>
-          <HomeHeader />
-          <ContentWrapper>
-            <Sidebar />
-            <Switch>
-              <Route path={match.url + '/threads'}>
-                <ThreadsPage group={groupName} />
-              </Route>
-              <Route path={match.url + '/activity-page'}>
-                <MentionPage group={groupName} />
-              </Route>
-              <Route path={match.url + '/drafts'}>
-                <DraftPage group={groupName} />
-              </Route>
-              <Route path={match.url + '/saved-page'}>
-                <SavedPage group={groupName} />
-              </Route>
-            </Switch>
-          </ContentWrapper>
+          {data && data.team && (
+            <>
+              <HomeHeader team={data.team.name} />
+              <ContentWrapper>
+                <Sidebar team={data.team.name} />
+                <Switch>
+                  <Route path={match.url + '/threads'}>
+                    <ThreadsPage group={groupName} />
+                  </Route>
+                  <Route path={match.url + '/activity-page'}>
+                    <MentionPage group={groupName} />
+                  </Route>
+                  <Route path={match.url + '/drafts'}>
+                    <DraftPage group={groupName} />
+                  </Route>
+                  <Route path={match.url + '/saved-page'}>
+                    <SavedPage group={groupName} />
+                  </Route>
+                </Switch>
+              </ContentWrapper>
+            </>
+          )}
         </Wrapper>
       </BrowserRouter>
     </>

@@ -46,6 +46,7 @@ export type Query = {
   __typename?: 'Query';
   channels: Array<Channel>;
   teams: Array<Team>;
+  myTeams: Array<Team>;
   team: Team;
   me?: Maybe<User>;
   users: Array<User>;
@@ -183,6 +184,17 @@ export type MeQuery = (
   )> }
 );
 
+export type MyTeamsQueryVariables = {};
+
+
+export type MyTeamsQuery = (
+  { __typename?: 'Query' }
+  & { myTeams: Array<(
+    { __typename?: 'Team' }
+    & Pick<Team, 'id' | 'name'>
+  )> }
+);
+
 export type RegisterMutationVariables = {
   username: Scalars['String'];
   email: Scalars['String'];
@@ -207,7 +219,7 @@ export type TeamQuery = (
   { __typename?: 'Query' }
   & { team: (
     { __typename?: 'Team' }
-    & Pick<Team, 'id' | 'ownerId'>
+    & Pick<Team, 'id' | 'name' | 'ownerId'>
     & { channels: Array<(
       { __typename?: 'Channel' }
       & Pick<Channel, 'id' | 'name' | 'teamId'>
@@ -399,6 +411,39 @@ export function useMeLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptio
 export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
 export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
 export type MeQueryResult = ApolloReactCommon.QueryResult<MeQuery, MeQueryVariables>;
+export const MyTeamsDocument = gql`
+    query MyTeams {
+  myTeams {
+    id
+    name
+  }
+}
+    `;
+
+/**
+ * __useMyTeamsQuery__
+ *
+ * To run a query within a React component, call `useMyTeamsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMyTeamsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMyTeamsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useMyTeamsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<MyTeamsQuery, MyTeamsQueryVariables>) {
+        return ApolloReactHooks.useQuery<MyTeamsQuery, MyTeamsQueryVariables>(MyTeamsDocument, baseOptions);
+      }
+export function useMyTeamsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<MyTeamsQuery, MyTeamsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<MyTeamsQuery, MyTeamsQueryVariables>(MyTeamsDocument, baseOptions);
+        }
+export type MyTeamsQueryHookResult = ReturnType<typeof useMyTeamsQuery>;
+export type MyTeamsLazyQueryHookResult = ReturnType<typeof useMyTeamsLazyQuery>;
+export type MyTeamsQueryResult = ApolloReactCommon.QueryResult<MyTeamsQuery, MyTeamsQueryVariables>;
 export const RegisterDocument = gql`
     mutation Register($username: String!, $email: String!, $password: String!) {
   register(username: $username, email: $email, password: $password) {
@@ -438,6 +483,7 @@ export const TeamDocument = gql`
     query Team($teamId: String!) {
   team(teamId: $teamId) {
     id
+    name
     ownerId
     channels {
       id

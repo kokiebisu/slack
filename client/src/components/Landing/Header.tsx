@@ -8,24 +8,22 @@ import { landing } from '../../styles/sizes';
 
 // Svg
 import { NameLogo } from '../../assets/svg/Logo';
-import { BottomArrow, RightArrow } from '../../assets/svg/Arrows';
+import { BottomArrow } from '../../assets/svg/Arrows';
 import { HamburgerButton } from '../../assets/svg';
-
-// Images
-import BCIT from '../../assets/img/bcit.png';
 
 // Components
 import { Link } from './Landing.styles';
+import { WorkspaceOption } from './WorkspaceOption';
 
 // Util
 // import { useAuthenticated } from '../../hooks/useAuthenticated';
-import { useMeQuery, MeQuery } from '../../generated/graphql';
+import { useMeQuery, MeQuery, useMyTeamsQuery } from '../../generated/graphql';
 
 interface Props {
   data: MeQuery | undefined;
 }
 
-export const Header: React.FC<Props> = ({ data }) => {
+export const Header: React.FC<Props> = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [hovered, setHovered] = useState({
     why: false,
@@ -33,8 +31,9 @@ export const Header: React.FC<Props> = ({ data }) => {
     resources: false,
     enterprise: false,
     pricing: false,
-    launch: false,
   });
+
+  const { data, loading, error } = useMyTeamsQuery();
 
   const [pressed, setPressed] = useState(false);
 
@@ -168,7 +167,7 @@ export const Header: React.FC<Props> = ({ data }) => {
                   <Link>Pricing</Link>
                 </NavItem>
               </Nav>
-              {data && data.me ? (
+              {data && data.myTeams ? (
                 <LaunchButtonWrapper
                   initial='rest'
                   whileHover='hovered'
@@ -210,47 +209,15 @@ export const Header: React.FC<Props> = ({ data }) => {
           {pressed ? (
             <LaunchOptionWrapper>
               <LaunchOption>
-                <b.Anchor href='/client'>
-                  <b.Box
-                    onMouseEnter={() => {
-                      setHovered({ ...hovered, launch: true });
-                    }}
-                    onMouseLeave={() => {
-                      setHovered({ ...hovered, launch: false });
-                    }}
-                    pb={2}
-                    px={2}
-                    style={{ borderBottom: '0.5px solid #E2E1E2' }}>
-                    <b.Flex alignItems='center' justifyContent='space-between'>
-                      <b.Box>
-                        <b.Flex alignItems='center'>
-                          <b.Box mr={3}>
-                            <img
-                              style={{ borderRadius: '5px' }}
-                              width={50}
-                              height={50}
-                              src={BCIT}
-                              alt='channel'
-                            />
-                          </b.Box>
-                          <b.Box>
-                            <TeamName
-                              fontFamily='CircularPro-Bold'
-                              fontSize={17}
-                              className={hovered.launch ? `hovered` : ``}>
-                              bcit-cst-sept-2018
-                            </TeamName>
-                          </b.Box>
-                        </b.Flex>
-                      </b.Box>
-                      <b.Box
-                        variants={launchArrow}
-                        animate={hovered.launch ? 'animate' : 'initial'}>
-                        <RightArrow width={15} height={15} color='#1766A4' />
-                      </b.Box>
-                    </b.Flex>
-                  </b.Box>
-                </b.Anchor>
+                {data?.myTeams.map((team) => {
+                  return (
+                    <WorkspaceOption
+                      key={team.id}
+                      name={team.name}
+                      url={team.id}
+                    />
+                  );
+                })}
                 <b.Box pt={4} pb={3}>
                   <b.Box>
                     <LaunchOptionLink
@@ -309,14 +276,6 @@ const HeaderWrapper = styled.div`
   position: sticky;
   top: 0;
   z-index: 99;
-`;
-
-const TeamName = styled(b.Text)`
-  color: #1d1d1d;
-
-  &.hovered {
-    color: #1766a4;
-  }
 `;
 
 const Wrapper = styled.div`
@@ -434,21 +393,6 @@ const launchMotion = {
     backgroundColor: '#18071A',
     transition: {
       duration: 0.2,
-    },
-  },
-};
-
-const launchArrow = {
-  initial: {
-    x: 0,
-    transition: {
-      duration: 0.5,
-    },
-  },
-  animate: {
-    x: 5,
-    transition: {
-      duration: 0.5,
     },
   },
 };

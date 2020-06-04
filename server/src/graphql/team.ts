@@ -11,6 +11,23 @@ export class TeamResolvers {
     return await Team.find({ relations: ['channels'] });
   }
 
+  @Query(() => [Team])
+  async myTeams(@Ctx() { req }: Context) {
+    const authorization = req.headers.authorization;
+    if (!authorization) {
+      return null;
+    }
+
+    try {
+      const token = authorization.split(' ')[1];
+      const { userId }: any = verify(token, process.env.ACCESS_TOKEN_SECRET!);
+      return await Team.find({ ownerId: userId });
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  }
+
   @Query(() => Team)
   async team(@Arg('teamId') teamId: string) {
     const team = await Team.findOne(

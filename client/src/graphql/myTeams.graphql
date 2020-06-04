@@ -1,0 +1,6 @@
+query MyTeams {
+  myTeams {
+    id
+    name
+  }
+}
