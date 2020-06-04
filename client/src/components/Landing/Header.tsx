@@ -12,7 +12,7 @@ import { BottomArrow } from '../../assets/svg/Arrows';
 import { HamburgerButton } from '../../assets/svg';
 
 // Colors
-import { theme } from '../../styles/colors';
+import { avatar } from '../../styles/colors';
 import { randomColor } from '../../util/randomColor';
 
 // Components
@@ -219,7 +219,7 @@ export const Header: React.FC<Props> = () => {
                       key={team.id}
                       name={team.name}
                       url={team.id}
-                      color={`${randomColor(theme.avatar)}`}
+                      color={`${randomColor(avatar)}`}
                     />
                   );
                 })}

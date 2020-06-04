@@ -18,7 +18,6 @@ interface Props {
 
 export const Sidebar: React.FC<Props> = ({ team }) => {
   const [hovered, setHovered] = useState(false);
-  const [menuToggle, setMenuToggle] = useState(false);
   const { data, loading, error } = useMeQuery();
 
   const { id } = useParams();
@@ -27,7 +26,6 @@ export const Sidebar: React.FC<Props> = ({ team }) => {
     <>
       <SideBarWrapper>
         <ProfileWrapper
-          onClick={() => setMenuToggle(!menuToggle)}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
           className={hovered ? `hovered` : ``}>

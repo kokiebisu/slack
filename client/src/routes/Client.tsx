@@ -73,7 +73,7 @@ export const ClientRoutes: React.FC<Props> = () => {
                             <b.Box mb={1}>
                               <b.Text
                                 fontSize={15}
-                                color='#272626'
+                                color='black__light'
                                 fontFamily='SlackLato-Bold'>
                                 kenichikona
                               </b.Text>
@@ -102,7 +102,7 @@ export const ClientRoutes: React.FC<Props> = () => {
                         </b.Flex>
                         <b.Box my={2} backgroundColor='#FFFFFF'>
                           <b.Flex>
-                            <b.Box>smile</b.Box>
+                            <b.Box mr={3}>smile</b.Box>
                             <b.Box>
                               <b.Text>Update your status</b.Text>
                             </b.Box>
@@ -175,6 +175,7 @@ const ContentWrapper = styled(b.Box)`
 `;
 
 const MenuToggle = styled(b.Box)`
+  width: 310px;
   position: absolute;
   top: 60px;
   left: 15px;
