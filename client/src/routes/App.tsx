@@ -19,7 +19,7 @@ export const AppRoutes: React.SFC = (): JSX.Element => {
         <Route exact path='/' component={Landing} />
         <Route path='/get-started' component={GetStartedRoutes} />
         <Route path='/create' component={CreateRoutes} />
-        <Route path='/client' component={ClientRoutes} />
+        <Route path='/client/:id' component={ClientRoutes} />
         <Route path='/signin' component={SignIn} />
         <Route path='/logout' component={Logout} />
         <Route path='/test' component={Test} />

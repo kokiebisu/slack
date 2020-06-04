@@ -12,9 +12,9 @@ import { Team } from './Team';
 @ObjectType()
 @Entity('channels')
 export class Channel extends BaseEntity {
-  @Field(() => Int)
-  @PrimaryGeneratedColumn()
-  id: number;
+  @Field(() => String)
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Field()
   @Column()
@@ -24,9 +24,9 @@ export class Channel extends BaseEntity {
   @Column({ default: true })
   public: boolean;
 
-  @Field()
+  @Field(() => String)
   @Column()
-  teamId: number;
+  teamId: string;
 
   @ManyToOne(() => Team, (team) => team.channels)
   team: Team;

@@ -11,11 +11,20 @@ export type Scalars = {
   Float: number;
 };
 
+export type Channel = {
+  __typename?: 'Channel';
+  id: Scalars['String'];
+  name: Scalars['String'];
+  public: Scalars['Boolean'];
+  teamId: Scalars['String'];
+};
+
 export type Team = {
   __typename?: 'Team';
-  id: Scalars['Int'];
+  id: Scalars['String'];
   name: Scalars['String'];
-  ownerId: Scalars['Float'];
+  ownerId: Scalars['Int'];
+  channels: Array<Channel>;
 };
 
 export type User = {
@@ -35,9 +44,21 @@ export type LoginResponse = {
 
 export type Query = {
   __typename?: 'Query';
+  channels: Array<Channel>;
   teams: Array<Team>;
+  team: Team;
   me?: Maybe<User>;
   users: Array<User>;
+};
+
+
+export type QueryChannelsArgs = {
+  teamId: Scalars['String'];
+};
+
+
+export type QueryTeamArgs = {
+  teamId: Scalars['String'];
 };
 
 export type Mutation = {
@@ -49,6 +70,7 @@ export type Mutation = {
   confirmUser: Scalars['Boolean'];
   changePassword?: Maybe<User>;
   logout: Scalars['Boolean'];
+  createChannel: Channel;
   createTeam?: Maybe<Team>;
 };
 
@@ -87,9 +109,29 @@ export type MutationChangePasswordArgs = {
 };
 
 
+export type MutationCreateChannelArgs = {
+  teamId: Scalars['String'];
+  name: Scalars['String'];
+};
+
+
 export type MutationCreateTeamArgs = {
   name: Scalars['String'];
 };
+
+export type CreateChannelMutationVariables = {
+  name: Scalars['String'];
+  teamId: Scalars['String'];
+};
+
+
+export type CreateChannelMutation = (
+  { __typename?: 'Mutation' }
+  & { createChannel: (
+    { __typename?: 'Channel' }
+    & Pick<Channel, 'id' | 'name' | 'teamId'>
+  ) }
+);
 
 export type CreateTeamMutationVariables = {
   name: Scalars['String'];
@@ -156,6 +198,23 @@ export type RegisterMutation = (
   ) }
 );
 
+export type TeamQueryVariables = {
+  teamId: Scalars['String'];
+};
+
+
+export type TeamQuery = (
+  { __typename?: 'Query' }
+  & { team: (
+    { __typename?: 'Team' }
+    & Pick<Team, 'id' | 'ownerId'>
+    & { channels: Array<(
+      { __typename?: 'Channel' }
+      & Pick<Channel, 'id' | 'name' | 'teamId'>
+    )> }
+  ) }
+);
+
 export type UsersQueryVariables = {};
 
 
@@ -168,6 +227,41 @@ export type UsersQuery = (
 );
 
 
+export const CreateChannelDocument = gql`
+    mutation CreateChannel($name: String!, $teamId: String!) {
+  createChannel(name: $name, teamId: $teamId) {
+    id
+    name
+    teamId
+  }
+}
+    `;
+export type CreateChannelMutationFn = ApolloReactCommon.MutationFunction<CreateChannelMutation, CreateChannelMutationVariables>;
+
+/**
+ * __useCreateChannelMutation__
+ *
+ * To run a mutation, you first call `useCreateChannelMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateChannelMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createChannelMutation, { data, loading, error }] = useCreateChannelMutation({
+ *   variables: {
+ *      name: // value for 'name'
+ *      teamId: // value for 'teamId'
+ *   },
+ * });
+ */
+export function useCreateChannelMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CreateChannelMutation, CreateChannelMutationVariables>) {
+        return ApolloReactHooks.useMutation<CreateChannelMutation, CreateChannelMutationVariables>(CreateChannelDocument, baseOptions);
+      }
+export type CreateChannelMutationHookResult = ReturnType<typeof useCreateChannelMutation>;
+export type CreateChannelMutationResult = ApolloReactCommon.MutationResult<CreateChannelMutation>;
+export type CreateChannelMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateChannelMutation, CreateChannelMutationVariables>;
 export const CreateTeamDocument = gql`
     mutation CreateTeam($name: String!) {
   createTeam(name: $name) {
@@ -340,6 +434,45 @@ export function useRegisterMutation(baseOptions?: ApolloReactHooks.MutationHookO
 export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>;
 export type RegisterMutationResult = ApolloReactCommon.MutationResult<RegisterMutation>;
 export type RegisterMutationOptions = ApolloReactCommon.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>;
+export const TeamDocument = gql`
+    query Team($teamId: String!) {
+  team(teamId: $teamId) {
+    id
+    ownerId
+    channels {
+      id
+      name
+      teamId
+    }
+  }
+}
+    `;
+
+/**
+ * __useTeamQuery__
+ *
+ * To run a query within a React component, call `useTeamQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTeamQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTeamQuery({
+ *   variables: {
+ *      teamId: // value for 'teamId'
+ *   },
+ * });
+ */
+export function useTeamQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<TeamQuery, TeamQueryVariables>) {
+        return ApolloReactHooks.useQuery<TeamQuery, TeamQueryVariables>(TeamDocument, baseOptions);
+      }
+export function useTeamLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<TeamQuery, TeamQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<TeamQuery, TeamQueryVariables>(TeamDocument, baseOptions);
+        }
+export type TeamQueryHookResult = ReturnType<typeof useTeamQuery>;
+export type TeamLazyQueryHookResult = ReturnType<typeof useTeamLazyQuery>;
+export type TeamQueryResult = ApolloReactCommon.QueryResult<TeamQuery, TeamQueryVariables>;
 export const UsersDocument = gql`
     query Users {
   users {

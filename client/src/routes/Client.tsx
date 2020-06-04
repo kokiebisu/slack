@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import { HomeHeader } from '../components/Home/HomeHeader';
@@ -15,19 +16,37 @@ import {
   Switch,
   useLocation,
   useRouteMatch,
+  useParams,
+  RouteComponentProps,
 } from 'react-router-dom';
+import { StaticContext } from 'react-router';
 
 // Block
 import { Box } from '../styles/blocks';
 
 import { home } from '../styles/sizes';
+import { useTeamQuery } from '../generated/graphql';
 
-interface Props {}
+type Props = RouteComponentProps<
+  {},
+  StaticContext,
+  { from: { pathname: string } }
+>;
 
 export const ClientRoutes: React.FC<Props> = () => {
   const match = useRouteMatch();
   const location = useLocation();
+  const { id } = useParams();
   const groupName = 'bcit-sept-2018';
+  const [state, setState] = useState({});
+
+  console.log('params', id);
+
+  // const { data, loading, error } = useTeamQuery({
+  //   variables: {
+  //     teamId: location.state,
+  //   },
+  // });
 
   return (
     <>

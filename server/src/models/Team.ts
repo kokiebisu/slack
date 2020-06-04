@@ -15,15 +15,15 @@ import { Channel } from './Channel';
 @ObjectType()
 @Entity('teams')
 export class Team extends BaseEntity {
-  @Field(() => Int)
-  @PrimaryGeneratedColumn()
-  id: number;
+  @Field(() => String)
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Field()
   @Column()
   name: string;
 
-  @Field()
+  @Field(() => Int)
   @Column()
   ownerId: number;
 

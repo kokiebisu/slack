@@ -12,7 +12,7 @@ export class TeamResolvers {
   }
 
   @Query(() => Team)
-  async team(@Arg('teamId') teamId: number) {
+  async team(@Arg('teamId') teamId: string) {
     const team = await Team.findOne(
       { id: teamId },
       { relations: ['channels'] }

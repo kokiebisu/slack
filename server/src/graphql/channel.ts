@@ -1,18 +1,18 @@
-import { Resolver, Query, Arg, Mutation } from 'type-graphql';
+import { Resolver, Query, Arg, Mutation, Int } from 'type-graphql';
 import { Channel } from '../models/Channel';
 import { Team } from '../models/Team';
 
 @Resolver()
 export class ChannelResolver {
   @Query(() => [Channel])
-  async channels(@Arg('teamId') teamId: number) {
+  async channels(@Arg('teamId') teamId: string) {
     return await Channel.find({ where: { id: teamId } });
   }
 
   @Mutation(() => Channel)
   async createChannel(
     @Arg('name') name: string,
-    @Arg('teamId') teamId: number
+    @Arg('teamId') teamId: string
   ): Promise<Channel | null> {
     const team = await Team.findOne(teamId);
     if (!team) {
