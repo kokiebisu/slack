@@ -8,7 +8,6 @@ import * as b from '../../../styles/blocks';
 // Icons
 import { Lock } from '../../../assets/svg';
 import { ChannelHashtag } from '../../../assets/svg/HashTag';
-import { useParams } from 'react-router-dom';
 
 interface Props {
   data: ChannelProps[];
@@ -17,7 +16,7 @@ interface Props {
 interface ChannelProps {
   id: string;
   name: string;
-  public: boolean;
+  isPublic: boolean;
 }
 
 export const Channels: React.FC<any> = ({ data }) => {
@@ -41,7 +40,7 @@ export const Channels: React.FC<any> = ({ data }) => {
           <Channel
             id={channel.id}
             name={channel.name}
-            public={channel.public}
+            isPublic={channel.isPublic}
           />
         );
       })}
@@ -49,24 +48,24 @@ export const Channels: React.FC<any> = ({ data }) => {
   );
 };
 
-const Channel: React.FC<ChannelProps> = ({ id, name, public }) => {
+const Channel: React.FC<ChannelProps> = ({ id, name, isPublic }) => {
   return (
     <b.Box py={2}>
       <b.Flex alignItems='center'>
         <b.Box pr={2}>
-          {isPrivate ? (
-            <LockWrapper>
-              <Lock width={12} height={12} color='#CFC3CF' />
-            </LockWrapper>
-          ) : (
+          {isPublic ? (
             <ChannelHashtagWrapper>
               <ChannelHashtag width={12} height={12} color='#CFC3CF' />
             </ChannelHashtagWrapper>
+          ) : (
+            <LockWrapper>
+              <Lock width={12} height={12} color='#CFC3CF' />
+            </LockWrapper>
           )}
         </b.Box>
         <b.Box style={{ top: 3 }}>
           <b.Text fontFamily='SlackLato-Light' color='#CFC3CF' fontSize={15}>
-            {channelName}
+            {name}
           </b.Text>
         </b.Box>
       </b.Flex>

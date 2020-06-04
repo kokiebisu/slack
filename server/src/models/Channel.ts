@@ -22,7 +22,7 @@ export class Channel extends BaseEntity {
 
   @Field()
   @Column({ default: true })
-  public: boolean;
+  isPublic: boolean;
 
   @Field(() => String)
   @Column()

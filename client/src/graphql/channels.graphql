@@ -2,6 +2,6 @@ query Channels($teamId: String!) {
   channels(teamId: $teamId) {
     id
     name
-    public
+    isPublic
   }
 }

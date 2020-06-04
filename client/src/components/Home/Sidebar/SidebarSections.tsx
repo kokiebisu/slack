@@ -9,18 +9,9 @@ import { SidebarSection } from './SidebarSection';
 import { Messages } from './Messages';
 import { Channels } from './Channels';
 
-// Graphql
-import gql from 'graphql-tag';
-import { useQuery } from '@apollo/react-hooks';
-
 import _ from 'lodash';
 import decode from 'jwt-decode';
-import {
-  useParams,
-  useLocation,
-  useRouteMatch,
-  useHistory,
-} from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useChannelsQuery } from '../../../generated/graphql';
 
 interface Props {}

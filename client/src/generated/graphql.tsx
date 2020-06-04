@@ -15,7 +15,7 @@ export type Channel = {
   __typename?: 'Channel';
   id: Scalars['String'];
   name: Scalars['String'];
-  public: Scalars['Boolean'];
+  isPublic: Scalars['Boolean'];
   teamId: Scalars['String'];
 };
 
@@ -129,7 +129,7 @@ export type ChannelsQuery = (
   { __typename?: 'Query' }
   & { channels: Array<(
     { __typename?: 'Channel' }
-    & Pick<Channel, 'id' | 'name' | 'public'>
+    & Pick<Channel, 'id' | 'name' | 'isPublic'>
   )> }
 );
 
@@ -257,7 +257,7 @@ export const ChannelsDocument = gql`
   channels(teamId: $teamId) {
     id
     name
-    public
+    isPublic
   }
 }
     `;
