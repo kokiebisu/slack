@@ -8,15 +8,23 @@ import { verify } from 'jsonwebtoken';
 export class TeamResolvers {
   @Query(() => [Team])
   async teams() {
-    return await Team.find();
+    return await Team.find({ relations: ['channels'] });
+  }
+
+  @Query(() => Team)
+  async team(@Arg('teamId') teamId: number) {
+    const team = await Team.findOne(
+      { id: teamId },
+      { relations: ['channels'] }
+    );
+    if (!team) {
+      return null;
+    }
+    return team;
   }
 
   @Mutation(() => Team, { nullable: true })
-  async createTeam(
-    @Arg('name') name: string,
-    @Arg('channel') channel: string,
-    @Ctx() { req }: Context
-  ) {
+  async createTeam(@Arg('name') name: string, @Ctx() { req }: Context) {
     const authorization = req.headers.authorization;
 
     if (!authorization) {
