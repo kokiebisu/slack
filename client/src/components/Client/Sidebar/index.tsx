@@ -18,57 +18,62 @@ interface Props {
 
 export const Sidebar: React.FC<Props> = ({ team }) => {
   const [hovered, setHovered] = useState(false);
+  const [menuToggle, setMenuToggle] = useState(false);
   const { data, loading, error } = useMeQuery();
 
   const { id } = useParams();
 
   return (
-    <SideBarWrapper>
-      <Wrapper
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        className={hovered ? `hovered` : ``}>
-        <Container>
-          <b.Box>
+    <>
+      <SideBarWrapper>
+        <ProfileWrapper
+          onClick={() => setMenuToggle(!menuToggle)}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          className={hovered ? `hovered` : ``}>
+          <Container>
             <b.Box>
-              <b.Flex alignItems='center'>
-                <b.Box mr={1}>
-                  <b.Text
-                    fontFamily='SlackLato-Bold'
-                    fontSize={14}
-                    color='white'>
-                    {team}
-                  </b.Text>
-                </b.Box>
-                <b.Box mb={1}>
-                  <BottomArrow width={8} height={8} color='white' />
-                </b.Box>
-              </b.Flex>
+              <b.Box>
+                <b.Flex alignItems='center'>
+                  <b.Box mr={1}>
+                    <b.Text
+                      fontFamily='SlackLato-Bold'
+                      fontSize={14}
+                      color='white'>
+                      {team}
+                    </b.Text>
+                  </b.Box>
+                  <b.Box mb={1}>
+                    <BottomArrow width={8} height={8} color='white' />
+                  </b.Box>
+                </b.Flex>
+              </b.Box>
+              <b.Box>
+                <b.Flex alignItems='center'>
+                  <StatusIcon />
+                  {!loading && data && (
+                    <Name
+                      className={hovered ? `hovered` : ``}
+                      fontSize={13}
+                      fontFamily='SlackLato-Regular'>
+                      {data.me?.username}
+                    </Name>
+                  )}
+                </b.Flex>
+              </b.Box>
             </b.Box>
-            <b.Box>
-              <b.Flex alignItems='center'>
-                <StatusIcon />
-                {!loading && data && (
-                  <Name
-                    className={hovered ? `hovered` : ``}
-                    fontSize={13}
-                    fontFamily='SlackLato-Regular'>
-                    {data.me?.username}
-                  </Name>
-                )}
-              </b.Flex>
-            </b.Box>
-          </b.Box>
-          <Avatar>
-            <Write width={16} height={16} color='#431E44' />
-          </Avatar>
-        </Container>
-      </Wrapper>
-      <SideBarContainer>
-        <Options />
-        <SidebarSections />
-      </SideBarContainer>
-    </SideBarWrapper>
+            <Avatar>
+              <Write width={16} height={16} color='#431E44' />
+            </Avatar>
+          </Container>
+        </ProfileWrapper>
+
+        <SideBarContainer>
+          <Options />
+          <SidebarSections />
+        </SideBarContainer>
+      </SideBarWrapper>
+    </>
   );
 };
 
@@ -86,7 +91,7 @@ const SideBarContainer = styled(b.Box)`
   overflow-y: scroll;
 `;
 
-const Wrapper = styled(b.Box)`
+const ProfileWrapper = styled(b.Button)`
   display: grid;
   padding: 10px 0;
   background-color: #3f0f40;
@@ -97,6 +102,10 @@ const Wrapper = styled(b.Box)`
 
   &.hovered {
     background-color: #350d36 !important;
+  }
+
+  &:focus {
+    outline: none;
   }
 `;
 

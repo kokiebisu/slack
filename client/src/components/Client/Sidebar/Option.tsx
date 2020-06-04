@@ -111,6 +111,10 @@ const Wrapper = styled(b.Button)`
   &:focus {
     background: #1265a3;
     outline: 0;
+
+    p {
+      color: white !important;
+    }
   }
 `;
 
@@ -125,8 +129,8 @@ const TextWrapper = styled(b.Box)`
 
 const Title = styled(b.Text)`
   color: #cfc3cf;
-
+  /* 
   &.clicked {
     color: white !important;
-  }
+  } */
 `;
