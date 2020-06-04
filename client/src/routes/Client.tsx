@@ -39,36 +39,38 @@ export const ClientRoutes: React.FC<Props> = () => {
   const { id } = useParams();
   const groupName = 'bcit-sept-2018';
 
-  const { team } = useClientState();
-
-  // const { data, loading, error } = useTeamQuery({
-  //   variables: {
-  //     teamId: id,
-  //   },
-  // });
+  const { data, loading, error } = useTeamQuery({
+    variables: {
+      teamId: id,
+    },
+  });
 
   return (
     <>
       <BrowserRouter>
         <Wrapper>
-          <HomeHeader />
-          <ContentWrapper>
-            <Sidebar />
-            <Switch>
-              <Route path={match.url + '/threads'}>
-                <ThreadsPage group={groupName} />
-              </Route>
-              <Route path={match.url + '/activity-page'}>
-                <MentionPage group={groupName} />
-              </Route>
-              <Route path={match.url + '/drafts'}>
-                <DraftPage group={groupName} />
-              </Route>
-              <Route path={match.url + '/saved-page'}>
-                <SavedPage group={groupName} />
-              </Route>
-            </Switch>
-          </ContentWrapper>
+          {data && data.team && (
+            <>
+              <HomeHeader team={data.team.name} />
+              <ContentWrapper>
+                <Sidebar team={data.team.name} />
+                <Switch>
+                  <Route path={match.url + '/threads'}>
+                    <ThreadsPage group={groupName} />
+                  </Route>
+                  <Route path={match.url + '/activity-page'}>
+                    <MentionPage group={groupName} />
+                  </Route>
+                  <Route path={match.url + '/drafts'}>
+                    <DraftPage group={groupName} />
+                  </Route>
+                  <Route path={match.url + '/saved-page'}>
+                    <SavedPage group={groupName} />
+                  </Route>
+                </Switch>
+              </ContentWrapper>
+            </>
+          )}
         </Wrapper>
       </BrowserRouter>
     </>

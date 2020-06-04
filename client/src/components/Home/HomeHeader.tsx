@@ -13,12 +13,13 @@ import * as b from '../../styles/blocks';
 // Sizes
 import { home } from '../../styles/sizes';
 import { useClientState } from '../../context/client-context';
+import { useTeamQuery } from '../../generated/graphql';
 
-interface Props {}
+interface Props {
+  team?: string;
+}
 
-export const HomeHeader: React.FC<Props> = () => {
-  const { team } = useClientState();
-
+export const HomeHeader: React.FC<Props> = ({ team }) => {
   return (
     <b.Box height={37} background='#350D36'>
       <b.Flex alignItems='center' justifyContent='center'>

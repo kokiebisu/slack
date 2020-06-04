@@ -12,8 +12,20 @@ export class TeamResolvers {
   }
 
   @Query(() => [Team])
-  async teamsById(@Arg('ownerId') ownerId: string) {
-    return await Team.find({ where: { id: ownerId } });
+  async myTeams(@Ctx() { req }: Context) {
+    const authorization = req.headers.authorization;
+    if (!authorization) {
+      return null;
+    }
+
+    try {
+      const token = authorization.split(' ')[1];
+      const { userId }: any = verify(token, process.env.ACCESS_TOKEN_SECRET!);
+      return await Team.find({ ownerId: userId });
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
   }
 
   @Query(() => Team)

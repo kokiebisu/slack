@@ -7,17 +7,20 @@ import { RightArrow } from '../../assets/svg/Arrows';
 
 // Images
 import BCIT from '../../assets/img/bcit.png';
-import { useMeQuery } from '../../generated/graphql';
+import { useMyTeamsQuery } from '../../generated/graphql';
 
-export const WorkspaceOption = () => {
+interface Props {
+  name: string;
+  url: string;
+}
+
+export const WorkspaceOption: React.FC<Props> = ({ name, url }) => {
   const [hovered, setHovered] = useState({
     launch: false,
   });
 
-  const { data, loading, error } = useMeQuery();
-
   return (
-    <b.Anchor href='/client'>
+    <b.Anchor href={`/client/${url}`}>
       <b.Box
         onMouseEnter={() => {
           setHovered({ ...hovered, launch: true });
@@ -45,7 +48,7 @@ export const WorkspaceOption = () => {
                   fontFamily='CircularPro-Bold'
                   fontSize={17}
                   className={hovered.launch ? `hovered` : ``}>
-                  bcit-cst-sept-2018
+                  {name}
                 </TeamName>
               </b.Box>
             </b.Flex>

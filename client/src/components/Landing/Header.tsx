@@ -17,13 +17,13 @@ import { WorkspaceOption } from './WorkspaceOption';
 
 // Util
 // import { useAuthenticated } from '../../hooks/useAuthenticated';
-import { useMeQuery, MeQuery } from '../../generated/graphql';
+import { useMeQuery, MeQuery, useMyTeamsQuery } from '../../generated/graphql';
 
 interface Props {
   data: MeQuery | undefined;
 }
 
-export const Header: React.FC<Props> = ({ data }) => {
+export const Header: React.FC<Props> = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [hovered, setHovered] = useState({
     why: false,
@@ -32,6 +32,8 @@ export const Header: React.FC<Props> = ({ data }) => {
     enterprise: false,
     pricing: false,
   });
+
+  const { data, loading, error } = useMyTeamsQuery();
 
   const [pressed, setPressed] = useState(false);
 
@@ -165,7 +167,7 @@ export const Header: React.FC<Props> = ({ data }) => {
                   <Link>Pricing</Link>
                 </NavItem>
               </Nav>
-              {data && data.me ? (
+              {data && data.myTeams ? (
                 <LaunchButtonWrapper
                   initial='rest'
                   whileHover='hovered'
@@ -207,8 +209,15 @@ export const Header: React.FC<Props> = ({ data }) => {
           {pressed ? (
             <LaunchOptionWrapper>
               <LaunchOption>
-                <WorkspaceOption />
-                <WorkspaceOption />
+                {data?.myTeams.map((team) => {
+                  return (
+                    <WorkspaceOption
+                      key={team.id}
+                      name={team.name}
+                      url={team.id}
+                    />
+                  );
+                })}
                 <b.Box pt={4} pb={3}>
                   <b.Box>
                     <LaunchOptionLink
