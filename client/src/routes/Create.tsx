@@ -13,11 +13,8 @@ import {
   useCreateTeamMutation,
   useCreateChannelMutation,
 } from '../generated/graphql';
-import {
-  useNewTeamState,
-  useNewTeamDispatch,
-} from '../context/newTeam-context';
-import { sign } from 'jsonwebtoken';
+import { useClientDispatch, useClientState } from '../context/client-context';
+
 interface Props {}
 
 export const CreateRoutes: React.SFC = () => {
@@ -28,8 +25,8 @@ export const CreateRoutes: React.SFC = () => {
   /**
    * Context
    */
-  const { team, channel } = useNewTeamState();
-  const dispatch = useNewTeamDispatch();
+  const { team, channel } = useClientState();
+  const dispatchClient = useClientDispatch();
 
   /**
    * Query
@@ -52,7 +49,7 @@ export const CreateRoutes: React.SFC = () => {
               opacity={0.15}
               transaction={(e) => {
                 e.preventDefault();
-                dispatch({ type: 'add_team', payload: input });
+                dispatchClient({ type: 'add_team', payload: input });
                 setInput('');
                 history.push('/create/channelname');
               }}
@@ -73,7 +70,7 @@ export const CreateRoutes: React.SFC = () => {
               team={team}
               transaction={(e) => {
                 e.preventDefault();
-                dispatch({ type: 'add_channel', payload: input });
+                dispatchClient({ type: 'add_channel', payload: input });
                 setInput('');
                 history.push('/create/tada');
               }}
@@ -101,7 +98,11 @@ export const CreateRoutes: React.SFC = () => {
                 });
                 // create channel query
                 if (data?.createTeam?.id) {
-                  const channelQueryResponse = await createChannel({
+                  dispatchClient({
+                    type: 'add_teamid',
+                    payload: data.createTeam.id,
+                  });
+                  await createChannel({
                     variables: {
                       name: channel,
                       teamId: data.createTeam.id,

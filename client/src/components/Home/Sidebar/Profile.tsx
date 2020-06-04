@@ -6,11 +6,14 @@ import * as b from '../../../styles/blocks';
 
 import { BottomArrow } from '../../../assets/svg/Arrows';
 import { Write } from '../../../assets/svg/Reaction';
+import { useClientState } from '../../../context/client-context';
 
 interface Props {}
 
 export const Profile: React.FC<Props> = () => {
   const [hovered, setHovered] = useState(false);
+
+  const { team } = useClientState();
 
   return (
     <Wrapper
@@ -23,7 +26,7 @@ export const Profile: React.FC<Props> = () => {
             <b.Flex alignItems='center'>
               <b.Box mr={1}>
                 <b.Text fontFamily='SlackLato-Bold' fontSize={14} color='white'>
-                  bcit-cst-sept2018
+                  {team}
                 </b.Text>
               </b.Box>
               <b.Box mb={1}>

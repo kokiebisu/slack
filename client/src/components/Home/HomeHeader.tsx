@@ -12,10 +12,13 @@ import * as b from '../../styles/blocks';
 
 // Sizes
 import { home } from '../../styles/sizes';
+import { useClientState } from '../../context/client-context';
 
 interface Props {}
 
 export const HomeHeader: React.FC<Props> = () => {
+  const { team } = useClientState();
+
   return (
     <b.Box height={37} background='#350D36'>
       <b.Flex alignItems='center' justifyContent='center'>
@@ -34,7 +37,7 @@ export const HomeHeader: React.FC<Props> = () => {
               </b.Box>
               <b.Box px={1} style={{ top: 1 }}>
                 <b.Text fontFamily='SlackLato-Regular' fontSize={13}>
-                  Search bcit-cst-sept-2018
+                  Search {team}
                 </b.Text>
               </b.Box>
             </b.Flex>

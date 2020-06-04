@@ -11,6 +11,11 @@ export class TeamResolvers {
     return await Team.find({ relations: ['channels'] });
   }
 
+  @Query(() => [Team])
+  async teamsById(@Arg('ownerId') ownerId: string) {
+    return await Team.find({ where: { id: ownerId } });
+  }
+
   @Query(() => Team)
   async team(@Arg('teamId') teamId: string) {
     const team = await Team.findOne(

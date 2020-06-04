@@ -207,7 +207,7 @@ export type TeamQuery = (
   { __typename?: 'Query' }
   & { team: (
     { __typename?: 'Team' }
-    & Pick<Team, 'id' | 'ownerId'>
+    & Pick<Team, 'id' | 'name' | 'ownerId'>
     & { channels: Array<(
       { __typename?: 'Channel' }
       & Pick<Channel, 'id' | 'name' | 'teamId'>
@@ -438,6 +438,7 @@ export const TeamDocument = gql`
     query Team($teamId: String!) {
   team(teamId: $teamId) {
     id
+    name
     ownerId
     channels {
       id
