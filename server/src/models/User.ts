@@ -4,7 +4,6 @@ import {
   Column,
   BaseEntity,
   OneToMany,
-  JoinTable,
 } from 'typeorm';
 import { ObjectType, Field, Int } from 'type-graphql';
 import { Team } from './Team';

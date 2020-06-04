@@ -8,12 +8,16 @@ import {
   useHistory,
 } from 'react-router-dom';
 import { CreateTeamLayout } from '../components/CreateTeam/layout';
-import { useMeQuery } from '../generated/graphql';
+import {
+  useMeQuery,
+  useCreateTeamMutation,
+  useCreateChannelMutation,
+} from '../generated/graphql';
 import {
   useNewTeamState,
   useNewTeamDispatch,
 } from '../context/newTeam-context';
-
+import { sign } from 'jsonwebtoken';
 interface Props {}
 
 export const CreateRoutes: React.SFC = () => {
@@ -31,6 +35,8 @@ export const CreateRoutes: React.SFC = () => {
    * Query
    */
   const { data, loading, error } = useMeQuery();
+  const [createTeam] = useCreateTeamMutation();
+  const [createChannel] = useCreateChannelMutation();
 
   return (
     <>
@@ -87,9 +93,22 @@ export const CreateRoutes: React.SFC = () => {
               team={team}
               channel={channel}
               buttonName='See your channel in Slack'
-              transaction={(e) => {
+              transaction={async (e) => {
                 e.preventDefault();
-                // get ownerid, name, channelname
+                // create team query
+                const { data } = await createTeam({
+                  variables: { name: team },
+                });
+                // create channel query
+                if (data?.createTeam?.id) {
+                  const channelQueryResponse = await createChannel({
+                    variables: {
+                      name: channel,
+                      teamId: data.createTeam.id,
+                    },
+                  });
+                  history.push(`/client/${data.createTeam.id}`);
+                }
               }}
             />
           ) : (

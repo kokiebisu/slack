@@ -1,0 +1,11 @@
+query Team($teamId: String!) {
+  team(teamId: $teamId) {
+    id
+    ownerId
+    channels {
+      id
+      name
+      teamId
+    }
+  }
+}

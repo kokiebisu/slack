@@ -77,8 +77,6 @@ export const CreateTeamLayout: React.FC<Props> = ({
   //       r.render()
   //   }
 
-  console.log('layout input', input);
-
   return (
     <Wrapper exit={{ opacity: 0 }} initial='initial' animate='animate'>
       <HeaderWrapper>
