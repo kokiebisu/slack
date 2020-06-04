@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 
 import { AppRoutes } from './routes/App';
-import { setAccessToken, getAccessToken } from './global/token';
+import { setAccessToken } from './global/token';
 
 export const Loading = () => {
   const [loading, setLoading] = useState(true);

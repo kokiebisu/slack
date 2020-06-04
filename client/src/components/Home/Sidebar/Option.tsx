@@ -24,36 +24,11 @@ interface Props {
 
 export const Option: React.FC<Props> = ({ name, link }) => {
   const [clicked, setClicked] = useState(false);
-
   const displayingName = name.charAt(0).toUpperCase() + name.slice(1);
   const history = useHistory();
 
-  function useOutsideAlerter(ref: any) {
-    useEffect(() => {
-      /**
-       * Alert if clicked on outside of element
-       */
-      function handleClick(event: Event) {
-        if (ref.current && !ref.current.contains(event.target)) {
-          setClicked(false);
-          return;
-        }
-        setClicked(true);
-      }
-
-      document.addEventListener('mousedown', handleClick);
-      return () => {
-        document.removeEventListener('mousedown', handleClick);
-      };
-    }, [ref]);
-  }
-
-  const wrapperRef = useRef<HTMLButtonElement>(null);
-  useOutsideAlerter(wrapperRef);
-
   return (
     <Wrapper
-      ref={wrapperRef}
       className={clicked ? `clicked` : ``}
       onClick={() => {
         history.push(`/client/${link}`);
@@ -133,11 +108,8 @@ const Wrapper = styled(b.Button)`
     background: #350d36;
   }
 
-  &.clicked {
-    background: #1265a3;
-  }
-
   &:focus {
+    background: #1265a3;
     outline: 0;
   }
 `;

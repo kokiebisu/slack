@@ -3,18 +3,23 @@ import styled from 'styled-components';
 
 import _ from 'lodash';
 
-// Graphql
-import { gql } from 'apollo-boost';
-
 import * as b from '../../../styles/blocks';
 
 // Icons
 import { Lock } from '../../../assets/svg';
 import { ChannelHashtag } from '../../../assets/svg/HashTag';
 
-interface Props {}
+interface Props {
+  data: ChannelProps[];
+}
 
-export const Channels: React.FC<Props> = () => {
+interface ChannelProps {
+  id: string;
+  name: string;
+  isPublic: boolean;
+}
+
+export const Channels: React.FC<any> = ({ data }) => {
   const tempChannels = [
     {
       id: 1,
@@ -30,12 +35,12 @@ export const Channels: React.FC<Props> = () => {
 
   return (
     <b.Box pl={2}>
-      {tempChannels.map((channel) => {
+      {data.map((channel: ChannelProps) => {
         return (
           <Channel
-            key={channel.id}
-            channelName={channel.channelName}
-            isPrivate={channel.isPrivate}
+            id={channel.id}
+            name={channel.name}
+            isPublic={channel.isPublic}
           />
         );
       })}
@@ -43,29 +48,24 @@ export const Channels: React.FC<Props> = () => {
   );
 };
 
-interface ChannelProps {
-  channelName: string;
-  isPrivate: boolean;
-}
-
-const Channel: React.FC<ChannelProps> = ({ channelName, isPrivate }) => {
+const Channel: React.FC<ChannelProps> = ({ id, name, isPublic }) => {
   return (
     <b.Box py={2}>
       <b.Flex alignItems='center'>
         <b.Box pr={2}>
-          {isPrivate ? (
-            <LockWrapper>
-              <Lock width={12} height={12} color='#CFC3CF' />
-            </LockWrapper>
-          ) : (
+          {isPublic ? (
             <ChannelHashtagWrapper>
               <ChannelHashtag width={12} height={12} color='#CFC3CF' />
             </ChannelHashtagWrapper>
+          ) : (
+            <LockWrapper>
+              <Lock width={12} height={12} color='#CFC3CF' />
+            </LockWrapper>
           )}
         </b.Box>
         <b.Box style={{ top: 3 }}>
           <b.Text fontFamily='SlackLato-Light' color='#CFC3CF' fontSize={15}>
-            {channelName}
+            {name}
           </b.Text>
         </b.Box>
       </b.Flex>

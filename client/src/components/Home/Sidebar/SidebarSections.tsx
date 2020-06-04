@@ -9,12 +9,10 @@ import { SidebarSection } from './SidebarSection';
 import { Messages } from './Messages';
 import { Channels } from './Channels';
 
-// Graphql
-import gql from 'graphql-tag';
-import { useQuery } from '@apollo/react-hooks';
-
 import _ from 'lodash';
 import decode from 'jwt-decode';
+import { useLocation } from 'react-router-dom';
+import { useChannelsQuery } from '../../../generated/graphql';
 
 interface Props {}
 
@@ -25,15 +23,23 @@ export const SidebarSections: React.FC<Props> = () => {
     apps: false,
   });
 
+  const location = useLocation();
+
+  const { data, loading, error } = useChannelsQuery({
+    variables: { teamId: location.pathname.split('/')[2] },
+  });
+
   return (
     <Wrapper>
       <SidebarSection
         title='Channels'
         subtitle='Add a channel'
-        onReveal={() =>
-          setRevealed({ ...revealed, channels: !revealed.channels })
-        }>
-        <>{revealed.channels ? <Channels /> : null}</>
+        onReveal={() => {
+          setRevealed({ ...revealed, channels: !revealed.channels });
+        }}>
+        {!loading && data && (
+          <>{revealed.channels ? <Channels data={data.channels} /> : null}</>
+        )}
       </SidebarSection>
       <SidebarSection
         title='Direct mesages'
