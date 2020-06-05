@@ -35,6 +35,7 @@ export const main: ThemeProps = {
     pink__lighter: '#fbebef',
     green: '#227A5A',
     green__light: '#2EA683',
+    green__lighter: '#2BAC76',
     orange__dark: '#de4e2b',
   },
   fontSizes,

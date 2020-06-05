@@ -16,19 +16,22 @@ export const SavedPage: React.FC<Props> = ({ group }) => {
       <TopWrapper>
         <TopContainer>
           <b.Box>
-            <b.Text color='#1D1C1D' fontFamily='SlackLato-Black' fontSize={15}>
+            <b.Text
+              color='black__light'
+              fontFamily='SlackLato-Black'
+              fontSize={15}>
               Saved items
             </b.Text>
           </b.Box>
           <SideOption>
-            <Transition width={17} height={17} color='#606060' />
+            <Transition width={17} height={17} color='gray' />
           </SideOption>
         </TopContainer>
       </TopWrapper>
       <BottomWrapper>
         <BottomContainer>
           <b.Box>
-            <Bookmark width={26} height={26} color='#E01E5A' />
+            <Bookmark width={26} height={26} color='pink__dark' />
           </b.Box>
           <b.Box pt={3} pb={2}>
             <b.Text fontSize={17} fontFamily='SlackLato-Bold' color='black'>
@@ -39,7 +42,7 @@ export const SavedPage: React.FC<Props> = ({ group }) => {
             <b.Text
               fontSize={15}
               fontFamily='SlackLato-Regular'
-              color='#7D7C7D'>
+              color='gray__light'>
               Mark your to-dos or save something for another time. Only you can
               see your saved items, so use them however you’d like.
             </b.Text>
@@ -58,7 +61,7 @@ const Wrapper = styled(b.Box)`
 
 const TopWrapper = styled(b.Box)`
   padding: 15px 0;
-  border-bottom: 1px solid #e2e2e2;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.white__dark};
 `;
 
 const TopContainer = styled(b.Flex)`
@@ -83,7 +86,7 @@ const SideOption = styled(b.Button)`
   padding: 8px 10px 6px 10px;
   background-color: transparent;
   &:hover {
-    background-color: #f6f6f6;
+    background-color: ${({ theme }) => theme.colors.white__dark};
     border-radius: 3px;
   }
 `;

@@ -21,7 +21,7 @@ export const Activity: React.FC<Props> = () => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}>
       <TopContainer>
-        <b.Text fontSize={13} color='#807F80' fontFamily='SlackLato-Bold'>
+        <b.Text fontSize={13} color='gray__light' fontFamily='SlackLato-Bold'>
           Thomas Bui - Set E &nbsp;
           <b.Span fontFamily='SlackLato-Regular'>
             reacted to your message
@@ -37,13 +37,13 @@ export const Activity: React.FC<Props> = () => {
             <b.Box>
               <b.Flex alignItems='center'>
                 <UserWrapper mr={2}>
-                  <b.Text color='#1D1C1D' fontFamily='SlackLato-Black'>
+                  <b.Text color='black__light' fontFamily='SlackLato-Black'>
                     ken
                   </b.Text>
                 </UserWrapper>
                 <b.Box>
                   <b.Text
-                    color='#616061'
+                    color='gray__light'
                     fontFamily='SlackLato-Regular'
                     fontSize={13}>
                     Yesterday at 2:44 PM
@@ -53,7 +53,7 @@ export const Activity: React.FC<Props> = () => {
             </b.Box>
             <Message mt={1} mb={2}>
               <b.Text
-                color='#1D1C1D'
+                color='black__light'
                 fontFamily='SlackLato-Regular'
                 fontSize={13}>
                 Too
@@ -73,8 +73,8 @@ export const Activity: React.FC<Props> = () => {
 const ActivityWrapper = styled(b.Button)`
   position: relative;
   width: 100%;
-  background-color: #ffffff;
-  border: 1px solid #dcdcdc;
+  background-color: ${({ theme }) => theme.colors.white};
+  border: 1px solid ${({ theme }) => theme.colors.white__dark};
   padding: 15px;
   border-radius: 15px;
   margin-bottom: 25px;
@@ -99,7 +99,7 @@ const Message = styled(b.Box)`
 `;
 
 const ToolBoxWrapper = styled(b.Box)`
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.colors.white};
   position: absolute;
   top: 10px;
   right: 10px;

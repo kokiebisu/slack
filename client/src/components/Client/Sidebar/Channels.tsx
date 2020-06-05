@@ -55,16 +55,19 @@ const Channel: React.FC<ChannelProps> = ({ id, name, isPublic }) => {
         <b.Box pr={2}>
           {isPublic ? (
             <ChannelHashtagWrapper>
-              <ChannelHashtag width={12} height={12} color='#CFC3CF' />
+              <ChannelHashtag width={12} height={12} color='pink__lighter' />
             </ChannelHashtagWrapper>
           ) : (
             <LockWrapper>
-              <Lock width={12} height={12} color='#CFC3CF' />
+              <Lock width={12} height={12} color='pink__lighter' />
             </LockWrapper>
           )}
         </b.Box>
         <b.Box style={{ top: 3 }}>
-          <b.Text fontFamily='SlackLato-Light' color='#CFC3CF' fontSize={15}>
+          <b.Text
+            fontFamily='SlackLato-Light'
+            color='pink__lighter'
+            fontSize={15}>
             {name}
           </b.Text>
         </b.Box>

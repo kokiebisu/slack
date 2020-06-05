@@ -13,24 +13,24 @@ export const ToolBox: React.FC<Props> = () => {
     <Wrapper py={1} px={2}>
       <b.Flex alignItems='center'>
         <Tool>
-          <SmilePlus width={24} height={24} color='#606060' />
+          <SmilePlus width={24} height={24} color='gray__light' />
         </Tool>
         <Tool>
-          <Move width={24} height={24} color='#606060' />
+          <Move width={24} height={24} color='gray__light' />
         </Tool>
         <Tool>
           <b.Box style={{ position: 'relative', top: 1 }}>
-            <StartThread width={18} height={18} color='#606060' />
+            <StartThread width={18} height={18} color='gray__light' />
           </b.Box>
         </Tool>
         <Tool>
           <b.Box style={{ top: 1.5 }}>
-            <Bookmark width={18} height={18} color='#606060' />
+            <Bookmark width={18} height={18} color='gray__light' />
           </b.Box>
         </Tool>
         <Tool>
           <b.Box style={{ top: 1.5 }}>
-            <More width={18} height={18} color='#606060' />
+            <More width={18} height={18} color='gray__light' />
           </b.Box>
         </Tool>
       </b.Flex>
@@ -39,7 +39,7 @@ export const ToolBox: React.FC<Props> = () => {
 };
 
 const Wrapper = styled(b.Box)`
-  border: 1px solid #dcdcdc;
+  border: 1px solid ${({ theme }) => theme.colors.white__dark};
   border-radius: 10px;
 `;
 
@@ -47,7 +47,7 @@ const Tool = styled(b.Button)`
   width: 35px;
   height: 30px;
   &:hover {
-    background-color: #f6f6f6;
+    background-color: ${({ theme }) => theme.colors.white__dark};
     border-radius: 5px;
   }
 `;

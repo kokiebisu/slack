@@ -29,7 +29,7 @@ export const Option: React.FC<Props> = ({ name, link }) => {
 
   return (
     <Wrapper
-      className={clicked ? `clicked` : ``}
+      className={clicked ? 'clicked' : ''}
       onClick={() => {
         history.push(`/client/${link}`);
       }}>
@@ -37,7 +37,7 @@ export const Option: React.FC<Props> = ({ name, link }) => {
         <Icon style={{ top: 2 }}>{renderOption(name, clicked)}</Icon>
         <TextWrapper>
           <Title
-            className={clicked ? `clicked` : ``}
+            className={clicked ? 'clicked' : ''}
             fontFamily='SlackLato-Light'
             fontSize={14}>
             {displayingName}
@@ -59,19 +59,23 @@ const renderOption = (option: string, clicked: boolean) => {
         <MentionReaction
           width={15}
           height={15}
-          color={clicked ? 'white' : '#CFC3CF'}
+          color={clicked ? 'white' : 'pink__lighter'}
         />
       );
     case 'drafts':
       return (
-        <Drafts width={15} height={15} color={clicked ? 'white' : '#CFC3CF'} />
+        <Drafts
+          width={15}
+          height={15}
+          color={clicked ? 'white' : 'pink__lighter'}
+        />
       );
     case 'saved items':
       return (
         <SavedItems
           width={15}
           height={15}
-          color={clicked ? 'white' : '#CFC3CF'}
+          color={clicked ? 'white' : 'pink__lighter'}
         />
       );
     case 'channel browser':
@@ -79,20 +83,32 @@ const renderOption = (option: string, clicked: boolean) => {
         <ThinHashTag
           width={15}
           height={15}
-          color={clicked ? 'white' : '#CFC3CF'}
+          color={clicked ? 'white' : 'pink__lighter'}
         />
       );
     case 'people':
       return (
-        <People width={15} height={15} color={clicked ? 'white' : '#CFC3CF'} />
+        <People
+          width={15}
+          height={15}
+          color={clicked ? 'white' : 'pink__lighter'}
+        />
       );
     case 'apps':
       return (
-        <Apps width={15} height={15} color={clicked ? 'white' : '#CFC3CF'} />
+        <Apps
+          width={15}
+          height={15}
+          color={clicked ? 'white' : 'pink__lighter'}
+        />
       );
     case 'files':
       return (
-        <Files width={15} height={15} color={clicked ? 'white' : '#CFC3CF'} />
+        <Files
+          width={15}
+          height={15}
+          color={clicked ? 'white' : 'pink__lighter'}
+        />
       );
     default:
       return;
@@ -105,15 +121,15 @@ const Wrapper = styled(b.Button)`
   cursor: pointer;
 
   &:hover {
-    background: #350d36;
+    background: ${({ theme }) => theme.colors.primary__dark};
   }
 
   &:focus {
-    background: #1265a3;
+    background: ${({ theme }) => theme.colors.blue__light};
     outline: 0;
 
     p {
-      color: white !important;
+      color: white;
     }
   }
 `;
@@ -128,9 +144,5 @@ const TextWrapper = styled(b.Box)`
 `;
 
 const Title = styled(b.Text)`
-  color: #cfc3cf;
-  /* 
-  &.clicked {
-    color: white !important;
-  } */
+  color: ${({ theme }) => theme.colors.pink__lighter};
 `;

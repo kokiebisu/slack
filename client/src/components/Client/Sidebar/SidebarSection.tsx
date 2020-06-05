@@ -49,19 +49,19 @@ export const SidebarSection: React.FC<Props> = ({
               animate={clicked ? 'animate' : 'initial'}
               variants={arrow}
               mr={2}>
-              <Play width={8} height={8} color='#CFC3CF' />
+              <Play width={8} height={8} color='pink__lighter' />
             </PlayWrapper>
             <TitleContainer>
               <b.Text
                 fontFamily='SlackLato-Light'
-                color='#CFC3CF'
+                color='pink__lighter'
                 fontSize={15}>
                 {title}
               </b.Text>
             </TitleContainer>
           </b.Flex>
           <PlusWrapper>
-            <Plus width={14} height={14} color='#CFC3CF' top={2.5} />
+            <Plus width={14} height={14} color='pink__lighter' top={2.5} />
           </PlusWrapper>
         </TitleWrapper>
       </TopColumnWrapper>
@@ -76,7 +76,7 @@ export const SidebarSection: React.FC<Props> = ({
               <b.Box>
                 <b.Text
                   fontFamily='SlackLato-Light'
-                  color='#CFC3CF'
+                  color='pink__lighter'
                   fontSize={15}>
                   {subtitle}
                 </b.Text>
@@ -135,7 +135,7 @@ const SubtitleWrapper = styled(b.Box)`
   padding: 7px 19px 3px 28.5px;
 
   &:hover {
-    background-color: #350d36;
+    background-color: ${({ theme }) => theme.colors.primary__dark};
   }
 `;
 
@@ -147,7 +147,7 @@ const PlusWrapper = styled(b.Box)`
   padding: 6px 8px 4px 7px;
 
   &:hover {
-    background: #532754;
+    background: ${({ theme }) => theme.colors.primary__lighter};
   }
 `;
 
@@ -158,14 +158,14 @@ const CloseWrapper = styled(b.Box)`
 
   svg {
     path {
-      fill: #978198;
+      fill: ${({ theme }) => theme.colors.purple};
     }
   }
 
   &:hover {
     svg {
       path {
-        fill: white;
+        fill: ${({ theme }) => theme.colors.white};
       }
     }
   }

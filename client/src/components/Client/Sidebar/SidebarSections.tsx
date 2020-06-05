@@ -59,6 +59,6 @@ export const SidebarSections: React.FC<Props> = () => {
 };
 
 const Wrapper = styled(b.Box)`
-  border-top: 1.3px solid #532653;
+  border-top: 1.3px solid ${({ theme }) => theme.props.primary__lighter};
   padding: 15px 0;
 `;
