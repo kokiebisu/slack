@@ -42,7 +42,7 @@ const ColumnCard = ({ title, subtitle, mr, children }: ColumnCardProps) => {
   return (
     <ColumnWrapper>
       <CardWrapper>
-        <b.Box>{children}</b.Box>
+        <IconWrapper>{children}</IconWrapper>
         <b.Box my={3}>
           <b.Text
             fontFamily='CircularPro-Bold'
@@ -60,6 +60,12 @@ const ColumnCard = ({ title, subtitle, mr, children }: ColumnCardProps) => {
     </ColumnWrapper>
   );
 };
+
+const IconWrapper = styled(b.Box)`
+  svg {
+    fill: ${({ theme }) => theme.colors.black__light};
+  }
+`;
 
 export const BreakOut: React.FC<Props> = () => {
   return (

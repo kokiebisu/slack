@@ -34,7 +34,7 @@ export const Option: React.FC<Props> = ({ name, link }) => {
         history.push(`/client/${link}`);
       }}>
       <b.Flex>
-        <Icon style={{ top: 2 }}>{renderOption(name, clicked)}</Icon>
+        <IconWrapper>{renderOption(name, clicked)}</IconWrapper>
         <TextWrapper>
           <Title
             className={clicked ? 'clicked' : ''}
@@ -51,65 +51,21 @@ export const Option: React.FC<Props> = ({ name, link }) => {
 const renderOption = (option: string, clicked: boolean) => {
   switch (option) {
     case 'threads':
-      return (
-        <Threads width={15} height={15} color={clicked ? 'white' : '#CFC3CF'} />
-      );
+      return <Threads />;
     case 'mentions & reactions':
-      return (
-        <MentionReaction
-          width={15}
-          height={15}
-          color={clicked ? 'white' : 'pink__lighter'}
-        />
-      );
+      return <MentionReaction />;
     case 'drafts':
-      return (
-        <Drafts
-          width={15}
-          height={15}
-          color={clicked ? 'white' : 'pink__lighter'}
-        />
-      );
+      return <Drafts />;
     case 'saved items':
-      return (
-        <SavedItems
-          width={15}
-          height={15}
-          color={clicked ? 'white' : 'pink__lighter'}
-        />
-      );
+      return <SavedItems />;
     case 'channel browser':
-      return (
-        <ThinHashTag
-          width={15}
-          height={15}
-          color={clicked ? 'white' : 'pink__lighter'}
-        />
-      );
+      return <ThinHashTag />;
     case 'people':
-      return (
-        <People
-          width={15}
-          height={15}
-          color={clicked ? 'white' : 'pink__lighter'}
-        />
-      );
+      return <People />;
     case 'apps':
-      return (
-        <Apps
-          width={15}
-          height={15}
-          color={clicked ? 'white' : 'pink__lighter'}
-        />
-      );
+      return <Apps />;
     case 'files':
-      return (
-        <Files
-          width={15}
-          height={15}
-          color={clicked ? 'white' : 'pink__lighter'}
-        />
-      );
+      return <Files />;
     default:
       return;
   }
@@ -131,11 +87,26 @@ const Wrapper = styled(b.Button)`
     p {
       color: white;
     }
+
+    path {
+      fill: ${({ theme }) => theme.colors.white};
+    }
   }
 `;
 
-const Icon = styled(b.Box)`
+const IconWrapper = styled(b.Box)`
+  position: relative;
+  top: 2px;
   margin-right: 8px;
+
+  svg {
+    width: 15px;
+    height: 15px;
+
+    path {
+      fill: ${({ theme }) => theme.colors.pink__lighter};
+    }
+  }
 `;
 
 const TextWrapper = styled(b.Box)`

@@ -1,9 +1,11 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Clipboard } from '../../../assets/svg/DraftPage';
-
+// Blocks
 import * as b from '../../../styles/blocks';
+
+// Svg
+import { Clipboard } from '../../../assets/svg/DraftPage';
 
 interface Props {
   group: string;
@@ -28,9 +30,9 @@ export const DraftPage: React.FC<Props> = ({ group }) => {
       </TopWrapper>
       <BottomWrapper>
         <BottomContainer>
-          <b.Box>
-            <Clipboard width={26} height={26} color='primary__light' />
-          </b.Box>
+          <IconWrapper>
+            <Clipboard />
+          </IconWrapper>
           <b.Box pt={3} pb={2}>
             <b.Text fontSize={17} fontFamily='SlackLato-Bold' color='black'>
               Draft messages to send when you’re ready
@@ -92,5 +94,15 @@ const NewMessageWrapper = styled(b.Button)`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.white__dark};
+  }
+`;
+
+const IconWrapper = styled(b.Box)`
+  svg {
+    width: 26px;
+    height: 26px;
+    path {
+      fill: ${({ theme }) => theme.colors.primary__light};
+    }
   }
 `;

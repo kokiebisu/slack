@@ -1,10 +1,13 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
+// Blocks
 import * as b from '../../styles/blocks';
 
+// Imgs
 import Thumbsup from '../../assets/img/thumbsup.png';
 
+// Svgs
 import { SmilePlus } from '../../assets/svg/Reaction';
 
 interface Props {}
@@ -51,7 +54,9 @@ export const Reactions: React.FC<Props> = () => {
       <b.Flex>
         <Reaction />
         <AddReactionWrapper>
-          <SmilePlus width={22} height={22} color='gray__light' />
+          <IconWrapper>
+            <SmilePlus />
+          </IconWrapper>
         </AddReactionWrapper>
       </b.Flex>
     </b.Box>
@@ -69,5 +74,15 @@ const AddReactionWrapper = styled(b.Button)`
     padding: 0px 6px;
     border: 1px solid ${({ theme }) => theme.colors.gray__dark};
     background-color: ${({ theme }) => theme.colors.white};
+  }
+`;
+
+const IconWrapper = styled(b.Box)`
+  svg {
+    width: 22px;
+    height: 22px;
+    path {
+      fill: ${({ theme }) => theme.colors.gray__light};
+    }
   }
 `;

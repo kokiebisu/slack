@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 import * as b from '../../../styles/blocks';
 
-// Icons
+// Svgs
 import { Lock } from '../../../assets/svg';
 import { ChannelHashtag } from '../../../assets/svg/HashTag';
 
@@ -19,20 +19,7 @@ interface ChannelProps {
   isPublic: boolean;
 }
 
-export const Channels: React.FC<any> = ({ data }) => {
-  const tempChannels = [
-    {
-      id: 1,
-      channelName: 'channel1',
-      isPrivate: false,
-    },
-    {
-      id: 2,
-      channelName: 'channel2',
-      isPrivate: true,
-    },
-  ];
-
+export const Channels: React.FC<Props> = ({ data }) => {
   return (
     <b.Box pl={2}>
       {data.map((channel: ChannelProps) => {
@@ -53,15 +40,11 @@ const Channel: React.FC<ChannelProps> = ({ id, name, isPublic }) => {
     <b.Box py={2}>
       <b.Flex alignItems='center'>
         <b.Box pr={2}>
-          {isPublic ? (
-            <ChannelHashtagWrapper>
-              <ChannelHashtag width={12} height={12} color='pink__lighter' />
-            </ChannelHashtagWrapper>
-          ) : (
-            <LockWrapper>
-              <Lock width={12} height={12} color='pink__lighter' />
-            </LockWrapper>
-          )}
+          <b.Box>
+            <IconWrapper>
+              {isPublic ? <ChannelHashtag /> : <Lock />}
+            </IconWrapper>
+          </b.Box>
         </b.Box>
         <b.Box style={{ top: 3 }}>
           <b.Text
@@ -76,12 +59,15 @@ const Channel: React.FC<ChannelProps> = ({ id, name, isPublic }) => {
   );
 };
 
-const ChannelHashtagWrapper = styled(b.Box)`
+const IconWrapper = styled(b.Box)`
   position: relative;
   top: 3px;
-`;
 
-const LockWrapper = styled(b.Box)`
-  position: relative;
-  top: 3px;
+  svg {
+    width: 12px;
+    height: 12px;
+    path {
+      fill: ${({ theme }) => theme.colors.pink__lighter};
+    }
+  }
 `;

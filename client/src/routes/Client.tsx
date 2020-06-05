@@ -54,7 +54,7 @@ export const ClientRoutes: React.FC<Props> = () => {
               <HomeHeader team={data.team.name} />
               <ContentWrapper>
                 <Sidebar team={data.team.name} />
-                <MenuToggle>
+                {/* <MenuToggle>
                   <b.Box m={3} p={2} borderBottom='1px solid black'>
                     <b.Box>
                       <b.Box>
@@ -133,7 +133,7 @@ export const ClientRoutes: React.FC<Props> = () => {
                     </b.Box>
                   </b.Box>
                   <b.Box></b.Box>
-                </MenuToggle>
+                </MenuToggle> */}
                 <Switch>
                   <Route path={match.url + '/threads'}>
                     <ThreadsPage group={groupName} />

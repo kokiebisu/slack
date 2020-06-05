@@ -2,12 +2,14 @@ import * as React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import Thumbsup from '../../../assets/img/thumbsup.png';
-
-import { Reactions } from '../../shared/Reactions';
-
+// Blocks
 import * as b from '../../../styles/blocks';
 
+// Img
+import Thumbsup from '../../../assets/img/thumbsup.png';
+
+// Components
+import { Reactions } from '../../shared/Reactions';
 import { ToolBox } from './ToolBox';
 
 interface Props {}

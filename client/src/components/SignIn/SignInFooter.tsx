@@ -2,10 +2,11 @@ import * as React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 
+// Blocks
 import * as b from '../../styles/blocks';
 
+// Svgs
 import { RoundedHeart } from '../../assets/svg/Heart';
-
 import {
   NoNameLogoMono,
   TwitterLogo,
@@ -13,7 +14,6 @@ import {
 } from '../../assets/svg/Logo';
 
 import { signin } from '../../styles/sizes';
-
 import { Minus } from '../../assets/svg/Minus';
 import { Plus } from '../../assets/svg/Plus';
 
@@ -125,15 +125,9 @@ export const SignInFooter: React.FC<Props> = () => {
                     <SectionWrapper>
                       <b.Flex alignItems='center'>
                         <SectionName color='pink__dark'>Slack</SectionName>
-                        <HeartIconWrapper>
-                          <b.Box ml={1}>
-                            <RoundedHeart
-                              width={10}
-                              height={10}
-                              color='pink__dark'
-                            />
-                          </b.Box>
-                        </HeartIconWrapper>
+                        <IconWrapper className='roundedheart' ml={1}>
+                          <RoundedHeart />
+                        </IconWrapper>
                       </b.Flex>
                     </SectionWrapper>
                     {revealed.slack ? (
@@ -283,9 +277,9 @@ export const SignInFooter: React.FC<Props> = () => {
           <BottomContainer>
             <b.Box px={3}>
               <b.Flex justifyContent='space-between'>
-                <b.Box>
-                  <NoNameLogoMono width={20} height={20} color='gray__light' />
-                </b.Box>
+                <IconWrapper className='nonamelogomono'>
+                  <NoNameLogoMono />
+                </IconWrapper>
                 <b.Box>
                   <b.Flex alignItems='center'>
                     <ContactWrapper mx={2}>
@@ -364,10 +358,30 @@ const RevealButton = styled(b.Box)`
   }
 `;
 
-const HeartIconWrapper = styled(b.Box)`
-  position: absolute;
-  top: -4px;
-  left: 32px;
+const IconWrapper = styled(b.Box)`
+  &.roundedheart {
+    position: absolute;
+    top: -4px;
+    left: 32px;
+
+    svg {
+      width: 10px;
+      height: 10px;
+      path {
+        fill: ${({ theme }) => theme.colors.pink__dark};
+      }
+    }
+  }
+
+  &.nonamelogomono {
+    svg {
+      width: 20px;
+      height: 20px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray__light};
+      }
+    }
+  }
 `;
 
 const ListWrapper = styled(b.Flex)`

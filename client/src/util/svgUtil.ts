@@ -1,31 +1,8 @@
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 
-export interface SVG extends Position {
-  width: number;
-  height: number;
-  color?: string;
-}
-
-interface Position {
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
-}
-
-const positionMixin = ({ top, bottom, left, right }: Position) => {
-  return `
-      top: ${top}px;
-      bottom: ${bottom}px;
-      left: ${left}px;
-      right: ${right}px;
-    `;
-};
-
 export const Wrapper = styled(motion.svg)`
   position: relative;
-  ${positionMixin}
 
   &.linkedin {
     &:hover {

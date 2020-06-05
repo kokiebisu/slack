@@ -7,15 +7,20 @@ import {
   SetStateAction,
   FormEvent,
 } from 'react';
-import styled, { css } from 'styled-components';
-
-import * as b from '../../styles/blocks';
-import { NameLogo } from '../../assets/svg/Logo';
 
 import { useHistory, Link } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 
+// Blocks
+import * as b from '../../styles/blocks';
+
+// Svgs
+import { NameLogo } from '../../assets/svg/Logo';
+
+// Components
 import { MockHashTag, SkeletonLine } from './mockup';
 
+// Imgs
 import teamphoto_1 from '../../assets/img/createteam_1.png';
 import teamphoto_2 from '../../assets/img/createteam_2.png';
 import teamphoto_3 from '../../assets/img/createteam_3.png';
@@ -84,9 +89,9 @@ export const CreateTeamLayout: React.FC<Props> = ({
           <b.Container>
             <b.Flex alignItems='center' justifyContent='center'>
               <Link to='/'>
-                <b.Box top={2} mr={4}>
-                  <NameLogo width={100} height={60} />
-                </b.Box>
+                <IconWrapper mr={4}>
+                  <NameLogo />
+                </IconWrapper>
               </Link>
             </b.Flex>
           </b.Container>
@@ -446,4 +451,28 @@ const CanvasWrapper = styled(b.Box)`
   z-index: 99;
   top: 0;
   left: 0;
+`;
+
+const IconWrapper = styled(b.Box)`
+  position: relative;
+  top: 2px;
+
+  svg {
+    width: 100px;
+    height: 60px;
+    path {
+      &:nth-child(2) {
+        fill: ${({ theme }) => theme.colors.blue__lighter};
+      }
+      &:nth-child(3) {
+        fill: ${({ theme }) => theme.colors.green__lighter};
+      }
+      &:nth-child(4) {
+        fill: ${({ theme }) => theme.colors.yellow};
+      }
+      &:nth-child(5) {
+        fill: ${({ theme }) => theme.colors.red};
+      }
+    }
+  }
 `;

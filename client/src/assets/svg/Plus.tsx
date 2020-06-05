@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { SVG, Wrapper } from '../../util/svgUtil';
+import { Wrapper } from '../../util/svgUtil';
 
 export const BoldPlus: React.FC<SVG> = (props) => {
   return (

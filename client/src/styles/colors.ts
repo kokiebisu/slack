@@ -18,6 +18,7 @@ export const main: ThemeProps = {
     primary__dark: '#350D36',
     blue: '#005A9D',
     blue__light: '#3a71a9',
+    blue__lighter: '#36c5f0',
     purple: '#684a68',
     purple__light: '#4b6bc6',
     black__light: '#1D1C1D',
@@ -37,6 +38,7 @@ export const main: ThemeProps = {
     green__light: '#2EA683',
     green__lighter: '#2BAC76',
     orange__dark: '#de4e2b',
+    yellow: '#ecb22e',
   },
   fontSizes,
 };

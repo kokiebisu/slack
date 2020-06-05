@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
+import _ from 'lodash';
+import decode from 'jwt-decode';
+import { useLocation } from 'react-router-dom';
 
+// Blocks
 import * as b from '../../../styles/blocks';
 
 // Components
@@ -9,9 +13,7 @@ import { SidebarSection } from './SidebarSection';
 import { Messages } from './Messages';
 import { Channels } from './Channels';
 
-import _ from 'lodash';
-import decode from 'jwt-decode';
-import { useLocation } from 'react-router-dom';
+// Query
 import { useChannelsQuery } from '../../../generated/graphql';
 
 interface Props {}
@@ -59,6 +61,6 @@ export const SidebarSections: React.FC<Props> = () => {
 };
 
 const Wrapper = styled(b.Box)`
-  border-top: 1.3px solid ${({ theme }) => theme.props.primary__lighter};
+  border-top: 1.3px solid ${({ theme }) => theme.colors.primary__lighter};
   padding: 15px 0;
 `;

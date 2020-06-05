@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import * as b from '../../styles/blocks';
 
 // Interface
-import { Wrapper, SVG } from '../../util/svgUtil';
+import { Wrapper } from '../../util/svgUtil';
 
 export const ThinHashTag: React.FC<SVG> = (props) => {
   return (
@@ -32,13 +32,12 @@ export const FatHashtag: React.FC<SVG> = (props) => {
   );
 };
 
-export const ChannelHashtag: React.FC<SVG> = (props) => {
+export const ChannelHashtag = () => {
   return (
-    <Wrapper {...props} viewBox='0 0 32 32'>
+    <Wrapper viewBox='0 0 32 32'>
       <g>
         <g id='hash'>
           <path
-            fill={props.color}
             d='M30,12V8h-5.004l1-8h-4l-1,8h-7.998l1-8h-4l-1,8H2v4h6.498L7.5,20H2v4h5l-1,8h4l1-8h8l-1.002,8H22
           l1-8h7v-4h-6.5l0.996-8H30z M19.5,20h-8l0.998-8h7.998L19.5,20z'
           />

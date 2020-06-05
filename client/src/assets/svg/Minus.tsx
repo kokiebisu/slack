@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SVG, Wrapper } from '../../util/svgUtil';
+import { Wrapper } from '../../util/svgUtil';
 
 export const Minus: React.FC<SVG> = (props) => {
   return (

@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// Blocks
+import * as b from '../../../styles/blocks';
+
+// Svgs
 import { Bookmark } from '../../../assets/svg';
 import { Transition } from '../../../assets/svg';
-
-import * as b from '../../../styles/blocks';
 
 interface Props {
   group: string;
@@ -24,15 +26,17 @@ export const SavedPage: React.FC<Props> = ({ group }) => {
             </b.Text>
           </b.Box>
           <SideOption>
-            <Transition width={17} height={17} color='gray' />
+            <IconWrapper className='transition'>
+              <Transition />
+            </IconWrapper>
           </SideOption>
         </TopContainer>
       </TopWrapper>
       <BottomWrapper>
         <BottomContainer>
-          <b.Box>
-            <Bookmark width={26} height={26} color='pink__dark' />
-          </b.Box>
+          <IconWrapper className='bookmark'>
+            <Bookmark />
+          </IconWrapper>
           <b.Box pt={3} pb={2}>
             <b.Text fontSize={17} fontFamily='SlackLato-Bold' color='black'>
               Save messages and files to come back to later
@@ -88,5 +92,27 @@ const SideOption = styled(b.Button)`
   &:hover {
     background-color: ${({ theme }) => theme.colors.white__dark};
     border-radius: 3px;
+  }
+`;
+
+const IconWrapper = styled(b.Box)`
+  &.bookmark {
+    svg {
+      width: 26px;
+      height: 26px;
+      path {
+        fill: ${({ theme }) => theme.colors.pink__dark};
+      }
+    }
+  }
+
+  &.transition {
+    svg {
+      width: 17px;
+      height: 17px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray};
+      }
+    }
   }
 `;

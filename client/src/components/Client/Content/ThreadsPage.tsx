@@ -1,10 +1,13 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
+// Blocks
 import * as b from '../../../styles/blocks';
 
 // Image
 import Leaf from '../../../assets/img/leaf.png';
+
+// Hooks
 import { useTabTitle } from '../../../hooks/useTabTitle';
 
 interface Props {

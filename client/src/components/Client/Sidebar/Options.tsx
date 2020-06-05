@@ -2,12 +2,14 @@ import * as React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { Option } from './Option';
-
-import { ShowLess } from '../../../assets/svg';
-
 // Blocks
 import * as b from '../../../styles/blocks';
+
+// Components
+import { Option } from './Option';
+
+// Svgs
+import { ShowLess } from '../../../assets/svg';
 
 interface Props {}
 
@@ -48,18 +50,13 @@ export const Options: React.FC<Props> = () => {
           </>
         ) : null}
 
-        <ShowLessWrapper
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-          onClick={() => setDisplay(!display)}>
+        <ShowLessWrapper onClick={() => setDisplay(!display)}>
           <b.Flex>
-            <Icon animate={display ? 'initial' : 'animate'} variants={arrow}>
-              <ShowLess
-                width={15}
-                height={15}
-                color={hovered ? 'white' : 'pink__lighter'}
-              />
-            </Icon>
+            <IconWrapper
+              animate={display ? 'initial' : 'animate'}
+              variants={arrow}>
+              <ShowLess />
+            </IconWrapper>
             <TextWrapper>
               <Title
                 className={hovered ? 'hovered' : ''}
@@ -88,6 +85,12 @@ const ShowLessWrapper = styled(b.Button)`
   &:focus {
     outline: none;
   }
+
+  &:hover {
+    path {
+      fill: ${({ theme }) => theme.colors.white};
+    }
+  }
 `;
 
 const TextWrapper = styled(b.Box)`
@@ -95,8 +98,16 @@ const TextWrapper = styled(b.Box)`
   top: 2px;
 `;
 
-const Icon = styled(b.Box)`
+const IconWrapper = styled(b.Box)`
   margin-right: 8px;
+
+  svg {
+    width: 15px;
+    height: 15px;
+    path {
+      fill: ${({ theme }) => theme.colors.pink__lighter};
+    }
+  }
 `;
 
 const Title = styled(b.Text)`
