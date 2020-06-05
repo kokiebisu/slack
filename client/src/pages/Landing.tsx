@@ -18,10 +18,6 @@ export const Landing: React.FC<Props> = () => {
 
   const { data, loading } = useMeQuery();
 
-  if (data) {
-    console.log(data);
-  }
-
   return (
     <>
       <Header data={data} />

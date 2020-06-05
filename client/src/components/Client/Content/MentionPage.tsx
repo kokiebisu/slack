@@ -22,16 +22,19 @@ export const MentionPage: React.FC<Props> = ({ group }) => {
       <TopWrapper>
         <TopContainer>
           <b.Box>
-            <b.Text color='#1D1C1D' fontFamily='SlackLato-Black' fontSize={15}>
+            <b.Text
+              color='black__light'
+              fontFamily='SlackLato-Black'
+              fontSize={15}>
               Mentions & reactions
             </b.Text>
           </b.Box>
           <b.Flex alignItems='center'>
             <SideOption mr={2}>
-              <Settings width={17} height={17} color='#606060' />
+              <Settings width={17} height={17} color='gray' />
             </SideOption>
             <SideOption>
-              <Transition width={17} height={17} color='#606060' />
+              <Transition width={17} height={17} color='gray' />
             </SideOption>
           </b.Flex>
         </TopContainer>
@@ -43,11 +46,11 @@ export const MentionPage: React.FC<Props> = ({ group }) => {
               <b.Flex justifyContent='space-between'>
                 <b.Flex alignItems='center'>
                   <b.Box mr={2}>
-                    <AtSign width={17} height={17} color='#DE4E2B' />
+                    <AtSign width={17} height={17} color='orange__dark' />
                   </b.Box>
                   <b.Box mb={1}>
                     <b.Text
-                      color='#1D1C1D'
+                      color='black__light'
                       fontSize={18}
                       fontFamily='SlackLato-Bold'
                       letterSpacing='-0.025em'>
@@ -56,7 +59,7 @@ export const MentionPage: React.FC<Props> = ({ group }) => {
                   </b.Box>
                 </b.Flex>
                 <b.Box>
-                  <Close width={13} height={13} color='#5B5B5B' />
+                  <Close width={13} height={13} color='gray' />
                 </b.Box>
               </b.Flex>
             </b.Box>
@@ -64,7 +67,7 @@ export const MentionPage: React.FC<Props> = ({ group }) => {
               <b.Text
                 fontFamily='SlackLato-Regular'
                 fontSize={15}
-                color='#1D1C1D'>
+                color='black__light'>
                 When people react to your messages or mention you or your
                 keywords, you’ll see it here.
               </b.Text>
@@ -84,7 +87,7 @@ const Wrapper = styled(b.Box)`
 `;
 
 const TopWrapper = styled(b.Box)`
-  border-bottom: 1px solid #e2e2e2;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.white__dark};
   height: 100%;
 `;
 
@@ -100,7 +103,7 @@ const BottomWrapper = styled(b.Box)`
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: #f8f8f8;
+  background-color: ${({ theme }) => theme.colors.white__dark};
 `;
 
 const BottomContainer = styled(b.Box)`
@@ -109,7 +112,7 @@ const BottomContainer = styled(b.Box)`
 `;
 
 const Notice = styled(b.Box)`
-  background-color: #efefef;
+  background-color: ${({ theme }) => theme.colors.white__dark};
   padding: 25px;
   border-radius: 10px;
   margin-bottom: 25px;
@@ -119,7 +122,7 @@ const SideOption = styled(b.Box)`
   padding: 8px 10px 6px 10px;
   background-color: transparent;
   &:hover {
-    background-color: #f6f6f6;
+    background-color: ${({ theme }) => theme.colors.white__dark};
     border-radius: 3px;
   }
 `;

@@ -57,12 +57,12 @@ export const Options: React.FC<Props> = () => {
               <ShowLess
                 width={15}
                 height={15}
-                color={hovered ? `white` : `#CFC3CF`}
+                color={hovered ? 'white' : 'pink__lighter'}
               />
             </Icon>
             <TextWrapper>
               <Title
-                className={hovered ? `hovered` : ``}
+                className={hovered ? 'hovered' : ''}
                 fontFamily='SlackLato-Light'
                 fontSize={15}>
                 Show less
@@ -100,9 +100,9 @@ const Icon = styled(b.Box)`
 `;
 
 const Title = styled(b.Text)`
-  color: #cfc3cf;
+  color: ${({ theme }) => theme.colors.pink__lighter};
 
   &.hovered {
-    color: white !important;
+    color: ${({ theme }) => theme.colors.white};
   }
 `;

@@ -101,7 +101,7 @@ export const CreateTeamLayout: React.FC<Props> = ({
                   <b.Text
                     fontFamily='SlackLato-Black'
                     fontSize={26}
-                    color='#1D1C1D'>
+                    color='black__light'>
                     {title}
                   </b.Text>
                 </b.Box>
@@ -160,7 +160,7 @@ export const CreateTeamLayout: React.FC<Props> = ({
                       <ChannelWrapper px={2}>
                         {channel ? (
                           <b.Text
-                            color='#E8E8E8'
+                            color='white__dark'
                             fontFamily='SlackLato-Black'
                             fontSize={15}>
                             Channel
@@ -170,7 +170,7 @@ export const CreateTeamLayout: React.FC<Props> = ({
                         )}
                       </ChannelWrapper>
                       <b.Box
-                        backgroundColor={channel && `#2EA683`}
+                        backgroundColor={channel && 'green__light'}
                         mt={2}
                         px={2}>
                         <b.Flex alignItems='center'>
@@ -179,7 +179,7 @@ export const CreateTeamLayout: React.FC<Props> = ({
                           </b.Box>
                           {channel ? (
                             <b.Text
-                              color='#E8E8E8'
+                              color='white__dark'
                               fontFamily='SlackLato-Bold'
                               fontSize={12}>
                               {channel}
@@ -243,7 +243,7 @@ export const CreateTeamLayout: React.FC<Props> = ({
                       <SectionTitle>
                         {channel ? (
                           <b.Text
-                            color='#121212'
+                            color='black'
                             fontFamily='SlackLato-Bold'
                             fontSize={17}>
                             {channel}
@@ -295,9 +295,9 @@ const HeaderWrapper = styled.div`
 `;
 
 const HeaderContainer = styled.div`
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.white};
   height: 70px;
-  border-bottom: 0.5px solid lightgray;
+  border-bottom: 0.5px solid ${({ theme }) => theme.colors.gray__light};
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 `;
 
@@ -327,7 +327,7 @@ const Left = styled(b.Box)`
 
 const Right = styled(b.Box)`
   display: none;
-  background-color: #f8f8f8;
+  background-color: ${({ theme }) => theme.colors.white__dark};
 
   @media ${size.md} {
     display: block;
@@ -366,7 +366,7 @@ const ChannelWrapper = styled(b.Box)`
 const LeftMock = styled(b.Box)`
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
-  background-color: #573a5a;
+  background-color: ${({ theme }) => theme.colors.primary__lighter};
   padding: 18px 0;
 
   & > div {
@@ -378,7 +378,7 @@ const Line = styled(b.Box)`
   height: 2px;
   width: 100%;
   border-radius: 9999px;
-  background-color: #e8e8e8;
+  background-color: ${({ theme }) => theme.colors.white__dark};
 `;
 
 const BulletSection = styled(b.Box)`
@@ -389,13 +389,13 @@ const BulletPoint = styled(b.Box)`
   width: 5px;
   height: 5px;
   border-radius: 9999px;
-  background-color: #caadcd;
+  background-color: ${({ theme }) => theme.colors.pink__light};
 `;
 
 const RightMock = styled(b.Box)`
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.colors.white};
   padding: 18px 15px;
 
   & > div {
@@ -405,7 +405,7 @@ const RightMock = styled(b.Box)`
 
 const Input = styled(b.Input)`
   width: 100%;
-  border: 1px solid #868686;
+  border: 1px solid ${({ theme }) => theme.colors.gray__dark};
   border-radius: 7px;
   padding: 15px 0px 15px 15px;
 `;
@@ -413,20 +413,20 @@ const Input = styled(b.Input)`
 const NextButton = styled(b.Button)`
   width: 100%;
   padding: 12px 0;
-  background-color: #4a144b;
+  background-color: ${({ theme }) => theme.colors.primary};
   border-radius: 4px;
-  color: white;
+  color: ${({ theme }) => theme.colors.white};
   font-family: 'SlackLato-Bold';
   font-size: 18px;
 
   &:hover {
-    background-color: #5c2c5d;
+    background-color: ${({ theme }) => theme.colors.primary__lighter};
   }
 `;
 
 const Policy = styled(b.Box)`
   span {
-    color: #3a71a9;
+    color: ${({ theme }) => theme.colors.blue__light};
   }
 `;
 

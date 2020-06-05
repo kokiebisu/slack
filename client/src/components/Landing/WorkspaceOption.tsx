@@ -31,7 +31,7 @@ export const WorkspaceOption: React.FC<Props> = ({ name, url, color }) => {
         }}
         py={2}
         px={2}
-        style={{ borderBottom: '0.5px solid #E2E1E2' }}>
+        borderBottom='0.5px solid white__dark'>
         <b.Flex alignItems='center' justifyContent='space-between'>
           <b.Box>
             <b.Flex alignItems='center'>
@@ -41,7 +41,7 @@ export const WorkspaceOption: React.FC<Props> = ({ name, url, color }) => {
                   width={50}
                   height={50}
                   style={{
-                    border: '3px solid lightgray',
+                    border: '3px solid gray__light',
                     borderRadius: '8px',
                   }}>
                   <b.Flex alignItems='center' justifyContent='center'>
@@ -69,7 +69,7 @@ export const WorkspaceOption: React.FC<Props> = ({ name, url, color }) => {
           <b.Box
             variants={launchArrow}
             animate={hovered.launch ? 'animate' : 'initial'}>
-            <RightArrow width={15} height={15} color='#1766A4' />
+            <RightArrow width={15} height={15} color='blue' />
           </b.Box>
         </b.Flex>
       </b.Box>
@@ -81,7 +81,7 @@ const TeamName = styled(b.Text)`
   color: #1d1d1d;
 
   &.hovered {
-    color: #1766a4;
+    color: ${({ theme }) => theme.colors.blue};
   }
 `;
 

@@ -27,7 +27,7 @@ export const ThreadsPage: React.FC<Props> = ({ group }) => {
             <b.Text
               fontSize={13}
               fontFamily='SlackLato-Regular'
-              color='#606060'>
+              color='gray__light'>
               No new replies
             </b.Text>
           </b.Box>
@@ -47,7 +47,7 @@ export const ThreadsPage: React.FC<Props> = ({ group }) => {
             <b.Text
               fontSize={15}
               fontFamily='SlackLato-Regular'
-              color='#7D7C7D'>
+              color='gray__light'>
               Threads you’re involved in will be collected right here.
             </b.Text>
           </b.Box>
@@ -55,7 +55,7 @@ export const ThreadsPage: React.FC<Props> = ({ group }) => {
             <b.Text
               fontSize={15}
               fontFamily='SlackLato-Regular'
-              color='#2F76AE'>
+              color='blue__light'>
               Learn about threads
             </b.Text>
           </b.Box>
@@ -73,7 +73,7 @@ const Wrapper = styled(b.Box)`
 
 const TopWrapper = styled(b.Box)`
   padding: 15px 0;
-  border-bottom: 1px solid #e2e2e2;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.white__dark};
 `;
 
 const TopContainer = styled(b.Box)`

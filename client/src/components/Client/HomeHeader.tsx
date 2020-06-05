@@ -20,7 +20,7 @@ interface Props {
 
 export const HomeHeader: React.FC<Props> = ({ team }) => {
   return (
-    <b.Box height={37} background='#350D36'>
+    <b.Box height={37} background='primary'>
       <b.Flex alignItems='center' justifyContent='center'>
         <b.Box style={{ flex: 1 }} pr={4} pl={3}>
           <b.Flex style={{ justifyContent: 'flex-end' }}>
@@ -74,26 +74,26 @@ export const HomeHeader: React.FC<Props> = ({ team }) => {
 
 const Input = styled(b.Button)`
   height: 24px;
-  border: 1.3px solid #684a68;
+  border: 1.3px solid ${({ theme }) => theme.colors.purple};
   padding: 0 8px;
   width: 320px;
-  background-color: #431e44;
-  color: #d9d2d9;
-  fill: #d9d2d9;
+  background-color: ${({ theme }) => theme.colors.primary__lighter};
+  color: ${({ theme }) => theme.colors.white__dark};
+  fill: ${({ theme }) => theme.colors.white__dark};
 
   @media ${home.lg} {
     width: 500px;
   }
 
   &:hover {
-    border: 1.3px solid #9a859b;
-    color: #fefdfe;
-    fill: #fefdfe;
+    border: 1.3px solid ${({ theme }) => theme.colors.purple};
+    color: ${({ theme }) => theme.colors.white__dark};
+    fill: ${({ theme }) => theme.colors.white__dark};
   }
 `;
 
 const WhatsNewWrapper = styled(b.Button)`
-  background-color: #cd2553;
+  background-color: ${({ theme }) => theme.colors.red};
 `;
 
 const WhatsNewText = styled(b.Box)`
@@ -108,6 +108,6 @@ const ClockWrapper = styled(b.Button)`
   border-radius: 5px;
   padding: 6px 6px 3px 7px;
   &:hover {
-    background-color: #49244a;
+    background-color: ${({ theme }) => theme.colors.primary__lighter};
   }
 `;

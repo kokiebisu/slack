@@ -103,22 +103,22 @@ const NavItem = styled(b.Anchor)`
   margin: 0px 3px;
   font-size: 15px;
   font-family: 'SlackLato-Regular';
-  color: #848384;
+  color: ${({ theme }) => theme.colors.gray__dark};
 
   &:hover {
-    background-color: #e8e8e8;
+    background-color: ${({ theme }) => theme.colors.white__dark};
   }
 `;
 
 const SignInItem = styled(b.Box)`
-  border: 2px solid #838283;
+  border: 2px solid ${({ theme }) => theme.colors.gray__dark};
   padding: 8px 13px;
   border-radius: 3px;
-  color: #848384;
+  color: ${({ theme }) => theme.colors.gray__dark};
   margin-left: 10px;
 
   &:hover {
-    color: #616061;
-    border-color: #616061;
+    color: ${({ theme }) => theme.colors.gray};
+    border-color: ${({ theme }) => theme.colors.gray};
   }
 `;

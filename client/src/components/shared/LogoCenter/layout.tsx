@@ -73,10 +73,10 @@ const GlobeWrapper = styled(b.Box)`
 const FooterLink = styled(b.Anchor)`
   font-size: 14px;
   font-family: 'SlackLato-Regular';
-  color: #7e7e7e;
+  color: ${({ theme }) => theme.colors.gray__light};
 
   &:hover {
-    color: #205893;
+    color: ${({ theme }) => theme.colors.blue};
     text-decoration: underline;
   }
 `;
@@ -84,10 +84,10 @@ const FooterLink = styled(b.Anchor)`
 const ChangeRegion = styled(b.Button)`
   font-size: 14px;
   font-family: 'SlackLato-Regular';
-  color: #7e7e7e;
+  color: ${({ theme }) => theme.colors.gray__light};
 
   &:hover {
-    color: #205893;
+    color: ${({ theme }) => theme.colors.blue};
     text-decoration: underline;
   }
 `;

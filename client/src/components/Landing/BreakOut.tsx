@@ -44,7 +44,10 @@ const ColumnCard = ({ title, subtitle, mr, children }: ColumnCardProps) => {
       <CardWrapper>
         <b.Box>{children}</b.Box>
         <b.Box my={3}>
-          <b.Text fontFamily='CircularPro-Bold' color='#1D1C1D' fontSize={18}>
+          <b.Text
+            fontFamily='CircularPro-Bold'
+            color='black__light'
+            fontSize={18}>
             {title}
           </b.Text>
         </b.Box>
@@ -67,7 +70,7 @@ export const BreakOut: React.FC<Props> = () => {
             <b.Box>
               <Title
                 fontFamily='CircularPro-Bold'
-                color='#1D1D1D'
+                color='black__light'
                 lineHeight={1.4}>
                 Break out of the inbox
               </Title>
@@ -127,7 +130,7 @@ export const BreakOut: React.FC<Props> = () => {
 const Wrapper = styled.section`
   padding-top: 100px;
   padding-bottom: 30px;
-  border-bottom: 0.5px solid lightgray;
+  border-bottom: 0.5px solid ${({ theme }) => theme.colors.gray__light};
 `;
 
 const VideoWrapper = styled(b.Box)`

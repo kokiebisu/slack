@@ -54,3 +54,18 @@ export const TransparentButtonMotion = {
     },
   },
 };
+
+export const launchMotion = {
+  rest: {
+    backgroundColor: '#612069',
+    transition: {
+      duration: 0.2,
+    },
+  },
+  hovered: {
+    backgroundColor: '#18071A',
+    transition: {
+      duration: 0.2,
+    },
+  },
+};

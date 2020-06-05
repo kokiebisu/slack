@@ -13,10 +13,13 @@ export const Messages: React.FC<Props> = () => {
       <b.Box py={2}>
         <b.Flex alignItems='center'>
           <HeartWrapper pr={2}>
-            <Heart width={10} height={10} color='#2BAC76' />
+            <Heart width={10} height={10} color='green__lighter' />
           </HeartWrapper>
           <b.Box style={{ top: 3 }}>
-            <b.Text fontFamily='SlackLato-Light' color='#CFC3CF' fontSize={15}>
+            <b.Text
+              fontFamily='SlackLato-Light'
+              color='pink__lighter'
+              fontSize={15}>
               Slackbot
             </b.Text>
           </b.Box>
@@ -40,7 +43,10 @@ const Message = () => {
           <Status />
         </StatusWrapper>
         <b.Box style={{ top: 3 }}>
-          <b.Text fontFamily='SlackLato-Light' color='#CFC3CF' fontSize={15}>
+          <b.Text
+            fontFamily='SlackLato-Light'
+            color='pink__lighter'
+            fontSize={15}>
             ken
           </b.Text>
         </b.Box>
@@ -57,6 +63,6 @@ const StatusWrapper = styled(b.Box)`
 const Status = styled(b.Box)`
   width: 9px;
   height: 9px;
-  background-color: #2bac76;
+  background-color: ${({ theme }) => theme.colors.green__lighter};
   border-radius: 100%;
 `;

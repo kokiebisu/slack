@@ -15,6 +15,9 @@ import { HamburgerButton } from '../../assets/svg';
 import { avatar } from '../../styles/colors';
 import { randomColor } from '../../util/randomColor';
 
+// Animations
+import { launchMotion } from '../../animations/Buttons';
+
 // Components
 import { Link } from './Landing.styles';
 import { WorkspaceOption } from './WorkspaceOption';
@@ -181,7 +184,7 @@ export const Header: React.FC<Props> = () => {
                     <b.Flex alignItems='center'>
                       <b.Text>Launch Slack</b.Text>
                       <b.Box ml={2}>
-                        <BottomArrow height={10} width={10} color='#ffffff' />
+                        <BottomArrow height={10} width={10} color='white' />
                       </b.Box>
                     </b.Flex>
                   </LaunchButton>
@@ -227,7 +230,7 @@ export const Header: React.FC<Props> = () => {
                   <b.Box>
                     <LaunchOptionLink
                       href='/get-started/create'
-                      color='#1264A3'
+                      color='blue'
                       fontFamily='CircularPro-Book'>
                       <b.Text textAlign='center'>Create a new workspace</b.Text>
                     </LaunchOptionLink>
@@ -235,7 +238,7 @@ export const Header: React.FC<Props> = () => {
                   <b.Box mt={3}>
                     <LaunchOptionLink
                       href='/signin-workspace'
-                      color='#1264A3'
+                      color='blue'
                       fontFamily='CircularPro-Book'>
                       <b.Text textAlign='center'>
                         Sign in to another workspace
@@ -267,7 +270,7 @@ const LaunchOptionWrapper = styled(b.Box)`
 const LaunchOption = styled(b.Box)`
   padding: 10px;
   min-width: 380px;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.1);
 `;
 
@@ -286,7 +289,7 @@ const HeaderWrapper = styled.div`
 const Wrapper = styled.div`
   background-color: white;
   height: 70px;
-  border-bottom: 0.5px solid lightgray;
+  border-bottom: 0.5px solid ${({ theme }) => theme.colors.gray__light};
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 `;
 
@@ -325,7 +328,7 @@ const SignInButton = styled(b.Box)`
   color: black;
 
   &:hover {
-    color: #1766a4;
+    color: ${({ theme }) => theme.colors.blue};
     text-decoration: underline;
   }
 `;
@@ -337,7 +340,7 @@ const LaunchButton = styled(b.Anchor)`
   padding: 13px 15px;
   text-transform: uppercase;
   font-size: 14px;
-  color: white;
+  color: ${({ theme }) => theme.colors.white};
   border: none;
   font-family: 'CircularPro-Bold';
   border-radius: 3px;
@@ -359,14 +362,14 @@ const GetStartedButtonWrapper = styled(b.Flex)`
 
 const GetStartedButton = styled(b.Anchor)`
   letter-spacing: 0.1em;
-  background-color: #611f69;
+  background-color: ${({ theme }) => theme.colors.primary__light};
   border-radius: 5px;
   padding: 13px 13px;
 `;
 
 const Dropdown = styled.div`
   width: 250px;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
   position: absolute;
   top: 45px;
@@ -384,20 +387,3 @@ const HamburgerWrapper = styled.div`
     display: none;
   }
 `;
-
-// Motion
-
-const launchMotion = {
-  rest: {
-    backgroundColor: '#612069',
-    transition: {
-      duration: 0.2,
-    },
-  },
-  hovered: {
-    backgroundColor: '#18071A',
-    transition: {
-      duration: 0.2,
-    },
-  },
-};

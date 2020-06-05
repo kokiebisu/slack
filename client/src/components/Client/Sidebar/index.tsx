@@ -61,7 +61,7 @@ export const Sidebar: React.FC<Props> = ({ team }) => {
               </b.Box>
             </b.Box>
             <Avatar>
-              <Write width={16} height={16} color='#431E44' />
+              <Write width={16} height={16} color='primary__lighter' />
             </Avatar>
           </Container>
         </ProfileWrapper>
@@ -76,7 +76,7 @@ export const Sidebar: React.FC<Props> = ({ team }) => {
 };
 
 const SideBarWrapper = styled(b.Box)`
-  background-color: #3f0f40;
+  background-color: ${({ theme }) => theme.colors.primary};
   display: grid;
   grid-template-rows: 65px auto;
   position: relative;
@@ -92,14 +92,14 @@ const SideBarContainer = styled(b.Box)`
 const ProfileWrapper = styled(b.Button)`
   display: grid;
   padding: 10px 0;
-  background-color: #3f0f40;
+  background-color: ${({ theme }) => theme.colors.primary};
   align-items: center;
-  border-bottom: 1px solid #532754;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.primary__lighter};
   z-index: 10;
   cursor: pointer;
 
   &.hovered {
-    background-color: #350d36 !important;
+    background-color: ${({ theme }) => theme.colors.primary__dark};
   }
 
   &:focus {
@@ -119,7 +119,7 @@ const StatusIcon = styled(b.Box)`
   width: 10px;
   height: 10px;
   border-radius: 100%;
-  background-color: #2bac76;
+  background-color: ${({ theme }) => theme.colors.green__lighter};
   margin-right: 4px;
 `;
 
@@ -128,15 +128,15 @@ const Avatar = styled(b.Box)`
   align-items: center;
   justify-content: center;
   border-radius: 100%;
-  background: white;
+  background: ${({ theme }) => theme.colors.white};
   width: 35px;
   height: 35px;
 `;
 
 const Name = styled(b.Text)`
-  color: #d8cfd9;
+  color: ${({ theme }) => theme.colors.pink__lighter};
 
   &.hovered {
-    color: white !important;
+    color: ${({ theme }) => theme.colors.white};
   }
 `;

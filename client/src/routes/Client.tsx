@@ -65,7 +65,7 @@ export const ClientRoutes: React.FC<Props> = () => {
                                 height={35}
                                 width={35}
                                 borderRadius={3}
-                                backgroundColor='red'
+                                backgroundColor='blue'
                               />
                             </b.Flex>
                           </b.Box>
@@ -84,7 +84,7 @@ export const ClientRoutes: React.FC<Props> = () => {
                                   <b.Text
                                     fontFamily='SlackLato-Regular'
                                     fontSize={12}
-                                    color='#636363'>
+                                    color='gray'>
                                     You're set to active. &nbsp;
                                   </b.Text>
                                 </b.Box>
@@ -92,7 +92,7 @@ export const ClientRoutes: React.FC<Props> = () => {
                                   <b.Text
                                     fontFamily='SlackLato-Regular'
                                     fontSize={12}
-                                    color='#005A9D'>
+                                    color='blue'>
                                     Change
                                   </b.Text>
                                 </b.Box>
@@ -180,8 +180,8 @@ const MenuToggle = styled(b.Box)`
   top: 60px;
   left: 15px;
   z-index: 9999;
-  background-color: #f8f8f8;
+  background-color: ${({ theme }) => theme.colors.white__dark};
   border-radius: 10px;
-  border: 1px solid #d7d7d7;
+  border: 1px solid ${({ theme }) => theme.colors.gray__light};
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 `;

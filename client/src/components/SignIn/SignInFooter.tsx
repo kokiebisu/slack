@@ -61,7 +61,7 @@ export const SignInFooter: React.FC<Props> = () => {
 
   return (
     <Wrapper>
-      <b.Box borderTop='1px solid' borderColor='#ddd'>
+      <b.Box borderTop='1px solid' borderColor='gray__lighter'>
         <b.Flex justifyContent='center'>
           <TopContainer>
             <b.Box px={3}>
@@ -74,14 +74,14 @@ export const SignInFooter: React.FC<Props> = () => {
                     })
                   }>
                   <SectionNameWrapper>
-                    <SectionName color='#de4e2b'>Using Slack</SectionName>
+                    <SectionName color='orange__dark'>Using Slack</SectionName>
                     {revealed.usingslack ? (
                       <RevealButton>
-                        <Minus width={15} height={15} color='#616061' />
+                        <Minus width={15} height={15} color='gray' />
                       </RevealButton>
                     ) : (
                       <RevealButton>
-                        <Plus width={15} height={15} color='#616061' />
+                        <Plus width={15} height={15} color='gray' />
                       </RevealButton>
                     )}
                   </SectionNameWrapper>
@@ -124,13 +124,13 @@ export const SignInFooter: React.FC<Props> = () => {
                   <SectionNameWrapper>
                     <SectionWrapper>
                       <b.Flex alignItems='center'>
-                        <SectionName color='#e32072'>Slack</SectionName>
+                        <SectionName color='pink__dark'>Slack</SectionName>
                         <HeartIconWrapper>
                           <b.Box ml={1}>
                             <RoundedHeart
                               width={10}
                               height={10}
-                              color='#e32072'
+                              color='pink__dark'
                             />
                           </b.Box>
                         </HeartIconWrapper>
@@ -138,11 +138,11 @@ export const SignInFooter: React.FC<Props> = () => {
                     </SectionWrapper>
                     {revealed.slack ? (
                       <RevealButton>
-                        <Minus width={15} height={15} color='#616061' />
+                        <Minus width={15} height={15} color='gray' />
                       </RevealButton>
                     ) : (
                       <RevealButton>
-                        <Plus width={15} height={15} color='#616061' />
+                        <Plus width={15} height={15} color='gray' />
                       </RevealButton>
                     )}
                   </SectionNameWrapper>
@@ -184,14 +184,14 @@ export const SignInFooter: React.FC<Props> = () => {
                     })
                   }>
                   <SectionNameWrapper>
-                    <SectionName color='#007a5a'>Legal</SectionName>
+                    <SectionName color='green'>Legal</SectionName>
                     {revealed.legal ? (
                       <RevealButton>
-                        <Minus width={15} height={15} color='#616061' />
+                        <Minus width={15} height={15} color='gray' />
                       </RevealButton>
                     ) : (
                       <RevealButton>
-                        <Plus width={15} height={15} color='#616061' />
+                        <Plus width={15} height={15} color='gray' />
                       </RevealButton>
                     )}
                   </SectionNameWrapper>
@@ -232,14 +232,14 @@ export const SignInFooter: React.FC<Props> = () => {
                     })
                   }>
                   <SectionNameWrapper>
-                    <SectionName color='#4b6bc6'>Handy Links</SectionName>
+                    <SectionName color='purple__light'>Handy Links</SectionName>
                     {revealed.handylinks ? (
                       <RevealButton>
-                        <Minus width={15} height={15} color='#616061' />
+                        <Minus width={15} height={15} color='gray' />
                       </RevealButton>
                     ) : (
                       <RevealButton>
-                        <Plus width={15} height={15} color='#616061' />
+                        <Plus width={15} height={15} color='gray' />
                       </RevealButton>
                     )}
                   </SectionNameWrapper>
@@ -278,13 +278,13 @@ export const SignInFooter: React.FC<Props> = () => {
           </TopContainer>
         </b.Flex>
       </b.Box>
-      <b.Box backgroundColor='#f4f4f4' py={3}>
+      <b.Box backgroundColor='white__dark' py={3}>
         <b.Flex justifyContent='center'>
           <BottomContainer>
             <b.Box px={3}>
               <b.Flex justifyContent='space-between'>
                 <b.Box>
-                  <NoNameLogoMono width={20} height={20} color='#868686' />
+                  <NoNameLogoMono width={20} height={20} color='gray__light' />
                 </b.Box>
                 <b.Box>
                   <b.Flex alignItems='center'>
@@ -294,10 +294,10 @@ export const SignInFooter: React.FC<Props> = () => {
                       </b.Text>
                     </ContactWrapper>
                     <LogoWrapper mx={2} className='twitter'>
-                      <TwitterLogo width={20} height={20} color='#868686' />
+                      <TwitterLogo width={20} height={20} color='gray__dark' />
                     </LogoWrapper>
                     <LogoWrapper mx={2} className='youtube'>
-                      <YoutubeLogo width={20} height={20} color='#868686' />
+                      <YoutubeLogo width={20} height={20} color='gray__dark' />
                     </LogoWrapper>
                   </b.Flex>
                 </b.Box>
@@ -313,7 +313,7 @@ export const SignInFooter: React.FC<Props> = () => {
 const Wrapper = styled.footer`
   width: 100%;
   height: 350px;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 const TopContainer = styled(b.Box)`
@@ -378,7 +378,7 @@ const ListWrapper = styled(b.Flex)`
 `;
 
 const ListContainer = styled(b.Box)`
-  border-bottom: 1px solid #f2f2f2;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.white__dark};
   width: 100%;
   cursor: pointer;
 
@@ -412,13 +412,13 @@ const SmallList = styled.ul`
 
 const Item = styled.li`
   list-style: none;
-  color: #696969;
+  color: ${({ theme }) => theme.colors.gray};
   font-size: 0.79rem;
   font-family: 'SlackLato-Light';
   margin: 5px 0;
 
   &:hover {
-    color: #9e9ea5;
+    color: ${({ theme }) => theme.colors.gray__dark};
     cursor: pointer;
   }
 `;
@@ -433,7 +433,7 @@ const ContactWrapper = styled(b.Anchor)`
   bottom: 1px;
 
   &:hover {
-    color: #bababe;
+    color: ${({ theme }) => theme.colors.gray__light};
   }
 `;
 

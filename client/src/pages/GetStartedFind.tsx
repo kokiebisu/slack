@@ -20,7 +20,7 @@ export const GetStartedFind: React.FC<Props> = () => {
               <b.Box>
                 <b.Text
                   fontSize={48}
-                  color='#1D1C1D'
+                  color='black__light'
                   fontFamily='Larsseit-Bold'
                   textAlign='center'>
                   Let’s find your team
@@ -30,7 +30,7 @@ export const GetStartedFind: React.FC<Props> = () => {
                 <b.Text
                   lineHeight={1.5}
                   textAlign='center'
-                  color='#454245'
+                  color='gray'
                   fontFamily='SlackLato-Regular'
                   fontSize={20}>
                   Enter the email you usually collaborate with
@@ -39,7 +39,7 @@ export const GetStartedFind: React.FC<Props> = () => {
               <b.Box>
                 <b.Flex justifyContent='center'>
                   <EmailInput
-                    border='1px solid #868686'
+                    border='1px solid gray'
                     borderRadius={3}
                     placeholder='name@work-email.com'
                   />
@@ -77,10 +77,10 @@ const ConfirmButton = styled(b.Button)`
   border-radius: 5px;
   padding: 13px 0;
   text-align: center;
-  background-color: #4a144b;
+  background-color: ${({ theme }) => theme.colors.primary};
 
   &:hover {
-    background-color: #5c2c5d;
+    background-color: ${({ theme }) => theme.colors.primary__light};
   }
 `;
 

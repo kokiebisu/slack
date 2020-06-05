@@ -20,10 +20,7 @@ export const DraftPage: React.FC<Props> = ({ group }) => {
             </b.Text>
           </b.Box>
           <b.Box style={{ margin: '4px 0' }}>
-            <b.Text
-              fontSize={13}
-              fontFamily='SlackLato-Regular'
-              color='#606060'>
+            <b.Text fontSize={13} fontFamily='SlackLato-Regular' color='gray'>
               No drafts
             </b.Text>
           </b.Box>
@@ -32,7 +29,7 @@ export const DraftPage: React.FC<Props> = ({ group }) => {
       <BottomWrapper>
         <BottomContainer>
           <b.Box>
-            <Clipboard width={26} height={26} color='#4A144B' />
+            <Clipboard width={26} height={26} color='primary__light' />
           </b.Box>
           <b.Box pt={3} pb={2}>
             <b.Text fontSize={17} fontFamily='SlackLato-Bold' color='black'>
@@ -43,7 +40,7 @@ export const DraftPage: React.FC<Props> = ({ group }) => {
             <b.Text
               fontSize={15}
               fontFamily='SlackLato-Regular'
-              color='#7D7C7D'>
+              color='gray__light'>
               Start typing a message anywhere, then find it here. Re-read,
               revise, and send whenever you’d like.
             </b.Text>
@@ -52,7 +49,7 @@ export const DraftPage: React.FC<Props> = ({ group }) => {
             <b.Text
               fontSize={15}
               fontFamily='SlackLato-Regular'
-              color='#1D1C1D'>
+              color='black__light'>
               New Message
             </b.Text>
           </NewMessageWrapper>
@@ -70,7 +67,7 @@ const Wrapper = styled(b.Box)`
 
 const TopWrapper = styled(b.Box)`
   padding: 15px 0;
-  border-bottom: 1px solid #e2e2e2;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.white__dark};
 `;
 
 const TopContainer = styled(b.Box)`
@@ -91,9 +88,9 @@ const BottomContainer = styled(b.Box)`
 
 const NewMessageWrapper = styled(b.Button)`
   display: inline-block;
-  border: 1px solid #bbbabb;
+  border: 1px solid ${({ theme }) => theme.colors.gray__lighter};
 
   &:hover {
-    background-color: #f6f6f6 !important;
+    background-color: ${({ theme }) => theme.colors.white__dark};
   }
 `;
