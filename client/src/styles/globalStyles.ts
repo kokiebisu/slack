@@ -10,15 +10,19 @@ export const GlobalStyles = createGlobalStyle`
 
     html {
         box-sizing: inherit;
+        overflow: hidden;
+        height: 100%;
     }
 
     body {
-    margin: 0;
-    padding: 0;
-    font-size: 16px;
-    color: #3e3e3e;
-    font-family: 'SlackLato-Regular';
-    box-sizing: inherit;
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        color: #3e3e3e;
+        font-family: 'SlackLato-Regular';
+        box-sizing: inherit;
+        height: 100%;
+        overflow: auto;
     }
-    
+
 `;
