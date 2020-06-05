@@ -40,6 +40,8 @@ export const Header: React.FC<Props> = () => {
     pricing: false,
   });
 
+  console.log(`randomColor: `, randomColor(avatar));
+
   const { data, loading, error } = useMyTeamsQuery();
 
   const [pressed, setPressed] = useState(false);
@@ -293,7 +295,7 @@ const HeaderWrapper = styled.div`
 const Wrapper = styled.div`
   background-color: white;
   height: 70px;
-  border-bottom: 0.5px solid ${({ theme }) => theme.colors.gray__light};
+  border-bottom: 0.5px solid ${({ theme }) => theme.colors.white__dark};
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 `;
 
@@ -391,6 +393,20 @@ const IconWrapper = styled(b.Box)`
     svg {
       width: 100px;
       height: 60px;
+      path {
+        &:nth-child(2) {
+          fill: ${({ theme }) => theme.colors.blue__lighter};
+        }
+        &:nth-child(3) {
+          fill: ${({ theme }) => theme.colors.green__lighter};
+        }
+        &:nth-child(4) {
+          fill: ${({ theme }) => theme.colors.yellow};
+        }
+        &:nth-child(5) {
+          fill: ${({ theme }) => theme.colors.red};
+        }
+      }
     }
   }
 
@@ -405,8 +421,13 @@ const IconWrapper = styled(b.Box)`
   }
 
   &.hamburgerbutton {
-    width: 24px;
-    height: 17px;
+    svg {
+      width: 24px;
+      height: 17px;
+      path {
+        fill: black;
+      }
+    }
 
     @media ${landing.lg} {
       display: none;
