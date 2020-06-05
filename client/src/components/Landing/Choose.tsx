@@ -22,7 +22,7 @@ export const Choose: React.FC<Props> = () => {
               <Button className='white'>
                 <b.Text
                   fontFamily='CircularPro-Bold'
-                  color='#611F69'
+                  color='primary__light'
                   uppercase
                   fontSize={14}>
                   Try Slack
@@ -30,7 +30,7 @@ export const Choose: React.FC<Props> = () => {
               </Button>
             </ButtonWrapper>
             <ButtonWrapper>
-              <Button className='purple'>
+              <Button className='purple__light'>
                 <b.Text
                   fontFamily='CircularPro-Bold'
                   color='white'
@@ -49,7 +49,7 @@ export const Choose: React.FC<Props> = () => {
 
 const Wrapper = styled.section`
   padding: 110px 0;
-  background-color: #612069;
+  background-color: ${({ theme }) => theme.colors.primary__light};
 `;
 
 const Buttons = styled(b.Flex)`
@@ -98,21 +98,21 @@ const Button = styled(b.Button)`
 
   &.white {
     background-color: white;
-    border: 1px solid #612069;
+    border: 1px solid ${({ theme }) => theme.colors.primary__light};
 
     &:hover {
       padding: 19px 34px;
-      border: 2px solid #611f69;
+      border: 2px solid ${({ theme }) => theme.colors.primary__light};
     }
   }
 
   &.purple {
-    background-color: #612069;
-    border: 1px solid white;
+    background-color: ${({ theme }) => theme.colors.primary__light};
+    border: 1px solid ${({ theme }) => theme.colors.white};
 
     &:hover {
       padding: 19px 34px;
-      border: 2px solid white;
+      border: 2px solid ${({ theme }) => theme.colors.white};
     }
   }
 `;

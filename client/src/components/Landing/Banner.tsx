@@ -33,7 +33,7 @@ export const Banner: React.FC<Props> = () => {
               <b.Box mb={3}>
                 <b.Text
                   fontFamily='CircularPro-Bold'
-                  color='#1D1D1D'
+                  color='black__light'
                   fontSize={13}
                   uppercase>
                   Work from home
@@ -43,7 +43,7 @@ export const Banner: React.FC<Props> = () => {
                 <Title
                   fontFamily='Larsseit-Bold'
                   lineHeight={1.4}
-                  color='#1D1D1D'>
+                  color='black__light'>
                   Slack brings the team together, wherever you are
                 </Title>
               </b.Box>
@@ -71,15 +71,15 @@ export const Banner: React.FC<Props> = () => {
                   <Button
                     uppercase
                     transparent
-                    borderColor='#612069'
-                    color='#612069'
+                    borderColor='primary__light'
+                    color='primary__light'
                     variants={TransparentButtonMotion}>
                     Learn more
                   </Button>
                 </ButtonWrapper>
               </Buttons>
               <b.Box mt={3}>
-                <b.Text fontSize={14} color='#1d1d1d'>
+                <b.Text fontSize={14} color='black__light'>
                   Need to create a workspace? &nbsp;
                   <Link
                     className={hovered.started ? `hovered` : ``}
