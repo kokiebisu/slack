@@ -1,16 +1,21 @@
 import * as React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
 
+// Blocks
 import * as b from '../../../styles/blocks';
 
+// Components
 import { Options } from './Options';
 import { SidebarSections } from './SidebarSections';
 
+// Svgs
 import { BottomArrow } from '../../../assets/svg/Arrows';
 import { Write } from '../../../assets/svg/Reaction';
-import { useState } from 'react';
+
+// Query
 import { useMeQuery } from '../../../generated/graphql';
-import { useParams } from 'react-router-dom';
 
 interface Props {
   team?: string;
@@ -42,7 +47,9 @@ export const Sidebar: React.FC<Props> = ({ team }) => {
                     </b.Text>
                   </b.Box>
                   <b.Box mb={1}>
-                    <BottomArrow width={8} height={8} color='white' />
+                    <IconWrapper className='bottomarrow'>
+                      <BottomArrow />
+                    </IconWrapper>
                   </b.Box>
                 </b.Flex>
               </b.Box>
@@ -60,12 +67,15 @@ export const Sidebar: React.FC<Props> = ({ team }) => {
                 </b.Flex>
               </b.Box>
             </b.Box>
-            <Avatar>
-              <Write width={16} height={16} color='primary__lighter' />
-            </Avatar>
+            <b.Box>
+              <Avatar>
+                <IconWrapper className='write'>
+                  <Write />
+                </IconWrapper>
+              </Avatar>
+            </b.Box>
           </Container>
         </ProfileWrapper>
-
         <SideBarContainer>
           <Options />
           <SidebarSections />
@@ -138,5 +148,27 @@ const Name = styled(b.Text)`
 
   &.hovered {
     color: ${({ theme }) => theme.colors.white};
+  }
+`;
+
+const IconWrapper = styled(b.Box)`
+  .bottomarrow {
+    svg {
+      width: 8px;
+      height: 8px;
+      path {
+        fill: ${({ theme }) => theme.colors.white};
+      }
+    }
+  }
+
+  &.write {
+    svg {
+      width: 16px;
+      height: 16px;
+      path {
+        fill: ${({ theme }) => theme.colors.primary__lighter};
+      }
+    }
   }
 `;

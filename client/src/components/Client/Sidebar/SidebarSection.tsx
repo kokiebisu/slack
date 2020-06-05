@@ -1,10 +1,15 @@
 import * as React from 'react';
-import { useState, ReactPortal } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
+
+// Blocks
 import * as b from '../../../styles/blocks';
 
+// Svgs
 import { Play, Close } from '../../../assets/svg';
 import { Plus } from '../../../assets/svg/Plus';
+
+// Breakpoints
 import { home } from '../../../styles/sizes';
 
 interface Props {
@@ -45,12 +50,13 @@ export const SidebarSection: React.FC<Props> = ({
         }}>
         <TitleWrapper alignItems='center' justifyContent='space-between'>
           <b.Flex alignItems='center'>
-            <PlayWrapper
+            <IconWrapper
+              className='play'
               animate={clicked ? 'animate' : 'initial'}
               variants={arrow}
               mr={2}>
-              <Play width={8} height={8} color='pink__lighter' />
-            </PlayWrapper>
+              <Play />
+            </IconWrapper>
             <TitleContainer>
               <b.Text
                 fontFamily='SlackLato-Light'
@@ -60,19 +66,19 @@ export const SidebarSection: React.FC<Props> = ({
               </b.Text>
             </TitleContainer>
           </b.Flex>
-          <PlusWrapper>
-            <Plus width={14} height={14} color='pink__lighter' top={2.5} />
-          </PlusWrapper>
+          <IconWrapper className='plus'>
+            <Plus />
+          </IconWrapper>
         </TitleWrapper>
       </TopColumnWrapper>
       <ContentWrapper>{children}</ContentWrapper>
-      {subtitle ? (
+      {subtitle && (
         <SubtitleWrapper my={1} py={2} pl={2}>
           <b.Flex alignItems='center' justifyContent='space-between'>
             <b.Flex>
-              <b.Box pr={2} style={{ bottom: 2.75 }}>
-                <Plus width={8} height={8} color='white' />
-              </b.Box>
+              <IconWrapper className='smallplus' pr={2}>
+                <Plus />
+              </IconWrapper>
               <b.Box>
                 <b.Text
                   fontFamily='SlackLato-Light'
@@ -82,14 +88,14 @@ export const SidebarSection: React.FC<Props> = ({
                 </b.Text>
               </b.Box>
             </b.Flex>
-            {hovered.subtitle ? (
-              <CloseWrapper>
-                <Close width={12} height={12} />
-              </CloseWrapper>
-            ) : null}
+            {hovered.subtitle && (
+              <IconWrapper className='close'>
+                <Close />
+              </IconWrapper>
+            )}
           </b.Flex>
         </SubtitleWrapper>
-      ) : null}
+      )}
     </Wrapper>
   );
 };
@@ -126,9 +132,73 @@ const ContentWrapper = styled(b.Box)`
   padding: 0 20px;
 `;
 
-const PlayWrapper = styled(b.Box)`
+const IconWrapper = styled(b.Box)`
   position: relative;
-  bottom: 6px;
+
+  &.play {
+    bottom: 6px;
+    svg {
+      width: 8px;
+      height: 8px;
+      path {
+        fill: ${({ theme }) => theme.colors.pink__lighter};
+      }
+    }
+  }
+
+  &.close {
+    bottom: 3px;
+    right: 7px;
+    svg {
+      width: 12px;
+      height: 12px;
+      path {
+        fill: ${({ theme }) => theme.colors.purple};
+      }
+    }
+
+    &:hover {
+      path {
+        fill: ${({ theme }) => theme.colors.white};
+      }
+    }
+
+    @media ${home.lg} {
+      bottom: 2px;
+      right: 18px;
+    }
+  }
+
+  &.plus {
+    position: absolute;
+    right: -2px;
+    bottom: 3px;
+    border-radius: 5px;
+    padding: 6px 8px 4px 7px;
+    svg {
+      width: 14px;
+      height: 14px;
+      path {
+        fill: ${({ theme }) => theme.colors.pink__light};
+      }
+    }
+
+    &:hover {
+      background: ${({ theme }) => theme.colors.primary__lighter};
+    }
+  }
+
+  &.smallplus {
+    bottom: 2.75px;
+
+    svg {
+      width: 8px;
+      height: 8px;
+      path {
+        fill: ${({ theme }) => theme.colors.white};
+      }
+    }
+  }
 `;
 
 const SubtitleWrapper = styled(b.Box)`
@@ -136,42 +206,5 @@ const SubtitleWrapper = styled(b.Box)`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.primary__dark};
-  }
-`;
-
-const PlusWrapper = styled(b.Box)`
-  position: absolute;
-  right: -2px;
-  bottom: 3px;
-  border-radius: 5px;
-  padding: 6px 8px 4px 7px;
-
-  &:hover {
-    background: ${({ theme }) => theme.colors.primary__lighter};
-  }
-`;
-
-const CloseWrapper = styled(b.Box)`
-  position: relative;
-  bottom: 3px;
-  right: 7px;
-
-  svg {
-    path {
-      fill: ${({ theme }) => theme.colors.purple};
-    }
-  }
-
-  &:hover {
-    svg {
-      path {
-        fill: ${({ theme }) => theme.colors.white};
-      }
-    }
-  }
-
-  @media ${home.lg} {
-    bottom: 2px;
-    right: 18px;
   }
 `;

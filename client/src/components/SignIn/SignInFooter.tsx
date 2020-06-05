@@ -2,20 +2,21 @@ import * as React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 
+// Blocks
 import * as b from '../../styles/blocks';
 
+// Svgs
 import { RoundedHeart } from '../../assets/svg/Heart';
-
 import {
   NoNameLogoMono,
   TwitterLogo,
   YoutubeLogo,
 } from '../../assets/svg/Logo';
-
-import { signin } from '../../styles/sizes';
-
 import { Minus } from '../../assets/svg/Minus';
 import { Plus } from '../../assets/svg/Plus';
+
+// Breakpoints
+import { signin } from '../../styles/sizes';
 
 interface Props {}
 
@@ -76,13 +77,13 @@ export const SignInFooter: React.FC<Props> = () => {
                   <SectionNameWrapper>
                     <SectionName color='orange__dark'>Using Slack</SectionName>
                     {revealed.usingslack ? (
-                      <RevealButton>
-                        <Minus width={15} height={15} color='gray' />
-                      </RevealButton>
+                      <IconWrapper className='reveal'>
+                        <Minus />
+                      </IconWrapper>
                     ) : (
-                      <RevealButton>
-                        <Plus width={15} height={15} color='gray' />
-                      </RevealButton>
+                      <IconWrapper className='reveal'>
+                        <Plus />
+                      </IconWrapper>
                     )}
                   </SectionNameWrapper>
                   <LargeList>
@@ -125,25 +126,19 @@ export const SignInFooter: React.FC<Props> = () => {
                     <SectionWrapper>
                       <b.Flex alignItems='center'>
                         <SectionName color='pink__dark'>Slack</SectionName>
-                        <HeartIconWrapper>
-                          <b.Box ml={1}>
-                            <RoundedHeart
-                              width={10}
-                              height={10}
-                              color='pink__dark'
-                            />
-                          </b.Box>
-                        </HeartIconWrapper>
+                        <IconWrapper className='roundedheart' ml={1}>
+                          <RoundedHeart />
+                        </IconWrapper>
                       </b.Flex>
                     </SectionWrapper>
                     {revealed.slack ? (
-                      <RevealButton>
-                        <Minus width={15} height={15} color='gray' />
-                      </RevealButton>
+                      <IconWrapper className='reveal'>
+                        <Minus />
+                      </IconWrapper>
                     ) : (
-                      <RevealButton>
-                        <Plus width={15} height={15} color='gray' />
-                      </RevealButton>
+                      <IconWrapper className='reveal'>
+                        <Plus />
+                      </IconWrapper>
                     )}
                   </SectionNameWrapper>
                   <LargeList>
@@ -186,13 +181,13 @@ export const SignInFooter: React.FC<Props> = () => {
                   <SectionNameWrapper>
                     <SectionName color='green'>Legal</SectionName>
                     {revealed.legal ? (
-                      <RevealButton>
-                        <Minus width={15} height={15} color='gray' />
-                      </RevealButton>
+                      <IconWrapper className='reveal'>
+                        <Minus />
+                      </IconWrapper>
                     ) : (
-                      <RevealButton>
-                        <Plus width={15} height={15} color='gray' />
-                      </RevealButton>
+                      <IconWrapper className='reveal'>
+                        <Plus />
+                      </IconWrapper>
                     )}
                   </SectionNameWrapper>
                   <LargeList>
@@ -234,13 +229,13 @@ export const SignInFooter: React.FC<Props> = () => {
                   <SectionNameWrapper>
                     <SectionName color='purple__light'>Handy Links</SectionName>
                     {revealed.handylinks ? (
-                      <RevealButton>
-                        <Minus width={15} height={15} color='gray' />
-                      </RevealButton>
+                      <IconWrapper className='reveal'>
+                        <Minus />
+                      </IconWrapper>
                     ) : (
-                      <RevealButton>
-                        <Plus width={15} height={15} color='gray' />
-                      </RevealButton>
+                      <IconWrapper className='reveal'>
+                        <Plus />
+                      </IconWrapper>
                     )}
                   </SectionNameWrapper>
                   <LargeList>
@@ -283,9 +278,9 @@ export const SignInFooter: React.FC<Props> = () => {
           <BottomContainer>
             <b.Box px={3}>
               <b.Flex justifyContent='space-between'>
-                <b.Box>
-                  <NoNameLogoMono width={20} height={20} color='gray__light' />
-                </b.Box>
+                <IconWrapper className='nonamelogomono'>
+                  <NoNameLogoMono />
+                </IconWrapper>
                 <b.Box>
                   <b.Flex alignItems='center'>
                     <ContactWrapper mx={2}>
@@ -293,12 +288,12 @@ export const SignInFooter: React.FC<Props> = () => {
                         Contact us
                       </b.Text>
                     </ContactWrapper>
-                    <LogoWrapper mx={2} className='twitter'>
-                      <TwitterLogo width={20} height={20} color='gray__dark' />
-                    </LogoWrapper>
-                    <LogoWrapper mx={2} className='youtube'>
-                      <YoutubeLogo width={20} height={20} color='gray__dark' />
-                    </LogoWrapper>
+                    <IconWrapper mx={2} className='socialmedia'>
+                      <TwitterLogo />
+                    </IconWrapper>
+                    <IconWrapper mx={2} className='socialmedia'>
+                      <YoutubeLogo />
+                    </IconWrapper>
                   </b.Flex>
                 </b.Box>
               </b.Flex>
@@ -355,19 +350,58 @@ const SectionName = styled(b.Text)`
   }
 `;
 
-const RevealButton = styled(b.Box)`
-  display: block;
+const IconWrapper = styled(b.Box)`
+  &.roundedheart {
+    position: absolute;
+    top: -4px;
+    left: 32px;
 
-  @media ${signin.sm} {
-    padding: 0;
-    display: none;
+    svg {
+      width: 10px;
+      height: 10px;
+      path {
+        fill: ${({ theme }) => theme.colors.pink__dark};
+      }
+    }
   }
-`;
 
-const HeartIconWrapper = styled(b.Box)`
-  position: absolute;
-  top: -4px;
-  left: 32px;
+  &.nonamelogomono {
+    svg {
+      width: 20px;
+      height: 20px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray__light};
+      }
+    }
+  }
+
+  &.socialmedia {
+    top: 2px;
+    svg {
+      width: 20px;
+      height: 20px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray__dark};
+      }
+    }
+  }
+
+  &.reveal {
+    display: block;
+
+    svg {
+      width: 15px;
+      height: 15px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray};
+      }
+    }
+
+    @media ${signin.sm} {
+      padding: 0;
+      display: none;
+    }
+  }
 `;
 
 const ListWrapper = styled(b.Flex)`
@@ -435,9 +469,4 @@ const ContactWrapper = styled(b.Anchor)`
   &:hover {
     color: ${({ theme }) => theme.colors.gray__light};
   }
-`;
-
-const LogoWrapper = styled(b.Anchor)`
-  position: relative;
-  top: 2px;
 `;

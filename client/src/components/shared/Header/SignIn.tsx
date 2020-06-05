@@ -1,11 +1,13 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
+// Blocks
 import * as b from '../../../styles/blocks';
 
+// Svgs
 import { NameLogo } from '../../../assets/svg/Logo';
-import { HamburgerButton } from '../../../assets/svg';
 
+// Breakpoints
 import { signin } from '../../../styles/sizes';
 
 interface Props {}
@@ -26,7 +28,9 @@ export const SignInHeader: React.FC<Props> = () => {
           <b.Flex alignItems='center' justifyContent='space-between'>
             <Left alignItems='center'>
               <b.Box top={2} mr={4}>
-                <NameLogo width={105} height={60} />
+                <IconWrapper className='namelogo'>
+                  <NameLogo />
+                </IconWrapper>
               </b.Box>
             </Left>
             <Right alignItems='center'>
@@ -120,5 +124,14 @@ const SignInItem = styled(b.Box)`
   &:hover {
     color: ${({ theme }) => theme.colors.gray};
     border-color: ${({ theme }) => theme.colors.gray};
+  }
+`;
+
+const IconWrapper = styled(b.Box)`
+  &.namelogo {
+    svg {
+      width: 105px;
+      height: 60px;
+    }
   }
 `;

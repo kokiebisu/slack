@@ -1,13 +1,16 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
+// Blocks
+import * as b from '../../styles/blocks';
+
 // Components
 import { Link } from './Landing.styles';
 
-// Sizes
+// Breakpoints
 import { landing } from '../../styles/sizes';
 
-// SVG
+// Svgs
 import { BottomArrow } from '../../assets/svg/Arrows';
 import {
   NoNameLogo,
@@ -17,7 +20,6 @@ import {
   LinkedinLogo,
 } from '../../assets/svg/Logo';
 import { Globe } from '../../assets/svg';
-import * as b from '../../styles/blocks';
 
 interface Props {}
 
@@ -28,7 +30,9 @@ export const Footer: React.FC<Props> = () => {
         <b.Container>
           <ContentContainer>
             <LogoWrapper>
-              <NoNameLogo height={54} width={54} />
+              <IconWrapper className='nonamelogo'>
+                <NoNameLogo />
+              </IconWrapper>
             </LogoWrapper>
             <SectionsWrapper>
               <Sections>
@@ -186,9 +190,11 @@ export const Footer: React.FC<Props> = () => {
               </b.Flex>
               <RegionContainer>
                 <b.Flex alignItems='center'>
-                  <LinkBox mr={1}>
-                    <Globe width={20} height={20} />
-                  </LinkBox>
+                  <b.Box mr={1}>
+                    <IconWrapper className='globe'>
+                      <Globe />
+                    </IconWrapper>
+                  </b.Box>
                   <Link
                     fontSize={14}
                     color='#454545'
@@ -196,23 +202,33 @@ export const Footer: React.FC<Props> = () => {
                     Change Region
                   </Link>
                   <ArrowWrapper ml={1}>
-                    <BottomArrow width={15} height={10} color='#000000' />
+                    <IconWrapper className='bottomarrow'>
+                      <BottomArrow />
+                    </IconWrapper>
                   </ArrowWrapper>
                 </b.Flex>
               </RegionContainer>
             </OptionsWrapper>
             <SocialMediaWrapper>
               <b.Box mx={2}>
-                <TwitterLogo width={20} height={20} color='#454545' />
+                <IconWrapper className='socialmedia twitter'>
+                  <TwitterLogo />
+                </IconWrapper>
               </b.Box>
               <b.Box mx={2}>
-                <FacebookLogo width={20} height={20} color='#454545' />
+                <IconWrapper className='socialmedia facebook'>
+                  <FacebookLogo />
+                </IconWrapper>
               </b.Box>
               <b.Box mx={2}>
-                <YoutubeLogo width={20} height={20} color='#454545' />
+                <IconWrapper className='socialmedia youtube'>
+                  <YoutubeLogo />
+                </IconWrapper>
               </b.Box>
               <b.Box mx={2}>
-                <LinkedinLogo width={20} height={20} color='#454545' />
+                <IconWrapper className='socialmedia linkedin'>
+                  <LinkedinLogo />
+                </IconWrapper>
               </b.Box>
             </SocialMediaWrapper>
           </FooterContentWrapper>
@@ -303,14 +319,6 @@ const Item = styled.li`
   font-size: 14px;
 `;
 
-const LinkBox = styled(b.Box)`
-  cursor: pointer;
-
-  &:hover {
-    color: #1264a3;
-  }
-`;
-
 const ItemLink = styled(b.Text)`
   cursor: pointer;
   &:hover {
@@ -318,7 +326,7 @@ const ItemLink = styled(b.Text)`
   }
 `;
 
-const ArrowWrapper = styled(LinkBox)`
+const ArrowWrapper = styled(b.Box)`
   display: none;
   @media ${landing.sm} {
     display: block;
@@ -371,5 +379,93 @@ const SocialMediaWrapper = styled(b.Flex)`
   justify-content: center;
   align-items: center;
   @media ${landing.sm} {
+  }
+`;
+
+const IconWrapper = styled(b.Box)`
+  &.nonamelogo {
+    svg {
+      width: 54px;
+      height: 54px;
+      path {
+        &:nth-child(1) {
+          fill: ${({ theme }) => theme.colors.blue__lighter};
+        }
+        &:nth-child(2) {
+          fill: ${({ theme }) => theme.colors.green__lighter};
+        }
+        &:nth-child(3) {
+          fill: ${({ theme }) => theme.colors.yello};
+        }
+        &:nth-child(4) {
+          fill: ${({ theme }) => theme.colors.red};
+        }
+      }
+    }
+  }
+
+  &.socialmedia {
+    svg {
+      width: 20px;
+      height: 20px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray};
+      }
+    }
+  }
+
+  &.twitter {
+    &:hover {
+      path {
+        fill: ${({ theme }) => theme.colors.blue__lighter};
+      }
+    }
+  }
+
+  &.facebook {
+    &:hover {
+      path {
+        fill: ${({ theme }) => theme.colors.blue};
+      }
+    }
+  }
+
+  &.linkedin {
+    &:hover {
+      path {
+        fill: ${({ theme }) => theme.colors.blue};
+      }
+    }
+  }
+
+  &.youtube {
+    &:hover {
+      path {
+        fill: ${({ theme }) => theme.colors.red__light};
+      }
+    }
+  }
+
+  &.bottomarrow {
+    svg {
+      width: 15px;
+      height: 15px;
+      path {
+        fill: ${({ theme }) => theme.colors.black};
+      }
+    }
+  }
+
+  &.globe {
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover {
+      path {
+        fill: ${({ theme }) => theme.colors.blue};
+      }
+    }
   }
 `;

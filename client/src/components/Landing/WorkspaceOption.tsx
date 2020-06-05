@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import * as b from '../../styles/blocks';
 import styled from 'styled-components';
 
+// Blocks
+import * as b from '../../styles/blocks';
+
+// Svgs
 import { RightArrow } from '../../assets/svg/Arrows';
 
 // Images
@@ -66,11 +69,11 @@ export const WorkspaceOption: React.FC<Props> = ({ name, url, color }) => {
               </b.Box>
             </b.Flex>
           </b.Box>
-          <b.Box
+          <IconWrapper
             variants={launchArrow}
             animate={hovered.launch ? 'animate' : 'initial'}>
-            <RightArrow width={15} height={15} color='blue' />
-          </b.Box>
+            <RightArrow />
+          </IconWrapper>
         </b.Flex>
       </b.Box>
     </b.Anchor>
@@ -82,6 +85,16 @@ const TeamName = styled(b.Text)`
 
   &.hovered {
     color: ${({ theme }) => theme.colors.blue};
+  }
+`;
+
+const IconWrapper = styled(b.Box)`
+  svg {
+    width: 15px;
+    height: 15px;
+    path {
+      fill: ${({ theme }) => theme.colors.blue};
+    }
   }
 `;
 

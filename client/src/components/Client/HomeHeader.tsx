@@ -2,16 +2,16 @@ import * as React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { Clock } from '../../assets/svg';
-import { Magnify } from '../../assets/svg';
-import { Present } from '../../assets/svg';
-import { Info } from '../../assets/svg';
-
-// Styles
+// Blocks
 import * as b from '../../styles/blocks';
+
+// Svgs
+import { Clock, Magnify, Present, Info } from '../../assets/svg';
 
 // Sizes
 import { home } from '../../styles/sizes';
+
+// Query
 import { useTeamQuery } from '../../generated/graphql';
 
 interface Props {
@@ -20,21 +20,26 @@ interface Props {
 
 export const HomeHeader: React.FC<Props> = ({ team }) => {
   return (
-    <b.Box height={37} background='primary'>
+    <b.Box
+      height={37}
+      backgroundColor='primary__dark'
+      borderBottom={1}
+      borderBottomStyle='solid'
+      borderBottomColor='primary__lighter'>
       <b.Flex alignItems='center' justifyContent='center'>
         <b.Box style={{ flex: 1 }} pr={4} pl={3}>
           <b.Flex style={{ justifyContent: 'flex-end' }}>
-            <ClockWrapper>
-              <Clock width={18} height={18} color='white' />
-            </ClockWrapper>
+            <IconWrapper className='clock'>
+              <Clock />
+            </IconWrapper>
           </b.Flex>
         </b.Box>
         <Input borderRadius={5}>
           <b.Box>
             <b.Flex alignItems='center' justifyContent='center'>
-              <b.Box px={1}>
-                <Magnify width={12} height={12} />
-              </b.Box>
+              <IconWrapper px={1} className='magnify'>
+                <Magnify />
+              </IconWrapper>
               <b.Box px={1} style={{ top: 1 }}>
                 <b.Text fontFamily='SlackLato-Regular' fontSize={13}>
                   Search {team}
@@ -47,10 +52,10 @@ export const HomeHeader: React.FC<Props> = ({ team }) => {
           <b.Flex style={{ justifyContent: 'flex-end' }}>
             <WhatsNewWrapper borderRadius={4}>
               <b.Flex alignItems='center' justifyContent='center'>
-                <b.Box style={{ top: 1 }}>
-                  <Present width={14} height={14} color='white' />
-                </b.Box>
-                <WhatsNewText pl={2} style={{ top: 0.5 }}>
+                <IconWrapper>
+                  <Present />
+                </IconWrapper>
+                <WhatsNewText pl={2}>
                   <b.Text
                     fontFamily='SlackLato-Regular'
                     fontSize={13}
@@ -62,7 +67,9 @@ export const HomeHeader: React.FC<Props> = ({ team }) => {
             </WhatsNewWrapper>
             <b.Button ml={2} background='transparent'>
               <b.Flex alignItems='center'>
-                <Info width={18} height={18} color='white' />
+                <IconWrapper className='info'>
+                  <Info />
+                </IconWrapper>
               </b.Flex>
             </b.Button>
           </b.Flex>
@@ -104,10 +111,53 @@ const WhatsNewText = styled(b.Box)`
   }
 `;
 
-const ClockWrapper = styled(b.Button)`
-  border-radius: 5px;
-  padding: 6px 6px 3px 7px;
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.primary__lighter};
+const IconWrapper = styled(b.Box)`
+  position: relative;
+
+  &.info {
+    top: 2px;
+    svg {
+      width: 18px;
+      height: 18px;
+      path {
+        fill: ${({ theme }) => theme.colors.white};
+      }
+    }
+  }
+
+  &.clock {
+    border-radius: 5px;
+    padding: 6px 6px 3px 7px;
+    svg {
+      width: 18px;
+      height: 18px;
+      path {
+        fill: ${({ theme }) => theme.colors.white};
+      }
+    }
+
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.primary__lighter};
+    }
+  }
+  &.magnify {
+    svg {
+      width: 12px;
+      height: 12px;
+      path {
+        fill: ${({ theme }) => theme.colors.white};
+      }
+    }
+  }
+
+  &.present {
+    top: 1px;
+    svg {
+      width: 14px;
+      height: 14px;
+      path {
+        fill: ${({ theme }) => theme.colors.white};
+      }
+    }
   }
 `;

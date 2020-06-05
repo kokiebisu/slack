@@ -17,9 +17,11 @@ export const LogoCenterLayout: React.FC<Props> = ({ children }) => {
       <Container>
         <Link to='/'>
           <b.Box pt={4}>
-            <LogoWrapper justifyContent='center'>
-              <NameLogo width={140} height={60} />
-            </LogoWrapper>
+            <b.Flex justifyContent='center'>
+              <IconWrapper className='namelogo'>
+                <NameLogo />
+              </IconWrapper>
+            </b.Flex>
           </b.Box>
         </Link>
         <ChildWrapper>{children}</ChildWrapper>
@@ -33,9 +35,9 @@ export const LogoCenterLayout: React.FC<Props> = ({ children }) => {
             </b.Box>
             <b.Box mr={2}>
               <b.Flex>
-                <GlobeWrapper mr={1}>
-                  <Globe width={12} height={12} color='gray' />
-                </GlobeWrapper>
+                <IconWrapper mr={1}>
+                  <Globe />
+                </IconWrapper>
                 <b.Box>
                   <ChangeRegion>Change region</ChangeRegion>
                 </b.Box>
@@ -61,13 +63,28 @@ const ChildWrapper = styled(b.Box)`
   flex-grow: 1;
 `;
 
-const LogoWrapper = styled(b.Flex)`
-  padding: 5px;
-`;
-
-const GlobeWrapper = styled(b.Box)`
+const IconWrapper = styled(b.Box)`
   position: relative;
-  top: 0.5px;
+
+  &.namelogo {
+    padding: 5px;
+
+    svg {
+      width: 140px;
+      height: 60px;
+    }
+  }
+
+  &.globe {
+    top: 0.5px;
+    svg {
+      width: 12px;
+      height: 12px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray};
+      }
+    }
+  }
 `;
 
 const FooterLink = styled(b.Anchor)`

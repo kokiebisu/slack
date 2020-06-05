@@ -1,9 +1,11 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Heart } from '../../../assets/svg/Heart';
-
+// Blocks
 import * as b from '../../../styles/blocks';
+
+// Svgs
+import { Heart } from '../../../assets/svg/Heart';
 
 interface Props {}
 
@@ -12,9 +14,9 @@ export const Messages: React.FC<Props> = () => {
     <b.Box pl={2}>
       <b.Box py={2}>
         <b.Flex alignItems='center'>
-          <HeartWrapper pr={2}>
-            <Heart width={10} height={10} color='green__lighter' />
-          </HeartWrapper>
+          <IconWrapper pr={2}>
+            <Heart />
+          </IconWrapper>
           <b.Box style={{ top: 3 }}>
             <b.Text
               fontFamily='SlackLato-Light'
@@ -30,9 +32,17 @@ export const Messages: React.FC<Props> = () => {
   );
 };
 
-const HeartWrapper = styled(b.Box)`
+const IconWrapper = styled(b.Box)`
   position: relative;
   top: 1.5px;
+
+  svg {
+    width: 10px;
+    height: 10px;
+    path {
+      fill: ${({ theme }) => theme.colors.green__lighter};
+    }
+  }
 `;
 
 const Message = () => {

@@ -13,25 +13,29 @@ export const ToolBox: React.FC<Props> = () => {
     <Wrapper py={1} px={2}>
       <b.Flex alignItems='center'>
         <Tool>
-          <SmilePlus width={24} height={24} color='gray__light' />
+          <IconWrapper className='smileplus'>
+            <SmilePlus />
+          </IconWrapper>
         </Tool>
         <Tool>
-          <Move width={24} height={24} color='gray__light' />
+          <IconWrapper className='move'>
+            <Move />
+          </IconWrapper>
         </Tool>
         <Tool>
-          <b.Box style={{ position: 'relative', top: 1 }}>
-            <StartThread width={18} height={18} color='gray__light' />
-          </b.Box>
+          <IconWrapper className='startthread'>
+            <StartThread />
+          </IconWrapper>
         </Tool>
         <Tool>
-          <b.Box style={{ top: 1.5 }}>
-            <Bookmark width={18} height={18} color='gray__light' />
-          </b.Box>
+          <IconWrapper className='bookmark'>
+            <Bookmark />
+          </IconWrapper>
         </Tool>
         <Tool>
-          <b.Box style={{ top: 1.5 }}>
-            <More width={18} height={18} color='gray__light' />
-          </b.Box>
+          <IconWrapper className='more'>
+            <More />
+          </IconWrapper>
         </Tool>
       </b.Flex>
     </Wrapper>
@@ -49,5 +53,47 @@ const Tool = styled(b.Button)`
   &:hover {
     background-color: ${({ theme }) => theme.colors.white__dark};
     border-radius: 5px;
+  }
+`;
+
+const IconWrapper = styled(b.Box)`
+  position: relative;
+
+  &.smileplus {
+    &.move {
+      svg {
+        width: 24px;
+        height: 24px;
+        path {
+          fill: ${({ theme }) => theme.colors.gray__light};
+        }
+      }
+    }
+  }
+
+  &.startthread {
+    &.bookmark {
+      &.more {
+        svg {
+          width: 18px;
+          height: 18px;
+          path {
+            fill: ${({ theme }) => theme.colors.gray__light};
+          }
+        }
+      }
+    }
+  }
+
+  &.startthread {
+    top: 1px;
+  }
+
+  &.bookmark {
+    top: 1.5px;
+  }
+
+  &.more {
+    top: 1.5px;
   }
 `;

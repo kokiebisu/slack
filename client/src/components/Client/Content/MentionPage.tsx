@@ -2,10 +2,13 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import styled from 'styled-components';
 
+// Blocks
 import * as b from '../../../styles/blocks';
 
+// Components
 import { Activity } from './Activity';
 
+// Svgs
 import { AtSign, Close, Settings, Transition } from '../../../assets/svg';
 
 interface Props {
@@ -31,10 +34,14 @@ export const MentionPage: React.FC<Props> = ({ group }) => {
           </b.Box>
           <b.Flex alignItems='center'>
             <SideOption mr={2}>
-              <Settings width={17} height={17} color='gray' />
+              <IconWrapper className='sideoption'>
+                <Settings />
+              </IconWrapper>
             </SideOption>
             <SideOption>
-              <Transition width={17} height={17} color='gray' />
+              <IconWrapper className='sideoption'>
+                <Transition />
+              </IconWrapper>
             </SideOption>
           </b.Flex>
         </TopContainer>
@@ -45,9 +52,9 @@ export const MentionPage: React.FC<Props> = ({ group }) => {
             <b.Box>
               <b.Flex justifyContent='space-between'>
                 <b.Flex alignItems='center'>
-                  <b.Box mr={2}>
-                    <AtSign width={17} height={17} color='orange__dark' />
-                  </b.Box>
+                  <IconWrapper className='atsign' mr={2}>
+                    <AtSign />
+                  </IconWrapper>
                   <b.Box mb={1}>
                     <b.Text
                       color='black__light'
@@ -58,9 +65,9 @@ export const MentionPage: React.FC<Props> = ({ group }) => {
                     </b.Text>
                   </b.Box>
                 </b.Flex>
-                <b.Box>
-                  <Close width={13} height={13} color='gray' />
-                </b.Box>
+                <IconWrapper className='close'>
+                  <Close />
+                </IconWrapper>
               </b.Flex>
             </b.Box>
             <b.Box mt={3}>
@@ -124,5 +131,35 @@ const SideOption = styled(b.Box)`
   &:hover {
     background-color: ${({ theme }) => theme.colors.white__dark};
     border-radius: 3px;
+  }
+`;
+
+const IconWrapper = styled(b.Box)`
+  &.atsign {
+    svg {
+      width: 17px;
+      height: 17px;
+      path {
+        fill: ${({ theme }) => theme.colors.orange__dark};
+      }
+    }
+  }
+
+  &.close {
+    svg {
+      width: 13px;
+      height: 13px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray};
+      }
+    }
+  }
+
+  &.sideoption {
+    width: 17px;
+    height: 17px;
+    path {
+      fill: ${({ theme }) => theme.colors.gray};
+    }
   }
 `;

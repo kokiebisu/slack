@@ -18,6 +18,7 @@ export const main: ThemeProps = {
     primary__dark: '#350D36',
     blue: '#005A9D',
     blue__light: '#3a71a9',
+    blue__lighter: '#36c5f0',
     purple: '#684a68',
     purple__light: '#4b6bc6',
     black__light: '#1D1C1D',
@@ -28,6 +29,7 @@ export const main: ThemeProps = {
     gray__dark: '#868686',
     gray__darker: '#272626',
     red__dark: '#A30701',
+    red__light: '#d12011',
     red: '#cd2553',
     pink: '#efa0b7',
     pink__light: '#caadcd',
@@ -37,6 +39,7 @@ export const main: ThemeProps = {
     green__light: '#2EA683',
     green__lighter: '#2BAC76',
     orange__dark: '#de4e2b',
+    yellow: '#ecb22e',
   },
   fontSizes,
 };

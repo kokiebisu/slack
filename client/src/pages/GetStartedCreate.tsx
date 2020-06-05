@@ -108,9 +108,9 @@ export const GetStartedCreate: React.FC<Props> = () => {
                     {error.user && (
                       <ErrorBox backgroundColor='red' width={1}>
                         <b.Flex>
-                          <b.Box mr={2}>
-                            <Warning width={15} height={15} color='pink' />
-                          </b.Box>
+                          <IconWrapper mr={2}>
+                            <Warning />
+                          </IconWrapper>
                           <b.Box>
                             <b.Text
                               fontFamily='SlackLato-Regular'
@@ -133,9 +133,9 @@ export const GetStartedCreate: React.FC<Props> = () => {
                     {error.password && (
                       <ErrorBox backgroundColor='red' width={1}>
                         <b.Flex>
-                          <b.Box mr={2}>
-                            <Warning width={15} height={15} color='pink' />
-                          </b.Box>
+                          <IconWrapper mr={2}>
+                            <Warning />
+                          </IconWrapper>
                           <b.Box>
                             <b.Text
                               fontFamily='SlackLato-Regular'
@@ -204,4 +204,14 @@ const CheckboxArea = styled(b.Box)`
 const CheckboxWrapper = styled(b.Box)`
   position: relative;
   top: 1.25px;
+`;
+
+const IconWrapper = styled(b.Box)`
+  svg {
+    width: 15px;
+    height: 15px;
+    path {
+      fill: ${({ theme }) => theme.colors.pink};
+    }
+  }
 `;

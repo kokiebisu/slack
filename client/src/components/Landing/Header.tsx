@@ -51,7 +51,9 @@ export const Header: React.FC<Props> = () => {
           <b.Flex alignItems='center' justifyContent='space-between'>
             <Left alignItems='center'>
               <b.Box top={2} mr={4}>
-                <NameLogo width={100} height={60} />
+                <IconWrapper className='namelogo'>
+                  <NameLogo />
+                </IconWrapper>
               </b.Box>
             </Left>
             <Right justifyContent='space-between' alignItems='center'>
@@ -184,7 +186,9 @@ export const Header: React.FC<Props> = () => {
                     <b.Flex alignItems='center'>
                       <b.Text>Launch Slack</b.Text>
                       <b.Box ml={2}>
-                        <BottomArrow height={10} width={10} color='white' />
+                        <IconWrapper className='bottomarrow'>
+                          <BottomArrow />
+                        </IconWrapper>
                       </b.Box>
                     </b.Flex>
                   </LaunchButton>
@@ -207,9 +211,9 @@ export const Header: React.FC<Props> = () => {
                   </GetStartedButton>
                 </GetStartedButtonWrapper>
               )}
-              <HamburgerWrapper>
-                <HamburgerButton width={24} height={17} />
-              </HamburgerWrapper>
+              <IconWrapper className='hamburgerbutton'>
+                <HamburgerButton />
+              </IconWrapper>
             </Right>
           </b.Flex>
 
@@ -382,8 +386,30 @@ const LinkWrapper = styled.div`
   display: flex;
 `;
 
-const HamburgerWrapper = styled.div`
-  @media ${landing.lg} {
-    display: none;
+const IconWrapper = styled(b.Box)`
+  &.namelogo {
+    svg {
+      width: 100px;
+      height: 60px;
+    }
+  }
+
+  &.bottomarrow {
+    svg {
+      height: 10px;
+      width: 10px;
+      path {
+        fill: ${({ theme }) => theme.colors.white};
+      }
+    }
+  }
+
+  &.hamburgerbutton {
+    width: 24px;
+    height: 17px;
+
+    @media ${landing.lg} {
+      display: none;
+    }
   }
 `;
