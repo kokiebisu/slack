@@ -27,7 +27,7 @@ export const Reaction: React.FC<Props> = () => {
 };
 
 const Wrapper = styled(b.Box)`
-  background-color: #f6f6f6;
+  background-color: ${({ theme }) => theme.colors.white__dark};
   display: flex;
   align-items: center;
   padding: 0px 8px;
@@ -36,8 +36,8 @@ const Wrapper = styled(b.Box)`
 
   &:hover {
     padding: 0px 7px;
-    border: 1px solid #949394;
-    background-color: #ffffff;
+    border: 1px solid ${({ theme }) => theme.colors.gray__dark};
+    background-color: ${({ theme }) => theme.colors.white};
   }
 `;
 
@@ -51,7 +51,7 @@ export const Reactions: React.FC<Props> = () => {
       <b.Flex>
         <Reaction />
         <AddReactionWrapper>
-          <SmilePlus width={22} height={22} color='#5D5D5D' />
+          <SmilePlus width={22} height={22} color='gray__light' />
         </AddReactionWrapper>
       </b.Flex>
     </b.Box>
@@ -59,7 +59,7 @@ export const Reactions: React.FC<Props> = () => {
 };
 
 const AddReactionWrapper = styled(b.Button)`
-  background-color: #f6f6f6;
+  background-color: ${({ theme }) => theme.colors.white__dark};
   display: inline-block;
   padding: 1px 7px;
   border-radius: 15px;
@@ -67,7 +67,7 @@ const AddReactionWrapper = styled(b.Button)`
 
   &:hover {
     padding: 0px 6px;
-    border: 1px solid #949394;
-    background-color: #ffffff;
+    border: 1px solid ${({ theme }) => theme.colors.gray__dark};
+    background-color: ${({ theme }) => theme.colors.white};
   }
 `;

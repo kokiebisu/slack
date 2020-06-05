@@ -10,7 +10,7 @@ interface Props {}
 
 export const SignInContent: React.FC<Props> = () => {
   return (
-    <b.Box backgroundColor='#F8F8F8'>
+    <b.Box backgroundColor='white__dark'>
       <b.Box py={5}>
         <b.Container>
           <b.Flex flexDirection='column' alignItems='center'>
@@ -49,7 +49,7 @@ export const SignInContent: React.FC<Props> = () => {
                     <b.Button width={1}>
                       <b.Box
                         borderRadius={5}
-                        backgroundColor='#227A5A'
+                        backgroundColor='green'
                         py={3}
                         width={1}>
                         <b.Flex justifyContent='center'>
@@ -81,7 +81,7 @@ export const SignInContent: React.FC<Props> = () => {
                     href='/get-started'
                     fontSize={15}
                     fontFamily='SlackLato-Black'
-                    color='#1F64A3'>
+                    color='blue'>
                     Create a new workspace
                   </b.Anchor>
                 </b.Box>
@@ -98,7 +98,7 @@ const Content = styled(b.Box)`
   width: 100%;
   max-width: 620px;
   background-color: white;
-  border: 1px solid #dddddd;
+  border: 1px solid ${({ theme }) => theme.colors.white__dark};
   border-radius: 5px;
 `;
 
