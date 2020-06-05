@@ -40,10 +40,10 @@ export const GetStarted: React.FC<Props> = () => {
                     className='left'
                     px={4}
                     py={5}
-                    backgroundColor='#4A154B'>
+                    backgroundColor='primary'>
                     <b.Box>
                       <b.Text
-                        color='#FFFFFF'
+                        color='white'
                         fontFamily='SlackLato-Black'
                         fontSize={32}>
                         Try Slack with your team, for free
@@ -54,7 +54,7 @@ export const GetStarted: React.FC<Props> = () => {
                         <b.Text
                           lineHeight={1.4}
                           fontSize={18}
-                          color='#EDE9EE'
+                          color='white__dark'
                           fontFamily='SlackLato-Light'>
                           Create a brand-new workspace for you and your team.
                         </b.Text>
@@ -64,12 +64,12 @@ export const GetStarted: React.FC<Props> = () => {
                       <b.Box backgroundColor='white' borderRadius={5} py={3}>
                         <b.Flex alignItems='center' justifyContent='center'>
                           <b.Box mr={2}>
-                            <BoldPlus width={13} height={13} color='#4A154B' />
+                            <BoldPlus width={13} height={13} color='primary' />
                           </b.Box>
                           <b.Box>
                             <b.Text
                               fontSize={19}
-                              color='#4A154B'
+                              color='primary'
                               fontFamily='SlackLato-Bold'>
                               Create a Slack workspace
                             </b.Text>
@@ -106,7 +106,7 @@ export const GetStarted: React.FC<Props> = () => {
                           <b.Box>
                             <b.Text
                               fontSize={19}
-                              color='#4A154B'
+                              color='primary'
                               fontFamily='SlackLato-Bold'>
                               Sign in to Slack
                             </b.Text>
@@ -142,7 +142,7 @@ export const GetStarted: React.FC<Props> = () => {
                       lineHeight={1.5}
                       fontFamily='SlackLato-Regular'
                       fontSize={14}
-                      color='#939393'>
+                      color='gray'>
                       Each company that uses Slack has a workspace of their own.
                       It’s where all their conversations and files are kept, and
                       it can only be joined by invitation.
@@ -237,7 +237,7 @@ const SelectOption = styled(b.Box)`
 const SignInButton = styled(b.Box)`
   position: relative;
   bottom: 1px;
-  border: 0.5px solid lightgray;
+  border: 0.5px solid ${({ theme }) => theme.colors.gray__light};
   padding: 16px;
   border-radius: 5px;
 `;
@@ -257,10 +257,10 @@ const GlobeWrapper = styled(b.Box)`
 const FooterLink = styled(b.Anchor)`
   font-size: 14px;
   font-family: 'SlackLato-Regular';
-  color: #7e7e7e;
+  color: ${({ theme }) => theme.colors.gray};
 
   &:hover {
-    color: #205893;
+    color: ${({ theme }) => theme.colors.blue};
     text-decoration: underline;
   }
 `;
@@ -268,10 +268,10 @@ const FooterLink = styled(b.Anchor)`
 const ChangeRegion = styled(b.Button)`
   font-size: 14px;
   font-family: 'SlackLato-Regular';
-  color: #7e7e7e;
+  color: ${({ theme }) => theme.colors.gray__light};
 
   &:hover {
-    color: #205893;
+    color: ${({ theme }) => theme.colors.blue};
     text-decoration: underline;
   }
 `;

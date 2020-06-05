@@ -46,7 +46,7 @@ export const GetStartedCreate: React.FC<Props> = () => {
               <b.Box>
                 <b.Text
                   fontSize={48}
-                  color='#1D1C1D'
+                  color='black__light'
                   fontFamily='Larsseit-Bold'
                   textAlign='center'>
                   First, enter your email and password
@@ -56,7 +56,7 @@ export const GetStartedCreate: React.FC<Props> = () => {
                 <b.Text
                   lineHeight={1.5}
                   textAlign='center'
-                  color='#454245'
+                  color='gray'
                   fontFamily='SlackLato-Regular'
                   fontSize={20}>
                   Just one more email — a quick confirmation — before you say
@@ -100,7 +100,7 @@ export const GetStartedCreate: React.FC<Props> = () => {
                     <b.Box>
                       <Input
                         onChange={(e) => setEmail(e.target.value)}
-                        border='1px solid #868686'
+                        border='1px solid gray'
                         borderRadius={3}
                         placeholder='name@work-email.com'
                       />
@@ -109,7 +109,7 @@ export const GetStartedCreate: React.FC<Props> = () => {
                       <ErrorBox backgroundColor='red' width={1}>
                         <b.Flex>
                           <b.Box mr={2}>
-                            <Warning width={15} height={15} color='#efa0b7' />
+                            <Warning width={15} height={15} color='pink' />
                           </b.Box>
                           <b.Box>
                             <b.Text
@@ -134,7 +134,7 @@ export const GetStartedCreate: React.FC<Props> = () => {
                       <ErrorBox backgroundColor='red' width={1}>
                         <b.Flex>
                           <b.Box mr={2}>
-                            <Warning width={15} height={15} color='#efa0b7' />
+                            <Warning width={15} height={15} color='pink' />
                           </b.Box>
                           <b.Box>
                             <b.Text
@@ -178,10 +178,10 @@ const Input = styled(b.Input)`
 
 const ErrorBox = styled(b.Box)`
   width: 370px;
-  background-color: #fbebef;
+  background-color: ${({ theme }) => theme.colors.pink__light};
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  border: 1px solid #efa0b7;
+  border: 1px solid ${({ theme }) => theme.colors.pink};
   padding: 10px 0 10px 10px;
 `;
 
@@ -190,10 +190,10 @@ const ConfirmButton = styled(b.Button)`
   border-radius: 5px;
   padding: 13px 0;
   text-align: center;
-  background-color: #4a144b;
+  background-color: ${({ theme }) => theme.colors.primary};
 
   &:hover {
-    background-color: #5c2c5d;
+    background-color: ${({ theme }) => theme.colors.primary__light};
   }
 `;
 
