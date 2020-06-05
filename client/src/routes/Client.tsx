@@ -24,9 +24,14 @@ import { StaticContext } from 'react-router';
 // Block
 import * as b from '../styles/blocks';
 
+// Svgs
+import { Smile } from '../assets/svg';
+
 import { home } from '../styles/sizes';
 import { useTeamQuery } from '../generated/graphql';
 import { useClientState, useClientDispatch } from '../context/client-context';
+import { AngleRight } from '../assets/svg/Arrows';
+import { MenuToggle } from '../components/Client/MenuToggle';
 
 type Props = RouteComponentProps<
   {},
@@ -54,86 +59,7 @@ export const ClientRoutes: React.FC<Props> = () => {
               <HomeHeader team={data.team.name} />
               <ContentWrapper>
                 <Sidebar team={data.team.name} />
-                {/* <MenuToggle>
-                  <b.Box m={3} p={2} borderBottom='1px solid black'>
-                    <b.Box>
-                      <b.Box>
-                        <b.Flex>
-                          <b.Box pr={2}>
-                            <b.Flex justifyContent='center' alignItems='center'>
-                              <b.Box
-                                height={35}
-                                width={35}
-                                borderRadius={3}
-                                backgroundColor='blue'
-                              />
-                            </b.Flex>
-                          </b.Box>
-                          <b.Box>
-                            <b.Box mb={1}>
-                              <b.Text
-                                fontSize={15}
-                                color='black__light'
-                                fontFamily='SlackLato-Bold'>
-                                kenichikona
-                              </b.Text>
-                            </b.Box>
-                            <b.Box>
-                              <b.Flex>
-                                <b.Box>
-                                  <b.Text
-                                    fontFamily='SlackLato-Regular'
-                                    fontSize={12}
-                                    color='gray'>
-                                    You're set to active. &nbsp;
-                                  </b.Text>
-                                </b.Box>
-                                <b.Box>
-                                  <b.Text
-                                    fontFamily='SlackLato-Regular'
-                                    fontSize={12}
-                                    color='blue'>
-                                    Change
-                                  </b.Text>
-                                </b.Box>
-                              </b.Flex>
-                            </b.Box>
-                          </b.Box>
-                        </b.Flex>
-                        <b.Box my={2} backgroundColor='#FFFFFF'>
-                          <b.Flex>
-                            <b.Box mr={3}>smile</b.Box>
-                            <b.Box>
-                              <b.Text>Update your status</b.Text>
-                            </b.Box>
-                          </b.Flex>
-                        </b.Box>
-                        <b.Box>
-                          <b.Flex justifyContent='space-between'>
-                            <b.Box>
-                              <b.Text>Pause notifications</b.Text>
-                            </b.Box>
-                            <b.Box>
-                              <b.Flex>
-                                <b.Box>
-                                  <b.Text>On</b.Text>
-                                </b.Box>
-                                <b.Box>arrow</b.Box>
-                              </b.Flex>
-                            </b.Box>
-                          </b.Flex>
-                        </b.Box>
-                        <b.Box>
-                          <b.Text>View Profile</b.Text>
-                        </b.Box>
-                        <b.Box>
-                          <b.Text>Preferences</b.Text>
-                        </b.Box>
-                      </b.Box>
-                    </b.Box>
-                  </b.Box>
-                  <b.Box></b.Box>
-                </MenuToggle> */}
+
                 <Switch>
                   <Route path={match.url + '/threads'}>
                     <ThreadsPage group={groupName} />
@@ -149,6 +75,7 @@ export const ClientRoutes: React.FC<Props> = () => {
                   </Route>
                 </Switch>
               </ContentWrapper>
+              <MenuToggle />
             </>
           )}
         </Wrapper>
@@ -172,16 +99,4 @@ const ContentWrapper = styled(b.Box)`
   @media ${home.lg} {
     grid-template-columns: 260px auto;
   }
-`;
-
-const MenuToggle = styled(b.Box)`
-  width: 310px;
-  position: absolute;
-  top: 60px;
-  left: 15px;
-  z-index: 9999;
-  background-color: ${({ theme }) => theme.colors.white__dark};
-  border-radius: 10px;
-  border: 1px solid ${({ theme }) => theme.colors.gray__light};
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 `;
