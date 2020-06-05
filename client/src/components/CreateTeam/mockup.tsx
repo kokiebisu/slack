@@ -6,8 +6,24 @@ import * as b from '../../styles/blocks';
 import { ThinHashTag } from '../../assets/svg/HashTag';
 
 export const MockHashTag = () => {
-  return <ThinHashTag width={8} height={8} color='pink__light' bottom={1.5} />;
+  return (
+    <IconWrapper>
+      <ThinHashTag />
+    </IconWrapper>
+  );
 };
+
+const IconWrapper = styled(b.Box)`
+  position: relative;
+  bottom: 1.5px;
+  svg {
+    width: 8px;
+    height: 8px;
+    path {
+      fill: ${({ theme }) => theme.colors.pink__light};
+    }
+  }
+`;
 
 export const SkeletonLine = styled(b.Box)`
   position: relative;

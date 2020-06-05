@@ -60,10 +60,34 @@ const ColumnCard = ({ title, subtitle, mr, children }: ColumnCardProps) => {
     </ColumnWrapper>
   );
 };
+const Columns = styled(b.Flex)`
+  flex-wrap: wrap;
+`;
+
+const ColumnWrapper = styled(b.Box)`
+  width: 100%;
+  margin-top: 50px;
+
+  @media ${landing.lg} {
+    width: 50%;
+  }
+
+  @media ${landing.xl} {
+    width: 33%;
+  }
+`;
+
+const CardWrapper = styled(b.Box)`
+  padding-right: 15px;
+`;
 
 const IconWrapper = styled(b.Box)`
   svg {
-    fill: ${({ theme }) => theme.colors.black__light};
+    width: 48px;
+    height: 48px;
+    path {
+      fill: ${({ theme }) => theme.colors.black__light};
+    }
   }
 `;
 
@@ -112,19 +136,19 @@ export const BreakOut: React.FC<Props> = () => {
               mr={10}
               title={cards[0].title}
               subtitle={cards[0].subtitle}>
-              <Organized width={48} height={48} />
+              <Organized />
             </ColumnCard>
             <ColumnCard
               mr={10}
               title={cards[1].title}
               subtitle={cards[1].subtitle}>
-              <Looped width={48} height={48} />
+              <Looped />
             </ColumnCard>
             <ColumnCard
               mr={0}
               title={cards[2].title}
               subtitle={cards[2].subtitle}>
-              <Focus width={48} height={48} />
+              <Focus />
             </ColumnCard>
           </Columns>
         </b.Box>
@@ -151,25 +175,4 @@ const VideoWrapper = styled(b.Box)`
       max-width: 800px;
     }
   }
-`;
-
-const Columns = styled(b.Flex)`
-  flex-wrap: wrap;
-`;
-
-const ColumnWrapper = styled(b.Box)`
-  width: 100%;
-  margin-top: 50px;
-
-  @media ${landing.lg} {
-    width: 50%;
-  }
-
-  @media ${landing.xl} {
-    width: 33%;
-  }
-`;
-
-const CardWrapper = styled(b.Box)`
-  padding-right: 15px;
 `;

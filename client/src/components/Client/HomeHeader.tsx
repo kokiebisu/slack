@@ -115,9 +115,13 @@ const IconWrapper = styled(b.Box)`
   position: relative;
 
   &.info {
+    top: 2px;
     svg {
       width: 18px;
       height: 18px;
+      path {
+        fill: ${({ theme }) => theme.colors.white};
+      }
     }
   }
 

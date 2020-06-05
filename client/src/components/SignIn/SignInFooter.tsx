@@ -12,10 +12,11 @@ import {
   TwitterLogo,
   YoutubeLogo,
 } from '../../assets/svg/Logo';
-
-import { signin } from '../../styles/sizes';
 import { Minus } from '../../assets/svg/Minus';
 import { Plus } from '../../assets/svg/Plus';
+
+// Breakpoints
+import { signin } from '../../styles/sizes';
 
 interface Props {}
 
@@ -76,13 +77,13 @@ export const SignInFooter: React.FC<Props> = () => {
                   <SectionNameWrapper>
                     <SectionName color='orange__dark'>Using Slack</SectionName>
                     {revealed.usingslack ? (
-                      <RevealButton>
-                        <Minus width={15} height={15} color='gray' />
-                      </RevealButton>
+                      <IconWrapper className='reveal'>
+                        <Minus />
+                      </IconWrapper>
                     ) : (
-                      <RevealButton>
-                        <Plus width={15} height={15} color='gray' />
-                      </RevealButton>
+                      <IconWrapper className='reveal'>
+                        <Plus />
+                      </IconWrapper>
                     )}
                   </SectionNameWrapper>
                   <LargeList>
@@ -131,13 +132,13 @@ export const SignInFooter: React.FC<Props> = () => {
                       </b.Flex>
                     </SectionWrapper>
                     {revealed.slack ? (
-                      <RevealButton>
-                        <Minus width={15} height={15} color='gray' />
-                      </RevealButton>
+                      <IconWrapper className='reveal'>
+                        <Minus />
+                      </IconWrapper>
                     ) : (
-                      <RevealButton>
-                        <Plus width={15} height={15} color='gray' />
-                      </RevealButton>
+                      <IconWrapper className='reveal'>
+                        <Plus />
+                      </IconWrapper>
                     )}
                   </SectionNameWrapper>
                   <LargeList>
@@ -180,13 +181,13 @@ export const SignInFooter: React.FC<Props> = () => {
                   <SectionNameWrapper>
                     <SectionName color='green'>Legal</SectionName>
                     {revealed.legal ? (
-                      <RevealButton>
-                        <Minus width={15} height={15} color='gray' />
-                      </RevealButton>
+                      <IconWrapper className='reveal'>
+                        <Minus />
+                      </IconWrapper>
                     ) : (
-                      <RevealButton>
-                        <Plus width={15} height={15} color='gray' />
-                      </RevealButton>
+                      <IconWrapper className='reveal'>
+                        <Plus />
+                      </IconWrapper>
                     )}
                   </SectionNameWrapper>
                   <LargeList>
@@ -228,13 +229,13 @@ export const SignInFooter: React.FC<Props> = () => {
                   <SectionNameWrapper>
                     <SectionName color='purple__light'>Handy Links</SectionName>
                     {revealed.handylinks ? (
-                      <RevealButton>
-                        <Minus width={15} height={15} color='gray' />
-                      </RevealButton>
+                      <IconWrapper className='reveal'>
+                        <Minus />
+                      </IconWrapper>
                     ) : (
-                      <RevealButton>
-                        <Plus width={15} height={15} color='gray' />
-                      </RevealButton>
+                      <IconWrapper className='reveal'>
+                        <Plus />
+                      </IconWrapper>
                     )}
                   </SectionNameWrapper>
                   <LargeList>
@@ -287,12 +288,12 @@ export const SignInFooter: React.FC<Props> = () => {
                         Contact us
                       </b.Text>
                     </ContactWrapper>
-                    <LogoWrapper mx={2} className='twitter'>
-                      <TwitterLogo width={20} height={20} color='gray__dark' />
-                    </LogoWrapper>
-                    <LogoWrapper mx={2} className='youtube'>
-                      <YoutubeLogo width={20} height={20} color='gray__dark' />
-                    </LogoWrapper>
+                    <IconWrapper mx={2} className='socialmedia'>
+                      <TwitterLogo />
+                    </IconWrapper>
+                    <IconWrapper mx={2} className='socialmedia'>
+                      <YoutubeLogo />
+                    </IconWrapper>
                   </b.Flex>
                 </b.Box>
               </b.Flex>
@@ -349,15 +350,6 @@ const SectionName = styled(b.Text)`
   }
 `;
 
-const RevealButton = styled(b.Box)`
-  display: block;
-
-  @media ${signin.sm} {
-    padding: 0;
-    display: none;
-  }
-`;
-
 const IconWrapper = styled(b.Box)`
   &.roundedheart {
     position: absolute;
@@ -380,6 +372,34 @@ const IconWrapper = styled(b.Box)`
       path {
         fill: ${({ theme }) => theme.colors.gray__light};
       }
+    }
+  }
+
+  &.socialmedia {
+    top: 2px;
+    svg {
+      width: 20px;
+      height: 20px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray__dark};
+      }
+    }
+  }
+
+  &.reveal {
+    display: block;
+
+    svg {
+      width: 15px;
+      height: 15px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray};
+      }
+    }
+
+    @media ${signin.sm} {
+      padding: 0;
+      display: none;
     }
   }
 `;
@@ -449,9 +469,4 @@ const ContactWrapper = styled(b.Anchor)`
   &:hover {
     color: ${({ theme }) => theme.colors.gray__light};
   }
-`;
-
-const LogoWrapper = styled(b.Anchor)`
-  position: relative;
-  top: 2px;
 `;

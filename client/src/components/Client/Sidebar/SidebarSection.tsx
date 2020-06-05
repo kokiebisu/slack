@@ -76,9 +76,9 @@ export const SidebarSection: React.FC<Props> = ({
         <SubtitleWrapper my={1} py={2} pl={2}>
           <b.Flex alignItems='center' justifyContent='space-between'>
             <b.Flex>
-              <b.Box pr={2} style={{ bottom: 2.75 }}>
-                <Plus width={8} height={8} color='white' />
-              </b.Box>
+              <IconWrapper className='smallplus' pr={2}>
+                <Plus />
+              </IconWrapper>
               <b.Box>
                 <b.Text
                   fontFamily='SlackLato-Light'
@@ -185,6 +185,18 @@ const IconWrapper = styled(b.Box)`
 
     &:hover {
       background: ${({ theme }) => theme.colors.primary__lighter};
+    }
+  }
+
+  &.smallplus {
+    bottom: 2.75px;
+
+    svg {
+      width: 8px;
+      height: 8px;
+      path {
+        fill: ${({ theme }) => theme.colors.white};
+      }
     }
   }
 `;

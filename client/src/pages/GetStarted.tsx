@@ -5,12 +5,12 @@ import * as b from '../styles/blocks';
 
 // Svg
 import { BoldPlus } from '../assets/svg/Plus';
+import { NameLogo } from '../assets/svg/Logo';
+import { Globe } from '../assets/svg';
 
 // Image
 import workspace from '../assets/img/slack-workspace.png';
 import lightbulb from '../assets/img/lightbulb.png';
-import { NameLogo } from '../assets/svg/Logo';
-import { Globe } from '../assets/svg';
 
 import { getstarted } from '../styles/sizes';
 
@@ -25,9 +25,11 @@ export const GetStarted: React.FC<Props> = () => {
     <Wrapper>
       <b.Container>
         <b.Box>
-          <LogoWrapper justifyContent='center'>
-            <NameLogo width={140} height={60} />
-          </LogoWrapper>
+          <b.Flex justifyContent='center'>
+            <IconWrapper className='namelogo'>
+              <NameLogo />
+            </IconWrapper>
+          </b.Flex>
         </b.Box>
         <SelectOptionWrapper
           animate={{ y: -20, transition: { duration: 0.2 } }}
@@ -63,9 +65,9 @@ export const GetStarted: React.FC<Props> = () => {
                     <b.Anchor href='/get-started/create'>
                       <b.Box backgroundColor='white' borderRadius={5} py={3}>
                         <b.Flex alignItems='center' justifyContent='center'>
-                          <b.Box mr={2}>
-                            <BoldPlus width={13} height={13} color='primary' />
-                          </b.Box>
+                          <IconWrapper className='boldplus' mr={2}>
+                            <BoldPlus />
+                          </IconWrapper>
                           <b.Box>
                             <b.Text
                               fontSize={19}
@@ -83,7 +85,7 @@ export const GetStarted: React.FC<Props> = () => {
                   <SelectOptionInner className='right' px={4} py={5}>
                     <b.Box>
                       <b.Text
-                        color='#1D1C1D'
+                        color='black__light'
                         fontFamily='SlackLato-Black'
                         fontSize={32}>
                         Is your team already using Slack?
@@ -94,7 +96,7 @@ export const GetStarted: React.FC<Props> = () => {
                         <b.Text
                           lineHeight={1.4}
                           fontSize={18}
-                          color='#1D1C1D'
+                          color='black__light'
                           fontFamily='SlackLato-Regular'>
                           Find and sign in to your team's existing workspace.
                         </b.Text>
@@ -167,9 +169,9 @@ export const GetStarted: React.FC<Props> = () => {
           </b.Box>
           <b.Box mr={2}>
             <b.Flex>
-              <GlobeWrapper mr={1}>
-                <Globe width={12} height={12} color='gray' />
-              </GlobeWrapper>
+              <IconWrapper className='globe' mr={1}>
+                <Globe />
+              </IconWrapper>
               <b.Box>
                 <ChangeRegion>Change region</ChangeRegion>
               </b.Box>
@@ -185,8 +187,36 @@ const Wrapper = styled(b.Box)`
   padding: 30px 0;
 `;
 
-const LogoWrapper = styled(b.Flex)`
-  padding: 5px;
+const IconWrapper = styled(b.Box)`
+  position: relative;
+  &.namelogo {
+    padding: 5px;
+    svg {
+      width: 140px;
+      height: 60px;
+    }
+  }
+
+  &.boldplus {
+    svg {
+      width: 13px;
+      height: 13px;
+      path {
+        fill: ${({ theme }) => theme.colors.primary};
+      }
+    }
+  }
+
+  &.globe {
+    top: 0.5px;
+    svg {
+      width: 12px;
+      height: 12px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray};
+      }
+    }
+  }
 `;
 
 const SelectOptionWrapper = styled(b.Box)``;
@@ -251,7 +281,6 @@ const WhatIsSlackContainer = styled(b.Box)`
 
 const GlobeWrapper = styled(b.Box)`
   position: relative;
-  top: 0.5px;
 `;
 
 const FooterLink = styled(b.Anchor)`

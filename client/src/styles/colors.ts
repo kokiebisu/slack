@@ -29,6 +29,7 @@ export const main: ThemeProps = {
     gray__dark: '#868686',
     gray__darker: '#272626',
     red__dark: '#A30701',
+    red__light: '#d12011',
     red: '#cd2553',
     pink: '#efa0b7',
     pink__light: '#caadcd',
