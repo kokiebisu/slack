@@ -16,7 +16,7 @@ import {
 import { useClientDispatch, useClientState } from '../context/client-context';
 import { randomColor } from '../util/randomColor';
 import { avatar } from '../styles/colors';
-import { ConfirmEmail } from '../pages/ConfirmEmail';
+import { ConfirmDigit } from '../pages/ConfirmDigit';
 import { getAccessToken } from '../global/token';
 
 interface Props {}
@@ -38,17 +38,20 @@ export const CreateRoutes: React.SFC = () => {
    * Query
    */
   const { data, loading, error } = useMeQuery();
+
   const [createTeam] = useCreateTeamMutation();
   const [createChannel] = useCreateChannelMutation();
+
+  console.log('useme', data);
 
   return (
     <>
       <Switch>
-        <Route path={match.url + '/confirmEmail'}>
-          <ConfirmEmail />
+        <Route path={match.url + '/verifyemail'}>
+          <ConfirmDigit />
         </Route>
         <Route path={match.url + '/teamname'}>
-          {localStorage.getItem('token') ? (
+          {data && data.me.ok ? (
             <CreateTeamLayout
               input={input}
               modifyInput={setInput}
@@ -110,7 +113,7 @@ export const CreateRoutes: React.SFC = () => {
                   },
                 });
 
-                if (data?.createTeam?.team.id) {
+                if (data && data?.createTeam?.team!.id) {
                   dispatchClient({
                     type: 'add_teamid',
                     payload: data.createTeam.team.id,

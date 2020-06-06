@@ -1,7 +1,10 @@
 query Users {
   users {
-    id
-    username
-    email
+    ok
+    message
+    users {
+      id
+      username
+    }
   }
 }

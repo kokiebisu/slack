@@ -1,7 +1,0 @@
-mutation ConfirmUser($digit: Float!) {
-  confirmUser(digit: $digit) {
-    ok
-    message
-    accessToken
-  }
-}

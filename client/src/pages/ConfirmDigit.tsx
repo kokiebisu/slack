@@ -1,13 +1,13 @@
-import React, { useState, SetStateAction } from 'react';
-import { useConfirmUserMutation } from '../generated/graphql';
+import * as React from 'react';
+import { useState } from 'react';
+import { useVerifyUserMutation } from '../generated/graphql';
 import { useHistory, useLocation } from 'react-router-dom';
-import { setAccessToken } from '../global/token';
 
-export const ConfirmEmail = () => {
+export const ConfirmDigit = () => {
   const history = useHistory();
   const [digit, setDigit] = useState('');
   const [error, setError] = useState('');
-  const [confirm] = useConfirmUserMutation();
+  const [verify] = useVerifyUserMutation();
 
   const location: any = useLocation();
 
@@ -19,19 +19,19 @@ export const ConfirmEmail = () => {
           e.preventDefault();
           try {
             const newDigit = parseInt(digit!, 10);
-            const response = await confirm({
+            const response = await verify({
               variables: { digit: newDigit },
             });
-            if (response && !response.data?.confirmUser.ok) {
-              setError(response.data?.confirmUser.message!);
+            console.log(response);
+            if (response && !response.data?.verifyUser.ok) {
+              setError(response.data?.verifyUser.message!);
             }
 
-            if (response && response.data?.confirmUser.ok) {
-              setAccessToken(response.data.confirmUser.accessToken);
+            if (response && response.data?.verifyUser.ok) {
               history.push('/create/teamname');
             }
           } catch (err) {
-            setError('wrong digit');
+            setError('something went awfully wrong');
           }
         }}>
         <input

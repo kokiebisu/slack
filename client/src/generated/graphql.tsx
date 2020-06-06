@@ -35,49 +35,68 @@ export type User = {
   email: Scalars['String'];
 };
 
-export type ConfirmUserResponse = {
-  __typename?: 'ConfirmUserResponse';
+export type BaseResponse = {
+  __typename?: 'BaseResponse';
   ok: Scalars['Boolean'];
-  accessToken: Scalars['String'];
-  message: Scalars['String'];
+  message?: Maybe<Scalars['String']>;
 };
 
-export type RegisterResponse = {
-  __typename?: 'RegisterResponse';
+export type AuthorizationResponse = {
+  __typename?: 'AuthorizationResponse';
   ok: Scalars['Boolean'];
-  user: User;
-  message: Scalars['String'];
+  message?: Maybe<Scalars['String']>;
 };
 
-export type CreateTeamResponse = {
-  __typename?: 'CreateTeamResponse';
+export type ChannelResponse = {
+  __typename?: 'ChannelResponse';
   ok: Scalars['Boolean'];
-  message: Scalars['String'];
-  team?: Maybe<Team>;
+  message?: Maybe<Scalars['String']>;
+  channel?: Maybe<Channel>;
+};
+
+export type ChannelsResponse = {
+  __typename?: 'ChannelsResponse';
+  ok: Scalars['Boolean'];
+  message?: Maybe<Scalars['String']>;
+  channels?: Maybe<Array<Channel>>;
 };
 
 export type TeamResponse = {
   __typename?: 'TeamResponse';
   ok: Scalars['Boolean'];
-  message: Scalars['String'];
+  message?: Maybe<Scalars['String']>;
   team?: Maybe<Team>;
 };
 
-export type MeResponse = {
-  __typename?: 'MeResponse';
+export type TeamsResponse = {
+  __typename?: 'TeamsResponse';
   ok: Scalars['Boolean'];
-  message: Scalars['String'];
+  message?: Maybe<Scalars['String']>;
+  teams?: Maybe<Array<Team>>;
+};
+
+export type UserResponse = {
+  __typename?: 'UserResponse';
+  ok: Scalars['Boolean'];
+  message?: Maybe<Scalars['String']>;
   user?: Maybe<User>;
+};
+
+export type UsersResponse = {
+  __typename?: 'UsersResponse';
+  ok: Scalars['Boolean'];
+  message?: Maybe<Scalars['String']>;
+  users?: Maybe<Array<User>>;
 };
 
 export type Query = {
   __typename?: 'Query';
-  channels: Array<Channel>;
-  teams: Array<Team>;
-  myTeams: Array<Team>;
+  channels: ChannelsResponse;
+  myTeams: TeamsResponse;
   team: TeamResponse;
-  me: MeResponse;
-  users: Array<User>;
+  teams: TeamsResponse;
+  me: UserResponse;
+  users: UsersResponse;
 };
 
 
@@ -92,11 +111,11 @@ export type QueryTeamArgs = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  register: RegisterResponse;
-  confirmUser: ConfirmUserResponse;
-  logout: Scalars['Boolean'];
-  createChannel: Channel;
-  createTeam: CreateTeamResponse;
+  logout: AuthorizationResponse;
+  register: AuthorizationResponse;
+  verifyUser: AuthorizationResponse;
+  createChannel: ChannelResponse;
+  createTeam: TeamResponse;
 };
 
 
@@ -105,7 +124,7 @@ export type MutationRegisterArgs = {
 };
 
 
-export type MutationConfirmUserArgs = {
+export type MutationVerifyUserArgs = {
   digit: Scalars['Float'];
 };
 
@@ -128,22 +147,13 @@ export type ChannelsQueryVariables = {
 
 export type ChannelsQuery = (
   { __typename?: 'Query' }
-  & { channels: Array<(
-    { __typename?: 'Channel' }
-    & Pick<Channel, 'id' | 'name' | 'isPublic'>
-  )> }
-);
-
-export type ConfirmUserMutationVariables = {
-  digit: Scalars['Float'];
-};
-
-
-export type ConfirmUserMutation = (
-  { __typename?: 'Mutation' }
-  & { confirmUser: (
-    { __typename?: 'ConfirmUserResponse' }
-    & Pick<ConfirmUserResponse, 'ok' | 'message' | 'accessToken'>
+  & { channels: (
+    { __typename?: 'ChannelsResponse' }
+    & Pick<ChannelsResponse, 'ok' | 'message'>
+    & { channels?: Maybe<Array<(
+      { __typename?: 'Channel' }
+      & Pick<Channel, 'name'>
+    )>> }
   ) }
 );
 
@@ -156,8 +166,12 @@ export type CreateChannelMutationVariables = {
 export type CreateChannelMutation = (
   { __typename?: 'Mutation' }
   & { createChannel: (
-    { __typename?: 'Channel' }
-    & Pick<Channel, 'id' | 'name' | 'teamId'>
+    { __typename?: 'ChannelResponse' }
+    & Pick<ChannelResponse, 'ok' | 'message'>
+    & { channel?: Maybe<(
+      { __typename?: 'Channel' }
+      & Pick<Channel, 'name'>
+    )> }
   ) }
 );
 
@@ -170,8 +184,8 @@ export type CreateTeamMutationVariables = {
 export type CreateTeamMutation = (
   { __typename?: 'Mutation' }
   & { createTeam: (
-    { __typename?: 'CreateTeamResponse' }
-    & Pick<CreateTeamResponse, 'ok' | 'message'>
+    { __typename?: 'TeamResponse' }
+    & Pick<TeamResponse, 'ok' | 'message'>
     & { team?: Maybe<(
       { __typename?: 'Team' }
       & Pick<Team, 'id' | 'name' | 'avatarBackground'>
@@ -184,7 +198,10 @@ export type LogoutMutationVariables = {};
 
 export type LogoutMutation = (
   { __typename?: 'Mutation' }
-  & Pick<Mutation, 'logout'>
+  & { logout: (
+    { __typename?: 'AuthorizationResponse' }
+    & Pick<AuthorizationResponse, 'ok' | 'message'>
+  ) }
 );
 
 export type MeQueryVariables = {};
@@ -193,8 +210,8 @@ export type MeQueryVariables = {};
 export type MeQuery = (
   { __typename?: 'Query' }
   & { me: (
-    { __typename?: 'MeResponse' }
-    & Pick<MeResponse, 'ok' | 'message'>
+    { __typename?: 'UserResponse' }
+    & Pick<UserResponse, 'ok' | 'message'>
     & { user?: Maybe<(
       { __typename?: 'User' }
       & Pick<User, 'id' | 'username' | 'email'>
@@ -207,10 +224,14 @@ export type MyTeamsQueryVariables = {};
 
 export type MyTeamsQuery = (
   { __typename?: 'Query' }
-  & { myTeams: Array<(
-    { __typename?: 'Team' }
-    & Pick<Team, 'id' | 'name' | 'avatarBackground'>
-  )> }
+  & { myTeams: (
+    { __typename?: 'TeamsResponse' }
+    & Pick<TeamsResponse, 'ok' | 'message'>
+    & { teams?: Maybe<Array<(
+      { __typename?: 'Team' }
+      & Pick<Team, 'id' | 'name' | 'avatarBackground'>
+    )>> }
+  ) }
 );
 
 export type RegisterMutationVariables = {
@@ -221,8 +242,8 @@ export type RegisterMutationVariables = {
 export type RegisterMutation = (
   { __typename?: 'Mutation' }
   & { register: (
-    { __typename?: 'RegisterResponse' }
-    & Pick<RegisterResponse, 'ok' | 'message'>
+    { __typename?: 'AuthorizationResponse' }
+    & Pick<AuthorizationResponse, 'ok' | 'message'>
   ) }
 );
 
@@ -248,19 +269,38 @@ export type UsersQueryVariables = {};
 
 export type UsersQuery = (
   { __typename?: 'Query' }
-  & { users: Array<(
-    { __typename?: 'User' }
-    & Pick<User, 'id' | 'username' | 'email'>
-  )> }
+  & { users: (
+    { __typename?: 'UsersResponse' }
+    & Pick<UsersResponse, 'ok' | 'message'>
+    & { users?: Maybe<Array<(
+      { __typename?: 'User' }
+      & Pick<User, 'id' | 'username'>
+    )>> }
+  ) }
+);
+
+export type VerifyUserMutationVariables = {
+  digit: Scalars['Float'];
+};
+
+
+export type VerifyUserMutation = (
+  { __typename?: 'Mutation' }
+  & { verifyUser: (
+    { __typename?: 'AuthorizationResponse' }
+    & Pick<AuthorizationResponse, 'ok' | 'message'>
+  ) }
 );
 
 
 export const ChannelsDocument = gql`
     query Channels($teamId: String!) {
   channels(teamId: $teamId) {
-    id
-    name
-    isPublic
+    ok
+    message
+    channels {
+      name
+    }
   }
 }
     `;
@@ -290,46 +330,14 @@ export function useChannelsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHoo
 export type ChannelsQueryHookResult = ReturnType<typeof useChannelsQuery>;
 export type ChannelsLazyQueryHookResult = ReturnType<typeof useChannelsLazyQuery>;
 export type ChannelsQueryResult = ApolloReactCommon.QueryResult<ChannelsQuery, ChannelsQueryVariables>;
-export const ConfirmUserDocument = gql`
-    mutation ConfirmUser($digit: Float!) {
-  confirmUser(digit: $digit) {
-    ok
-    message
-    accessToken
-  }
-}
-    `;
-export type ConfirmUserMutationFn = ApolloReactCommon.MutationFunction<ConfirmUserMutation, ConfirmUserMutationVariables>;
-
-/**
- * __useConfirmUserMutation__
- *
- * To run a mutation, you first call `useConfirmUserMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useConfirmUserMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [confirmUserMutation, { data, loading, error }] = useConfirmUserMutation({
- *   variables: {
- *      digit: // value for 'digit'
- *   },
- * });
- */
-export function useConfirmUserMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<ConfirmUserMutation, ConfirmUserMutationVariables>) {
-        return ApolloReactHooks.useMutation<ConfirmUserMutation, ConfirmUserMutationVariables>(ConfirmUserDocument, baseOptions);
-      }
-export type ConfirmUserMutationHookResult = ReturnType<typeof useConfirmUserMutation>;
-export type ConfirmUserMutationResult = ApolloReactCommon.MutationResult<ConfirmUserMutation>;
-export type ConfirmUserMutationOptions = ApolloReactCommon.BaseMutationOptions<ConfirmUserMutation, ConfirmUserMutationVariables>;
 export const CreateChannelDocument = gql`
     mutation CreateChannel($name: String!, $teamId: String!) {
   createChannel(name: $name, teamId: $teamId) {
-    id
-    name
-    teamId
+    ok
+    message
+    channel {
+      name
+    }
   }
 }
     `;
@@ -400,7 +408,10 @@ export type CreateTeamMutationResult = ApolloReactCommon.MutationResult<CreateTe
 export type CreateTeamMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateTeamMutation, CreateTeamMutationVariables>;
 export const LogoutDocument = gql`
     mutation Logout {
-  logout
+  logout {
+    ok
+    message
+  }
 }
     `;
 export type LogoutMutationFn = ApolloReactCommon.MutationFunction<LogoutMutation, LogoutMutationVariables>;
@@ -468,9 +479,13 @@ export type MeQueryResult = ApolloReactCommon.QueryResult<MeQuery, MeQueryVariab
 export const MyTeamsDocument = gql`
     query MyTeams {
   myTeams {
-    id
-    name
-    avatarBackground
+    ok
+    message
+    teams {
+      id
+      name
+      avatarBackground
+    }
   }
 }
     `;
@@ -574,9 +589,12 @@ export type TeamQueryResult = ApolloReactCommon.QueryResult<TeamQuery, TeamQuery
 export const UsersDocument = gql`
     query Users {
   users {
-    id
-    username
-    email
+    ok
+    message
+    users {
+      id
+      username
+    }
   }
 }
     `;
@@ -605,3 +623,36 @@ export function useUsersLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOp
 export type UsersQueryHookResult = ReturnType<typeof useUsersQuery>;
 export type UsersLazyQueryHookResult = ReturnType<typeof useUsersLazyQuery>;
 export type UsersQueryResult = ApolloReactCommon.QueryResult<UsersQuery, UsersQueryVariables>;
+export const VerifyUserDocument = gql`
+    mutation VerifyUser($digit: Float!) {
+  verifyUser(digit: $digit) {
+    ok
+    message
+  }
+}
+    `;
+export type VerifyUserMutationFn = ApolloReactCommon.MutationFunction<VerifyUserMutation, VerifyUserMutationVariables>;
+
+/**
+ * __useVerifyUserMutation__
+ *
+ * To run a mutation, you first call `useVerifyUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useVerifyUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [verifyUserMutation, { data, loading, error }] = useVerifyUserMutation({
+ *   variables: {
+ *      digit: // value for 'digit'
+ *   },
+ * });
+ */
+export function useVerifyUserMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<VerifyUserMutation, VerifyUserMutationVariables>) {
+        return ApolloReactHooks.useMutation<VerifyUserMutation, VerifyUserMutationVariables>(VerifyUserDocument, baseOptions);
+      }
+export type VerifyUserMutationHookResult = ReturnType<typeof useVerifyUserMutation>;
+export type VerifyUserMutationResult = ApolloReactCommon.MutationResult<VerifyUserMutation>;
+export type VerifyUserMutationOptions = ApolloReactCommon.BaseMutationOptions<VerifyUserMutation, VerifyUserMutationVariables>;

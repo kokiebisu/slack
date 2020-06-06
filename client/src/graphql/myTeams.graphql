@@ -1,7 +1,11 @@
 query MyTeams {
   myTeams {
-    id
-    name
-    avatarBackground
+    ok
+    message
+    teams {
+      id
+      name
+      avatarBackground
+    }
   }
 }

@@ -20,15 +20,12 @@ interface Props {}
 
 export const GetStartedCreate: React.FC<Props> = () => {
   const history = useHistory();
-  const [error, setError] = useState(false);
+  const [error, setError] = useState('');
 
   const [register] = useRegisterMutation();
   // const [login] = useLoginMutation();
 
-  let response: any;
   const [email, setEmail] = useState('');
-
-  useEffect(() => {}, response);
 
   return (
     <LogoCenterLayout>
@@ -59,16 +56,16 @@ export const GetStartedCreate: React.FC<Props> = () => {
               <form
                 onSubmit={async (e) => {
                   e.preventDefault();
-                  response = await register({ variables: { email } });
+                  const response = await register({ variables: { email } });
 
                   if (response && response.data && response.data.register.ok) {
                     history.push({
-                      pathname: '/create/confirmemail',
-                      state: { email },
+                      pathname: '/create/verifyemail',
+                      state: email,
                     });
                   }
                   if (response && response.data && !response.data.register.ok) {
-                    setError(true);
+                    setError(response.data.register!.message as string);
                   }
                 }}>
                 <b.Box>

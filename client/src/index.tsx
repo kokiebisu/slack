@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { Loading } from './Loading';
+// import { Loading } from './Loading';
 import { GlobalFonts } from './styles/globalFonts';
 import { GlobalStyles } from './styles/globalStyles';
 
@@ -23,17 +23,12 @@ import { main } from './styles/colors';
 import { ThemeProvider } from 'styled-components';
 
 import ApolloClient from 'apollo-boost';
+import { AppRoutes } from './routes/App';
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql',
-  // request: (operation) => {
-  //   const token = localStorage.getItem('token');
-  //   operation.setContext({
-  //     headers: {
-  //       authorization: token ? `Bearer ${token}` : '',
-  //     },
-  //   });
-  // },
+  cache: new InMemoryCache(),
+  credentials: 'include',
 });
 
 ReactDOM.render(
@@ -42,7 +37,7 @@ ReactDOM.render(
       <GlobalFonts />
       <GlobalStyles />
       <ThemeProvider theme={main}>
-        <Loading />
+        <AppRoutes />
       </ThemeProvider>
     </ContextProvider>
   </ApolloProvider>,
