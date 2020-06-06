@@ -7,6 +7,9 @@ import { AngleRight } from '../../assets/svg/Arrows';
 
 // Images
 import slackappicon from '../../assets/img/slack-app.png';
+import { useHistory } from 'react-router-dom';
+import { setAccessToken } from '../../global/token';
+import { useLogoutMutation } from '../../generated/graphql';
 
 const UpdateState: React.FC<{}> = () => {
   return (
@@ -42,15 +45,17 @@ interface MenuOptionProps {
   name: string;
   withToggle?: boolean;
   openApp?: boolean;
+  clicked?: any;
 }
 
 const MenuOption: React.FC<MenuOptionProps> = ({
   name,
   withToggle,
   openApp,
+  clicked,
 }) => {
   return (
-    <MenuOptionWrapper>
+    <MenuOptionWrapper onClick={clicked}>
       <b.Flex justifyContent='space-between' alignItems='center'>
         <b.Box>
           <b.Text fontSize={15} fontFamily='SlackLato-Regular' color='gray'>
@@ -79,7 +84,8 @@ const MenuOption: React.FC<MenuOptionProps> = ({
   );
 };
 
-const MenuOptionWrapper = styled(b.Box)`
+const MenuOptionWrapper = styled(b.Button)`
+  width: 100%;
   padding: 5px 25px;
   cursor: pointer;
 
@@ -175,6 +181,9 @@ const ProfileOptionWrapper = styled(b.Box)`
 `;
 
 export const MenuToggle = () => {
+  const history = useHistory();
+  const [logout, { client }] = useLogoutMutation();
+
   return (
     <Wrapper py={2}>
       <Section className='first'>
@@ -200,7 +209,15 @@ export const MenuToggle = () => {
         <MenuOption name='Settings & administration' withToggle />
         <MenuOption name='Tools' withToggle />
         <MenuOption name='Help' withToggle />
-        <MenuOption name='Sign out of asdf' />
+        <MenuOption
+          name='Sign out of asdf'
+          clicked={async () => {
+            await logout();
+            setAccessToken('');
+            await client?.resetStore();
+            history.push('/');
+          }}
+        />
       </Section>
       <Section className='fourth'>
         <MenuOption name='Add workspaces' withToggle />
@@ -221,7 +238,11 @@ const Wrapper = styled(b.Box)`
   border-radius: 10px;
   border: 1px solid ${({ theme }) => theme.colors.gray__lighter};
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  overflow-y: scroll;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 0 !important;
+  }
 
   @media (max-height: 500px) {
     top: 10px;

@@ -44,6 +44,8 @@ export const ClientRoutes: React.FC<Props> = () => {
   const { id } = useParams();
   const groupName = 'bcit-sept-2018';
 
+  const [toggle, setToggle] = useState(false);
+
   const { data, loading, error } = useTeamQuery({
     variables: {
       teamId: id,
@@ -52,34 +54,34 @@ export const ClientRoutes: React.FC<Props> = () => {
 
   return (
     <>
-      <BrowserRouter>
+      <Switch>
         <Wrapper>
           {!loading && data && (
             <>
               <HomeHeader team={data.team.name} />
+              {toggle ? <MenuToggle /> : null}
               <ContentWrapper>
-                <Sidebar team={data.team.name} />
-
-                <Switch>
-                  <Route path={match.url + '/threads'}>
-                    <ThreadsPage group={groupName} />
-                  </Route>
-                  <Route path={match.url + '/activity-page'}>
-                    <MentionPage group={groupName} />
-                  </Route>
-                  <Route path={match.url + '/drafts'}>
-                    <DraftPage group={groupName} />
-                  </Route>
-                  <Route path={match.url + '/saved-page'}>
-                    <SavedPage group={groupName} />
-                  </Route>
-                </Switch>
+                <Sidebar
+                  team={data.team.name}
+                  displayMenu={() => setToggle(!toggle)}
+                />
+                <Route path={match.url + '/threads'}>
+                  <ThreadsPage group={groupName} />
+                </Route>
+                <Route path={match.url + '/activity-page'}>
+                  <MentionPage group={groupName} />
+                </Route>
+                <Route path={match.url + '/drafts'}>
+                  <DraftPage group={groupName} />
+                </Route>
+                <Route path={match.url + '/saved-page'}>
+                  <SavedPage group={groupName} />
+                </Route>
               </ContentWrapper>
-              <MenuToggle />
             </>
           )}
         </Wrapper>
-      </BrowserRouter>
+      </Switch>
     </>
   );
 };

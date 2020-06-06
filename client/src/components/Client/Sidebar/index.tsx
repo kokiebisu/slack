@@ -19,9 +19,10 @@ import { useMeQuery } from '../../../generated/graphql';
 
 interface Props {
   team?: string;
+  displayMenu?: () => void;
 }
 
-export const Sidebar: React.FC<Props> = ({ team }) => {
+export const Sidebar: React.FC<Props> = ({ team, displayMenu }) => {
   const [hovered, setHovered] = useState(false);
   const { data, loading, error } = useMeQuery();
 
@@ -31,6 +32,7 @@ export const Sidebar: React.FC<Props> = ({ team }) => {
     <>
       <SideBarWrapper>
         <ProfileWrapper
+          onClick={displayMenu}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
           className={hovered ? `hovered` : ``}>
@@ -97,6 +99,10 @@ const SideBarContainer = styled(b.Box)`
   position: relative;
   height: calc(100vh - 87px);
   overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 0 !important;
+  }
 `;
 
 const ProfileWrapper = styled(b.Button)`
