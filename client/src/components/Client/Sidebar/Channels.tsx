@@ -7,7 +7,7 @@ import * as b from '../../../styles/blocks';
 
 // Svgs
 import { Lock } from '../../../assets/svg';
-import { ChannelHashtag } from '../../../assets/svg/HashTag';
+import { ThinHashTag } from '../../../assets/svg/HashTag';
 
 interface Props {
   data: ChannelProps[];
@@ -41,9 +41,7 @@ const Channel: React.FC<ChannelProps> = ({ id, name, isPublic }) => {
       <b.Flex alignItems='center'>
         <b.Box pr={2}>
           <b.Box>
-            <IconWrapper>
-              {isPublic ? <ChannelHashtag /> : <Lock />}
-            </IconWrapper>
+            <IconWrapper>{isPublic ? <ThinHashTag /> : <Lock />}</IconWrapper>
           </b.Box>
         </b.Box>
         <b.Box style={{ top: 3 }}>

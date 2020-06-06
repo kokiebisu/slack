@@ -102,12 +102,28 @@ export const CreateRoutes: React.SFC = () => {
                     type: 'add_teamid',
                     payload: data.createTeam.id,
                   });
+
+                  await createChannel({
+                    variables: {
+                      name: 'general',
+                      teamId: data.createTeam.id,
+                    },
+                  });
+
+                  await createChannel({
+                    variables: {
+                      name: 'random',
+                      teamId: data.createTeam.id,
+                    },
+                  });
+
                   await createChannel({
                     variables: {
                       name: channel,
                       teamId: data.createTeam.id,
                     },
                   });
+
                   history.push(`/client/${data.createTeam.id}`);
                 }
               }}

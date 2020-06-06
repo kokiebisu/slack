@@ -214,7 +214,6 @@ export const MenuToggle = () => {
           clicked={async () => {
             await logout();
             setAccessToken('');
-            await client?.resetStore();
             history.push('/');
           }}
         />

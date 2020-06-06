@@ -50,21 +50,6 @@ export const HomeHeader: React.FC<Props> = ({ team }) => {
         </Input>
         <b.Box style={{ flex: 1 }} pr={3} pl={3}>
           <b.Flex style={{ justifyContent: 'flex-end' }}>
-            <WhatsNewWrapper borderRadius={4}>
-              <b.Flex alignItems='center' justifyContent='center'>
-                <IconWrapper>
-                  <Present />
-                </IconWrapper>
-                <WhatsNewText pl={2}>
-                  <b.Text
-                    fontFamily='SlackLato-Regular'
-                    fontSize={13}
-                    color='white'>
-                    See what's new
-                  </b.Text>
-                </WhatsNewText>
-              </b.Flex>
-            </WhatsNewWrapper>
             <b.Button ml={2} background='transparent'>
               <b.Flex alignItems='center'>
                 <IconWrapper className='info'>
