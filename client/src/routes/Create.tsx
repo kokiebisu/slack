@@ -42,8 +42,6 @@ export const CreateRoutes: React.SFC = () => {
   const [createTeam] = useCreateTeamMutation();
   const [createChannel] = useCreateChannelMutation();
 
-  console.log('useme', data);
-
   return (
     <>
       <Switch>
