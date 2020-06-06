@@ -244,7 +244,9 @@ export const SignInFooter: React.FC<Props> = () => {
                         <React.Fragment key={index}>
                           <Item>
                             <b.Anchor href={section.url}>
-                              <b.Box py={1}>{section.name}</b.Box>
+                              <b.Box py={1}>
+                                <b.Text color='gray'>{section.name}</b.Text>
+                              </b.Box>
                             </b.Anchor>
                           </Item>
                         </React.Fragment>
@@ -259,7 +261,9 @@ export const SignInFooter: React.FC<Props> = () => {
                           <React.Fragment key={index}>
                             <Item>
                               <b.Anchor href={section.url}>
-                                <b.Box py={1}>{section.name}</b.Box>
+                                <b.Box py={1}>
+                                  <b.Text color='gray'>{section.name}</b.Text>
+                                </b.Box>
                               </b.Anchor>
                             </Item>
                           </React.Fragment>

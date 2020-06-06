@@ -27,11 +27,13 @@ export const SignInHeader: React.FC<Props> = () => {
         <b.Container signin>
           <b.Flex alignItems='center' justifyContent='space-between'>
             <Left alignItems='center'>
-              <b.Box top={2} mr={4}>
-                <IconWrapper className='namelogo'>
-                  <NameLogo />
-                </IconWrapper>
-              </b.Box>
+              <b.Anchor href='/'>
+                <b.Box top={2} mr={4}>
+                  <IconWrapper className='namelogo'>
+                    <NameLogo />
+                  </IconWrapper>
+                </b.Box>
+              </b.Anchor>
             </Left>
             <Right alignItems='center'>
               <LargeNav>
@@ -132,6 +134,20 @@ const IconWrapper = styled(b.Box)`
     svg {
       width: 105px;
       height: 60px;
+      path {
+        &:nth-child(2) {
+          fill: ${({ theme }) => theme.colors.blue__lighter};
+        }
+        &:nth-child(3) {
+          fill: ${({ theme }) => theme.colors.green__lighter};
+        }
+        &:nth-child(4) {
+          fill: ${({ theme }) => theme.colors.yellow};
+        }
+        &:nth-child(5) {
+          fill: ${({ theme }) => theme.colors.red};
+        }
+      }
     }
   }
 `;

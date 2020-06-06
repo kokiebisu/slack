@@ -40,8 +40,6 @@ export const Header: React.FC<Props> = () => {
     pricing: false,
   });
 
-  console.log(`randomColor: `, randomColor(avatar));
-
   const { data, loading, error } = useMyTeamsQuery();
 
   const [pressed, setPressed] = useState(false);
@@ -228,7 +226,7 @@ export const Header: React.FC<Props> = () => {
                       key={team.id}
                       name={team.name}
                       url={team.id}
-                      color={`${randomColor(avatar)}`}
+                      color={team.avatarBackground}
                     />
                   );
                 })}

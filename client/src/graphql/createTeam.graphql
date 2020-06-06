@@ -1,7 +1,11 @@
-mutation CreateTeam($name: String!) {
-  createTeam(name: $name) {
-    id
-    name
-    ownerId
+mutation CreateTeam($name: String!, $avatarBackground: String!) {
+  createTeam(name: $name, avatarBackground: $avatarBackground) {
+    ok
+    message
+    team {
+      id
+      name
+      avatarBackground
+    }
   }
 }

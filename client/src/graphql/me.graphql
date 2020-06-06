@@ -1,7 +1,11 @@
 query Me {
   me {
-    id
-    username
-    email
+    ok
+    message
+    user {
+      id
+      username
+      email
+    }
   }
 }

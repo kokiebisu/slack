@@ -6,6 +6,7 @@ import * as b from '../../styles/blocks';
 
 // Sizes
 import { signin } from '../../styles/sizes';
+import { RightArrow } from '../../assets/svg/Arrows';
 
 interface Props {}
 
@@ -57,7 +58,9 @@ export const SignInContent: React.FC<Props> = () => {
                           <b.Text color='white' fontFamily='SlackLato-Bold'>
                             Continue
                           </b.Text>
-                          <b.Text color='white'>arr</b.Text>
+                          <IconWrapper>
+                            <RightArrow />
+                          </IconWrapper>
                         </b.Flex>
                       </b.Box>
                     </b.Button>
@@ -152,6 +155,17 @@ const CreateWorkspaceContainer = styled(b.Flex)`
     margin-top: 5px;
     &:hover {
       text-decoration: underline;
+    }
+  }
+`;
+
+const IconWrapper = styled(b.Box)`
+  margin-left: 10px;
+  svg {
+    width: 13px;
+    height: 13px;
+    path {
+      fill: ${({ theme }) => theme.colors.white};
     }
   }
 `;

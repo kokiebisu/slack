@@ -24,64 +24,72 @@ interface Props {
 
 export const Sidebar: React.FC<Props> = ({ team, displayMenu }) => {
   const [hovered, setHovered] = useState(false);
-  const { data, loading, error } = useMeQuery();
+  const { data: { me } = {}, loading, error } = useMeQuery();
 
   const { id } = useParams();
+
+  console.log('data', me);
 
   return (
     <>
       <SideBarWrapper>
-        <ProfileWrapper
-          onClick={displayMenu}
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-          className={hovered ? `hovered` : ``}>
-          <Container>
-            <b.Box>
-              <b.Box>
-                <b.Flex alignItems='center'>
-                  <b.Box mr={1}>
-                    <b.Text
-                      fontFamily='SlackLato-Bold'
-                      fontSize={14}
-                      color='white'>
-                      {team}
-                    </b.Text>
-                  </b.Box>
-                  <b.Box mb={1}>
-                    <IconWrapper className='bottomarrow'>
-                      <BottomArrow />
-                    </IconWrapper>
-                  </b.Box>
-                </b.Flex>
-              </b.Box>
-              <b.Box>
-                <b.Flex alignItems='center'>
-                  <StatusIcon />
-                  {!loading && data && (
-                    <Name
-                      className={hovered ? `hovered` : ``}
-                      fontSize={13}
-                      fontFamily='SlackLato-Regular'>
-                      {data.me?.username}
-                    </Name>
+        {loading ? null : (
+          <>
+            <ProfileWrapper
+              onClick={displayMenu}
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+              className={hovered ? `hovered` : ``}>
+              <Container>
+                <b.Box>
+                  {me && me.user && (
+                    <b.Box>
+                      <b.Flex alignItems='center'>
+                        <b.Box mr={1}>
+                          <b.Text
+                            fontFamily='SlackLato-Bold'
+                            fontSize={14}
+                            color='white'>
+                            {team}
+                          </b.Text>
+                        </b.Box>
+                        <b.Box mb={1}>
+                          <IconWrapper className='bottomarrow'>
+                            <BottomArrow />
+                          </IconWrapper>
+                        </b.Box>
+                      </b.Flex>
+                    </b.Box>
                   )}
-                </b.Flex>
-              </b.Box>
-            </b.Box>
-            <b.Box>
-              <Avatar>
-                <IconWrapper className='write'>
-                  <Write />
-                </IconWrapper>
-              </Avatar>
-            </b.Box>
-          </Container>
-        </ProfileWrapper>
-        <SideBarContainer>
-          <Options />
-          <SidebarSections />
-        </SideBarContainer>
+                  {me && me.user && (
+                    <b.Box>
+                      <b.Flex alignItems='center'>
+                        <StatusIcon />
+                        <Name
+                          className={hovered ? `hovered` : ``}
+                          fontSize={13}
+                          fontFamily='SlackLato-Regular'>
+                          {me?.user.username}
+                        </Name>
+                      </b.Flex>
+                    </b.Box>
+                  )}
+                </b.Box>
+                <b.Box>
+                  <Avatar>
+                    <IconWrapper className='write'>
+                      <Write />
+                    </IconWrapper>
+                  </Avatar>
+                </b.Box>
+              </Container>
+            </ProfileWrapper>
+            <SideBarContainer>
+              <Options />
+              <SidebarSections />
+            </SideBarContainer>
+          </>
+        )}
       </SideBarWrapper>
     </>
   );

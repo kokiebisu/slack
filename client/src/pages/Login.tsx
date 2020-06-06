@@ -4,19 +4,13 @@ import { useState } from 'react';
 import * as b from '../styles/blocks';
 
 import { useHistory } from 'react-router-dom';
-import {
-  useLoginMutation,
-  MeDocument,
-  MeQuery,
-  useMeQuery,
-} from '../generated/graphql';
+import { MeDocument, MeQuery, useMeQuery } from '../generated/graphql';
 import { setAccessToken } from '../global/token';
 
 interface Props {}
 
 export const Login: React.FC<Props> = () => {
   const history = useHistory();
-  const [login] = useLoginMutation();
 
   const { data, loading } = useMeQuery();
 
@@ -28,25 +22,25 @@ export const Login: React.FC<Props> = () => {
       <form
         onSubmit={async (e) => {
           e.preventDefault();
-          const response = await login({
-            variables: { email, password },
-            update: (store, { data }) => {
-              if (!data) {
-                return null;
-              }
-              store.writeQuery<MeQuery>({
-                query: MeDocument,
-                data: {
-                  __typename: 'Query',
-                  me: data.login?.user,
-                },
-              });
-            },
-          });
+          // const response = await login({
+          //   variables: { email, password },
+          //   update: (store, { data }) => {
+          //     if (!data) {
+          //       return null;
+          //     }
+          //     store.writeQuery<MeQuery>({
+          //       query: MeDocument,
+          //       data: {
+          //         __typename: 'Query',
+          //         me: data.login?.user,
+          //       },
+          //     });
+          //   },
+          // });
 
-          if (response && response.data) {
-            setAccessToken(response.data.login!.accessToken);
-          }
+          // if (response && response.data) {
+          //   setAccessToken(response.data.login!.accessToken);
+          // }
 
           history.push('/');
         }}>

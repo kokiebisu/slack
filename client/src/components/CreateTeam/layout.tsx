@@ -41,7 +41,7 @@ interface Props {
   buttonName?: string;
   team?: string;
   channel?: string;
-  authenticated?: number | undefined | null;
+  authenticated?: boolean;
   transaction: (e: FormEvent<HTMLFormElement>) => void;
   input: string;
   modifyInput: Dispatch<SetStateAction<string>>;
@@ -89,7 +89,7 @@ export const CreateTeamLayout: React.FC<Props> = ({
           <b.Container>
             <b.Flex alignItems='center' justifyContent='center'>
               <Link to='/'>
-                <IconWrapper mr={4}>
+                <IconWrapper mr={4} className='namelogo'>
                   <NameLogo />
                 </IconWrapper>
               </Link>
@@ -457,21 +457,23 @@ const IconWrapper = styled(b.Box)`
   position: relative;
   top: 2px;
 
-  svg {
-    width: 100px;
-    height: 60px;
-    path {
-      &:nth-child(2) {
-        fill: ${({ theme }) => theme.colors.blue__lighter};
-      }
-      &:nth-child(3) {
-        fill: ${({ theme }) => theme.colors.green__lighter};
-      }
-      &:nth-child(4) {
-        fill: ${({ theme }) => theme.colors.yellow};
-      }
-      &:nth-child(5) {
-        fill: ${({ theme }) => theme.colors.red};
+  &.namelogo {
+    svg {
+      width: 100px;
+      height: 60px;
+      path {
+        &:nth-child(2) {
+          fill: ${({ theme }) => theme.colors.blue__lighter};
+        }
+        &:nth-child(3) {
+          fill: ${({ theme }) => theme.colors.green__lighter};
+        }
+        &:nth-child(4) {
+          fill: ${({ theme }) => theme.colors.yellow};
+        }
+        &:nth-child(5) {
+          fill: ${({ theme }) => theme.colors.red};
+        }
       }
     }
   }

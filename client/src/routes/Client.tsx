@@ -19,7 +19,7 @@ import {
   useParams,
   RouteComponentProps,
 } from 'react-router-dom';
-import { StaticContext } from 'react-router';
+import { StaticContext, Redirect } from 'react-router';
 
 // Block
 import * as b from '../styles/blocks';
@@ -28,7 +28,7 @@ import * as b from '../styles/blocks';
 import { Smile } from '../assets/svg';
 
 import { home } from '../styles/sizes';
-import { useTeamQuery } from '../generated/graphql';
+import { useTeamQuery, useMeQuery } from '../generated/graphql';
 import { useClientState, useClientDispatch } from '../context/client-context';
 import { AngleRight } from '../assets/svg/Arrows';
 import { MenuToggle } from '../components/Client/MenuToggle';
@@ -41,45 +41,60 @@ type Props = RouteComponentProps<
 
 export const ClientRoutes: React.FC<Props> = () => {
   const match = useRouteMatch();
-  const { id } = useParams();
+
   const groupName = 'bcit-sept-2018';
+  const { id } = useParams();
+
+  console.log('client route id', id);
 
   const [toggle, setToggle] = useState(false);
 
-  const { data, loading, error } = useTeamQuery({
-    variables: {
-      teamId: id,
-    },
-  });
+  // const { data: { team } = {} } = useTeamQuery({
+  //   variables: {
+  //     teamId: id,
+  //   },
+  // });
+
+  const { data, loading, error } = useMeQuery();
+
+  if (data) {
+    console.log(data);
+  }
 
   return (
     <>
       <Switch>
         <Wrapper>
-          {!loading && data && (
+          {/* {error ? (
             <>
-              <HomeHeader team={data.team.name} />
-              {toggle ? <MenuToggle /> : null}
-              <ContentWrapper>
-                <Sidebar
-                  team={data.team.name}
-                  displayMenu={() => setToggle(!toggle)}
-                />
-                <Route path={match.url + '/threads'}>
-                  <ThreadsPage group={groupName} />
-                </Route>
-                <Route path={match.url + '/activity-page'}>
-                  <MentionPage group={groupName} />
-                </Route>
-                <Route path={match.url + '/drafts'}>
-                  <DraftPage group={groupName} />
-                </Route>
-                <Route path={match.url + '/saved-page'}>
-                  <SavedPage group={groupName} />
-                </Route>
-              </ContentWrapper>
+              {!loading && me?.ok && (
+                <>
+                  <HomeHeader />
+                  {toggle ? <MenuToggle /> : null}
+                  <ContentWrapper>
+                    <Sidebar
+                      team={team?.name}
+                      displayMenu={() => setToggle(!toggle)}
+                    />
+                    <Route path={match.url + '/threads'}>
+                      <ThreadsPage group={groupName} />
+                    </Route>
+                    <Route path={match.url + '/activity-page'}>
+                      <MentionPage group={groupName} />
+                    </Route>
+                    <Route path={match.url + '/drafts'}>
+                      <DraftPage group={groupName} />
+                    </Route>
+                    <Route path={match.url + '/saved-page'}>
+                      <SavedPage group={groupName} />
+                    </Route>
+                  </ContentWrapper>
+                </>
+              )}
             </>
-          )}
+          ) : (
+            <Redirect to='/' />
+          )} */}
         </Wrapper>
       </Switch>
     </>

@@ -33,4 +33,8 @@ export class Team extends BaseEntity {
   @Field(() => [Channel])
   @OneToMany(() => Channel, (channel) => channel.team)
   channels: Channel[];
+
+  @Field()
+  @Column()
+  avatarBackground: string;
 }
