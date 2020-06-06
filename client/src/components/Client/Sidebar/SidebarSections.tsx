@@ -27,9 +27,9 @@ export const SidebarSections: React.FC<Props> = () => {
 
   const location = useLocation();
 
-  const { data, loading, error } = useChannelsQuery({
-    variables: { teamId: location.pathname.split('/')[2] },
-  });
+  // const { data, loading, error } = useChannelsQuery({
+  //   variables: { teamId: location.pathname.split('/')[2] },
+  // });
 
   return (
     <Wrapper>
@@ -39,9 +39,9 @@ export const SidebarSections: React.FC<Props> = () => {
         onReveal={() => {
           setRevealed({ ...revealed, channels: !revealed.channels });
         }}>
-        {!loading && data && (
+        {/* {!loading && data && (
           <>{revealed.channels ? <Channels data={data.channels} /> : null}</>
-        )}
+        )} */}
       </SidebarSection>
       <SidebarSection
         title='Direct mesages'

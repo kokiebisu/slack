@@ -8,19 +8,20 @@ import { buildSchema } from 'type-graphql';
 
 import { createConnection } from 'typeorm';
 
-// import session from 'express-session';
-// import { redis } from './redis';
+import session from 'express-session';
+
 import cors from 'cors';
-// import connectRedis from 'connect-redis';
+import connectRedis from 'connect-redis';
 import { Context } from './interface/context';
 import cookieParser from 'cookie-parser';
 
-import { verify } from 'jsonwebtoken';
-import { User } from './models/User';
-import { createAccessToken, createRefreshToken } from './util/tokenGenerator';
 // import { Team } from './models/Team';
 
 import { Request, Response, NextFunction } from 'express';
+import { redis } from './redis';
+// import { confirmationPrefix } from './constants/redisPrefixes';
+
+import { router as tokenRouter } from './routes/tokenRoutes';
 
 const allowCrossDomain = (req: Request, res: Response, next: NextFunction) => {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -38,47 +39,30 @@ const allowCrossDomain = (req: Request, res: Response, next: NextFunction) => {
 
   app.use(allowCrossDomain);
 
-  /**
-   * Retrieves a new access token based on the given refresh token
-   */
-  app.post('/refresh_token', async (req, res) => {
-    const token = req.cookies.rtoken;
+  app.use('/refresh_token', tokenRouter);
 
-    if (!token) {
-      return res.send({ ok: false, accessToken: '' });
-    }
+  // app.get('/user/confirm/:token', async (req, res) => {
+  //   const token = req.params.token;
 
-    let payload: any = null;
-    try {
-      payload = verify(token, process.env.REFRESH_TOKEN_SECRET!);
-    } catch (err) {
-      console.log(err);
-      return res.send({ ok: false, accessToken: '' });
-    }
+  //   const userId = await redis.get(confirmationPrefix + token);
+  //   if (userId) {
+  //     User.update({ id: parseInt(userId, 10) }, { confirmed: true });
 
-    const user = await User.findOne({ id: payload.userId });
+  //     await redis.del(token);
 
-    if (!user) {
-      return res.send({ ok: false, accessToken: '' });
-    }
-
-    if (user.tokenVersion !== payload.tokenVersion) {
-      return res.send({ ok: false, accessToken: '' });
-    }
-
-    res.cookie('rtoken', createRefreshToken(user), { httpOnly: true });
-
-    return res.send({ ok: true, accessToken: createAccessToken(user) });
-  });
+  //     res.redirect(`http://localhost:3000/create/teamname/${userId}`);
+  //   }
+  // });
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [__dirname + '/graphql/*.ts'],
+      resolvers: [__dirname + '/graphql/**/*.ts'],
     }),
+    // Enable adding cookies to the session
     context: ({ req, res }: Context) => ({ req, res }),
   });
 
-  // const RedisStore = connectRedis(session);
+  const RedisStore = connectRedis(session);
 
   app.use(
     cors({
@@ -87,28 +71,31 @@ const allowCrossDomain = (req: Request, res: Response, next: NextFunction) => {
     })
   );
 
-  // app.use(
-  //   session({
-  //     store: new RedisStore({
-  //       client: redis as any,
-  //     }),
-  //     name: 'qid',
-  //     secret: 'secret',
-  //     resave: false,
-  //     saveUninitialized: false,
-  //     cookie: {
-  //       // httpOnly: true,
-  //       secure: process.env.NODE_ENV === 'production',
-  //       maxAge: 1000 * 60 * 60 * 24 * 7,
-  //     },
-  //   })
-  // );
+  // Session will be added to the request object
+  app.use(
+    session({
+      store: new RedisStore({
+        client: redis as any,
+      }),
+      // cookie
+      name: 'qid',
+      secret: 'secret',
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+        // javascript can't access
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 1000 * 60 * 60 * 24 * 7,
+      },
+    })
+  );
 
   const PORT = process.env.PORT || 4000;
 
   apolloServer.applyMiddleware({ app, cors: false });
 
   app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost${PORT}`);
+    console.log(`Server is running on http://localhost:${PORT}`);
   });
 })();

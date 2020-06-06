@@ -1,7 +1,8 @@
 let token: string;
 
 export const setAccessToken = (s: string) => {
-  token = s;
+  // token = s;
+  localStorage.setItem('token', s);
 };
 
 export const getAccessToken = () => {

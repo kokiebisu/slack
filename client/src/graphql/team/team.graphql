@@ -1,12 +1,11 @@
 query Team($teamId: String!) {
   team(teamId: $teamId) {
-    id
-    name
-    ownerId
-    channels {
+    ok
+    message
+    team {
       id
       name
-      teamId
+      ownerId
     }
   }
 }

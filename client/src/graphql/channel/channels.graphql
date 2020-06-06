@@ -1,7 +1,9 @@
 query Channels($teamId: String!) {
   channels(teamId: $teamId) {
-    id
-    name
-    isPublic
+    ok
+    message
+    channels {
+      name
+    }
   }
 }

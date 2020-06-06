@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 
-export async function sendEmail(email: string, url: string) {
+export async function sendEmail(email: string, digit: number) {
   const testAccount = await nodemailer.createTestAccount();
 
   // create reusable transporter object using the default SMTP transport
@@ -16,11 +16,11 @@ export async function sendEmail(email: string, url: string) {
 
   // send mail with defined transport object
   const info = await transporter.sendMail({
-    from: '"Fred Foo 👻" <foo@example.com>', // sender address
+    from: '"Slack 👻" <slack@example.com>', // sender address
     to: email, // list of receivers
-    subject: 'Hello ✔', // Subject line
-    text: 'Hello world?', // plain text body
-    html: `<a href="${url}">${url}</a>`, // html body
+    subject: 'Slack confirmation', // Subject line
+    // html: `<p>Press the confirmation code in order to create a new workspace</p><a href="${url}">Confirm email address</a>`, // html body
+    html: `the number is ${digit}`,
   });
 
   console.log('Message sent: %s', info.messageId);

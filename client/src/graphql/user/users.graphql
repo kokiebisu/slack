@@ -1,0 +1,10 @@
+query Users {
+  users {
+    ok
+    message
+    users {
+      id
+      username
+    }
+  }
+}

@@ -8,34 +8,24 @@ import * as b from '../styles/blocks';
 import { LogoCenterLayout } from '../components/shared/LogoCenter/layout';
 
 import {
-  useLoginMutation,
   MeDocument,
   MeQuery,
   useMeQuery,
+  useRegisterMutation,
 } from '../generated/graphql';
 import { setAccessToken } from '../global/token';
 import { Warning } from '../assets/svg';
 
 interface Props {}
 
-interface Error {
-  user: any;
-  password: any;
-}
-
 export const GetStartedCreate: React.FC<Props> = () => {
   const history = useHistory();
-  const [error, setError] = useState<Error>({
-    user: false,
-    password: false,
-  });
+  const [error, setError] = useState('');
 
-  let response: any;
-
-  const [login] = useLoginMutation();
+  const [register] = useRegisterMutation();
+  // const [login] = useLoginMutation();
 
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
   return (
     <LogoCenterLayout>
@@ -49,7 +39,7 @@ export const GetStartedCreate: React.FC<Props> = () => {
                   color='black__light'
                   fontFamily='Larsseit-Bold'
                   textAlign='center'>
-                  First, enter your email and password
+                  First, enter your email
                 </b.Text>
               </b.Box>
               <b.Box pt={2} pb={4}>
@@ -66,33 +56,16 @@ export const GetStartedCreate: React.FC<Props> = () => {
               <form
                 onSubmit={async (e) => {
                   e.preventDefault();
+                  const response = await register({ variables: { email } });
 
-                  response = await login({
-                    variables: { email, password },
-                    update: (store, { data }) => {
-                      if (!data) {
-                        return null;
-                      }
-                      store.writeQuery<MeQuery>({
-                        query: MeDocument,
-                        data: {
-                          __typename: 'Query',
-                          me: data.login?.user,
-                        },
-                      });
-                    },
-                  });
-
-                  if (response && response.data.login) {
-                    const errorType = response.data.login.errorType;
-
-                    setError({ user: false, password: false });
-                    setError({ ...error, [errorType]: true });
+                  if (response && response.data && response.data.register.ok) {
+                    history.push({
+                      pathname: '/create/verifyemail',
+                      state: email,
+                    });
                   }
-
-                  if (response && response.data?.login?.ok) {
-                    setAccessToken(response.data.login!.accessToken);
-                    history.push('/create/teamname');
+                  if (response && response.data && !response.data.register.ok) {
+                    setError(response.data.register!.message as string);
                   }
                 }}>
                 <b.Box>
@@ -105,8 +78,8 @@ export const GetStartedCreate: React.FC<Props> = () => {
                         placeholder='name@work-email.com'
                       />
                     </b.Box>
-                    {error.user && (
-                      <ErrorBox backgroundColor='red' width={1}>
+                    {error && (
+                      <ErrorBox backgroundColor='pink__lighter' width={1}>
                         <b.Flex>
                           <IconWrapper mr={2}>
                             <Warning />
@@ -116,31 +89,6 @@ export const GetStartedCreate: React.FC<Props> = () => {
                               fontFamily='SlackLato-Regular'
                               fontSize={14}>
                               Sorry, but that email is invalid
-                            </b.Text>
-                          </b.Box>
-                        </b.Flex>
-                      </ErrorBox>
-                    )}
-                    <b.Box mt={3}>
-                      <Input
-                        onChange={(e) => setPassword(e.target.value)}
-                        type='password'
-                        border='1px solid #868686'
-                        borderRadius={3}
-                        placeholder='password here...'
-                      />
-                    </b.Box>
-                    {error.password && (
-                      <ErrorBox backgroundColor='red' width={1}>
-                        <b.Flex>
-                          <IconWrapper mr={2}>
-                            <Warning />
-                          </IconWrapper>
-                          <b.Box>
-                            <b.Text
-                              fontFamily='SlackLato-Regular'
-                              fontSize={14}>
-                              Sorry, but the password doesn't match
                             </b.Text>
                           </b.Box>
                         </b.Flex>
@@ -178,7 +126,7 @@ const Input = styled(b.Input)`
 
 const ErrorBox = styled(b.Box)`
   width: 370px;
-  background-color: ${({ theme }) => theme.colors.pink__light};
+  background-color: ${({ theme }) => theme.colors.pink__lighter};
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   border: 1px solid ${({ theme }) => theme.colors.pink};
@@ -211,6 +159,9 @@ const IconWrapper = styled(b.Box)`
     width: 15px;
     height: 15px;
     path {
+      fill: ${({ theme }) => theme.colors.pink};
+    }
+    rect {
       fill: ${({ theme }) => theme.colors.pink};
     }
   }

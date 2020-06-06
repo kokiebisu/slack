@@ -27,9 +27,7 @@ export const Register: React.FC<Props> = () => {
         console.log('form submitted');
         const response = await register({
           variables: {
-            username,
             email,
-            password,
           },
         });
 

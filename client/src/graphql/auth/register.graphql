@@ -1,0 +1,6 @@
+mutation Register($email: String!) {
+  register(email: $email) {
+    ok
+    message
+  }
+}

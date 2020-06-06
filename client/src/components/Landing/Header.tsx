@@ -40,8 +40,6 @@ export const Header: React.FC<Props> = () => {
     pricing: false,
   });
 
-  console.log(`randomColor: `, randomColor(avatar));
-
   const { data, loading, error } = useMyTeamsQuery();
 
   const [pressed, setPressed] = useState(false);
@@ -178,7 +176,7 @@ export const Header: React.FC<Props> = () => {
                   <Link>Pricing</Link>
                 </NavItem>
               </Nav>
-              {data && data.myTeams ? (
+              {!loading && data && data.myTeams.ok ? (
                 <LaunchButtonWrapper
                   initial='rest'
                   whileHover='hovered'
@@ -219,16 +217,16 @@ export const Header: React.FC<Props> = () => {
             </Right>
           </b.Flex>
 
-          {pressed ? (
+          {pressed && data?.myTeams.teams ? (
             <LaunchOptionWrapper>
               <LaunchOption>
-                {data?.myTeams.map((team) => {
+                {data?.myTeams.teams!.map((team) => {
                   return (
                     <WorkspaceOption
                       key={team.id}
                       name={team.name}
                       url={team.id}
-                      color={`${randomColor(avatar)}`}
+                      color={team.avatarBackground}
                     />
                   );
                 })}

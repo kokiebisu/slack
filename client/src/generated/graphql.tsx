@@ -25,6 +25,7 @@ export type Team = {
   name: Scalars['String'];
   ownerId: Scalars['Int'];
   channels: Array<Channel>;
+  avatarBackground: Scalars['String'];
 };
 
 export type User = {
@@ -34,22 +35,68 @@ export type User = {
   email: Scalars['String'];
 };
 
-export type LoginResponse = {
-  __typename?: 'LoginResponse';
+export type BaseResponse = {
+  __typename?: 'BaseResponse';
   ok: Scalars['Boolean'];
-  accessToken: Scalars['String'];
+  message?: Maybe<Scalars['String']>;
+};
+
+export type AuthorizationResponse = {
+  __typename?: 'AuthorizationResponse';
+  ok: Scalars['Boolean'];
+  message?: Maybe<Scalars['String']>;
+};
+
+export type ChannelResponse = {
+  __typename?: 'ChannelResponse';
+  ok: Scalars['Boolean'];
+  message?: Maybe<Scalars['String']>;
+  channel?: Maybe<Channel>;
+};
+
+export type ChannelsResponse = {
+  __typename?: 'ChannelsResponse';
+  ok: Scalars['Boolean'];
+  message?: Maybe<Scalars['String']>;
+  channels?: Maybe<Array<Channel>>;
+};
+
+export type TeamResponse = {
+  __typename?: 'TeamResponse';
+  ok: Scalars['Boolean'];
+  message?: Maybe<Scalars['String']>;
+  team?: Maybe<Team>;
+};
+
+export type TeamsResponse = {
+  __typename?: 'TeamsResponse';
+  ok: Scalars['Boolean'];
+  message?: Maybe<Scalars['String']>;
+  teams?: Maybe<Array<Team>>;
+};
+
+export type UserResponse = {
+  __typename?: 'UserResponse';
+  ok: Scalars['Boolean'];
+  message?: Maybe<Scalars['String']>;
   user?: Maybe<User>;
-  errorType?: Maybe<Scalars['String']>;
+};
+
+export type UsersResponse = {
+  __typename?: 'UsersResponse';
+  ok: Scalars['Boolean'];
+  message?: Maybe<Scalars['String']>;
+  users?: Maybe<Array<User>>;
 };
 
 export type Query = {
   __typename?: 'Query';
-  channels: Array<Channel>;
-  teams: Array<Team>;
-  myTeams: Array<Team>;
-  team: Team;
-  me?: Maybe<User>;
-  users: Array<User>;
+  channels: ChannelsResponse;
+  myTeams: TeamsResponse;
+  team: TeamResponse;
+  teams: TeamsResponse;
+  me: UserResponse;
+  users: UsersResponse;
 };
 
 
@@ -64,49 +111,21 @@ export type QueryTeamArgs = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  register: User;
-  login?: Maybe<LoginResponse>;
-  revokeRefreshToken: Scalars['Boolean'];
-  forgotPassword: Scalars['Boolean'];
-  confirmUser: Scalars['Boolean'];
-  changePassword?: Maybe<User>;
-  logout: Scalars['Boolean'];
-  createChannel: Channel;
-  createTeam?: Maybe<Team>;
+  logout: AuthorizationResponse;
+  register: AuthorizationResponse;
+  verifyUser: AuthorizationResponse;
+  createChannel: ChannelResponse;
+  createTeam: TeamResponse;
 };
 
 
 export type MutationRegisterArgs = {
-  password: Scalars['String'];
-  email: Scalars['String'];
-  username: Scalars['String'];
-};
-
-
-export type MutationLoginArgs = {
-  password: Scalars['String'];
   email: Scalars['String'];
 };
 
 
-export type MutationRevokeRefreshTokenArgs = {
-  userId: Scalars['Int'];
-};
-
-
-export type MutationForgotPasswordArgs = {
-  email: Scalars['String'];
-};
-
-
-export type MutationConfirmUserArgs = {
-  token: Scalars['String'];
-};
-
-
-export type MutationChangePasswordArgs = {
-  password: Scalars['String'];
-  token: Scalars['String'];
+export type MutationVerifyUserArgs = {
+  digit: Scalars['Float'];
 };
 
 
@@ -117,8 +136,46 @@ export type MutationCreateChannelArgs = {
 
 
 export type MutationCreateTeamArgs = {
+  avatarBackground: Scalars['String'];
   name: Scalars['String'];
 };
+
+export type LogoutMutationVariables = {};
+
+
+export type LogoutMutation = (
+  { __typename?: 'Mutation' }
+  & { logout: (
+    { __typename?: 'AuthorizationResponse' }
+    & Pick<AuthorizationResponse, 'ok' | 'message'>
+  ) }
+);
+
+export type RegisterMutationVariables = {
+  email: Scalars['String'];
+};
+
+
+export type RegisterMutation = (
+  { __typename?: 'Mutation' }
+  & { register: (
+    { __typename?: 'AuthorizationResponse' }
+    & Pick<AuthorizationResponse, 'ok' | 'message'>
+  ) }
+);
+
+export type VerifyUserMutationVariables = {
+  digit: Scalars['Float'];
+};
+
+
+export type VerifyUserMutation = (
+  { __typename?: 'Mutation' }
+  & { verifyUser: (
+    { __typename?: 'AuthorizationResponse' }
+    & Pick<AuthorizationResponse, 'ok' | 'message'>
+  ) }
+);
 
 export type ChannelsQueryVariables = {
   teamId: Scalars['String'];
@@ -127,10 +184,14 @@ export type ChannelsQueryVariables = {
 
 export type ChannelsQuery = (
   { __typename?: 'Query' }
-  & { channels: Array<(
-    { __typename?: 'Channel' }
-    & Pick<Channel, 'id' | 'name' | 'isPublic'>
-  )> }
+  & { channels: (
+    { __typename?: 'ChannelsResponse' }
+    & Pick<ChannelsResponse, 'ok' | 'message'>
+    & { channels?: Maybe<Array<(
+      { __typename?: 'Channel' }
+      & Pick<Channel, 'name'>
+    )>> }
+  ) }
 );
 
 export type CreateChannelMutationVariables = {
@@ -142,59 +203,31 @@ export type CreateChannelMutationVariables = {
 export type CreateChannelMutation = (
   { __typename?: 'Mutation' }
   & { createChannel: (
-    { __typename?: 'Channel' }
-    & Pick<Channel, 'id' | 'name' | 'teamId'>
+    { __typename?: 'ChannelResponse' }
+    & Pick<ChannelResponse, 'ok' | 'message'>
+    & { channel?: Maybe<(
+      { __typename?: 'Channel' }
+      & Pick<Channel, 'name'>
+    )> }
   ) }
 );
 
 export type CreateTeamMutationVariables = {
   name: Scalars['String'];
+  avatarBackground: Scalars['String'];
 };
 
 
 export type CreateTeamMutation = (
   { __typename?: 'Mutation' }
-  & { createTeam?: Maybe<(
-    { __typename?: 'Team' }
-    & Pick<Team, 'id' | 'name' | 'ownerId'>
-  )> }
-);
-
-export type LoginMutationVariables = {
-  email: Scalars['String'];
-  password: Scalars['String'];
-};
-
-
-export type LoginMutation = (
-  { __typename?: 'Mutation' }
-  & { login?: Maybe<(
-    { __typename?: 'LoginResponse' }
-    & Pick<LoginResponse, 'ok' | 'accessToken' | 'errorType'>
-    & { user?: Maybe<(
-      { __typename?: 'User' }
-      & Pick<User, 'id' | 'username' | 'email'>
+  & { createTeam: (
+    { __typename?: 'TeamResponse' }
+    & Pick<TeamResponse, 'ok' | 'message'>
+    & { team?: Maybe<(
+      { __typename?: 'Team' }
+      & Pick<Team, 'id' | 'name' | 'avatarBackground'>
     )> }
-  )> }
-);
-
-export type LogoutMutationVariables = {};
-
-
-export type LogoutMutation = (
-  { __typename?: 'Mutation' }
-  & Pick<Mutation, 'logout'>
-);
-
-export type MeQueryVariables = {};
-
-
-export type MeQuery = (
-  { __typename?: 'Query' }
-  & { me?: Maybe<(
-    { __typename?: 'User' }
-    & Pick<User, 'id' | 'username' | 'email'>
-  )> }
+  ) }
 );
 
 export type MyTeamsQueryVariables = {};
@@ -202,24 +235,13 @@ export type MyTeamsQueryVariables = {};
 
 export type MyTeamsQuery = (
   { __typename?: 'Query' }
-  & { myTeams: Array<(
-    { __typename?: 'Team' }
-    & Pick<Team, 'id' | 'name'>
-  )> }
-);
-
-export type RegisterMutationVariables = {
-  username: Scalars['String'];
-  email: Scalars['String'];
-  password: Scalars['String'];
-};
-
-
-export type RegisterMutation = (
-  { __typename?: 'Mutation' }
-  & { register: (
-    { __typename?: 'User' }
-    & Pick<User, 'username' | 'email'>
+  & { myTeams: (
+    { __typename?: 'TeamsResponse' }
+    & Pick<TeamsResponse, 'ok' | 'message'>
+    & { teams?: Maybe<Array<(
+      { __typename?: 'Team' }
+      & Pick<Team, 'id' | 'name' | 'avatarBackground'>
+    )>> }
   ) }
 );
 
@@ -231,11 +253,26 @@ export type TeamQueryVariables = {
 export type TeamQuery = (
   { __typename?: 'Query' }
   & { team: (
-    { __typename?: 'Team' }
-    & Pick<Team, 'id' | 'name' | 'ownerId'>
-    & { channels: Array<(
-      { __typename?: 'Channel' }
-      & Pick<Channel, 'id' | 'name' | 'teamId'>
+    { __typename?: 'TeamResponse' }
+    & Pick<TeamResponse, 'ok' | 'message'>
+    & { team?: Maybe<(
+      { __typename?: 'Team' }
+      & Pick<Team, 'id' | 'name' | 'ownerId'>
+    )> }
+  ) }
+);
+
+export type MeQueryVariables = {};
+
+
+export type MeQuery = (
+  { __typename?: 'Query' }
+  & { me: (
+    { __typename?: 'UserResponse' }
+    & Pick<UserResponse, 'ok' | 'message'>
+    & { user?: Maybe<(
+      { __typename?: 'User' }
+      & Pick<User, 'id' | 'username' | 'email'>
     )> }
   ) }
 );
@@ -245,19 +282,123 @@ export type UsersQueryVariables = {};
 
 export type UsersQuery = (
   { __typename?: 'Query' }
-  & { users: Array<(
-    { __typename?: 'User' }
-    & Pick<User, 'id' | 'username' | 'email'>
-  )> }
+  & { users: (
+    { __typename?: 'UsersResponse' }
+    & Pick<UsersResponse, 'ok' | 'message'>
+    & { users?: Maybe<Array<(
+      { __typename?: 'User' }
+      & Pick<User, 'id' | 'username'>
+    )>> }
+  ) }
 );
 
 
+export const LogoutDocument = gql`
+    mutation Logout {
+  logout {
+    ok
+    message
+  }
+}
+    `;
+export type LogoutMutationFn = ApolloReactCommon.MutationFunction<LogoutMutation, LogoutMutationVariables>;
+
+/**
+ * __useLogoutMutation__
+ *
+ * To run a mutation, you first call `useLogoutMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLogoutMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [logoutMutation, { data, loading, error }] = useLogoutMutation({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useLogoutMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LogoutMutation, LogoutMutationVariables>) {
+        return ApolloReactHooks.useMutation<LogoutMutation, LogoutMutationVariables>(LogoutDocument, baseOptions);
+      }
+export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>;
+export type LogoutMutationResult = ApolloReactCommon.MutationResult<LogoutMutation>;
+export type LogoutMutationOptions = ApolloReactCommon.BaseMutationOptions<LogoutMutation, LogoutMutationVariables>;
+export const RegisterDocument = gql`
+    mutation Register($email: String!) {
+  register(email: $email) {
+    ok
+    message
+  }
+}
+    `;
+export type RegisterMutationFn = ApolloReactCommon.MutationFunction<RegisterMutation, RegisterMutationVariables>;
+
+/**
+ * __useRegisterMutation__
+ *
+ * To run a mutation, you first call `useRegisterMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useRegisterMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [registerMutation, { data, loading, error }] = useRegisterMutation({
+ *   variables: {
+ *      email: // value for 'email'
+ *   },
+ * });
+ */
+export function useRegisterMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<RegisterMutation, RegisterMutationVariables>) {
+        return ApolloReactHooks.useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument, baseOptions);
+      }
+export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>;
+export type RegisterMutationResult = ApolloReactCommon.MutationResult<RegisterMutation>;
+export type RegisterMutationOptions = ApolloReactCommon.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>;
+export const VerifyUserDocument = gql`
+    mutation VerifyUser($digit: Float!) {
+  verifyUser(digit: $digit) {
+    ok
+    message
+  }
+}
+    `;
+export type VerifyUserMutationFn = ApolloReactCommon.MutationFunction<VerifyUserMutation, VerifyUserMutationVariables>;
+
+/**
+ * __useVerifyUserMutation__
+ *
+ * To run a mutation, you first call `useVerifyUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useVerifyUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [verifyUserMutation, { data, loading, error }] = useVerifyUserMutation({
+ *   variables: {
+ *      digit: // value for 'digit'
+ *   },
+ * });
+ */
+export function useVerifyUserMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<VerifyUserMutation, VerifyUserMutationVariables>) {
+        return ApolloReactHooks.useMutation<VerifyUserMutation, VerifyUserMutationVariables>(VerifyUserDocument, baseOptions);
+      }
+export type VerifyUserMutationHookResult = ReturnType<typeof useVerifyUserMutation>;
+export type VerifyUserMutationResult = ApolloReactCommon.MutationResult<VerifyUserMutation>;
+export type VerifyUserMutationOptions = ApolloReactCommon.BaseMutationOptions<VerifyUserMutation, VerifyUserMutationVariables>;
 export const ChannelsDocument = gql`
     query Channels($teamId: String!) {
   channels(teamId: $teamId) {
-    id
-    name
-    isPublic
+    ok
+    message
+    channels {
+      name
+    }
   }
 }
     `;
@@ -290,9 +431,11 @@ export type ChannelsQueryResult = ApolloReactCommon.QueryResult<ChannelsQuery, C
 export const CreateChannelDocument = gql`
     mutation CreateChannel($name: String!, $teamId: String!) {
   createChannel(name: $name, teamId: $teamId) {
-    id
-    name
-    teamId
+    ok
+    message
+    channel {
+      name
+    }
   }
 }
     `;
@@ -323,11 +466,15 @@ export type CreateChannelMutationHookResult = ReturnType<typeof useCreateChannel
 export type CreateChannelMutationResult = ApolloReactCommon.MutationResult<CreateChannelMutation>;
 export type CreateChannelMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateChannelMutation, CreateChannelMutationVariables>;
 export const CreateTeamDocument = gql`
-    mutation CreateTeam($name: String!) {
-  createTeam(name: $name) {
-    id
-    name
-    ownerId
+    mutation CreateTeam($name: String!, $avatarBackground: String!) {
+  createTeam(name: $name, avatarBackground: $avatarBackground) {
+    ok
+    message
+    team {
+      id
+      name
+      avatarBackground
+    }
   }
 }
     `;
@@ -347,6 +494,7 @@ export type CreateTeamMutationFn = ApolloReactCommon.MutationFunction<CreateTeam
  * const [createTeamMutation, { data, loading, error }] = useCreateTeamMutation({
  *   variables: {
  *      name: // value for 'name'
+ *      avatarBackground: // value for 'avatarBackground'
  *   },
  * });
  */
@@ -356,114 +504,16 @@ export function useCreateTeamMutation(baseOptions?: ApolloReactHooks.MutationHoo
 export type CreateTeamMutationHookResult = ReturnType<typeof useCreateTeamMutation>;
 export type CreateTeamMutationResult = ApolloReactCommon.MutationResult<CreateTeamMutation>;
 export type CreateTeamMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateTeamMutation, CreateTeamMutationVariables>;
-export const LoginDocument = gql`
-    mutation Login($email: String!, $password: String!) {
-  login(email: $email, password: $password) {
-    ok
-    accessToken
-    user {
-      id
-      username
-      email
-    }
-    errorType
-  }
-}
-    `;
-export type LoginMutationFn = ApolloReactCommon.MutationFunction<LoginMutation, LoginMutationVariables>;
-
-/**
- * __useLoginMutation__
- *
- * To run a mutation, you first call `useLoginMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useLoginMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [loginMutation, { data, loading, error }] = useLoginMutation({
- *   variables: {
- *      email: // value for 'email'
- *      password: // value for 'password'
- *   },
- * });
- */
-export function useLoginMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LoginMutation, LoginMutationVariables>) {
-        return ApolloReactHooks.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, baseOptions);
-      }
-export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
-export type LoginMutationResult = ApolloReactCommon.MutationResult<LoginMutation>;
-export type LoginMutationOptions = ApolloReactCommon.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
-export const LogoutDocument = gql`
-    mutation Logout {
-  logout
-}
-    `;
-export type LogoutMutationFn = ApolloReactCommon.MutationFunction<LogoutMutation, LogoutMutationVariables>;
-
-/**
- * __useLogoutMutation__
- *
- * To run a mutation, you first call `useLogoutMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useLogoutMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [logoutMutation, { data, loading, error }] = useLogoutMutation({
- *   variables: {
- *   },
- * });
- */
-export function useLogoutMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LogoutMutation, LogoutMutationVariables>) {
-        return ApolloReactHooks.useMutation<LogoutMutation, LogoutMutationVariables>(LogoutDocument, baseOptions);
-      }
-export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>;
-export type LogoutMutationResult = ApolloReactCommon.MutationResult<LogoutMutation>;
-export type LogoutMutationOptions = ApolloReactCommon.BaseMutationOptions<LogoutMutation, LogoutMutationVariables>;
-export const MeDocument = gql`
-    query Me {
-  me {
-    id
-    username
-    email
-  }
-}
-    `;
-
-/**
- * __useMeQuery__
- *
- * To run a query within a React component, call `useMeQuery` and pass it any options that fit your needs.
- * When your component renders, `useMeQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useMeQuery({
- *   variables: {
- *   },
- * });
- */
-export function useMeQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<MeQuery, MeQueryVariables>) {
-        return ApolloReactHooks.useQuery<MeQuery, MeQueryVariables>(MeDocument, baseOptions);
-      }
-export function useMeLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<MeQuery, MeQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, baseOptions);
-        }
-export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
-export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
-export type MeQueryResult = ApolloReactCommon.QueryResult<MeQuery, MeQueryVariables>;
 export const MyTeamsDocument = gql`
     query MyTeams {
   myTeams {
-    id
-    name
+    ok
+    message
+    teams {
+      id
+      name
+      avatarBackground
+    }
   }
 }
     `;
@@ -492,51 +542,15 @@ export function useMyTeamsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHook
 export type MyTeamsQueryHookResult = ReturnType<typeof useMyTeamsQuery>;
 export type MyTeamsLazyQueryHookResult = ReturnType<typeof useMyTeamsLazyQuery>;
 export type MyTeamsQueryResult = ApolloReactCommon.QueryResult<MyTeamsQuery, MyTeamsQueryVariables>;
-export const RegisterDocument = gql`
-    mutation Register($username: String!, $email: String!, $password: String!) {
-  register(username: $username, email: $email, password: $password) {
-    username
-    email
-  }
-}
-    `;
-export type RegisterMutationFn = ApolloReactCommon.MutationFunction<RegisterMutation, RegisterMutationVariables>;
-
-/**
- * __useRegisterMutation__
- *
- * To run a mutation, you first call `useRegisterMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useRegisterMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [registerMutation, { data, loading, error }] = useRegisterMutation({
- *   variables: {
- *      username: // value for 'username'
- *      email: // value for 'email'
- *      password: // value for 'password'
- *   },
- * });
- */
-export function useRegisterMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<RegisterMutation, RegisterMutationVariables>) {
-        return ApolloReactHooks.useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument, baseOptions);
-      }
-export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>;
-export type RegisterMutationResult = ApolloReactCommon.MutationResult<RegisterMutation>;
-export type RegisterMutationOptions = ApolloReactCommon.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>;
 export const TeamDocument = gql`
     query Team($teamId: String!) {
   team(teamId: $teamId) {
-    id
-    name
-    ownerId
-    channels {
+    ok
+    message
+    team {
       id
       name
-      teamId
+      ownerId
     }
   }
 }
@@ -567,12 +581,53 @@ export function useTeamLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOpt
 export type TeamQueryHookResult = ReturnType<typeof useTeamQuery>;
 export type TeamLazyQueryHookResult = ReturnType<typeof useTeamLazyQuery>;
 export type TeamQueryResult = ApolloReactCommon.QueryResult<TeamQuery, TeamQueryVariables>;
+export const MeDocument = gql`
+    query Me {
+  me {
+    ok
+    message
+    user {
+      id
+      username
+      email
+    }
+  }
+}
+    `;
+
+/**
+ * __useMeQuery__
+ *
+ * To run a query within a React component, call `useMeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMeQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useMeQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<MeQuery, MeQueryVariables>) {
+        return ApolloReactHooks.useQuery<MeQuery, MeQueryVariables>(MeDocument, baseOptions);
+      }
+export function useMeLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<MeQuery, MeQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, baseOptions);
+        }
+export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
+export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
+export type MeQueryResult = ApolloReactCommon.QueryResult<MeQuery, MeQueryVariables>;
 export const UsersDocument = gql`
     query Users {
   users {
-    id
-    username
-    email
+    ok
+    message
+    users {
+      id
+      username
+    }
   }
 }
     `;

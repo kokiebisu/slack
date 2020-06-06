@@ -14,6 +14,10 @@ import {
   useCreateChannelMutation,
 } from '../generated/graphql';
 import { useClientDispatch, useClientState } from '../context/client-context';
+import { randomColor } from '../util/randomColor';
+import { avatar } from '../styles/colors';
+import { ConfirmDigit } from '../pages/ConfirmDigit';
+import { getAccessToken } from '../global/token';
 
 interface Props {}
 
@@ -21,6 +25,8 @@ export const CreateRoutes: React.SFC = () => {
   const history = useHistory();
   const match = useRouteMatch();
   const [input, setInput] = useState('');
+
+  const avatarBackground = randomColor(avatar);
 
   /**
    * Context
@@ -32,14 +38,18 @@ export const CreateRoutes: React.SFC = () => {
    * Query
    */
   const { data, loading, error } = useMeQuery();
+
   const [createTeam] = useCreateTeamMutation();
   const [createChannel] = useCreateChannelMutation();
 
   return (
     <>
       <Switch>
+        <Route path={match.url + '/verifyemail'}>
+          <ConfirmDigit />
+        </Route>
         <Route path={match.url + '/teamname'}>
-          {data?.me?.id ? (
+          {data && data.me.ok ? (
             <CreateTeamLayout
               input={input}
               modifyInput={setInput}
@@ -53,7 +63,7 @@ export const CreateRoutes: React.SFC = () => {
                 setInput('');
                 history.push('/create/channelname');
               }}
-              authenticated={data?.me?.id}
+              authenticated={data?.me?.ok}
             />
           ) : (
             <Redirect to='/get-started' />
@@ -93,38 +103,42 @@ export const CreateRoutes: React.SFC = () => {
               transaction={async (e) => {
                 e.preventDefault();
                 // create team query
+
                 const { data } = await createTeam({
-                  variables: { name: team },
+                  variables: {
+                    name: team,
+                    avatarBackground,
+                  },
                 });
-                // create channel query
-                if (data?.createTeam?.id) {
+
+                if (data && data?.createTeam?.team!.id) {
                   dispatchClient({
                     type: 'add_teamid',
-                    payload: data.createTeam.id,
+                    payload: data.createTeam.team.id,
                   });
 
                   await createChannel({
                     variables: {
                       name: 'general',
-                      teamId: data.createTeam.id,
+                      teamId: data.createTeam.team.id,
                     },
                   });
 
                   await createChannel({
                     variables: {
                       name: 'random',
-                      teamId: data.createTeam.id,
+                      teamId: data.createTeam.team.id,
                     },
                   });
 
                   await createChannel({
                     variables: {
                       name: channel,
-                      teamId: data.createTeam.id,
+                      teamId: data.createTeam.team.id,
                     },
                   });
 
-                  history.push(`/client/${data.createTeam.id}`);
+                  history.push(`/client/${data.createTeam.team.id}`);
                 }
               }}
             />
