@@ -10,11 +10,10 @@
 
 <br>
 
-
 Does this:
 
--   Creates Channels based on the team
--   Chatting functionalities
+- Creates Channels based on the team
+- Chatting functionalities
 
 ...and a whole lot more.
 
@@ -23,11 +22,13 @@ Does this:
 ### Quick start
 
 Client
+
 ```
 cd client && npm install
 ```
 
 Server
+
 ```
 cd server && npm install
 ```
@@ -39,28 +40,29 @@ Not Deployed Yet
 ### Built With
 
 Language
-* [Typescript](https://reactjs.org/) - Javascript library
+
+- [Typescript](https://www.typescriptlang.org/) - Superset of Javascript
 
 Client
-* [React](https://reactjs.org/) - Javascript library
-* [Apollo Client](https://www.apollographql.com/docs/react/) - Graphql Client
-* [Styled Components](https://styled-components.com) - Styling
-* [Styled System](https://styled-system.com) - Consistency in Styles
-* [Framer Motion](https://www.framer.com/motion/) - Animations
 
+- [React](https://reactjs.org/) - Javascript library
+- [Apollo Client](https://www.apollographql.com/docs/react/) - Graphql Client
+- [Styled Components](https://styled-components.com) - Styling
+- [Styled System](https://styled-system.com) - Atomic Design Approach
+- [Framer Motion](https://www.framer.com/motion/) - Animations
 
 Server
-* [TypeGraphql]() - Graphql Server
-* [TypeORM](https://typeorm.io/) - Object Relational Mapper
-* [Express](https://expressjs.com/) - Node Server
-* [Apollo Server](https://www.apollographql.com/server/) - Graphql server
-* [PostgreSQL](https://www.typescriptlang.org/) - Superset of Javascript
 
-
+- [TypeGraphql](https://typegraphql.com) - Code First Development Approach
+- [TypeORM](https://typeorm.io/) - Object Relational Mapper
+- [Express](https://expressjs.com/) - Node Server
+- [Apollo Server](https://www.apollographql.com/server/) - Graphql server
+- [PostgreSQL](https://www.postgresql.org) - Database
+- [Redis](https://redis.io) - Caching
 
 ## Authors
 
-* **kokoaj** - [kokoaj](https://github.com/kokiebisu)
+- **kokoaj** - [kokoaj](https://github.com/kokiebisu)
 
 ## License
 
@@ -68,4 +70,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* [slack](https://slack.com) - inspiration & images
+- [slack](https://slack.com) - inspiration & images
