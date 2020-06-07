@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { useState, useEffect } from 'react';
 import { RouteComponentProps, useHistory } from 'react-router-dom';
 
@@ -21,6 +21,7 @@ interface Props {}
 export const GetStartedCreate: React.FC<Props> = () => {
   const history = useHistory();
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const [register] = useRegisterMutation();
   // const [login] = useLoginMutation();
@@ -56,6 +57,7 @@ export const GetStartedCreate: React.FC<Props> = () => {
               <form
                 onSubmit={async (e) => {
                   e.preventDefault();
+                  setLoading(true);
                   const response = await register({ variables: { email } });
 
                   if (response && response.data && response.data.register.ok) {
@@ -97,13 +99,47 @@ export const GetStartedCreate: React.FC<Props> = () => {
                   </b.Flex>
                 </b.Box>
                 <b.Box my={3}>
-                  <b.Flex justifyContent='center'>
-                    <ConfirmButton type='submit'>
-                      <b.Text color='white' fontFamily='SlackLato-Bold'>
-                        Confirm
-                      </b.Text>
-                    </ConfirmButton>
-                  </b.Flex>
+                  <b.Box>
+                    <b.Flex justifyContent='center'>
+                      <ConfirmButton
+                        className='confirmbutton'
+                        type='submit'
+                        disabled={loading}>
+                        <b.Flex justifyContent='center' alignItems='center'>
+                          <b.Box
+                            variants={confirmVariants}
+                            animate={loading ? 'loading' : 'loaded'}>
+                            <b.Text color='white' fontFamily='SlackLato-Bold'>
+                              Confirm
+                            </b.Text>
+                          </b.Box>
+                          {loading ? (
+                            <DotWrapper
+                              animate={{ opacity: 1 }}
+                              initial={{ opacity: 0 }}>
+                              <DotContainer
+                                variants={DotContainterVariants}
+                                initial='start'
+                                animate='end'>
+                                <Dot
+                                  variants={DotVariants}
+                                  transition={DotTransition}
+                                />
+                                <Dot
+                                  variants={DotVariants}
+                                  transition={DotTransition}
+                                />
+                                <Dot
+                                  variants={DotVariants}
+                                  transition={DotTransition}
+                                />
+                              </DotContainer>
+                            </DotWrapper>
+                          ) : null}
+                        </b.Flex>
+                      </ConfirmButton>
+                    </b.Flex>
+                  </b.Box>
                 </b.Box>
               </form>
             </b.Box>
@@ -112,6 +148,45 @@ export const GetStartedCreate: React.FC<Props> = () => {
       </b.Box>
     </LogoCenterLayout>
   );
+};
+// Animations
+const DotContainterVariants = {
+  start: {
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+  end: {
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const DotVariants = {
+  start: {
+    y: 0,
+  },
+  end: {
+    y: 5,
+  },
+};
+
+const DotTransition = {
+  duration: 0.5,
+  yoyo: Infinity,
+  ease: 'easeInOut',
+};
+
+const DotWrapper = styled(b.Box)``;
+
+const confirmVariants = {
+  loading: {
+    x: -10,
+  },
+  loaded: {
+    x: 0,
+  },
 };
 
 const Wrapper = styled(b.Box)`
@@ -145,6 +220,19 @@ const ConfirmButton = styled(b.Button)`
   }
 `;
 
+const DotContainer = styled(b.Box)`
+  display: flex;
+  align-items: center;
+`;
+
+const Dot = styled(b.Box)`
+  background-color: white;
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  margin: 0 2px;
+`;
+
 const CheckboxArea = styled(b.Box)`
   width: 350px;
 `;
@@ -166,3 +254,8 @@ const IconWrapper = styled(b.Box)`
     }
   }
 `;
+
+const dot = {
+  initial: {},
+  animate: {},
+};
