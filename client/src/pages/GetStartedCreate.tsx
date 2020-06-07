@@ -16,6 +16,13 @@ import {
 import { Warning } from '../assets/svg';
 import { validationVariant } from '../animations/passwordValidationBar';
 
+import {
+  weakRegex,
+  mediumRegex,
+  strongRegex,
+  veryStrongRegex,
+} from '../util/passwordUtil';
+
 interface Props {}
 
 export const GetStartedCreate: React.FC<Props> = () => {
@@ -31,42 +38,25 @@ export const GetStartedCreate: React.FC<Props> = () => {
   const [password, setPassword] = useState('');
 
   const textValidation = () => {
-    if (password.length > 0 && password.length <= 1) {
-      return 'weak';
-    } else if (password.length > 1 && password.length <= 2) {
-      return 'soso';
-    } else if (password.length > 2 && password.length <= 3) {
-      return 'good';
-    } else if (password.length > 3) {
-      return 'great';
-    }
-  };
-
-  const weakValidation = () => {
-    // condition
-    if (password.length > 0 && password.length <= 1) {
-      return 'weak';
-    }
-  };
-
-  const sosoValidation = () => {
-    // condition
-    if (password.length > 1 && password.length <= 2) {
-      return 'weak soso';
-    }
-  };
-
-  const goodValidation = () => {
-    // condition
-    if (password.length > 2 && password.length <= 3) {
-      return 'weak soso good';
-    }
-  };
-
-  const greatValidation = () => {
-    // condition
-    if (password.length > 3 && password.length <= 4) {
-      return 'weak soso good great';
+    if (
+      password.match(weakRegex) &&
+      password.match(mediumRegex) &&
+      password.match(strongRegex) &&
+      password.match(veryStrongRegex)
+    ) {
+      return 'Great';
+    } else if (
+      password.match(weakRegex) &&
+      password.match(mediumRegex) &&
+      password.match(strongRegex)
+    ) {
+      return 'Good';
+    } else if (password.match(weakRegex) && password.match(mediumRegex)) {
+      return 'Soso';
+    } else if (password.match(weakRegex)) {
+      return 'Weak';
+    } else {
+      return 'Not valid';
     }
   };
 
@@ -165,21 +155,17 @@ export const GetStartedCreate: React.FC<Props> = () => {
                   <b.Flex justifyContent='center'>
                     <PasswordValidationWrapper>
                       <PasswordValidation
-                        animate={weakValidation() ? 'satisfied' : 'unsatisfied'}
-                        variants={validationVariant}
+                        className={password.match(weakRegex) ? 'cleared' : ''}
                       />
                       <PasswordValidation
-                        animate={sosoValidation() ? 'satisfied' : 'unsatisfied'}
-                        variants={validationVariant}
+                        className={password.match(mediumRegex) ? 'cleared' : ''}
                       />
                       <PasswordValidation
-                        animate={goodValidation() ? 'satisfied' : 'unsatisfied'}
-                        variants={validationVariant}
+                        className={password.match(strongRegex) ? 'cleared' : ''}
                       />
                       <PasswordValidation
-                        variants={validationVariant}
-                        animate={
-                          greatValidation() ? 'satisfied' : 'unsatisfied'
+                        className={
+                          password.match(veryStrongRegex) ? 'cleared' : ''
                         }
                       />
                     </PasswordValidationWrapper>
@@ -404,9 +390,8 @@ const PasswordValidation = styled(b.Box)`
   height: 4px;
   border-radius: 3px;
   background-color: ${({ theme }) => theme.colors.gray__lighter};
-
   &.cleared {
-    background-color: ${({ theme }) => theme.colors.blue__light} !important;
+    background-color: ${({ theme }) => theme.colors.blue};
   }
 `;
 
