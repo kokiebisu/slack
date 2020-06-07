@@ -232,6 +232,7 @@ const Wrapper = styled(b.Box)`
   top: 96px;
   left: 15px;
   z-index: 9999;
+  max-height: 600px;
   height: calc(100vh - 130px);
   background-color: ${({ theme }) => theme.colors.white__dark};
   border-radius: 10px;
