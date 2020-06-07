@@ -5,7 +5,7 @@ import { TeamsResponse } from '../response/teamResponse';
 @Resolver()
 export class TeamsResolver {
   @Query(() => TeamsResponse)
-  async teams(): Promise<TeamsResponse> {
+  async teams(): Promise<TeamsResponse | Error> {
     try {
       const teams = await Team.find();
       return {
@@ -13,11 +13,7 @@ export class TeamsResolver {
         teams,
       };
     } catch (err) {
-      return {
-        ok: false,
-        message: 'error when finding teams',
-        teams: null,
-      };
+      throw new Error('error when finding teams');
     }
   }
 }

@@ -8,7 +8,7 @@ import { TeamsResponse } from '../response/teamResponse';
 export class MyTeamsResolver {
   @UseMiddleware(isAuth)
   @Query(() => TeamsResponse)
-  async myTeams(@Ctx() { req }: Context): Promise<TeamsResponse> {
+  async myTeams(@Ctx() { req }: Context): Promise<TeamsResponse | Error> {
     try {
       const userId = req.session!.userId;
       const teams = await Team.find({ ownerId: userId });
@@ -17,11 +17,7 @@ export class MyTeamsResolver {
         teams,
       };
     } catch (err) {
-      return {
-        ok: false,
-        message: 'error occured when finding team',
-        teams: null,
-      };
+      throw new Error('error occured when finding my team');
     }
   }
 }

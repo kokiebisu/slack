@@ -5,7 +5,7 @@ import { UsersResponse } from '../response/userResponse';
 @Resolver()
 export class UsersResolver {
   @Query(() => UsersResponse)
-  async users(): Promise<UsersResponse> {
+  async users(): Promise<UsersResponse | Error> {
     try {
       const users = await User.find();
       return {

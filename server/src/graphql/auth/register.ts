@@ -8,10 +8,11 @@ import { AuthorizationResponse } from '../response/authResponse';
 
 export class RegisterResolver {
   @Mutation(() => AuthorizationResponse)
-  async register(@Arg('email') email: string): Promise<AuthorizationResponse> {
-    const username = email.split('@')[0];
-
+  async register(
+    @Arg('email') email: string
+  ): Promise<AuthorizationResponse | Error> {
     try {
+      const username = email.split('@')[0];
       const user = await User.create({
         username,
         email,
@@ -37,10 +38,7 @@ export class RegisterResolver {
         message: 'successful',
       };
     } catch (err) {
-      return {
-        ok: false,
-        message: 'there is already a user',
-      };
+      throw new Error('error occured when registering user');
     }
   }
 }

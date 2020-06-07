@@ -12,7 +12,7 @@ export class CreateTeamResolver {
     @Arg('name') name: string,
     @Arg('avatarBackground') avatarBackground: string,
     @Ctx() { req }: Context
-  ): Promise<TeamResponse> {
+  ): Promise<TeamResponse | Error> {
     try {
       const userId = req.session!.userId;
 
@@ -27,12 +27,7 @@ export class CreateTeamResolver {
         team,
       };
     } catch (err) {
-      console.log(err);
-      return {
-        ok: false,
-        message: 'error occured when creating the team',
-        team: null,
-      };
+      throw new Error('error occured when creating the team');
     }
   }
 }

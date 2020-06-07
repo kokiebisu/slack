@@ -5,21 +5,25 @@ import { TeamResponse } from '../response/teamResponse';
 @Resolver()
 export class TeamResolver {
   @Query(() => TeamResponse)
-  async team(@Arg('teamId') teamId: string): Promise<TeamResponse> {
-    const team = await Team.findOne(
-      { id: teamId },
-      { relations: ['channels'] }
-    );
-    if (!team) {
+  async team(@Arg('teamId') teamId: string): Promise<TeamResponse | Error> {
+    try {
+      const team = await Team.findOne(
+        { id: teamId },
+        { relations: ['channels'] }
+      );
+      if (!team) {
+        return {
+          ok: false,
+          message: 'no teams found',
+          team: null,
+        };
+      }
       return {
-        ok: false,
-        message: 'no teams found',
-        team: null,
+        ok: true,
+        team,
       };
+    } catch (err) {
+      throw new Error('error when finding team');
     }
-    return {
-      ok: true,
-      team,
-    };
   }
 }

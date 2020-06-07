@@ -11,29 +11,23 @@ export class CreateChannelResolver {
   async createChannel(
     @Arg('name') name: string,
     @Arg('teamId') teamId: string
-  ): Promise<ChannelResponse | null> {
-    const team = await Team.findOne(teamId);
-    if (!team) {
-      return {
-        ok: false,
-        message: 'no team was found',
-        channel: null,
-      };
-    }
-
+  ): Promise<ChannelResponse | Error> {
     try {
+      const team = await Team.findOne(teamId);
+      if (!team) {
+        return {
+          ok: false,
+          message: 'no team was found',
+          channel: null,
+        };
+      }
       const channel = await Channel.create({ name, teamId }).save();
       return {
         ok: true,
         channel,
       };
     } catch (err) {
-      console.log(err);
-      return {
-        ok: true,
-        message: 'cannot create channel',
-        channel: null,
-      };
+      throw new Error('error occured when creating channel');
     }
   }
 }

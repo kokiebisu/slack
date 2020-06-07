@@ -14,7 +14,11 @@ export class MeResolver {
       const user = await User.findOne(userId);
 
       if (!user) {
-        throw new Error('cannot find user');
+        return {
+          ok: false,
+          user: null,
+          message: 'user was not found',
+        };
       }
 
       return {

@@ -7,7 +7,9 @@ import { isAuth } from '../../middleware/isAuthenticated';
 export class ChannelsResolver {
   @UseMiddleware(isAuth)
   @Query(() => ChannelsResponse)
-  async channels(@Arg('teamId') teamId: string): Promise<ChannelsResponse> {
+  async channels(
+    @Arg('teamId') teamId: string
+  ): Promise<ChannelsResponse | Error> {
     try {
       const channels = await Channel.find({ where: { teamId } });
       return {
@@ -15,11 +17,7 @@ export class ChannelsResolver {
         channels,
       };
     } catch (err) {
-      return {
-        ok: false,
-        message: 'cannot find channels',
-        channels: null,
-      };
+      throw new Error('error occured when finding channels');
     }
   }
 }

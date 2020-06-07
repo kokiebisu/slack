@@ -3,7 +3,11 @@ import { Context } from '../interface/context';
 
 export const isAuth: MiddlewareFn<Context> = async ({ context }, next) => {
   if (!context.req.session!.userId) {
-    throw new Error('cannot extract userid from session');
+    return {
+      ok: false,
+      message: 'cannot extract userid from session',
+      user: null,
+    };
   }
   return next();
 };
