@@ -13,11 +13,7 @@ export class UsersResolver {
         users,
       };
     } catch (err) {
-      return {
-        ok: false,
-        message: 'error occured when finding users',
-        users: null,
-      };
+      throw new Error('error occured when finding users');
     }
   }
 }

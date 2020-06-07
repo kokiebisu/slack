@@ -28,7 +28,10 @@ export const ConfirmDigit = () => {
             }
 
             if (response && response.data?.verifyUser.ok) {
-              history.push('/create/teamname');
+              history.push({
+                pathname: '/create/teamname',
+                state: { authenticated: true },
+              });
             }
           } catch (err) {
             setError('something went awfully wrong');

@@ -6,6 +6,7 @@ import {
   Redirect,
   useRouteMatch,
   useHistory,
+  useLocation,
 } from 'react-router-dom';
 import { CreateTeamLayout } from '../components/CreateTeam/layout';
 import {
@@ -25,6 +26,7 @@ export const CreateRoutes: React.SFC = () => {
   const history = useHistory();
   const match = useRouteMatch();
   const [input, setInput] = useState('');
+  const location: any = useLocation();
 
   const avatarBackground = randomColor(avatar);
 
@@ -42,6 +44,8 @@ export const CreateRoutes: React.SFC = () => {
   const [createTeam] = useCreateTeamMutation();
   const [createChannel] = useCreateChannelMutation();
 
+  console.log(data);
+
   return (
     <>
       <Switch>
@@ -49,7 +53,7 @@ export const CreateRoutes: React.SFC = () => {
           <ConfirmDigit />
         </Route>
         <Route path={match.url + '/teamname'}>
-          {data && data.me.ok ? (
+          {location.state! && location.state!.authenticated !== undefined ? (
             <CreateTeamLayout
               input={input}
               modifyInput={setInput}

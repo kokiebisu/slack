@@ -8,17 +8,13 @@ import { UserResponse } from '../response/userResponse';
 export class MeResolver {
   @UseMiddleware(isAuth)
   @Query(() => UserResponse)
-  async me(@Ctx() { req }: Context): Promise<UserResponse> {
+  async me(@Ctx() { req }: Context): Promise<UserResponse | Error> {
     try {
       const userId = req.session!.userId;
       const user = await User.findOne(userId);
 
       if (!user) {
-        return {
-          ok: false,
-          message: 'cannot find user',
-          user: null,
-        };
+        throw new Error('cannot find user');
       }
 
       return {
@@ -26,11 +22,7 @@ export class MeResolver {
         user,
       };
     } catch (err) {
-      return {
-        ok: false,
-        message: 'error occured when finding user',
-        user: null,
-      };
+      throw new Error('something wrong happened');
     }
   }
 }
