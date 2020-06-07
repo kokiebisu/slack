@@ -221,6 +221,8 @@ const ConfirmButton = styled(b.Button)`
 `;
 
 const DotContainer = styled(b.Box)`
+  position: relative;
+  bottom: 2px;
   display: flex;
   align-items: center;
 `;

@@ -176,7 +176,7 @@ export const Header: React.FC<Props> = () => {
                   <Link>Pricing</Link>
                 </NavItem>
               </Nav>
-              {!loading && data && data.myTeams.ok ? (
+              {!loading && data && data.myTeams.teams!.length > 0 ? (
                 <LaunchButtonWrapper
                   initial='rest'
                   whileHover='hovered'
