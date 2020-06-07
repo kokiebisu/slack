@@ -11,6 +11,7 @@ import { GetStartedRoutes } from './GetStarted';
 import { ClientRoutes } from './Client';
 import { Logout } from '../pages/Logout';
 import { Register } from '../pages/Register';
+import { ConfirmDigit } from '../pages/ConfirmDigit';
 
 export const AppRoutes: React.SFC = (): JSX.Element => {
   return (
