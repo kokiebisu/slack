@@ -17,7 +17,7 @@ export class User extends BaseEntity {
 
   @Field()
   @Column()
-  username: string;
+  fullname: string;
 
   @Field()
   @Column('text', { unique: true })
@@ -31,4 +31,7 @@ export class User extends BaseEntity {
 
   @OneToMany(() => Team, (team) => team.ownerId)
   teams: Team[];
+
+  @Column()
+  password: string;
 }
