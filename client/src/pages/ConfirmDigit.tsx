@@ -6,6 +6,8 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { LogoCenterLayout } from '../components/shared/LogoCenter/layout';
 
 import * as b from '../styles/blocks';
+import { Outlook, Gmail } from '../assets/svg/Logo';
+import { Warning } from '../assets/svg';
 
 export const ConfirmDigit = () => {
   const input_1: any = useRef(null);
@@ -18,7 +20,7 @@ export const ConfirmDigit = () => {
 
   const history = useHistory();
   const [error, setError] = useState('');
-  const [verify] = useVerifyUserMutation();
+  const [verify, { loading }] = useVerifyUserMutation();
 
   const [first, setFirst] = useState('');
   const [second, setSecond] = useState('');
@@ -224,28 +226,72 @@ export const ConfirmDigit = () => {
                 </b.Box>
               </b.Box>
             </form>
-            <ErrorSpace>
+            <ErrorSpace mt={2} mb={3}>
+              {loading ? (
+                <b.Flex justifyContent='center' alignItems='center'>
+                  <b.Box>
+                    <b.Flex justifyContent='center' alignItems='center'>
+                      <b.Box mr={3}>
+                        <b.Text
+                          color='black'
+                          fontSize={13}
+                          fontFamily='SlackLato-Thin'>
+                          Hold on...
+                        </b.Text>
+                      </b.Box>
+                      <RotateContainer>
+                        <b.Span
+                          transition={spinTransition}
+                          animate={{ rotate: 360 }}
+                        />
+                      </RotateContainer>
+                    </b.Flex>
+                  </b.Box>
+                </b.Flex>
+              ) : null}
               {error !== '' ? (
                 <b.Flex justifyContent='center' alignItems='center'>
-                  <b.Text>{error}</b.Text>
+                  <ErrorSpaceWrapper>
+                    <b.Flex justifyContent='center' alignItems='center'>
+                      <IconWrapper className='warning' mr={3}>
+                        <Warning />
+                      </IconWrapper>
+                      <b.Box>
+                        <b.Text
+                          color='black'
+                          fontSize={13}
+                          fontFamily='SlackLato-Thin'>
+                          That code wasn't valid. Give it another go!
+                        </b.Text>
+                      </b.Box>
+                    </b.Flex>
+                  </ErrorSpaceWrapper>
                 </b.Flex>
               ) : null}
             </ErrorSpace>
-            <OpenOptions>
+            <OpenOptions mt={5}>
               <b.Flex justifyContent='center'>
-                <b.Box>
+                <b.Box mr={4}>
                   <b.Flex>
-                    <b.Box>gmaicon</b.Box>
+                    <IconWrapper className='gmail' mr={2}>
+                      <Gmail />
+                    </IconWrapper>
                     <b.Box>
-                      <b.Text>Open Gmail</b.Text>
+                      <b.Text fontFamily='SlackLato-Regular' fontSize={15}>
+                        Open Gmail
+                      </b.Text>
                     </b.Box>
                   </b.Flex>
                 </b.Box>
                 <b.Box>
                   <b.Flex>
-                    <b.Box>outlicon</b.Box>
+                    <IconWrapper className='outlook' mr={2}>
+                      <Outlook />
+                    </IconWrapper>
                     <b.Box>
-                      <b.Text>Open Outlook</b.Text>
+                      <b.Text fontFamily='SlackLato-Regular' fontSize={15}>
+                        Open Outlook
+                      </b.Text>
                     </b.Box>
                   </b.Flex>
                 </b.Box>
@@ -254,7 +300,9 @@ export const ConfirmDigit = () => {
             <b.Box my={4}>
               <b.Flex justifyContent='center'>
                 <b.Box>
-                  <b.Text>Can't find your code? Check your spam folder!</b.Text>
+                  <b.Text fontFamily='SlackLato-Thin' fontSize={13}>
+                    Can't find your code? Check your spam folder!
+                  </b.Text>
                 </b.Box>
               </b.Flex>
             </b.Box>
@@ -270,30 +318,19 @@ const Wrapper = styled(b.Box)`
   width: 100%;
 `;
 
-const OneDigitInput = styled.input`
-  width: 30px;
-`;
-
 const TextInput = styled.input`
   font-size: 56px;
   width: 80px;
   padding: 15px 0 15px 37px;
   border: 0.5px solid gray;
+  color: ${({ theme }) => theme.colors.black};
+
+  &:focus {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  }
 
   &.added {
     padding: 15px 0 15px 23px;
-
-    & .input_1 {
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
-    }
-
-    &.input_3 {
-      border-top: 0.5px solid gray;
-      border-left: none;
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
-    }
   }
 
   &.input_1 {
@@ -304,6 +341,10 @@ const TextInput = styled.input`
   &.input_2 {
     border-top: 0.5px solid gray;
     border-left: none;
+
+    &:focus {
+      border-left: 0.5px solid gray;
+    }
   }
 
   &.input_3 {
@@ -322,6 +363,9 @@ const TextInput = styled.input`
   &.input_5 {
     border-top: 0.5px solid gray;
     border-left: none;
+    &:focus {
+      border-left: 0.5px solid gray;
+    }
   }
 
   &.input_6 {
@@ -332,8 +376,87 @@ const TextInput = styled.input`
 `;
 
 const ErrorSpace = styled(b.Box)`
-  margin: 15px 0;
-  height: 60px;
+  margin: 10px 0;
+  height: 45px;
 `;
 
-const OpenOptions = styled(b.Box)``;
+const OpenOptions = styled(b.Box)`
+  p {
+    &:hover {
+      cursor: pointer;
+      color: ${({ theme }) => theme.colors.blue};
+      text-decoration: underline;
+    }
+  }
+`;
+
+const IconWrapper = styled(b.Box)`
+  position: relative;
+  &.gmail {
+    bottom: 2px;
+    svg {
+      width: 20px;
+      height: 20px;
+      path {
+      }
+    }
+  }
+
+  &.outlook {
+    bottom: 1px;
+    svg {
+      width: 20px;
+      height: 20px;
+      path {
+      }
+    }
+  }
+
+  &.warning {
+    svg {
+      width: 20px;
+      height: 20px;
+      path {
+        fill: ${({ theme }) => theme.colors.red};
+      }
+
+      rect {
+        fill: ${({ theme }) => theme.colors.red};
+      }
+    }
+  }
+`;
+
+const ErrorSpaceWrapper = styled(b.Box)`
+  background-color: ${({ theme }) => theme.colors.pink__lighter};
+  max-width: 520px;
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 5px;
+  border: 1px solid ${({ theme }) => theme.colors.pink__dark};
+`;
+
+const RotateContainer = styled(b.Box)`
+  position: relative;
+  width: 20px;
+  height: 20px;
+
+  span {
+    display: block;
+    width: 15px;
+    height: 15px;
+    border: 2px solid white;
+    border-top: 2px solid ${({ theme }) => theme.colors.gray__light};
+    border-radius: 50%;
+    position: absolute;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+  }
+`;
+
+const spinTransition = {
+  loop: Infinity,
+  duration: 1,
+  ease: 'linear',
+};
