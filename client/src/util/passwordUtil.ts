@@ -33,3 +33,29 @@ export const mediumRegex = RegExp('^(?=.*[a-z])(?=.{6,})');
  * The string must be six characters or longer
  */
 export const weakRegex = RegExp('^(?=.{6,})');
+
+/**
+ * Displays the password security based on the match
+ */
+export const textValidation = (password: string) => {
+  if (
+    password.match(weakRegex) &&
+    password.match(mediumRegex) &&
+    password.match(strongRegex) &&
+    password.match(veryStrongRegex)
+  ) {
+    return 'Great';
+  } else if (
+    password.match(weakRegex) &&
+    password.match(mediumRegex) &&
+    password.match(strongRegex)
+  ) {
+    return 'Good';
+  } else if (password.match(weakRegex) && password.match(mediumRegex)) {
+    return 'Soso';
+  } else if (password.match(weakRegex)) {
+    return 'Weak';
+  } else {
+    return 'Not valid';
+  }
+};

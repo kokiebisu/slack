@@ -193,7 +193,7 @@ export type ChannelsQuery = (
     & Pick<ChannelsResponse, 'ok' | 'message'>
     & { channels?: Maybe<Array<(
       { __typename?: 'Channel' }
-      & Pick<Channel, 'name'>
+      & Pick<Channel, 'id' | 'name' | 'isPublic'>
     )>> }
   ) }
 );
@@ -403,7 +403,9 @@ export const ChannelsDocument = gql`
     ok
     message
     channels {
+      id
       name
+      isPublic
     }
   }
 }

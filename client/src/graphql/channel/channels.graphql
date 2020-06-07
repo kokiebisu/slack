@@ -3,7 +3,9 @@ query Channels($teamId: String!) {
     ok
     message
     channels {
+      id
       name
+      isPublic
     }
   }
 }

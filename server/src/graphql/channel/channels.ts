@@ -13,7 +13,7 @@ export class ChannelsResolver {
     try {
       const channels = await Channel.find({ where: { teamId } });
       return {
-        ok: false,
+        ok: true,
         channels,
       };
     } catch (err) {

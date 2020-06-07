@@ -1,22 +1,17 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { useState, useEffect } from 'react';
-import { RouteComponentProps, useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import * as b from '../styles/blocks';
 
 import { LogoCenterLayout } from '../components/shared/LogoCenter/layout';
 
-import {
-  MeDocument,
-  MeQuery,
-  useMeQuery,
-  useRegisterMutation,
-} from '../generated/graphql';
+import { useRegisterMutation } from '../generated/graphql';
 import { Warning } from '../assets/svg';
-import { validationVariant } from '../animations/passwordValidationBar';
 
 import {
+  textValidation,
   weakRegex,
   mediumRegex,
   strongRegex,
@@ -36,29 +31,6 @@ export const GetStartedCreate: React.FC<Props> = () => {
   const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const textValidation = () => {
-    if (
-      password.match(weakRegex) &&
-      password.match(mediumRegex) &&
-      password.match(strongRegex) &&
-      password.match(veryStrongRegex)
-    ) {
-      return 'Great';
-    } else if (
-      password.match(weakRegex) &&
-      password.match(mediumRegex) &&
-      password.match(strongRegex)
-    ) {
-      return 'Good';
-    } else if (password.match(weakRegex) && password.match(mediumRegex)) {
-      return 'Soso';
-    } else if (password.match(weakRegex)) {
-      return 'Weak';
-    } else {
-      return 'Not valid';
-    }
-  };
 
   return (
     <LogoCenterLayout>
@@ -177,9 +149,9 @@ export const GetStartedCreate: React.FC<Props> = () => {
                       <ValidationTextWrapper>
                         <b.Flex justifyContent='flex-end'>
                           <b.Box>
-                            {textValidation() ? (
+                            {textValidation(password) ? (
                               <b.Text className='weak'>
-                                {textValidation()}
+                                {textValidation(password)}
                               </b.Text>
                             ) : null}
                           </b.Box>
@@ -351,15 +323,6 @@ const Dot = styled(b.Box)`
   margin: 0 2px;
 `;
 
-const CheckboxArea = styled(b.Box)`
-  width: 350px;
-`;
-
-const CheckboxWrapper = styled(b.Box)`
-  position: relative;
-  top: 1.25px;
-`;
-
 const IconWrapper = styled(b.Box)`
   svg {
     width: 15px;
@@ -372,11 +335,6 @@ const IconWrapper = styled(b.Box)`
     }
   }
 `;
-
-const dot = {
-  initial: {},
-  animate: {},
-};
 
 const PasswordValidationWrapper = styled(b.Box)`
   width: 370px;
