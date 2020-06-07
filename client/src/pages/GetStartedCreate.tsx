@@ -21,9 +21,9 @@ interface Props {}
 export const GetStartedCreate: React.FC<Props> = () => {
   const history = useHistory();
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
-  const [register] = useRegisterMutation();
+  const [register, { loading }] = useRegisterMutation();
   // const [login] = useLoginMutation();
 
   const [email, setEmail] = useState('');
@@ -57,7 +57,6 @@ export const GetStartedCreate: React.FC<Props> = () => {
               <form
                 onSubmit={async (e) => {
                   e.preventDefault();
-                  setLoading(true);
                   const response = await register({ variables: { email } });
 
                   if (response && response.data && response.data.register.ok) {
