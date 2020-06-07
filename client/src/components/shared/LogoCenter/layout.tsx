@@ -102,7 +102,7 @@ const IconWrapper = styled(b.Box)`
 `;
 
 const FooterLink = styled(b.Anchor)`
-  font-size: 14px;
+  font-size: 16px;
   font-family: 'SlackLato-Regular';
   color: ${({ theme }) => theme.colors.gray__light};
 
@@ -113,7 +113,7 @@ const FooterLink = styled(b.Anchor)`
 `;
 
 const ChangeRegion = styled(b.Button)`
-  font-size: 14px;
+  font-size: 16px;
   font-family: 'SlackLato-Regular';
   color: ${({ theme }) => theme.colors.gray__light};
 

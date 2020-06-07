@@ -23,6 +23,7 @@ export const AppRoutes: React.SFC = (): JSX.Element => {
         <Route path='/client/:id' component={ClientRoutes} />
         <Route path='/signin' component={SignIn} />
         <Route path='/logout' component={Logout} />
+        <Route path='/confirmdigit' component={ConfirmDigit} />
       </Switch>
     </BrowserRouter>
   );
