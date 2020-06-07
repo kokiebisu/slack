@@ -8,7 +8,6 @@ export class LogoutResolver {
     return new Promise((res, rej) => {
       context.req.session?.destroy((err) => {
         if (err) {
-          console.log(err);
           return rej({
             ok: false,
             message: 'there was an error',

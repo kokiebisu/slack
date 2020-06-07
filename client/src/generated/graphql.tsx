@@ -31,7 +31,7 @@ export type Team = {
 export type User = {
   __typename?: 'User';
   id: Scalars['Int'];
-  username: Scalars['String'];
+  fullname: Scalars['String'];
   email: Scalars['String'];
 };
 
@@ -120,6 +120,8 @@ export type Mutation = {
 
 
 export type MutationRegisterArgs = {
+  password: Scalars['String'];
+  fullname: Scalars['String'];
   email: Scalars['String'];
 };
 
@@ -152,7 +154,9 @@ export type LogoutMutation = (
 );
 
 export type RegisterMutationVariables = {
+  fullname: Scalars['String'];
   email: Scalars['String'];
+  password: Scalars['String'];
 };
 
 
@@ -272,7 +276,7 @@ export type MeQuery = (
     & Pick<UserResponse, 'ok' | 'message'>
     & { user?: Maybe<(
       { __typename?: 'User' }
-      & Pick<User, 'id' | 'username' | 'email'>
+      & Pick<User, 'id' | 'fullname' | 'email'>
     )> }
   ) }
 );
@@ -287,7 +291,7 @@ export type UsersQuery = (
     & Pick<UsersResponse, 'ok' | 'message'>
     & { users?: Maybe<Array<(
       { __typename?: 'User' }
-      & Pick<User, 'id' | 'username'>
+      & Pick<User, 'id' | 'fullname'>
     )>> }
   ) }
 );
@@ -326,8 +330,8 @@ export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>;
 export type LogoutMutationResult = ApolloReactCommon.MutationResult<LogoutMutation>;
 export type LogoutMutationOptions = ApolloReactCommon.BaseMutationOptions<LogoutMutation, LogoutMutationVariables>;
 export const RegisterDocument = gql`
-    mutation Register($email: String!) {
-  register(email: $email) {
+    mutation Register($fullname: String!, $email: String!, $password: String!) {
+  register(email: $email, password: $password, fullname: $fullname) {
     ok
     message
   }
@@ -348,7 +352,9 @@ export type RegisterMutationFn = ApolloReactCommon.MutationFunction<RegisterMuta
  * @example
  * const [registerMutation, { data, loading, error }] = useRegisterMutation({
  *   variables: {
+ *      fullname: // value for 'fullname'
  *      email: // value for 'email'
+ *      password: // value for 'password'
  *   },
  * });
  */
@@ -588,7 +594,7 @@ export const MeDocument = gql`
     message
     user {
       id
-      username
+      fullname
       email
     }
   }
@@ -626,7 +632,7 @@ export const UsersDocument = gql`
     message
     users {
       id
-      username
+      fullname
     }
   }
 }

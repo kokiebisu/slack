@@ -69,7 +69,7 @@ export const Sidebar: React.FC<Props> = ({ team, displayMenu }) => {
                           className={hovered ? `hovered` : ``}
                           fontSize={13}
                           fontFamily='SlackLato-Regular'>
-                          {me?.user.username}
+                          {me?.user.fullname}
                         </Name>
                       </b.Flex>
                     </b.Box>

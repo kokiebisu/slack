@@ -9,13 +9,15 @@ import { AuthorizationResponse } from '../response/authResponse';
 export class RegisterResolver {
   @Mutation(() => AuthorizationResponse)
   async register(
-    @Arg('email') email: string
+    @Arg('email') email: string,
+    @Arg('fullname') fullname: string,
+    @Arg('password') password: string
   ): Promise<AuthorizationResponse | Error> {
     try {
-      const username = email.split('@')[0];
       const user = await User.create({
-        username,
+        fullname,
         email,
+        password,
       }).save();
 
       if (!user) {

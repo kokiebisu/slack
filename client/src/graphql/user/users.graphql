@@ -4,7 +4,7 @@ query Users {
     message
     users {
       id
-      username
+      fullname
     }
   }
 }

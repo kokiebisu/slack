@@ -13,8 +13,8 @@ import {
   useMeQuery,
   useRegisterMutation,
 } from '../generated/graphql';
-import { setAccessToken } from '../global/token';
 import { Warning } from '../assets/svg';
+import { validationVariant } from '../animations/passwordValidationBar';
 
 interface Props {}
 
@@ -24,9 +24,50 @@ export const GetStartedCreate: React.FC<Props> = () => {
   const [loading, setLoading] = useState(false);
 
   const [register] = useRegisterMutation();
-  // const [login] = useLoginMutation();
 
+  const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const textValidation = () => {
+    if (password.length > 0 && password.length <= 1) {
+      return 'weak';
+    } else if (password.length > 1 && password.length <= 2) {
+      return 'soso';
+    } else if (password.length > 2 && password.length <= 3) {
+      return 'good';
+    } else if (password.length > 3) {
+      return 'great';
+    }
+  };
+
+  const weakValidation = () => {
+    // condition
+    if (password.length > 0 && password.length <= 1) {
+      return 'weak';
+    }
+  };
+
+  const sosoValidation = () => {
+    // condition
+    if (password.length > 1 && password.length <= 2) {
+      return 'weak soso';
+    }
+  };
+
+  const goodValidation = () => {
+    // condition
+    if (password.length > 2 && password.length <= 3) {
+      return 'weak soso good';
+    }
+  };
+
+  const greatValidation = () => {
+    // condition
+    if (password.length > 3 && password.length <= 4) {
+      return 'weak soso good great';
+    }
+  };
 
   return (
     <LogoCenterLayout>
@@ -40,25 +81,16 @@ export const GetStartedCreate: React.FC<Props> = () => {
                   color='black__light'
                   fontFamily='Larsseit-Bold'
                   textAlign='center'>
-                  First, enter your email
-                </b.Text>
-              </b.Box>
-              <b.Box pt={2} pb={4}>
-                <b.Text
-                  lineHeight={1.5}
-                  textAlign='center'
-                  color='gray'
-                  fontFamily='SlackLato-Regular'
-                  fontSize={20}>
-                  Just one more email — a quick confirmation — before you say
-                  goodbye to overstuffed inboxes for good.
+                  First, create your account
                 </b.Text>
               </b.Box>
               <form
                 onSubmit={async (e) => {
                   e.preventDefault();
                   setLoading(true);
-                  const response = await register({ variables: { email } });
+                  const response = await register({
+                    variables: { email, fullname, password },
+                  });
 
                   if (response && response.data && response.data.register.ok) {
                     history.push({
@@ -70,14 +102,44 @@ export const GetStartedCreate: React.FC<Props> = () => {
                     setError(response.data.register!.message as string);
                   }
                 }}>
-                <b.Box>
+                <b.Box mt={3}>
                   <b.Flex alignItems='center' flexDirection='column'>
-                    <b.Box>
+                    <b.Box my={2}>
+                      <b.Box my={2}>
+                        <b.Text fontFamily='SlackLato-Bold'>Name</b.Text>
+                      </b.Box>
                       <Input
+                        value={fullname}
+                        onChange={(e) => setFullname(e.target.value)}
+                        border='1px solid gray'
+                        borderRadius={3}
+                        placeholder='Your full name'
+                      />
+                    </b.Box>
+                    <b.Box my={2}>
+                      <b.Box my={2}>
+                        <b.Text fontFamily='SlackLato-Bold'>
+                          Email address
+                        </b.Text>
+                      </b.Box>
+                      <Input
+                        value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         border='1px solid gray'
                         borderRadius={3}
                         placeholder='name@work-email.com'
+                      />
+                    </b.Box>
+                    <b.Box my={2}>
+                      <b.Box my={2}>
+                        <b.Text fontFamily='SlackLato-Bold'>Password</b.Text>
+                      </b.Box>
+                      <Input
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        border='1px solid gray'
+                        borderRadius={3}
+                        placeholder='6 characters or more'
                       />
                     </b.Box>
                     {error && (
@@ -98,7 +160,48 @@ export const GetStartedCreate: React.FC<Props> = () => {
                     )}
                   </b.Flex>
                 </b.Box>
-                <b.Box my={3}>
+                <b.Box mb={1}>
+                  <b.Flex justifyContent='center'>
+                    <PasswordValidationWrapper>
+                      <PasswordValidation
+                        animate={weakValidation() ? 'satisfied' : 'unsatisfied'}
+                        variants={validationVariant}
+                      />
+                      <PasswordValidation
+                        animate={sosoValidation() ? 'satisfied' : 'unsatisfied'}
+                        variants={validationVariant}
+                      />
+                      <PasswordValidation
+                        animate={goodValidation() ? 'satisfied' : 'unsatisfied'}
+                        variants={validationVariant}
+                      />
+                      <PasswordValidation
+                        variants={validationVariant}
+                        animate={
+                          greatValidation() ? 'satisfied' : 'unsatisfied'
+                        }
+                      />
+                    </PasswordValidationWrapper>
+                  </b.Flex>
+                </b.Box>
+                <b.Box mb={3} height={20}>
+                  {password.length > 0 && (
+                    <b.Flex justifyContent='center'>
+                      <ValidationTextWrapper>
+                        <b.Flex justifyContent='flex-end'>
+                          <b.Box>
+                            {textValidation() ? (
+                              <b.Text className='weak'>
+                                {textValidation()}
+                              </b.Text>
+                            ) : null}
+                          </b.Box>
+                        </b.Flex>
+                      </ValidationTextWrapper>
+                    </b.Flex>
+                  )}
+                </b.Box>
+                <b.Box>
                   <b.Box>
                     <b.Flex justifyContent='center'>
                       <ConfirmButton
@@ -110,7 +213,7 @@ export const GetStartedCreate: React.FC<Props> = () => {
                             variants={confirmVariants}
                             animate={loading ? 'loading' : 'loaded'}>
                             <b.Text color='white' fontFamily='SlackLato-Bold'>
-                              Confirm
+                              Create Account
                             </b.Text>
                           </b.Box>
                           {loading ? (
@@ -138,6 +241,32 @@ export const GetStartedCreate: React.FC<Props> = () => {
                           ) : null}
                         </b.Flex>
                       </ConfirmButton>
+                    </b.Flex>
+                  </b.Box>
+                  <b.Box>
+                    <b.Flex justifyContent='center'>
+                      <PolicyWrapper>
+                        <b.Box mt={3} mb={4}>
+                          <b.Flex>
+                            <b.Box>
+                              <input type='checkbox' />
+                            </b.Box>
+                            <b.Box ml={3}>
+                              <b.Text fontSize={15}>
+                                It's OK to email me about Slack.
+                              </b.Text>
+                            </b.Box>
+                          </b.Flex>
+                        </b.Box>
+                        <b.Box>
+                          <b.Text fontFamily='SlackLato-Light' fontSize={13}>
+                            By continuing, you're agreeing to our{' '}
+                            <span>Customer Terms of Service</span>,{' '}
+                            <span>Privacy Policy</span>, and{' '}
+                            <span>Cookie Policy</span>.
+                          </b.Text>
+                        </b.Box>
+                      </PolicyWrapper>
                     </b.Flex>
                   </b.Box>
                 </b.Box>
@@ -261,3 +390,33 @@ const dot = {
   initial: {},
   animate: {},
 };
+
+const PasswordValidationWrapper = styled(b.Box)`
+  width: 370px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 5px;
+`;
+
+const PasswordValidation = styled(b.Box)`
+  height: 4px;
+  border-radius: 3px;
+  background-color: ${({ theme }) => theme.colors.gray__lighter};
+
+  &.cleared {
+    background-color: ${({ theme }) => theme.colors.blue__light} !important;
+  }
+`;
+
+const PolicyWrapper = styled(b.Box)`
+  width: 370px;
+
+  span {
+    color: ${({ theme }) => theme.colors.blue};
+  }
+`;
+
+const ValidationTextWrapper = styled(b.Box)`
+  width: 370px;
+`;
