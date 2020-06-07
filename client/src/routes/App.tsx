@@ -10,11 +10,6 @@ import { SignIn } from '../pages/SignIn';
 import { GetStartedRoutes } from './GetStarted';
 import { ClientRoutes } from './Client';
 import { Logout } from '../pages/Logout';
-<<<<<<< HEAD
-import { Register } from '../pages/Register';
-import { ConfirmDigit } from '../pages/ConfirmDigit';
-=======
->>>>>>> register
 
 export const AppRoutes: React.SFC = (): JSX.Element => {
   return (
@@ -26,7 +21,6 @@ export const AppRoutes: React.SFC = (): JSX.Element => {
         <Route path='/client/:id' component={ClientRoutes} />
         <Route path='/signin' component={SignIn} />
         <Route path='/logout' component={Logout} />
-        <Route path='/confirmdigit' component={ConfirmDigit} />
       </Switch>
     </BrowserRouter>
   );

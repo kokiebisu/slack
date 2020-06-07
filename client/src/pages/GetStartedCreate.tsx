@@ -23,12 +23,8 @@ export const GetStartedCreate: React.FC<Props> = () => {
   const [error, setError] = useState('');
   // const [loading, setLoading] = useState(false);
 
-<<<<<<< HEAD
   const [register, { loading }] = useRegisterMutation();
   // const [login] = useLoginMutation();
-=======
-  const [register] = useRegisterMutation();
->>>>>>> register
 
   const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
@@ -92,14 +88,10 @@ export const GetStartedCreate: React.FC<Props> = () => {
               <form
                 onSubmit={async (e) => {
                   e.preventDefault();
-<<<<<<< HEAD
-                  const response = await register({ variables: { email } });
-=======
-                  setLoading(true);
+
                   const response = await register({
                     variables: { email, fullname, password },
                   });
->>>>>>> register
 
                   if (response && response.data && response.data.register.ok) {
                     history.push({
