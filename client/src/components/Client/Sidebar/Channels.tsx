@@ -10,7 +10,7 @@ import { Lock } from '../../../assets/svg';
 import { ThinHashTag } from '../../../assets/svg/HashTag';
 
 interface Props {
-  data: ChannelProps[] | null | undefined;
+  data: ChannelProps[] | undefined | null;
 }
 
 interface ChannelProps {
