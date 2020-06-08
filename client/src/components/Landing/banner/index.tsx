@@ -5,9 +5,6 @@ import styled from 'styled-components';
 // Blocks
 import * as b from '../../../styles/blocks';
 
-// Shared Components
-import { Title, Link } from '../Landing.styles';
-
 // Motions
 import {
   ButtonMotion,
@@ -26,6 +23,8 @@ import {
   ButtonWrapper,
   BannerRight,
   ImageWrapper,
+  Link,
+  Title,
 } from './banner.styles';
 
 interface Props {}

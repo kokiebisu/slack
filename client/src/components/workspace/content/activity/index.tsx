@@ -8,7 +8,7 @@ import * as b from '../../../../styles/blocks';
 import Thumbsup from '../../../../assets/img/thumbsup.png';
 
 // Components
-import { Reactions } from '../../../shared/Reactions';
+import { Reactions } from '../reaction/container';
 import { ToolBox } from '../ToolBox';
 
 import {

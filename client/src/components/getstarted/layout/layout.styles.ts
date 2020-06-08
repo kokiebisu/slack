@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import * as b from '../../../styles/blocks';
 
+import { getstarted } from '../../../styles/sizes';
+
 export const Wrapper = styled(b.Box)`
   padding: 30px 0;
 `;

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import * as b from '../styles/blocks';
+import * as b from '../../../styles/blocks';
 
-import { LogoCenterLayout } from '../components/shared/LogoCenter/layout';
+import { LogoCenterLayout } from '../../shared/LogoCenter/layout';
 
 interface Props {}
 
@@ -58,3 +58,25 @@ export const GetStartedFind: React.FC<Props> = () => {
     </LogoCenterLayout>
   );
 };
+
+const Wrapper = styled(b.Box)`
+  max-width: 768px;
+  width: 100%;
+`;
+
+const EmailInput = styled(b.Input)`
+  width: 370px;
+  padding: 13px 0 13px 13px;
+`;
+
+const ConfirmButton = styled(b.Button)`
+  width: 370px;
+  border-radius: 5px;
+  padding: 13px 0;
+  text-align: center;
+  background-color: ${({ theme }) => theme.colors.primary};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.primary__light};
+  }
+`;

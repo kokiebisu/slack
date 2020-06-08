@@ -1,13 +1,26 @@
 import * as React from 'react';
-import styled from 'styled-components';
 import { useState, useRef, useEffect } from 'react';
-import { useVerifyUserMutation } from '../generated/graphql';
 import { useHistory, useLocation } from 'react-router-dom';
-import { LogoCenterLayout } from '../components/shared/LogoCenter/layout';
 
-import * as b from '../styles/blocks';
-import { Outlook, Gmail } from '../assets/svg/Logo';
-import { Warning } from '../assets/svg';
+// Graphql
+import { useVerifyUserMutation } from '../../../generated/graphql';
+
+// Components
+import { LogoCenterLayout } from '../../shared/LogoCenter/layout';
+import { Options } from '../options';
+import { Dialog } from '../dialog';
+
+// Blocks
+import * as b from '../../../styles/blocks';
+
+// Styles
+import {
+  Wrapper,
+  TextInput,
+  CheckNotice,
+  Title,
+  Description,
+} from './layout.styles';
 
 export const ConfirmDigit = () => {
   const input_1: any = useRef(null);
@@ -46,7 +59,7 @@ export const ConfirmDigit = () => {
       const response = await verify({
         variables: { digit: newDigit },
       });
-      console.log('confirm repsonse', response);
+
       if (response && !response.data?.verifyUser.ok) {
         setError(response.data?.verifyUser.message!);
       }
@@ -72,27 +85,16 @@ export const ConfirmDigit = () => {
                 console.log(`${first}`);
               }}>
               <b.Box>
-                <b.Box>
-                  <b.Text
-                    fontSize={48}
-                    color='black__light'
-                    fontFamily='Larsseit-Bold'
-                    textAlign='center'>
-                    Check your email for a code
-                  </b.Text>
-                </b.Box>
-                <b.Box pt={2} pb={4}>
-                  <b.Text
-                    lineHeight={1.5}
-                    textAlign='center'
-                    color='gray'
-                    fontFamily='SlackLato-Regular'
-                    fontSize={20}>
+                <Title>
+                  <b.Text>Check your email for a code</b.Text>
+                </Title>
+                <Description pt={2} pb={4}>
+                  <b.Text>
                     We've sent a 6-digit code to
                     <b.Span>{location.state.email}</b.Span>. The code expires
                     shortly, so please enter it soon.
                   </b.Text>
-                </b.Box>
+                </Description>
 
                 <b.Box>
                   <b.Flex justifyContent='center'>
@@ -195,84 +197,13 @@ export const ConfirmDigit = () => {
                 </b.Box>
               </b.Box>
             </form>
-            <ErrorSpace mt={2} mb={3}>
-              {loading ? (
-                <b.Flex justifyContent='center' alignItems='center'>
-                  <b.Box>
-                    <b.Flex justifyContent='center' alignItems='center'>
-                      <b.Box mr={3}>
-                        <b.Text
-                          color='black'
-                          fontSize={13}
-                          fontFamily='SlackLato-Thin'>
-                          Hold on...
-                        </b.Text>
-                      </b.Box>
-                      <RotateContainer>
-                        <b.Span
-                          transition={spinTransition}
-                          animate={{ rotate: 360 }}
-                        />
-                      </RotateContainer>
-                    </b.Flex>
-                  </b.Box>
-                </b.Flex>
-              ) : null}
-              {error !== '' ? (
-                <b.Flex justifyContent='center' alignItems='center'>
-                  <ErrorSpaceWrapper>
-                    <b.Flex justifyContent='center' alignItems='center'>
-                      <IconWrapper className='warning' mr={3}>
-                        <Warning />
-                      </IconWrapper>
-                      <b.Box>
-                        <b.Text
-                          color='black'
-                          fontSize={13}
-                          fontFamily='SlackLato-Thin'>
-                          That code wasn't valid. Give it another go!
-                        </b.Text>
-                      </b.Box>
-                    </b.Flex>
-                  </ErrorSpaceWrapper>
-                </b.Flex>
-              ) : null}
-            </ErrorSpace>
-            <OpenOptions mt={5}>
-              <b.Flex justifyContent='center'>
-                <b.Box mr={4}>
-                  <b.Flex>
-                    <IconWrapper className='gmail' mr={2}>
-                      <Gmail />
-                    </IconWrapper>
-                    <b.Box>
-                      <b.Text fontFamily='SlackLato-Regular' fontSize={15}>
-                        Open Gmail
-                      </b.Text>
-                    </b.Box>
-                  </b.Flex>
-                </b.Box>
-                <b.Box>
-                  <b.Flex>
-                    <IconWrapper className='outlook' mr={2}>
-                      <Outlook />
-                    </IconWrapper>
-                    <b.Box>
-                      <b.Text fontFamily='SlackLato-Regular' fontSize={15}>
-                        Open Outlook
-                      </b.Text>
-                    </b.Box>
-                  </b.Flex>
-                </b.Box>
-              </b.Flex>
-            </OpenOptions>
+            <Dialog loading={loading} error={error} />
+            <Options />
             <b.Box my={4}>
               <b.Flex justifyContent='center'>
-                <b.Box>
-                  <b.Text fontFamily='SlackLato-Thin' fontSize={13}>
-                    Can't find your code? Check your spam folder!
-                  </b.Text>
-                </b.Box>
+                <CheckNotice>
+                  <b.Text>Can't find your code? Check your spam folder!</b.Text>
+                </CheckNotice>
               </b.Flex>
             </b.Box>
           </Wrapper>

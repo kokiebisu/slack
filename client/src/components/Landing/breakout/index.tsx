@@ -5,14 +5,11 @@ import styled from 'styled-components';
 import * as b from '../../../styles/blocks';
 import { landing } from '../../../styles/sizes';
 
-// Shared Components
-import { Title } from '../Landing.styles';
-
 // SVG
 import { Organized, Looped, Focus } from '../../../assets/svg';
 
 // Styles
-import { Wrapper, VideoWrapper } from './breakout.styles';
+import { Wrapper, VideoWrapper, Title } from './breakout.styles';
 
 const cards = [
   {

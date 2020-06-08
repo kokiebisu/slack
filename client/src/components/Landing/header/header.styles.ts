@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import * as b from '../../../styles/blocks';
 
 // Sizes
@@ -176,4 +176,20 @@ export const IconWrapper = styled(b.Box)`
       display: none;
     }
   }
+`;
+
+export const Link = styled(b.Anchor)`
+  text-transform: none;
+
+  &.hovered {
+    color: #1264a3;
+    border-bottom: 1px solid #1264a3;
+    cursor: pointer !important;
+  }
+
+  ${({ fontFamily }) =>
+    fontFamily &&
+    css`
+      font-family: ${fontFamily};
+    `}
 `;

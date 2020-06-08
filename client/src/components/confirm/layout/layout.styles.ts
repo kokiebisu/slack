@@ -63,88 +63,28 @@ export const TextInput = styled.input`
   }
 `;
 
-export const ErrorSpace = styled(b.Box)`
-  margin: 10px 0;
-  height: 45px;
-`;
-
-export const OpenOptions = styled(b.Box)`
-  p {
-    &:hover {
-      cursor: pointer;
-      color: ${({ theme }) => theme.colors.blue};
-      text-decoration: underline;
-    }
+export const Title = styled(b.Box)`
+  & > p {
+    font-size: 48px;
+    color: ${({ theme }) => theme.colors.black__light};
+    font-family: 'Larsseit-Bold';
+    text-align: center;
   }
 `;
 
-export const IconWrapper = styled(b.Box)`
-  position: relative;
-  &.gmail {
-    bottom: 2px;
-    svg {
-      width: 20px;
-      height: 20px;
-      path {
-      }
-    }
-  }
-
-  &.outlook {
-    bottom: 1px;
-    svg {
-      width: 20px;
-      height: 20px;
-      path {
-      }
-    }
-  }
-
-  &.warning {
-    svg {
-      width: 20px;
-      height: 20px;
-      path {
-        fill: ${({ theme }) => theme.colors.red};
-      }
-
-      rect {
-        fill: ${({ theme }) => theme.colors.red};
-      }
-    }
+export const Description = styled(b.Box)`
+  & > p {
+    line-height: 1.5;
+    text-align: center;
+    color: ${({ theme }) => theme.colors.gray};
+    font-family: 'SlackLato-Regular';
+    font-size: 20px;
   }
 `;
 
-export const ErrorSpaceWrapper = styled(b.Box)`
-  background-color: ${({ theme }) => theme.colors.pink__lighter};
-  max-width: 520px;
-  width: 100%;
-  padding: 10px 0;
-  border-radius: 5px;
-  border: 1px solid ${({ theme }) => theme.colors.pink__dark};
-`;
-
-export const RotateContainer = styled(b.Box)`
-  position: relative;
-  width: 20px;
-  height: 20px;
-
-  span {
-    display: block;
-    width: 15px;
-    height: 15px;
-    border: 2px solid white;
-    border-top: 2px solid ${({ theme }) => theme.colors.gray__light};
-    border-radius: 50%;
-    position: absolute;
-    box-sizing: border-box;
-    top: 0;
-    left: 0;
+export const CheckNotice = styled(b.Box)`
+  & > p {
+    font-family: 'SlackLato-Thin';
+    font-size: 13px;
   }
 `;
-
-export const spinTransition = {
-  loop: Infinity,
-  duration: 1,
-  ease: 'linear',
-};

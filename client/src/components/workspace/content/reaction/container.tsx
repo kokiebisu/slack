@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as b from '../../../../styles/blocks';
 
 // Svgs
 import { SmilePlus } from '../../../../assets/svg/Reaction';

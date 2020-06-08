@@ -9,7 +9,7 @@ import { CreateRoutes } from './Create';
 import { GetStartedRoutes } from './GetStarted';
 import { ClientRoutes } from './Client';
 
-import { ConfirmDigit } from '../pages/ConfirmDigit';
+import { ConfirmDigit } from '../components/confirm/layout';
 
 export const AppRoutes: React.SFC = (): JSX.Element => {
   return (

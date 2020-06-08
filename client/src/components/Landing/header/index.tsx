@@ -15,7 +15,7 @@ import { HamburgerButton } from '../../../assets/svg';
 import { launchMotion } from '../../../animations/Buttons';
 
 // Components
-import { Link } from '../Landing.styles';
+import { Link } from './header.styles';
 import { WorkspaceOption } from '../launch';
 
 // Styles

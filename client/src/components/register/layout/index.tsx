@@ -20,6 +20,26 @@ import {
   emailRegex,
 } from '../../../util/passwordUtil';
 
+import {
+  Wrapper,
+  InputWrapper,
+  Input,
+  IconWrapper,
+  PasswordValidationWrapper,
+  PasswordValidation,
+  ValidationTextWrapper,
+  ErrorBox,
+  ConfirmButton,
+  DotWrapper,
+  DotContainer,
+  Dot,
+  PolicyWrapper,
+  confirmVariants,
+  DotContainterVariants,
+  DotVariants,
+  DotTransition,
+} from './layout.styles';
+
 interface Props {}
 
 export const GetStartedCreate: React.FC<Props> = () => {

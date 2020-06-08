@@ -4,9 +4,6 @@ import styled from 'styled-components';
 // Blocks
 import * as b from '../../../styles/blocks';
 
-// Components
-import { Link } from '../Landing.styles';
-
 // Breakpoints
 import { landing } from '../../../styles/sizes';
 
@@ -42,6 +39,7 @@ import {
   CopyrightWrapper,
   CopyrightContainer,
   Copyright,
+  Link,
 } from './footer.styles';
 
 interface Props {}
