@@ -35,7 +35,7 @@ export const ConfirmDigit = () => {
     if (first && second && third && fourth && fifth && sixth) {
       sendQuery();
     }
-  }, [first, second, third, fourth, fifth, sixth]);
+  });
 
   const sendQuery = async () => {
     try {
@@ -88,8 +88,8 @@ export const ConfirmDigit = () => {
                     color='gray'
                     fontFamily='SlackLato-Regular'
                     fontSize={20}>
-                    We've sent a 6-digit code to{' '}
-                    <b.Span>a01056715@gmail.com</b.Span>. The code expires
+                    We've sent a 6-digit code to
+                    <b.Span>{location.state.email}</b.Span>. The code expires
                     shortly, so please enter it soon.
                   </b.Text>
                 </b.Box>

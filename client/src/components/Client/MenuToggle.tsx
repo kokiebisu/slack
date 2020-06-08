@@ -68,7 +68,7 @@ const MenuOption: React.FC<MenuOptionProps> = ({
               {openApp ? (
                 <IconWrapper className='slackapp'>
                   <b.Box>
-                    <img src={slackappicon} />
+                    <img src={slackappicon} alt='slackappicon' />
                   </b.Box>
                 </IconWrapper>
               ) : (
@@ -214,6 +214,7 @@ export const MenuToggle = () => {
           clicked={async () => {
             await logout();
             setAccessToken('');
+            client?.clearStore();
             history.push('/');
           }}
         />

@@ -1,15 +1,8 @@
 import * as React from 'react';
-import {
-  useState,
-  useRef,
-  useEffect,
-  Dispatch,
-  SetStateAction,
-  FormEvent,
-} from 'react';
+import { Dispatch, SetStateAction, FormEvent } from 'react';
 
-import { useHistory, Link } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 // Blocks
 import * as b from '../../styles/blocks';
@@ -63,8 +56,6 @@ export const CreateTeamLayout: React.FC<Props> = ({
   input,
   modifyInput,
 }) => {
-  const history = useHistory();
-
   // function Ci(e) {
   //   Array.from(document.getElementsByClassName("p-tractor__mini_confetti")).forEach(function(e) {
   //       e.removeAttribute("width")
@@ -262,17 +253,17 @@ export const CreateTeamLayout: React.FC<Props> = ({
                       </b.Box>
                       {channel && (
                         <ContentWrapper variants={stagger}>
-                          <Content mt={2}>
+                          <b.Box mt={2}>
                             <b.Box pt={3} pb={3} variants={fadeInUp}>
-                              <img src={teamphoto_1} />
+                              <img src={teamphoto_1} alt='team_photo_1' />
                             </b.Box>
                             <b.Box py={3} variants={fadeInUp}>
-                              <img src={teamphoto_2} />
+                              <img src={teamphoto_2} alt='team_photo_2' />
                             </b.Box>
                             <b.Box py={3} variants={fadeInUp}>
-                              <img src={teamphoto_3} />
+                              <img src={teamphoto_3} alt='team_photo_3' />
                             </b.Box>
-                          </Content>
+                          </b.Box>
                         </ContentWrapper>
                       )}
                     </b.Box>
@@ -442,15 +433,6 @@ const SectionTitle = styled(b.Box)`
 const ContentWrapper = styled(b.Box)`
   display: grid;
   grid-template-rows: repeat(3, 30px);
-`;
-
-const Content = styled(b.Box)``;
-
-const CanvasWrapper = styled(b.Box)`
-  position: absolute;
-  z-index: 99;
-  top: 0;
-  left: 0;
 `;
 
 const IconWrapper = styled(b.Box)`

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import { HomeHeader } from '../components/Client/HomeHeader';
@@ -11,10 +11,8 @@ import { DraftPage } from '../components/Client/Content/DraftPage';
 import { SavedPage } from '../components/Client/Content/SavedPage';
 
 import {
-  BrowserRouter,
   Route,
   Switch,
-  useLocation,
   useRouteMatch,
   useParams,
   RouteComponentProps,
@@ -24,13 +22,9 @@ import { StaticContext, Redirect } from 'react-router';
 // Block
 import * as b from '../styles/blocks';
 
-// Svgs
-import { Smile } from '../assets/svg';
-
 import { home } from '../styles/sizes';
 import { useTeamQuery, useMeQuery } from '../generated/graphql';
-import { useClientState, useClientDispatch } from '../context/client-context';
-import { AngleRight } from '../assets/svg/Arrows';
+
 import { MenuToggle } from '../components/Client/MenuToggle';
 
 type Props = RouteComponentProps<
@@ -53,17 +47,7 @@ export const ClientRoutes: React.FC<Props> = () => {
     },
   });
 
-  console.log('teamqury response', team);
-
   const { data: { me } = {}, loading, error } = useMeQuery();
-
-  if (team) {
-    console.log(team);
-  }
-
-  if (me) {
-    console.log(me);
-  }
 
   return (
     <>

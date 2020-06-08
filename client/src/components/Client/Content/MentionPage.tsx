@@ -18,7 +18,7 @@ interface Props {
 export const MentionPage: React.FC<Props> = ({ group }) => {
   useEffect(() => {
     document.title = `Mentions & reactions | ${group}`;
-  }, []);
+  }, [group]);
 
   return (
     <Wrapper>

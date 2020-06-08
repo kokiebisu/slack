@@ -15,7 +15,6 @@ interface Props {}
 
 export const Options: React.FC<Props> = () => {
   const [display, setDisplay] = useState(true);
-  const [hovered, setHovered] = useState(false);
 
   const arrow = {
     initial: {
@@ -58,10 +57,7 @@ export const Options: React.FC<Props> = () => {
               <ShowLess />
             </IconWrapper>
             <TextWrapper>
-              <Title
-                className={hovered ? 'hovered' : ''}
-                fontFamily='SlackLato-Light'
-                fontSize={15}>
+              <Title fontFamily='SlackLato-Light' fontSize={15}>
                 Show less
               </Title>
             </TextWrapper>

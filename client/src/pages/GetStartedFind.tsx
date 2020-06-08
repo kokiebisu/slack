@@ -1,7 +1,5 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { useState } from 'react';
-import { RouteComponentProps, useHistory } from 'react-router-dom';
 
 import * as b from '../styles/blocks';
 
@@ -10,7 +8,6 @@ import { LogoCenterLayout } from '../components/shared/LogoCenter/layout';
 interface Props {}
 
 export const GetStartedFind: React.FC<Props> = () => {
-  const history = useHistory();
   return (
     <LogoCenterLayout>
       <b.Box py={4}>
@@ -82,13 +79,4 @@ const ConfirmButton = styled(b.Button)`
   &:hover {
     background-color: ${({ theme }) => theme.colors.primary__light};
   }
-`;
-
-const CheckboxArea = styled(b.Box)`
-  width: 350px;
-`;
-
-const CheckboxWrapper = styled(b.Box)`
-  position: relative;
-  top: 1.25px;
 `;

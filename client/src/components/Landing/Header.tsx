@@ -11,10 +11,6 @@ import { NameLogo } from '../../assets/svg/Logo';
 import { BottomArrow } from '../../assets/svg/Arrows';
 import { HamburgerButton } from '../../assets/svg';
 
-// Colors
-import { avatar } from '../../styles/colors';
-import { randomColor } from '../../util/randomColor';
-
 // Animations
 import { launchMotion } from '../../animations/Buttons';
 
@@ -24,14 +20,13 @@ import { WorkspaceOption } from './WorkspaceOption';
 
 // Util
 // import { useAuthenticated } from '../../hooks/useAuthenticated';
-import { useMeQuery, MeQuery, useMyTeamsQuery } from '../../generated/graphql';
+import { MeQuery, useMyTeamsQuery } from '../../generated/graphql';
 
 interface Props {
   data: MeQuery | undefined;
 }
 
 export const Header: React.FC<Props> = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
   const [hovered, setHovered] = useState({
     why: false,
     solutions: false,
@@ -40,7 +35,7 @@ export const Header: React.FC<Props> = () => {
     pricing: false,
   });
 
-  const { data, loading, error } = useMyTeamsQuery();
+  const { data, loading } = useMyTeamsQuery();
 
   const [pressed, setPressed] = useState(false);
 

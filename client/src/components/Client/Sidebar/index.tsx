@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
 
 // Blocks
 import * as b from '../../../styles/blocks';
@@ -24,11 +23,7 @@ interface Props {
 
 export const Sidebar: React.FC<Props> = ({ team, displayMenu }) => {
   const [hovered, setHovered] = useState(false);
-  const { data: { me } = {}, loading, error } = useMeQuery();
-
-  const { id } = useParams();
-
-  console.log('data', me);
+  const { data: { me } = {}, loading } = useMeQuery();
 
   return (
     <>
