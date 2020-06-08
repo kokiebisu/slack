@@ -62,37 +62,6 @@ export const ConfirmDigit = () => {
   };
 
   return (
-    // <div>
-    //   {location.state && <h1>we sent a digit to {location.state.email!}</h1>}
-    //   <form
-    //     onSubmit={async (e) => {
-    //       e.preventDefault();
-    //       try {
-    //         const newDigit = parseInt(digit!, 10);
-    //         const response = await verify({
-    //           variables: { digit: newDigit },
-    //         });
-    //         console.log(response);
-
-    //         if (response && response.data?.verifyUser.ok) {
-    //           history.push({
-    //             pathname: '/create/teamname',
-    //             state: { authenticated: true },
-    //           });
-    //         }
-    //       } catch (err) {
-    //         setError('something went awfully wrong');
-    //       }
-    //     }}>
-    //     <input
-    //       placeholder='number'
-    //       value={digit}
-    //       onChange={(e) => setDigit(e.target.value)}
-    //     />
-    //     <button type='submit'>submit</button>
-    //     {error !== '' ? <h1>{error}</h1> : null}
-    //   </form>
-    // </div>
     <LogoCenterLayout>
       <b.Box py={4}>
         <b.Flex flexDirection='column' alignItems='center'>

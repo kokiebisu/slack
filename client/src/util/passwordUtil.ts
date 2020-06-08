@@ -35,7 +35,7 @@ export const mediumRegex = RegExp('^(?=.*[a-z])(?=.{6,})');
 export const weakRegex = RegExp('^(?=.{6,})');
 
 export const fullNameRegex = RegExp(
-  /^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$/
+  /^[a-zA-Z]([-']?[a-z]+)*( [a-zA-Z]([-']?[a-z]+)*)+$/
 );
 
 export const emailRegex = RegExp(
