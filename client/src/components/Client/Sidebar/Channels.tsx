@@ -10,7 +10,7 @@ import { Lock } from '../../../assets/svg';
 import { ThinHashTag } from '../../../assets/svg/HashTag';
 
 interface Props {
-  data: ChannelProps[];
+  data: ChannelProps[] | null | undefined;
 }
 
 interface ChannelProps {
@@ -22,7 +22,7 @@ interface ChannelProps {
 export const Channels: React.FC<Props> = ({ data }) => {
   return (
     <b.Box pl={2}>
-      {data.map((channel: ChannelProps) => {
+      {data!.map((channel: ChannelProps) => {
         return (
           <Channel
             id={channel.id}

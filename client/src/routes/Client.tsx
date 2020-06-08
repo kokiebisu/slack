@@ -45,35 +45,41 @@ export const ClientRoutes: React.FC<Props> = () => {
   const groupName = 'bcit-sept-2018';
   const { id } = useParams();
 
-  console.log('client route id', id);
-
   const [toggle, setToggle] = useState(false);
 
-  // const { data: { team } = {} } = useTeamQuery({
-  //   variables: {
-  //     teamId: id,
-  //   },
-  // });
+  const { data: { team } = {} } = useTeamQuery({
+    variables: {
+      teamId: id,
+    },
+  });
 
-  const { data, loading, error } = useMeQuery();
+  console.log('teamqury response', team);
 
-  if (data) {
-    console.log(data);
+  const { data: { me } = {}, loading, error } = useMeQuery();
+
+  if (team) {
+    console.log(team);
+  }
+
+  if (me) {
+    console.log(me);
   }
 
   return (
     <>
       <Switch>
         <Wrapper>
-          {/* {error ? (
+          {error ? (
+            <Redirect to='/' />
+          ) : (
             <>
-              {!loading && me?.ok && (
+              {!loading && me && team && (
                 <>
                   <HomeHeader />
                   {toggle ? <MenuToggle /> : null}
                   <ContentWrapper>
                     <Sidebar
-                      team={team?.name}
+                      team={team?.team?.name}
                       displayMenu={() => setToggle(!toggle)}
                     />
                     <Route path={match.url + '/threads'}>
@@ -92,9 +98,7 @@ export const ClientRoutes: React.FC<Props> = () => {
                 </>
               )}
             </>
-          ) : (
-            <Redirect to='/' />
-          )} */}
+          )}
         </Wrapper>
       </Switch>
     </>

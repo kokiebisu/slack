@@ -1,26 +1,23 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { useState, useEffect } from 'react';
-import { RouteComponentProps, useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import * as b from '../styles/blocks';
 
 import { LogoCenterLayout } from '../components/shared/LogoCenter/layout';
 
-import {
-  MeDocument,
-  MeQuery,
-  useMeQuery,
-  useRegisterMutation,
-} from '../generated/graphql';
-import { Warning } from '../assets/svg';
-import { validationVariant } from '../animations/passwordValidationBar';
+import { useRegisterMutation } from '../generated/graphql';
+import { Warning, CheckCircle } from '../assets/svg';
 
 import {
+  textValidation,
   weakRegex,
   mediumRegex,
   strongRegex,
   veryStrongRegex,
+  fullNameRegex,
+  emailRegex,
 } from '../util/passwordUtil';
 
 interface Props {}
@@ -28,36 +25,18 @@ interface Props {}
 export const GetStartedCreate: React.FC<Props> = () => {
   const history = useHistory();
   const [error, setError] = useState('');
-  // const [loading, setLoading] = useState(false);
 
   const [register, { loading }] = useRegisterMutation();
-  // const [login] = useLoginMutation();
 
   const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const textValidation = () => {
-    if (
-      password.match(weakRegex) &&
-      password.match(mediumRegex) &&
-      password.match(strongRegex) &&
-      password.match(veryStrongRegex)
-    ) {
-      return 'Great';
-    } else if (
-      password.match(weakRegex) &&
-      password.match(mediumRegex) &&
-      password.match(strongRegex)
-    ) {
-      return 'Good';
-    } else if (password.match(weakRegex) && password.match(mediumRegex)) {
-      return 'Soso';
-    } else if (password.match(weakRegex)) {
-      return 'Weak';
-    } else {
-      return 'Not valid';
-    }
+  const displayError = (phrase: string) => {
+    setError(phrase);
+    setTimeout(() => {
+      setError('');
+    }, 5000);
   };
 
   return (
@@ -79,6 +58,33 @@ export const GetStartedCreate: React.FC<Props> = () => {
                 onSubmit={async (e) => {
                   e.preventDefault();
 
+                  if (!fullname) {
+                    displayError('Whoops! You forgot your name!');
+                    return;
+                  }
+
+                  if (!fullname.match(fullNameRegex)) {
+                    displayError('I want your full name! Not your nickname!');
+                    return;
+                  }
+
+                  if (!email) {
+                    displayError('Wait,, you forgot your email!');
+                    return;
+                  }
+
+                  if (!email.match(emailRegex)) {
+                    displayError('Is this really an email?');
+                    return;
+                  }
+
+                  if (!password.match(weakRegex)) {
+                    displayError(
+                      'The password is not 6 characters! Give it another try!'
+                    );
+                    return;
+                  }
+
                   const response = await register({
                     variables: { email, fullname, password },
                   });
@@ -99,13 +105,20 @@ export const GetStartedCreate: React.FC<Props> = () => {
                       <b.Box my={2}>
                         <b.Text fontFamily='SlackLato-Bold'>Name</b.Text>
                       </b.Box>
-                      <Input
-                        value={fullname}
-                        onChange={(e) => setFullname(e.target.value)}
-                        border='1px solid gray'
-                        borderRadius={3}
-                        placeholder='Your full name'
-                      />
+                      <InputWrapper>
+                        <Input
+                          value={fullname}
+                          onChange={(e) => setFullname(e.target.value)}
+                          border='1px solid gray'
+                          borderRadius={3}
+                          placeholder='Your full name'
+                        />
+                        {fullname && fullname.match(fullNameRegex) ? (
+                          <IconWrapper className='checkcircle'>
+                            <CheckCircle />
+                          </IconWrapper>
+                        ) : null}
+                      </InputWrapper>
                     </b.Box>
                     <b.Box my={2}>
                       <b.Box my={2}>
@@ -113,45 +126,44 @@ export const GetStartedCreate: React.FC<Props> = () => {
                           Email address
                         </b.Text>
                       </b.Box>
-                      <Input
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        border='1px solid gray'
-                        borderRadius={3}
-                        placeholder='name@work-email.com'
-                      />
+                      <InputWrapper>
+                        <Input
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          border='1px solid gray'
+                          borderRadius={3}
+                          placeholder='name@work-email.com'
+                        />
+                        {email ? (
+                          <IconWrapper className='checkcircle'>
+                            <CheckCircle />
+                          </IconWrapper>
+                        ) : null}
+                      </InputWrapper>
                     </b.Box>
                     <b.Box my={2}>
                       <b.Box my={2}>
                         <b.Text fontFamily='SlackLato-Bold'>Password</b.Text>
                       </b.Box>
-                      <Input
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        border='1px solid gray'
-                        borderRadius={3}
-                        placeholder='6 characters or more'
-                      />
-                    </b.Box>
-                    {error && (
-                      <ErrorBox backgroundColor='pink__lighter' width={1}>
-                        <b.Flex>
-                          <IconWrapper mr={2}>
-                            <Warning />
+                      <InputWrapper>
+                        <Input
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          border='1px solid gray'
+                          borderRadius={3}
+                          placeholder='6 characters or more'
+                        />
+                        {password.match(weakRegex) ? (
+                          <IconWrapper className='checkcircle'>
+                            <CheckCircle />
                           </IconWrapper>
-                          <b.Box>
-                            <b.Text
-                              fontFamily='SlackLato-Regular'
-                              fontSize={14}>
-                              Sorry, but that email is invalid
-                            </b.Text>
-                          </b.Box>
-                        </b.Flex>
-                      </ErrorBox>
-                    )}
+                        ) : null}
+                      </InputWrapper>
+                    </b.Box>
                   </b.Flex>
                 </b.Box>
-                <b.Box mb={1}>
+
+                <b.Box>
                   <b.Flex justifyContent='center'>
                     <PasswordValidationWrapper>
                       <PasswordValidation
@@ -171,15 +183,19 @@ export const GetStartedCreate: React.FC<Props> = () => {
                     </PasswordValidationWrapper>
                   </b.Flex>
                 </b.Box>
-                <b.Box mb={3} height={20}>
+
+                <b.Box mb={1} height={15}>
                   {password.length > 0 && (
                     <b.Flex justifyContent='center'>
-                      <ValidationTextWrapper>
+                      <ValidationTextWrapper mt={1}>
                         <b.Flex justifyContent='flex-end'>
                           <b.Box>
-                            {textValidation() ? (
-                              <b.Text className='weak'>
-                                {textValidation()}
+                            {textValidation(password) ? (
+                              <b.Text
+                                fontFamily='SlackLato-Regular'
+                                fontSize={14}
+                                className='weak'>
+                                {textValidation(password)}
                               </b.Text>
                             ) : null}
                           </b.Box>
@@ -188,6 +204,28 @@ export const GetStartedCreate: React.FC<Props> = () => {
                     </b.Flex>
                   )}
                 </b.Box>
+
+                <b.Box height={35} my={2}>
+                  <b.Flex justifyContent='center'>
+                    {error && (
+                      <ErrorBox backgroundColor='pink__lighter' width={1}>
+                        <b.Flex alignItems='center'>
+                          <IconWrapper className='warning' mr={2}>
+                            <Warning />
+                          </IconWrapper>
+                          <b.Box py={2}>
+                            <b.Text
+                              fontFamily='SlackLato-Regular'
+                              fontSize={14}>
+                              {error}
+                            </b.Text>
+                          </b.Box>
+                        </b.Flex>
+                      </ErrorBox>
+                    )}
+                  </b.Flex>
+                </b.Box>
+
                 <b.Box>
                   <b.Box>
                     <b.Flex justifyContent='center'>
@@ -305,6 +343,10 @@ const confirmVariants = {
   },
 };
 
+const InputWrapper = styled(b.Box)`
+  position: relative;
+`;
+
 const Wrapper = styled(b.Box)`
   max-width: 768px;
   width: 100%;
@@ -312,7 +354,7 @@ const Wrapper = styled(b.Box)`
 
 const Input = styled(b.Input)`
   width: 370px;
-  padding: 13px 0 13px 13px;
+  padding: 13px 35px 13px 13px;
 `;
 
 const ErrorBox = styled(b.Box)`
@@ -351,32 +393,34 @@ const Dot = styled(b.Box)`
   margin: 0 2px;
 `;
 
-const CheckboxArea = styled(b.Box)`
-  width: 350px;
-`;
-
-const CheckboxWrapper = styled(b.Box)`
-  position: relative;
-  top: 1.25px;
-`;
-
 const IconWrapper = styled(b.Box)`
-  svg {
-    width: 15px;
-    height: 15px;
-    path {
-      fill: ${({ theme }) => theme.colors.pink};
+  position: relative;
+  &.checkcircle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-45%);
+    right: 12px;
+    svg {
+      width: 18px;
+      height: 18px;
+      path {
+        fill: ${({ theme }) => theme.colors.blue};
+      }
     }
-    rect {
-      fill: ${({ theme }) => theme.colors.pink};
+  }
+  &.warning {
+    svg {
+      width: 15px;
+      height: 15px;
+      path {
+        fill: ${({ theme }) => theme.colors.pink};
+      }
+      rect {
+        fill: ${({ theme }) => theme.colors.pink};
+      }
     }
   }
 `;
-
-const dot = {
-  initial: {},
-  animate: {},
-};
 
 const PasswordValidationWrapper = styled(b.Box)`
   width: 370px;

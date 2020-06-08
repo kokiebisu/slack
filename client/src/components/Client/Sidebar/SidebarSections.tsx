@@ -3,7 +3,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import _ from 'lodash';
 import decode from 'jwt-decode';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 // Blocks
 import * as b from '../../../styles/blocks';
@@ -25,11 +25,13 @@ export const SidebarSections: React.FC<Props> = () => {
     apps: false,
   });
 
-  const location = useLocation();
+  const { id } = useParams();
 
-  // const { data, loading, error } = useChannelsQuery({
-  //   variables: { teamId: location.pathname.split('/')[2] },
-  // });
+  const { data: { channels } = {}, loading, error } = useChannelsQuery({
+    variables: { teamId: id },
+  });
+
+  console.log('channel', channels?.channels);
 
   return (
     <Wrapper>
@@ -39,9 +41,11 @@ export const SidebarSections: React.FC<Props> = () => {
         onReveal={() => {
           setRevealed({ ...revealed, channels: !revealed.channels });
         }}>
-        {/* {!loading && data && (
-          <>{revealed.channels ? <Channels data={data.channels} /> : null}</>
-        )} */}
+        {!loading && channels && (
+          <>
+            {revealed.channels ? <Channels data={channels?.channels} /> : null}
+          </>
+        )}
       </SidebarSection>
       <SidebarSection
         title='Direct mesages'
