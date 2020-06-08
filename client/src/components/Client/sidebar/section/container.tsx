@@ -4,15 +4,18 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 
 // Blocks
-import * as b from '../../../styles/blocks';
+import * as b from '../../../../styles/blocks';
 
 // Components
-import { SidebarSection } from './SidebarSection';
-import { Messages } from './Messages';
-import { Channels } from './Channels';
+import { SidebarSection } from '.';
+import { Messages } from '../message/container';
+import { Channels } from '../channel/container';
 
 // Query
-import { useChannelsQuery } from '../../../generated/graphql';
+import { useChannelsQuery } from '../../../../generated/graphql';
+
+// Styles
+import { Wrapper } from './container.styles';
 
 interface Props {}
 
@@ -59,8 +62,3 @@ export const SidebarSections: React.FC<Props> = () => {
     </Wrapper>
   );
 };
-
-const Wrapper = styled(b.Box)`
-  border-top: 1.3px solid ${({ theme }) => theme.colors.primary__lighter};
-  padding: 15px 0;
-`;

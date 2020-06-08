@@ -3,13 +3,13 @@ import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import styled from 'styled-components';
 
-import { HomeHeader } from '../components/Client/HomeHeader';
-import { Sidebar } from '../components/Client/sidebar';
+import { HomeHeader } from '../components/client/HomeHeader';
+import { Sidebar } from '../components/client/sidebar/layout';
 
-import { ThreadsPage } from '../components/Client/section/threads';
-import { MentionPage } from '../components/Client/section/mention';
-import { DraftPage } from '../components/Client/section/draft';
-import { SavedPage } from '../components/Client/section/saved';
+import { ThreadsPage } from '../components/client/content/threads';
+import { MentionPage } from '../components/client/content/mention';
+import { DraftPage } from '../components/client/content/draft';
+import { SavedPage } from '../components/client/content/saved';
 
 import { BrowserRouter, Route, Switch, useLocation } from 'react-router-dom';
 

@@ -3,14 +3,25 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 // Blocks
-import * as b from '../../../styles/blocks';
+import * as b from '../../../../styles/blocks';
 
 // Svgs
-import { Play, Close } from '../../../assets/svg';
-import { Plus } from '../../../assets/svg/Plus';
+import { Play, Close } from '../../../../assets/svg';
+import { Plus } from '../../../../assets/svg/Plus';
 
 // Breakpoints
-import { home } from '../../../styles/sizes';
+import { home } from '../../../../styles/sizes';
+
+// Styles
+import {
+  Wrapper,
+  TopColumnWrapper,
+  TitleWrapper,
+  IconWrapper,
+  TitleContainer,
+  ContentWrapper,
+  SubtitleWrapper,
+} from './section.styles';
 
 interface Props {
   title: string;
@@ -93,117 +104,3 @@ export const SidebarSection: React.FC<Props> = ({
     </Wrapper>
   );
 };
-
-const Wrapper = styled(b.Box)`
-  padding: 10px 0;
-  cursor: pointer;
-`;
-
-const TopColumnWrapper = styled(b.Button)`
-  width: 100%;
-  height: 25px;
-  padding: 0 18px 0 20px;
-
-  &:focus {
-    outline: 0;
-  }
-
-  @media ${home.lg} {
-    padding: 0 30px 0 20px;
-  }
-`;
-
-const TitleWrapper = styled(b.Flex)`
-  position: relative;
-`;
-
-const TitleContainer = styled(b.Box)`
-  position: relative;
-  bottom: 2px;
-`;
-
-const ContentWrapper = styled(b.Box)`
-  padding: 0 20px;
-`;
-
-const IconWrapper = styled(b.Box)`
-  position: relative;
-
-  &.play {
-    bottom: 6px;
-    svg {
-      width: 8px;
-      height: 8px;
-      path {
-        fill: ${({ theme }) => theme.colors.pink__lighter};
-      }
-    }
-  }
-
-  &.close {
-    display: none;
-    bottom: 3px;
-    right: 7px;
-    svg {
-      width: 12px;
-      height: 12px;
-      path {
-        fill: ${({ theme }) => theme.colors.purple};
-      }
-    }
-
-    &:hover {
-      path {
-        fill: ${({ theme }) => theme.colors.white};
-      }
-    }
-
-    @media ${home.lg} {
-      bottom: 2px;
-      right: 18px;
-    }
-  }
-
-  &.plus {
-    position: absolute;
-    right: -2px;
-    bottom: 3px;
-    border-radius: 5px;
-    padding: 6px 8px 4px 7px;
-    svg {
-      width: 14px;
-      height: 14px;
-      path {
-        fill: ${({ theme }) => theme.colors.pink__light};
-      }
-    }
-
-    &:hover {
-      background: ${({ theme }) => theme.colors.primary__lighter};
-    }
-  }
-
-  &.smallplus {
-    bottom: 2.75px;
-
-    svg {
-      width: 8px;
-      height: 8px;
-      path {
-        fill: ${({ theme }) => theme.colors.white};
-      }
-    }
-  }
-`;
-
-const SubtitleWrapper = styled(b.Box)`
-  padding: 7px 19px 3px 28.5px;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.primary__dark};
-
-    div.close {
-      display: block;
-    }
-  }
-`;

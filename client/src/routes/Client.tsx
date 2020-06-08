@@ -14,15 +14,15 @@ import {
 import { StaticContext } from 'react-router';
 
 // Pages
-import { ThreadsPage } from '../components/Client/section/threads';
-import { MentionPage } from '../components/Client/section/mention';
-import { DraftPage } from '../components/Client/section/draft';
-import { SavedPage } from '../components/Client/section/saved';
+import { ThreadsPage } from '../components/client/content/threads';
+import { MentionPage } from '../components/client/content/mention';
+import { DraftPage } from '../components/client/content/draft';
+import { SavedPage } from '../components/client/content/saved';
 
 // Components
-import { HomeHeader } from '../components/Client/HomeHeader';
-import { Sidebar } from '../components/Client/sidebar';
-import { MenuToggle } from '../components/Client/MenuToggle';
+import { HomeHeader } from '../components/client/HomeHeader';
+import { Sidebar } from '../components/client/sidebar/layout';
+import { MenuToggle } from '../components/client/MenuToggle';
 
 // Block
 import * as b from '../styles/blocks';

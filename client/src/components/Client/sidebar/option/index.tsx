@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { useHistory, useParams } from 'react-router-dom';
 
-import * as b from '../../../styles/blocks';
+import * as b from '../../../../styles/blocks';
 
 import {
   Threads,
@@ -13,8 +13,11 @@ import {
   SavedItems,
   Apps,
   Files,
-} from '../../../assets/svg';
-import { ThinHashTag } from '../../../assets/svg/HashTag';
+} from '../../../../assets/svg';
+import { ThinHashTag } from '../../../../assets/svg/HashTag';
+
+// Styles
+import { Wrapper, IconWrapper, TextWrapper, Title } from './option.styles';
 
 interface Props {
   name: string;
@@ -65,50 +68,3 @@ const renderOption = (option: string) => {
       return;
   }
 };
-
-const Wrapper = styled(b.Button)`
-  padding: 5px 15px;
-  width: 100%;
-  cursor: pointer;
-
-  &:hover {
-    background: ${({ theme }) => theme.colors.primary__dark};
-  }
-
-  &:focus {
-    background: ${({ theme }) => theme.colors.blue__light};
-    outline: 0;
-
-    p {
-      color: white;
-    }
-
-    path {
-      fill: ${({ theme }) => theme.colors.white};
-    }
-  }
-`;
-
-const IconWrapper = styled(b.Box)`
-  position: relative;
-  top: 2px;
-  margin-right: 8px;
-
-  svg {
-    width: 15px;
-    height: 15px;
-
-    path {
-      fill: ${({ theme }) => theme.colors.pink__lighter};
-    }
-  }
-`;
-
-const TextWrapper = styled(b.Box)`
-  position: relative;
-  top: 2px;
-`;
-
-const Title = styled(b.Text)`
-  color: ${({ theme }) => theme.colors.pink__lighter};
-`;

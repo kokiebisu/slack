@@ -3,13 +3,20 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 // Blocks
-import * as b from '../../../styles/blocks';
+import * as b from '../../../../styles/blocks';
 
 // Components
-import { Option } from './Option';
+import { Option } from '.';
 
 // Svgs
-import { ShowLess } from '../../../assets/svg';
+import { ShowLess } from '../../../../assets/svg';
+import {
+  OptionsWrapper,
+  IconWrapper,
+  TextWrapper,
+  Title,
+  ShowLessWrapper,
+} from './options.styles';
 
 interface Props {}
 
@@ -67,49 +74,3 @@ export const Options: React.FC<Props> = () => {
     </OptionsWrapper>
   );
 };
-
-const OptionsWrapper = styled(b.Box)`
-  position: relative;
-  margin: 5px 0;
-  padding: 5px 0;
-`;
-
-const ShowLessWrapper = styled(b.Button)`
-  padding: 5px 15px;
-  width: 100%;
-
-  &:focus {
-    outline: none;
-  }
-
-  &:hover {
-    path {
-      fill: ${({ theme }) => theme.colors.white};
-    }
-  }
-`;
-
-const TextWrapper = styled(b.Box)`
-  position: relative;
-  top: 2px;
-`;
-
-const IconWrapper = styled(b.Box)`
-  margin-right: 8px;
-
-  svg {
-    width: 15px;
-    height: 15px;
-    path {
-      fill: ${({ theme }) => theme.colors.pink__lighter};
-    }
-  }
-`;
-
-const Title = styled(b.Text)`
-  color: ${({ theme }) => theme.colors.pink__lighter};
-
-  &.hovered {
-    color: ${({ theme }) => theme.colors.white};
-  }
-`;
