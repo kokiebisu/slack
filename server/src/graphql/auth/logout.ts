@@ -4,17 +4,23 @@ import { AuthorizationResponse } from '../response/authResponse';
 
 export class LogoutResolver {
   @Mutation(() => AuthorizationResponse)
-  logout(@Ctx() context: Context) {
-    context.req.session?.destroy((err) => {
-      if (err) {
-        return {
-          ok: false,
-          message: 'an error occured',
-        };
-      }
-      return {
-        ok: true,
-      };
+  logout(@Ctx() context: Context): Promise<AuthorizationResponse> {
+    return new Promise((res, rej) => {
+      context.req.session?.destroy((err) => {
+        if (err) {
+          return rej({
+            ok: false,
+            message: 'there was an error',
+          });
+        }
+
+        context.res.clearCookie('qid');
+
+        return res({
+          ok: true,
+          message: 'successful',
+        });
+      });
     });
   }
 }

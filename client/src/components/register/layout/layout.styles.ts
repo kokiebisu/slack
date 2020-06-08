@@ -41,27 +41,9 @@ export const confirmVariants = {
   },
 };
 
-export const InputWrapper = styled(b.Box)`
-  position: relative;
-`;
-
 export const Wrapper = styled(b.Box)`
   max-width: 768px;
   width: 100%;
-`;
-
-export const Input = styled(b.Input)`
-  width: 370px;
-  padding: 13px 35px 13px 13px;
-`;
-
-export const ErrorBox = styled(b.Box)`
-  width: 370px;
-  background-color: ${({ theme }) => theme.colors.pink__lighter};
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border: 1px solid ${({ theme }) => theme.colors.pink};
-  padding: 10px 0 10px 10px;
 `;
 
 export const ConfirmButton = styled(b.Button)`
@@ -118,33 +100,4 @@ export const IconWrapper = styled(b.Box)`
       }
     }
   }
-`;
-
-export const PasswordValidationWrapper = styled(b.Box)`
-  width: 370px;
-
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-column-gap: 5px;
-`;
-
-export const PasswordValidation = styled(b.Box)`
-  height: 4px;
-  border-radius: 3px;
-  background-color: ${({ theme }) => theme.colors.gray__lighter};
-  &.cleared {
-    background-color: ${({ theme }) => theme.colors.blue};
-  }
-`;
-
-export const PolicyWrapper = styled(b.Box)`
-  width: 370px;
-
-  span {
-    color: ${({ theme }) => theme.colors.blue};
-  }
-`;
-
-export const ValidationTextWrapper = styled(b.Box)`
-  width: 370px;
 `;
