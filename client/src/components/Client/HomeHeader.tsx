@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { useState } from 'react';
 import styled from 'styled-components';
 
 // Blocks
 import * as b from '../../styles/blocks';
 
 // Svgs
-import { Clock, Magnify, Present, Info } from '../../assets/svg';
+import { Clock, Magnify, Info } from '../../assets/svg';
 
 // Sizes
 import { home } from '../../styles/sizes';
@@ -17,7 +16,7 @@ import { useParams } from 'react-router-dom';
 
 export const HomeHeader: React.FC<{}> = () => {
   const { id } = useParams();
-  const { data: { team } = {}, loading, error } = useTeamQuery({
+  const { data: { team } = {}, loading } = useTeamQuery({
     variables: {
       teamId: id,
     },
@@ -89,18 +88,6 @@ const Input = styled(b.Button)`
     border: 1.3px solid ${({ theme }) => theme.colors.purple};
     color: ${({ theme }) => theme.colors.white__dark};
     fill: ${({ theme }) => theme.colors.white__dark};
-  }
-`;
-
-const WhatsNewWrapper = styled(b.Button)`
-  background-color: ${({ theme }) => theme.colors.red};
-`;
-
-const WhatsNewText = styled(b.Box)`
-  display: none;
-
-  @media ${home.md} {
-    display: block;
   }
 `;
 

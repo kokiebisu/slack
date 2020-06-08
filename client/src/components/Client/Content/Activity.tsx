@@ -67,12 +67,12 @@ export const Activity: React.FC<Props> = () => {
           </b.Box>
         </ActivityContent>
       </b.Box>
-      <ToolBoxWrapper>{hovered ? <ToolBox /> : null}</ToolBoxWrapper>
+      {/* <ToolBoxWrapper>{hovered ? <ToolBox /> : null}</ToolBoxWrapper> */}
     </ActivityWrapper>
   );
 };
 
-const ActivityWrapper = styled(b.Button)`
+const ActivityWrapper = styled(b.Box)`
   position: relative;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.white};

@@ -14,13 +14,9 @@ import lightbulb from '../assets/img/lightbulb.png';
 
 import { getstarted } from '../styles/sizes';
 
-import { useHistory } from 'react-router-dom';
-
 interface Props {}
 
 export const GetStarted: React.FC<Props> = () => {
-  const history = useHistory();
-
   return (
     <Wrapper>
       <b.Container>
@@ -130,7 +126,7 @@ export const GetStarted: React.FC<Props> = () => {
                   <b.Box>
                     <b.Flex>
                       <b.Box mr={2}>
-                        <img src={lightbulb} />
+                        <img src={lightbulb} alt='lightbulb' />
                       </b.Box>
                       <b.Box>
                         <b.Text fontFamily='SlackLato-Bold' fontSize={17}>
@@ -152,7 +148,7 @@ export const GetStarted: React.FC<Props> = () => {
                   </b.Box>
                 </b.Box>
                 <b.Box>
-                  <img src={workspace} />
+                  <img src={workspace} alt='workspace' />
                 </b.Box>
               </b.Flex>
             </WhatIsSlackContainer>
@@ -291,10 +287,6 @@ const WhatIsSlackWrapper = styled(b.Box)``;
 const WhatIsSlackContainer = styled(b.Box)`
   width: 100%;
   max-width: 550px;
-`;
-
-const GlobeWrapper = styled(b.Box)`
-  position: relative;
 `;
 
 const FooterLink = styled(b.Anchor)`

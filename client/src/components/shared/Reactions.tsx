@@ -53,36 +53,31 @@ export const Reactions: React.FC<Props> = () => {
     <b.Box>
       <b.Flex>
         <Reaction />
-        <AddReactionWrapper>
-          <IconWrapper>
-            <SmilePlus />
-          </IconWrapper>
-        </AddReactionWrapper>
+        <IconWrapper>
+          <SmilePlus />
+        </IconWrapper>
       </b.Flex>
     </b.Box>
   );
 };
 
-const AddReactionWrapper = styled(b.Button)`
+const IconWrapper = styled(b.Button)`
   background-color: ${({ theme }) => theme.colors.white__dark};
   display: inline-block;
   padding: 1px 7px;
   border-radius: 15px;
   margin-right: 5px;
-
-  &:hover {
-    padding: 0px 6px;
-    border: 1px solid ${({ theme }) => theme.colors.gray__dark};
-    background-color: ${({ theme }) => theme.colors.white};
-  }
-`;
-
-const IconWrapper = styled(b.Box)`
   svg {
     width: 22px;
     height: 22px;
     path {
       fill: ${({ theme }) => theme.colors.gray__light};
     }
+  }
+
+  &:hover {
+    padding: 0px 6px;
+    border: 1px solid ${({ theme }) => theme.colors.gray__dark};
+    background-color: ${({ theme }) => theme.colors.white};
   }
 `;

@@ -34,13 +34,20 @@ export const mediumRegex = RegExp('^(?=.*[a-z])(?=.{6,})');
  */
 export const weakRegex = RegExp('^(?=.{6,})');
 
+/**
+ * Criterias
+ * The string must include a space in between
+ * The string must include only alphabets
+ */
 export const fullNameRegex = RegExp(
   /^[a-zA-Z]([-']?[a-z]+)*( [a-zA-Z]([-']?[a-z]+)*)+$/
 );
 
-export const emailRegex = RegExp(
-  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-);
+/**
+ * Criterias
+ * The string must include the @ mark
+ */
+export const emailRegex = RegExp(/^\S+@\S+\.\S+$/);
 
 /**
  * Displays the password security based on the match

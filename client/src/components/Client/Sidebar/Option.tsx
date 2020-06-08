@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 import * as b from '../../../styles/blocks';
 
@@ -23,23 +22,19 @@ interface Props {
 }
 
 export const Option: React.FC<Props> = ({ name, link }) => {
-  const [clicked, setClicked] = useState(false);
   const displayingName = name.charAt(0).toUpperCase() + name.slice(1);
   const history = useHistory();
+  const { id } = useParams();
 
   return (
     <Wrapper
-      className={clicked ? 'clicked' : ''}
       onClick={() => {
-        history.push(`/client/${link}`);
+        history.push(`/client/${id}/${link}`);
       }}>
       <b.Flex>
-        <IconWrapper>{renderOption(name, clicked)}</IconWrapper>
+        <IconWrapper>{renderOption(name)}</IconWrapper>
         <TextWrapper>
-          <Title
-            className={clicked ? 'clicked' : ''}
-            fontFamily='SlackLato-Light'
-            fontSize={14}>
+          <Title fontFamily='SlackLato-Light' fontSize={14}>
             {displayingName}
           </Title>
         </TextWrapper>
@@ -48,7 +43,7 @@ export const Option: React.FC<Props> = ({ name, link }) => {
   );
 };
 
-const renderOption = (option: string, clicked: boolean) => {
+const renderOption = (option: string) => {
   switch (option) {
     case 'threads':
       return <Threads />;

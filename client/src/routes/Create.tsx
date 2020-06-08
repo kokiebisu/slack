@@ -18,7 +18,6 @@ import { useClientDispatch, useClientState } from '../context/client-context';
 import { randomColor } from '../util/randomColor';
 import { avatar } from '../styles/colors';
 import { ConfirmDigit } from '../pages/ConfirmDigit';
-import { getAccessToken } from '../global/token';
 
 interface Props {}
 
@@ -39,12 +38,10 @@ export const CreateRoutes: React.SFC = () => {
   /**
    * Query
    */
-  const { data, loading, error } = useMeQuery();
+  const { data: { me } = {} } = useMeQuery();
 
   const [createTeam] = useCreateTeamMutation();
   const [createChannel] = useCreateChannelMutation();
-
-  console.log(data);
 
   return (
     <>
@@ -67,7 +64,7 @@ export const CreateRoutes: React.SFC = () => {
                 setInput('');
                 history.push('/create/channelname');
               }}
-              authenticated={data?.me?.ok}
+              authenticated={me?.ok}
             />
           ) : (
             <Redirect to='/get-started' />
@@ -106,8 +103,6 @@ export const CreateRoutes: React.SFC = () => {
               buttonName='See your channel in Slack'
               transaction={async (e) => {
                 e.preventDefault();
-                // create team query
-
                 const { data } = await createTeam({
                   variables: {
                     name: team,

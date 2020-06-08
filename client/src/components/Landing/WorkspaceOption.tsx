@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 // Blocks
@@ -7,10 +7,6 @@ import * as b from '../../styles/blocks';
 
 // Svgs
 import { RightArrow } from '../../assets/svg/Arrows';
-
-// Images
-import BCIT from '../../assets/img/bcit.png';
-import { useMyTeamsQuery } from '../../generated/graphql';
 
 interface Props {
   name: string;

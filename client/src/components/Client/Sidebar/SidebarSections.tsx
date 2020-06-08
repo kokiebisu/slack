@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
-import _ from 'lodash';
-import decode from 'jwt-decode';
 import { useParams } from 'react-router-dom';
 
 // Blocks
@@ -27,11 +25,9 @@ export const SidebarSections: React.FC<Props> = () => {
 
   const { id } = useParams();
 
-  const { data: { channels } = {}, loading, error } = useChannelsQuery({
+  const { data: { channels } = {}, loading } = useChannelsQuery({
     variables: { teamId: id },
   });
-
-  console.log('channel', channels?.channels);
 
   return (
     <Wrapper>

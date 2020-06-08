@@ -1,8 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import _ from 'lodash';
-
 import * as b from '../../../styles/blocks';
 
 // Svgs
@@ -10,7 +8,7 @@ import { Lock } from '../../../assets/svg';
 import { ThinHashTag } from '../../../assets/svg/HashTag';
 
 interface Props {
-  data: ChannelProps[] | undefined | null;
+  data: any;
 }
 
 interface ChannelProps {
@@ -25,6 +23,7 @@ export const Channels: React.FC<Props> = ({ data }) => {
       {data!.map((channel: ChannelProps) => {
         return (
           <Channel
+            key={channel.id}
             id={channel.id}
             name={channel.name}
             isPublic={channel.isPublic}

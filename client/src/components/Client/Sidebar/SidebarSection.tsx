@@ -26,10 +26,6 @@ export const SidebarSection: React.FC<Props> = ({
 }) => {
   const [clicked, setClicked] = useState(false);
 
-  const [hovered, setHovered] = useState({
-    subtitle: false,
-  });
-
   const arrow = {
     initial: {
       y: 2,
@@ -88,11 +84,9 @@ export const SidebarSection: React.FC<Props> = ({
                 </b.Text>
               </b.Box>
             </b.Flex>
-            {hovered.subtitle && (
-              <IconWrapper className='close'>
-                <Close />
-              </IconWrapper>
-            )}
+            <IconWrapper className='close'>
+              <Close />
+            </IconWrapper>
           </b.Flex>
         </SubtitleWrapper>
       )}
@@ -147,6 +141,7 @@ const IconWrapper = styled(b.Box)`
   }
 
   &.close {
+    display: none;
     bottom: 3px;
     right: 7px;
     svg {
@@ -206,5 +201,9 @@ const SubtitleWrapper = styled(b.Box)`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.primary__dark};
+
+    div.close {
+      display: block;
+    }
   }
 `;

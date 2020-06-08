@@ -6,5 +6,5 @@ export const useTabTitle: (section: string, group: string) => void = (
 ) => {
   useEffect(() => {
     document.title = `Slack | Threads | ${group}`;
-  }, []);
+  }, [group]);
 };
