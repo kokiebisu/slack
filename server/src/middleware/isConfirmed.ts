@@ -13,7 +13,7 @@ export const isConfirmed: MiddlewareFn<Context> = async ({ context }, next) => {
       };
     }
     return next();
-  } catch {
+  } catch (err) {
     return {
       ok: false,
       message: "wasn't able to find user",

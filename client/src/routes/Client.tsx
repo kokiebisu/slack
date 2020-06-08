@@ -2,30 +2,36 @@ import * as React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { HomeHeader } from '../components/Client/HomeHeader';
-import { Sidebar } from '../components/Client/Sidebar';
-
-import { ThreadsPage } from '../components/Client/Content/ThreadsPage';
-import { MentionPage } from '../components/Client/Content/MentionPage';
-import { DraftPage } from '../components/Client/Content/DraftPage';
-import { SavedPage } from '../components/Client/Content/SavedPage';
-
+// Routing
 import {
   Route,
   Switch,
   useRouteMatch,
   useParams,
   RouteComponentProps,
+  Redirect,
 } from 'react-router-dom';
-import { StaticContext, Redirect } from 'react-router';
+import { StaticContext } from 'react-router';
+
+// Pages
+import { ThreadsPage } from '../components/workspace/content/threads';
+import { MentionPage } from '../components/workspace/content/mention';
+import { DraftPage } from '../components/workspace/content/draft';
+import { SavedPage } from '../components/workspace/content/saved';
+
+// Components
+import { HomeHeader } from '../components/workspace/header';
+import { Sidebar } from '../components/workspace/sidebar/layout';
+import { MenuToggle } from '../components/workspace/menutoggle';
 
 // Block
 import * as b from '../styles/blocks';
 
+// Breakpoints
 import { home } from '../styles/sizes';
-import { useTeamQuery, useMeQuery } from '../generated/graphql';
 
-import { MenuToggle } from '../components/Client/MenuToggle';
+// Graphql
+import { useTeamQuery, useMeQuery } from '../generated/graphql';
 
 type Props = RouteComponentProps<
   {},
@@ -36,7 +42,6 @@ type Props = RouteComponentProps<
 export const ClientRoutes: React.FC<Props> = () => {
   const match = useRouteMatch();
 
-  const groupName = 'bcit-sept-2018';
   const { id } = useParams();
 
   const [toggle, setToggle] = useState(false);
@@ -67,16 +72,16 @@ export const ClientRoutes: React.FC<Props> = () => {
                       displayMenu={() => setToggle(!toggle)}
                     />
                     <Route path={match.url + '/threads'}>
-                      <ThreadsPage group={groupName} />
+                      <ThreadsPage group={team.team!.name} />
                     </Route>
                     <Route path={match.url + '/activity-page'}>
-                      <MentionPage group={groupName} />
+                      <MentionPage group={team.team!.name} />
                     </Route>
                     <Route path={match.url + '/drafts'}>
-                      <DraftPage group={groupName} />
+                      <DraftPage group={team.team!.name} />
                     </Route>
                     <Route path={match.url + '/saved-page'}>
-                      <SavedPage group={groupName} />
+                      <SavedPage group={team.team!.name} />
                     </Route>
                   </ContentWrapper>
                 </>

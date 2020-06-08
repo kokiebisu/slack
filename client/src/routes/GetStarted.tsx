@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 
-import { GetStarted } from '../pages/GetStarted';
-import { GetStartedFind } from '../pages/GetStartedFind';
-import { GetStartedCreate } from '../pages/GetStartedCreate';
+import { GetStarted } from '../components/getstarted/layout';
+import { GetStartedFind } from '../components/findteam/layout';
+import { GetStartedCreate } from '../components/register/layout';
 
 export const GetStartedRoutes: React.SFC = () => {
   const match = useRouteMatch();

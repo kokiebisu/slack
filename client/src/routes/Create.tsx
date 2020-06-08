@@ -8,7 +8,7 @@ import {
   useHistory,
   useLocation,
 } from 'react-router-dom';
-import { CreateTeamLayout } from '../components/CreateTeam/layout';
+import { CreateTeamLayout } from '../components/create/layout';
 import {
   useMeQuery,
   useCreateTeamMutation,
@@ -17,7 +17,7 @@ import {
 import { useClientDispatch, useClientState } from '../context/client-context';
 import { randomColor } from '../util/randomColor';
 import { avatar } from '../styles/colors';
-import { ConfirmDigit } from '../pages/ConfirmDigit';
+import { ConfirmDigit } from '../components/confirm/layout';
 
 interface Props {}
 
