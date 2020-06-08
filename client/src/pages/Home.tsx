@@ -4,12 +4,12 @@ import { gql } from 'apollo-boost';
 import styled from 'styled-components';
 
 import { HomeHeader } from '../components/Client/HomeHeader';
-import { Sidebar } from '../components/Client/Sidebar';
+import { Sidebar } from '../components/Client/sidebar';
 
-import { ThreadsPage } from '../components/Client/Content/ThreadsPage';
-import { MentionPage } from '../components/Client/Content/MentionPage';
-import { DraftPage } from '../components/Client/Content/DraftPage';
-import { SavedPage } from '../components/Client/Content/SavedPage';
+import { ThreadsPage } from '../components/Client/section/threads';
+import { MentionPage } from '../components/Client/section/mention';
+import { DraftPage } from '../components/Client/section/draft';
+import { SavedPage } from '../components/Client/section/saved';
 
 import { BrowserRouter, Route, Switch, useLocation } from 'react-router-dom';
 
