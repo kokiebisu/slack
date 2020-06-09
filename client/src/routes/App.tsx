@@ -3,13 +3,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // Pages
 import { Landing } from '../components/landing/layout';
-
 import { CreateRoutes } from './Create';
-
 import { GetStartedRoutes } from './GetStarted';
-import { ClientRoutes } from './Client';
-
-import { ConfirmDigit } from '../components/confirm/layout';
+import { ClientRoutes } from './Workspace';
 
 export const AppRoutes: React.SFC = (): JSX.Element => {
   return (
@@ -19,7 +15,6 @@ export const AppRoutes: React.SFC = (): JSX.Element => {
         <Route path='/get-started' component={GetStartedRoutes} />
         <Route path='/create' component={CreateRoutes} />
         <Route path='/client/:id' component={ClientRoutes} />
-        <Route path='/digit' component={ConfirmDigit} />
       </Switch>
     </BrowserRouter>
   );

@@ -22,11 +22,10 @@ import {
 // Components
 import { ClientContentLayout } from '../layout';
 
-interface Props {
-  group: string;
-}
+interface Props {}
 
-export const ThreadsPage: React.FC<Props> = ({ group }) => {
+export const ThreadsPage: React.FC<Props> = () => {
+  const group = 'temp';
   useTabTitle('Threads', group);
 
   return (

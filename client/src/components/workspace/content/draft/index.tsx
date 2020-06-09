@@ -17,11 +17,9 @@ import {
 } from './draft.styles';
 import { ClientContentLayout } from '../layout';
 
-interface Props {
-  group: string;
-}
+interface Props {}
 
-export const DraftPage: React.FC<Props> = ({ group }) => {
+export const DraftPage: React.FC<Props> = () => {
   return (
     <ClientContentLayout
       section='Drafts'

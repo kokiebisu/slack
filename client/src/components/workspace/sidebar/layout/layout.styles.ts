@@ -37,40 +37,6 @@ export const Wrapper = styled(b.Box)`
   }
 `;
 
-export const Profile = styled(b.Box)`
-  height: 100%;
-  padding: 0 15px;
-  display: grid;
-  align-items: center;
-  grid-template-columns: auto min-content;
-`;
-
-export const StatusIcon = styled(b.Box)`
-  width: 10px;
-  height: 10px;
-  border-radius: 100%;
-  background-color: ${({ theme }) => theme.colors.green__lighter};
-  margin-right: 4px;
-`;
-
-export const Avatar = styled(b.Box)`
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  border-radius: 100%;
-  background: ${({ theme }) => theme.colors.white};
-  width: 35px;
-  height: 35px;
-`;
-
-export const Name = styled(b.Text)`
-  color: ${({ theme }) => theme.colors.pink__lighter};
-
-  &.hovered {
-    color: ${({ theme }) => theme.colors.white};
-  }
-`;
-
 export const IconWrapper = styled(b.Box)`
   .bottomarrow {
     svg {

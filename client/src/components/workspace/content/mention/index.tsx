@@ -24,11 +24,10 @@ import {
 } from './mention.styles';
 import { ClientContentLayout } from '../layout';
 
-interface Props {
-  group: string;
-}
+interface Props {}
 
-export const MentionPage: React.FC<Props> = ({ group }) => {
+export const MentionPage: React.FC<Props> = () => {
+  const group = 'temporary';
   useEffect(() => {
     document.title = `Mentions & reactions | ${group}`;
   }, [group]);

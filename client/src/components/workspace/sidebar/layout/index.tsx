@@ -13,26 +13,24 @@ import { BottomArrow } from '../../../../assets/svg/Arrows';
 import { Write } from '../../../../assets/svg/Reaction';
 
 // Query
-import { useMeQuery } from '../../../../generated/graphql';
+import { useMeQuery, useTeamQuery } from '../../../../generated/graphql';
 
 // Styles
-import {
-  Wrapper,
-  Profile,
-  IconWrapper,
-  StatusIcon,
-  Name,
-  Avatar,
-} from './layout.styles';
+import { Wrapper, IconWrapper } from './layout.styles';
+import { Profile } from '../profile';
+import { useParams } from 'react-router-dom';
 
 interface Props {
   team?: string;
   displayMenu?: () => void;
 }
 
-export const Sidebar: React.FC<Props> = ({ team, displayMenu }) => {
+export const Sidebar: React.FC<Props> = ({ displayMenu }) => {
   const [hovered, setHovered] = useState(false);
-  const { data: { me } = {}, loading } = useMeQuery();
+  const { id } = useParams();
+  const response = useTeamQuery({
+    variables: { teamId: id },
+  });
 
   return (
     <>
@@ -42,47 +40,7 @@ export const Sidebar: React.FC<Props> = ({ team, displayMenu }) => {
           onClick={displayMenu}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}>
-          <Profile>
-            <b.Box>
-              {!loading && me && (
-                <>
-                  <b.Box>
-                    <b.Flex alignItems='center'>
-                      <b.Box mr={1}>
-                        <b.Text
-                          fontFamily='SlackLato-Bold'
-                          fontSize={14}
-                          color='white'>
-                          {team}
-                        </b.Text>
-                      </b.Box>
-                      <b.Box mb={1}>
-                        <IconWrapper className='bottomarrow'>
-                          <BottomArrow />
-                        </IconWrapper>
-                      </b.Box>
-                    </b.Flex>
-                  </b.Box>
-                  <b.Box>
-                    <b.Flex alignItems='center'>
-                      <StatusIcon />
-                      <Name
-                        className={hovered ? `hovered` : ``}
-                        fontSize={13}
-                        fontFamily='SlackLato-Regular'>
-                        {me?.user && me?.user.fullname}
-                      </Name>
-                    </b.Flex>
-                  </b.Box>
-                </>
-              )}
-            </b.Box>
-            <Avatar>
-              <IconWrapper className='write'>
-                <Write />
-              </IconWrapper>
-            </Avatar>
-          </Profile>
+          <Profile response={response} hovered={hovered} />
         </b.Box>
         <b.Box className='sidebar'>
           <Options />

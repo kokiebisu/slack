@@ -1,18 +1,13 @@
 import styled from 'styled-components';
 import * as b from '../../../styles/blocks';
 
-export const confirmVariants = {
-  loading: {
-    x: -10,
-  },
-  loaded: {
-    x: 0,
-  },
-};
+export const InputWrapper = styled(b.Box)`
+  position: relative;
+`;
 
-export const Wrapper = styled(b.Box)`
-  max-width: 768px;
-  width: 100%;
+export const Input = styled(b.Input)`
+  width: 370px;
+  padding: 13px 35px 13px 13px;
 `;
 
 export const IconWrapper = styled(b.Box)`

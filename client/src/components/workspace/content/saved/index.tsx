@@ -11,11 +11,9 @@ import { Transition } from '../../../../assets/svg';
 import { Wrapper, SideOption, IconWrapper, Bottom } from './saved.styles';
 import { ClientContentLayout } from '../layout';
 
-interface Props {
-  group: string;
-}
+interface Props {}
 
-export const SavedPage: React.FC<Props> = ({ group }) => {
+export const SavedPage: React.FC<Props> = () => {
   return (
     <ClientContentLayout
       section='Saved items'
