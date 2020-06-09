@@ -58,6 +58,7 @@ export class RegisterResolver {
       } else {
         const token = createStringToken(user);
         redis.set(`${token}`, user.id);
+
         await sendLinkEmail(email, token);
       }
 
