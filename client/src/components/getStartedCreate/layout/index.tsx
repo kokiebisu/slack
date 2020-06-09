@@ -1,138 +1,132 @@
 import * as React from 'react';
-import { Dispatch, SetStateAction, FormEvent } from 'react';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-// Blocks
 import * as b from '../../../styles/blocks';
 
-// Svgs
-import { NameLogo } from '../../../assets/svg/Logo';
+import { LogoCenterLayout } from '../../shared/LogoCenter/layout';
+
+import { useRegisterMutation } from '../../../generated/graphql';
+import { Warning, CheckCircle } from '../../../assets/svg';
+
+import {
+  weakRegex,
+  fullNameRegex,
+  emailRegex,
+} from '../../../util/passwordUtil';
+
+import { Wrapper, IconWrapper, confirmVariants } from './layout.styles';
 
 // Components
-import { MockHashTag, SkeletonLine } from '../mockup';
+import { PasswordValidationBar } from '../validationbar';
+import { PasswordValidationText } from '../validationtext';
+import { Policy } from '../policy';
+import { Inputs } from '../inputs';
+import { ErrorDialog } from '../errordialog';
+import { Confirm } from '../confirm';
 
-// Imgs
-import teamphoto_1 from '../../../assets/img/createteam_1.png';
-import teamphoto_2 from '../../../assets/img/createteam_2.png';
-import teamphoto_3 from '../../../assets/img/createteam_3.png';
+interface Props {}
 
-// Sizes
-import { size } from '../../../styles/sizes';
+export const GetStartedCreate: React.FC<Props> = () => {
+  const history = useHistory();
+  const [error, setError] = useState('');
 
-// Animations
-import { stagger, fadeInUp } from '../../../animations/FadeInStagger';
+  const [register, { loading }] = useRegisterMutation();
 
-// Styles
-import {
-  Wrapper,
-  InnerWrapper,
-  Left,
-  Right,
-  LeftWrapper,
-  Input,
-  NextButton,
-  Policy,
-} from './layout.styles';
+  const [fullname, setFullname] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-import { Header } from '../header';
-import { MiniWorkspace } from '../miniworkspace';
+  const displayError = (phrase: string) => {
+    setError(phrase);
+    setTimeout(() => {
+      setError('');
+    }, 5000);
+  };
 
-interface Props {
-  title: string;
-  inputPlaceholder?: string;
-  requirePolicy?: boolean;
-  opacity: number;
-  name?: string;
-  description?: string;
-  buttonName?: string;
-  team?: string;
-  channel?: string;
-  authenticated?: boolean;
-  transaction: (e: FormEvent<HTMLFormElement>) => void;
-  input: string;
-  modifyInput: Dispatch<SetStateAction<string>>;
-}
+  const createAccount = async () => {
+    if (!fullname) {
+      displayError('Whoops! You forgot your name!');
+      return;
+    }
 
-export const CreateTeamLayout: React.FC<Props> = ({
-  title,
-  inputPlaceholder,
-  team,
-  channel,
-  requirePolicy,
-  opacity,
-  name,
-  description,
-  buttonName,
-  children,
-  authenticated,
-  transaction,
-  input,
-  modifyInput,
-}) => {
+    if (!fullname.match(fullNameRegex)) {
+      displayError('I want your full name! Not your nickname!');
+      return;
+    }
+
+    if (!email) {
+      displayError('Wait,, you forgot your email!');
+      return;
+    }
+
+    if (!email.match(emailRegex)) {
+      displayError('Is this really an email?');
+      return;
+    }
+
+    if (!password.match(weakRegex)) {
+      displayError('The password is not 6 characters! Give it another try!');
+      return;
+    }
+
+    const response = await register({
+      variables: { email, fullname, password },
+    });
+
+    if (response && response.data && response.data.register.ok) {
+      history.push({
+        pathname: '/create/verifyemail',
+        state: email,
+      });
+    }
+    if (response && response.data && !response.data.register.ok) {
+      setError(response.data.register!.message as string);
+    }
+  };
+
   return (
-    <Wrapper exit={{ opacity: 0 }} initial='initial' animate='animate'>
-      <Header />
-      <InnerWrapper>
-        <b.Flex>
-          <Left>
-            <b.Flex>
-              <LeftWrapper>
+    <LogoCenterLayout>
+      <b.Box py={4}>
+        <b.Flex flexDirection='column' alignItems='center'>
+          <Wrapper>
+            <b.Box>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  createAccount();
+                }}>
                 <b.Box>
                   <b.Text
-                    fontFamily='SlackLato-Black'
-                    fontSize={26}
-                    color='black__light'>
-                    {title}
+                    fontSize={48}
+                    color='black__light'
+                    fontFamily='Larsseit-Bold'
+                    textAlign='center'>
+                    First, create your account
                   </b.Text>
                 </b.Box>
-                <form onSubmit={transaction}>
-                  {inputPlaceholder && (
-                    <b.Box mt={4} mb={3} width={1}>
-                      <Input
-                        value={input}
-                        onChange={(e) => {
-                          modifyInput(e.target.value);
-                        }}
-                        placeholder={inputPlaceholder}
-                      />
-                    </b.Box>
-                  )}
-                  {description && (
-                    <b.Box mt={4} mb={3} width={1}>
-                      <b.Text lineHeight={1.7}>{description}</b.Text>
-                    </b.Box>
-                  )}
-                  <b.Box width={1}>
-                    <NextButton name={name} type='submit'>
-                      <b.Text>{buttonName ? `${buttonName}` : `Next`}</b.Text>
-                    </NextButton>
-                  </b.Box>
-                </form>
-                {requirePolicy ? (
-                  <Policy my={4}>
-                    <b.Text fontSize={12} fontFamily='SlackLato-Light'>
-                      By continuing, you're agreeing to our{' '}
-                      <span>Customer Terms of Service</span>,{' '}
-                      <span>Privacy Policy</span>, and{' '}
-                      <span>Cookie Policy</span>.
-                    </b.Text>
-                  </Policy>
-                ) : null}
-              </LeftWrapper>
-            </b.Flex>
-          </Left>
-          <Right pl={5}>
-            <b.Flex alignItems='center'>
-              <MiniWorkspace
-                team={team}
-                opacity={opacity}
-                channel={channel}
-                children={children}
-              />
-            </b.Flex>
-          </Right>
+
+                <Inputs
+                  fullname={fullname}
+                  password={password}
+                  email={email}
+                  modifyFullname={setFullname}
+                  modifyEmail={setEmail}
+                  modifyPassword={setPassword}
+                />
+                <PasswordValidationBar password={password} />
+                <PasswordValidationText password={password} />
+                <ErrorDialog error={error} />
+                <b.Box>
+                  <Confirm loading={loading} />
+                  <Policy />
+                </b.Box>
+              </form>
+            </b.Box>
+          </Wrapper>
         </b.Flex>
-      </InnerWrapper>
-    </Wrapper>
+      </b.Box>
+    </LogoCenterLayout>
   );
 };

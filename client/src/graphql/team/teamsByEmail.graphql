@@ -1,0 +1,10 @@
+mutation TeamsByEmail($email: String!) {
+  teamsByEmail(email: $email) {
+    ok
+    message
+    teams {
+      id
+      name
+    }
+  }
+}

@@ -7,12 +7,20 @@ import { LogoCenterLayout } from '../../shared/LogoCenter/layout';
 
 // Styles
 import { Wrapper, EmailInput, ConfirmButton } from './layout.styles';
-import { useMyTeamsQuery } from '../../../generated/graphql';
+
+import { useTeamsByEmailMutation } from '../../../generated/graphql';
+import { ErrorDialog } from '../errordialog';
+import { Confirm } from '../confirm';
+import { useHistory } from 'react-router-dom';
 
 interface Props {}
 
 export const GetStartedFind: React.FC<Props> = () => {
+  const history = useHistory();
   const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+
+  const [getTeams, { loading }] = useTeamsByEmailMutation();
 
   return (
     <LogoCenterLayout>
@@ -20,9 +28,17 @@ export const GetStartedFind: React.FC<Props> = () => {
         <b.Flex flexDirection='column' alignItems='center'>
           <Wrapper>
             <form
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
-                console.log('email', email);
+                const { data: { teamsByEmail } = {} } = await getTeams({
+                  variables: { email },
+                });
+                if (!loading && (teamsByEmail || !teamsByEmail!.ok)) {
+                  setError(teamsByEmail!.message);
+                }
+                history.push('/your-workspaces', {
+                  state: { teams: teamsByEmail?.teams },
+                });
               }}>
               <b.Box>
                 <b.Box>
@@ -55,14 +71,9 @@ export const GetStartedFind: React.FC<Props> = () => {
                     />
                   </b.Flex>
                 </b.Box>
-                <b.Box my={3}>
-                  <b.Flex justifyContent='center'>
-                    <ConfirmButton>
-                      <b.Text color='white' fontFamily='SlackLato-Bold'>
-                        Confirm
-                      </b.Text>
-                    </ConfirmButton>
-                  </b.Flex>
+                <ErrorDialog error={error} />
+                <b.Box>
+                  <Confirm loading={loading} />
                 </b.Box>
               </b.Box>
             </form>

@@ -3,7 +3,7 @@ import { Switch, Route, useRouteMatch } from 'react-router-dom';
 
 import { GetStarted } from '../components/getstarted/layout';
 import { GetStartedFind } from '../components/getstartedFind/layout';
-import { GetStartedCreate } from '../components/register/layout';
+import { GetStartedCreate } from '../components/getstartedCreate/layout';
 
 export const GetStartedRoutes: React.SFC = () => {
   const match = useRouteMatch();

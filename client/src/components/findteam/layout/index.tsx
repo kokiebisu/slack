@@ -2,15 +2,23 @@ import * as React from 'react';
 import { Wrapper } from './layout.styles';
 
 import { Header } from '../header';
-
+import { FindTeamContent } from '../content';
 import { Footer } from '../footer';
+import { useLocation, Redirect } from 'react-router-dom';
 
-export const index = () => {
+export const FindTeam = () => {
+  const location = useLocation();
   return (
-    <Wrapper>
-      <Header />
-      <div>hello</div>
-      <Footer />
-    </Wrapper>
+    <>
+      {location.state ? (
+        <Wrapper>
+          <Header />
+          <FindTeamContent teams={location.state} />
+          <Footer />
+        </Wrapper>
+      ) : (
+        <Redirect to='/' />
+      )}
+    </>
   );
 };
