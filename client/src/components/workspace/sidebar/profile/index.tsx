@@ -35,8 +35,6 @@ export const Profile: React.FC<Props> = ({ hovered, response }) => {
   const { data: { me } = {}, loading: meLoading } = useMeQuery();
   const {
     data: { team },
-    loading: teamLoading,
-    error,
   } = response;
 
   const dispatch = useToggleDispatch();

@@ -7,6 +7,10 @@ export const Wrapper = styled(b.Box)`
   display: grid;
   align-items: center;
   grid-template-columns: auto min-content;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const IconWrapper = styled(b.Box)`
