@@ -8,7 +8,7 @@ import {
   useHistory,
   useLocation,
 } from 'react-router-dom';
-import { CreateTeamLayout } from '../components/create/layout';
+import { CreateTeamLayout } from '../components/getStartedCreate/layout';
 import {
   useMeQuery,
   useCreateTeamMutation,

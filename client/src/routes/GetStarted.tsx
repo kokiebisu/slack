@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 
 import { GetStarted } from '../components/getstarted/layout';
-import { GetStartedFind } from '../components/findteam/layout';
+import { GetStartedFind } from '../components/getstartedFind/layout';
 import { GetStartedCreate } from '../components/register/layout';
 
 export const GetStartedRoutes: React.SFC = () => {

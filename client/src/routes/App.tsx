@@ -6,6 +6,7 @@ import { Landing } from '../components/landing/layout';
 import { CreateRoutes } from './Create';
 import { GetStartedRoutes } from './GetStarted';
 import { ClientRoutes } from './Workspace';
+import { SignIn } from '../components/signin/layout';
 
 export const AppRoutes: React.SFC = (): JSX.Element => {
   return (
@@ -15,6 +16,7 @@ export const AppRoutes: React.SFC = (): JSX.Element => {
         <Route path='/get-started' component={GetStartedRoutes} />
         <Route path='/create' component={CreateRoutes} />
         <Route path='/client/:id' component={ClientRoutes} />
+        <Route path='/signin' component={SignIn} />
       </Switch>
     </BrowserRouter>
   );
