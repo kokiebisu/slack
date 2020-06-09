@@ -2,10 +2,6 @@
   <img src="https://i.pinimg.com/originals/2b/26/43/2b26437d72e949db88e62d251c736c45.gif" width="230" alt="Slack" />
 </p>
 
-<h3 align="center">
-  replicated using other stacks...
-</h3>
-
 <br>
 
 <br>
@@ -50,6 +46,7 @@ Client
 - [Styled Components](https://styled-components.com) - Styling
 - [Styled System](https://styled-system.com) - Atomic Design Approach
 - [Framer Motion](https://www.framer.com/motion/) - Animations
+- [Graphql Code Generator](https://graphql-code-generator.com) - Auto generating tool
 
 Server
 
