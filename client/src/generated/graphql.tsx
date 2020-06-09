@@ -64,14 +64,14 @@ export type ChannelsResponse = {
 export type TeamResponse = {
   __typename?: 'TeamResponse';
   ok: Scalars['Boolean'];
-  message: Scalars['String'];
+  message?: Maybe<Scalars['String']>;
   team?: Maybe<Team>;
 };
 
 export type TeamsResponse = {
   __typename?: 'TeamsResponse';
   ok: Scalars['Boolean'];
-  message: Scalars['String'];
+  message?: Maybe<Scalars['String']>;
   teams?: Maybe<Array<Team>>;
 };
 
@@ -92,6 +92,7 @@ export type UsersResponse = {
 export type Query = {
   __typename?: 'Query';
   checkEmail: AuthorizationResponse;
+  verifyUserByToken: AuthorizationResponse;
   channels: ChannelsResponse;
   myTeams: TeamsResponse;
   team: TeamResponse;
@@ -103,6 +104,11 @@ export type Query = {
 
 export type QueryCheckEmailArgs = {
   email: Scalars['String'];
+};
+
+
+export type QueryVerifyUserByTokenArgs = {
+  token: Scalars['String'];
 };
 
 
@@ -120,7 +126,6 @@ export type Mutation = {
   logout: AuthorizationResponse;
   register: AuthorizationResponse;
   verifyUserByDigit: AuthorizationResponse;
-  verifyUserByToken: AuthorizationResponse;
   createChannel: ChannelResponse;
   createTeam: TeamResponse;
 };
@@ -135,11 +140,6 @@ export type MutationRegisterArgs = {
 
 export type MutationVerifyUserByDigitArgs = {
   digit: Scalars['Float'];
-};
-
-
-export type MutationVerifyUserByTokenArgs = {
-  token: Scalars['String'];
 };
 
 
@@ -201,6 +201,19 @@ export type VerifyUserByDigitMutationVariables = {
 export type VerifyUserByDigitMutation = (
   { __typename?: 'Mutation' }
   & { verifyUserByDigit: (
+    { __typename?: 'AuthorizationResponse' }
+    & Pick<AuthorizationResponse, 'ok' | 'message'>
+  ) }
+);
+
+export type VerifyUserByTokenQueryVariables = {
+  token: Scalars['String'];
+};
+
+
+export type VerifyUserByTokenQuery = (
+  { __typename?: 'Query' }
+  & { verifyUserByToken: (
     { __typename?: 'AuthorizationResponse' }
     & Pick<AuthorizationResponse, 'ok' | 'message'>
   ) }
@@ -456,6 +469,40 @@ export function useVerifyUserByDigitMutation(baseOptions?: ApolloReactHooks.Muta
 export type VerifyUserByDigitMutationHookResult = ReturnType<typeof useVerifyUserByDigitMutation>;
 export type VerifyUserByDigitMutationResult = ApolloReactCommon.MutationResult<VerifyUserByDigitMutation>;
 export type VerifyUserByDigitMutationOptions = ApolloReactCommon.BaseMutationOptions<VerifyUserByDigitMutation, VerifyUserByDigitMutationVariables>;
+export const VerifyUserByTokenDocument = gql`
+    query VerifyUserByToken($token: String!) {
+  verifyUserByToken(token: $token) {
+    ok
+    message
+  }
+}
+    `;
+
+/**
+ * __useVerifyUserByTokenQuery__
+ *
+ * To run a query within a React component, call `useVerifyUserByTokenQuery` and pass it any options that fit your needs.
+ * When your component renders, `useVerifyUserByTokenQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useVerifyUserByTokenQuery({
+ *   variables: {
+ *      token: // value for 'token'
+ *   },
+ * });
+ */
+export function useVerifyUserByTokenQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<VerifyUserByTokenQuery, VerifyUserByTokenQueryVariables>) {
+        return ApolloReactHooks.useQuery<VerifyUserByTokenQuery, VerifyUserByTokenQueryVariables>(VerifyUserByTokenDocument, baseOptions);
+      }
+export function useVerifyUserByTokenLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<VerifyUserByTokenQuery, VerifyUserByTokenQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<VerifyUserByTokenQuery, VerifyUserByTokenQueryVariables>(VerifyUserByTokenDocument, baseOptions);
+        }
+export type VerifyUserByTokenQueryHookResult = ReturnType<typeof useVerifyUserByTokenQuery>;
+export type VerifyUserByTokenLazyQueryHookResult = ReturnType<typeof useVerifyUserByTokenLazyQuery>;
+export type VerifyUserByTokenQueryResult = ApolloReactCommon.QueryResult<VerifyUserByTokenQuery, VerifyUserByTokenQueryVariables>;
 export const ChannelsDocument = gql`
     query Channels($teamId: String!) {
   channels(teamId: $teamId) {

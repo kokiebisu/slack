@@ -11,7 +11,9 @@ export class MyTeamsResolver {
   async myTeams(@Ctx() { req }: Context): Promise<TeamsResponse | Error> {
     try {
       const userId = req.session!.userId;
-      const teams = await Team.find({ ownerId: userId });
+
+      const teams = await Team.find({ where: { ownerId: userId } });
+
       return {
         ok: true,
         teams,

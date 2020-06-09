@@ -51,7 +51,7 @@ export async function sendLinkEmail(email: string, token: string) {
     to: email, // list of receivers
     subject: 'Slack confirmation', // Subject line
     // html: `<p>Press the confirmation code in order to create a new workspace</p><a href="${url}">Confirm email address</a>`, // html body
-    html: `<a href='http://localhost:3000/your-workspaces/${token}'>Confirm Button</a>`,
+    html: `<a href='http://localhost:3000/get-started/check/${token}'>http://localhost:3000/your-workspaces/${token}</a>`,
   });
 
   console.log('Message sent: %s', info.messageId);

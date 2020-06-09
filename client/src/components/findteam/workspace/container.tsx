@@ -13,14 +13,24 @@ interface Props {
 interface Team {
   id: string;
   name: string;
+  avatarBackground: string;
 }
 
 export const AvailableWorkspaces: React.FC<Props> = ({ teams }) => {
   return (
-    <b.Box>
-      {teams.map((team: Team) => {
-        return <AvailableWorkspace name={team.name} url={team.id} />;
-      })}
-    </b.Box>
+    <>
+      <b.Box>
+        {teams.map((team: Team) => {
+          return (
+            <AvailableWorkspace
+              key={team.id}
+              name={team.name}
+              url={team.id}
+              avatarBackground={team.avatarBackground}
+            />
+          );
+        })}
+      </b.Box>
+    </>
   );
 };

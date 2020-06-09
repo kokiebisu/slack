@@ -20,7 +20,7 @@ export const AppRoutes: React.SFC = (): JSX.Element => {
         <Route path='/create' component={CreateRoutes} />
         <Route path='/client/:id' component={ClientRoutes} />
         <Route path='/signin' component={SignIn} />
-        <Route path='/your-workspaces' component={FindTeam} />
+        <Route path='/your-workspaces/:token' component={FindTeam} />
       </Switch>
     </BrowserRouter>
   );

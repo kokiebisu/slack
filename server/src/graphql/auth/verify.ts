@@ -58,7 +58,7 @@ export class VerifyResolver {
     @Ctx() context: Context
   ): Promise<AuthorizationResponse | Error> {
     try {
-      const userId = redis.get(`${token}`);
+      const userId = await redis.get(`${token}`);
       if (!userId) {
         return {
           ok: false,
