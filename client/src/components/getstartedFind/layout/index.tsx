@@ -1,85 +1,107 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { Redirect } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 import * as b from '../../../styles/blocks';
 
 import { LogoCenterLayout } from '../../shared/LogoCenter/layout';
 
 // Styles
-import { Wrapper, EmailInput, ConfirmButton } from './layout.styles';
+import { Wrapper, EmailInput } from './layout.styles';
 
-import { useTeamsByEmailMutation } from '../../../generated/graphql';
-import { ErrorDialog } from '../errordialog';
+// Graphql
+import { useCheckEmailLazyQuery } from '../../../generated/graphql';
+
 import { Confirm } from '../confirm';
-import { useHistory } from 'react-router-dom';
+
+import { ErrorBox, IconWrapper } from './layout.styles';
+
+// Svg
+import { Warning } from '../../../assets/svg';
 
 interface Props {}
 
 export const GetStartedFind: React.FC<Props> = () => {
-  const history = useHistory();
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
 
-  const [getTeams, { loading }] = useTeamsByEmailMutation();
+  const [check, { loading, data }] = useCheckEmailLazyQuery();
 
   return (
-    <LogoCenterLayout>
-      <b.Box py={4}>
-        <b.Flex flexDirection='column' alignItems='center'>
-          <Wrapper>
-            <form
-              onSubmit={async (e) => {
-                e.preventDefault();
-                const { data: { teamsByEmail } = {} } = await getTeams({
-                  variables: { email },
-                });
-                if (!loading && (teamsByEmail || !teamsByEmail!.ok)) {
-                  setError(teamsByEmail!.message);
-                }
-                history.push('/your-workspaces', {
-                  state: { teams: teamsByEmail?.teams },
-                });
-              }}>
-              <b.Box>
-                <b.Box>
-                  <b.Text
-                    fontSize={48}
-                    color='black__light'
-                    fontFamily='Larsseit-Bold'
-                    textAlign='center'>
-                    Let’s find your team
-                  </b.Text>
-                </b.Box>
-                <b.Box pt={2} pb={4}>
-                  <b.Text
-                    lineHeight={1.5}
-                    textAlign='center'
-                    color='gray'
-                    fontFamily='SlackLato-Regular'
-                    fontSize={20}>
-                    Enter the email you usually collaborate with
-                  </b.Text>
-                </b.Box>
-                <b.Box>
-                  <b.Flex justifyContent='center'>
-                    <EmailInput
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      border='1px solid gray'
-                      borderRadius={3}
-                      placeholder='name@work-email.com'
-                    />
-                  </b.Flex>
-                </b.Box>
-                <ErrorDialog error={error} />
-                <b.Box>
-                  <Confirm loading={loading} />
-                </b.Box>
-              </b.Box>
-            </form>
-          </Wrapper>
-        </b.Flex>
-      </b.Box>
-    </LogoCenterLayout>
+    <>
+      {data?.checkEmail.ok ? (
+        <Redirect to='/get-started/check' />
+      ) : (
+        <LogoCenterLayout>
+          <b.Box py={4}>
+            <b.Flex flexDirection='column' alignItems='center'>
+              <Wrapper>
+                <form
+                  onSubmit={async (e) => {
+                    e.preventDefault();
+                    check({ variables: { email } });
+                  }}>
+                  <b.Box>
+                    <b.Box>
+                      <b.Text
+                        fontSize={48}
+                        color='black__light'
+                        fontFamily='Larsseit-Bold'
+                        textAlign='center'>
+                        Let’s find your team
+                      </b.Text>
+                    </b.Box>
+                    <b.Box pt={2} pb={4}>
+                      <b.Text
+                        lineHeight={1.5}
+                        textAlign='center'
+                        color='gray'
+                        fontFamily='SlackLato-Regular'
+                        fontSize={20}>
+                        Enter the email you usually collaborate with
+                      </b.Text>
+                    </b.Box>
+                    <b.Box>
+                      <b.Flex justifyContent='center'>
+                        <EmailInput
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          border='1px solid gray'
+                          borderRadius={3}
+                          placeholder='name@work-email.com'
+                        />
+                      </b.Flex>
+                    </b.Box>
+                    <b.Box height={35} my={2}>
+                      <b.Flex justifyContent='center'>
+                        {data?.checkEmail.message ? (
+                          <ErrorBox backgroundColor='pink__lighter' width={1}>
+                            <b.Flex alignItems='center'>
+                              <IconWrapper className='warning' mr={2}>
+                                <Warning />
+                              </IconWrapper>
+                              <b.Box py={2}>
+                                <b.Text
+                                  fontFamily='SlackLato-Regular'
+                                  fontSize={14}>
+                                  {data?.checkEmail.message}
+                                </b.Text>
+                              </b.Box>
+                            </b.Flex>
+                          </ErrorBox>
+                        ) : null}
+                      </b.Flex>
+                    </b.Box>
+                    <b.Box>
+                      <Confirm loading={loading} />
+                    </b.Box>
+                  </b.Box>
+                </form>
+              </Wrapper>
+            </b.Flex>
+          </b.Box>
+        </LogoCenterLayout>
+      )}
+    </>
   );
 };

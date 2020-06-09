@@ -1,4 +1,4 @@
-import { Mutation, Arg, Ctx } from 'type-graphql';
+import { Mutation, Arg, Ctx, Query } from 'type-graphql';
 import { redis } from '../../redis';
 import { User } from '../../models/User';
 import { getDigitToken } from '../../util/tokenGenerator';
@@ -7,7 +7,7 @@ import { AuthorizationResponse } from '../response/authResponse';
 
 export class VerifyResolver {
   @Mutation(() => AuthorizationResponse)
-  async verifyUser(
+  async verifyUserByDigit(
     @Arg('digit') digit: number,
     @Ctx() context: Context
   ): Promise<AuthorizationResponse | Error> {
@@ -49,6 +49,31 @@ export class VerifyResolver {
       };
     } catch (err) {
       throw new Error('error occured while confirming user');
+    }
+  }
+
+  @Query(() => AuthorizationResponse)
+  async verifyUserByToken(
+    @Arg('token') token: string,
+    @Ctx() context: Context
+  ): Promise<AuthorizationResponse | Error> {
+    try {
+      const userId = redis.get(`${token}`);
+      if (!userId) {
+        return {
+          ok: false,
+          message: 'not a valid token',
+        };
+      }
+
+      context.req.session!.userId = userId;
+
+      return {
+        ok: true,
+        message: '',
+      };
+    } catch (err) {
+      throw new Error('error occured while verifying user by token');
     }
   }
 }

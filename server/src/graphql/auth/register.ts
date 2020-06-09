@@ -1,9 +1,9 @@
-import { Mutation, Arg } from 'type-graphql';
+import { Mutation, Arg, Query } from 'type-graphql';
 import { User } from '../../models/User';
-import { sendEmail } from '../../util/sendEmail';
+import { sendDigitEmail, sendLinkEmail } from '../../util/sendEmail';
 import { redis } from '../../redis';
 
-import { createDigitToken } from '../../util/tokenGenerator';
+import { createDigitToken, createStringToken } from '../../util/tokenGenerator';
 import { AuthorizationResponse } from '../response/authResponse';
 
 export class RegisterResolver {
@@ -31,7 +31,7 @@ export class RegisterResolver {
 
       const token = createDigitToken(digit, user);
 
-      await sendEmail(email, digit);
+      await sendDigitEmail(email, digit);
 
       redis.set(`${digit}`, token);
 
@@ -41,6 +41,32 @@ export class RegisterResolver {
       };
     } catch (err) {
       throw new Error('error occured when registering user');
+    }
+  }
+
+  @Query(() => AuthorizationResponse)
+  async checkEmail(
+    @Arg('email') email: string
+  ): Promise<AuthorizationResponse | Error> {
+    try {
+      const user = await User.findOne({ where: { email } });
+      if (!user) {
+        return {
+          ok: false,
+          message: 'email is invalid',
+        };
+      } else {
+        const token = createStringToken(user);
+        redis.set(`${token}`, user.id);
+        await sendLinkEmail(email, token);
+      }
+
+      return {
+        ok: true,
+        message: '',
+      };
+    } catch (err) {
+      throw new Error('Something wrong happened when checking if email exists');
     }
   }
 }
