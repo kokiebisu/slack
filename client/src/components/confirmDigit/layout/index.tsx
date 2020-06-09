@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 
 // Graphql
-import { useVerifyUserMutation } from '../../../generated/graphql';
+import { useVerifyUserByDigitMutation } from '../../../generated/graphql';
 
 // Components
 import { LogoCenterLayout } from '../../shared/LogoCenter/layout';
@@ -34,7 +34,7 @@ export const ConfirmDigit = () => {
 
   const history = useHistory();
   const [error, setError] = useState('');
-  const [verify, { loading }] = useVerifyUserMutation();
+  const [verify, { loading }] = useVerifyUserByDigitMutation();
 
   const [first, setFirst] = useState('');
   const [second, setSecond] = useState('');
@@ -66,10 +66,10 @@ export const ConfirmDigit = () => {
 
       console.log('response', response);
 
-      if (response && !response.data?.verifyUser.ok) {
-        setError(response.data?.verifyUser.message!);
+      if (response && !response.data?.verifyUserByDigit.ok) {
+        setError(response.data?.verifyUserByDigit.message!);
       }
-      if (response && response.data?.verifyUser.ok) {
+      if (response && response.data?.verifyUserByDigit.ok) {
         history.push({
           pathname: '/create/teamname',
           state: { authenticated: true },

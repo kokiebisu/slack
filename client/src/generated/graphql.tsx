@@ -64,14 +64,14 @@ export type ChannelsResponse = {
 export type TeamResponse = {
   __typename?: 'TeamResponse';
   ok: Scalars['Boolean'];
-  message: Scalars['String'];
+  message?: Maybe<Scalars['String']>;
   team?: Maybe<Team>;
 };
 
 export type TeamsResponse = {
   __typename?: 'TeamsResponse';
   ok: Scalars['Boolean'];
-  message: Scalars['String'];
+  message?: Maybe<Scalars['String']>;
   teams?: Maybe<Array<Team>>;
 };
 
@@ -91,12 +91,24 @@ export type UsersResponse = {
 
 export type Query = {
   __typename?: 'Query';
+  checkEmail: AuthorizationResponse;
+  verifyUserByToken: AuthorizationResponse;
   channels: ChannelsResponse;
   myTeams: TeamsResponse;
   team: TeamResponse;
   teams: TeamsResponse;
   me: UserResponse;
   users: UsersResponse;
+};
+
+
+export type QueryCheckEmailArgs = {
+  email: Scalars['String'];
+};
+
+
+export type QueryVerifyUserByTokenArgs = {
+  token: Scalars['String'];
 };
 
 
@@ -113,10 +125,9 @@ export type Mutation = {
   __typename?: 'Mutation';
   logout: AuthorizationResponse;
   register: AuthorizationResponse;
-  verifyUser: AuthorizationResponse;
+  verifyUserByDigit: AuthorizationResponse;
   createChannel: ChannelResponse;
   createTeam: TeamResponse;
-  teamsByEmail: TeamsResponse;
 };
 
 
@@ -127,7 +138,7 @@ export type MutationRegisterArgs = {
 };
 
 
-export type MutationVerifyUserArgs = {
+export type MutationVerifyUserByDigitArgs = {
   digit: Scalars['Float'];
 };
 
@@ -143,10 +154,18 @@ export type MutationCreateTeamArgs = {
   name: Scalars['String'];
 };
 
-
-export type MutationTeamsByEmailArgs = {
+export type CheckEmailQueryVariables = {
   email: Scalars['String'];
 };
+
+
+export type CheckEmailQuery = (
+  { __typename?: 'Query' }
+  & { checkEmail: (
+    { __typename?: 'AuthorizationResponse' }
+    & Pick<AuthorizationResponse, 'ok' | 'message'>
+  ) }
+);
 
 export type LogoutMutationVariables = {};
 
@@ -174,14 +193,27 @@ export type RegisterMutation = (
   ) }
 );
 
-export type VerifyUserMutationVariables = {
+export type VerifyUserByDigitMutationVariables = {
   digit: Scalars['Float'];
 };
 
 
-export type VerifyUserMutation = (
+export type VerifyUserByDigitMutation = (
   { __typename?: 'Mutation' }
-  & { verifyUser: (
+  & { verifyUserByDigit: (
+    { __typename?: 'AuthorizationResponse' }
+    & Pick<AuthorizationResponse, 'ok' | 'message'>
+  ) }
+);
+
+export type VerifyUserByTokenQueryVariables = {
+  token: Scalars['String'];
+};
+
+
+export type VerifyUserByTokenQuery = (
+  { __typename?: 'Query' }
+  & { verifyUserByToken: (
     { __typename?: 'AuthorizationResponse' }
     & Pick<AuthorizationResponse, 'ok' | 'message'>
   ) }
@@ -272,23 +304,6 @@ export type TeamQuery = (
   ) }
 );
 
-export type TeamsByEmailMutationVariables = {
-  email: Scalars['String'];
-};
-
-
-export type TeamsByEmailMutation = (
-  { __typename?: 'Mutation' }
-  & { teamsByEmail: (
-    { __typename?: 'TeamsResponse' }
-    & Pick<TeamsResponse, 'ok' | 'message'>
-    & { teams?: Maybe<Array<(
-      { __typename?: 'Team' }
-      & Pick<Team, 'id' | 'name'>
-    )>> }
-  ) }
-);
-
 export type MeQueryVariables = {};
 
 
@@ -320,6 +335,40 @@ export type UsersQuery = (
 );
 
 
+export const CheckEmailDocument = gql`
+    query CheckEmail($email: String!) {
+  checkEmail(email: $email) {
+    ok
+    message
+  }
+}
+    `;
+
+/**
+ * __useCheckEmailQuery__
+ *
+ * To run a query within a React component, call `useCheckEmailQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCheckEmailQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCheckEmailQuery({
+ *   variables: {
+ *      email: // value for 'email'
+ *   },
+ * });
+ */
+export function useCheckEmailQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<CheckEmailQuery, CheckEmailQueryVariables>) {
+        return ApolloReactHooks.useQuery<CheckEmailQuery, CheckEmailQueryVariables>(CheckEmailDocument, baseOptions);
+      }
+export function useCheckEmailLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<CheckEmailQuery, CheckEmailQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<CheckEmailQuery, CheckEmailQueryVariables>(CheckEmailDocument, baseOptions);
+        }
+export type CheckEmailQueryHookResult = ReturnType<typeof useCheckEmailQuery>;
+export type CheckEmailLazyQueryHookResult = ReturnType<typeof useCheckEmailLazyQuery>;
+export type CheckEmailQueryResult = ApolloReactCommon.QueryResult<CheckEmailQuery, CheckEmailQueryVariables>;
 export const LogoutDocument = gql`
     mutation Logout {
   logout {
@@ -387,39 +436,73 @@ export function useRegisterMutation(baseOptions?: ApolloReactHooks.MutationHookO
 export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>;
 export type RegisterMutationResult = ApolloReactCommon.MutationResult<RegisterMutation>;
 export type RegisterMutationOptions = ApolloReactCommon.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>;
-export const VerifyUserDocument = gql`
-    mutation VerifyUser($digit: Float!) {
-  verifyUser(digit: $digit) {
+export const VerifyUserByDigitDocument = gql`
+    mutation VerifyUserByDigit($digit: Float!) {
+  verifyUserByDigit(digit: $digit) {
     ok
     message
   }
 }
     `;
-export type VerifyUserMutationFn = ApolloReactCommon.MutationFunction<VerifyUserMutation, VerifyUserMutationVariables>;
+export type VerifyUserByDigitMutationFn = ApolloReactCommon.MutationFunction<VerifyUserByDigitMutation, VerifyUserByDigitMutationVariables>;
 
 /**
- * __useVerifyUserMutation__
+ * __useVerifyUserByDigitMutation__
  *
- * To run a mutation, you first call `useVerifyUserMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useVerifyUserMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useVerifyUserByDigitMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useVerifyUserByDigitMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [verifyUserMutation, { data, loading, error }] = useVerifyUserMutation({
+ * const [verifyUserByDigitMutation, { data, loading, error }] = useVerifyUserByDigitMutation({
  *   variables: {
  *      digit: // value for 'digit'
  *   },
  * });
  */
-export function useVerifyUserMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<VerifyUserMutation, VerifyUserMutationVariables>) {
-        return ApolloReactHooks.useMutation<VerifyUserMutation, VerifyUserMutationVariables>(VerifyUserDocument, baseOptions);
+export function useVerifyUserByDigitMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<VerifyUserByDigitMutation, VerifyUserByDigitMutationVariables>) {
+        return ApolloReactHooks.useMutation<VerifyUserByDigitMutation, VerifyUserByDigitMutationVariables>(VerifyUserByDigitDocument, baseOptions);
       }
-export type VerifyUserMutationHookResult = ReturnType<typeof useVerifyUserMutation>;
-export type VerifyUserMutationResult = ApolloReactCommon.MutationResult<VerifyUserMutation>;
-export type VerifyUserMutationOptions = ApolloReactCommon.BaseMutationOptions<VerifyUserMutation, VerifyUserMutationVariables>;
+export type VerifyUserByDigitMutationHookResult = ReturnType<typeof useVerifyUserByDigitMutation>;
+export type VerifyUserByDigitMutationResult = ApolloReactCommon.MutationResult<VerifyUserByDigitMutation>;
+export type VerifyUserByDigitMutationOptions = ApolloReactCommon.BaseMutationOptions<VerifyUserByDigitMutation, VerifyUserByDigitMutationVariables>;
+export const VerifyUserByTokenDocument = gql`
+    query VerifyUserByToken($token: String!) {
+  verifyUserByToken(token: $token) {
+    ok
+    message
+  }
+}
+    `;
+
+/**
+ * __useVerifyUserByTokenQuery__
+ *
+ * To run a query within a React component, call `useVerifyUserByTokenQuery` and pass it any options that fit your needs.
+ * When your component renders, `useVerifyUserByTokenQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useVerifyUserByTokenQuery({
+ *   variables: {
+ *      token: // value for 'token'
+ *   },
+ * });
+ */
+export function useVerifyUserByTokenQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<VerifyUserByTokenQuery, VerifyUserByTokenQueryVariables>) {
+        return ApolloReactHooks.useQuery<VerifyUserByTokenQuery, VerifyUserByTokenQueryVariables>(VerifyUserByTokenDocument, baseOptions);
+      }
+export function useVerifyUserByTokenLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<VerifyUserByTokenQuery, VerifyUserByTokenQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<VerifyUserByTokenQuery, VerifyUserByTokenQueryVariables>(VerifyUserByTokenDocument, baseOptions);
+        }
+export type VerifyUserByTokenQueryHookResult = ReturnType<typeof useVerifyUserByTokenQuery>;
+export type VerifyUserByTokenLazyQueryHookResult = ReturnType<typeof useVerifyUserByTokenLazyQuery>;
+export type VerifyUserByTokenQueryResult = ApolloReactCommon.QueryResult<VerifyUserByTokenQuery, VerifyUserByTokenQueryVariables>;
 export const ChannelsDocument = gql`
     query Channels($teamId: String!) {
   channels(teamId: $teamId) {
@@ -612,43 +695,6 @@ export function useTeamLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOpt
 export type TeamQueryHookResult = ReturnType<typeof useTeamQuery>;
 export type TeamLazyQueryHookResult = ReturnType<typeof useTeamLazyQuery>;
 export type TeamQueryResult = ApolloReactCommon.QueryResult<TeamQuery, TeamQueryVariables>;
-export const TeamsByEmailDocument = gql`
-    mutation TeamsByEmail($email: String!) {
-  teamsByEmail(email: $email) {
-    ok
-    message
-    teams {
-      id
-      name
-    }
-  }
-}
-    `;
-export type TeamsByEmailMutationFn = ApolloReactCommon.MutationFunction<TeamsByEmailMutation, TeamsByEmailMutationVariables>;
-
-/**
- * __useTeamsByEmailMutation__
- *
- * To run a mutation, you first call `useTeamsByEmailMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useTeamsByEmailMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [teamsByEmailMutation, { data, loading, error }] = useTeamsByEmailMutation({
- *   variables: {
- *      email: // value for 'email'
- *   },
- * });
- */
-export function useTeamsByEmailMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<TeamsByEmailMutation, TeamsByEmailMutationVariables>) {
-        return ApolloReactHooks.useMutation<TeamsByEmailMutation, TeamsByEmailMutationVariables>(TeamsByEmailDocument, baseOptions);
-      }
-export type TeamsByEmailMutationHookResult = ReturnType<typeof useTeamsByEmailMutation>;
-export type TeamsByEmailMutationResult = ApolloReactCommon.MutationResult<TeamsByEmailMutation>;
-export type TeamsByEmailMutationOptions = ApolloReactCommon.BaseMutationOptions<TeamsByEmailMutation, TeamsByEmailMutationVariables>;
 export const MeDocument = gql`
     query Me {
   me {

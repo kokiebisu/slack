@@ -32,7 +32,7 @@ export const FindTeamContent: React.FC<Props> = ({ teams }) => {
                 </Header>
               </b.Flex>
             </b.Box>
-            <AvailableWorkspaces teams={teams.state.teams} />
+            <AvailableWorkspaces teams={teams} />
             <b.Box>
               <b.Flex justifyContent='center'>
                 <ShowMore my={4}>

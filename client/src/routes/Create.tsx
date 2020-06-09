@@ -17,7 +17,7 @@ import {
 
 import { randomColor } from '../util/randomColor';
 import { avatar } from '../styles/colors';
-import { ConfirmDigit } from '../components/confirm/layout';
+import { ConfirmDigit } from '../components/confirmDigit/layout';
 
 interface Props {}
 
