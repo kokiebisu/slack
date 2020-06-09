@@ -27,7 +27,7 @@ export class RegisterResolver {
         };
       }
 
-      const digit = 123456;
+      const digit = Math.floor(100000 + Math.random() * 900000);
 
       const token = createDigitToken(digit, user);
 
@@ -58,6 +58,7 @@ export class RegisterResolver {
       } else {
         const token = createStringToken(user);
         redis.set(`${token}`, user.id);
+
         await sendLinkEmail(email, token);
       }
 
