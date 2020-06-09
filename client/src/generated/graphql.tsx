@@ -64,14 +64,14 @@ export type ChannelsResponse = {
 export type TeamResponse = {
   __typename?: 'TeamResponse';
   ok: Scalars['Boolean'];
-  message?: Maybe<Scalars['String']>;
+  message: Scalars['String'];
   team?: Maybe<Team>;
 };
 
 export type TeamsResponse = {
   __typename?: 'TeamsResponse';
   ok: Scalars['Boolean'];
-  message?: Maybe<Scalars['String']>;
+  message: Scalars['String'];
   teams?: Maybe<Array<Team>>;
 };
 
@@ -116,6 +116,7 @@ export type Mutation = {
   verifyUser: AuthorizationResponse;
   createChannel: ChannelResponse;
   createTeam: TeamResponse;
+  teamsByEmail: TeamsResponse;
 };
 
 
@@ -140,6 +141,11 @@ export type MutationCreateChannelArgs = {
 export type MutationCreateTeamArgs = {
   avatarBackground: Scalars['String'];
   name: Scalars['String'];
+};
+
+
+export type MutationTeamsByEmailArgs = {
+  email: Scalars['String'];
 };
 
 export type LogoutMutationVariables = {};
@@ -263,6 +269,23 @@ export type TeamQuery = (
       { __typename?: 'Team' }
       & Pick<Team, 'id' | 'name' | 'ownerId'>
     )> }
+  ) }
+);
+
+export type TeamsByEmailMutationVariables = {
+  email: Scalars['String'];
+};
+
+
+export type TeamsByEmailMutation = (
+  { __typename?: 'Mutation' }
+  & { teamsByEmail: (
+    { __typename?: 'TeamsResponse' }
+    & Pick<TeamsResponse, 'ok' | 'message'>
+    & { teams?: Maybe<Array<(
+      { __typename?: 'Team' }
+      & Pick<Team, 'id' | 'name'>
+    )>> }
   ) }
 );
 
@@ -589,6 +612,43 @@ export function useTeamLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOpt
 export type TeamQueryHookResult = ReturnType<typeof useTeamQuery>;
 export type TeamLazyQueryHookResult = ReturnType<typeof useTeamLazyQuery>;
 export type TeamQueryResult = ApolloReactCommon.QueryResult<TeamQuery, TeamQueryVariables>;
+export const TeamsByEmailDocument = gql`
+    mutation TeamsByEmail($email: String!) {
+  teamsByEmail(email: $email) {
+    ok
+    message
+    teams {
+      id
+      name
+    }
+  }
+}
+    `;
+export type TeamsByEmailMutationFn = ApolloReactCommon.MutationFunction<TeamsByEmailMutation, TeamsByEmailMutationVariables>;
+
+/**
+ * __useTeamsByEmailMutation__
+ *
+ * To run a mutation, you first call `useTeamsByEmailMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useTeamsByEmailMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [teamsByEmailMutation, { data, loading, error }] = useTeamsByEmailMutation({
+ *   variables: {
+ *      email: // value for 'email'
+ *   },
+ * });
+ */
+export function useTeamsByEmailMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<TeamsByEmailMutation, TeamsByEmailMutationVariables>) {
+        return ApolloReactHooks.useMutation<TeamsByEmailMutation, TeamsByEmailMutationVariables>(TeamsByEmailDocument, baseOptions);
+      }
+export type TeamsByEmailMutationHookResult = ReturnType<typeof useTeamsByEmailMutation>;
+export type TeamsByEmailMutationResult = ApolloReactCommon.MutationResult<TeamsByEmailMutation>;
+export type TeamsByEmailMutationOptions = ApolloReactCommon.BaseMutationOptions<TeamsByEmailMutation, TeamsByEmailMutationVariables>;
 export const MeDocument = gql`
     query Me {
   me {

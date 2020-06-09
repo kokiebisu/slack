@@ -1,12 +1,15 @@
 import * as React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-// Pages
-import { Landing } from '../components/landing/layout';
+// Routes
 import { CreateRoutes } from './Create';
 import { GetStartedRoutes } from './GetStarted';
 import { ClientRoutes } from './Workspace';
+
+// Pages
+import { Landing } from '../components/landing/layout';
 import { SignIn } from '../components/signin/layout';
+import { FindTeam } from '../components/findteam/layout';
 
 export const AppRoutes: React.SFC = (): JSX.Element => {
   return (
@@ -17,6 +20,7 @@ export const AppRoutes: React.SFC = (): JSX.Element => {
         <Route path='/create' component={CreateRoutes} />
         <Route path='/client/:id' component={ClientRoutes} />
         <Route path='/signin' component={SignIn} />
+        <Route path='/your-workspaces' component={FindTeam} />
       </Switch>
     </BrowserRouter>
   );
