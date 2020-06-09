@@ -7,7 +7,7 @@ import {
   useRouteMatch,
   RouteComponentProps,
 } from 'react-router-dom';
-import { StaticContext } from 'react-router';
+import { StaticContext, Redirect } from 'react-router';
 
 // Pages
 import { ThreadsPage } from '../components/workspace/content/threads';
@@ -16,6 +16,7 @@ import { DraftPage } from '../components/workspace/content/draft';
 import { SavedPage } from '../components/workspace/content/saved';
 
 import { Workspace } from '../components/workspace/layout';
+import { useMeQuery } from '../generated/graphql';
 
 type Props = RouteComponentProps<
   {},
@@ -34,21 +35,28 @@ export const ClientRoutes: React.FC<Props> = () => {
 };
 
 export const WorkspaceRoute: React.FC<{}> = () => {
+  const { data, loading, error } = useMeQuery();
   const match = useRouteMatch();
   return (
     <>
-      <Route path={match.url + '/saved-page'}>
-        <SavedPage />
-      </Route>
-      <Route path={match.url + '/threads'}>
-        <ThreadsPage />
-      </Route>
-      <Route path={match.url + '/drafts'}>
-        <DraftPage />
-      </Route>
-      <Route path={match.url + '/activity-page'}>
-        <MentionPage />
-      </Route>
+      {!loading && data?.me.ok ? (
+        <>
+          <Route path={match.url + '/saved-page'}>
+            <SavedPage />
+          </Route>
+          <Route path={match.url + '/threads'}>
+            <ThreadsPage />
+          </Route>
+          <Route path={match.url + '/drafts'}>
+            <DraftPage />
+          </Route>
+          <Route path={match.url + '/activity-page'}>
+            <MentionPage />
+          </Route>
+        </>
+      ) : (
+        <Redirect to='/' />
+      )}
     </>
   );
 };

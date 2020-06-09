@@ -8,6 +8,7 @@ import { Sidebar } from '../sidebar/layout';
 import { MenuToggle } from '../menutoggle';
 import { useState } from 'react';
 import { useMeQuery, useTeamQuery } from '../../../generated/graphql';
+import { useToggleState } from '../../../context/toggle-context';
 
 interface Props {
   route: React.ReactNode;
@@ -15,6 +16,8 @@ interface Props {
 
 export const Workspace: React.FC<Props> = ({ route }) => {
   const [toggle, setToggle] = useState(false);
+
+  const state = useToggleState();
 
   const { id } = useParams();
   const { data: { me } = {}, loading, error } = useMeQuery();
@@ -35,7 +38,7 @@ export const Workspace: React.FC<Props> = ({ route }) => {
             {!loading && me && team && (
               <>
                 <HomeHeader />
-                {toggle ? <MenuToggle /> : null}
+                {state.toggle ? <MenuToggle /> : null}
                 <ContentWrapper>
                   <Sidebar />
                   {route}
@@ -44,7 +47,6 @@ export const Workspace: React.FC<Props> = ({ route }) => {
             )}
           </>
         )}
-        <HomeHeader />
       </Wrapper>
     </>
   );
