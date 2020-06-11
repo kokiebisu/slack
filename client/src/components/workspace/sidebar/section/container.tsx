@@ -16,6 +16,7 @@ import { useChannelsQuery } from '../../../../generated/graphql';
 
 // Styles
 import { Wrapper } from './container.styles';
+import { useToggleState } from '../../../../context/toggle-context';
 
 interface Props {}
 
@@ -56,9 +57,8 @@ export const SidebarSections: React.FC<Props> = () => {
       </SidebarSection>
       <SidebarSection
         title='Apps'
-        onReveal={() =>
-          setRevealed({ ...revealed, apps: !revealed.apps })
-        }></SidebarSection>
+        onReveal={() => setRevealed({ ...revealed, apps: !revealed.apps })}
+      />
     </Wrapper>
   );
 };
