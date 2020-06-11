@@ -2,9 +2,16 @@ import * as React from 'react';
 import { createContext, useReducer, useContext } from 'react';
 
 type Dispatch = (action: Action) => void;
-type Action = { type: 'toggle' };
+type Action =
+  | { type: 'toggle_menu' }
+  | {
+      type: 'toggle_channel';
+    };
 
-type State = { toggle: boolean };
+type State = {
+  menu: boolean;
+  channel: boolean;
+};
 type ToggleProviderProps = { children: React.ReactNode };
 
 const ToggleStateContext = createContext<State | undefined>(undefined);
@@ -12,8 +19,13 @@ const ToggleDispatchContext = createContext<Dispatch | undefined>(undefined);
 
 const toggleReducer = (state: State, action: Action) => {
   switch (action.type) {
-    case 'toggle':
-      return { ...state, toggle: !state.toggle };
+    case 'toggle_menu':
+      return { ...state, menu: !state.menu };
+    case 'toggle_channel':
+      return {
+        ...state,
+        channel: !state.channel,
+      };
     default:
       return state;
   }
@@ -21,7 +33,8 @@ const toggleReducer = (state: State, action: Action) => {
 
 const ToggleProvider = ({ children }: ToggleProviderProps) => {
   const [state, dispatch] = useReducer(toggleReducer, {
-    toggle: false,
+    menu: false,
+    channel: false,
   });
   return (
     <ToggleStateContext.Provider value={state}>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 // Blocks
@@ -12,6 +12,8 @@ import { Plus } from '../../../../assets/svg/Plus';
 // Breakpoints
 import { home } from '../../../../styles/sizes';
 
+import { useToggleDispatch } from '../../../../context/toggle-context';
+
 // Styles
 import {
   Wrapper,
@@ -21,6 +23,7 @@ import {
   TitleContainer,
   ContentWrapper,
   SubtitleWrapper,
+  IconButtonWrapper,
 } from './section.styles';
 
 interface Props {
@@ -36,6 +39,9 @@ export const SidebarSection: React.FC<Props> = ({
   onReveal,
 }) => {
   const [clicked, setClicked] = useState(false);
+  const [reveal, setReveal] = useState(false);
+
+  const dispatch = useToggleDispatch();
 
   const arrow = {
     initial: {
@@ -50,11 +56,7 @@ export const SidebarSection: React.FC<Props> = ({
 
   return (
     <Wrapper>
-      <TopColumnWrapper
-        onClick={() => {
-          setClicked(!clicked);
-          onReveal();
-        }}>
+      <TopColumnWrapper>
         <TitleWrapper alignItems='center' justifyContent='space-between'>
           <b.Flex alignItems='center'>
             <IconWrapper
@@ -64,7 +66,11 @@ export const SidebarSection: React.FC<Props> = ({
               mr={2}>
               <Play />
             </IconWrapper>
-            <TitleContainer>
+            <TitleContainer
+              onClick={(e) => {
+                setClicked(!clicked);
+                onReveal();
+              }}>
               <b.Text
                 fontFamily='SlackLato-Light'
                 color='pink__lighter'
@@ -73,9 +79,17 @@ export const SidebarSection: React.FC<Props> = ({
               </b.Text>
             </TitleContainer>
           </b.Flex>
-          <IconWrapper className='plus'>
+          <IconButtonWrapper
+            className='plus'
+            whileTap={{ scale: 0.9 }}
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch({
+                type: 'toggle_channel',
+              });
+            }}>
             <Plus />
-          </IconWrapper>
+          </IconButtonWrapper>
         </TitleWrapper>
       </TopColumnWrapper>
       <ContentWrapper>{children}</ContentWrapper>
@@ -83,9 +97,9 @@ export const SidebarSection: React.FC<Props> = ({
         <SubtitleWrapper my={1} py={2} pl={2}>
           <b.Flex alignItems='center' justifyContent='space-between'>
             <b.Flex>
-              <IconWrapper className='smallplus' pr={2}>
+              <IconButtonWrapper className='smallplus' pr={2}>
                 <Plus />
-              </IconWrapper>
+              </IconButtonWrapper>
               <b.Box>
                 <b.Text
                   fontFamily='SlackLato-Light'

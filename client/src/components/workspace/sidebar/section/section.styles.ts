@@ -27,13 +27,43 @@ export const TitleWrapper = styled(b.Flex)`
   position: relative;
 `;
 
-export const TitleContainer = styled(b.Box)`
+export const TitleContainer = styled(b.Button)`
   position: relative;
   bottom: 2px;
+  padding-right: 60px;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const ContentWrapper = styled(b.Box)`
   padding: 0 20px;
+`;
+
+export const IconButtonWrapper = styled(b.Button)`
+  &.plus {
+    position: absolute;
+    right: -2px;
+    bottom: 3px;
+    border-radius: 5px;
+    padding: 6px 8px 4px 7px;
+    svg {
+      width: 14px;
+      height: 14px;
+      path {
+        fill: ${({ theme }) => theme.colors.pink__light};
+      }
+    }
+
+    &:hover {
+      background: ${({ theme }) => theme.colors.primary__lighter};
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const IconWrapper = styled(b.Box)`
@@ -71,25 +101,6 @@ export const IconWrapper = styled(b.Box)`
     @media ${home.lg} {
       bottom: 2px;
       right: 18px;
-    }
-  }
-
-  &.plus {
-    position: absolute;
-    right: -2px;
-    bottom: 3px;
-    border-radius: 5px;
-    padding: 6px 8px 4px 7px;
-    svg {
-      width: 14px;
-      height: 14px;
-      path {
-        fill: ${({ theme }) => theme.colors.pink__light};
-      }
-    }
-
-    &:hover {
-      background: ${({ theme }) => theme.colors.primary__lighter};
     }
   }
 

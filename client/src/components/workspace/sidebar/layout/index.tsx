@@ -19,6 +19,7 @@ import { useMeQuery, useTeamQuery } from '../../../../generated/graphql';
 import { Wrapper, IconWrapper } from './layout.styles';
 import { Profile } from '../profile';
 import { useParams } from 'react-router-dom';
+import { useToggleState } from '../../../../context/toggle-context';
 
 interface Props {
   team?: string;
@@ -32,6 +33,8 @@ export const Sidebar: React.FC<Props> = ({ displayMenu }) => {
     variables: { teamId: id },
   });
 
+  const state = useToggleState();
+
   return (
     <>
       <Wrapper>
@@ -42,7 +45,7 @@ export const Sidebar: React.FC<Props> = ({ displayMenu }) => {
           onMouseLeave={() => setHovered(false)}>
           <Profile response={response} hovered={hovered} />
         </b.Box>
-        <b.Box className='sidebar'>
+        <b.Box className='sidebar' style={{ overflowY: 'scroll' }}>
           <Options />
           <SidebarSections />
         </b.Box>

@@ -8,31 +8,33 @@ export const Wrapper = styled(b.Box)`
   position: relative;
   overflow: hidden;
 
-  &.profile {
-    display: grid;
-    padding: 10px 0;
-    background-color: ${({ theme }) => theme.colors.primary};
-    align-items: center;
-    border-bottom: 1px solid ${({ theme }) => theme.colors.primary__lighter};
-    z-index: 10;
-    cursor: pointer;
+  & > div {
+    &.profile {
+      display: grid;
+      padding: 10px 0;
+      background-color: ${({ theme }) => theme.colors.primary};
+      align-items: center;
+      border-bottom: 1px solid ${({ theme }) => theme.colors.primary__lighter};
+      z-index: 10;
+      cursor: pointer;
 
-    &.hovered {
-      background-color: ${({ theme }) => theme.colors.primary__dark};
+      &.hovered {
+        background-color: ${({ theme }) => theme.colors.primary__dark};
+      }
+
+      &:focus {
+        outline: none;
+      }
     }
 
-    &:focus {
-      outline: none;
-    }
-  }
+    &.sidebar {
+      position: relative;
+      height: calc(100vh - 87px);
+      overflow-y: scroll;
 
-  &.sidebar {
-    position: relative;
-    height: calc(100vh - 87px);
-    overflow-y: scroll;
-
-    &::-webkit-scrollbar {
-      width: 0 !important;
+      &::-webkit-scrollbar {
+        width: 0 !important;
+      }
     }
   }
 `;

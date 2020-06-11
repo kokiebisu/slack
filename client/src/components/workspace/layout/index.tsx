@@ -9,6 +9,7 @@ import { MenuToggle } from '../menutoggle';
 import { useState } from 'react';
 import { useMeQuery, useTeamQuery } from '../../../generated/graphql';
 import { useToggleState } from '../../../context/toggle-context';
+import { ChannelModal } from '../channelmodal';
 
 interface Props {
   route: React.ReactNode;
@@ -37,8 +38,10 @@ export const Workspace: React.FC<Props> = ({ route }) => {
           <>
             {!loading && me && team && (
               <>
+                {state.channel && <ChannelModal />}
                 <HomeHeader />
-                {state.toggle ? <MenuToggle /> : null}
+
+                {state.menu ? <MenuToggle /> : null}
                 <ContentWrapper>
                   <Sidebar />
                   {route}

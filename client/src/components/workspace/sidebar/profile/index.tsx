@@ -40,7 +40,7 @@ export const Profile: React.FC<Props> = ({ hovered, response }) => {
   const dispatch = useToggleDispatch();
 
   return (
-    <Wrapper onClick={() => dispatch({ type: 'toggle' })}>
+    <Wrapper onClick={() => dispatch({ type: 'toggle_menu' })}>
       <b.Box>
         <b.Box>
           <b.Flex alignItems='center'>
