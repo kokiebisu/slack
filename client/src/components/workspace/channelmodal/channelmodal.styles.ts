@@ -73,9 +73,17 @@ export const SectionHeader = styled(b.Box)`
 
 export const StyledInput = styled.input`
   width: 100%;
-  padding: 10px;
+
   border-radius: 5px;
   border: 1px solid ${({ theme }) => theme.colors.gray__light};
+  font-size: 17px;
+  color: ${({ theme }) => theme.colors.gray};
+  &.name {
+    padding: 12px 0 12px 40px;
+  }
+  &.description {
+    padding: 12px 0 12px 15px;
+  }
 `;
 
 export const Hint = styled(b.Box)`
@@ -118,7 +126,8 @@ export const PrivateOption = styled(b.Box)`
         font-size: 15px;
         color: ${({ theme }) => theme.colors.gray__light};
         span {
-          color: ${({ theme }) => theme.colors.gray};
+          font-family: 'SlackLato-Bold';
+          color: ${({ theme }) => theme.colors.gray__darker};
         }
       }
     }
@@ -140,4 +149,20 @@ export const LearnButton = styled(b.Button)`
   border-radius: 5px;
   padding: 10px 18px;
   font-size: 15px;
+`;
+
+export const NameWrapper = styled(b.Box)`
+  position: relative;
+  & > div {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-40%) translateX(100%);
+    svg {
+      width: 15px;
+      height: 15px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray__light};
+      }
+    }
+  }
 `;

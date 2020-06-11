@@ -3,39 +3,38 @@ import { useState } from 'react';
 import * as b from '../../../styles/blocks';
 import styled from 'styled-components';
 
-interface Props {}
+interface Props {
+  isOn: boolean;
+  switchToggle: () => void;
+}
 
-export const Switch: React.FC<Props> = ({ isOn, ...props }) => {
+export const Switch: React.FC<Props> = ({ isOn, switchToggle }) => {
   return (
     <Wrapper
-      variants={wrapperVariants}
-      className={isOn ? `animate` : `initial`}
-      {...props}>
-      <Inner
-        variants={innerVariants}
-        className={isOn ? `animate` : `initial`}
-      />
+      className={isOn ? `switch on` : `switch off`}
+      onClick={switchToggle}>
+      <Inner className={isOn ? `switch on` : `switch off`} />
     </Wrapper>
   );
 };
 
-const wrapperVariants = {
-  animate: {
-    backgroundColor: 'green',
-  },
-  initial: {
-    backgroundColor: 'gray',
-  },
-};
+// const wrapperVariants = {
+//   animate: {
+//     background: 'green',
+//   },
+//   initial: {
+//     background: 'red',
+//   },
+// };
 
-const innerVariants = {
-  animate: {
-    x: 100,
-  },
-  initial: {
-    x: 0,
-  },
-};
+// const innerVariants = {
+//   animate: {
+//     x: 50,
+//   },
+//   initial: {
+//     x: 0,
+//   },
+// };
 
 const Wrapper = styled(b.Button)`
   width: 50px;
