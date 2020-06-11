@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 
 // Blocks
 import * as b from '../../../styles/blocks';
@@ -7,7 +8,7 @@ import * as b from '../../../styles/blocks';
 import styled from 'styled-components';
 
 // Svgs
-import { Close } from '../../../assets/svg';
+import { Close, Info } from '../../../assets/svg';
 
 import {
   Wrapper,
@@ -20,9 +21,14 @@ import {
   StyledInput,
   Hint,
   PrivateOption,
+  LearnMore,
+  LearnButton,
 } from './channelmodal.styles';
+import { Switch } from './switch';
 
 export const ChannelModal = () => {
+  const [isOn, setIsOn] = useState(false);
+
   return (
     <Wrapper>
       <b.Flex justifyContent='center' alignItems='center'>
@@ -59,30 +65,36 @@ export const ChannelModal = () => {
             <b.Text>What's this channel about?</b.Text>
           </Hint>
           <PrivateOption>
-            <b.Flex>
+            <b.Flex alignItems='center' justifyContent='space-between'>
               <b.Box>
                 <b.Box className='title'>
                   <b.Text>Make Private</b.Text>
                 </b.Box>
                 <b.Box className='description'>
-                  <Span className='warning'>This can’t be undone.</Span> A
-                  private channel cannot be made public later on.
+                  <b.Text>
+                    <b.Span>This can’t be undone.</b.Span> A private channel
+                    cannot be made public later on.
+                  </b.Text>
                 </b.Box>
               </b.Box>
-              <b.Box>switch</b.Box>
+              <b.Box>
+                <Switch isOn={isOn} onClick={() => setIsOn(!isOn)} />
+              </b.Box>
             </b.Flex>
           </PrivateOption>
           <b.Box>
-            <b.Flex>
-              <b.Box>
-                <b.Flex>
-                  <b.Box>I</b.Box>
-                  <b.Box>Learn more</b.Box>
+            <b.Flex justifyContent='space-between' alignItems='center'>
+              <LearnMore>
+                <b.Flex alignItems='center'>
+                  <IconButtonWrapper className='info'>
+                    <Info />
+                  </IconButtonWrapper>
+                  <b.Box>
+                    <b.Text>Learn more</b.Text>
+                  </b.Box>
                 </b.Flex>
-              </b.Box>
-              <b.Box>
-                <b.Button>Learn</b.Button>
-              </b.Box>
+              </LearnMore>
+              <LearnButton>Create</LearnButton>
             </b.Flex>
           </b.Box>
         </Container>

@@ -31,12 +31,23 @@ export const Title = styled(b.Box)`
 `;
 
 export const IconButtonWrapper = styled(b.Button)`
+  position: relative;
   &.close {
     svg {
       width: 15px;
       height: 15px;
       path {
         fill: ${({ theme }) => theme.colors.black};
+      }
+    }
+  }
+  &.info {
+    top: 1.5px;
+    svg {
+      width: 15px;
+      height: 15px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray__light};
       }
     }
   }
@@ -77,5 +88,56 @@ export const Hint = styled(b.Box)`
 `;
 
 export const PrivateOption = styled(b.Box)`
-  margin: 20px 0;
+  margin: 30px 0;
+
+  & > div {
+    & > div {
+      &:nth-child(1) {
+        width: 60%;
+      }
+      &:nth-child(2) {
+        width: auto;
+      }
+    }
+  }
+
+  div {
+    &.title {
+      margin-bottom: 10px;
+      p {
+        font-size: 15px;
+        font-family: 'SlackLato-Bold';
+        color: ${({ theme }) => theme.colors.black__light};
+      }
+    }
+
+    &.description {
+      p {
+        line-height: 1.5;
+        font-family: 'SlackLato-Regular';
+        font-size: 15px;
+        color: ${({ theme }) => theme.colors.gray__light};
+        span {
+          color: ${({ theme }) => theme.colors.gray};
+        }
+      }
+    }
+  }
+`;
+
+export const LearnMore = styled(b.Box)`
+  p {
+    font-size: 15px;
+    color: ${({ theme }) => theme.colors.gray__light};
+    font-family: 'SlackLato-Regular';
+  }
+`;
+
+export const LearnButton = styled(b.Button)`
+  background-color: ${({ theme }) => theme.colors.gray__lighter};
+  color: ${({ theme }) => theme.colors.gray};
+  font-family: 'SlackLato-Bold';
+  border-radius: 5px;
+  padding: 10px 18px;
+  font-size: 15px;
 `;
