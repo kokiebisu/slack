@@ -4,6 +4,7 @@ import {
   Column,
   BaseEntity,
   OneToMany,
+  ManyToMany,
 } from 'typeorm';
 import { ObjectType, Field, Int } from 'type-graphql';
 import { Team } from './Team';
@@ -35,7 +36,4 @@ export class User extends BaseEntity {
 
   @Column()
   password: string;
-
-  @OneToMany(() => Member, (member) => member.user)
-  members!: Member[];
 }

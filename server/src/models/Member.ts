@@ -1,21 +1,30 @@
-import { PrimaryGeneratedColumn, Column, ManyToOne, Entity } from 'typeorm';
+import {
+  Entity,
+  PrimaryColumn,
+  ManyToOne,
+  JoinColumn,
+  BaseEntity,
+} from 'typeorm';
 import { User } from './User';
 import { Team } from './Team';
+import { ObjectType, Field } from 'type-graphql';
 
+@ObjectType()
 @Entity('members')
-export class Member {
-  @PrimaryGeneratedColumn()
-  public memberId: number;
+export class Member extends BaseEntity {
+  @Field(() => String)
+  @PrimaryColumn()
+  teamId: string;
 
-  @Column()
-  public userId: number;
+  @Field(() => Number)
+  @PrimaryColumn()
+  userId: number;
 
-  @Column()
-  public teamId: number;
+  @ManyToOne(() => User, (user) => user.id, { primary: true })
+  @JoinColumn({ name: 'userId' })
+  user: Promise<User>;
 
-  @ManyToOne(() => User, (user) => user.members)
-  public user!: User;
-
-  @ManyToOne(() => Team, (team) => team.members)
-  public team!: Team;
+  @ManyToOne(() => Team, (team) => team.id, { primary: true })
+  @JoinColumn({ name: 'teamId' })
+  team: Promise<Team>;
 }

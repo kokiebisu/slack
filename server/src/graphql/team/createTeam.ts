@@ -3,6 +3,7 @@ import { Context } from '../../interface/context';
 import { Team } from '../../models/Team';
 import { TeamResponse } from '../response/teamResponse';
 import { isAuth } from '../../middleware/isAuthenticated';
+import { Member } from '../../models/Member';
 
 @Resolver()
 export class CreateTeamResolver {
@@ -21,6 +22,8 @@ export class CreateTeamResolver {
         avatarBackground,
         ownerId: userId,
       }).save();
+
+      const member = await Member.create({ teamId: team.id, userId }).save();
 
       return {
         ok: true,

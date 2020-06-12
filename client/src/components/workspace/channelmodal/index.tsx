@@ -67,6 +67,7 @@ export const ChannelModal: React.FC<Props> = () => {
       setError('Something is wrong');
       return;
     }
+
     const response = await create({
       variables: {
         name: input.name,

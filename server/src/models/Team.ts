@@ -8,6 +8,7 @@ import {
   ManyToOne,
   OneToMany,
   ManyToMany,
+  JoinTable,
 } from 'typeorm';
 import { User } from './User';
 import { ObjectType, Field, Int } from 'type-graphql';
@@ -40,6 +41,6 @@ export class Team extends BaseEntity {
   @Column()
   avatarBackground: string;
 
-  @OneToMany(() => Member, (member) => member.team)
-  public members!: Member[];
+  // @OneToMany(() => Member, (member) => member.team)
+  // public members!: Member[];
 }
