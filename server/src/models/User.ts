@@ -7,6 +7,7 @@ import {
 } from 'typeorm';
 import { ObjectType, Field, Int } from 'type-graphql';
 import { Team } from './Team';
+import { Member } from './Member';
 
 @ObjectType()
 @Entity('users')
@@ -34,4 +35,7 @@ export class User extends BaseEntity {
 
   @Column()
   password: string;
+
+  @OneToMany(() => Member, (member) => member.user)
+  members!: Member[];
 }
