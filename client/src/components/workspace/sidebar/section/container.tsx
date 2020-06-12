@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 
@@ -21,6 +21,7 @@ import { useToggleState } from '../../../../context/toggle-context';
 interface Props {}
 
 export const SidebarSections: React.FC<Props> = () => {
+  const toggle = useToggleState();
   const [revealed, setRevealed] = useState({
     channels: false,
     messages: false,
@@ -29,9 +30,15 @@ export const SidebarSections: React.FC<Props> = () => {
 
   const { id } = useParams();
 
-  const { data: { channels } = {}, loading } = useChannelsQuery({
-    variables: { teamId: id },
+  const { data, loading, error, refetch } = useChannelsQuery({
+    variables: {
+      teamId: id,
+    },
   });
+
+  useEffect(() => {
+    refetch();
+  }, [toggle.channel]);
 
   return (
     <Wrapper>
@@ -41,9 +48,11 @@ export const SidebarSections: React.FC<Props> = () => {
         onReveal={() => {
           setRevealed({ ...revealed, channels: !revealed.channels });
         }}>
-        {!loading && channels && (
+        {!loading && data && (
           <>
-            {revealed.channels ? <Channels data={channels?.channels} /> : null}
+            {revealed.channels && data.channels ? (
+              <Channels data={data!.channels.channels} />
+            ) : null}
           </>
         )}
       </SidebarSection>

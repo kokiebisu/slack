@@ -10,7 +10,8 @@ export class CreateChannelResolver {
   @Mutation(() => ChannelResponse)
   async createChannel(
     @Arg('name') name: string,
-    @Arg('teamId') teamId: string
+    @Arg('teamId') teamId: string,
+    @Arg('description', { nullable: true }) description?: string
   ): Promise<ChannelResponse | Error> {
     try {
       const team = await Team.findOne(teamId);
@@ -21,7 +22,11 @@ export class CreateChannelResolver {
           channel: null,
         };
       }
-      const channel = await Channel.create({ name, teamId }).save();
+      const channel = await Channel.create({
+        name,
+        teamId,
+        description,
+      }).save();
       return {
         ok: true,
         channel,

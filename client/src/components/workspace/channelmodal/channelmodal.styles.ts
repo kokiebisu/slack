@@ -33,12 +33,21 @@ export const Title = styled(b.Box)`
 export const IconButtonWrapper = styled(b.Button)`
   position: relative;
   &.close {
+    width: 35px;
+    height: 35px;
     svg {
       width: 15px;
       height: 15px;
       path {
         fill: ${({ theme }) => theme.colors.black};
       }
+    }
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      border-radius: 100%;
+      background-color: ${({ theme }) => theme.colors.white__dark};
     }
   }
   &.info {

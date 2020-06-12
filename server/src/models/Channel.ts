@@ -30,4 +30,8 @@ export class Channel extends BaseEntity {
 
   @ManyToOne(() => Team, (team) => team.channels)
   team: Team;
+
+  @Field(() => String, { nullable: true })
+  @Column({ nullable: true })
+  description: string;
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useReducer } from 'react';
 
 // Blocks
 import * as b from '../../../styles/blocks';
@@ -27,13 +27,56 @@ import {
 } from './channelmodal.styles';
 import { Switch } from './switch';
 import { FatHashTag, ThinHashTag } from '../../../assets/svg/HashTag';
+import { action } from '@storybook/addon-actions';
+import {
+  useCreateChannelMutation,
+  useMyTeamsLazyQuery,
+} from '../../../generated/graphql';
+import { useParams } from 'react-router-dom';
+import {
+  useToggleDispatch,
+  useToggleState,
+} from '../../../context/toggle-context';
 
-export const ChannelModal = () => {
+const reducer = (state: any, action: any) => {
+  switch (action.type) {
+    case 'add_name':
+      return { ...state, name: action.payload };
+    case 'add_description':
+      return { ...state, description: action.payload };
+  }
+};
+
+interface Props {}
+
+export const ChannelModal: React.FC<Props> = () => {
+  const dispatchToggle = useToggleDispatch();
+
+  const [error, setError] = useState('');
   const [isPrivate, setIsPrivate] = useState(false);
+  const [input, dispatchInput] = useReducer(reducer, {
+    name: '',
+    description: '',
+  });
+  const { id } = useParams();
+  const [create] = useCreateChannelMutation();
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('e', e);
+    if (!input.name || !input.description) {
+      setError('Something is wrong');
+      return;
+    }
+    const response = await create({
+      variables: {
+        name: input.name,
+        teamId: id,
+        description: input.description,
+      },
+    });
+    if (response.data?.createChannel.ok) {
+      dispatchToggle({ type: 'toggle_channel' });
+    }
   };
 
   return (
@@ -50,7 +93,9 @@ export const ChannelModal = () => {
                     <b.Text>Create a channel</b.Text>
                   )}
                 </Title>
-                <IconButtonWrapper className='close'>
+                <IconButtonWrapper
+                  className='close'
+                  onClick={() => dispatchToggle({ type: 'toggle_channel' })}>
                   <Close />
                 </IconButtonWrapper>
               </b.Flex>
@@ -68,13 +113,34 @@ export const ChannelModal = () => {
               <b.Box>
                 <ThinHashTag />
               </b.Box>
-              <StyledInput placeholder='e.g. plan-budget' className='name' />
+              <StyledInput
+                onChange={(e) =>
+                  dispatchInput({ type: 'add_name', payload: e.target.value })
+                }
+                value={input.name}
+                placeholder='e.g. plan-budget'
+                className='name'
+              />
             </NameWrapper>
+            {error && (
+              <b.Box>
+                <b.Text>{error}</b.Text>
+              </b.Box>
+            )}
             <SectionHeader>
               <b.Text>Description (optional)</b.Text>
             </SectionHeader>
             <b.Box>
-              <StyledInput className='description' />
+              <StyledInput
+                onChange={(e) =>
+                  dispatchInput({
+                    type: 'add_description',
+                    payload: e.target.value,
+                  })
+                }
+                value={input.description}
+                className='description'
+              />
             </b.Box>
             <Hint>
               <b.Text>What's this channel about?</b.Text>

@@ -1,9 +1,5 @@
-mutation CreateChannel($name: String!, $teamId: String!) {
-  createChannel(name: $name, teamId: $teamId) {
+mutation CreateChannel($name: String!, $teamId: String!, $description: String) {
+  createChannel(name: $name, teamId: $teamId, description: $description) {
     ok
-    message
-    channel {
-      name
-    }
   }
 }

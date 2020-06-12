@@ -6,8 +6,13 @@ import { Wrapper, ContentWrapper } from './layout.styles';
 import { HomeHeader } from '../header';
 import { Sidebar } from '../sidebar/layout';
 import { MenuToggle } from '../menutoggle';
-import { useState } from 'react';
-import { useMeQuery, useTeamQuery } from '../../../generated/graphql';
+import { useState, useEffect } from 'react';
+import {
+  useMeQuery,
+  useTeamQuery,
+  useMyTeamsLazyQuery,
+  useTeamLazyQuery,
+} from '../../../generated/graphql';
 import { useToggleState } from '../../../context/toggle-context';
 import { ChannelModal } from '../channelmodal';
 
@@ -16,14 +21,12 @@ interface Props {
 }
 
 export const Workspace: React.FC<Props> = ({ route }) => {
-  const [toggle, setToggle] = useState(false);
-
   const state = useToggleState();
 
   const { id } = useParams();
-  const { data: { me } = {}, loading, error } = useMeQuery();
-
-  const { data: { team } = {} } = useTeamQuery({
+  const { data: { me } = {}, loading: meLoading, error } = useMeQuery();
+  const [channels, setChannels] = useState();
+  const { data: { team } = {}, loading: teamLoading } = useTeamQuery({
     variables: {
       teamId: id,
     },
@@ -36,7 +39,7 @@ export const Workspace: React.FC<Props> = ({ route }) => {
           <Redirect to='/' />
         ) : (
           <>
-            {!loading && me && team && (
+            {!teamLoading && !meLoading && (
               <>
                 {state.channel && <ChannelModal />}
                 <HomeHeader />
