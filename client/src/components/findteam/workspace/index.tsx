@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useHistory } from 'react-router-dom';
 
 // Blocks
 import * as b from '../../../styles/blocks';
@@ -24,6 +25,7 @@ export const AvailableWorkspace: React.FC<Props> = ({
   url,
   avatarBackground,
 }) => {
+  const history = useHistory();
   return (
     <b.Flex justifyContent='center'>
       <Wrapper>
@@ -65,7 +67,10 @@ export const AvailableWorkspace: React.FC<Props> = ({
               </b.Box>
             </b.Flex>
           </b.Box>
-          <LaunchButton onClick={() => {}}>
+          <LaunchButton
+            onClick={() => {
+              history.push(`/client/${url}`);
+            }}>
             <b.Text>Launch</b.Text>
           </LaunchButton>
         </b.Flex>
