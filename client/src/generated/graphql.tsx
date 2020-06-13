@@ -36,6 +36,12 @@ export type User = {
   email: Scalars['String'];
 };
 
+export type Member = {
+  __typename?: 'Member';
+  teamId: Scalars['String'];
+  userId: Scalars['Float'];
+};
+
 export type BaseResponse = {
   __typename?: 'BaseResponse';
   ok: Scalars['Boolean'];
@@ -60,6 +66,20 @@ export type ChannelsResponse = {
   ok: Scalars['Boolean'];
   message?: Maybe<Scalars['String']>;
   channels?: Maybe<Array<Channel>>;
+};
+
+export type MemberResponse = {
+  __typename?: 'MemberResponse';
+  ok: Scalars['Boolean'];
+  message?: Maybe<Scalars['String']>;
+  member?: Maybe<Member>;
+};
+
+export type MembersResponse = {
+  __typename?: 'MembersResponse';
+  ok: Scalars['Boolean'];
+  message?: Maybe<Scalars['String']>;
+  members?: Maybe<Array<Member>>;
 };
 
 export type TeamResponse = {
@@ -95,6 +115,8 @@ export type Query = {
   checkEmail: AuthorizationResponse;
   verifyUserByToken: AuthorizationResponse;
   channels: ChannelsResponse;
+  getMembersByTeam: MembersResponse;
+  getMembersByUser: MembersResponse;
   myTeams: TeamsResponse;
   team: TeamResponse;
   teams: TeamsResponse;
@@ -118,6 +140,16 @@ export type QueryChannelsArgs = {
 };
 
 
+export type QueryGetMembersByTeamArgs = {
+  teamId: Scalars['String'];
+};
+
+
+export type QueryGetMembersByUserArgs = {
+  userId: Scalars['Float'];
+};
+
+
 export type QueryTeamArgs = {
   teamId: Scalars['String'];
 };
@@ -128,6 +160,7 @@ export type Mutation = {
   register: AuthorizationResponse;
   verifyUserByDigit: AuthorizationResponse;
   createChannel: ChannelResponse;
+  addMember: BaseResponse;
   createTeam: TeamResponse;
 };
 
@@ -148,6 +181,12 @@ export type MutationCreateChannelArgs = {
   description?: Maybe<Scalars['String']>;
   teamId: Scalars['String'];
   name: Scalars['String'];
+};
+
+
+export type MutationAddMemberArgs = {
+  userId: Scalars['Float'];
+  teamId: Scalars['String'];
 };
 
 
