@@ -292,6 +292,40 @@ export type CreateChannelMutation = (
   ) }
 );
 
+export type GetMembersByTeamQueryVariables = {
+  teamId: Scalars['String'];
+};
+
+
+export type GetMembersByTeamQuery = (
+  { __typename?: 'Query' }
+  & { getMembersByTeam: (
+    { __typename?: 'MembersResponse' }
+    & Pick<MembersResponse, 'ok' | 'message'>
+    & { members?: Maybe<Array<(
+      { __typename?: 'Member' }
+      & Pick<Member, 'userId' | 'teamId'>
+    )>> }
+  ) }
+);
+
+export type GetMembersByUserQueryVariables = {
+  userId: Scalars['Float'];
+};
+
+
+export type GetMembersByUserQuery = (
+  { __typename?: 'Query' }
+  & { getMembersByUser: (
+    { __typename?: 'MembersResponse' }
+    & Pick<MembersResponse, 'ok' | 'message'>
+    & { members?: Maybe<Array<(
+      { __typename?: 'Member' }
+      & Pick<Member, 'userId' | 'teamId'>
+    )>> }
+  ) }
+);
+
 export type CreateTeamMutationVariables = {
   name: Scalars['String'];
   avatarBackground: Scalars['String'];
@@ -614,6 +648,82 @@ export function useCreateChannelMutation(baseOptions?: ApolloReactHooks.Mutation
 export type CreateChannelMutationHookResult = ReturnType<typeof useCreateChannelMutation>;
 export type CreateChannelMutationResult = ApolloReactCommon.MutationResult<CreateChannelMutation>;
 export type CreateChannelMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateChannelMutation, CreateChannelMutationVariables>;
+export const GetMembersByTeamDocument = gql`
+    query GetMembersByTeam($teamId: String!) {
+  getMembersByTeam(teamId: $teamId) {
+    ok
+    message
+    members {
+      userId
+      teamId
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetMembersByTeamQuery__
+ *
+ * To run a query within a React component, call `useGetMembersByTeamQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetMembersByTeamQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetMembersByTeamQuery({
+ *   variables: {
+ *      teamId: // value for 'teamId'
+ *   },
+ * });
+ */
+export function useGetMembersByTeamQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetMembersByTeamQuery, GetMembersByTeamQueryVariables>) {
+        return ApolloReactHooks.useQuery<GetMembersByTeamQuery, GetMembersByTeamQueryVariables>(GetMembersByTeamDocument, baseOptions);
+      }
+export function useGetMembersByTeamLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetMembersByTeamQuery, GetMembersByTeamQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<GetMembersByTeamQuery, GetMembersByTeamQueryVariables>(GetMembersByTeamDocument, baseOptions);
+        }
+export type GetMembersByTeamQueryHookResult = ReturnType<typeof useGetMembersByTeamQuery>;
+export type GetMembersByTeamLazyQueryHookResult = ReturnType<typeof useGetMembersByTeamLazyQuery>;
+export type GetMembersByTeamQueryResult = ApolloReactCommon.QueryResult<GetMembersByTeamQuery, GetMembersByTeamQueryVariables>;
+export const GetMembersByUserDocument = gql`
+    query GetMembersByUser($userId: Float!) {
+  getMembersByUser(userId: $userId) {
+    ok
+    message
+    members {
+      userId
+      teamId
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetMembersByUserQuery__
+ *
+ * To run a query within a React component, call `useGetMembersByUserQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetMembersByUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetMembersByUserQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useGetMembersByUserQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetMembersByUserQuery, GetMembersByUserQueryVariables>) {
+        return ApolloReactHooks.useQuery<GetMembersByUserQuery, GetMembersByUserQueryVariables>(GetMembersByUserDocument, baseOptions);
+      }
+export function useGetMembersByUserLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetMembersByUserQuery, GetMembersByUserQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<GetMembersByUserQuery, GetMembersByUserQueryVariables>(GetMembersByUserDocument, baseOptions);
+        }
+export type GetMembersByUserQueryHookResult = ReturnType<typeof useGetMembersByUserQuery>;
+export type GetMembersByUserLazyQueryHookResult = ReturnType<typeof useGetMembersByUserLazyQuery>;
+export type GetMembersByUserQueryResult = ApolloReactCommon.QueryResult<GetMembersByUserQuery, GetMembersByUserQueryVariables>;
 export const CreateTeamDocument = gql`
     mutation CreateTeam($name: String!, $avatarBackground: String!) {
   createTeam(name: $name, avatarBackground: $avatarBackground) {

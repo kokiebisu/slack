@@ -1,0 +1,10 @@
+query GetMembersByTeam($teamId: String!) {
+  getMembersByTeam(teamId: $teamId) {
+    ok
+    message
+    members {
+      userId
+      teamId
+    }
+  }
+}

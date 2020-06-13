@@ -11,9 +11,10 @@ import {
   JoinTable,
 } from 'typeorm';
 import { User } from './User';
-import { ObjectType, Field, Int } from 'type-graphql';
+import { ObjectType, Field, Int, Ctx } from 'type-graphql';
 import { Channel } from './Channel';
 import { Member } from './Member';
+import { Context } from '../interface/context';
 
 @ObjectType()
 @Entity('teams')
@@ -43,4 +44,9 @@ export class Team extends BaseEntity {
 
   // @OneToMany(() => Member, (member) => member.team)
   // public members!: Member[];
+
+  @Field(() => [User])
+  async members(@Ctx() { authorsLoader }: Context): Promise<Author[]> {
+    return authorsLoader.load(this.id);
+  }
 }

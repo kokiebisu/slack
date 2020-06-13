@@ -1,0 +1,10 @@
+query GetMembersByUser($userId: Float!) {
+  getMembersByUser(userId: $userId) {
+    ok
+    message
+    members {
+      userId
+      teamId
+    }
+  }
+}
