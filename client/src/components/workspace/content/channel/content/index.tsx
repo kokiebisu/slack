@@ -56,17 +56,17 @@ export const Content = () => {
           </b.Flex>
         </Options>
       </b.Box>
+      <DateSeperator>
+        <b.Flex alignItems='center'>
+          <Date mr={2}>
+            <b.Text>Friday, June 5th</b.Text>
+          </Date>
+          <IconWrapper className='bottom_arrow'>
+            <BottomArrow />
+          </IconWrapper>
+        </b.Flex>
+      </DateSeperator>
       <b.Box className='section_content'>
-        <DateSeperator>
-          <b.Flex alignItems='center'>
-            <Date mr={2}>
-              <b.Text>Friday, June 5th</b.Text>
-            </Date>
-            <IconWrapper className='bottom_arrow'>
-              <BottomArrow />
-            </IconWrapper>
-          </b.Flex>
-        </DateSeperator>
         <Messages />
       </b.Box>
     </Wrapper>

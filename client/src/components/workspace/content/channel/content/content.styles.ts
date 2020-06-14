@@ -19,17 +19,19 @@ export const Wrapper = styled(b.Box)`
 `;
 
 export const DateSeperator = styled(b.Box)`
-  position: absolute;
-  top: 0;
+  /* position: absolute; */
+
   left: 50%;
-  top: -16px;
+  top: 15px;
   z-index: 10;
+  max-width: 150px;
   transform: translateX(-50%);
   border-radius: 15px;
   padding: 6px 18px;
   background-color: ${({ theme }) => theme.colors.white};
   border: 1px solid ${({ theme }) => theme.colors.gray__lighter};
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
 `;
 
 export const Title = styled(b.Box)`
