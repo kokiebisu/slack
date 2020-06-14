@@ -1,20 +1,13 @@
 import {
   PrimaryGeneratedColumn,
   Column,
-  OneToOne,
-  JoinColumn,
   Entity,
   BaseEntity,
-  ManyToOne,
   OneToMany,
-  ManyToMany,
-  JoinTable,
 } from 'typeorm';
-import { User } from './User';
-import { ObjectType, Field, Int, Ctx } from 'type-graphql';
+import { ObjectType, Field, Int } from 'type-graphql';
 import { Channel } from './Channel';
 import { Member } from './Member';
-import { Context } from '../interface/context';
 
 @ObjectType()
 @Entity('teams')
@@ -31,22 +24,13 @@ export class Team extends BaseEntity {
   @Column()
   ownerId: number;
 
-  @ManyToOne(() => User, (user) => user.teams)
-  owner: User;
-
-  @Field(() => [Channel])
-  @OneToMany(() => Channel, (channel) => channel.team)
-  channels: Channel[];
-
   @Field()
   @Column()
   avatarBackground: string;
 
-  // @OneToMany(() => Member, (member) => member.team)
-  // public members!: Member[];
+  @OneToMany(() => Member, (member) => member.team)
+  members!: Member[];
 
-  @Field(() => [User])
-  async members(@Ctx() { authorsLoader }: Context): Promise<Author[]> {
-    return authorsLoader.load(this.id);
-  }
+  @OneToMany(() => Channel, (channel) => channel.team)
+  channels!: Channel[];
 }

@@ -4,6 +4,8 @@ import { Team } from '../../models/Team';
 import { TeamResponse } from '../response/teamResponse';
 import { isAuth } from '../../middleware/isAuthenticated';
 import { Member } from '../../models/Member';
+import { getConnection } from 'typeorm';
+// import { Member } from '../../models/UserTeam';
 
 @Resolver()
 export class CreateTeamResolver {
@@ -23,7 +25,12 @@ export class CreateTeamResolver {
         ownerId: userId,
       }).save();
 
-      const member = await Member.create({ teamId: team.id, userId }).save();
+      await getConnection()
+        .createQueryBuilder()
+        .insert()
+        .into(Member)
+        .values({ teamId: team.id, userId })
+        .execute();
 
       return {
         ok: true,

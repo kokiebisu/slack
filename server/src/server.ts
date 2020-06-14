@@ -12,16 +12,13 @@ import session from 'express-session';
 
 import cors from 'cors';
 import connectRedis from 'connect-redis';
-import { Context } from './interface/context';
 import cookieParser from 'cookie-parser';
-
-// import { Team } from './models/Team';
 
 import { Request, Response, NextFunction } from 'express';
 import { redis } from './redis';
-// import { confirmationPrefix } from './constants/redisPrefixes';
 
 import { router as tokenRouter } from './routes/tokenRoutes';
+import { createUsersLoader } from './util/usersLoader';
 
 const allowCrossDomain = (req: Request, res: Response, next: NextFunction) => {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -37,30 +34,21 @@ const allowCrossDomain = (req: Request, res: Response, next: NextFunction) => {
 
   app.use(cookieParser());
 
-  app.use(allowCrossDomain);
-
-  app.use('/refresh_token', tokenRouter);
-
-  // app.get('/user/confirm/:token', async (req, res) => {
-  //   const token = req.params.token;
-
-  //   const userId = await redis.get(confirmationPrefix + token);
-  //   if (userId) {
-  //     User.update({ id: parseInt(userId, 10) }, { confirmed: true });
-
-  //     await redis.del(token);
-
-  //     res.redirect(`http://localhost:3000/create/teamname/${userId}`);
-  //   }
-  // });
-
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
       resolvers: [__dirname + '/graphql/**/*.ts'],
     }),
     // Enable adding cookies to the session
-    context: ({ req, res }: Context) => ({ req, res }),
+    context: ({ req, res }: any) => ({
+      req,
+      res,
+      membersLoader: createUsersLoader(),
+    }),
   });
+
+  app.use(allowCrossDomain);
+
+  app.use('/refresh_token', tokenRouter);
 
   const RedisStore = connectRedis(session);
 

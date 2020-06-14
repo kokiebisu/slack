@@ -1,9 +1,9 @@
 import {
   Entity,
-  PrimaryColumn,
   ManyToOne,
-  JoinColumn,
   BaseEntity,
+  Column,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from './User';
 import { Team } from './Team';
@@ -12,19 +12,20 @@ import { ObjectType, Field } from 'type-graphql';
 @ObjectType()
 @Entity('members')
 export class Member extends BaseEntity {
+  @PrimaryGeneratedColumn()
+  id!: number;
+
   @Field(() => String)
-  @PrimaryColumn()
-  teamId: string;
+  @Column()
+  teamId!: string;
 
   @Field(() => Number)
-  @PrimaryColumn()
-  userId: number;
+  @Column()
+  userId!: number;
 
-  @ManyToOne(() => User, (user) => user.id, { primary: true })
-  @JoinColumn({ name: 'userId' })
-  user: Promise<User>;
+  @ManyToOne(() => User, (user) => user.members)
+  user!: User;
 
-  @ManyToOne(() => Team, (team) => team.id, { primary: true })
-  @JoinColumn({ name: 'teamId' })
-  team: Promise<Team>;
+  @ManyToOne(() => Team, (team) => team.members)
+  team!: Team;
 }

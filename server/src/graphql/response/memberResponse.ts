@@ -1,5 +1,4 @@
 import { ObjectType, Field } from 'type-graphql';
-import { Channel } from '../../models/Channel';
 import { BaseResponse } from './baseResponse';
 import { Member } from '../../models/Member';
 
