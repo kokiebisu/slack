@@ -7,8 +7,11 @@ import {
   Options,
   Option,
   IconWrapper,
+  DateSeperator,
+  Date,
 } from './content.styles';
 import { LayerPlus, UserPlus } from '../../../../../assets/svg';
+import { BottomArrow } from '../../../../../assets/svg/Arrows';
 
 export const Content = () => {
   return (
@@ -51,6 +54,19 @@ export const Content = () => {
             </Option>
           </b.Flex>
         </Options>
+      </b.Box>
+      <b.Box className='section_content'>
+        <DateSeperator>
+          <b.Flex alignItems='center'>
+            <Date mr={2}>
+              <b.Text>Friday, June 5th</b.Text>
+            </Date>
+            <IconWrapper className='bottom_arrow'>
+              <BottomArrow />
+            </IconWrapper>
+          </b.Flex>
+        </DateSeperator>
+        <b.Box>hello</b.Box>
       </b.Box>
     </Wrapper>
   );
