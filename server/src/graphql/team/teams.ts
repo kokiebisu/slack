@@ -7,7 +7,7 @@ export class TeamsResolver {
   @Query(() => TeamsResponse)
   async teams(): Promise<TeamsResponse | Error> {
     try {
-      const teams = await Team.find();
+      const teams = await Team.find({ relations: ['members'] });
       return {
         ok: true,
         teams,

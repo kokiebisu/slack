@@ -15,6 +15,7 @@ export class CreateChannelResolver {
   ): Promise<ChannelResponse | Error> {
     try {
       const team = await Team.findOne(teamId);
+
       if (!team) {
         return {
           ok: false,

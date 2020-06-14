@@ -1,11 +1,10 @@
-import { ObjectType, Field, Int } from 'type-graphql';
+import { ObjectType, Field } from 'type-graphql';
 import {
   PrimaryGeneratedColumn,
   Column,
   ManyToOne,
   BaseEntity,
   Entity,
-  JoinColumn,
 } from 'typeorm';
 import { Team } from './Team';
 

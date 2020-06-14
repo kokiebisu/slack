@@ -25,8 +25,13 @@ export type Team = {
   id: Scalars['String'];
   name: Scalars['String'];
   ownerId: Scalars['Int'];
-  channels: Array<Channel>;
   avatarBackground: Scalars['String'];
+};
+
+export type Member = {
+  __typename?: 'Member';
+  teamId: Scalars['String'];
+  userId: Scalars['Float'];
 };
 
 export type User = {
@@ -62,6 +67,20 @@ export type ChannelsResponse = {
   channels?: Maybe<Array<Channel>>;
 };
 
+export type BelongingTeams = {
+  __typename?: 'BelongingTeams';
+  id: Scalars['String'];
+  name: Scalars['String'];
+  avatarBackground: Scalars['String'];
+};
+
+export type BelongingTeamsResponse = {
+  __typename?: 'BelongingTeamsResponse';
+  ok: Scalars['Boolean'];
+  message?: Maybe<Scalars['String']>;
+  belongingTeams?: Maybe<Array<BelongingTeams>>;
+};
+
 export type TeamResponse = {
   __typename?: 'TeamResponse';
   ok: Scalars['Boolean'];
@@ -95,6 +114,7 @@ export type Query = {
   checkEmail: AuthorizationResponse;
   verifyUserByToken: AuthorizationResponse;
   channels: ChannelsResponse;
+  getBelongingTeams: BelongingTeamsResponse;
   myTeams: TeamsResponse;
   team: TeamResponse;
   teams: TeamsResponse;
@@ -129,6 +149,8 @@ export type Mutation = {
   verifyUserByDigit: AuthorizationResponse;
   createChannel: ChannelResponse;
   createTeam: TeamResponse;
+  removeTeam: TeamResponse;
+  removeUser: UserResponse;
 };
 
 
@@ -154,6 +176,16 @@ export type MutationCreateChannelArgs = {
 export type MutationCreateTeamArgs = {
   avatarBackground: Scalars['String'];
   name: Scalars['String'];
+};
+
+
+export type MutationRemoveTeamArgs = {
+  teamId: Scalars['String'];
+};
+
+
+export type MutationRemoveUserArgs = {
+  userId: Scalars['Float'];
 };
 
 export type CheckEmailQueryVariables = {
@@ -250,6 +282,21 @@ export type CreateChannelMutation = (
   & { createChannel: (
     { __typename?: 'ChannelResponse' }
     & Pick<ChannelResponse, 'ok'>
+  ) }
+);
+
+export type GetBelongingTeamsQueryVariables = {};
+
+
+export type GetBelongingTeamsQuery = (
+  { __typename?: 'Query' }
+  & { getBelongingTeams: (
+    { __typename?: 'BelongingTeamsResponse' }
+    & Pick<BelongingTeamsResponse, 'ok' | 'message'>
+    & { belongingTeams?: Maybe<Array<(
+      { __typename?: 'BelongingTeams' }
+      & Pick<BelongingTeams, 'id' | 'name' | 'avatarBackground'>
+    )>> }
   ) }
 );
 
@@ -575,6 +622,44 @@ export function useCreateChannelMutation(baseOptions?: ApolloReactHooks.Mutation
 export type CreateChannelMutationHookResult = ReturnType<typeof useCreateChannelMutation>;
 export type CreateChannelMutationResult = ApolloReactCommon.MutationResult<CreateChannelMutation>;
 export type CreateChannelMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateChannelMutation, CreateChannelMutationVariables>;
+export const GetBelongingTeamsDocument = gql`
+    query GetBelongingTeams {
+  getBelongingTeams {
+    ok
+    message
+    belongingTeams {
+      id
+      name
+      avatarBackground
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetBelongingTeamsQuery__
+ *
+ * To run a query within a React component, call `useGetBelongingTeamsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBelongingTeamsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBelongingTeamsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetBelongingTeamsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetBelongingTeamsQuery, GetBelongingTeamsQueryVariables>) {
+        return ApolloReactHooks.useQuery<GetBelongingTeamsQuery, GetBelongingTeamsQueryVariables>(GetBelongingTeamsDocument, baseOptions);
+      }
+export function useGetBelongingTeamsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetBelongingTeamsQuery, GetBelongingTeamsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<GetBelongingTeamsQuery, GetBelongingTeamsQueryVariables>(GetBelongingTeamsDocument, baseOptions);
+        }
+export type GetBelongingTeamsQueryHookResult = ReturnType<typeof useGetBelongingTeamsQuery>;
+export type GetBelongingTeamsLazyQueryHookResult = ReturnType<typeof useGetBelongingTeamsLazyQuery>;
+export type GetBelongingTeamsQueryResult = ApolloReactCommon.QueryResult<GetBelongingTeamsQuery, GetBelongingTeamsQueryVariables>;
 export const CreateTeamDocument = gql`
     mutation CreateTeam($name: String!, $avatarBackground: String!) {
   createTeam(name: $name, avatarBackground: $avatarBackground) {

@@ -1,0 +1,11 @@
+query GetBelongingTeams {
+  getBelongingTeams {
+    ok
+    message
+    belongingTeams {
+      id
+      name
+      avatarBackground
+    }
+  }
+}

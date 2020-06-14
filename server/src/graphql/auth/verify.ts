@@ -1,9 +1,11 @@
 import { Mutation, Arg, Ctx, Query } from 'type-graphql';
 import { redis } from '../../redis';
-import { User } from '../../models/User';
 import { getDigitToken } from '../../util/tokenGenerator';
 import { Context } from '../../interface/Context';
 import { AuthorizationResponse } from '../response/authResponse';
+import { getManager } from 'typeorm';
+
+const manager = getManager();
 
 export class VerifyResolver {
   @Mutation(() => AuthorizationResponse)
@@ -25,16 +27,22 @@ export class VerifyResolver {
 
       await redis.del(`${digit}`);
 
-      if (!decoded) {
+      if (!decoded.userId) {
         return {
           ok: false,
           message: 'user not found',
         };
       }
-      const user = await User.findOne(decoded.userId);
-      User.update({ id: decoded.userId }, { confirmed: true });
 
-      if (!user) {
+      const user = await manager.query('select * from users where id=$1', [
+        decoded.userId,
+      ]);
+
+      await manager.query('update users set confirmed = true where id=$1', [
+        user[0].id,
+      ]);
+
+      if (user.length === 0) {
         return {
           ok: false,
           message: 'unable to find user',
@@ -59,6 +67,7 @@ export class VerifyResolver {
   ): Promise<AuthorizationResponse | Error> {
     try {
       const userId = await redis.get(`${token}`);
+      console.log('ver userId', userId);
       if (!userId) {
         return {
           ok: false,

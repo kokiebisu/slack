@@ -3,6 +3,7 @@ import { Context } from '../../interface/context';
 import { User } from '../../models/User';
 import { isAuth } from '../../middleware/isAuthenticated';
 import { UserResponse } from '../response/userResponse';
+import { getConnection } from 'typeorm';
 
 @Resolver()
 export class MeResolver {
@@ -11,6 +12,7 @@ export class MeResolver {
   async me(@Ctx() { req }: Context): Promise<UserResponse | Error> {
     try {
       const userId = req.session!.userId;
+
       const user = await User.findOne(userId);
 
       if (!user) {
