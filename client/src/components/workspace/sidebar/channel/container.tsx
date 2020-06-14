@@ -15,7 +15,7 @@ interface ChannelProps {
 
 export const Channels: React.FC<Props> = ({ data }) => {
   return (
-    <b.Box pl={2}>
+    <b.Box>
       {data!.map((channel: ChannelProps) => {
         return (
           <Channel

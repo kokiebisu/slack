@@ -37,10 +37,6 @@ export const TitleContainer = styled(b.Button)`
   }
 `;
 
-export const ContentWrapper = styled(b.Box)`
-  padding: 0 20px;
-`;
-
 export const IconButtonWrapper = styled(b.Button)`
   &.plus {
     position: absolute;

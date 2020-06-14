@@ -42,10 +42,10 @@ export const WorkspaceRoute: React.FC<{}> = () => {
     <>
       {!loading && data?.me.ok ? (
         <>
-          <Route path={match.url + '/saved-page'}>
+          <Route exact path={match.url + '/saved-page'}>
             <SavedPage />
           </Route>
-          <Route path={match.url + '/threads'}>
+          <Route exact path={match.url + '/threads'}>
             <ThreadsPage />
           </Route>
           <Route path={match.url + '/drafts'}>
@@ -54,7 +54,7 @@ export const WorkspaceRoute: React.FC<{}> = () => {
           <Route path={match.url + '/activity-page'}>
             <MentionPage />
           </Route>
-          <Route path={match.url + '/:channelId'}>
+          <Route path={match.url + '/channel/:channelId'}>
             <ChannelPage />
           </Route>
         </>

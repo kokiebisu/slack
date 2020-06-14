@@ -3,7 +3,7 @@ import * as b from '../../../../styles/blocks';
 
 export const Name = styled(b.Box)`
   position: relative;
-  top: 3px;
+  bottom: 1px;
   & > p {
     font-family: 'SlackLato-Light';
     color: ${({ theme }) => theme.colors.pink__lighter};
@@ -13,7 +13,7 @@ export const Name = styled(b.Box)`
 
 export const IconWrapper = styled(b.Box)`
   position: relative;
-  top: 3px;
+  bottom: 0.5px;
 
   &.tag {
     svg {

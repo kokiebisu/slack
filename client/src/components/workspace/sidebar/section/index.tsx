@@ -21,7 +21,6 @@ import {
   TitleWrapper,
   IconWrapper,
   TitleContainer,
-  ContentWrapper,
   SubtitleWrapper,
   IconButtonWrapper,
 } from './section.styles';
@@ -92,7 +91,7 @@ export const SidebarSection: React.FC<Props> = ({
           </IconButtonWrapper>
         </TitleWrapper>
       </TopColumnWrapper>
-      <ContentWrapper>{children}</ContentWrapper>
+      <b.Box>{children}</b.Box>
       {subtitle && (
         <SubtitleWrapper my={1} py={2} pl={2}>
           <b.Flex alignItems='center' justifyContent='space-between'>
