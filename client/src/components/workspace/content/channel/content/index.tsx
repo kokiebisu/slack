@@ -1,5 +1,9 @@
 import * as React from 'react';
+
+// Blocks
 import * as b from '../../../../../styles/blocks';
+
+// Styles
 import {
   Wrapper,
   Title,
@@ -7,12 +11,14 @@ import {
   Options,
   Option,
   IconWrapper,
-  DateSeperator,
-  Date,
 } from './content.styles';
+
+// Svg
 import { LayerPlus, UserPlus } from '../../../../../assets/svg';
-import { BottomArrow } from '../../../../../assets/svg/Arrows';
+
+// Components
 import { Messages } from '../message/container';
+import { DateSeperator } from '../DateSeperator';
 
 export const Content = () => {
   return (
@@ -56,17 +62,8 @@ export const Content = () => {
           </b.Flex>
         </Options>
       </b.Box>
+      <DateSeperator />
       <b.Box className='section_content'>
-        <DateSeperator>
-          <b.Flex alignItems='center'>
-            <Date mr={2}>
-              <b.Text>Friday, June 5th</b.Text>
-            </Date>
-            <IconWrapper className='bottom_arrow'>
-              <BottomArrow />
-            </IconWrapper>
-          </b.Flex>
-        </DateSeperator>
         <Messages />
       </b.Box>
     </Wrapper>

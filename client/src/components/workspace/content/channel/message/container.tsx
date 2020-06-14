@@ -6,9 +6,179 @@ import { Message } from '.';
 export const Messages = () => {
   const messages = [
     {
-      name: 'kenichi okiebisu',
-      time: '12:06AM',
-      body: 'this is ken',
+      sender: 'Chihiro Hasegawa',
+      time: '12:04 AM',
+      body: {
+        type: 'joined',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
+    },
+    {
+      sender: 'Kenichi Okiebisu',
+      time: '12:48 AM',
+      body: {
+        type: 'message',
+      },
     },
   ];
   return (
@@ -16,7 +186,7 @@ export const Messages = () => {
       {messages.map((message) => {
         return (
           <Message
-            name={message.name}
+            sender={message.sender}
             time={message.time}
             body={message.body}
           />
