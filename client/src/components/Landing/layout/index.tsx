@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 // Components
 import { Header } from '../header';
 import { Banner } from '../Banner';
-import { BreakOut } from '../breakout';
+import { BreakOut } from '../Breakout/layout';
 import { Choose } from '../choose';
 import { Footer } from '../footer';
 
