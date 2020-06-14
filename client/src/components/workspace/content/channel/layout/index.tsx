@@ -7,9 +7,9 @@ import { Info } from '../../../../../assets/svg';
 interface Props {}
 
 export const ChannelPage: React.FC<Props> = () => {
-  const group = 'temporary';
+  const group = 'channels';
   useEffect(() => {
-    document.title = `Mentions & reactions | ${group}`;
+    document.title = `Slack | ${group}`;
   }, [group]);
 
   return (
