@@ -1,6 +1,6 @@
 import { Resolver, Query, Arg, UseMiddleware } from 'type-graphql';
 import { Channel } from '../../models/Channel';
-import { ChannelsResponse, ChannelResponse } from '../response/channelResponse';
+import { ChannelResponse } from '../response/channelResponse';
 import { isAuth } from '../../middleware/isAuthenticated';
 import { getManager } from 'typeorm';
 
@@ -14,12 +14,6 @@ export class ChannelResolver {
     @Arg('channelId') channelId: string
   ): Promise<ChannelResponse | Error> {
     try {
-      //   const channel = await Channel.find({ where: { teamId } });
-      //   return {
-      //     ok: true,
-      //     channels,
-      //   };
-
       const channel = await manager.findOne(Channel, { id: channelId });
 
       if (!channel) {

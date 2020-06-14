@@ -113,6 +113,7 @@ export type Query = {
   __typename?: 'Query';
   checkEmail: AuthorizationResponse;
   verifyUserByToken: AuthorizationResponse;
+  getChannelById: ChannelResponse;
   channels: ChannelsResponse;
   getBelongingTeams: BelongingTeamsResponse;
   myTeams: TeamsResponse;
@@ -133,6 +134,11 @@ export type QueryVerifyUserByTokenArgs = {
 };
 
 
+export type QueryGetChannelByIdArgs = {
+  channelId: Scalars['String'];
+};
+
+
 export type QueryChannelsArgs = {
   teamId: Scalars['String'];
 };
@@ -150,7 +156,7 @@ export type Mutation = {
   createChannel: ChannelResponse;
   createTeam: TeamResponse;
   removeTeam: TeamResponse;
-  removeUser: UserResponse;
+  removeUser: BaseResponse;
 };
 
 
@@ -253,6 +259,23 @@ export type VerifyUserByTokenQuery = (
   ) }
 );
 
+export type GetChannelByIdQueryVariables = {
+  channelId: Scalars['String'];
+};
+
+
+export type GetChannelByIdQuery = (
+  { __typename?: 'Query' }
+  & { getChannelById: (
+    { __typename?: 'ChannelResponse' }
+    & Pick<ChannelResponse, 'ok' | 'message'>
+    & { channel?: Maybe<(
+      { __typename?: 'Channel' }
+      & Pick<Channel, 'name'>
+    )> }
+  ) }
+);
+
 export type ChannelsQueryVariables = {
   teamId: Scalars['String'];
 };
@@ -345,7 +368,7 @@ export type TeamQuery = (
     & Pick<TeamResponse, 'ok' | 'message'>
     & { team?: Maybe<(
       { __typename?: 'Team' }
-      & Pick<Team, 'id' | 'name' | 'ownerId'>
+      & Pick<Team, 'name'>
     )> }
   ) }
 );
@@ -549,6 +572,43 @@ export function useVerifyUserByTokenLazyQuery(baseOptions?: ApolloReactHooks.Laz
 export type VerifyUserByTokenQueryHookResult = ReturnType<typeof useVerifyUserByTokenQuery>;
 export type VerifyUserByTokenLazyQueryHookResult = ReturnType<typeof useVerifyUserByTokenLazyQuery>;
 export type VerifyUserByTokenQueryResult = ApolloReactCommon.QueryResult<VerifyUserByTokenQuery, VerifyUserByTokenQueryVariables>;
+export const GetChannelByIdDocument = gql`
+    query GetChannelById($channelId: String!) {
+  getChannelById(channelId: $channelId) {
+    ok
+    message
+    channel {
+      name
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetChannelByIdQuery__
+ *
+ * To run a query within a React component, call `useGetChannelByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetChannelByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetChannelByIdQuery({
+ *   variables: {
+ *      channelId: // value for 'channelId'
+ *   },
+ * });
+ */
+export function useGetChannelByIdQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetChannelByIdQuery, GetChannelByIdQueryVariables>) {
+        return ApolloReactHooks.useQuery<GetChannelByIdQuery, GetChannelByIdQueryVariables>(GetChannelByIdDocument, baseOptions);
+      }
+export function useGetChannelByIdLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetChannelByIdQuery, GetChannelByIdQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<GetChannelByIdQuery, GetChannelByIdQueryVariables>(GetChannelByIdDocument, baseOptions);
+        }
+export type GetChannelByIdQueryHookResult = ReturnType<typeof useGetChannelByIdQuery>;
+export type GetChannelByIdLazyQueryHookResult = ReturnType<typeof useGetChannelByIdLazyQuery>;
+export type GetChannelByIdQueryResult = ApolloReactCommon.QueryResult<GetChannelByIdQuery, GetChannelByIdQueryVariables>;
 export const ChannelsDocument = gql`
     query Channels($teamId: String!) {
   channels(teamId: $teamId) {
@@ -743,9 +803,7 @@ export const TeamDocument = gql`
     ok
     message
     team {
-      id
       name
-      ownerId
     }
   }
 }
