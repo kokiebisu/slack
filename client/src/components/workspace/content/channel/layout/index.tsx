@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { ClientContentLayout } from '../../layout';
 import { Bottom, IconWrapper, Seperator } from './layout.styles';
 import * as b from '../../../../../styles/blocks';
-import { Info, UserAlt, MapPinAlt } from '../../../../../assets/svg';
+import { Info, User, MapPinAlt } from '../../../../../assets/svg';
 import {
   useGetChannelByIdQuery,
   useTeamQuery,
@@ -67,7 +67,7 @@ const SubSection = () => {
         <b.Box>
           <b.Flex alignItems='center'>
             <IconWrapper className='person'>
-              <UserAlt />
+              <User />
             </IconWrapper>
             <b.Box ml={1}>
               <b.Text fontSize={13} color='gray__light'>
