@@ -21,6 +21,7 @@ export const Icon = styled(b.Box)`
 `;
 
 export const WorkspaceName = styled(b.Box)`
+  margin-bottom: 5px;
   & > p {
     font-family: 'SlackLato-Bold';
   }
@@ -28,6 +29,7 @@ export const WorkspaceName = styled(b.Box)`
 
 export const WorkspaceURL = styled(b.Box)`
   & > p {
+    font-size: 13px;
     color: ${({ theme }) => theme.colors.gray__light};
   }
 `;

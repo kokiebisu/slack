@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import * as b from '../../../styles/blocks';
 
+import { size } from '../../../styles/sizes';
+
 export const Header = styled(b.Box)`
   width: 100%;
   max-width: 570px;

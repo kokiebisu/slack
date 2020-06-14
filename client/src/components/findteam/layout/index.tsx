@@ -19,6 +19,10 @@ export const FindTeam = () => {
     error,
   } = useGetBelongingTeamsQuery();
 
+  const tempTeams = [
+    { id: 'sadfdsafasdfdsa', avatarBackground: '#ffffff', name: 'kens team' },
+  ];
+
   return (
     <>
       {!error && !loading && !getBelongingTeams?.ok! ? (
