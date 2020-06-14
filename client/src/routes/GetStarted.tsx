@@ -4,7 +4,7 @@ import { Switch, Route, useRouteMatch } from 'react-router-dom';
 // Pages
 import { GetStarted } from '../components/getstarted/layout';
 import { GetStartedFind } from '../components/getstartedFind/layout';
-import { GetStartedCreate } from '../components/getstartedCreate/layout';
+import { GetStartedCreate } from '../components/getStartedCreate/layout';
 import { ConfirmEmail } from '../components/getstartedCheck/layout';
 
 export const GetStartedRoutes: React.SFC = () => {

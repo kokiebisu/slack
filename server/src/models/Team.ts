@@ -31,6 +31,8 @@ export class Team extends BaseEntity {
   @OneToMany(() => Member, (member) => member.team)
   members!: Member[];
 
-  @OneToMany(() => Channel, (channel) => channel.team)
+  @OneToMany(() => Channel, (channel) => channel.team, {
+    cascade: true,
+  })
   channels!: Channel[];
 }

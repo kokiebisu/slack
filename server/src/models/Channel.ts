@@ -27,7 +27,9 @@ export class Channel extends BaseEntity {
   @Column()
   teamId: string;
 
-  @ManyToOne(() => Team, (team) => team.channels)
+  @ManyToOne(() => Team, (team) => team.channels, {
+    onDelete: 'CASCADE',
+  })
   team: Team;
 
   @Field(() => String, { nullable: true })
