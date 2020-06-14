@@ -8,9 +8,28 @@ export const Wrapper = styled(b.Box)`
   & > div {
     &.section_header {
       padding: 25px 20px;
-      border-bottom: 1px solid ${({ theme }) => theme.colors.gray__lighter};
+    }
+
+    &.section_content {
+      position: relative;
+      border-top: 1px solid ${({ theme }) => theme.colors.gray__lighter};
+      padding: 25px 20px;
     }
   }
+`;
+
+export const DateSeperator = styled(b.Box)`
+  position: absolute;
+  top: 0;
+  left: 50%;
+  top: -16px;
+  z-index: 10;
+  transform: translateX(-50%);
+  border-radius: 15px;
+  padding: 6px 18px;
+  background-color: ${({ theme }) => theme.colors.white};
+  border: 1px solid ${({ theme }) => theme.colors.gray__lighter};
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 `;
 
 export const Title = styled(b.Box)`
@@ -97,5 +116,22 @@ export const IconWrapper = styled(b.Box)`
         fill: ${({ theme }) => theme.colors.blue__light};
       }
     }
+  }
+  &.bottom_arrow {
+    bottom: 1px;
+    svg {
+      width: 8px;
+      height: 8px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray__light};
+      }
+    }
+  }
+`;
+
+export const Date = styled(b.Box)`
+  & > p {
+    font-size: 13px;
+    font-family: 'SlackLato-Bold';
   }
 `;
