@@ -8,6 +8,9 @@ import * as b from '../../../styles/blocks';
 import { Header, Title, Description } from './content.styles';
 import { AvailableWorkspaces } from '../workspace/container';
 
+// Sizes
+import { size } from '../../../styles/sizes';
+
 interface Props {
   teams: any;
 }
@@ -87,6 +90,9 @@ const NotFound = styled(b.Box)`
 `;
 
 const Container = styled(b.Box)`
-  max-width: 570px;
-  width: 100%;
+  padding: 0 15px;
+  @media ${size.sm} {
+    max-width: 570px;
+    width: 100%;
+  }
 `;
