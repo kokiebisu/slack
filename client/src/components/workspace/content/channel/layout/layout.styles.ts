@@ -86,6 +86,26 @@ export const IconWrapper = styled(b.Box)`
       }
     }
   }
+
+  &.person {
+    svg {
+      width: 10px;
+      height: 10px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray__light};
+      }
+    }
+  }
+
+  &.pin {
+    svg {
+      width: 10px;
+      height: 10px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray__light};
+      }
+    }
+  }
 `;
 
 export const NoticeTitle = styled(b.Box)`
@@ -103,4 +123,12 @@ export const NoticeDescription = styled(b.Box)`
     font-size: 15px;
     color: ${({ theme }) => theme.colors.black__light};
   }
+`;
+
+// Subsectinon
+export const Seperator = styled(b.Box)`
+  height: 10px;
+  width: 1.2px;
+  background-color: ${({ theme }) => theme.colors.gray__light};
+  margin: 0 3px;
 `;

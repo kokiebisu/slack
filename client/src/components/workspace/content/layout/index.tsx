@@ -12,7 +12,7 @@ import * as b from '../../../../styles/blocks';
 
 interface Props {
   section: string;
-  subsection?: string;
+  subsection?: React.ReactNode;
   options?: React.ReactNode;
   content: React.ReactNode;
 }
@@ -32,11 +32,7 @@ export const ClientContentLayout: React.FC<Props> = ({
               <Section>
                 <b.Text>{section}</b.Text>
               </Section>
-              {subsection && (
-                <SubSection>
-                  <b.Text>{subsection}</b.Text>
-                </SubSection>
-              )}
+              {subsection && <b.Box>{subsection}</b.Box>}
             </b.Box>
             <b.Box>{options}</b.Box>
           </b.Flex>
