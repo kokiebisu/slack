@@ -3,9 +3,9 @@ import { useEffect } from 'react';
 
 // Components
 import { Header } from '../header';
-import { Banner } from '../banner';
-import { BreakOut } from '../breakout';
-import { Choose } from '../choose';
+import { Banner } from '../Banner/layout';
+import { BreakOut } from '../Breakout/layout';
+import { Choose } from '../Choose/layout';
 import { Footer } from '../footer';
 
 // Graphql

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import * as b from '../../../styles/blocks';
+import * as b from '../../../../styles/blocks';
 
 // Breakpoints;
-import { landing } from '../../../styles/sizes';
+import { landing } from '../../../../styles/sizes';
 
 export const Wrapper = styled.section`
   padding-top: 100px;
