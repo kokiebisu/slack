@@ -31,7 +31,6 @@ export const Top = styled(b.Flex)`
 export const Bottom = styled(b.Box)`
   width: 100%;
   padding: 20px 20px 0px 20px;
-  /* margin: 20px 20px 0 20px; */
 `;
 
 export const Section = styled(b.Box)`
@@ -70,44 +69,6 @@ export const IconWrapper = styled(b.Box)`
       }
     }
   }
-
-  &.sideoption {
-    padding: 8px 10px 6px 10px;
-    background-color: transparent;
-    &:hover {
-      background-color: ${({ theme }) => theme.colors.white__dark};
-      border-radius: 3px;
-    }
-
-    svg {
-      width: 17px;
-      height: 17px;
-      path {
-        fill: ${({ theme }) => theme.colors.gray};
-      }
-    }
-  }
-
-  &.person {
-    bottom: 0.8px;
-    svg {
-      width: 10px;
-      height: 10px;
-      path {
-        fill: ${({ theme }) => theme.colors.gray__light};
-      }
-    }
-  }
-
-  &.pin {
-    svg {
-      width: 10px;
-      height: 10px;
-      path {
-        fill: ${({ theme }) => theme.colors.gray__light};
-      }
-    }
-  }
 `;
 
 export const NoticeTitle = styled(b.Box)`
@@ -125,12 +86,4 @@ export const NoticeDescription = styled(b.Box)`
     font-size: 15px;
     color: ${({ theme }) => theme.colors.black__light};
   }
-`;
-
-// Subsectinon
-export const Seperator = styled(b.Box)`
-  height: 10px;
-  width: 1.2px;
-  background-color: ${({ theme }) => theme.colors.gray__light};
-  margin: 0 4px;
 `;

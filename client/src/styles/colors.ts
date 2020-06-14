@@ -19,6 +19,7 @@ export const main: ThemeProps = {
     blue: '#005A9D',
     blue__light: '#3a71a9',
     blue__lighter: '#36c5f0',
+    blue__0: '#EAF5FA',
     purple: '#684a68',
     purple__light: '#4b6bc6',
     black__light: '#1D1C1D',
