@@ -7,21 +7,20 @@ import { Info, User, MapPinAlt } from '../../../../../assets/svg';
 import {
   useGetChannelByIdQuery,
   useTeamQuery,
+  useGetBelongingUsersQuery,
 } from '../../../../../generated/graphql';
 
 interface Props {}
 
 export const ChannelPage: React.FC<Props> = () => {
-  const { teamId, channelId } = useParams();
+  const { channelId } = useParams();
   const { data: { getChannelById } = {} } = useGetChannelByIdQuery({
     variables: { channelId },
   });
-  const { data: { team } = {} } = useTeamQuery({ variables: { teamId } });
+
   useEffect(() => {
-    if (getChannelById && team) {
-      document.title = `Slack | ${getChannelById?.channel!.name} | ${
-        team?.team!.name
-      }`;
+    if (getChannelById) {
+      document.title = `Slack | ${getChannelById?.channel!.name}`;
     }
   }, [getChannelById]);
 
@@ -30,7 +29,7 @@ export const ChannelPage: React.FC<Props> = () => {
       {getChannelById && getChannelById.channel && (
         <ClientContentLayout
           section={`# ${getChannelById?.channel!.name}`}
-          subsection={<SubSection />}
+          subsection={<SubSection channelId={channelId} />}
           content={<ContentLayout />}
           options={<Options />}
         />
@@ -60,7 +59,15 @@ const Options = () => {
   );
 };
 
-const SubSection = () => {
+interface SubSectionProps {
+  channelId: string;
+}
+
+const SubSection: React.FC<SubSectionProps> = ({ channelId }) => {
+  const { data: { getBelongingUsers } = {} } = useGetBelongingUsersQuery({
+    variables: { channelId },
+  });
+
   return (
     <b.Box>
       <b.Flex>
@@ -71,7 +78,8 @@ const SubSection = () => {
             </IconWrapper>
             <b.Box ml={1}>
               <b.Text fontSize={13} color='gray__light'>
-                1
+                {getBelongingUsers?.belongingUsers &&
+                  getBelongingUsers?.belongingUsers!.length}
               </b.Text>
             </b.Box>
           </b.Flex>
