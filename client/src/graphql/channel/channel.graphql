@@ -1,0 +1,9 @@
+query GetChannelById($channelId: String!) {
+  getChannelById(channelId: $channelId) {
+    ok
+    message
+    channel {
+      name
+    }
+  }
+}

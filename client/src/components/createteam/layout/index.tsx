@@ -1,26 +1,8 @@
 import * as React from 'react';
 import { Dispatch, SetStateAction, FormEvent } from 'react';
-import { Link } from 'react-router-dom';
 
 // Blocks
 import * as b from '../../../styles/blocks';
-
-// Svgs
-import { NameLogo } from '../../../assets/svg/Logo';
-
-// Components
-import { MockHashTag, SkeletonLine } from '../mockup';
-
-// Imgs
-import teamphoto_1 from '../../../assets/img/createteam_1.png';
-import teamphoto_2 from '../../../assets/img/createteam_2.png';
-import teamphoto_3 from '../../../assets/img/createteam_3.png';
-
-// Sizes
-import { size } from '../../../styles/sizes';
-
-// Animations
-import { stagger, fadeInUp } from '../../../animations/FadeInStagger';
 
 // Styles
 import {

@@ -27,12 +27,12 @@ interface Props {
 export const Option: React.FC<Props> = ({ name, link }) => {
   const displayingName = name.charAt(0).toUpperCase() + name.slice(1);
   const history = useHistory();
-  const { id } = useParams();
+  const { teamId } = useParams();
 
   return (
     <Wrapper
       onClick={() => {
-        history.push(`/client/${id}/${link}`);
+        history.push(`/client/${teamId}/${link}`);
       }}>
       <b.Flex>
         <IconWrapper>{renderOption(name)}</IconWrapper>

@@ -58,7 +58,7 @@ export const ChannelModal: React.FC<Props> = () => {
     name: '',
     description: '',
   });
-  const { id } = useParams();
+  const { teamId } = useParams();
   const [create] = useCreateChannelMutation();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -71,7 +71,7 @@ export const ChannelModal: React.FC<Props> = () => {
     const response = await create({
       variables: {
         name: input.name,
-        teamId: id,
+        teamId,
         description: input.description,
       },
     });

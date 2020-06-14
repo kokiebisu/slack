@@ -7,6 +7,7 @@ import {
 } from 'typeorm';
 import { ObjectType, Field, Int } from 'type-graphql';
 import { Member } from './Member';
+import { ChannelMember } from './ChannelMember';
 
 @ObjectType()
 @Entity('users')
@@ -34,4 +35,7 @@ export class User extends BaseEntity {
 
   @OneToMany(() => Member, (member) => member.user)
   members!: Member[];
+
+  @OneToMany(() => ChannelMember, (channelmember) => channelmember.user)
+  channelMembers!: ChannelMember[];
 }

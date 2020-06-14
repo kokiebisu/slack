@@ -1,0 +1,11 @@
+query GetBelongingUsers($channelId: String!) {
+  getBelongingUsers(channelId: $channelId) {
+    ok
+    message
+    belongingUsers {
+      id
+      userId
+      channelId
+    }
+  }
+}

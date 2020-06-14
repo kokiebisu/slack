@@ -5,8 +5,10 @@ import {
   ManyToOne,
   BaseEntity,
   Entity,
+  OneToMany,
 } from 'typeorm';
 import { Team } from './Team';
+import { ChannelMember } from './ChannelMember';
 
 @ObjectType()
 @Entity('channels')
@@ -35,4 +37,7 @@ export class Channel extends BaseEntity {
   @Field(() => String, { nullable: true })
   @Column({ nullable: true })
   description: string;
+
+  @OneToMany(() => ChannelMember, (channelmember) => channelmember.channel)
+  channelMembers: ChannelMember[];
 }

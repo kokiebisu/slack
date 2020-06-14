@@ -23,12 +23,12 @@ interface Props {
 export const Workspace: React.FC<Props> = ({ route }) => {
   const state = useToggleState();
 
-  const { id } = useParams();
+  const { teamId } = useParams();
   const { data: { me } = {}, loading: meLoading, error } = useMeQuery();
   const [channels, setChannels] = useState();
-  const { data: { team } = {}, loading: teamLoading } = useTeamQuery({
+  const { data, loading: teamLoading } = useTeamQuery({
     variables: {
-      teamId: id,
+      teamId,
     },
   });
 
