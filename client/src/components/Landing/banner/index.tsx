@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useState } from 'react';
-import styled from 'styled-components';
 
 // Blocks
 import * as b from '../../../styles/blocks';
@@ -11,21 +10,18 @@ import {
   TransparentButtonMotion,
 } from '../../../animations/Buttons';
 
-// Breakpoints
-import { landing } from '../../../styles/sizes';
-
+// Styles
 import {
   Wrapper,
-  ContentWrapper,
-  BannerLeft,
+  Content,
   Buttons,
   Button,
-  ButtonWrapper,
-  BannerRight,
-  ImageWrapper,
+  BannerImage,
   Link,
-  Title,
-} from './banner.styles';
+  SubHeader,
+  Header,
+  Description,
+} from './index.styles';
 
 interface Props {}
 
@@ -37,84 +33,77 @@ export const Banner: React.FC<Props> = () => {
   return (
     <Wrapper>
       <b.Container>
-        <ContentWrapper justifyContent='space-between'>
-          <BannerLeft>
-            <b.Box wp={95}>
-              <b.Box mb={3}>
-                <b.Text
-                  fontFamily='CircularPro-Bold'
-                  color='black__light'
-                  fontSize={13}
-                  uppercase>
-                  Work from home
-                </b.Text>
-              </b.Box>
-              <b.Box>
-                <Title
-                  fontFamily='Larsseit-Bold'
-                  lineHeight={1.4}
-                  color='black__light'>
-                  Slack brings the team together, wherever you are
-                </Title>
-              </b.Box>
-              <b.Box my={4}>
-                <b.Text fontSize={20} lineHeight={1.5}>
-                  With all of your communication and tools in one place, remote
-                  teams will stay productive no matter where you’re working
-                  from.
-                </b.Text>
-              </b.Box>
-              <Buttons>
-                <b.Box initial='rest' animate='rest' whileHover='hovered'>
-                  <Button
-                    noborder
-                    uppercase
-                    color='white'
-                    variants={ButtonMotion}>
-                    Try Slack for free
-                  </Button>
+        <Content>
+          <b.Box className='content__wrapper'>
+            <b.Box className='content__left'>
+              <b.Box wp={95}>
+                <SubHeader mb={3}>
+                  <b.Text>Work from home</b.Text>
+                </SubHeader>
+                <Header>
+                  <b.Text>
+                    Slack brings the team together, wherever you are
+                  </b.Text>
+                </Header>
+                <Description my={4}>
+                  <b.Text>
+                    With all of your communication and tools in one place,
+                    remote teams will stay productive no matter where you’re
+                    working from.
+                  </b.Text>
+                </Description>
+                <Buttons>
+                  <b.Box>
+                    <Button
+                      initial='rest'
+                      animate='rest'
+                      whileHover='hovered'
+                      className='button__filled'>
+                      <b.Button variants={ButtonMotion}>
+                        Try Slack for free
+                      </b.Button>
+                    </Button>
+                    <Button
+                      initial='rest'
+                      animate='rest'
+                      whileHover='hovered'
+                      className='button__border'>
+                      <b.Button variants={TransparentButtonMotion}>
+                        Learn more
+                      </b.Button>
+                    </Button>
+                  </b.Box>
+                </Buttons>
+                <b.Box mt={3}>
+                  <b.Text fontSize={14} color='black__light'>
+                    Need to create a workspace? &nbsp;
+                    <Link
+                      className={hovered.started ? `hovered` : ``}
+                      onMouseEnter={() =>
+                        setHovered({ ...hovered, started: true })
+                      }
+                      onMouseLeave={() =>
+                        setHovered({ ...hovered, started: false })
+                      }>
+                      Get started
+                    </Link>
+                  </b.Text>
                 </b.Box>
-                <ButtonWrapper
-                  initial='rest'
-                  animate='rest'
-                  whileHover='hovered'>
-                  <Button
-                    uppercase
-                    transparent
-                    borderColor='primary__light'
-                    color='primary__light'
-                    variants={TransparentButtonMotion}>
-                    Learn more
-                  </Button>
-                </ButtonWrapper>
-              </Buttons>
-              <b.Box mt={3}>
-                <b.Text fontSize={14} color='black__light'>
-                  Need to create a workspace? &nbsp;
-                  <Link
-                    className={hovered.started ? `hovered` : ``}
-                    onMouseEnter={() =>
-                      setHovered({ ...hovered, started: true })
-                    }
-                    onMouseLeave={() =>
-                      setHovered({ ...hovered, started: false })
-                    }>
-                    Get started
-                  </Link>
-                </b.Text>
               </b.Box>
             </b.Box>
-          </BannerLeft>
-          <BannerRight>
-            <ImageWrapper alignItems='center'>
-              <img
-                src='https://a.slack-edge.com/dd0405/marketing/img/solutions/remote-work/img-hero-remote.jpg'
-                srcSet='https://a.slack-edge.com/dd0405/marketing/img/solutions/remote-work/img-hero-remote.jpg 1x, https://a.slack-edge.com/dd0405/marketing/img/solutions/remote-work/img-hero-remote@2x.jpg 2x'
-                alt='hero'
-              />
-            </ImageWrapper>
-          </BannerRight>
-        </ContentWrapper>
+            <b.Box className='content__right'>
+              <BannerImage>
+                <b.Flex alignItems='center'>
+                  <img
+                    src='https://a.slack-edge.com/dd0405/marketing/img/solutions/remote-work/img-hero-remote.jpg'
+                    srcSet='https://a.slack-edge.com/dd0405/marketing/img/solutions/remote-work/img-hero-remote.jpg 1x, https://a.slack-edge.com/dd0405/marketing/img/solutions/remote-work/img-hero-remote@2x.jpg 2x'
+                    alt='hero'
+                  />
+                </b.Flex>
+              </BannerImage>
+            </b.Box>
+          </b.Box>
+        </Content>
       </b.Container>
     </Wrapper>
   );

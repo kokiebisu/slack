@@ -23,6 +23,9 @@ const sizes = {
   xs: '768px',
   sm: '831px',
   md: '962px',
+  lg: '1024px',
+  xl: '1163px',
+  xxl: '1280px',
 };
 
 // Get Started
@@ -56,4 +59,7 @@ export const size = {
   xs: `(min-width: ${sizes['xs']})`,
   sm: `(min-width: ${sizes['sm']})`,
   md: `(min-width: ${sizes['md']})`,
+  lg: `(min-width: ${sizes['lg']})`,
+  xl: `(min-width: ${sizes['xl']})`,
+  xxl: `(min-width: ${sizes['xxl']})`,
 };

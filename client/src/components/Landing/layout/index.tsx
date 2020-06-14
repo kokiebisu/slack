@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 // Components
 import { Header } from '../header';
-import { Banner } from '../banner';
+import { Banner } from '../Banner';
 import { BreakOut } from '../breakout';
 import { Choose } from '../choose';
 import { Footer } from '../footer';
