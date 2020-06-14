@@ -2,13 +2,13 @@ import * as React from 'react';
 import { useState } from 'react';
 
 // Blocks
-import * as b from '../../../styles/blocks';
+import * as b from '../../../../styles/blocks';
 
 // Motions
 import {
   ButtonMotion,
   TransparentButtonMotion,
-} from '../../../animations/Buttons';
+} from '../../../../animations/Buttons';
 
 // Styles
 import {
