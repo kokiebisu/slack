@@ -1,16 +1,25 @@
 import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { ClientContentLayout } from '../../layout';
 import { Bottom, IconWrapper } from './layout.styles';
 import * as b from '../../../../../styles/blocks';
 import { Info } from '../../../../../assets/svg';
+import { useGetChannelByIdQuery } from '../../../../../generated/graphql';
 
 interface Props {}
 
 export const ChannelPage: React.FC<Props> = () => {
-  const group = 'channels';
+  const { channelId } = useParams();
+  const {
+    data: { getChannelById } = {},
+    loading,
+    error,
+  } = useGetChannelByIdQuery({ variables: { channelId } });
   useEffect(() => {
-    document.title = `Slack | ${group}`;
-  }, [group]);
+    if (getChannelById) {
+      document.title = `Slack | ${getChannelById?.channel!.name}`;
+    }
+  }, [getChannelById]);
 
   return (
     <ClientContentLayout

@@ -26,9 +26,7 @@ interface Props {
 }
 
 interface Team {
-  id: string;
   name: string;
-  ownerId: number;
 }
 
 export const Profile: React.FC<Props> = ({ hovered, team }) => {
