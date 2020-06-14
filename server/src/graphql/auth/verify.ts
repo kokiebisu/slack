@@ -1,6 +1,5 @@
 import { Mutation, Arg, Ctx, Query } from 'type-graphql';
 import { redis } from '../../redis';
-import { User } from '../../models/User';
 import { getDigitToken } from '../../util/tokenGenerator';
 import { Context } from '../../interface/Context';
 import { AuthorizationResponse } from '../response/authResponse';

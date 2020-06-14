@@ -4,8 +4,10 @@ import { Team } from '../../models/Team';
 import { TeamResponse } from '../response/teamResponse';
 import { isAuth } from '../../middleware/isAuthenticated';
 import { Member } from '../../models/Member';
-import { getConnection } from 'typeorm';
+import { getManager } from 'typeorm';
 // import { Member } from '../../models/UserTeam';
+
+const manager = getManager();
 
 @Resolver()
 export class CreateTeamResolver {
@@ -19,18 +21,18 @@ export class CreateTeamResolver {
     try {
       const userId = req.session!.userId;
 
-      const team = await Team.create({
-        name,
-        avatarBackground,
-        ownerId: userId,
-      }).save();
+      const team = await manager
+        .create(Team, {
+          name,
+          avatarBackground,
+          ownerId: userId,
+        })
+        .save();
 
-      await getConnection()
-        .createQueryBuilder()
-        .insert()
-        .into(Member)
-        .values({ teamId: team.id, userId })
-        .execute();
+      await manager.query(
+        'insert into members ("teamId", "userId") values ($1, $2)',
+        [team.id, userId]
+      );
 
       return {
         ok: true,

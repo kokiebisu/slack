@@ -7,6 +7,8 @@ import { createDigitToken, createStringToken } from '../../util/tokenGenerator';
 import { AuthorizationResponse } from '../response/authResponse';
 import { getManager } from 'typeorm';
 
+const manager = getManager();
+
 export class RegisterResolver {
   @Mutation(() => AuthorizationResponse)
   async register(
@@ -14,7 +16,6 @@ export class RegisterResolver {
     @Arg('fullname') fullname: string,
     @Arg('password') password: string
   ) {
-    const manager = getManager();
     try {
       const user = await manager
         .create(User, {
