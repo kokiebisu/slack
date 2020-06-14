@@ -18,10 +18,10 @@ import { useParams } from 'react-router-dom';
 import { IconWrapper, Input } from './header.styles';
 
 export const HomeHeader: React.FC<{}> = () => {
-  const { id } = useParams();
+  const { teamId } = useParams();
   const { data: { team } = {}, loading } = useTeamQuery({
     variables: {
-      teamId: id,
+      teamId,
     },
   });
 

@@ -17,6 +17,7 @@ import { SavedPage } from '../components/workspace/content/saved';
 
 import { Workspace } from '../components/workspace/layout';
 import { useMeQuery } from '../generated/graphql';
+import { ChannelPage } from '../components/workspace/content/channel/layout';
 
 type Props = RouteComponentProps<
   {},
@@ -52,6 +53,9 @@ export const WorkspaceRoute: React.FC<{}> = () => {
           </Route>
           <Route path={match.url + '/activity-page'}>
             <MentionPage />
+          </Route>
+          <Route path={match.url + '/:channelId'}>
+            <ChannelPage />
           </Route>
         </>
       ) : (

@@ -28,11 +28,11 @@ export const SidebarSections: React.FC<Props> = () => {
     apps: false,
   });
 
-  const { id } = useParams();
+  const { teamId } = useParams();
 
   const { data, loading, error, refetch } = useChannelsQuery({
     variables: {
-      teamId: id,
+      teamId,
     },
   });
 

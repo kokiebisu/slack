@@ -22,7 +22,7 @@ import { useToggleDispatch } from '../../../../context/toggle-context';
 
 interface Props {
   hovered: boolean;
-  response: any;
+  team: Team;
 }
 
 interface Team {
@@ -31,11 +31,8 @@ interface Team {
   ownerId: number;
 }
 
-export const Profile: React.FC<Props> = ({ hovered, response }) => {
+export const Profile: React.FC<Props> = ({ hovered, team }) => {
   const { data: { me } = {}, loading: meLoading } = useMeQuery();
-  const {
-    data: { team },
-  } = response;
 
   const dispatch = useToggleDispatch();
 
@@ -46,7 +43,7 @@ export const Profile: React.FC<Props> = ({ hovered, response }) => {
           <b.Flex alignItems='center'>
             <b.Box mr={1}>
               <b.Text fontFamily='SlackLato-Bold' fontSize={14} color='white'>
-                {team && team.team.name}
+                {team.name}
               </b.Text>
             </b.Box>
             <b.Box mb={1}>

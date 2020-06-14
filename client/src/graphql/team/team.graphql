@@ -3,9 +3,7 @@ query Team($teamId: String!) {
     ok
     message
     team {
-      id
       name
-      ownerId
     }
   }
 }
