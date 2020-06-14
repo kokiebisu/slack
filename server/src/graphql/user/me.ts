@@ -13,14 +13,7 @@ export class MeResolver {
     try {
       const userId = req.session!.userId;
 
-      const user = await getConnection()
-        .createQueryBuilder()
-        .select('user')
-        .from(User, 'user')
-        .where('user.id = :id', { id: userId })
-        .getOne();
-
-      // const user = await User.findOne(userId);
+      const user = await User.findOne(userId);
 
       if (!user) {
         return {

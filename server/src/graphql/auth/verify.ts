@@ -67,6 +67,7 @@ export class VerifyResolver {
   ): Promise<AuthorizationResponse | Error> {
     try {
       const userId = await redis.get(`${token}`);
+      console.log('ver userId', userId);
       if (!userId) {
         return {
           ok: false,

@@ -4,13 +4,13 @@ import { BaseResponse } from './baseResponse';
 @ObjectType()
 class BelongingTeams {
   @Field()
-  id: number;
+  id: string;
 
   @Field()
   name: string;
 
   @Field()
-  fullname: string;
+  avatarBackground: string;
 }
 
 @ObjectType()
