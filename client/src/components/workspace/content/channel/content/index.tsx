@@ -12,6 +12,7 @@ import {
 } from './content.styles';
 import { LayerPlus, UserPlus } from '../../../../../assets/svg';
 import { BottomArrow } from '../../../../../assets/svg/Arrows';
+import { Messages } from '../message/container';
 
 export const Content = () => {
   return (
@@ -66,7 +67,7 @@ export const Content = () => {
             </IconWrapper>
           </b.Flex>
         </DateSeperator>
-        <b.Box>hello</b.Box>
+        <Messages />
       </b.Box>
     </Wrapper>
   );
