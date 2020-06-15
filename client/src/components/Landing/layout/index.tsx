@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useEffect } from 'react';
 
 // Components
-import { Header } from '../header';
+import { Header } from '../Header/layout';
 import { Banner } from '../Banner/layout';
 import { BreakOut } from '../Breakout/layout';
 import { Choose } from '../Choose/layout';
