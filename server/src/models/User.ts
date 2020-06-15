@@ -8,6 +8,7 @@ import {
 import { ObjectType, Field, Int } from 'type-graphql';
 import { Member } from './Member';
 import { ChannelMember } from './ChannelMember';
+import { Channel } from './Channel';
 
 @ObjectType()
 @Entity('users')
