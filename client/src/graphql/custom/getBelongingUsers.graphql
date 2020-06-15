@@ -1,7 +1,7 @@
 query GetBelongingUsers($channelId: String!) {
   getBelongingUsers(channelId: $channelId) {
     ok
-    message
+    errorlog
     belongingUsers {
       id
       userId

@@ -6,5 +6,5 @@ export class BaseResponse {
   ok: boolean;
 
   @Field(() => String, { nullable: true })
-  message?: string;
+  errorlog?: string;
 }

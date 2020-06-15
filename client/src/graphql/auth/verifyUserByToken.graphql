@@ -1,6 +1,6 @@
 query VerifyUserByToken($token: String!) {
   verifyUserByToken(token: $token) {
     ok
-    message
+    errorlog
   }
 }

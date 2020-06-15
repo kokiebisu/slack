@@ -18,8 +18,8 @@ export class MeResolver {
       if (!user) {
         return {
           ok: false,
+          errorlog: 'user was not found',
           user: null,
-          message: 'user was not found',
         };
       }
 

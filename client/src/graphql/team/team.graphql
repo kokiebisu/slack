@@ -1,7 +1,7 @@
 query Team($teamId: String!) {
   team(teamId: $teamId) {
     ok
-    message
+    errorlog
     team {
       name
     }

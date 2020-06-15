@@ -14,7 +14,7 @@ export class TeamResolver {
       if (!team) {
         return {
           ok: false,
-          message: 'no teams found',
+          errorlog: 'no teams found',
           team: null,
         };
       }

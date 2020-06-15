@@ -18,13 +18,13 @@ export class BelongingTeamsResolver {
     if (belongingTeams.length === 0) {
       return {
         ok: false,
-        message: "you don't seem to belong to any teams!",
+        errorlog: "you don't seem to belong to any teams!",
       };
     }
 
     return {
       ok: true,
-      message: null,
+      errorlog: null,
       belongingTeams,
     };
   }

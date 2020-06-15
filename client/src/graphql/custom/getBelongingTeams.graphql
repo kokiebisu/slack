@@ -1,7 +1,7 @@
 query GetBelongingTeams {
   getBelongingTeams {
     ok
-    message
+    errorlog
     belongingTeams {
       id
       name

@@ -1,6 +1,6 @@
 mutation Logout {
   logout {
     ok
-    message
+    errorlog
   }
 }

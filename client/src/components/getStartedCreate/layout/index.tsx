@@ -85,7 +85,7 @@ export const GetStartedCreate: React.FC<Props> = () => {
       });
     }
     if (response && response.data && !response.data.register.ok) {
-      setError(response.data.register!.message as string);
+      setError(response.data.register!.errorlog as string);
     }
   };
 

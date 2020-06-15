@@ -19,7 +19,7 @@ export class ChannelResolver {
       if (!channel) {
         return {
           ok: false,
-          message: 'no channels found',
+          errorlog: 'no channels found',
           channel: null,
         };
       }

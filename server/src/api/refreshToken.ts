@@ -12,8 +12,8 @@ export const refreshToken = async (req: Request, res: Response) => {
   if (!token) {
     return res.send({
       ok: false,
+      errorlog: 'token not found from cookies',
       accessToken: '',
-      message: 'token not found from cookies',
     });
   }
 
@@ -22,11 +22,10 @@ export const refreshToken = async (req: Request, res: Response) => {
   try {
     payload = verify(token, process.env.REFRESH_TOKEN_SECRET!);
   } catch (err) {
-    console.log(err);
     return res.send({
       ok: false,
+      errorlog: 'cannot verify your token',
       accessToken: '',
-      message: 'cannot verify your token',
     });
   }
 
@@ -35,16 +34,16 @@ export const refreshToken = async (req: Request, res: Response) => {
   if (!user) {
     return res.send({
       ok: false,
+      error: 'cannot find user by the given payload',
       accessToken: '',
-      message: 'cannot find user by the given payload',
     });
   }
 
   if (user.tokenVersion !== payload.tokenVersion) {
     return res.send({
       ok: false,
+      errorlog: 'you have an invalid token',
       accessToken: '',
-      message: 'you have an invalid token',
     });
   }
 

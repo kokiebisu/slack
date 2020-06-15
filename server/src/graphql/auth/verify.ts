@@ -19,7 +19,7 @@ export class VerifyResolver {
       if (!token) {
         return {
           ok: false,
-          message: 'digit is invalid',
+          errorlog: 'digit is invalid',
         };
       }
 
@@ -30,7 +30,7 @@ export class VerifyResolver {
       if (!decoded.userId) {
         return {
           ok: false,
-          message: 'user not found',
+          errorlog: 'user not found',
         };
       }
 
@@ -45,7 +45,7 @@ export class VerifyResolver {
       if (user.length === 0) {
         return {
           ok: false,
-          message: 'unable to find user',
+          errorlog: 'unable to find user',
         };
       }
 
@@ -53,7 +53,7 @@ export class VerifyResolver {
 
       return {
         ok: true,
-        message: 'successful',
+        errorlog: 'successful',
       };
     } catch (err) {
       throw new Error('error occured while confirming user');
@@ -71,7 +71,7 @@ export class VerifyResolver {
       if (!userId) {
         return {
           ok: false,
-          message: 'not a valid token',
+          errorlog: 'not a valid token',
         };
       }
 
@@ -79,7 +79,7 @@ export class VerifyResolver {
 
       return {
         ok: true,
-        message: '',
+        errorlog: '',
       };
     } catch (err) {
       throw new Error('error occured while verifying user by token');

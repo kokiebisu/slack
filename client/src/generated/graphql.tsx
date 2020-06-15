@@ -9,12 +9,21 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  /** The javascript `Date` as string. Type represents date and time as the ISO Date string. */
+  DateTime: any;
 };
 
 export type ChannelMember = {
   __typename?: 'ChannelMember';
   userId: Scalars['Float'];
   channelId: Scalars['String'];
+};
+
+export type Message = {
+  __typename?: 'Message';
+  memberId: Scalars['Float'];
+  channelId: Scalars['String'];
+  body: Scalars['String'];
 };
 
 export type Channel = {
@@ -24,7 +33,9 @@ export type Channel = {
   isPublic: Scalars['Boolean'];
   teamId: Scalars['String'];
   description?: Maybe<Scalars['String']>;
+  created_on: Scalars['DateTime'];
 };
+
 
 export type Team = {
   __typename?: 'Team';
@@ -50,26 +61,26 @@ export type User = {
 export type BaseResponse = {
   __typename?: 'BaseResponse';
   ok: Scalars['Boolean'];
-  message?: Maybe<Scalars['String']>;
+  errorlog?: Maybe<Scalars['String']>;
 };
 
 export type AuthorizationResponse = {
   __typename?: 'AuthorizationResponse';
   ok: Scalars['Boolean'];
-  message?: Maybe<Scalars['String']>;
+  errorlog?: Maybe<Scalars['String']>;
 };
 
 export type ChannelResponse = {
   __typename?: 'ChannelResponse';
   ok: Scalars['Boolean'];
-  message?: Maybe<Scalars['String']>;
+  errorlog?: Maybe<Scalars['String']>;
   channel?: Maybe<Channel>;
 };
 
 export type ChannelsResponse = {
   __typename?: 'ChannelsResponse';
   ok: Scalars['Boolean'];
-  message?: Maybe<Scalars['String']>;
+  errorlog?: Maybe<Scalars['String']>;
   channels?: Maybe<Array<Channel>>;
 };
 
@@ -83,7 +94,7 @@ export type BelongingTeams = {
 export type BelongingTeamsResponse = {
   __typename?: 'BelongingTeamsResponse';
   ok: Scalars['Boolean'];
-  message?: Maybe<Scalars['String']>;
+  errorlog?: Maybe<Scalars['String']>;
   belongingTeams?: Maybe<Array<BelongingTeams>>;
 };
 
@@ -97,35 +108,42 @@ export type BelongingUsers = {
 export type BelongingUsersResponse = {
   __typename?: 'BelongingUsersResponse';
   ok: Scalars['Boolean'];
-  message?: Maybe<Scalars['String']>;
+  errorlog?: Maybe<Scalars['String']>;
   belongingUsers?: Maybe<Array<BelongingUsers>>;
+};
+
+export type MessageResponse = {
+  __typename?: 'MessageResponse';
+  ok: Scalars['Boolean'];
+  errorlog?: Maybe<Scalars['String']>;
+  message?: Maybe<Message>;
 };
 
 export type TeamResponse = {
   __typename?: 'TeamResponse';
   ok: Scalars['Boolean'];
-  message?: Maybe<Scalars['String']>;
+  errorlog?: Maybe<Scalars['String']>;
   team?: Maybe<Team>;
 };
 
 export type TeamsResponse = {
   __typename?: 'TeamsResponse';
   ok: Scalars['Boolean'];
-  message?: Maybe<Scalars['String']>;
+  errorlog?: Maybe<Scalars['String']>;
   teams?: Maybe<Array<Team>>;
 };
 
 export type UserResponse = {
   __typename?: 'UserResponse';
   ok: Scalars['Boolean'];
-  message?: Maybe<Scalars['String']>;
+  errorlog?: Maybe<Scalars['String']>;
   user?: Maybe<User>;
 };
 
 export type UsersResponse = {
   __typename?: 'UsersResponse';
   ok: Scalars['Boolean'];
-  message?: Maybe<Scalars['String']>;
+  errorlog?: Maybe<Scalars['String']>;
   users?: Maybe<Array<User>>;
 };
 
@@ -180,6 +198,7 @@ export type Mutation = {
   register: AuthorizationResponse;
   verifyUserByDigit: AuthorizationResponse;
   createChannel: ChannelResponse;
+  sendMessage: MessageResponse;
   createTeam: TeamResponse;
   removeTeam: TeamResponse;
   removeUser: BaseResponse;
@@ -203,6 +222,12 @@ export type MutationCreateChannelArgs = {
   description?: Maybe<Scalars['String']>;
   teamId: Scalars['String'];
   name: Scalars['String'];
+};
+
+
+export type MutationSendMessageArgs = {
+  body: Scalars['String'];
+  channelId: Scalars['String'];
 };
 
 
@@ -230,7 +255,7 @@ export type CheckEmailQuery = (
   { __typename?: 'Query' }
   & { checkEmail: (
     { __typename?: 'AuthorizationResponse' }
-    & Pick<AuthorizationResponse, 'ok' | 'message'>
+    & Pick<AuthorizationResponse, 'ok' | 'errorlog'>
   ) }
 );
 
@@ -241,7 +266,7 @@ export type LogoutMutation = (
   { __typename?: 'Mutation' }
   & { logout: (
     { __typename?: 'AuthorizationResponse' }
-    & Pick<AuthorizationResponse, 'ok' | 'message'>
+    & Pick<AuthorizationResponse, 'ok' | 'errorlog'>
   ) }
 );
 
@@ -256,7 +281,7 @@ export type RegisterMutation = (
   { __typename?: 'Mutation' }
   & { register: (
     { __typename?: 'AuthorizationResponse' }
-    & Pick<AuthorizationResponse, 'ok' | 'message'>
+    & Pick<AuthorizationResponse, 'ok' | 'errorlog'>
   ) }
 );
 
@@ -269,7 +294,7 @@ export type VerifyUserByDigitMutation = (
   { __typename?: 'Mutation' }
   & { verifyUserByDigit: (
     { __typename?: 'AuthorizationResponse' }
-    & Pick<AuthorizationResponse, 'ok' | 'message'>
+    & Pick<AuthorizationResponse, 'ok' | 'errorlog'>
   ) }
 );
 
@@ -282,7 +307,7 @@ export type VerifyUserByTokenQuery = (
   { __typename?: 'Query' }
   & { verifyUserByToken: (
     { __typename?: 'AuthorizationResponse' }
-    & Pick<AuthorizationResponse, 'ok' | 'message'>
+    & Pick<AuthorizationResponse, 'ok' | 'errorlog'>
   ) }
 );
 
@@ -295,7 +320,7 @@ export type GetChannelByIdQuery = (
   { __typename?: 'Query' }
   & { getChannelById: (
     { __typename?: 'ChannelResponse' }
-    & Pick<ChannelResponse, 'ok' | 'message'>
+    & Pick<ChannelResponse, 'ok' | 'errorlog'>
     & { channel?: Maybe<(
       { __typename?: 'Channel' }
       & Pick<Channel, 'name' | 'isPublic' | 'description'>
@@ -312,7 +337,7 @@ export type ChannelsQuery = (
   { __typename?: 'Query' }
   & { channels: (
     { __typename?: 'ChannelsResponse' }
-    & Pick<ChannelsResponse, 'ok' | 'message'>
+    & Pick<ChannelsResponse, 'ok' | 'errorlog'>
     & { channels?: Maybe<Array<(
       { __typename?: 'Channel' }
       & Pick<Channel, 'id' | 'name' | 'isPublic'>
@@ -343,7 +368,7 @@ export type GetBelongingTeamsQuery = (
   { __typename?: 'Query' }
   & { getBelongingTeams: (
     { __typename?: 'BelongingTeamsResponse' }
-    & Pick<BelongingTeamsResponse, 'ok' | 'message'>
+    & Pick<BelongingTeamsResponse, 'ok' | 'errorlog'>
     & { belongingTeams?: Maybe<Array<(
       { __typename?: 'BelongingTeams' }
       & Pick<BelongingTeams, 'id' | 'name' | 'avatarBackground'>
@@ -360,7 +385,7 @@ export type GetBelongingUsersQuery = (
   { __typename?: 'Query' }
   & { getBelongingUsers: (
     { __typename?: 'BelongingUsersResponse' }
-    & Pick<BelongingUsersResponse, 'ok' | 'message'>
+    & Pick<BelongingUsersResponse, 'ok' | 'errorlog'>
     & { belongingUsers?: Maybe<Array<(
       { __typename?: 'BelongingUsers' }
       & Pick<BelongingUsers, 'id' | 'userId' | 'channelId'>
@@ -378,7 +403,7 @@ export type CreateTeamMutation = (
   { __typename?: 'Mutation' }
   & { createTeam: (
     { __typename?: 'TeamResponse' }
-    & Pick<TeamResponse, 'ok' | 'message'>
+    & Pick<TeamResponse, 'ok' | 'errorlog'>
     & { team?: Maybe<(
       { __typename?: 'Team' }
       & Pick<Team, 'id' | 'name' | 'avatarBackground'>
@@ -393,7 +418,7 @@ export type MyTeamsQuery = (
   { __typename?: 'Query' }
   & { myTeams: (
     { __typename?: 'TeamsResponse' }
-    & Pick<TeamsResponse, 'ok' | 'message'>
+    & Pick<TeamsResponse, 'ok' | 'errorlog'>
     & { teams?: Maybe<Array<(
       { __typename?: 'Team' }
       & Pick<Team, 'id' | 'name' | 'avatarBackground'>
@@ -410,7 +435,7 @@ export type TeamQuery = (
   { __typename?: 'Query' }
   & { team: (
     { __typename?: 'TeamResponse' }
-    & Pick<TeamResponse, 'ok' | 'message'>
+    & Pick<TeamResponse, 'ok' | 'errorlog'>
     & { team?: Maybe<(
       { __typename?: 'Team' }
       & Pick<Team, 'name'>
@@ -425,7 +450,7 @@ export type MeQuery = (
   { __typename?: 'Query' }
   & { me: (
     { __typename?: 'UserResponse' }
-    & Pick<UserResponse, 'ok' | 'message'>
+    & Pick<UserResponse, 'ok' | 'errorlog'>
     & { user?: Maybe<(
       { __typename?: 'User' }
       & Pick<User, 'id' | 'fullname' | 'email'>
@@ -440,7 +465,7 @@ export type UsersQuery = (
   { __typename?: 'Query' }
   & { users: (
     { __typename?: 'UsersResponse' }
-    & Pick<UsersResponse, 'ok' | 'message'>
+    & Pick<UsersResponse, 'ok' | 'errorlog'>
     & { users?: Maybe<Array<(
       { __typename?: 'User' }
       & Pick<User, 'id' | 'fullname'>
@@ -453,7 +478,7 @@ export const CheckEmailDocument = gql`
     query CheckEmail($email: String!) {
   checkEmail(email: $email) {
     ok
-    message
+    errorlog
   }
 }
     `;
@@ -487,7 +512,7 @@ export const LogoutDocument = gql`
     mutation Logout {
   logout {
     ok
-    message
+    errorlog
   }
 }
     `;
@@ -519,7 +544,7 @@ export const RegisterDocument = gql`
     mutation Register($fullname: String!, $email: String!, $password: String!) {
   register(email: $email, password: $password, fullname: $fullname) {
     ok
-    message
+    errorlog
   }
 }
     `;
@@ -554,7 +579,7 @@ export const VerifyUserByDigitDocument = gql`
     mutation VerifyUserByDigit($digit: Float!) {
   verifyUserByDigit(digit: $digit) {
     ok
-    message
+    errorlog
   }
 }
     `;
@@ -587,7 +612,7 @@ export const VerifyUserByTokenDocument = gql`
     query VerifyUserByToken($token: String!) {
   verifyUserByToken(token: $token) {
     ok
-    message
+    errorlog
   }
 }
     `;
@@ -621,7 +646,7 @@ export const GetChannelByIdDocument = gql`
     query GetChannelById($channelId: String!) {
   getChannelById(channelId: $channelId) {
     ok
-    message
+    errorlog
     channel {
       name
       isPublic
@@ -660,7 +685,7 @@ export const ChannelsDocument = gql`
     query Channels($teamId: String!) {
   channels(teamId: $teamId) {
     ok
-    message
+    errorlog
     channels {
       id
       name
@@ -734,7 +759,7 @@ export const GetBelongingTeamsDocument = gql`
     query GetBelongingTeams {
   getBelongingTeams {
     ok
-    message
+    errorlog
     belongingTeams {
       id
       name
@@ -772,7 +797,7 @@ export const GetBelongingUsersDocument = gql`
     query GetBelongingUsers($channelId: String!) {
   getBelongingUsers(channelId: $channelId) {
     ok
-    message
+    errorlog
     belongingUsers {
       id
       userId
@@ -811,7 +836,7 @@ export const CreateTeamDocument = gql`
     mutation CreateTeam($name: String!, $avatarBackground: String!) {
   createTeam(name: $name, avatarBackground: $avatarBackground) {
     ok
-    message
+    errorlog
     team {
       id
       name
@@ -850,7 +875,7 @@ export const MyTeamsDocument = gql`
     query MyTeams {
   myTeams {
     ok
-    message
+    errorlog
     teams {
       id
       name
@@ -888,7 +913,7 @@ export const TeamDocument = gql`
     query Team($teamId: String!) {
   team(teamId: $teamId) {
     ok
-    message
+    errorlog
     team {
       name
     }
@@ -925,7 +950,7 @@ export const MeDocument = gql`
     query Me {
   me {
     ok
-    message
+    errorlog
     user {
       id
       fullname
@@ -963,7 +988,7 @@ export const UsersDocument = gql`
     query Users {
   users {
     ok
-    message
+    errorlog
     users {
       id
       fullname
