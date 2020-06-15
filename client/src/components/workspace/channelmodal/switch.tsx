@@ -18,24 +18,6 @@ export const Switch: React.FC<Props> = ({ isOn, switchToggle }) => {
   );
 };
 
-// const wrapperVariants = {
-//   animate: {
-//     background: 'green',
-//   },
-//   initial: {
-//     background: 'red',
-//   },
-// };
-
-// const innerVariants = {
-//   animate: {
-//     x: 50,
-//   },
-//   initial: {
-//     x: 0,
-//   },
-// };
-
 const Wrapper = styled(b.Button)`
   width: 50px;
   height: 30px;

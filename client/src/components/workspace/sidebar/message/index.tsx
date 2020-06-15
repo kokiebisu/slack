@@ -5,12 +5,11 @@ import styled from 'styled-components';
 import * as b from '../../../../styles/blocks';
 
 // Svgs
-import { Heart } from '../../../../assets/svg/Heart';
-import { IconWrapper, Status } from './index.styles';
+import { Wrapper, IconWrapper, Status } from './index.styles';
 
 export const Message = () => {
   return (
-    <b.Box py={2}>
+    <Wrapper py={2}>
       <b.Flex alignItems='center'>
         <IconWrapper className='status' pr={2}>
           <Status />
@@ -24,6 +23,6 @@ export const Message = () => {
           </b.Text>
         </b.Box>
       </b.Flex>
-    </b.Box>
+    </Wrapper>
   );
 };

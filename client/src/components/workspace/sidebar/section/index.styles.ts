@@ -60,6 +60,18 @@ export const IconButtonWrapper = styled(b.Button)`
   &:focus {
     outline: none;
   }
+
+  &.smallplus {
+    svg {
+      position: relative;
+      bottom: 3px;
+      width: 8px;
+      height: 8px;
+      path {
+        fill: ${({ theme }) => theme.colors.white};
+      }
+    }
+  }
 `;
 
 export const IconWrapper = styled(b.Box)`
