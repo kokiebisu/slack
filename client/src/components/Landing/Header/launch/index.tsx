@@ -15,7 +15,7 @@ import {
   Name,
   AvatarLetter,
   Avatar,
-} from '.';
+} from './index.styles';
 
 interface Props {
   name: string;

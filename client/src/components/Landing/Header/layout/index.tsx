@@ -12,9 +12,6 @@ import { HamburgerButton } from '../../../../assets/svg';
 // Animations
 import { launchMotion } from '../../../../animations/Buttons';
 
-// Components
-import { WorkspaceOption } from '../launch';
-
 // Styles
 import {
   Wrapper,
@@ -23,15 +20,13 @@ import {
   LaunchButtonWrapper,
   LaunchButton,
   SignInButton,
-  LaunchOptionWrapper,
-  LaunchOption,
-  LaunchOptionLink,
   GetStartedButton,
   GetStartedButtonWrapper,
 } from './index.styles';
 
 import { MeQuery, useMyTeamsQuery } from '../../../../generated/graphql';
 import { Navigation } from '../navigation';
+import { LaunchOptions } from '../launch/container';
 
 interface Props {
   data: MeQuery | undefined;

@@ -1,9 +1,10 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 // Blocks
 import * as b from '../../../../styles/blocks';
 
-import { Nav, NavItem, Dropdown, LinkWrapper, Link } from './index.styles';
+import { Nav, NavItem, Dropdown, LinkWrapper } from './index.styles';
 
 interface Props {
   hovered: HoveredProps;
@@ -19,6 +20,48 @@ interface HoveredProps {
 }
 
 export const Navigation: React.FC<Props> = ({ hovered, onHovered }) => {
+  const dropdowns = [
+    {
+      type: 'Why Slack?',
+      items: [
+        { name: 'Features', url: '/' },
+        { name: 'How it replaces email', url: '/' },
+        { name: 'Security', url: '/' },
+        { name: 'Customers', url: '/' },
+      ],
+    },
+    {
+      type: 'Solutions',
+      items: [
+        { name: 'Remote Work', url: '/' },
+        { name: 'Distance Learning', url: '/' },
+        { name: 'Engineering', url: '/' },
+        { name: 'Financial Services', url: '/' },
+        { name: 'Sales', url: '/' },
+        { name: 'IT', url: '/' },
+        { name: 'Marketing', url: '/' },
+        { name: 'Customer Support', url: '/' },
+        { name: 'Human Resources', url: '/' },
+        { name: 'Project Management', url: '/' },
+        { name: 'Media', url: '/' },
+      ],
+    },
+    {
+      type: 'Resources',
+      items: [
+        { name: 'Resources Library', url: '/' },
+        { name: 'Slack Tips', url: '/' },
+        { name: 'Blog', url: '/' },
+        { name: 'Webinars', url: '/' },
+        { name: 'Slack Certified Program', url: '/' },
+        { name: 'Help Center', url: '/' },
+        { name: 'API', url: '/' },
+        { name: 'App Directory', url: '/' },
+        { name: 'Download', url: '/' },
+      ],
+    },
+  ];
+
   return (
     <Nav>
       <NavItem
@@ -28,21 +71,18 @@ export const Navigation: React.FC<Props> = ({ hovered, onHovered }) => {
         onHoverEnd={() => {
           onHovered({ ...hovered, why: false });
         }}>
-        <b.Text>Why Slack?</b.Text>
+        <b.Text>{dropdowns[0].type}</b.Text>
         {!hovered.solutions && hovered.why ? (
           <Dropdown>
-            <LinkWrapper>
-              <Link>Features</Link>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Link>How it replaces email</Link>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Link>Security</Link>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Link>Customers</Link>
-            </LinkWrapper>
+            {dropdowns[0].items.map((dropdown) => {
+              return (
+                <LinkWrapper>
+                  <Link to={dropdown.url}>
+                    <b.Text>{dropdown.name}</b.Text>
+                  </Link>
+                </LinkWrapper>
+              );
+            })}
           </Dropdown>
         ) : null}
       </NavItem>
@@ -53,86 +93,48 @@ export const Navigation: React.FC<Props> = ({ hovered, onHovered }) => {
         onHoverEnd={() => {
           onHovered({ ...hovered, solutions: false });
         }}>
-        <b.Text>Solutions</b.Text>
+        <b.Text>{dropdowns[1].type}</b.Text>
         {!hovered.resources && hovered.solutions ? (
           <Dropdown>
-            <LinkWrapper>
-              <Link>Remote Work</Link>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Link>Distance Learning</Link>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Link>Engineering</Link>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Link>Financial Services</Link>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Link>Sales</Link>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Link>IT</Link>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Link>Marketing</Link>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Link>Customer Support</Link>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Link>Human Resources</Link>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Link>Project Management</Link>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Link>Media</Link>
-            </LinkWrapper>
+            {dropdowns[1].items.map((dropdown) => {
+              return (
+                <LinkWrapper>
+                  <Link to={dropdown.url}>
+                    <b.Text>{dropdown.name}</b.Text>
+                  </Link>
+                </LinkWrapper>
+              );
+            })}
           </Dropdown>
         ) : null}
       </NavItem>
       <NavItem
         onHoverStart={() => onHovered({ ...hovered, resources: true })}
         onHoverEnd={() => onHovered({ ...hovered, resources: false })}>
-        <b.Text>Resources</b.Text>
+        <b.Text>{dropdowns[2].type}</b.Text>
         {!hovered.why && hovered.resources ? (
           <Dropdown>
-            <LinkWrapper>
-              <Link>Resources Library</Link>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Link>Slack Tips</Link>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Link>Blog</Link>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Link>Webinars</Link>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Link>Slack Certified Program</Link>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Link>Help Center</Link>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Link>API</Link>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Link>App Directory</Link>
-            </LinkWrapper>
-            <LinkWrapper>
-              <Link>Download</Link>
-            </LinkWrapper>
+            {dropdowns[2].items.map((dropdown) => {
+              return (
+                <LinkWrapper>
+                  <Link to={dropdown.url}>
+                    <b.Text>{dropdown.name}</b.Text>
+                  </Link>
+                </LinkWrapper>
+              );
+            })}
           </Dropdown>
         ) : null}
       </NavItem>
       <NavItem>
-        <Link>Enterprise</Link>
+        <Link to='/'>
+          <b.Text>Enterprise</b.Text>
+        </Link>
       </NavItem>
       <NavItem>
-        <Link>Pricing</Link>
+        <Link to='/'>
+          <b.Text>Pricing</b.Text>
+        </Link>
       </NavItem>
     </Nav>
   );

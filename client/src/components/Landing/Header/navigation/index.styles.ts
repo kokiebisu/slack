@@ -19,7 +19,17 @@ export const NavItem = styled(b.Box)`
   margin: 0px 15px;
   font-size: 16px;
   font-family: 'CircularPro-Book';
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+  }
+
+  & p {
+    color: ${({ theme }) => theme.colors.gray};
+  }
+
+  & > a {
+    text-decoration: none;
+  }
 `;
 
 export const Dropdown = styled.div`
@@ -35,20 +45,22 @@ export const Dropdown = styled.div`
 export const LinkWrapper = styled.div`
   padding: 8px 0;
   display: flex;
-`;
-
-export const Link = styled(b.Anchor)`
-  text-transform: none;
-
-  &.hovered {
-    color: #1264a3;
-    border-bottom: 1px solid #1264a3;
-    cursor: pointer !important;
+  & p {
+    color: ${({ theme }) => theme.colors.gray};
   }
 
-  ${({ fontFamily }) =>
-    fontFamily &&
-    css`
-      font-family: ${fontFamily};
-    `}
+  & > a {
+    text-decoration: none;
+  }
+
+  &:hover {
+    & p {
+      color: ${({ theme }) => theme.colors.blue};
+    }
+  }
 `;
+
+// export const Link = styled(b.Anchor)`
+//   text-transform: none;
+//   color: ${({ theme }) => theme.colors.gray};
+// `;

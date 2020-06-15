@@ -22,7 +22,6 @@ export const Avatar = styled(b.Box)`
   & > div {
     width: 50px;
     height: 50px;
-    border: 3px solid ${({ theme }) => theme.colors.gray__light};
     border-radius: 8px;
   }
 `;

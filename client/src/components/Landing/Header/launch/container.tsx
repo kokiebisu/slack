@@ -2,11 +2,7 @@ import * as React from 'react';
 import * as b from '../../../../styles/blocks';
 
 // Styles
-import {
-  LaunchOptionWrapper,
-  LaunchOption,
-  LaunchOptionLink,
-} from './container.styles';
+import { Wrapper, OtherOption } from './container.styles';
 
 // Components
 import { WorkspaceOption } from '.';
@@ -18,14 +14,13 @@ interface Props {
 interface Team {
   id: string;
   name: string;
-  url: string;
-  color: string;
+  avatarBackground: string;
 }
 
 export const LaunchOptions: React.FC<Props> = ({ teams }) => {
   return (
-    <LaunchOptionWrapper>
-      <LaunchOption>
+    <Wrapper>
+      <b.Box>
         {teams.map((team: Team) => {
           return (
             <WorkspaceOption
@@ -37,24 +32,18 @@ export const LaunchOptions: React.FC<Props> = ({ teams }) => {
           );
         })}
         <b.Box pt={4} pb={3}>
-          <b.Box>
-            <LaunchOptionLink
-              href='/get-started/create'
-              color='blue'
-              fontFamily='CircularPro-Book'>
-              <b.Text textAlign='center'>Create a new workspace</b.Text>
-            </LaunchOptionLink>
-          </b.Box>
-          <b.Box mt={3}>
-            <LaunchOptionLink
-              href='/signin-workspace'
-              color='blue'
-              fontFamily='CircularPro-Book'>
-              <b.Text textAlign='center'>Sign in to another workspace</b.Text>
-            </LaunchOptionLink>
-          </b.Box>
+          <OtherOption>
+            <b.Anchor href='/get-started/create'>
+              Create a new workspace
+            </b.Anchor>
+          </OtherOption>
+          <OtherOption mt={3}>
+            <b.Anchor href='/signin-workspace'>
+              Sign in to another workspace
+            </b.Anchor>
+          </OtherOption>
         </b.Box>
-      </LaunchOption>
-    </LaunchOptionWrapper>
+      </b.Box>
+    </Wrapper>
   );
 };

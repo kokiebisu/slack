@@ -8,7 +8,6 @@ import { landing, size } from '../../../../styles/sizes';
 
 export const Wrapper = styled.footer`
   @media ${landing.xl} {
-    padding-top: 160px;
     height: calc(100vh - 130px);
     max-height: 400px;
   }
