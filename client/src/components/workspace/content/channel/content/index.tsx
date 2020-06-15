@@ -18,23 +18,45 @@ import { LayerPlus, UserPlus } from '../../../../../assets/svg';
 
 // Components
 import { Messages } from '../message/container';
-import { DateSeperator } from '../DateSeperator';
+import { DateSeperator } from '../dateseperator';
+import { useParams } from 'react-router-dom';
+import { useGetChannelByIdQuery } from '../../../../../generated/graphql';
 
 export const Content = () => {
+  const { channelId } = useParams();
+  const { data: { getChannelById } = {} } = useGetChannelByIdQuery({
+    variables: { channelId },
+  });
+
   return (
     <Wrapper>
       <b.Box className='section_header'>
         <Title mb={2}>
-          <b.Text># general</b.Text>
+          {getChannelById?.channel && (
+            <b.Text> #{getChannelById?.channel?.name}</b.Text>
+          )}
         </Title>
         <Description>
           <b.Text>
             <b.Span className='creator'>@Chihiro Hasegawa</b.Span> created this
             channel on June 5th. This is the very beginning of the{' '}
-            <b.Span className='channel_name'>#general</b.Span> channel.
-            Description:
-            このチャンネルはワークスペース全体のコミュニケーションと社内アナウンス用です。全メンバーがこのチャンネルに参加しています。
-            (<b.Span className='edit_button'>edit</b.Span>)
+            <b.Span className='channel_name'>
+              #{getChannelById?.channel?.name}
+            </b.Span>{' '}
+            channel. &nbsp;
+            {getChannelById?.channel &&
+              getChannelById?.channel.description &&
+              `Description: ${getChannelById?.channel?.description}`}
+            &nbsp;
+            <b.Span>
+              {getChannelById?.channel && getChannelById?.channel.description && (
+                <>
+                  <b.Span>(</b.Span>
+                  <b.Span className='edit_button'>edit</b.Span>
+                  <b.Span>)</b.Span>
+                </>
+              )}
+            </b.Span>
           </b.Text>
         </Description>
         <Options>

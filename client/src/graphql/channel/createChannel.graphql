@@ -1,5 +1,15 @@
-mutation CreateChannel($name: String!, $teamId: String!, $description: String) {
-  createChannel(name: $name, teamId: $teamId, description: $description) {
+mutation CreateChannel(
+  $name: String!
+  $teamId: String!
+  $description: String
+  $isPublic: Boolean!
+) {
+  createChannel(
+    name: $name
+    teamId: $teamId
+    description: $description
+    isPublic: $isPublic
+  ) {
     ok
   }
 }

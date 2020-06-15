@@ -73,6 +73,7 @@ export const ChannelModal: React.FC<Props> = () => {
         name: input.name,
         teamId,
         description: input.description,
+        isPublic: !isPrivate,
       },
     });
     if (response.data?.createChannel.ok) {
