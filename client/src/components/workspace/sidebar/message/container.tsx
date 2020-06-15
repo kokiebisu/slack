@@ -2,16 +2,16 @@ import * as React from 'react';
 import * as b from '../../../../styles/blocks';
 
 // Styles
-import { IconWrapper } from './index.styles';
 import { Message } from '.';
 import { Heart } from '../../../../assets/svg/Heart';
+import { IconWrapper, SlackBot } from './container.styles';
 
 interface Props {}
 
 export const Messages: React.FC<Props> = () => {
   return (
-    <b.Box pl={2}>
-      <b.Box py={2}>
+    <b.Box>
+      <SlackBot py={2}>
         <b.Flex alignItems='center'>
           <IconWrapper className='heart' pr={2}>
             <Heart />
@@ -25,7 +25,7 @@ export const Messages: React.FC<Props> = () => {
             </b.Text>
           </b.Box>
         </b.Flex>
-      </b.Box>
+      </SlackBot>
       <Message />
     </b.Box>
   );

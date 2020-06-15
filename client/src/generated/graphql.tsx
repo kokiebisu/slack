@@ -199,6 +199,7 @@ export type MutationVerifyUserByDigitArgs = {
 
 
 export type MutationCreateChannelArgs = {
+  isPublic: Scalars['Boolean'];
   description?: Maybe<Scalars['String']>;
   teamId: Scalars['String'];
   name: Scalars['String'];
@@ -297,7 +298,7 @@ export type GetChannelByIdQuery = (
     & Pick<ChannelResponse, 'ok' | 'message'>
     & { channel?: Maybe<(
       { __typename?: 'Channel' }
-      & Pick<Channel, 'name'>
+      & Pick<Channel, 'name' | 'isPublic' | 'description'>
     )> }
   ) }
 );
@@ -323,6 +324,7 @@ export type CreateChannelMutationVariables = {
   name: Scalars['String'];
   teamId: Scalars['String'];
   description?: Maybe<Scalars['String']>;
+  isPublic: Scalars['Boolean'];
 };
 
 
@@ -622,6 +624,8 @@ export const GetChannelByIdDocument = gql`
     message
     channel {
       name
+      isPublic
+      description
     }
   }
 }
@@ -692,8 +696,8 @@ export type ChannelsQueryHookResult = ReturnType<typeof useChannelsQuery>;
 export type ChannelsLazyQueryHookResult = ReturnType<typeof useChannelsLazyQuery>;
 export type ChannelsQueryResult = ApolloReactCommon.QueryResult<ChannelsQuery, ChannelsQueryVariables>;
 export const CreateChannelDocument = gql`
-    mutation CreateChannel($name: String!, $teamId: String!, $description: String) {
-  createChannel(name: $name, teamId: $teamId, description: $description) {
+    mutation CreateChannel($name: String!, $teamId: String!, $description: String, $isPublic: Boolean!) {
+  createChannel(name: $name, teamId: $teamId, description: $description, isPublic: $isPublic) {
     ok
   }
 }
@@ -716,6 +720,7 @@ export type CreateChannelMutationFn = ApolloReactCommon.MutationFunction<CreateC
  *      name: // value for 'name'
  *      teamId: // value for 'teamId'
  *      description: // value for 'description'
+ *      isPublic: // value for 'isPublic'
  *   },
  * });
  */

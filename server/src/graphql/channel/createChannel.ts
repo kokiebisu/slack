@@ -16,7 +16,8 @@ export class CreateChannelResolver {
     @Ctx() context: Context,
     @Arg('name') name: string,
     @Arg('teamId') teamId: string,
-    @Arg('description', { nullable: true }) description?: string
+    @Arg('description', { nullable: true }) description?: string,
+    @Arg('isPublic') isPublic: boolean
   ): Promise<ChannelResponse | Error> {
     try {
       const userId = context.req.session!.userId;
@@ -41,6 +42,7 @@ export class CreateChannelResolver {
         name,
         teamId,
         description,
+        isPublic,
       }).save();
 
       await manager.query(

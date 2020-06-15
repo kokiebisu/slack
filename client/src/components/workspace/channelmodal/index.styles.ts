@@ -24,7 +24,7 @@ export const Header = styled(b.Box)`
 
 export const Title = styled(b.Box)`
   & > p {
-    font-family: 'SlackLato-Bold';
+    font-family: 'SlackLato-Black';
     font-size: 28px;
     color: ${({ theme }) => theme.colors.black};
   }
@@ -36,6 +36,8 @@ export const IconButtonWrapper = styled(b.Button)`
     width: 35px;
     height: 35px;
     svg {
+      position: relative;
+      top: 2px;
       width: 15px;
       height: 15px;
       path {

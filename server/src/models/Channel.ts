@@ -22,7 +22,7 @@ export class Channel extends BaseEntity {
   name: string;
 
   @Field()
-  @Column({ default: true })
+  @Column()
   isPublic: boolean;
 
   @Field(() => String)
@@ -40,4 +40,8 @@ export class Channel extends BaseEntity {
 
   @OneToMany(() => ChannelMember, (channelmember) => channelmember.channel)
   channelMembers: ChannelMember[];
+
+  @Field(() => Date)
+  @Column('bigint', { default: Date.now() })
+  created_on: Date;
 }

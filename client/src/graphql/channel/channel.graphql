@@ -4,6 +4,8 @@ query GetChannelById($channelId: String!) {
     message
     channel {
       name
+      isPublic
+      description
     }
   }
 }

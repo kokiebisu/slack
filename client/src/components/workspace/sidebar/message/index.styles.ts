@@ -2,19 +2,12 @@ import * as React from 'react';
 import styled from 'styled-components';
 import * as b from '../../../../styles/blocks';
 
+export const Wrapper = styled(b.Box)`
+  padding: 5px 0px 5px 23px;
+`;
+
 export const IconWrapper = styled(b.Box)`
   position: relative;
-  &.heart {
-    top: 1.5px;
-
-    svg {
-      width: 10px;
-      height: 10px;
-      path {
-        fill: ${({ theme }) => theme.colors.green__lighter};
-      }
-    }
-  }
 
   &.status {
     top: 2.5px;

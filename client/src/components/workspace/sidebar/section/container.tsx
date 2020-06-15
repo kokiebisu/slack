@@ -44,7 +44,14 @@ export const SidebarSections: React.FC<Props> = () => {
     <Wrapper>
       <SidebarSection
         title='Channels'
-        subtitle='Add a channel'
+        subtitle={
+          <b.Text
+            fontFamily='SlackLato-Light'
+            color='pink__lighter'
+            fontSize={15}>
+            Add a channel
+          </b.Text>
+        }
         onReveal={() => {
           setRevealed({ ...revealed, channels: !revealed.channels });
         }}>
@@ -58,7 +65,11 @@ export const SidebarSections: React.FC<Props> = () => {
       </SidebarSection>
       <SidebarSection
         title='Direct mesages'
-        subtitle='Invite people'
+        subtitle={
+          <b.Text fontFamily='SlackLato-Black' color='white' fontSize={15}>
+            Invite people
+          </b.Text>
+        }
         onReveal={() =>
           setRevealed({ ...revealed, messages: !revealed.messages })
         }>

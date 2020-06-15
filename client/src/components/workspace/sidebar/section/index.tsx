@@ -27,7 +27,7 @@ import {
 
 interface Props {
   title: string;
-  subtitle?: string;
+  subtitle?: React.ReactNode;
   onReveal: () => void;
 }
 
@@ -99,14 +99,7 @@ export const SidebarSection: React.FC<Props> = ({
               <IconButtonWrapper className='smallplus' pr={2}>
                 <Plus />
               </IconButtonWrapper>
-              <b.Box>
-                <b.Text
-                  fontFamily='SlackLato-Light'
-                  color='pink__lighter'
-                  fontSize={15}>
-                  {subtitle}
-                </b.Text>
-              </b.Box>
+              <b.Box>{subtitle}</b.Box>
             </b.Flex>
             <IconWrapper className='close'>
               <Close />

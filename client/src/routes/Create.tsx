@@ -116,6 +116,9 @@ export const CreateRoutes: React.SFC = () => {
                     variables: {
                       name: 'general',
                       teamId: data.createTeam.team.id,
+                      description:
+                        'This channel is for workspace-wide communication and announcements. All members are in this channel.',
+                      isPublic: true,
                     },
                   });
 
@@ -123,6 +126,9 @@ export const CreateRoutes: React.SFC = () => {
                     variables: {
                       name: 'random',
                       teamId: data.createTeam.team.id,
+                      description:
+                        "A place for non-work-related flimflam, faffing, hodge-podge or jibber-jabber you'd prefer to keep out of more focused work-related channels.",
+                      isPublic: true,
                     },
                   });
 
@@ -130,6 +136,7 @@ export const CreateRoutes: React.SFC = () => {
                     variables: {
                       name: info.channel,
                       teamId: data.createTeam.team.id,
+                      isPublic: true,
                     },
                   });
 
