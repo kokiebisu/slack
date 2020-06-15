@@ -29,7 +29,6 @@ export class RegisterResolver {
 
       const digit = Math.floor(100000 + Math.random() * 900000);
 
-      console.log('user', userId);
       const token = createDigitToken(digit, user);
 
       await sendDigitEmail(email, digit);
@@ -38,7 +37,7 @@ export class RegisterResolver {
 
       return {
         ok: true,
-        message: 'successful',
+        errorlog: 'successful',
       };
     } catch (err) {
       throw new Error('error occured when registering user');
@@ -57,7 +56,7 @@ export class RegisterResolver {
       if (user.length === 0) {
         return {
           ok: false,
-          message: 'email is invalid',
+          errorlog: 'email is invalid',
         };
       } else {
         const token = createStringToken(user[0]);
@@ -68,7 +67,7 @@ export class RegisterResolver {
 
       return {
         ok: true,
-        message: '',
+        errorlog: '',
       };
     } catch (err) {
       throw new Error('Something wrong happened when checking if email exists');

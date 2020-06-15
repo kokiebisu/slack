@@ -3,6 +3,7 @@ import 'reflect-metadata';
 
 import { ApolloServer } from 'apollo-server-express';
 import Express from 'express';
+import http from 'http';
 
 import { buildSchema } from 'type-graphql';
 
@@ -83,7 +84,14 @@ const allowCrossDomain = (req: Request, res: Response, next: NextFunction) => {
 
   apolloServer.applyMiddleware({ app, cors: false });
 
+  const httpServer = http.createServer(app);
+
+  apolloServer.installSubscriptionHandlers(httpServer);
+
   app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(
+      `Subcriptions ready at ws://localhost:${PORT}${apolloServer.subscriptionsPath}`
+    );
   });
 })();

@@ -1,7 +1,7 @@
 query Channels($teamId: String!) {
   channels(teamId: $teamId) {
     ok
-    message
+    errorlog
     channels {
       id
       name

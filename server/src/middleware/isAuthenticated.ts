@@ -5,7 +5,7 @@ export const isAuth: MiddlewareFn<Context> = async ({ context }, next) => {
   if (!context.req.session!.userId) {
     return {
       ok: false,
-      message: 'cannot extract userid from session',
+      errorlog: 'cannot extract userid from session',
       user: null,
     };
   }

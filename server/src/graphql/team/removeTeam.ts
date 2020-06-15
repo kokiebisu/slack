@@ -10,7 +10,6 @@ export class RemoveTeam {
     const team = await Team.delete({ id: teamId });
     return {
       ok: true,
-      message: '',
       team,
     };
   }

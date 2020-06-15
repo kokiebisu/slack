@@ -8,7 +8,7 @@ export const isConfirmed: MiddlewareFn<Context> = async ({ context }, next) => {
     if (!user?.confirmed) {
       return {
         ok: false,
-        message: "you haven't confirmed via email",
+        errorlog: "you haven't confirmed via email",
         user: null,
       };
     }
@@ -16,7 +16,7 @@ export const isConfirmed: MiddlewareFn<Context> = async ({ context }, next) => {
   } catch (err) {
     return {
       ok: false,
-      message: "wasn't able to find user",
+      errorlog: "wasn't able to find user",
     };
   }
 };

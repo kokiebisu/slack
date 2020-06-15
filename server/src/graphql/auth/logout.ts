@@ -10,7 +10,7 @@ export class LogoutResolver {
         if (err) {
           return rej({
             ok: false,
-            message: 'there was an error',
+            errorlog: 'there was an error',
           });
         }
 
@@ -18,7 +18,7 @@ export class LogoutResolver {
 
         return res({
           ok: true,
-          message: 'successful',
+          errorlog: 'successful',
         });
       });
     });

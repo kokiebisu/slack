@@ -9,6 +9,7 @@ import {
 } from 'typeorm';
 import { Team } from './Team';
 import { ChannelMember } from './ChannelMember';
+import { Message } from './Message';
 
 @ObjectType()
 @Entity('channels')
@@ -44,4 +45,7 @@ export class Channel extends BaseEntity {
   @Field(() => Date)
   @Column('bigint', { default: Date.now() })
   created_on: Date;
+
+  @OneToMany(() => Message, (message) => message.channel)
+  messages: Message[];
 }

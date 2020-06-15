@@ -58,16 +58,12 @@ export const ConfirmDigit = () => {
         10
       );
 
-      console.log('newdigit', newDigit);
-
       const response = await verify({
         variables: { digit: newDigit },
       });
 
-      console.log('response', response);
-
       if (response && !response.data?.verifyUserByDigit.ok) {
-        setError(response.data?.verifyUserByDigit.message!);
+        setError(response.data?.verifyUserByDigit.errorlog!);
       }
       if (response && response.data?.verifyUserByDigit.ok) {
         history.push({

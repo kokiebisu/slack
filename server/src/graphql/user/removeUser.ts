@@ -1,7 +1,5 @@
 import { Mutation, Arg } from 'type-graphql';
-// import { UserTeam } from '../../models/Member';
 import { User } from '../../models/User';
-import { UserResponse } from '../response/userResponse';
 import { getManager } from 'typeorm';
 import { BaseResponse } from '../response/baseResponse';
 

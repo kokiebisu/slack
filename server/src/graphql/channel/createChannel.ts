@@ -16,15 +16,15 @@ export class CreateChannelResolver {
     @Ctx() context: Context,
     @Arg('name') name: string,
     @Arg('teamId') teamId: string,
-    @Arg('description', { nullable: true }) description?: string,
-    @Arg('isPublic') isPublic: boolean
+    @Arg('isPublic') isPublic: boolean,
+    @Arg('description', { nullable: true }) description?: string
   ): Promise<ChannelResponse | Error> {
     try {
       const userId = context.req.session!.userId;
       if (!userId) {
         return {
           ok: false,
-          message: 'was not able to extract userid',
+          errorlog: 'was not able to extract userid',
           channel: null,
         };
       }
@@ -34,7 +34,7 @@ export class CreateChannelResolver {
       if (!team) {
         return {
           ok: false,
-          message: 'no team was found',
+          errorlog: 'no team was found',
           channel: null,
         };
       }

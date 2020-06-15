@@ -1,7 +1,7 @@
 query Me {
   me {
     ok
-    message
+    errorlog
     user {
       id
       fullname

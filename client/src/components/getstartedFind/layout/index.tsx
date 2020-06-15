@@ -22,7 +22,6 @@ interface Props {}
 
 export const GetStartedFind: React.FC<Props> = () => {
   const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
 
   const [check, { loading, data }] = useCheckEmailLazyQuery();
 
@@ -73,22 +72,20 @@ export const GetStartedFind: React.FC<Props> = () => {
                     </b.Box>
                     <b.Box height={35} my={2}>
                       <b.Flex justifyContent='center'>
-                        {data?.checkEmail.message ? (
-                          <ErrorBox backgroundColor='pink__lighter' width={1}>
-                            <b.Flex alignItems='center'>
-                              <IconWrapper className='warning' mr={2}>
-                                <Warning />
-                              </IconWrapper>
-                              <b.Box py={2}>
-                                <b.Text
-                                  fontFamily='SlackLato-Regular'
-                                  fontSize={14}>
-                                  {data?.checkEmail.message}
-                                </b.Text>
-                              </b.Box>
-                            </b.Flex>
-                          </ErrorBox>
-                        ) : null}
+                        <ErrorBox backgroundColor='pink__lighter' width={1}>
+                          <b.Flex alignItems='center'>
+                            <IconWrapper className='warning' mr={2}>
+                              <Warning />
+                            </IconWrapper>
+                            <b.Box py={2}>
+                              <b.Text
+                                fontFamily='SlackLato-Regular'
+                                fontSize={14}>
+                                {data?.checkEmail && data?.checkEmail.errorlog}
+                              </b.Text>
+                            </b.Box>
+                          </b.Flex>
+                        </ErrorBox>
                       </b.Flex>
                     </b.Box>
                     <b.Box>

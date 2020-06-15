@@ -1,7 +1,7 @@
 query GetChannelById($channelId: String!) {
   getChannelById(channelId: $channelId) {
     ok
-    message
+    errorlog
     channel {
       name
       isPublic
