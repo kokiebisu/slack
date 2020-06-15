@@ -1,8 +1,6 @@
 const nodemailer = require('nodemailer');
 
 export async function sendDigitEmail(email: string, digit: number) {
-  // const testAccount = await nodemailer.createTestAccount();
-  // create reusable transporter object using the default SMTP transport
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     auth: {
@@ -11,12 +9,10 @@ export async function sendDigitEmail(email: string, digit: number) {
     },
   });
 
-  // send mail with defined transport object
   transporter.sendMail({
-    from: 'kenichikona@gmail.com', // sender address
-    to: email, // list of receivers
-    subject: 'Slack confirmation', // Subject line
-    // html: `<p>Press the confirmation code in order to create a new workspace</p><a href="${url}">Confirm email address</a>`, // html body
+    from: 'kenichikona@gmail.com',
+    to: email,
+    subject: 'Slack confirmation',
     html: `the number is ${digit}`,
   });
 }
@@ -31,10 +27,9 @@ export async function sendLinkEmail(email: string, token: string) {
   });
 
   transporter.sendMail({
-    from: 'kenichikona@gmail.com', // sender address
-    to: email, // list of receivers
-    subject: 'Slack confirmation', // Subject line
-    // html: `<p>Press the confirmation code in order to create a new workspace</p><a href="${url}">Confirm email address</a>`, // html body
+    from: 'kenichikona@gmail.com',
+    to: email,
+    subject: 'Slack confirmation',
     html: `<a href='http://localhost:3000/get-started/check/${token}'>http://localhost:3000/your-workspaces/${token}</a>`,
   });
 }
