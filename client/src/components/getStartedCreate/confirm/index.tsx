@@ -9,7 +9,7 @@ import {
   DotVariants,
   DotContainerVariants,
   DotTransition,
-} from './confirm.styles';
+} from './index.styles';
 
 interface Props {
   loading: boolean;

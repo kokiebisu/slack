@@ -15,7 +15,7 @@ import { useTeamQuery } from '../../../generated/graphql';
 import { useParams } from 'react-router-dom';
 
 // Styles
-import { IconWrapper, Input } from './header.styles';
+import { IconWrapper, Input } from './index.styles';
 
 export const HomeHeader: React.FC<{}> = () => {
   const { teamId } = useParams();

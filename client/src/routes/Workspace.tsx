@@ -9,15 +9,16 @@ import {
 } from 'react-router-dom';
 import { StaticContext, Redirect } from 'react-router';
 
-// Pages
-import { ThreadsPage } from '../components/workspace/content/threads';
-import { MentionPage } from '../components/workspace/content/mention';
-import { DraftPage } from '../components/workspace/content/draft';
-import { SavedPage } from '../components/workspace/content/saved';
-
-import { Workspace } from '../components/workspace/layout';
+// Query
 import { useMeQuery } from '../generated/graphql';
-import { ChannelPage } from '../components/workspace/content/channel/layout';
+
+// Pages
+import { ThreadsPage } from '../components/Workspace/content/Threads';
+import { MentionPage } from '../components/Workspace/content/Mention';
+import { DraftPage } from '../components/Workspace/content/Draft';
+import { SavedPage } from '../components/Workspace/content/Saved';
+import { Workspace } from '../components/Workspace/layout';
+import { ChannelPage } from '../components/Workspace/content/Channel/layout';
 
 type Props = RouteComponentProps<
   {},

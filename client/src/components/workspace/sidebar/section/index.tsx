@@ -23,7 +23,7 @@ import {
   TitleContainer,
   SubtitleWrapper,
   IconButtonWrapper,
-} from './section.styles';
+} from './index.styles';
 
 interface Props {
   title: string;

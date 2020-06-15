@@ -17,7 +17,7 @@ import {
 import { ThinHashTag } from '../../../../assets/svg/HashTag';
 
 // Styles
-import { Wrapper, IconWrapper, TextWrapper, Title } from './option.styles';
+import { Wrapper, IconWrapper, TextWrapper, Title } from './index.styles';
 
 interface Props {
   name: string;

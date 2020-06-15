@@ -7,7 +7,7 @@ import * as b from '../../../../styles/blocks';
 // Imgs
 import Thumbsup from '../../../../assets/img/thumbsup.png';
 
-import { Wrapper, Container } from './reaction.styles';
+import { Wrapper, Container } from './index.styles';
 
 interface Props {}
 

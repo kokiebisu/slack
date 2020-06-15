@@ -6,7 +6,7 @@ import * as b from '../../../styles/blocks';
 import { ThinHashTag } from '../../../assets/svg/HashTag';
 
 // Styles
-import { IconWrapper } from './mockup.styles';
+import { IconWrapper } from './index.styles';
 
 export const MockHashTag = () => {
   return (

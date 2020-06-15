@@ -11,7 +11,7 @@ import {
   Options,
   Option,
   IconWrapper,
-} from './content.styles';
+} from './index.styles';
 
 // Svg
 import { LayerPlus, UserPlus } from '../../../../../assets/svg';

@@ -14,7 +14,7 @@ import {
   Input,
   NextButton,
   Policy,
-} from './layout.styles';
+} from './index.styles';
 
 import { Header } from '../header';
 import { MiniWorkspace } from '../miniworkspace';

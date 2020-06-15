@@ -6,7 +6,7 @@ import * as b from '../../../../styles/blocks';
 
 // Svgs
 import { Heart } from '../../../../assets/svg/Heart';
-import { IconWrapper, Status } from './message.styles';
+import { IconWrapper, Status } from './index.styles';
 
 export const Message = () => {
   return (

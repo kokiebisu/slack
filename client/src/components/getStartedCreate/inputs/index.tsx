@@ -1,8 +1,15 @@
 import * as React from 'react';
+
+// Blocks
 import * as b from '../../../styles/blocks';
 
-import { InputWrapper, Input, IconWrapper } from './inputs.styles';
+// Styles
+import { InputWrapper, Input, IconWrapper } from './index.styles';
+
+// Svgs
 import { CheckCircle } from '../../../assets/svg';
+
+// Util
 import { fullNameRegex, weakRegex } from '../../../util/passwordUtil';
 
 interface Props {

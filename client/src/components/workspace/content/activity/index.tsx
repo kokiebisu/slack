@@ -18,7 +18,7 @@ import {
   Name,
   Time,
   Message,
-} from './activity.styles';
+} from './index.styles';
 
 interface Props {}
 

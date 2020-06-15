@@ -1,12 +1,18 @@
 import * as React from 'react';
-import { Redirect } from 'react-router-dom';
+import { useParams, Link, Redirect } from 'react-router-dom';
+
+// Blocks
 import * as b from '../../../styles/blocks';
-import { useParams, Link } from 'react-router-dom';
+
+// Queries
 import { useVerifyUserByTokenQuery } from '../../../generated/graphql';
-import { Wrapper } from './confirmEmail.styles';
-import { LogoCenterLayout } from '../../shared/LogoCenter/layout';
+
+// Styles
+import { Wrapper } from './index.styles';
+
+// Components
+import { LogoCenterLayout } from '../../Shared/LogoCenter/layout';
 import { Options } from '../options';
-import { verify } from 'crypto';
 
 export const ConfirmEmail = () => {
   const { token } = useParams();

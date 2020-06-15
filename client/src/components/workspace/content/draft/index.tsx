@@ -14,7 +14,7 @@ import {
   Title,
   Description,
   NewMessage,
-} from './draft.styles';
+} from './index.styles';
 import { ClientContentLayout } from '../layout';
 
 interface Props {}

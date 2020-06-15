@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import * as b from '../../../styles/blocks';
 
 // Styles
-import { Header, Title, Description } from './content.styles';
+import { Header, Title, Description } from './index.styles';
 import { AvailableWorkspaces } from '../workspace/container';
 
 // Sizes

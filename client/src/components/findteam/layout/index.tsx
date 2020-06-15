@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect } from 'react';
-import { Wrapper } from './layout.styles';
+import { Wrapper } from './index.styles';
 
 import { useGetBelongingTeamsQuery } from '../../../generated/graphql';
 

@@ -33,7 +33,7 @@ import {
   Item,
   BottomContainer,
   ContactWrapper,
-} from './footer.styles';
+} from './index.styles';
 
 interface Props {}
 

@@ -6,7 +6,7 @@ import {
   SubSection,
   IconWrapper,
   Bottom,
-} from './layout.styles';
+} from './index.styles';
 
 import * as b from '../../../../styles/blocks';
 

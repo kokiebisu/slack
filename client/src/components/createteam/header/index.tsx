@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import * as b from '../../../styles/blocks';
 
 // Styles
-import { Wrapper, IconWrapper } from './header.styles';
+import { Wrapper, IconWrapper } from './index.styles';
 
 // Svgs
 import { NameLogo } from '../../../assets/svg/Logo';

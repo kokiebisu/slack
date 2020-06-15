@@ -7,7 +7,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { useVerifyUserByDigitMutation } from '../../../generated/graphql';
 
 // Components
-import { LogoCenterLayout } from '../../shared/LogoCenter/layout';
+import { LogoCenterLayout } from '../../Shared/LogoCenter/layout';
 import { Options } from '../options';
 import { Dialog } from '../dialog';
 

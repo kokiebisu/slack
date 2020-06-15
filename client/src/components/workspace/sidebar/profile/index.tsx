@@ -4,13 +4,7 @@ import * as React from 'react';
 import * as b from '../../../../styles/blocks';
 
 // Styles
-import {
-  Wrapper,
-  Name,
-  Avatar,
-  IconWrapper,
-  StatusIcon,
-} from './profile.styles';
+import { Wrapper, Name, Avatar, IconWrapper, StatusIcon } from './index.styles';
 
 // Svgs
 import { BottomArrow } from '../../../../assets/svg/Arrows';

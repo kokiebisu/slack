@@ -11,7 +11,7 @@ import { Lock } from '../../../../assets/svg';
 import { FatHashTag } from '../../../../assets/svg/HashTag';
 
 // Styles
-import { Name, IconWrapper } from './channel.styles';
+import { Name, IconWrapper } from './index.styles';
 import { useParams, useHistory } from 'react-router';
 import { useRef } from 'react';
 

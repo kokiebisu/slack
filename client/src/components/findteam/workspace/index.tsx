@@ -12,7 +12,7 @@ import {
   WorkspaceURL,
   LaunchButton,
   Icon,
-} from './workspace.styles';
+} from './index.styles';
 
 interface Props {
   name: string;

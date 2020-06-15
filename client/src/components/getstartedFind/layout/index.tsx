@@ -2,19 +2,18 @@ import * as React from 'react';
 import { Redirect } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
+// Blocks
 import * as b from '../../../styles/blocks';
 
-import { LogoCenterLayout } from '../../shared/LogoCenter/layout';
+// Components
+import { LogoCenterLayout } from '../../Shared/LogoCenter/layout';
+import { Confirm } from '../confirm';
 
 // Styles
-import { Wrapper, EmailInput } from './layout.styles';
+import { Wrapper, EmailInput, ErrorBox, IconWrapper } from './index.styles';
 
 // Graphql
 import { useCheckEmailLazyQuery } from '../../../generated/graphql';
-
-import { Confirm } from '../confirm';
-
-import { ErrorBox, IconWrapper } from './layout.styles';
 
 // Svg
 import { Warning } from '../../../assets/svg';

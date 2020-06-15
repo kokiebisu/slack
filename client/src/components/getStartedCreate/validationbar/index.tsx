@@ -1,11 +1,10 @@
 import * as React from 'react';
+
+// Blocks
 import * as b from '../../../styles/blocks';
 
 // Components
-import {
-  PasswordValidationWrapper,
-  PasswordValidation,
-} from './validationbar.styles';
+import { PasswordValidationWrapper, PasswordValidation } from './index.styles';
 
 // Util
 import {

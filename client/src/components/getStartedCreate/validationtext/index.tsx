@@ -1,8 +1,10 @@
 import * as React from 'react';
+
+// Blocks
 import * as b from '../../../styles/blocks';
 
 // Styles
-import { Wrapper, ValidationTextWrapper } from './validationtext.styles';
+import { Wrapper, ValidationTextWrapper } from './index.styles';
 
 // Util
 import { textValidation } from '../../../util/passwordUtil';

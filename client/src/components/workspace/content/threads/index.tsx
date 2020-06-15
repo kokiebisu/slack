@@ -17,7 +17,7 @@ import {
   Title,
   Description,
   LearnButton,
-} from './threads.styles';
+} from './index.styles';
 
 // Components
 import { ClientContentLayout } from '../layout';

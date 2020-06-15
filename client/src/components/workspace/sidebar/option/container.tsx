@@ -16,7 +16,7 @@ import {
   TextWrapper,
   Title,
   ShowLessWrapper,
-} from './options.styles';
+} from './container.styles';
 
 interface Props {}
 

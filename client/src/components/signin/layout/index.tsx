@@ -5,7 +5,7 @@ import { SignInContent } from '../content';
 import { SignInFooter } from '../footer';
 
 // Styles
-import { Wrapper } from './layout.styles';
+import { Wrapper } from './index.styles';
 
 interface Props {}
 

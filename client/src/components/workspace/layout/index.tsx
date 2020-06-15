@@ -1,12 +1,17 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { Redirect, useParams } from 'react-router-dom';
-import { Wrapper, ContentWrapper } from './layout.styles';
+
+// Styles
+import { Wrapper, ContentWrapper } from './index.styles';
 
 // Components
-import { HomeHeader } from '../header';
-import { Sidebar } from '../sidebar/layout';
-import { MenuToggle } from '../menutoggle';
-import { useState, useEffect } from 'react';
+import { HomeHeader } from '../Header';
+import { Sidebar } from '../Sidebar/layout';
+import { MenuToggle } from '../MenuToggle';
+import { ChannelModal } from '../ChannelModal';
+
+// Queries
 import {
   useMeQuery,
   useTeamQuery,
@@ -14,7 +19,6 @@ import {
   useTeamLazyQuery,
 } from '../../../generated/graphql';
 import { useToggleState } from '../../../context/toggle-context';
-import { ChannelModal } from '../channelmodal';
 
 interface Props {
   route: React.ReactNode;

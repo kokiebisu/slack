@@ -1,6 +1,12 @@
 import * as React from 'react';
+
+// Blocks
 import * as b from '../../../styles/blocks';
-import { ErrorBox, IconWrapper } from './errordialog.styles';
+
+// Styles
+import { ErrorBox, IconWrapper } from './index.styles';
+
+// Svgs
 import { Warning } from '../../../assets/svg';
 
 interface Props {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as b from '../../../styles/blocks';
 
-import { Wrapper, IconWrapper, Option } from './options.styles';
+import { Wrapper, IconWrapper, Option } from './index.styles';
 
 import { Outlook, Gmail } from '../../../assets/svg/Logo';
 

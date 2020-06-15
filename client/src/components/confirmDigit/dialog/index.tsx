@@ -11,7 +11,7 @@ import {
   Error,
   IconWrapper,
   spinTransition,
-} from './dialog.styles';
+} from './index.styles';
 
 // Svg
 import { Warning } from '../../../assets/svg';

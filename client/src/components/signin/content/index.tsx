@@ -16,7 +16,7 @@ import {
   CreateWorkspaceWrapper,
   CreateWorkspaceContainer,
   IconWrapper,
-} from './content.styles';
+} from './index.styles';
 
 interface Props {}
 

@@ -21,7 +21,7 @@ import {
   Notice,
   NoticeTitle,
   NoticeDescription,
-} from './mention.styles';
+} from './index.styles';
 import { ClientContentLayout } from '../layout';
 
 interface Props {}

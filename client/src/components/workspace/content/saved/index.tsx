@@ -8,7 +8,7 @@ import { Bookmark } from '../../../../assets/svg';
 import { Transition } from '../../../../assets/svg';
 
 // Styles
-import { Wrapper, SideOption, IconWrapper, Bottom } from './saved.styles';
+import { Wrapper, SideOption, IconWrapper, Bottom } from './index.styles';
 import { ClientContentLayout } from '../layout';
 
 interface Props {}

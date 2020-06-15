@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as b from '../../../../styles/blocks';
 
 // Styles
-import { IconWrapper } from './message.styles';
+import { IconWrapper } from './index.styles';
 import { Message } from '.';
 import { Heart } from '../../../../assets/svg/Heart';
 

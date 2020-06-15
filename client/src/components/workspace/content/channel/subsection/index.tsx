@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as b from '../../../../../styles/blocks';
 
 // Styles
-import { Seperator, IconWrapper } from './subsection.styles';
+import { Seperator, IconWrapper } from './index.styles';
 
 // Svgs
 import { User, MapPinAlt } from '../../../../../assets/svg';

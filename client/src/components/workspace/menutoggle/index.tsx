@@ -12,7 +12,7 @@ import { setAccessToken } from '../../../global/token';
 import { useLogoutMutation } from '../../../generated/graphql';
 
 // Styles
-import { Wrapper, IconWrapper, Section } from './menutoggle.styles';
+import { Wrapper, IconWrapper, Section } from './index.styles';
 
 const UpdateState: React.FC<{}> = () => {
   return (

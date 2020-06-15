@@ -20,7 +20,7 @@ import {
 } from '../../../../generated/graphql';
 
 // Styles
-import { Wrapper, IconWrapper } from './layout.styles';
+import { Wrapper, IconWrapper } from './index.styles';
 import { Profile } from '../profile';
 import { useParams } from 'react-router-dom';
 import { useToggleState } from '../../../../context/toggle-context';

@@ -15,7 +15,7 @@ import {
   BulletPoint,
   Line,
   ContentWrapper,
-} from './miniworkspace.styles';
+} from './index.styles';
 
 // Components
 import { SkeletonLine, MockHashTag } from '../mockup';

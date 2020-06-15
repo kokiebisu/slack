@@ -3,22 +3,25 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
+// Blocks
 import * as b from '../../../styles/blocks';
 
-import { LogoCenterLayout } from '../../shared/LogoCenter/layout';
-
+// Queries
 import { useRegisterMutation } from '../../../generated/graphql';
+
+// Svgs
 import { Warning, CheckCircle } from '../../../assets/svg';
 
+// Utils
 import {
   weakRegex,
   fullNameRegex,
   emailRegex,
 } from '../../../util/passwordUtil';
 
-import { Wrapper, IconWrapper, confirmVariants } from './layout.styles';
-
 // Components
+import { LogoCenterLayout } from '../../Shared/LogoCenter/layout';
+import { Wrapper, IconWrapper, confirmVariants } from './index.styles';
 import { PasswordValidationBar } from '../validationbar';
 import { PasswordValidationText } from '../validationtext';
 import { Policy } from '../policy';

@@ -24,7 +24,7 @@ import {
   LearnMore,
   LearnButton,
   NameWrapper,
-} from './channelmodal.styles';
+} from './index.styles';
 import { Switch } from './switch';
 import { FatHashTag, ThinHashTag } from '../../../assets/svg/HashTag';
 import { action } from '@storybook/addon-actions';

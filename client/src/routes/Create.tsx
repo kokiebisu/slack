@@ -8,18 +8,21 @@ import {
   useHistory,
   useLocation,
 } from 'react-router-dom';
-import { CreateTeamLayout } from '../components/createteam/layout';
+
+// Components
+import { CreateTeamLayout } from '../components/CreateTeam/layout';
+import { ConfirmDigit } from '../components/ConfirmDigit/layout';
+
+// Queries
 import {
   useMeQuery,
   useCreateTeamMutation,
   useCreateChannelMutation,
 } from '../generated/graphql';
 
+// Util
 import { randomColor } from '../util/randomColor';
 import { avatar } from '../styles/colors';
-import { ConfirmDigit } from '../components/confirmDigit/layout';
-
-interface Props {}
 
 export const CreateRoutes: React.SFC = () => {
   const history = useHistory();

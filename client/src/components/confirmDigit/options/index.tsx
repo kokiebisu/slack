@@ -1,8 +1,12 @@
 import * as React from 'react';
+
+// Blocks
 import * as b from '../../../styles/blocks';
 
-import { Wrapper, IconWrapper, Option } from './options.styles';
+// Styles
+import { Wrapper, IconWrapper, Option } from './index.styles';
 
+// Svgs
 import { Outlook, Gmail } from '../../../assets/svg/Logo';
 
 export const Options = () => {
