@@ -6,7 +6,7 @@ import { Header } from '../header';
 import { Banner } from '../Banner/layout';
 import { BreakOut } from '../Breakout/layout';
 import { Choose } from '../Choose/layout';
-import { Footer } from '../footer';
+import { Footer } from '../Footer/layout';
 
 // Graphql
 import { useMeQuery } from '../../../generated/graphql';

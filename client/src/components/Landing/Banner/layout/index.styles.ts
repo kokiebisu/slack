@@ -62,7 +62,7 @@ export const Description = styled(b.Box)`
 export const Buttons = styled(b.Box)`
   & > div {
     display: block;
-    @media ${size.md} {
+    @media ${size.lg} {
       display: flex;
     }
   }
@@ -77,7 +77,7 @@ export const Button = styled(b.Box)`
     width: 100%;
     padding: 20px 0;
     text-transform: uppercase;
-    @media ${size.md} {
+    @media ${size.lg} {
       width: auto;
       height: 60px;
       padding: 20px 40px;
@@ -92,7 +92,7 @@ export const Button = styled(b.Box)`
   &.button__border {
     margin-top: 15px;
     margin-left: 0px;
-    @media ${size.md} {
+    @media ${size.lg} {
       margin-top: 0;
       margin-left: 15px;
     }
