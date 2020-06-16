@@ -7,6 +7,8 @@ export const Wrapper = styled(b.Box)`
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 
+  height: 39px;
+
   & div {
     &.container {
       width: 100%;
