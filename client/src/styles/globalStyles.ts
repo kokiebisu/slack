@@ -10,7 +10,7 @@ export const GlobalStyles = createGlobalStyle`
 
     html {
         box-sizing: inherit;
-        overflow: hidden;
+        /* overflow: hidden; */
         height: 100%;
     }
 
@@ -22,7 +22,6 @@ export const GlobalStyles = createGlobalStyle`
         font-family: 'SlackLato-Regular';
         box-sizing: inherit;
         height: 100%;
-        overflow: auto;
     }
 
 `;
