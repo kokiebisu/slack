@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { useState, useMemo, useCallback } from 'react';
-import { Node, Editor, Transforms } from 'slate';
+import { Text, Node, Editor, Transforms } from 'slate';
 
 // Blocks
 import * as b from '../../../../../styles/blocks';
@@ -15,6 +15,7 @@ import { createEditor } from 'slate';
 // Components
 import { MessageInput } from '../input';
 import { MessageTools } from '../tools';
+import { CustomEditor } from '../../../../../util/customEditor';
 
 export const MessageBox = () => {
   const editor = useMemo(() => withReact(createEditor()), []);
@@ -34,6 +35,11 @@ export const MessageBox = () => {
     }
   }, []);
 
+  // Define a leaf rendering function that is memoized with `useCallback`.
+  const renderLeaf = useCallback((props) => {
+    return <Leaf {...props} />;
+  }, []);
+
   return (
     <Wrapper>
       <b.Box>
@@ -44,38 +50,30 @@ export const MessageBox = () => {
               value={value}
               onChange={(newValue) => setValue(newValue)}>
               <Editable
+                renderLeaf={renderLeaf}
                 renderElement={renderElement}
                 onKeyDown={(event) => {
-                  if (event.key === '`' && event.ctrlKey) {
-                    event.preventDefault();
-                    const [match] = Editor.nodes(editor, {
-                      match: (n) => n.type === 'code',
-                    });
-                    Transforms.setNodes(
-                      editor,
-                      { type: match ? 'paragraph' : 'code' },
-                      { match: (n) => Editor.isBlock(editor, n) }
-                    );
+                  if (!event.ctrlKey) {
+                    return;
                   }
 
-                  if (event.key === '&') {
-                    event.preventDefault();
-                    editor.insertText('and');
+                  switch (event.key) {
+                    case '`': {
+                      event.preventDefault();
+                      CustomEditor.toggleCodeBlock(editor);
+                    }
+
+                    case 'b': {
+                      event.preventDefault();
+                      CustomEditor.toggleBoldMark(editor);
+                      break;
+                    }
                   }
                 }}
               />
             </Slate>
           </MessageInput>
-          <MessageTools
-            // input={value}
-            send={(e) => {
-              if (e.key === '&') {
-                e.preventDefault();
-                console.log('called');
-                editor.insertText('and');
-              }
-            }}
-          />
+          <MessageTools editor={editor} />
         </Content>
         <CommandDescription py={2}>
           <b.Flex justifyContent='flex-end'>
@@ -110,4 +108,17 @@ const CodeElement = (props: any) => {
 
 const DefaultElement = (props: any) => {
   return <p {...props.attributes}>{props.children}</p>;
+};
+
+// Define a React component to render leaves with bold text.
+const Leaf = (props: any) => {
+  return (
+    <span
+      {...props.attributes}
+      style={{
+        fontWeight: props.leaf.bold ? '700' : '400',
+      }}>
+      {props.children}
+    </span>
+  );
 };

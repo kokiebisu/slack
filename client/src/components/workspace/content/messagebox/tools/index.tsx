@@ -23,12 +23,13 @@ import {
   PaperClip,
   PaperPlane,
 } from '../../../../../assets/svg';
+import { CustomEditor } from '../../../../../util/customEditor';
 
 interface Props {
-  send: (e: any) => void;
+  editor: any;
 }
 
-export const MessageTools: React.FC<Props> = ({ send }) => {
+export const MessageTools: React.FC<Props> = ({ editor }) => {
   return (
     <Wrapper>
       <b.Flex>
@@ -45,7 +46,10 @@ export const MessageTools: React.FC<Props> = ({ send }) => {
                 <Tool
                   name='bold'
                   icon={<Bold />}
-                  action={() => console.log('bold pressed')}
+                  action={(event) => {
+                    event.preventDefault();
+                    CustomEditor.toggleBoldMark(editor);
+                  }}
                 />
                 <Tool
                   name='italic'
@@ -60,7 +64,10 @@ export const MessageTools: React.FC<Props> = ({ send }) => {
                 <Tool
                   name='code'
                   icon={<Code />}
-                  action={() => console.log('code pressed')}
+                  action={(event) => {
+                    event.preventDefault();
+                    CustomEditor.toggleCodeBlock(editor);
+                  }}
                 />
                 <Tool
                   name='link'
@@ -116,7 +123,7 @@ export const MessageTools: React.FC<Props> = ({ send }) => {
                   variants={sendVariant}
                   // animate={!!input ? 'animate' : 'initial'}
                   className='paper_plane'
-                  onClick={send}>
+                  onClick={() => console.log('send')}>
                   <b.Flex justifyContent='center' alignItems='center'>
                     <PaperPlane />
                   </b.Flex>
@@ -133,12 +140,12 @@ export const MessageTools: React.FC<Props> = ({ send }) => {
 interface ToolProps {
   name: string;
   icon: React.ReactNode;
-  action: () => void;
+  action: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 const Tool: React.FC<ToolProps> = ({ name, icon, action }) => {
   return (
-    <IconWrapper className={name} onClick={action}>
+    <IconWrapper className={name} onMouseDown={action}>
       <b.Flex justifyContent='center' alignItems='center'>
         {icon}
       </b.Flex>
