@@ -11,7 +11,7 @@ export const Wrapper = styled(b.Box)`
   background-color: ${({ theme }) => theme.colors.white};
   & > div {
     height: 100%;
-    padding-bottom: 25px;
+    /* padding-bottom: 10px; */
   }
 `;
 
@@ -21,4 +21,15 @@ export const Content = styled(b.Box)`
   border: 1px solid ${({ theme }) => theme.colors.gray};
   display: grid;
   grid-template-rows: auto 39px;
+`;
+
+export const CommandDescription = styled(b.Box)`
+  & p {
+    font-size: 10px;
+    font-family: 'SlackLato-Regular';
+    color: ${({ theme }) => theme.colors.gray};
+    & span {
+      font-family: 'SlackLato-Bold';
+    }
+  }
 `;

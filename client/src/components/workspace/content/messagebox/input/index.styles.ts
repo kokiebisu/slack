@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import * as b from '../../../../../styles/blocks';
 
 export const Wrapper = styled(b.Box)`
-  padding: 010px;
+  padding: 0 10px;
 `;
 
 export const Input = styled(b.Box)`
