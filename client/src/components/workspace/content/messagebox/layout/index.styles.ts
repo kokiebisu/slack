@@ -11,7 +11,7 @@ export const Wrapper = styled(b.Box)`
   background-color: ${({ theme }) => theme.colors.white};
   & > div {
     height: 100%;
-    padding-bottom: 30px;
+    padding-bottom: 25px;
   }
 `;
 
