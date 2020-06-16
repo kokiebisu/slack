@@ -26,10 +26,9 @@ import {
 
 interface Props {
   send: (e: any) => void;
-  input: string;
 }
 
-export const MessageTools: React.FC<Props> = ({ send, input }) => {
+export const MessageTools: React.FC<Props> = ({ send }) => {
   return (
     <Wrapper>
       <b.Flex>
@@ -113,9 +112,9 @@ export const MessageTools: React.FC<Props> = ({ send, input }) => {
                   action={() => console.log('paperclip pressed')}
                 />
                 <IconWrapper
-                  disabled={!!input}
+                  // disabled={!!input}
                   variants={sendVariant}
-                  animate={!!input ? 'animate' : 'initial'}
+                  // animate={!!input ? 'animate' : 'initial'}
                   className='paper_plane'
                   onClick={send}>
                   <b.Flex justifyContent='center' alignItems='center'>

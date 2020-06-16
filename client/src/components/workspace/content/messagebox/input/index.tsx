@@ -1,26 +1,26 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import * as b from '../../../../../styles/blocks';
 
 import { Wrapper, Input } from './index.styles';
 
 interface Props {
-  input: string;
-  onType: (e: React.FormEvent<HTMLDivElement>) => void;
+  children: React.ReactNode;
 }
 
-export const MessageInput: React.FC<Props> = ({ input, onType }) => {
+export const MessageInput: React.FC<Props> = ({ children }) => {
   return (
     <Wrapper>
       <b.Flex alignItems='center'>
-        <Input
+        {/* <Input
           contentEditable='true'
           spellCheck
           aria-autocomplete='list'
           data-placeholder='Jot something down...'
           suppressContentEditableWarning={true}
           onInput={onType}
-        />
+        /> */}
+        {children}
       </b.Flex>
     </Wrapper>
   );
