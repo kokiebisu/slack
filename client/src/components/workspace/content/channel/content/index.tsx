@@ -21,6 +21,7 @@ import { Messages } from '../message/container';
 import { DateSeperator } from '../dateseperator';
 import { useParams } from 'react-router-dom';
 import { useGetChannelByIdQuery } from '../../../../../generated/graphql';
+import { MessageBox } from '../../messagebox/layout';
 
 export const Content = () => {
   const { channelId } = useParams();
@@ -88,6 +89,7 @@ export const Content = () => {
       <b.Box className='section_content'>
         <Messages />
       </b.Box>
+      <MessageBox />
     </Wrapper>
   );
 };

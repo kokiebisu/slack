@@ -16,7 +16,6 @@ export const Wrapper = styled(b.Box)`
     }
     &.date_modal {
       position: absolute;
-      width: 100%;
       left: 50%;
       top: -15px;
       height: 70px;
