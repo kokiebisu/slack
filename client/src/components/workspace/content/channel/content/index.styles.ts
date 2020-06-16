@@ -12,7 +12,7 @@ export const Wrapper = styled(b.Box)`
 
     &.section_content {
       position: relative;
-      padding: 25px 20px;
+      padding: 25px 20px 5px 20px;
     }
   }
 `;
