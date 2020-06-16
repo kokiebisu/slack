@@ -24,4 +24,13 @@ export const GlobalStyles = createGlobalStyle`
         height: 100%;
     }
 
+    [contenteditable] {
+        padding:3px; 
+    }
+
+    [data-placeholder]:empty:before {
+     content: attr(data-placeholder);
+     color: #888;
+    }
+
 `;

@@ -4,14 +4,23 @@ import * as b from '../../../../../styles/blocks';
 
 import { Wrapper, Input } from './index.styles';
 
-export const MessageInput = () => {
-  const [input, setInput] = useState('');
+interface Props {
+  input: string;
+  onType: (e: React.FormEvent<HTMLDivElement>) => void;
+}
+
+export const MessageInput: React.FC<Props> = ({ input, onType }) => {
   return (
     <Wrapper>
       <b.Flex alignItems='center'>
-        <Input contentEditable='true' spellCheck aria-autocomplete='list'>
-          <b.Text>sadfsda</b.Text>
-        </Input>
+        <Input
+          contentEditable='true'
+          spellCheck
+          aria-autocomplete='list'
+          data-placeholder='Jot something down...'
+          suppressContentEditableWarning={true}
+          onInput={onType}
+        />
       </b.Flex>
     </Wrapper>
   );

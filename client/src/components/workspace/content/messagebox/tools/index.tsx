@@ -1,10 +1,11 @@
 import * as React from 'react';
+import { useRef, useEffect } from 'react';
 
 // Blocks
 import * as b from '../../../../../styles/blocks';
 
 // Styles
-import { Wrapper, IconButtonWrapper, Seperator } from './index.styles';
+import { Wrapper, IconWrapper, Seperator } from './index.styles';
 import {
   Bolt,
   Bold,
@@ -23,7 +24,12 @@ import {
   PaperPlane,
 } from '../../../../../assets/svg';
 
-export const MessageTools = () => {
+interface Props {
+  send: (e: any) => void;
+  input: string;
+}
+
+export const MessageTools: React.FC<Props> = ({ send, input }) => {
   return (
     <Wrapper>
       <b.Flex>
@@ -106,11 +112,16 @@ export const MessageTools = () => {
                   icon={<PaperClip />}
                   action={() => console.log('paperclip pressed')}
                 />
-                <Tool
-                  name='paper_plane'
-                  icon={<PaperPlane />}
-                  action={() => console.log('paper plane pressed')}
-                />
+                <IconWrapper
+                  disabled={!!input}
+                  variants={sendVariant}
+                  animate={!!input ? 'animate' : 'initial'}
+                  className='paper_plane'
+                  onClick={send}>
+                  <b.Flex justifyContent='center' alignItems='center'>
+                    <PaperPlane />
+                  </b.Flex>
+                </IconWrapper>
               </b.Flex>
             </b.Box>
           </b.Flex>
@@ -128,10 +139,25 @@ interface ToolProps {
 
 const Tool: React.FC<ToolProps> = ({ name, icon, action }) => {
   return (
-    <IconButtonWrapper className={name} onClick={action}>
+    <IconWrapper className={name} onClick={action}>
       <b.Flex justifyContent='center' alignItems='center'>
         {icon}
       </b.Flex>
-    </IconButtonWrapper>
+    </IconWrapper>
   );
+};
+
+// Animations
+const sendVariant = {
+  animate: {
+    background: '#007A5A',
+  },
+  initial: {
+    background: 'transparent',
+  },
+};
+
+const sendTransition = {
+  duration: 3,
+  ease: 'easeInOut',
 };

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import * as b from '../../../../../styles/blocks';
 
 export const Wrapper = styled(b.Box)`
@@ -17,7 +17,7 @@ export const Wrapper = styled(b.Box)`
   }
 `;
 
-export const IconButtonWrapper = styled(b.Button)`
+export const IconWrapper = styled(b.Button)`
   width: 32px;
   height: 32px;
   border-radius: 5px;
@@ -42,6 +42,30 @@ export const IconButtonWrapper = styled(b.Button)`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.gray__lighter};
+  }
+
+  &.paper_plane {
+    border-radius: 3px;
+    & svg {
+      width: 17px;
+      height: 17px;
+      polygon {
+        fill: ${({ theme }) => theme.colors.gray__lighter};
+      }
+      circle {
+        fill: ${({ theme }) => theme.colors.gray__lighter};
+      }
+    }
+    &:disabled {
+       {
+        polygon {
+          fill: ${({ theme }) => theme.colors.white};
+        }
+        circle {
+          fill: ${({ theme }) => theme.colors.white};
+        }
+      }
+    }
   }
 `;
 
