@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 import * as b from '../../../../styles/blocks';
 
+import { size } from '../../../../styles/sizes';
+
 export const Wrapper = styled(b.Box)`
-  background-color: ${({ theme }) => theme.colors.primary};
-  display: grid;
-  grid-template-rows: 65px auto;
-  position: relative;
-  overflow: hidden;
+  display: none;
 
   & > div {
     &.profile {
@@ -36,6 +34,14 @@ export const Wrapper = styled(b.Box)`
         width: 0 !important;
       }
     }
+  }
+
+  @media ${size['7xs']} {
+    background-color: ${({ theme }) => theme.colors.primary};
+    display: grid;
+    grid-template-rows: 65px auto;
+    position: relative;
+    overflow: hidden;
   }
 `;
 

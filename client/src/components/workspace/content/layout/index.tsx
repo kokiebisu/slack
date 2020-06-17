@@ -9,6 +9,7 @@ import {
 } from './index.styles';
 
 import * as b from '../../../../styles/blocks';
+import { Sidebar } from '../../../../assets/svg';
 
 interface Props {
   section: string;
@@ -29,10 +30,22 @@ export const ClientContentLayout: React.FC<Props> = ({
         <Top>
           <b.Flex justifyContent='space-between' alignItems='center'>
             <b.Box>
-              <Section>
-                <b.Text>{section}</b.Text>
-              </Section>
-              {subsection && <b.Box>{subsection}</b.Box>}
+              {/* // left */}
+              <b.Flex alignItems='center'>
+                <IconWrapper className='sidebar' mr={3}>
+                  <b.Flex alignItems='center'>
+                    <Sidebar />
+                  </b.Flex>
+                </IconWrapper>
+                <b.Box>
+                  <Section>
+                    <b.Text>{section}</b.Text>
+                  </Section>
+
+                  {/* // right */}
+                  {subsection && <b.Box>{subsection}</b.Box>}
+                </b.Box>
+              </b.Flex>
             </b.Box>
             <b.Box>{options}</b.Box>
           </b.Flex>

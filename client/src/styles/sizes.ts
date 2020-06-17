@@ -20,14 +20,19 @@ const signin_size = {
 };
 
 const sizes = {
-  '9xs': '485px',
-  '8xs': '515px',
-  '7xs': '550px',
-  '6xs': '580px',
-  '5xs': '615px',
-  '4xs': '645px',
-  '3xs': '680px',
-  '2xs': '715px',
+  '14xs': '315px',
+  '13xs': '350px',
+  '12xs': '380px',
+  '11xs': '412px',
+  '10xs': '445px',
+  '9xs': '505px',
+  '8xs': '536px',
+  '7xs': '568px',
+  '6xs': '603px',
+  '5xs': '632px',
+  '4xs': '664px',
+  '3xs': '696px',
+  '2xs': '726px',
   xs: '768px',
   sm: '831px',
   md: '962px',
@@ -66,6 +71,11 @@ export const getstarted = {
 };
 
 export const size = {
+  '14xs': `(min-width: ${sizes['14xs']})`,
+  '13xs': `(min-width: ${sizes['13xs']})`,
+  '12xs': `(min-width: ${sizes['12xs']})`,
+  '11xs': `(min-width: ${sizes['11xs']})`,
+  '10xs': `(min-width: ${sizes['10xs']})`,
   '9xs': `(min-width: ${sizes['9xs']})`,
   '8xs': `(min-width: ${sizes['8xs']})`,
   '7xs': `(min-width: ${sizes['7xs']})`,

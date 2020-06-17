@@ -1,5 +1,7 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import * as b from '../../../../../styles/blocks';
+
+import { size } from '../../../../../styles/sizes';
 
 export const Wrapper = styled(b.Box)`
   background-color: ${({ theme }) => theme.colors.white__dark};
@@ -42,6 +44,108 @@ export const IconWrapper = styled(b.Button)`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.gray__lighter};
+  }
+
+  &.bold {
+    display: none;
+    @media ${size['14xs']} {
+      display: block;
+    }
+    @media ${size['9xs']} {
+      display: none;
+    }
+    @media ${size['8xs']} {
+      display: block;
+    }
+  }
+
+  &.italic {
+    display: none;
+    @media ${size['13xs']} {
+      display: block;
+    }
+    @media ${size['9xs']} {
+      display: none;
+    }
+    @media ${size['7xs']} {
+      display: block;
+    }
+  }
+
+  &.strike_through {
+    display: none;
+    @media ${size['12xs']} {
+      display: block;
+    }
+    @media ${size['9xs']} {
+      display: none;
+    }
+    @media ${size['6xs']} {
+      display: block;
+    }
+  }
+
+  &.code {
+    display: none;
+    @media ${size['11xs']} {
+      display: block;
+    }
+
+    @media ${size['9xs']} {
+      display: none;
+    }
+    @media ${size['5xs']} {
+      display: block;
+    }
+  }
+
+  &.link {
+    display: none;
+    @media ${size['10xs']} {
+      display: block;
+    }
+
+    @media ${size['9xs']} {
+      display: none;
+    }
+
+    @media ${size['4xs']} {
+      display: block;
+    }
+  }
+
+  &.list_ol {
+    display: none;
+    @media ${size['3xs']} {
+      display: block;
+    }
+  }
+
+  &.list_ul {
+    display: none;
+    @media ${size['2xs']} {
+      display: block;
+    }
+  }
+
+  &.indent {
+    display: none;
+    @media ${size['xs']} {
+      display: block;
+    }
+  }
+
+  &.code_block {
+    display: none;
+    @media ${size['sm']} {
+      display: block;
+    }
+  }
+
+  &.more {
+    @media ${size['sm']} {
+      display: none;
+    }
   }
 
   &.paper_plane {

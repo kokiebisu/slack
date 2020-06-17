@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import * as b from '../../../styles/blocks';
 
-import { home } from '../../../styles/sizes';
+import { home, size } from '../../../styles/sizes';
 
 export const Wrapper = styled(b.Box)`
   width: 100vw;
@@ -13,9 +13,12 @@ export const Wrapper = styled(b.Box)`
 export const ContentWrapper = styled(b.Box)`
   height: calc(100vh - 37px);
   display: grid;
-  grid-template-columns: 220px auto;
 
-  @media ${home.lg} {
+  @media ${size['7xs']} {
+    grid-template-columns: 220px auto;
+  }
+
+  @media ${size.xl} {
     grid-template-columns: 260px auto;
   }
 `;
