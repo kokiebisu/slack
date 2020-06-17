@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useEffect } from 'react';
-import styled from 'styled-components';
 
 // Components
 import { Activities } from '../activity/container';
@@ -13,10 +12,7 @@ import { AtSign, Close, Settings, Transition } from '../../../../assets/svg';
 
 // Styles
 import {
-  Wrapper,
   Bottom,
-  Top,
-  Section,
   IconWrapper,
   Notice,
   NoticeTitle,

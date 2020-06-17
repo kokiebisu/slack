@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 // Blocks
 import * as b from '../../../../styles/blocks';
@@ -7,23 +8,13 @@ import * as b from '../../../../styles/blocks';
 // Components
 import { Options } from '../option/container';
 import { SidebarSections } from '../section/container';
-
-// Svgs
-import { BottomArrow } from '../../../../assets/svg/Arrows';
-import { Write } from '../../../../assets/svg/Reaction';
+import { Profile } from '../profile';
 
 // Query
-import {
-  useMeQuery,
-  useTeamQuery,
-  useTeamLazyQuery,
-} from '../../../../generated/graphql';
+import { useTeamQuery } from '../../../../generated/graphql';
 
 // Styles
-import { Wrapper, IconWrapper } from './index.styles';
-import { Profile } from '../profile';
-import { useParams } from 'react-router-dom';
-import { useToggleState } from '../../../../context/toggle-context';
+import { Wrapper } from './index.styles';
 
 interface Props {
   team?: string;
@@ -33,7 +24,7 @@ interface Props {
 export const Sidebar: React.FC<Props> = ({ displayMenu }) => {
   const [hovered, setHovered] = useState(false);
   const { teamId } = useParams();
-  const { data: { team } = {}, loading } = useTeamQuery({
+  const { data: { team } = {} } = useTeamQuery({
     variables: { teamId },
   });
 

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useRef, useEffect } from 'react';
 
 // Blocks
 import * as b from '../../../../../styles/blocks';
@@ -152,7 +151,7 @@ export const MessageTools: React.FC<Props> = ({
                   className='paper_plane'
                   onClick={async () => {
                     if (localStorage.getItem('teamId')) {
-                      const response = await send({
+                      await send({
                         variables: {
                           channelId,
                           teamId: localStorage.getItem('teamId')!,
@@ -199,9 +198,4 @@ const sendVariant = {
   initial: {
     background: 'transparent',
   },
-};
-
-const sendTransition = {
-  duration: 3,
-  ease: 'easeInOut',
 };

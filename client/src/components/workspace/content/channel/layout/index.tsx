@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { ClientContentLayout } from '../../layout';
-import * as b from '../../../../../styles/blocks';
+
+// Query
 import { useGetChannelByIdQuery } from '../../../../../generated/graphql';
+
+// Components
+import { ClientContentLayout } from '../../layout';
 import { Options } from '../options';
 import { SubSection } from '../subsection';
 
 // Styles
-import styled from 'styled-components';
 import { Content } from '../content';
 
 interface Props {}

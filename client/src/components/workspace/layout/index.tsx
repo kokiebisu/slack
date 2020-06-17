@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+
 import { Redirect, useParams } from 'react-router-dom';
 
 // Styles
@@ -12,12 +12,7 @@ import { MenuToggle } from '../MenuToggle';
 import { ChannelModal } from '../ChannelModal';
 
 // Queries
-import {
-  useMeQuery,
-  useTeamQuery,
-  useMyTeamsLazyQuery,
-  useTeamLazyQuery,
-} from '../../../generated/graphql';
+import { useMeQuery, useTeamQuery } from '../../../generated/graphql';
 import { useToggleState } from '../../../context/toggle-context';
 
 interface Props {
@@ -29,9 +24,9 @@ export const Workspace: React.FC<Props> = ({ route }) => {
 
   const { teamId } = useParams();
   localStorage.setItem('teamId', teamId);
-  const { data: { me } = {}, loading: meLoading, error } = useMeQuery();
-  const [channels, setChannels] = useState();
-  const { data, loading: teamLoading } = useTeamQuery({
+  const { loading: meLoading, error } = useMeQuery();
+
+  const { loading: teamLoading } = useTeamQuery({
     variables: {
       teamId,
     },

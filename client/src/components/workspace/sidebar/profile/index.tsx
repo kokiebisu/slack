@@ -11,7 +11,7 @@ import { BottomArrow } from '../../../../assets/svg/Arrows';
 import { Write } from '../../../../assets/svg/Reaction';
 
 // Graphql
-import { useMeQuery, useTeamQuery } from '../../../../generated/graphql';
+import { useMeQuery } from '../../../../generated/graphql';
 import { useToggleDispatch } from '../../../../context/toggle-context';
 
 interface Props {

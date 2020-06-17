@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useState } from 'react';
-import styled from 'styled-components';
 
 // Blocks
 import * as b from '../../../styles/blocks';
@@ -14,9 +13,6 @@ import {
 } from '../../../assets/svg/Logo';
 import { Minus } from '../../../assets/svg/Minus';
 import { Plus } from '../../../assets/svg/Plus';
-
-// Breakpoints
-import { signin } from '../../../styles/sizes';
 
 // Styles
 import {

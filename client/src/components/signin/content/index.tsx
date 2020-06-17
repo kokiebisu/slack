@@ -1,11 +1,9 @@
 import * as React from 'react';
-import styled from 'styled-components';
 
 // Blocks
 import * as b from '../../../styles/blocks';
 
-// Sizes
-import { signin } from '../../../styles/sizes';
+// Svgs
 import { RightArrow } from '../../../assets/svg/Arrows';
 
 // Styles

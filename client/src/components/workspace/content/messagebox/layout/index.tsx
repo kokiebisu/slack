@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import { useState, useMemo, useCallback, useEffect } from 'react';
-import { Text, Node, Editor, Transforms } from 'slate';
+import { useState, useMemo, useCallback } from 'react';
 
 // Blocks
 import * as b from '../../../../../styles/blocks';
@@ -18,7 +17,6 @@ import { MessageTools } from '../tools';
 import { CustomEditor } from '../../../../../util/customEditor';
 import { useGetChannelByIdQuery } from '../../../../../generated/graphql';
 import { useParams } from 'react-router-dom';
-import { setPriority } from 'os';
 
 export const MessageBox = () => {
   const { channelId } = useParams();
@@ -82,6 +80,7 @@ export const MessageBox = () => {
                       case '`': {
                         event.preventDefault();
                         CustomEditor.toggleCodeBlock(editor);
+                        break;
                       }
 
                       case 'b': {

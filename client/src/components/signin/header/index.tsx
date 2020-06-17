@@ -1,14 +1,10 @@
 import * as React from 'react';
-import styled from 'styled-components';
 
 // Blocks
 import * as b from '../../../styles/blocks';
 
 // Svgs
 import { NameLogo } from '../../../assets/svg/Logo';
-
-// Breakpoints
-import { signin } from '../../../styles/sizes';
 
 // Styles
 import {

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import * as b from '../../../styles/blocks';
 
 export const Wrapper = styled.div`

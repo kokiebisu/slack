@@ -86,7 +86,7 @@ export const NewMessage = styled(b.Button)`
   }
 `;
 
-export const Section = styled(b.Text)`
+export const Section = styled(b.Box)`
   & > p {
     color: ${({ theme }) => theme.colors.black};
     font-family: 'SlackLato-Black';

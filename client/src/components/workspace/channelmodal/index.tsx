@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { useState, FormEvent, useReducer } from 'react';
+import { useState, useReducer } from 'react';
+import { useParams } from 'react-router-dom';
 
 // Blocks
 import * as b from '../../../styles/blocks';
 
-// Styles
-import styled from 'styled-components';
-
 // Svgs
 import { Close, Info } from '../../../assets/svg';
+import { ThinHashTag } from '../../../assets/svg/HashTag';
 
+// Styles
 import {
   Wrapper,
   Title,
@@ -25,18 +25,15 @@ import {
   LearnButton,
   NameWrapper,
 } from './index.styles';
+
+// Components
 import { Switch } from './switch';
-import { FatHashTag, ThinHashTag } from '../../../assets/svg/HashTag';
-import { action } from '@storybook/addon-actions';
-import {
-  useCreateChannelMutation,
-  useMyTeamsLazyQuery,
-} from '../../../generated/graphql';
-import { useParams } from 'react-router-dom';
-import {
-  useToggleDispatch,
-  useToggleState,
-} from '../../../context/toggle-context';
+
+// Query
+import { useCreateChannelMutation } from '../../../generated/graphql';
+
+// Context
+import { useToggleDispatch } from '../../../context/toggle-context';
 
 const reducer = (state: any, action: any) => {
   switch (action.type) {

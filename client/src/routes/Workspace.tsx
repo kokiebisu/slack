@@ -37,7 +37,7 @@ export const ClientRoutes: React.FC<Props> = () => {
 };
 
 export const WorkspaceRoute: React.FC<{}> = () => {
-  const { data, loading, error } = useMeQuery();
+  const { data, loading } = useMeQuery();
   const match = useRouteMatch();
   return (
     <>

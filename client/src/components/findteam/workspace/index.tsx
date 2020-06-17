@@ -7,11 +7,9 @@ import * as b from '../../../styles/blocks';
 // Styles
 import {
   Wrapper,
-  IconWrapper,
   WorkspaceName,
   WorkspaceURL,
   LaunchButton,
-  Icon,
 } from './index.styles';
 
 interface Props {

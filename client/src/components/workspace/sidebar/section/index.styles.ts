@@ -9,7 +9,7 @@ export const Wrapper = styled(b.Box)`
   cursor: pointer;
 `;
 
-export const TopColumnWrapper = styled(b.Button)`
+export const TopColumnWrapper = styled(b.Box)`
   width: 100%;
   height: 25px;
   padding: 0 18px 0 20px;

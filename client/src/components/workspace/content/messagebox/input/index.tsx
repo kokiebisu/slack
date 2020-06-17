@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { useMemo, useState } from 'react';
+
+// Blocks
 import * as b from '../../../../../styles/blocks';
 
+// Styles
 import { Wrapper } from './index.styles';
 
 interface Props {

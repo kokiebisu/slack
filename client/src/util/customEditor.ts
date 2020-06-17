@@ -1,4 +1,4 @@
-import { Text, Node, Editor, Transforms } from 'slate';
+import { Text, Editor, Transforms } from 'slate';
 
 // Define our own custom set of helpers.
 export const CustomEditor = {

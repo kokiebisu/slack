@@ -1,5 +1,4 @@
 import * as React from 'react';
-import styled from 'styled-components';
 
 // Blocks
 import * as b from '../../../../styles/blocks';
@@ -7,6 +6,7 @@ import * as b from '../../../../styles/blocks';
 // Imgs
 import Thumbsup from '../../../../assets/img/thumbsup.png';
 
+// Styles
 import { Wrapper, Container } from './index.styles';
 
 interface Props {}

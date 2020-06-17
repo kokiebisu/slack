@@ -1,16 +1,17 @@
 import * as React from 'react';
 
-// Blocks
-import * as b from '../../../../styles/blocks';
-
 // Styles
 import { Wrapper } from './container.styles';
+
+// Svgs
 import {
   TwitterLogo,
   FacebookLogo,
   LinkedinLogo,
   YoutubeLogo,
 } from '../../../../assets/svg/Logo';
+
+// Components
 import { SocialMedia } from '.';
 
 export const SocialMedias = () => {

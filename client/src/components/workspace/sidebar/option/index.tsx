@@ -1,10 +1,10 @@
 import * as React from 'react';
-import styled from 'styled-components';
-
 import { useHistory, useParams } from 'react-router-dom';
 
+// Blocks
 import * as b from '../../../../styles/blocks';
 
+// Svgs
 import {
   Threads,
   MentionReaction,

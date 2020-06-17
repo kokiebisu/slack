@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 
 // Blocks
@@ -30,7 +29,7 @@ export const SidebarSections: React.FC<Props> = () => {
 
   const { teamId } = useParams();
 
-  const { data, loading, error, refetch } = useChannelsQuery({
+  const { data, loading, refetch } = useChannelsQuery({
     variables: {
       teamId,
     },
@@ -38,7 +37,7 @@ export const SidebarSections: React.FC<Props> = () => {
 
   useEffect(() => {
     refetch();
-  }, [toggle.channel]);
+  }, [toggle.channel, refetch]);
 
   return (
     <Wrapper>

@@ -1,6 +1,6 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 
 // Blocks
 import * as b from '../../../styles/blocks';

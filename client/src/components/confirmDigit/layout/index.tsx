@@ -14,15 +14,6 @@ import { Dialog } from '../dialog';
 // Blocks
 import * as b from '../../../styles/blocks';
 
-// Styles
-// import {
-//   Wrapper,
-//   TextInput,
-//   CheckNotice,
-//   Title,
-//   Description,
-// } from './layout.styles';
-
 export const ConfirmDigit = () => {
   const input_1: any = useRef(null);
   const input_2: any = useRef(null);

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect } from 'react';
+
 import { Wrapper } from './index.styles';
 
 import { useGetBelongingTeamsQuery } from '../../../generated/graphql';
@@ -15,10 +15,6 @@ export const FindTeam = () => {
     loading,
     error,
   } = useGetBelongingTeamsQuery();
-
-  const tempTeams = [
-    { id: 'sadfdsafasdfdsa', avatarBackground: '#ffffff', name: 'kens team' },
-  ];
 
   return (
     <>

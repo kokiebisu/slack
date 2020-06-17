@@ -7,13 +7,7 @@ import * as b from '../../../../styles/blocks';
 import { Option } from '.';
 
 // Styles
-import {
-  Wrapper,
-  ChangeRegionButton,
-  IconWrapper,
-  ArrowWrapper,
-  Link,
-} from './container.styles';
+import { Wrapper, ChangeRegionButton, IconWrapper } from './container.styles';
 
 // Svgs
 import { Globe } from '../../../../assets/svg';

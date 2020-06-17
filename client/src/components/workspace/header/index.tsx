@@ -1,14 +1,10 @@
 import * as React from 'react';
-import styled from 'styled-components';
 
 // Blocks
 import * as b from '../../../styles/blocks';
 
 // Svgs
 import { Clock, Magnify, Info } from '../../../assets/svg';
-
-// Sizes
-import { home } from '../../../styles/sizes';
 
 // Query
 import { useTeamQuery } from '../../../generated/graphql';

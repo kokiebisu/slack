@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import { useState } from 'react';
 
 // Blocks
 import * as b from '../../../../styles/blocks';
@@ -8,9 +7,6 @@ import * as b from '../../../../styles/blocks';
 // Svgs
 import { Play, Close } from '../../../../assets/svg';
 import { Plus } from '../../../../assets/svg/Plus';
-
-// Breakpoints
-import { home } from '../../../../styles/sizes';
 
 import { useToggleDispatch } from '../../../../context/toggle-context';
 
@@ -38,7 +34,6 @@ export const SidebarSection: React.FC<Props> = ({
   onReveal,
 }) => {
   const [clicked, setClicked] = useState(false);
-  const [reveal, setReveal] = useState(false);
 
   const dispatch = useToggleDispatch();
 

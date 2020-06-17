@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useState } from 'react';
 
 // Blocks
 import * as b from '../../../../styles/blocks';
@@ -9,8 +8,8 @@ import Thumbsup from '../../../../assets/img/thumbsup.png';
 
 // Components
 import { Reactions } from '../reaction/container';
-import { ToolBox } from '../ToolBox';
 
+// Styles
 import {
   Wrapper,
   Content,
@@ -23,13 +22,8 @@ import {
 interface Props {}
 
 export const Activity: React.FC<Props> = () => {
-  const [hovered, setHovered] = useState(false);
-
   return (
-    <Wrapper
-      p={3}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}>
+    <Wrapper p={3}>
       <b.Box>
         <b.Text fontSize={13} color='gray__light' fontFamily='SlackLato-Bold'>
           Thomas Bui - Set E &nbsp;
@@ -70,7 +64,6 @@ export const Activity: React.FC<Props> = () => {
           </b.Box>
         </Content>
       </b.Box>
-      {/* <ToolBoxWrapper>{hovered ? <ToolBox /> : null}</ToolBoxWrapper> */}
     </Wrapper>
   );
 };

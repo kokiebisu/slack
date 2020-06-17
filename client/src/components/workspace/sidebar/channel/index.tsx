@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-
-import styled from 'styled-components';
+import { useParams, useHistory } from 'react-router';
 
 // Blocks
 import * as b from '../../../../styles/blocks';
@@ -11,9 +9,7 @@ import { Lock } from '../../../../assets/svg';
 import { FatHashTag } from '../../../../assets/svg/HashTag';
 
 // Styles
-import { Name, IconWrapper } from './index.styles';
-import { useParams, useHistory } from 'react-router';
-import { useRef } from 'react';
+import { Wrapper, Name, IconWrapper } from './index.styles';
 
 interface Props {
   id: string;
@@ -25,6 +21,8 @@ export const Channel: React.FC<Props> = ({ id, name, isPublic }) => {
   const { teamId } = useParams();
 
   const history = useHistory();
+
+  // const history = createBrow
 
   return (
     <Wrapper
@@ -42,26 +40,3 @@ export const Channel: React.FC<Props> = ({ id, name, isPublic }) => {
     </Wrapper>
   );
 };
-
-export const Wrapper = styled(b.Button)`
-  padding: 5px 0px 5px 23px;
-  width: 100%;
-  cursor: pointer;
-
-  &:hover {
-    background: ${({ theme }) => theme.colors.primary__dark};
-  }
-
-  &:focus {
-    background: ${({ theme }) => theme.colors.blue__light};
-    outline: 0;
-
-    p {
-      color: white;
-    }
-
-    path {
-      fill: ${({ theme }) => theme.colors.white};
-    }
-  }
-`;

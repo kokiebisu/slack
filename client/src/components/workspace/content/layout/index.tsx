@@ -1,14 +1,11 @@
 import * as React from 'react';
-import {
-  Wrapper,
-  Top,
-  Section,
-  SubSection,
-  IconWrapper,
-  Bottom,
-} from './index.styles';
-
+// Blocks
 import * as b from '../../../../styles/blocks';
+
+// Styles
+import { Wrapper, Top, Section, IconWrapper } from './index.styles';
+
+// Svgs
 import { Sidebar } from '../../../../assets/svg';
 
 interface Props {

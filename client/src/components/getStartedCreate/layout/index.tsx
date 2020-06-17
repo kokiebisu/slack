@@ -1,5 +1,4 @@
 import * as React from 'react';
-import styled from 'styled-components';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -8,9 +7,6 @@ import * as b from '../../../styles/blocks';
 
 // Queries
 import { useRegisterMutation } from '../../../generated/graphql';
-
-// Svgs
-import { Warning, CheckCircle } from '../../../assets/svg';
 
 // Utils
 import {
@@ -21,7 +17,7 @@ import {
 
 // Components
 import { LogoCenterLayout } from '../../Shared/LogoCenter/layout';
-import { Wrapper, IconWrapper, confirmVariants } from './index.styles';
+import { Wrapper } from './index.styles';
 import { PasswordValidationBar } from '../validationbar';
 import { PasswordValidationText } from '../validationtext';
 import { Policy } from '../policy';
