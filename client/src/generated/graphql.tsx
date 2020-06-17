@@ -114,6 +114,7 @@ export type BelongingUsersResponse = {
 
 export type DisplayingMessages = {
   __typename?: 'DisplayingMessages';
+  id: Scalars['Float'];
   fullname: Scalars['String'];
   body: Scalars['String'];
 };
@@ -425,7 +426,7 @@ export type FetchMessagesQuery = (
     & Pick<ChannelMessagesResponse, 'ok' | 'errorlog'>
     & { messages?: Maybe<Array<(
       { __typename?: 'DisplayingMessages' }
-      & Pick<DisplayingMessages, 'fullname' | 'body'>
+      & Pick<DisplayingMessages, 'id' | 'fullname' | 'body'>
     )>> }
   ) }
 );
@@ -894,6 +895,7 @@ export const FetchMessagesDocument = gql`
     ok
     errorlog
     messages {
+      id
       fullname
       body
     }

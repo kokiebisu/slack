@@ -3,6 +3,7 @@ query FetchMessages($channelId: String!) {
     ok
     errorlog
     messages {
+      id
       fullname
       body
     }

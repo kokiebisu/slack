@@ -23,6 +23,12 @@ export const Wrapper = styled(b.Box)`
   @media ${size.llg} {
     width: calc(100vw - 256px);
   }
+
+  & div {
+    &.slate {
+      width: 100%;
+    }
+  }
 `;
 
 export const Content = styled(b.Box)`

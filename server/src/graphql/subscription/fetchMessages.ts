@@ -10,7 +10,7 @@ export class MessageResolver {
   async fetchMessages(@Arg('channelId') channelId: string) {
     try {
       const messages = await manager.query(
-        'select u.fullname, mes.body from messages mes inner join members mem on mes."memberId"=mem.id inner join users u on mem."userId"=u.id where "channelId"=$1',
+        'select mes.id, u.fullname, mes.body from messages mes inner join members mem on mes."memberId"=mem.id inner join users u on mem."userId"=u.id where "channelId"=$1',
         [channelId]
       );
       return {

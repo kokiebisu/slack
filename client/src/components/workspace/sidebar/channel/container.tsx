@@ -1,6 +1,9 @@
 import * as React from 'react';
-import styled from 'styled-components';
+
+// Blocks
 import * as b from '../../../../styles/blocks';
+
+// Components
 import { Channel } from '.';
 
 interface Props {

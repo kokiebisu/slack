@@ -5,6 +5,9 @@ import { Message } from '../../models/Message';
 @ObjectType()
 class DisplayingMessages {
   @Field()
+  id: number;
+
+  @Field()
   fullname: string;
 
   @Field()

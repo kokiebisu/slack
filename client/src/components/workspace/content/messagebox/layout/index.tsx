@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import { Text, Node, Editor, Transforms } from 'slate';
 
 // Blocks
@@ -18,14 +18,18 @@ import { MessageTools } from '../tools';
 import { CustomEditor } from '../../../../../util/customEditor';
 import { useGetChannelByIdQuery } from '../../../../../generated/graphql';
 import { useParams } from 'react-router-dom';
+import { setPriority } from 'os';
 
 export const MessageBox = () => {
   const { channelId } = useParams();
-  const { data } = useGetChannelByIdQuery({ variables: { channelId } });
+
+  const { data, loading } = useGetChannelByIdQuery({
+    variables: { channelId },
+  });
   const editor = useMemo(() => withReact(createEditor()), []);
   const [value, setValue] = useState<any>(
-    localStorage.getItem('content')
-      ? JSON.parse(localStorage.getItem('content')!)
+    localStorage.getItem(`${channelId}`)
+      ? JSON.parse(localStorage.getItem(`${channelId}`)!)
       : [
           {
             type: 'paragraph',
@@ -54,36 +58,41 @@ export const MessageBox = () => {
         <Content>
           <MessageInput>
             <Slate
+              className='slate'
               editor={editor}
               value={value}
               onChange={(newValue) => {
                 setValue(newValue);
                 const content = JSON.stringify(value);
-                localStorage.setItem('content', content);
+                localStorage.setItem(`${channelId}`, content);
               }}>
-              <Editable
-                placeholder={`Message #${data?.getChannelById.channel?.name}`}
-                renderLeaf={renderLeaf}
-                renderElement={renderElement}
-                onKeyDown={(event) => {
-                  if (!event.ctrlKey) {
-                    return;
-                  }
-
-                  switch (event.key) {
-                    case '`': {
-                      event.preventDefault();
-                      CustomEditor.toggleCodeBlock(editor);
+              {!loading && data?.getChannelById.ok && (
+                <Editable
+                  data-channel-name={`Message #${data?.getChannelById.channel?.name}`}
+                  aria-label={`Message #${data?.getChannelById.channel?.name}`}
+                  placeholder={`Jot down your thoughts...`}
+                  renderLeaf={renderLeaf}
+                  renderElement={renderElement}
+                  onKeyDown={(event) => {
+                    if (!event.ctrlKey) {
+                      return;
                     }
 
-                    case 'b': {
-                      event.preventDefault();
-                      CustomEditor.toggleBoldMark(editor);
-                      break;
+                    switch (event.key) {
+                      case '`': {
+                        event.preventDefault();
+                        CustomEditor.toggleCodeBlock(editor);
+                      }
+
+                      case 'b': {
+                        event.preventDefault();
+                        CustomEditor.toggleBoldMark(editor);
+                        break;
+                      }
                     }
-                  }
-                }}
-              />
+                  }}
+                />
+              )}
             </Slate>
           </MessageInput>
           <MessageTools
@@ -96,6 +105,7 @@ export const MessageBox = () => {
                   children: [{ text: '' }],
                 },
               ]);
+              localStorage.setItem(`${channelId}`, '');
             }}
           />
         </Content>

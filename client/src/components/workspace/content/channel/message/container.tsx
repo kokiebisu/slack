@@ -232,6 +232,7 @@ export const Messages = () => {
         data.fetchMessages.messages.map((message) => {
           return (
             <Message
+              key={message.id}
               sender={message.fullname}
               time='not coded'
               body={{ type: 'message', message: message.body }}
