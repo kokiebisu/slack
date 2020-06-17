@@ -27,7 +27,6 @@ export const ClientContentLayout: React.FC<Props> = ({
         <Top>
           <b.Flex justifyContent='space-between' alignItems='center'>
             <b.Box>
-              {/* // left */}
               <b.Flex alignItems='center'>
                 <IconWrapper className='sidebar' mr={3}>
                   <b.Flex alignItems='center'>
@@ -38,8 +37,6 @@ export const ClientContentLayout: React.FC<Props> = ({
                   <Section>
                     <b.Text>{section}</b.Text>
                   </Section>
-
-                  {/* // right */}
                   {subsection && <b.Box>{subsection}</b.Box>}
                 </b.Box>
               </b.Flex>

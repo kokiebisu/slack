@@ -1,13 +1,20 @@
 import * as React from 'react';
+
+// Blocks
 import * as b from '../../../../../styles/blocks';
-import { Profile, Top } from './message.styles';
+
+// Styles
+import { Profile, IconWrapper, Top } from './index.styles';
 
 // Components
 import { MessageJoined } from './event';
 import { MessageBody } from './message';
 
+import { UserAlt } from '../../../../../assets/svg';
+
 interface Props {
   sender: string;
+  avatar: string;
   time: string;
   body: Body;
 }
@@ -17,12 +24,16 @@ interface Body {
   message?: string;
 }
 
-export const Message: React.FC<Props> = ({ sender, time, body }) => {
+export const Message: React.FC<Props> = ({ sender, avatar, time, body }) => {
   return (
     <b.Box mb={3}>
       <b.Flex>
         <b.Box mr={2}>
-          <Profile />
+          <Profile backgroundColor={avatar} mr={2}>
+            <IconWrapper className='avatar'>
+              <UserAlt />
+            </IconWrapper>
+          </Profile>
         </b.Box>
         <b.Box>
           <Top>

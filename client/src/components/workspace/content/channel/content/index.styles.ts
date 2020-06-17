@@ -15,7 +15,7 @@ export const Wrapper = styled(b.Box)`
     &.section_content {
       position: relative;
       height: calc(100vh - 65px - 180px- 104px);
-      padding: 10px 20px 110px 20px;
+      padding: 40px 20px 110px 20px;
     }
   }
 `;

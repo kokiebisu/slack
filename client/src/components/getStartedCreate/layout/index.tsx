@@ -24,6 +24,8 @@ import { Policy } from '../policy';
 import { Inputs } from '../inputs';
 import { ErrorDialog } from '../errordialog';
 import { Confirm } from '../confirm';
+import { randomColor } from '../../../util/randomColor';
+import { profile } from '../../../styles/colors';
 
 interface Props {}
 
@@ -70,8 +72,10 @@ export const GetStartedCreate: React.FC<Props> = () => {
       return;
     }
 
+    const avatarBackground = randomColor(profile);
+
     const response = await register({
-      variables: { email, fullname, password },
+      variables: { email, fullname, password, avatarBackground },
     });
 
     if (response && response.data && response.data.register.ok) {

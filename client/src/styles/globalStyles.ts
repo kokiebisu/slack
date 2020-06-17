@@ -25,14 +25,12 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     [contenteditable] {
-        padding: 0px 1px;
-        height: 40px; 
-        padding-top: 1px;
-        margin: 0;
+        padding: 1px;
+
     }
 
-    [data-channel-name]:empty:before {
-     content: attr(data-channel-name);
+    [data-placeholder]:empty:before {
+     content: attr(data-placeholder);
      padding: 0px;
      color: #888;
     }

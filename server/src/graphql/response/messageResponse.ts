@@ -12,6 +12,9 @@ class DisplayingMessages {
 
   @Field()
   body: string;
+
+  @Field()
+  avatarBackground: string;
 }
 
 @ObjectType()
