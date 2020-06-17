@@ -24,12 +24,26 @@ import {
   PaperPlane,
 } from '../../../../../assets/svg';
 import { CustomEditor } from '../../../../../util/customEditor';
+import { useParams } from 'react-router-dom';
+import { useSendMessageMutation } from '../../../../../generated/graphql';
 
 interface Props {
   editor: any;
+  value: any;
 }
 
-export const MessageTools: React.FC<Props> = ({ editor }) => {
+export const MessageTools: React.FC<Props> = ({ editor, value }) => {
+  const { channelId } = useParams();
+  const [send] = useSendMessageMutation();
+  let message = '';
+  value.forEach((element: any, index: any) => {
+    if (index === 0) {
+      message = `${element.children[0].text}`;
+      return;
+    }
+    message = `${message}<br>${element.children[0].text}`;
+  });
+
   return (
     <Wrapper>
       <b.Flex>
@@ -123,7 +137,18 @@ export const MessageTools: React.FC<Props> = ({ editor }) => {
                   variants={sendVariant}
                   // animate={!!input ? 'animate' : 'initial'}
                   className='paper_plane'
-                  onClick={() => console.log('send')}>
+                  onClick={async () => {
+                    if (localStorage.getItem('teamId')) {
+                      const response = await send({
+                        variables: {
+                          channelId,
+                          teamId: localStorage.getItem('teamId')!,
+                          body: message,
+                        },
+                      });
+                      console.log('response', response);
+                    }
+                  }}>
                   <b.Flex justifyContent='center' alignItems='center'>
                     <PaperPlane />
                   </b.Flex>

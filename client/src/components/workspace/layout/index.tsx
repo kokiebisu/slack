@@ -28,6 +28,7 @@ export const Workspace: React.FC<Props> = ({ route }) => {
   const state = useToggleState();
 
   const { teamId } = useParams();
+  localStorage.setItem('teamId', teamId);
   const { data: { me } = {}, loading: meLoading, error } = useMeQuery();
   const [channels, setChannels] = useState();
   const { data, loading: teamLoading } = useTeamQuery({

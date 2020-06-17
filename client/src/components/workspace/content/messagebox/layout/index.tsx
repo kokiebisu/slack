@@ -81,7 +81,7 @@ export const MessageBox = () => {
               />
             </Slate>
           </MessageInput>
-          <MessageTools editor={editor} />
+          <MessageTools editor={editor} value={value} />
         </Content>
         <CommandDescription py={2}>
           <b.Flex justifyContent='flex-end'>

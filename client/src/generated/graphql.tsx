@@ -112,11 +112,24 @@ export type BelongingUsersResponse = {
   belongingUsers?: Maybe<Array<BelongingUsers>>;
 };
 
+export type DisplayingMessages = {
+  __typename?: 'DisplayingMessages';
+  fullname: Scalars['String'];
+  body: Scalars['String'];
+};
+
 export type MessageResponse = {
   __typename?: 'MessageResponse';
   ok: Scalars['Boolean'];
   errorlog?: Maybe<Scalars['String']>;
   message?: Maybe<Message>;
+};
+
+export type ChannelMessagesResponse = {
+  __typename?: 'ChannelMessagesResponse';
+  ok: Scalars['Boolean'];
+  errorlog?: Maybe<Scalars['String']>;
+  messages?: Maybe<Array<DisplayingMessages>>;
 };
 
 export type TeamResponse = {
@@ -155,6 +168,7 @@ export type Query = {
   channels: ChannelsResponse;
   getBelongingTeams: BelongingTeamsResponse;
   getBelongingUsers: BelongingUsersResponse;
+  fetchMessages: ChannelMessagesResponse;
   myTeams: TeamsResponse;
   team: TeamResponse;
   teams: TeamsResponse;
@@ -184,6 +198,11 @@ export type QueryChannelsArgs = {
 
 
 export type QueryGetBelongingUsersArgs = {
+  channelId: Scalars['String'];
+};
+
+
+export type QueryFetchMessagesArgs = {
   channelId: Scalars['String'];
 };
 
@@ -218,8 +237,8 @@ export type MutationVerifyUserByDigitArgs = {
 
 
 export type MutationCreateChannelArgs = {
-  isPublic: Scalars['Boolean'];
   description?: Maybe<Scalars['String']>;
+  isPublic: Scalars['Boolean'];
   teamId: Scalars['String'];
   name: Scalars['String'];
 };
@@ -227,6 +246,7 @@ export type MutationCreateChannelArgs = {
 
 export type MutationSendMessageArgs = {
   body: Scalars['String'];
+  teamId: Scalars['String'];
   channelId: Scalars['String'];
 };
 
@@ -390,6 +410,42 @@ export type GetBelongingUsersQuery = (
       { __typename?: 'BelongingUsers' }
       & Pick<BelongingUsers, 'id' | 'userId' | 'channelId'>
     )>> }
+  ) }
+);
+
+export type FetchMessagesQueryVariables = {
+  channelId: Scalars['String'];
+};
+
+
+export type FetchMessagesQuery = (
+  { __typename?: 'Query' }
+  & { fetchMessages: (
+    { __typename?: 'ChannelMessagesResponse' }
+    & Pick<ChannelMessagesResponse, 'ok' | 'errorlog'>
+    & { messages?: Maybe<Array<(
+      { __typename?: 'DisplayingMessages' }
+      & Pick<DisplayingMessages, 'fullname' | 'body'>
+    )>> }
+  ) }
+);
+
+export type SendMessageMutationVariables = {
+  channelId: Scalars['String'];
+  teamId: Scalars['String'];
+  body: Scalars['String'];
+};
+
+
+export type SendMessageMutation = (
+  { __typename?: 'Mutation' }
+  & { sendMessage: (
+    { __typename?: 'MessageResponse' }
+    & Pick<MessageResponse, 'ok'>
+    & { message?: Maybe<(
+      { __typename?: 'Message' }
+      & Pick<Message, 'channelId' | 'memberId' | 'body'>
+    )> }
   ) }
 );
 
@@ -832,6 +888,83 @@ export function useGetBelongingUsersLazyQuery(baseOptions?: ApolloReactHooks.Laz
 export type GetBelongingUsersQueryHookResult = ReturnType<typeof useGetBelongingUsersQuery>;
 export type GetBelongingUsersLazyQueryHookResult = ReturnType<typeof useGetBelongingUsersLazyQuery>;
 export type GetBelongingUsersQueryResult = ApolloReactCommon.QueryResult<GetBelongingUsersQuery, GetBelongingUsersQueryVariables>;
+export const FetchMessagesDocument = gql`
+    query FetchMessages($channelId: String!) {
+  fetchMessages(channelId: $channelId) {
+    ok
+    errorlog
+    messages {
+      fullname
+      body
+    }
+  }
+}
+    `;
+
+/**
+ * __useFetchMessagesQuery__
+ *
+ * To run a query within a React component, call `useFetchMessagesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFetchMessagesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFetchMessagesQuery({
+ *   variables: {
+ *      channelId: // value for 'channelId'
+ *   },
+ * });
+ */
+export function useFetchMessagesQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FetchMessagesQuery, FetchMessagesQueryVariables>) {
+        return ApolloReactHooks.useQuery<FetchMessagesQuery, FetchMessagesQueryVariables>(FetchMessagesDocument, baseOptions);
+      }
+export function useFetchMessagesLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FetchMessagesQuery, FetchMessagesQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FetchMessagesQuery, FetchMessagesQueryVariables>(FetchMessagesDocument, baseOptions);
+        }
+export type FetchMessagesQueryHookResult = ReturnType<typeof useFetchMessagesQuery>;
+export type FetchMessagesLazyQueryHookResult = ReturnType<typeof useFetchMessagesLazyQuery>;
+export type FetchMessagesQueryResult = ApolloReactCommon.QueryResult<FetchMessagesQuery, FetchMessagesQueryVariables>;
+export const SendMessageDocument = gql`
+    mutation SendMessage($channelId: String!, $teamId: String!, $body: String!) {
+  sendMessage(channelId: $channelId, body: $body, teamId: $teamId) {
+    ok
+    message {
+      channelId
+      memberId
+      body
+    }
+  }
+}
+    `;
+export type SendMessageMutationFn = ApolloReactCommon.MutationFunction<SendMessageMutation, SendMessageMutationVariables>;
+
+/**
+ * __useSendMessageMutation__
+ *
+ * To run a mutation, you first call `useSendMessageMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSendMessageMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [sendMessageMutation, { data, loading, error }] = useSendMessageMutation({
+ *   variables: {
+ *      channelId: // value for 'channelId'
+ *      teamId: // value for 'teamId'
+ *      body: // value for 'body'
+ *   },
+ * });
+ */
+export function useSendMessageMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SendMessageMutation, SendMessageMutationVariables>) {
+        return ApolloReactHooks.useMutation<SendMessageMutation, SendMessageMutationVariables>(SendMessageDocument, baseOptions);
+      }
+export type SendMessageMutationHookResult = ReturnType<typeof useSendMessageMutation>;
+export type SendMessageMutationResult = ApolloReactCommon.MutationResult<SendMessageMutation>;
+export type SendMessageMutationOptions = ApolloReactCommon.BaseMutationOptions<SendMessageMutation, SendMessageMutationVariables>;
 export const CreateTeamDocument = gql`
     mutation CreateTeam($name: String!, $avatarBackground: String!) {
   createTeam(name: $name, avatarBackground: $avatarBackground) {

@@ -1,17 +1,24 @@
 import styled from 'styled-components';
 import * as b from '../../../../../styles/blocks';
+import { size } from '../../../../../styles/sizes';
 
 export const Wrapper = styled(b.Box)`
-  position: sticky;
+  position: fixed;
   z-index: 50;
   bottom: 0;
   /* height: 110px; */
-  width: 100%;
+
+  width: calc(100vw - 220px);
+
   padding: 0 20px;
   background-color: ${({ theme }) => theme.colors.white};
   & > div {
     height: 100%;
     /* padding-bottom: 10px; */
+  }
+
+  @media ${size.llg} {
+    width: calc(100vw - 256px);
   }
 `;
 

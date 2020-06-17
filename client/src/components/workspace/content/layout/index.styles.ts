@@ -8,12 +8,13 @@ export const Wrapper = styled(b.Box)`
 
   & > div {
     &.top {
+      height: 65px;
       padding: 15px 0;
       border-bottom: 1px solid ${({ theme }) => theme.colors.white__dark};
     }
 
     &.bottom {
-      height: auto;
+      height: 100%;
     }
   }
 `;

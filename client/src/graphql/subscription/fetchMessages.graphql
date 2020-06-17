@@ -1,0 +1,10 @@
+query FetchMessages($channelId: String!) {
+  fetchMessages(channelId: $channelId) {
+    ok
+    errorlog
+    messages {
+      fullname
+      body
+    }
+  }
+}

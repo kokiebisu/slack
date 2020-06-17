@@ -47,7 +47,7 @@ const renderBody = (body: Body) => {
     case 'joined':
       return <MessageJoined />;
     case 'message':
-      return <MessageBody />;
+      return <MessageBody text={body.message!} />;
     default:
       return;
   }

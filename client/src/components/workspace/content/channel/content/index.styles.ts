@@ -5,6 +5,8 @@ export const Wrapper = styled(b.Box)`
   height: calc(100vh - 65px - 37px);
   overflow-y: auto;
 
+  position: relative;
+
   & > div {
     &.section_header {
       padding: 25px 20px;
@@ -12,7 +14,8 @@ export const Wrapper = styled(b.Box)`
 
     &.section_content {
       position: relative;
-      padding: 25px 20px 5px 20px;
+      height: calc(100vh - 65px - 180px- 104px);
+      padding: 10px 20px 110px 20px;
     }
   }
 `;
