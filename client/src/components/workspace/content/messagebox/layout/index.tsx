@@ -19,12 +19,16 @@ import { CustomEditor } from '../../../../../util/customEditor';
 
 export const MessageBox = () => {
   const editor = useMemo(() => withReact(createEditor()), []);
-  const [value, setValue] = useState<Node[]>([
-    {
-      type: 'paragraph',
-      children: [{ text: 'Jot down something...' }],
-    },
-  ]);
+  const [value, setValue] = useState<any>(
+    localStorage.getItem('content')
+      ? JSON.parse(localStorage.getItem('content')!)
+      : [
+          {
+            type: 'paragraph',
+            children: [{ text: 'Jot down something...' }],
+          },
+        ]
+  );
 
   const renderElement = useCallback((props) => {
     switch (props.element.type) {
@@ -48,7 +52,11 @@ export const MessageBox = () => {
             <Slate
               editor={editor}
               value={value}
-              onChange={(newValue) => setValue(newValue)}>
+              onChange={(newValue) => {
+                setValue(newValue);
+                const content = JSON.stringify(value);
+                localStorage.setItem('content', content);
+              }}>
               <Editable
                 renderLeaf={renderLeaf}
                 renderElement={renderElement}
