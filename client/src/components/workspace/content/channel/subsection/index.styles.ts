@@ -1,6 +1,14 @@
 import styled from 'styled-components';
 import * as b from '../../../../../styles/blocks';
 
+import { size } from '../../../../../styles/sizes';
+
+export const Wrapper = styled(b.Box)`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
 export const IconWrapper = styled(b.Box)`
   &.person {
     bottom: 0.8px;
@@ -32,9 +40,14 @@ export const Seperator = styled(b.Box)`
 `;
 
 export const Descriptions = styled(b.Box)`
-  & p {
+  & span {
+    width: 80px;
+    display: inline-block;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+  @media ${size['12xs']} {
+    width: auto;
   }
 `;

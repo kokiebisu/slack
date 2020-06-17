@@ -16,7 +16,7 @@ export const Wrapper = styled(b.Box)`
     height: 100%;
   }
 
-  @media ${size['9xs']} {
+  @media ${size['7xs']} {
     width: calc(100vw - 220px);
   }
 

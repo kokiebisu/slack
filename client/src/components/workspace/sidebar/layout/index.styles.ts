@@ -36,7 +36,7 @@ export const Wrapper = styled(b.Box)`
     }
   }
 
-  @media ${size['9xs']} {
+  @media ${size['7xs']} {
     background-color: ${({ theme }) => theme.colors.primary};
     display: grid;
     grid-template-rows: 65px auto;

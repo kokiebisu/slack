@@ -16,8 +16,12 @@ import { createEditor } from 'slate';
 import { MessageInput } from '../input';
 import { MessageTools } from '../tools';
 import { CustomEditor } from '../../../../../util/customEditor';
+import { useGetChannelByIdQuery } from '../../../../../generated/graphql';
+import { useParams } from 'react-router-dom';
 
 export const MessageBox = () => {
+  const { channelId } = useParams();
+  const { data } = useGetChannelByIdQuery({ variables: { channelId } });
   const editor = useMemo(() => withReact(createEditor()), []);
   const [value, setValue] = useState<any>(
     localStorage.getItem('content')
@@ -25,7 +29,7 @@ export const MessageBox = () => {
       : [
           {
             type: 'paragraph',
-            children: [{ text: 'Jot down something...' }],
+            children: [{ text: '' }],
           },
         ]
   );
@@ -58,6 +62,7 @@ export const MessageBox = () => {
                 localStorage.setItem('content', content);
               }}>
               <Editable
+                placeholder={`Message #${data?.getChannelById.channel?.name}`}
                 renderLeaf={renderLeaf}
                 renderElement={renderElement}
                 onKeyDown={(event) => {
@@ -81,7 +86,18 @@ export const MessageBox = () => {
               />
             </Slate>
           </MessageInput>
-          <MessageTools editor={editor} value={value} />
+          <MessageTools
+            editor={editor}
+            value={value}
+            resetValue={() => {
+              setValue([
+                {
+                  type: 'paragraph',
+                  children: [{ text: '' }],
+                },
+              ]);
+            }}
+          />
         </Content>
         <CommandDescription py={2}>
           <b.Flex justifyContent='flex-end'>

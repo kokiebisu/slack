@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as b from '../../../../../styles/blocks';
 
 // Styles
-import { Seperator, IconWrapper, Descriptions } from './index.styles';
+import { Wrapper, Seperator, IconWrapper, Descriptions } from './index.styles';
 
 // Svgs
 import { User, MapPinAlt } from '../../../../../assets/svg';
@@ -22,7 +22,7 @@ export const SubSection: React.FC<Props> = ({ channelId }) => {
   });
 
   return (
-    <b.Box>
+    <Wrapper>
       <b.Flex>
         <b.Box>
           <b.Flex alignItems='center'>
@@ -62,13 +62,13 @@ export const SubSection: React.FC<Props> = ({ channelId }) => {
         <Descriptions>
           <b.Flex alignItems='center'>
             <b.Box>
-              <b.Text fontSize={13} color='gray__light'>
+              <b.Span fontSize={13} color='gray__light'>
                 Announcements to be made
-              </b.Text>
+              </b.Span>
             </b.Box>
           </b.Flex>
         </Descriptions>
       </b.Flex>
-    </b.Box>
+    </Wrapper>
   );
 };

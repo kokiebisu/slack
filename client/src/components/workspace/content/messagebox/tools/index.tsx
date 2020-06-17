@@ -31,9 +31,14 @@ import { useSendMessageMutation } from '../../../../../generated/graphql';
 interface Props {
   editor: any;
   value: any;
+  resetValue: () => void;
 }
 
-export const MessageTools: React.FC<Props> = ({ editor, value }) => {
+export const MessageTools: React.FC<Props> = ({
+  editor,
+  value,
+  resetValue,
+}) => {
   const { channelId } = useParams();
   const [send] = useSendMessageMutation();
   let message = '';
@@ -139,7 +144,9 @@ export const MessageTools: React.FC<Props> = ({ editor, value }) => {
                   action={() => console.log('paperclip pressed')}
                 />
                 <IconWrapper
-                  // disabled={!!input}
+                  disabled={
+                    value.length === 1 && value[0].children[0].text === ''
+                  }
                   variants={sendVariant}
                   // animate={!!input ? 'animate' : 'initial'}
                   className='paper_plane'
@@ -152,7 +159,7 @@ export const MessageTools: React.FC<Props> = ({ editor, value }) => {
                           body: message,
                         },
                       });
-                      console.log('response', response);
+                      resetValue();
                     }
                   }}>
                   <b.Flex justifyContent='center' alignItems='center'>

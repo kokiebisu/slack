@@ -14,7 +14,7 @@ export const ContentWrapper = styled(b.Box)`
   height: calc(100vh - 37px);
   display: grid;
 
-  @media ${size['9xs']} {
+  @media ${size['7xs']} {
     grid-template-columns: 220px auto;
   }
 

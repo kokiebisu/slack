@@ -31,9 +31,11 @@ export const ClientContentLayout: React.FC<Props> = ({
           <b.Flex justifyContent='space-between' alignItems='center'>
             <b.Box>
               {/* // left */}
-              <b.Flex>
-                <IconWrapper className='sidebar'>
-                  <Sidebar />
+              <b.Flex alignItems='center'>
+                <IconWrapper className='sidebar' mr={3}>
+                  <b.Flex alignItems='center'>
+                    <Sidebar />
+                  </b.Flex>
                 </IconWrapper>
                 <b.Box>
                   <Section>
