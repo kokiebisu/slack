@@ -17,10 +17,6 @@ export const TopColumnWrapper = styled(b.Box)`
   &:focus {
     outline: 0;
   }
-
-  @media ${home.lg} {
-    padding: 0 30px 0 20px;
-  }
 `;
 
 export const TitleWrapper = styled(b.Flex)`
@@ -31,6 +27,10 @@ export const TitleContainer = styled(b.Button)`
   position: relative;
   bottom: 2px;
   padding-right: 60px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   &:focus {
     outline: none;

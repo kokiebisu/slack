@@ -37,4 +37,8 @@ export const Top = styled(b.Box)`
       font-family: 'SlackLato-Light';
     }
   }
+
+  & p {
+    word-break: break-all;
+  }
 `;

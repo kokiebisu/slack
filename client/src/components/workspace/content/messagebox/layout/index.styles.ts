@@ -26,7 +26,7 @@ export const Wrapper = styled(b.Box)`
 
   & div {
     &.slate {
-      width: 100%;
+      /* width: 100%; */
     }
   }
 `;

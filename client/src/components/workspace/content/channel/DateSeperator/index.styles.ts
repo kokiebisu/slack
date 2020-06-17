@@ -4,14 +4,15 @@ import * as b from '../../../../../styles/blocks';
 export const Wrapper = styled(b.Box)`
   position: sticky;
   top: 0;
-  height: 30px;
-
+  z-index: 100;
+  background-color: ${({ theme }) => theme.colors.white};
   & div {
     &.divider {
       height: 100%;
       position: relative;
       width: 100%;
       height: 1px;
+
       background-color: ${({ theme }) => theme.colors.gray__lighter};
     }
     &.date_modal {
@@ -19,11 +20,12 @@ export const Wrapper = styled(b.Box)`
       left: 50%;
       top: -15px;
       height: 70px;
+
       & > div {
         position: sticky;
         top: 8px;
         height: 30px;
-        z-index: 10;
+
         max-width: 150px;
         transform: translateX(-50%);
         border-radius: 15px;
