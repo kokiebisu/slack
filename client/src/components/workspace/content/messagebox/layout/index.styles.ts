@@ -6,15 +6,18 @@ export const Wrapper = styled(b.Box)`
   position: fixed;
   z-index: 50;
   bottom: 0;
-  /* height: 110px; */
 
-  width: calc(100vw - 220px);
+  width: 100vw;
 
   padding: 0 20px;
   background-color: ${({ theme }) => theme.colors.white};
+
   & > div {
     height: 100%;
-    /* padding-bottom: 10px; */
+  }
+
+  @media ${size['9xs']} {
+    width: calc(100vw - 220px);
   }
 
   @media ${size.llg} {

@@ -30,3 +30,11 @@ export const Seperator = styled(b.Box)`
   background-color: ${({ theme }) => theme.colors.gray__light};
   margin: 0 4px;
 `;
+
+export const Descriptions = styled(b.Box)`
+  & p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+`;

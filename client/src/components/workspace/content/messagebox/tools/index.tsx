@@ -22,6 +22,7 @@ import {
   Smile,
   PaperClip,
   PaperPlane,
+  EllipsisH,
 } from '../../../../../assets/svg';
 import { CustomEditor } from '../../../../../util/customEditor';
 import { useParams } from 'react-router-dom';
@@ -106,6 +107,11 @@ export const MessageTools: React.FC<Props> = ({ editor, value }) => {
                 <Tool
                   name='code_block'
                   icon={<CodeBlock />}
+                  action={() => console.log('code block pressed')}
+                />
+                <Tool
+                  name='more'
+                  icon={<EllipsisH />}
                   action={() => console.log('code block pressed')}
                 />
               </b.Flex>

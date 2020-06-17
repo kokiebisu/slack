@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import * as b from '../../../../styles/blocks';
+import { size } from '../../../../styles/sizes';
 
 export const Wrapper = styled(b.Box)`
   height: 100%;
@@ -30,13 +31,17 @@ export const Bottom = styled(b.Box)`
 `;
 
 export const IconWrapper = styled(b.Box)`
-  &.clipboard {
-    svg {
-      width: 26px;
-      height: 26px;
+  &.sidebar {
+    & > svg {
+      width: 15px;
+      height: 15px;
       path {
-        fill: ${({ theme }) => theme.colors.primary__light};
+        fill: ${({ theme }) => theme.colors.gray__lighter};
       }
+    }
+
+    @media ${size['9xs']} {
+      display: none;
     }
   }
 `;
