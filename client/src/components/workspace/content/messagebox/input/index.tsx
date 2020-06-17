@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useMemo, useState } from 'react';
 import * as b from '../../../../../styles/blocks';
 
-import { Wrapper, Input } from './index.styles';
+import { Wrapper } from './index.styles';
 
 interface Props {
   children: React.ReactNode;
@@ -11,17 +11,7 @@ interface Props {
 export const MessageInput: React.FC<Props> = ({ children }) => {
   return (
     <Wrapper>
-      <b.Flex alignItems='center'>
-        {/* <Input
-          contentEditable='true'
-          spellCheck
-          aria-autocomplete='list'
-          data-placeholder='Jot something down...'
-          suppressContentEditableWarning={true}
-          onInput={onType}
-        /> */}
-        {children}
-      </b.Flex>
+      <b.Flex alignItems='center'>{children}</b.Flex>
     </Wrapper>
   );
 };

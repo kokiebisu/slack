@@ -57,14 +57,16 @@ export const IconWrapper = styled(b.Button)`
       }
     }
     &:disabled {
-       {
-        polygon {
-          fill: ${({ theme }) => theme.colors.white};
-        }
-        circle {
-          fill: ${({ theme }) => theme.colors.white};
-        }
+      polygon {
+        fill: ${({ theme }) => theme.colors.white};
       }
+      circle {
+        fill: ${({ theme }) => theme.colors.white};
+      }
+    }
+
+    &:focus {
+      outline: none;
     }
   }
 `;
