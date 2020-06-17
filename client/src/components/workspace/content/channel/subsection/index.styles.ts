@@ -46,8 +46,8 @@ export const Descriptions = styled(b.Box)`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  @media ${size['12xs']} {
-    width: auto;
+    @media ${size['11xs']} {
+      width: auto;
+    }
   }
 `;
