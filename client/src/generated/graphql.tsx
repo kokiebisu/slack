@@ -56,6 +56,7 @@ export type User = {
   id: Scalars['Int'];
   fullname: Scalars['String'];
   email: Scalars['String'];
+  avatarBackground: Scalars['String'];
 };
 
 export type BaseResponse = {
@@ -117,6 +118,7 @@ export type DisplayingMessages = {
   id: Scalars['Float'];
   fullname: Scalars['String'];
   body: Scalars['String'];
+  avatarBackground: Scalars['String'];
 };
 
 export type MessageResponse = {
@@ -226,6 +228,7 @@ export type Mutation = {
 
 
 export type MutationRegisterArgs = {
+  avatarBackground: Scalars['String'];
   password: Scalars['String'];
   fullname: Scalars['String'];
   email: Scalars['String'];
@@ -295,6 +298,7 @@ export type RegisterMutationVariables = {
   fullname: Scalars['String'];
   email: Scalars['String'];
   password: Scalars['String'];
+  avatarBackground: Scalars['String'];
 };
 
 
@@ -426,7 +430,7 @@ export type FetchMessagesQuery = (
     & Pick<ChannelMessagesResponse, 'ok' | 'errorlog'>
     & { messages?: Maybe<Array<(
       { __typename?: 'DisplayingMessages' }
-      & Pick<DisplayingMessages, 'id' | 'fullname' | 'body'>
+      & Pick<DisplayingMessages, 'id' | 'fullname' | 'body' | 'avatarBackground'>
     )>> }
   ) }
 );
@@ -598,8 +602,8 @@ export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>;
 export type LogoutMutationResult = ApolloReactCommon.MutationResult<LogoutMutation>;
 export type LogoutMutationOptions = ApolloReactCommon.BaseMutationOptions<LogoutMutation, LogoutMutationVariables>;
 export const RegisterDocument = gql`
-    mutation Register($fullname: String!, $email: String!, $password: String!) {
-  register(email: $email, password: $password, fullname: $fullname) {
+    mutation Register($fullname: String!, $email: String!, $password: String!, $avatarBackground: String!) {
+  register(email: $email, password: $password, fullname: $fullname, avatarBackground: $avatarBackground) {
     ok
     errorlog
   }
@@ -623,6 +627,7 @@ export type RegisterMutationFn = ApolloReactCommon.MutationFunction<RegisterMuta
  *      fullname: // value for 'fullname'
  *      email: // value for 'email'
  *      password: // value for 'password'
+ *      avatarBackground: // value for 'avatarBackground'
  *   },
  * });
  */
@@ -898,6 +903,7 @@ export const FetchMessagesDocument = gql`
       id
       fullname
       body
+      avatarBackground
     }
   }
 }

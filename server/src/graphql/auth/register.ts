@@ -14,7 +14,8 @@ export class RegisterResolver {
   async register(
     @Arg('email') email: string,
     @Arg('fullname') fullname: string,
-    @Arg('password') password: string
+    @Arg('password') password: string,
+    @Arg('avatarBackground') avatarBackground: string
   ) {
     try {
       const user = await manager
@@ -22,10 +23,9 @@ export class RegisterResolver {
           fullname,
           email,
           password,
+          avatarBackground,
         })
         .save();
-
-      const userId = await manager.getId(user);
 
       const digit = Math.floor(100000 + Math.random() * 900000);
 

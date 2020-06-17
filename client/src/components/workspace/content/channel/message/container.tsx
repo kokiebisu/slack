@@ -29,6 +29,7 @@ export const Messages = () => {
             <Message
               key={message.id}
               sender={message.fullname}
+              avatar={message.avatarBackground}
               time='not coded'
               body={{ type: 'message', message: message.body }}
             />

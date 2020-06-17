@@ -2,7 +2,7 @@ interface ThemeProps {
   [key: string]: { [key: string]: string };
 }
 
-interface AvatarBackgroundProps {
+interface BackgroundColorProps {
   [key: string]: string;
 }
 
@@ -45,7 +45,7 @@ export const main: ThemeProps = {
   fontSizes,
 };
 
-export const avatar: AvatarBackgroundProps = {
+export const avatar: BackgroundColorProps = {
   oldlavendar: '#776885',
   tyrianpurple: '#5F1A37',
   lapislazuli: '#33658A',
@@ -64,4 +64,8 @@ export const avatar: AvatarBackgroundProps = {
   crimson: '#D72638',
   lightgreen: '#8FF7A7',
   mayablue: '#51BBFE',
+};
+
+export const profile: BackgroundColorProps = {
+  green: '#2BAC76',
 };

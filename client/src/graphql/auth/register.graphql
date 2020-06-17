@@ -1,5 +1,15 @@
-mutation Register($fullname: String!, $email: String!, $password: String!) {
-  register(email: $email, password: $password, fullname: $fullname) {
+mutation Register(
+  $fullname: String!
+  $email: String!
+  $password: String!
+  $avatarBackground: String!
+) {
+  register(
+    email: $email
+    password: $password
+    fullname: $fullname
+    avatarBackground: $avatarBackground
+  ) {
     ok
     errorlog
   }
