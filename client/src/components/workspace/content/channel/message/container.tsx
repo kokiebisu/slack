@@ -14,7 +14,24 @@ import {
 } from '../../../../../generated/graphql';
 import { useEffect } from 'react';
 
-export const Messages = () => {
+interface Props {
+  messages:
+    | ({ __typename?: 'DisplayingMessage' | undefined } & Pick<
+        DisplayingMessage,
+        'channelId' | 'body' | 'fullname' | 'avatarBackground'
+      >)[]
+    | null
+    | undefined;
+}
+
+interface DisplayingMessage {
+  channelId: string;
+  fullname: string;
+  body: string;
+  avatarBackground: string;
+}
+
+export const Messages: React.FC<Props> = ({ messages }) => {
   // fetch all messages in channel based on channel id
   // useEffect(() => {
   //   // subscribeToMore({
@@ -31,38 +48,22 @@ export const Messages = () => {
   //   // });
   //   subscribeToNewMessages();
   // });
-
-  // const { channelId } = useParams();
-  // const { data } = useFetchMessagesQuery({
-  //   variables: {
-  //     channelId,
-  //   },
-  // });
-  // const { data } = useFetchMessagesSubscription();
-  // const { data } = useSubscribeToMessagesSubscription();
-  // const { subscribeToMore } = useFetchMessagesQuery({
-  //   variables: {
-  //     channelId,
-  //   },
-  //   fetchPolicy: 'cache-and-network',
-  // });
+  console.log('conts', messages);
 
   return (
     <Wrapper>
-      {/* {data &&
-        data.subscribeToMessages &&
-        data.subscribeToMessages.messages &&
-        data.subscribeToMessages.messages.map((message) => {
+      {messages &&
+        messages.map((message, index) => {
           return (
             <Message
-              key={message.id}
+              key={index}
               sender={message.fullname}
               avatar={message.avatarBackground}
               time='not coded'
               body={{ type: 'message', message: message.body }}
             />
           );
-        })} */}
+        })}
     </Wrapper>
   );
 };
