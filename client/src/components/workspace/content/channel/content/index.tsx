@@ -18,7 +18,7 @@ import { LayerPlus, UserPlus } from '../../../../../assets/svg';
 
 // Components
 import { Messages } from '../message/container';
-import { DateSeperator } from '../dateseperator';
+import { DateSeperator } from '../DateSeperator';
 import { useParams } from 'react-router-dom';
 import { useGetChannelByIdQuery } from '../../../../../generated/graphql';
 import { MessageBox } from '../../messagebox/layout';

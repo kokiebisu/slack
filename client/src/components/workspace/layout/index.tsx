@@ -6,10 +6,10 @@ import { Redirect, useParams } from 'react-router-dom';
 import { Wrapper, ContentWrapper } from './index.styles';
 
 // Components
-import { HomeHeader } from '../Header';
-import { Sidebar } from '../Sidebar/layout';
-import { MenuToggle } from '../MenuToggle';
-import { ChannelModal } from '../ChannelModal';
+import { HomeHeader } from '../header';
+import { Sidebar } from '../sidebar/layout';
+import { MenuToggle } from '../menutoggle';
+import { ChannelModal } from '../channelmodal';
 
 // Queries
 import { useMeQuery, useTeamQuery } from '../../../generated/graphql';

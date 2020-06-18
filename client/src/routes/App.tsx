@@ -8,7 +8,7 @@ import { ClientRoutes } from './Workspace';
 
 // Pages
 import { Landing } from '../components/Landing/layout';
-import { SignIn } from '../components/SignIn/layout';
+import { SignIn } from '../components/Signin/layout';
 import { FindTeam } from '../components/FindTeam/layout';
 
 export const AppRoutes: React.SFC = (): JSX.Element => {

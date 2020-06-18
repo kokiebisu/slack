@@ -16,7 +16,7 @@ import {
 } from '../../../util/passwordUtil';
 
 // Components
-import { LogoCenterLayout } from '../../Shared/LogoCenter/layout';
+import { LogoCenterLayout } from '../../shared/LogoCenter/layout';
 import { Wrapper } from './index.styles';
 import { PasswordValidationBar } from '../validationbar';
 import { PasswordValidationText } from '../validationtext';
