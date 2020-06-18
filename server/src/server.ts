@@ -80,9 +80,11 @@ const allowCrossDomain = (req: Request, res: Response, next: NextFunction) => {
   apolloServer.installSubscriptionHandlers(httpServer);
 
   httpServer.listen({ port: PORT }, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
     console.log(
-      `Subcriptions ready at ws://localhost:${PORT}${apolloServer.subscriptionsPath}`
+      `🚀 Server ready at http://localhost:${PORT}${apolloServer.graphqlPath}`
+    );
+    console.log(
+      `🚀 Subscriptions ready at ws://localhost:${PORT}${apolloServer.subscriptionsPath}`
     );
   });
 })();

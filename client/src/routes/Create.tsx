@@ -112,6 +112,7 @@ export const CreateRoutes: React.SFC = () => {
                 });
 
                 console.log('entered 1');
+                console.log(data);
 
                 if (data && data?.createTeam?.team!.id) {
                   console.log('entered 2');

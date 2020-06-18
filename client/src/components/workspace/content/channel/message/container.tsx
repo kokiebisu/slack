@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useParams } from 'react-router-dom';
 
 // Query
-import { useFetchMessagesQuery } from '../../../../../generated/graphql';
+import { useFetchMessagesSubscription } from '../../../../../generated/graphql';
 
 // Styles
 import { Wrapper } from './container.styles';
@@ -14,15 +14,17 @@ export const Messages = () => {
   // fetch all messages in channel based on channel id
 
   const { channelId } = useParams();
-  const { data } = useFetchMessagesQuery({
-    variables: {
-      channelId,
-    },
-  });
+  // const { data } = useFetchMessagesQuery({
+  //   variables: {
+  //     channelId,
+  //   },
+  // });
+  const { data } = useFetchMessagesSubscription();
 
   return (
     <Wrapper>
-      {data?.fetchMessages &&
+      {data &&
+        data.fetchMessages &&
         data.fetchMessages.messages &&
         data.fetchMessages.messages.map((message) => {
           return (

@@ -116,6 +116,11 @@ export type BelongingUsersResponse = {
 
 export type DisplayingMessages = {
   __typename?: 'DisplayingMessages';
+  messages: Array<DisplayingMessage>;
+};
+
+export type DisplayingMessage = {
+  __typename?: 'DisplayingMessage';
   id: Scalars['Float'];
   fullname: Scalars['String'];
   body: Scalars['String'];
@@ -172,7 +177,6 @@ export type Query = {
   channels: ChannelsResponse;
   getBelongingTeams: BelongingTeamsResponse;
   getBelongingUsers: BelongingUsersResponse;
-  fetchMessages: ChannelMessagesResponse;
   myTeams: TeamsResponse;
   team: TeamResponse;
   teams: TeamsResponse;
@@ -202,11 +206,6 @@ export type QueryChannelsArgs = {
 
 
 export type QueryGetBelongingUsersArgs = {
-  channelId: Scalars['String'];
-};
-
-
-export type QueryFetchMessagesArgs = {
   channelId: Scalars['String'];
 };
 
@@ -270,6 +269,11 @@ export type MutationRemoveTeamArgs = {
 
 export type MutationRemoveUserArgs = {
   userId: Scalars['Float'];
+};
+
+export type Subscription = {
+  __typename?: 'Subscription';
+  fetchMessages: DisplayingMessages;
 };
 
 export type CheckEmailQueryVariables = {
@@ -421,20 +425,17 @@ export type GetBelongingUsersQuery = (
   ) }
 );
 
-export type FetchMessagesQueryVariables = {
-  channelId: Scalars['String'];
-};
+export type FetchMessagesSubscriptionVariables = {};
 
 
-export type FetchMessagesQuery = (
-  { __typename?: 'Query' }
+export type FetchMessagesSubscription = (
+  { __typename?: 'Subscription' }
   & { fetchMessages: (
-    { __typename?: 'ChannelMessagesResponse' }
-    & Pick<ChannelMessagesResponse, 'ok' | 'errorlog'>
-    & { messages?: Maybe<Array<(
-      { __typename?: 'DisplayingMessages' }
-      & Pick<DisplayingMessages, 'id' | 'fullname' | 'body' | 'avatarBackground'>
-    )>> }
+    { __typename?: 'DisplayingMessages' }
+    & { messages: Array<(
+      { __typename?: 'DisplayingMessage' }
+      & Pick<DisplayingMessage, 'fullname' | 'id' | 'body' | 'avatarBackground'>
+    )> }
   ) }
 );
 
@@ -900,13 +901,11 @@ export type GetBelongingUsersQueryHookResult = ReturnType<typeof useGetBelonging
 export type GetBelongingUsersLazyQueryHookResult = ReturnType<typeof useGetBelongingUsersLazyQuery>;
 export type GetBelongingUsersQueryResult = ApolloReactCommon.QueryResult<GetBelongingUsersQuery, GetBelongingUsersQueryVariables>;
 export const FetchMessagesDocument = gql`
-    query FetchMessages($channelId: String!) {
-  fetchMessages(channelId: $channelId) {
-    ok
-    errorlog
+    subscription FetchMessages {
+  fetchMessages {
     messages {
-      id
       fullname
+      id
       body
       avatarBackground
     }
@@ -915,30 +914,25 @@ export const FetchMessagesDocument = gql`
     `;
 
 /**
- * __useFetchMessagesQuery__
+ * __useFetchMessagesSubscription__
  *
- * To run a query within a React component, call `useFetchMessagesQuery` and pass it any options that fit your needs.
- * When your component renders, `useFetchMessagesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useFetchMessagesSubscription` and pass it any options that fit your needs.
+ * When your component renders, `useFetchMessagesSubscription` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useFetchMessagesQuery({
+ * const { data, loading, error } = useFetchMessagesSubscription({
  *   variables: {
- *      channelId: // value for 'channelId'
  *   },
  * });
  */
-export function useFetchMessagesQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FetchMessagesQuery, FetchMessagesQueryVariables>) {
-        return ApolloReactHooks.useQuery<FetchMessagesQuery, FetchMessagesQueryVariables>(FetchMessagesDocument, baseOptions);
+export function useFetchMessagesSubscription(baseOptions?: ApolloReactHooks.SubscriptionHookOptions<FetchMessagesSubscription, FetchMessagesSubscriptionVariables>) {
+        return ApolloReactHooks.useSubscription<FetchMessagesSubscription, FetchMessagesSubscriptionVariables>(FetchMessagesDocument, baseOptions);
       }
-export function useFetchMessagesLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FetchMessagesQuery, FetchMessagesQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<FetchMessagesQuery, FetchMessagesQueryVariables>(FetchMessagesDocument, baseOptions);
-        }
-export type FetchMessagesQueryHookResult = ReturnType<typeof useFetchMessagesQuery>;
-export type FetchMessagesLazyQueryHookResult = ReturnType<typeof useFetchMessagesLazyQuery>;
-export type FetchMessagesQueryResult = ApolloReactCommon.QueryResult<FetchMessagesQuery, FetchMessagesQueryVariables>;
+export type FetchMessagesSubscriptionHookResult = ReturnType<typeof useFetchMessagesSubscription>;
+export type FetchMessagesSubscriptionResult = ApolloReactCommon.SubscriptionResult<FetchMessagesSubscription>;
 export const SendMessageDocument = gql`
     mutation SendMessage($channelId: String!, $teamId: String!, $body: String!) {
   sendMessage(channelId: $channelId, body: $body, teamId: $teamId) {

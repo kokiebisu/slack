@@ -42,8 +42,7 @@ export class MessageResolver {
     @PubSub() pubSub: PubSubEngine,
     @Ctx() { req }: Context
   ) {
-    const userId = 8;
-    // const userId = req.session!.userId;
+    const userId = req.session!.userId;
 
     // must get member id by retrieving teamid
     const member = await manager.query(
