@@ -12,15 +12,12 @@ import {
 import { getManager } from 'typeorm';
 import { Message } from '../../models/Message';
 import {
-  MessageResponse,
-  DisplayingMessages,
-  DisplayingMessagesPayload,
   DisplayingMessageResponse,
   DisplayingMessagePayload,
   DisplayingMessage,
 } from '../response/messageResponse';
 import { Context } from '../../interface/Context';
-import { isAuth } from '../../middleware/isAuthenticated';
+// import { isAuth } from '../../middleware/isAuthenticated';
 import { User } from '../../models/User';
 
 const manager = getManager();
@@ -55,8 +52,8 @@ export class MessageResolver {
     @Ctx() { req }: Context
   ): Promise<DisplayingMessageResponse | Error> {
     try {
-      // const userId = req.session!.userId;
-      const userId = 14;
+      const userId = req.session!.userId;
+      // const userId = 14;
 
       const member = await manager.query(
         'select id from members where "userId"=$1 and "teamId"=$2',

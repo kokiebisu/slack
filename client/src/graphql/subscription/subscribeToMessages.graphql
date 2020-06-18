@@ -1,10 +1,8 @@
-subscription SubscribeToMessages {
-  subscribeToMessages {
-    messages {
-      fullname
-      id
-      body
-      avatarBackground
-    }
+subscription SubscribeToMessages($id: String!) {
+  subscribeToMessages(id: $id) {
+    fullname
+    channelId
+    body
+    avatarBackground
   }
 }

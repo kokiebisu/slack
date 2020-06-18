@@ -121,7 +121,7 @@ export type DisplayingMessages = {
 
 export type DisplayingMessage = {
   __typename?: 'DisplayingMessage';
-  id: Scalars['Float'];
+  channelId: Scalars['String'];
   fullname: Scalars['String'];
   body: Scalars['String'];
   avatarBackground: Scalars['String'];
@@ -132,6 +132,13 @@ export type MessageResponse = {
   ok: Scalars['Boolean'];
   errorlog?: Maybe<Scalars['String']>;
   message?: Maybe<Message>;
+};
+
+export type DisplayingMessageResponse = {
+  __typename?: 'DisplayingMessageResponse';
+  ok: Scalars['Boolean'];
+  errorlog?: Maybe<Scalars['String']>;
+  displayingMessage?: Maybe<DisplayingMessage>;
 };
 
 export type ChannelMessagesResponse = {
@@ -226,7 +233,7 @@ export type Mutation = {
   register: AuthorizationResponse;
   verifyUserByDigit: AuthorizationResponse;
   createChannel: ChannelResponse;
-  sendMessage: MessageResponse;
+  sendMessage: DisplayingMessageResponse;
   createTeam: TeamResponse;
   removeTeam: TeamResponse;
   removeUser: BaseResponse;
@@ -279,7 +286,12 @@ export type MutationRemoveUserArgs = {
 
 export type Subscription = {
   __typename?: 'Subscription';
-  subscribeToMessages: DisplayingMessages;
+  subscribeToMessages: DisplayingMessage;
+};
+
+
+export type SubscriptionSubscribeToMessagesArgs = {
+  id: Scalars['String'];
 };
 
 export type CheckEmailQueryVariables = {
@@ -443,7 +455,7 @@ export type FetchMessagesQuery = (
     & Pick<ChannelMessagesResponse, 'ok'>
     & { messages?: Maybe<Array<(
       { __typename?: 'DisplayingMessage' }
-      & Pick<DisplayingMessage, 'id' | 'fullname' | 'body' | 'avatarBackground'>
+      & Pick<DisplayingMessage, 'channelId' | 'fullname' | 'body' | 'avatarBackground'>
     )>> }
   ) }
 );
@@ -458,26 +470,25 @@ export type SendMessageMutationVariables = {
 export type SendMessageMutation = (
   { __typename?: 'Mutation' }
   & { sendMessage: (
-    { __typename?: 'MessageResponse' }
-    & Pick<MessageResponse, 'ok'>
-    & { message?: Maybe<(
-      { __typename?: 'Message' }
-      & Pick<Message, 'channelId' | 'memberId' | 'body'>
+    { __typename?: 'DisplayingMessageResponse' }
+    & Pick<DisplayingMessageResponse, 'ok'>
+    & { displayingMessage?: Maybe<(
+      { __typename?: 'DisplayingMessage' }
+      & Pick<DisplayingMessage, 'channelId' | 'fullname' | 'body' | 'avatarBackground'>
     )> }
   ) }
 );
 
-export type SubscribeToMessagesSubscriptionVariables = {};
+export type SubscribeToMessagesSubscriptionVariables = {
+  id: Scalars['String'];
+};
 
 
 export type SubscribeToMessagesSubscription = (
   { __typename?: 'Subscription' }
   & { subscribeToMessages: (
-    { __typename?: 'DisplayingMessages' }
-    & { messages: Array<(
-      { __typename?: 'DisplayingMessage' }
-      & Pick<DisplayingMessage, 'fullname' | 'id' | 'body' | 'avatarBackground'>
-    )> }
+    { __typename?: 'DisplayingMessage' }
+    & Pick<DisplayingMessage, 'fullname' | 'channelId' | 'body' | 'avatarBackground'>
   ) }
 );
 
@@ -928,7 +939,7 @@ export const FetchMessagesDocument = gql`
   fetchMessages(channelId: $channelId) {
     ok
     messages {
-      id
+      channelId
       fullname
       body
       avatarBackground
@@ -966,10 +977,11 @@ export const SendMessageDocument = gql`
     mutation SendMessage($channelId: String!, $teamId: String!, $body: String!) {
   sendMessage(channelId: $channelId, body: $body, teamId: $teamId) {
     ok
-    message {
+    displayingMessage {
       channelId
-      memberId
+      fullname
       body
+      avatarBackground
     }
   }
 }
@@ -1002,14 +1014,12 @@ export type SendMessageMutationHookResult = ReturnType<typeof useSendMessageMuta
 export type SendMessageMutationResult = ApolloReactCommon.MutationResult<SendMessageMutation>;
 export type SendMessageMutationOptions = ApolloReactCommon.BaseMutationOptions<SendMessageMutation, SendMessageMutationVariables>;
 export const SubscribeToMessagesDocument = gql`
-    subscription SubscribeToMessages {
-  subscribeToMessages {
-    messages {
-      fullname
-      id
-      body
-      avatarBackground
-    }
+    subscription SubscribeToMessages($id: String!) {
+  subscribeToMessages(id: $id) {
+    fullname
+    channelId
+    body
+    avatarBackground
   }
 }
     `;
@@ -1026,6 +1036,7 @@ export const SubscribeToMessagesDocument = gql`
  * @example
  * const { data, loading, error } = useSubscribeToMessagesSubscription({
  *   variables: {
+ *      id: // value for 'id'
  *   },
  * });
  */
