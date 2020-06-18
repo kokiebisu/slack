@@ -1,4 +1,4 @@
-query FetchMessages($channelId: String!) {
+subscription FetchMessages($channelId: String!) {
   fetchMessages(channelId: $channelId) {
     ok
     errorlog

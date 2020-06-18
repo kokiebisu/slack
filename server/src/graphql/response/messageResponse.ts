@@ -3,7 +3,13 @@ import { BaseResponse } from './baseResponse';
 import { Message } from '../../models/Message';
 
 @ObjectType()
-class DisplayingMessages {
+export class DisplayingMessages {
+  @Field(() => [DisplayingMessage])
+  messages: DisplayingMessage[];
+}
+
+@ObjectType()
+export class DisplayingMessage {
   @Field()
   id: number;
 
@@ -14,6 +20,20 @@ class DisplayingMessages {
   body: string;
 
   @Field()
+  avatarBackground: string;
+}
+
+export interface DisplayingMessagesPayload {
+  messages: DisplayingMessage[];
+}
+
+export interface DisplayingMessagePayload {
+  id: number;
+
+  fullname: string;
+
+  body: string;
+
   avatarBackground: string;
 }
 

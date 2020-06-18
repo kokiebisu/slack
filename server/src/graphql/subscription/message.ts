@@ -4,9 +4,6 @@ import {
   Arg,
   Ctx,
   UseMiddleware,
-  Query,
-  ObjectType,
-  Field,
   Subscription,
   Root,
   PubSub,
@@ -14,34 +11,26 @@ import {
 } from 'type-graphql';
 import { getManager } from 'typeorm';
 import { Message } from '../../models/Message';
-import { MessageResponse } from '../response/messageResponse';
+import {
+  MessageResponse,
+  DisplayingMessages,
+  DisplayingMessagesPayload,
+} from '../response/messageResponse';
 import { Context } from '../../interface/Context';
 import { isAuth } from '../../middleware/isAuthenticated';
 
 const manager = getManager();
 const CHANNEL_MESSAGE = 'channel message';
 
-@ObjectType()
-class Messages {
-  @Field(() => [Message])
-  messages: Message[];
-}
-
-interface MessagesPayload {
-  messages: Message[];
-}
-
 @Resolver()
 export class MessageResolver {
-  @Subscription(() => Messages, { topics: CHANNEL_MESSAGE })
-  fetchMessages(@Root() { messages }: MessagesPayload): Messages {
-    try {
-      return {
-        messages,
-      };
-    } catch (err) {
-      throw new Error(err);
-    }
+  @Subscription(() => DisplayingMessages, { topics: CHANNEL_MESSAGE })
+  fetchMessages(
+    @Root() { messages }: DisplayingMessagesPayload
+  ): DisplayingMessagesPayload {
+    return {
+      messages,
+    };
   }
 
   @UseMiddleware(isAuth)
@@ -53,8 +42,8 @@ export class MessageResolver {
     @PubSub() pubSub: PubSubEngine,
     @Ctx() { req }: Context
   ) {
-    // const userId = 7;
-    const userId = req.session!.userId;
+    const userId = 8;
+    // const userId = req.session!.userId;
 
     // must get member id by retrieving teamid
     const member = await manager.query(
@@ -62,7 +51,7 @@ export class MessageResolver {
       [userId, teamId]
     );
 
-    console.log('m', member);
+    console.log('mem', member);
 
     const memberId = member[0].id;
 
@@ -79,7 +68,9 @@ export class MessageResolver {
       [channelId]
     );
 
-    const payload: MessagesPayload = { messages };
+    const payload: DisplayingMessagesPayload = {
+      messages,
+    };
     await pubSub.publish(CHANNEL_MESSAGE, payload);
 
     return {

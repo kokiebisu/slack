@@ -15,13 +15,46 @@ import { ContextProvider } from './context';
 import { main } from './styles/colors';
 import { ThemeProvider } from 'styled-components';
 
-import ApolloClient from 'apollo-boost';
+import { ApolloClient } from 'apollo-client';
+import { getMainDefinition } from 'apollo-utilities';
+import { ApolloLink, split } from 'apollo-link';
+import { HttpLink } from 'apollo-link-http';
+import { WebSocketLink } from 'apollo-link-ws';
 import { AppRoutes } from './routes/App';
 
-const client = new ApolloClient({
+// const client = new ApolloClient({
+//   uri: 'http://localhost:4000/graphql',
+//   cache: new InMemoryCache(),
+//   credentials: 'include',
+// });
+
+const httpLink = new HttpLink({
   uri: 'http://localhost:4000/graphql',
-  cache: new InMemoryCache(),
-  credentials: 'include',
+});
+
+const wsLink = new WebSocketLink({
+  uri: `ws://localhost:4000/graphql`,
+  options: {
+    reconnect: true,
+  },
+});
+
+const combinedLink = split(
+  ({ query }) => {
+    const { kind, operation } = getMainDefinition(query);
+    return kind === 'OperationDefinition' && operation === 'subscription';
+  },
+  wsLink,
+  httpLink
+);
+
+const link = ApolloLink.from([terminatingLink]);
+
+const cache = new InMemoryCache();
+
+const client = new ApolloClient({
+  link,
+  cache,
 });
 
 ReactDOM.render(
