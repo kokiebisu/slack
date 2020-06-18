@@ -72,8 +72,8 @@ export const Sections: React.FC<{}> = () => {
 
   return (
     <Wrapper>
-      {sections.map((subsection) => {
-        return <SubSections {...subsection} />;
+      {sections.map((subsection, index) => {
+        return <SubSections key={index} {...subsection} />;
       })}
     </Wrapper>
   );
@@ -91,8 +91,8 @@ const SubSections: React.FC<Props> = ({ subsections }) => {
     <>
       <b.Box width={1}>
         <b.Flex>
-          {subsections.map((subsection) => {
-            return <Section {...subsection} />;
+          {subsections.map((subsection, index) => {
+            return <Section key={index} {...subsection} />;
           })}
         </b.Flex>
       </b.Box>

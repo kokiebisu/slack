@@ -4,6 +4,7 @@ query GetChannelById($channelId: String!) {
     errorlog
     channel {
       name
+      topic
       isPublic
       description
     }

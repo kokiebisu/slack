@@ -111,7 +111,10 @@ export const CreateRoutes: React.SFC = () => {
                   },
                 });
 
+                console.log('entered 1');
+
                 if (data && data?.createTeam?.team!.id) {
+                  console.log('entered 2');
                   await createChannel({
                     variables: {
                       name: 'general',
@@ -119,8 +122,12 @@ export const CreateRoutes: React.SFC = () => {
                       description:
                         'This channel is for workspace-wide communication and announcements. All members are in this channel.',
                       isPublic: true,
+                      topic:
+                        'Company-wide announcements and work-based matters',
                     },
                   });
+
+                  console.log('entered 3');
 
                   await createChannel({
                     variables: {
@@ -129,8 +136,11 @@ export const CreateRoutes: React.SFC = () => {
                       description:
                         "A place for non-work-related flimflam, faffing, hodge-podge or jibber-jabber you'd prefer to keep out of more focused work-related channels.",
                       isPublic: true,
+                      topic: 'Non-work banter and water cooler conversation',
                     },
                   });
+
+                  console.log('entered 4');
 
                   await createChannel({
                     variables: {
@@ -139,6 +149,8 @@ export const CreateRoutes: React.SFC = () => {
                       isPublic: true,
                     },
                   });
+
+                  console.log('entered 5');
 
                   history.push(`/client/${data.createTeam.team.id}`);
                 }

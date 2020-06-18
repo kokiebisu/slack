@@ -1,13 +1,15 @@
 mutation CreateChannel(
   $name: String!
   $teamId: String!
-  $description: String
   $isPublic: Boolean!
+  $description: String
+  $topic: String
 ) {
   createChannel(
     name: $name
     teamId: $teamId
     description: $description
+    topic: $topic
     isPublic: $isPublic
   ) {
     ok
