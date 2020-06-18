@@ -20,12 +20,43 @@ import { LayerPlus, UserPlus } from '../../../../../assets/svg';
 import { Messages } from '../message/container';
 import { DateSeperator } from '../DateSeperator';
 import { useParams } from 'react-router-dom';
-import { useGetChannelByIdQuery } from '../../../../../generated/graphql';
+import {
+  useGetChannelByIdQuery,
+  useSubscribeToMessagesSubscription,
+  useFetchMessagesQuery,
+} from '../../../../../generated/graphql';
 import { MessageBox } from '../../messagebox/layout';
+
+import gql from 'graphql-tag';
 
 export const Content = () => {
   const { channelId } = useParams();
   const { data: { getChannelById } = {} } = useGetChannelByIdQuery({
+    variables: { channelId },
+  });
+
+  // const {
+  //   data: { subscribeToMessages },
+  // } = useSubscribeToMessagesSubscription();
+
+  const SubscribeToMessagesDocument = gql`
+    subscription SubscribeToMessages {
+      subscribeToMessages {
+        messages {
+          fullname
+          id
+          body
+          avatarBackground
+        }
+      }
+    }
+  `;
+
+  const {
+    data: { fetchMessages } = {},
+    loading: { fetchMessagesLoading },
+    subscribeToMore,
+  } = useFetchMessagesQuery({
     variables: { channelId },
   });
 
@@ -88,9 +119,29 @@ export const Content = () => {
           </Options>
         </b.Box>
         <DateSeperator />
-        <b.Box className='section_content'>
-          <Messages />
-        </b.Box>
+        {!fetchMessagesLoading && (
+          <b.Box className='section_content'>
+            <Messages
+              messages={fetchMessages?.messages}
+              subscribeToNewMessages={() =>
+                subscribeToMore({
+                  document: SubscribeToMessagesDocument,
+                  variables: { channelId },
+                  updateQuery: (prev, { subscriptionData }) => {
+                    if (!subscriptionData) return prev;
+                    return {
+                      ...prev,
+                      messages: [
+                        ...prev.fetchMessages,
+                        subscriptionData.subscribeToMessages,
+                      ],
+                    };
+                  },
+                })
+              }
+            />
+          </b.Box>
+        )}
         <MessageBox />
       </Wrapper>
     </>
