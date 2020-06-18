@@ -24,8 +24,8 @@ export const SocialMedias = () => {
 
   return (
     <Wrapper>
-      {icons.map((icon) => {
-        return <SocialMedia {...icon} />;
+      {icons.map((icon, index) => {
+        return <SocialMedia key={index} {...icon} />;
       })}
     </Wrapper>
   );

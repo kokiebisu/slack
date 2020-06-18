@@ -21,9 +21,9 @@ export const Section: React.FC<Props> = ({ title, items }) => {
           <b.Text>Product</b.Text>
         </SectionName>
         <Items>
-          {items.map((item: ItemProps) => {
+          {items.map((item: ItemProps, index) => {
             return (
-              <Item>
+              <Item key={index}>
                 <ItemLink to={item.url}>{item.name}</ItemLink>
               </Item>
             );

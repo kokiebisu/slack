@@ -39,8 +39,8 @@ export const ColumnCards: React.FC<Props> = () => {
   return (
     <Columns>
       <b.Flex>
-        {cards.map((card) => {
-          return <ColumnCard {...card} />;
+        {cards.map((card, index) => {
+          return <ColumnCard key={index} {...card} />;
         })}
       </b.Flex>
     </Columns>

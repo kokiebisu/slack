@@ -74,9 +74,9 @@ export const Navigation: React.FC<Props> = ({ hovered, onHovered }) => {
         <b.Text>{dropdowns[0].type}</b.Text>
         {!hovered.solutions && hovered.why ? (
           <Dropdown>
-            {dropdowns[0].items.map((dropdown) => {
+            {dropdowns[0].items.map((dropdown, index) => {
               return (
-                <LinkWrapper>
+                <LinkWrapper key={index}>
                   <Link to={dropdown.url}>
                     <b.Text>{dropdown.name}</b.Text>
                   </Link>
@@ -96,9 +96,9 @@ export const Navigation: React.FC<Props> = ({ hovered, onHovered }) => {
         <b.Text>{dropdowns[1].type}</b.Text>
         {!hovered.resources && hovered.solutions ? (
           <Dropdown>
-            {dropdowns[1].items.map((dropdown) => {
+            {dropdowns[1].items.map((dropdown, index) => {
               return (
-                <LinkWrapper>
+                <LinkWrapper key={index}>
                   <Link to={dropdown.url}>
                     <b.Text>{dropdown.name}</b.Text>
                   </Link>
@@ -114,9 +114,9 @@ export const Navigation: React.FC<Props> = ({ hovered, onHovered }) => {
         <b.Text>{dropdowns[2].type}</b.Text>
         {!hovered.why && hovered.resources ? (
           <Dropdown>
-            {dropdowns[2].items.map((dropdown) => {
+            {dropdowns[2].items.map((dropdown, index) => {
               return (
-                <LinkWrapper>
+                <LinkWrapper key={index}>
                   <Link to={dropdown.url}>
                     <b.Text>{dropdown.name}</b.Text>
                   </Link>

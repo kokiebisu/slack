@@ -10,7 +10,10 @@ import { Wrapper, Seperator, IconWrapper, Descriptions } from './index.styles';
 import { User, MapPinAlt } from '../../../../../assets/svg';
 
 // Query
-import { useGetBelongingUsersQuery } from '../../../../../generated/graphql';
+import {
+  useGetBelongingUsersQuery,
+  useGetChannelByIdQuery,
+} from '../../../../../generated/graphql';
 
 interface Props {
   channelId: string;
@@ -18,6 +21,9 @@ interface Props {
 
 export const SubSection: React.FC<Props> = ({ channelId }) => {
   const { data: { getBelongingUsers } = {} } = useGetBelongingUsersQuery({
+    variables: { channelId },
+  });
+  const { data: { getChannelById } = {} } = useGetChannelByIdQuery({
     variables: { channelId },
   });
 
@@ -63,7 +69,9 @@ export const SubSection: React.FC<Props> = ({ channelId }) => {
           <b.Flex alignItems='center'>
             <b.Box>
               <b.Span fontSize={13} color='gray__light'>
-                Announcements to be made
+                {getChannelById &&
+                  getChannelById!.ok &&
+                  getChannelById.channel?.topic}
               </b.Span>
             </b.Box>
           </b.Flex>

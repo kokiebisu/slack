@@ -23,8 +23,8 @@ export const Options = () => {
     <Wrapper>
       <b.Flex alignItems='center'>
         <b.Flex>
-          {options.map((option) => {
-            return <Option {...option} />;
+          {options.map((option, index) => {
+            return <Option key={index} {...option} />;
           })}
         </b.Flex>
         <ChangeRegionButton>
