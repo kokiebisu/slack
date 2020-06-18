@@ -12,69 +12,92 @@ import {
 import { getManager } from 'typeorm';
 import { Message } from '../../models/Message';
 import {
-  MessageResponse,
-  DisplayingMessages,
-  DisplayingMessagesPayload,
+  DisplayingMessageResponse,
+  DisplayingMessagePayload,
+  DisplayingMessage,
 } from '../response/messageResponse';
 import { Context } from '../../interface/Context';
-import { isAuth } from '../../middleware/isAuthenticated';
+// import { isAuth } from '../../middleware/isAuthenticated';
+import { User } from '../../models/User';
 
 const manager = getManager();
 const CHANNEL_MESSAGE = 'channel message';
 
 @Resolver()
 export class MessageResolver {
-  @Subscription(() => DisplayingMessages, { topics: CHANNEL_MESSAGE })
-  fetchMessages(
-    @Root() { messages }: DisplayingMessagesPayload
-  ): DisplayingMessagesPayload {
+  @Subscription(() => DisplayingMessage, {
+    topics: CHANNEL_MESSAGE,
+    filter: ({ payload, args }) => payload.channelId === args.id,
+  })
+  subscribeToMessages(
+    @Arg('id') id: string,
+    @Root()
+    { channelId, fullname, body, avatarBackground }: DisplayingMessagePayload
+  ): DisplayingMessagePayload {
     return {
-      messages,
+      channelId,
+      fullname,
+      body,
+      avatarBackground,
     };
   }
 
-  @UseMiddleware(isAuth)
-  @Mutation(() => MessageResponse)
+  // @UseMiddleware(isAuth)
+  @Mutation(() => DisplayingMessageResponse)
   async sendMessage(
     @Arg('channelId') channelId: string,
     @Arg('teamId') teamId: string,
     @Arg('body') body: string,
     @PubSub() pubSub: PubSubEngine,
     @Ctx() { req }: Context
-  ) {
-    const userId = req.session!.userId;
+  ): Promise<DisplayingMessageResponse | Error> {
+    try {
+      const userId = req.session!.userId;
+      // const userId = 14;
 
-    // must get member id by retrieving teamid
-    const member = await manager.query(
-      'select id from members where "userId"=$1 and "teamId"=$2',
-      [userId, teamId]
-    );
+      const member = await manager.query(
+        'select id from members where "userId"=$1 and "teamId"=$2',
+        [userId, teamId]
+      );
 
-    console.log('mem', member);
+      const memberId = member[0].id;
 
-    const memberId = member[0].id;
+      await manager
+        .create(Message, {
+          channelId,
+          memberId,
+          body,
+        })
+        .save();
 
-    const message = await manager
-      .create(Message, {
+      const user = await manager.findOne(User, {
+        id: userId,
+      });
+
+      if (!user) {
+        return {
+          ok: false,
+          errorlog: 'cannot find user from given userid',
+          displayingMessage: null,
+        };
+      }
+
+      const payload = {
+        // this must be channelid
         channelId,
-        memberId,
+        fullname: user?.fullname!,
         body,
-      })
-      .save();
+        avatarBackground: user?.avatarBackground,
+      };
 
-    const messages = await manager.query(
-      'select mes.id, u.fullname, u."avatarBackground", mes.body from messages mes inner join members mem on mes."memberId"=mem.id inner join users u on mem."userId"=u.id where "channelId"=$1',
-      [channelId]
-    );
+      await pubSub.publish(CHANNEL_MESSAGE, payload);
 
-    const payload: DisplayingMessagesPayload = {
-      messages,
-    };
-    await pubSub.publish(CHANNEL_MESSAGE, payload);
-
-    return {
-      ok: true,
-      message,
-    };
+      return {
+        ok: true,
+        displayingMessage: payload,
+      };
+    } catch (err) {
+      throw new Error('something went wrong when sending message');
+    }
   }
 }

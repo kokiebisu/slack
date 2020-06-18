@@ -11,7 +11,7 @@ export class DisplayingMessages {
 @ObjectType()
 export class DisplayingMessage {
   @Field()
-  id: number;
+  channelId: string;
 
   @Field()
   fullname: string;
@@ -28,7 +28,7 @@ export interface DisplayingMessagesPayload {
 }
 
 export interface DisplayingMessagePayload {
-  id: number;
+  channelId: string;
 
   fullname: string;
 
@@ -44,7 +44,13 @@ export class MessageResponse extends BaseResponse {
 }
 
 @ObjectType()
+export class DisplayingMessageResponse extends BaseResponse {
+  @Field(() => DisplayingMessage, { nullable: true })
+  displayingMessage: DisplayingMessage | null;
+}
+
+@ObjectType()
 export class ChannelMessagesResponse extends BaseResponse {
-  @Field(() => [DisplayingMessages], { nullable: true })
-  messages: DisplayingMessages[] | null;
+  @Field(() => [DisplayingMessage], { nullable: true })
+  messages: DisplayingMessage[] | null;
 }
