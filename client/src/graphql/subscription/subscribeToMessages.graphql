@@ -1,0 +1,10 @@
+subscription SubscribeToMessages {
+  subscribeToMessages {
+    messages {
+      fullname
+      id
+      body
+      avatarBackground
+    }
+  }
+}

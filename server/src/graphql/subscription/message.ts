@@ -25,7 +25,7 @@ const CHANNEL_MESSAGE = 'channel message';
 @Resolver()
 export class MessageResolver {
   @Subscription(() => DisplayingMessages, { topics: CHANNEL_MESSAGE })
-  fetchMessages(
+  subscribeToMessages(
     @Root() { messages }: DisplayingMessagesPayload
   ): DisplayingMessagesPayload {
     return {
@@ -66,6 +66,8 @@ export class MessageResolver {
       'select mes.id, u.fullname, u."avatarBackground", mes.body from messages mes inner join members mem on mes."memberId"=mem.id inner join users u on mem."userId"=u.id where "channelId"=$1',
       [channelId]
     );
+
+    console.log('messages dsfas', messages);
 
     const payload: DisplayingMessagesPayload = {
       messages,

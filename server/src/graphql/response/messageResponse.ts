@@ -45,6 +45,6 @@ export class MessageResponse extends BaseResponse {
 
 @ObjectType()
 export class ChannelMessagesResponse extends BaseResponse {
-  @Field(() => [DisplayingMessages], { nullable: true })
-  messages: DisplayingMessages[] | null;
+  @Field(() => [DisplayingMessage], { nullable: true })
+  messages: DisplayingMessage[] | null;
 }

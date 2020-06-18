@@ -1,8 +1,9 @@
-subscription FetchMessages {
-  fetchMessages {
+query FetchMessages($channelId: String!) {
+  fetchMessages(channelId: $channelId) {
+    ok
     messages {
-      fullname
       id
+      fullname
       body
       avatarBackground
     }
