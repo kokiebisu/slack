@@ -35,30 +35,32 @@ export const Content = () => {
     variables: { channelId },
   });
 
-  // const {
-  //   data: { subscribeToMessages },
-  // } = useSubscribeToMessagesSubscription();
-
-  const SubscribeToMessagesDocument = gql`
-    subscription SubscribeToMessages {
-      subscribeToMessages {
-        messages {
-          fullname
-          id
-          body
-          avatarBackground
-        }
-      }
-    }
-  `;
-
-  const {
-    data: { fetchMessages } = {},
-    loading: { fetchMessagesLoading },
-    subscribeToMore,
-  } = useFetchMessagesQuery({
-    variables: { channelId },
+  const { data } = useSubscribeToMessagesSubscription({
+    variables: { id: channelId },
   });
+
+  console.log('susfbas', data);
+
+  // const SubscribeToMessagesDocument = gql`
+  //   subscription SubscribeToMessages($id: String!) {
+  //     subscribeToMessages(id: $id) {
+  //       messages {
+  //         fullname
+  //         id
+  //         body
+  //         avatarBackground
+  //       }
+  //     }
+  //   }
+  // `;
+
+  // const {
+  //   data: { fetchMessages } = {},
+  //   loading: { fetchMessagesLoading },
+  //   subscribeToMore,
+  // } = useFetchMessagesQuery({
+  //   variables: { channelId },
+  // });
 
   return (
     <>
@@ -119,29 +121,29 @@ export const Content = () => {
           </Options>
         </b.Box>
         <DateSeperator />
-        {!fetchMessagesLoading && (
-          <b.Box className='section_content'>
-            <Messages
-              messages={fetchMessages?.messages}
-              subscribeToNewMessages={() =>
-                subscribeToMore({
-                  document: SubscribeToMessagesDocument,
-                  variables: { channelId },
-                  updateQuery: (prev, { subscriptionData }) => {
-                    if (!subscriptionData) return prev;
-                    return {
-                      ...prev,
-                      messages: [
-                        ...prev.fetchMessages,
-                        subscriptionData.subscribeToMessages,
-                      ],
-                    };
-                  },
-                })
-              }
-            />
-          </b.Box>
-        )}
+
+        <b.Box className='section_content'>
+          {/* <Messages
+            messages={fetchMessages?.messages}
+            subscribeToNewMessages={() =>
+              subscribeToMore({
+                document: SubscribeToMessagesDocument,
+                variables: { channelId },
+                updateQuery: (prev, { subscriptionData }) => {
+                  if (!subscriptionData) return prev;
+                  return {
+                    ...prev,
+                    messages: [
+                      ...prev.fetchMessages,
+                      subscriptionData.subscribeToMessages,
+                    ],
+                  };
+                },
+              })
+            }
+          /> */}
+        </b.Box>
+
         <MessageBox />
       </Wrapper>
     </>

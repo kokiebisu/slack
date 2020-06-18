@@ -14,31 +14,23 @@ import {
 } from '../../../../../generated/graphql';
 import { useEffect } from 'react';
 
-interface Props {
-  messages: any;
-  subscribeToMore: any;
-}
-
-export const Messages: React.FC<Props> = ({
-  messages,
-  subscribeToNewMessages,
-}) => {
+export const Messages = () => {
   // fetch all messages in channel based on channel id
-  useEffect(() => {
-    // subscribeToMore({
-    //   document: UPDATE_MESSAGE,
-    //   updateQuery: (prev, { subscriptionData }) => {
-    //     if (!subscriptionData.data) return prev;
-    //     return {
-    //       allMessages: [
-    //         subscriptionData.,
-    //         ...prev.allMessages,
-    //       ],
-    //     };
-    //   },
-    // });
-    subscribeToNewMessages();
-  });
+  // useEffect(() => {
+  //   // subscribeToMore({
+  //   //   document: UPDATE_MESSAGE,
+  //   //   updateQuery: (prev, { subscriptionData }) => {
+  //   //     if (!subscriptionData.data) return prev;
+  //   //     return {
+  //   //       allMessages: [
+  //   //         subscriptionData.,
+  //   //         ...prev.allMessages,
+  //   //       ],
+  //   //     };
+  //   //   },
+  //   // });
+  //   subscribeToNewMessages();
+  // });
 
   // const { channelId } = useParams();
   // const { data } = useFetchMessagesQuery({
@@ -57,7 +49,7 @@ export const Messages: React.FC<Props> = ({
 
   return (
     <Wrapper>
-      {data &&
+      {/* {data &&
         data.subscribeToMessages &&
         data.subscribeToMessages.messages &&
         data.subscribeToMessages.messages.map((message) => {
@@ -70,7 +62,7 @@ export const Messages: React.FC<Props> = ({
               body={{ type: 'message', message: message.body }}
             />
           );
-        })}
+        })} */}
     </Wrapper>
   );
 };
