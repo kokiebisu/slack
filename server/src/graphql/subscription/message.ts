@@ -25,7 +25,7 @@ const CHANNEL_MESSAGE = 'channel message';
 export class MessageResolver {
   @Subscription(() => DisplayingMessage, {
     topics: CHANNEL_MESSAGE,
-    filter: ({ payload, args }) => payload.channelID === args.id,
+    filter: ({ payload, args }) => payload.channelId === args.channelID,
   })
   subscribeToMessages(
     @Arg('channelID') channelID: string,
@@ -50,8 +50,8 @@ export class MessageResolver {
     @Ctx() { req }: Context
   ): Promise<DisplayingMessage | null> {
     try {
-      // const userId = req.session!.userId;
-      const userId = 16;
+      const userId = req.session!.userId;
+      // const userId = 16;
 
       const member = await manager.query(
         'select id from members where "userId"=$1 and "teamId"=$2',

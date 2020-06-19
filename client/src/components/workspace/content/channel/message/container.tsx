@@ -63,6 +63,7 @@ export const Messages: React.FC<Props> = () => {
     loading: fetchMessagesLoading,
   } = useQuery(FETCH_MESSAGES, {
     variables: { channelId },
+    fetchPolicy: 'cache-and-network',
   });
 
   const subscribeToNewMessages = (latestChannel: string) =>
