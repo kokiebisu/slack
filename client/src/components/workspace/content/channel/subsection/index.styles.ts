@@ -37,17 +37,17 @@ export const Seperator = styled(b.Box)`
   width: 1.2px;
   background-color: ${({ theme }) => theme.colors.gray__light};
   margin: 0 4px;
+  &.second {
+    display: none;
+    @media ${size['xs']} {
+      display: block;
+    }
+  }
 `;
 
 export const Descriptions = styled(b.Box)`
-  & span {
-    width: 80px;
-    display: inline-block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    @media ${size['11xs']} {
-      width: auto;
-    }
+  display: none;
+  @media ${size['xs']} {
+    display: block;
   }
 `;

@@ -23,6 +23,18 @@ export const Wrapper = styled(b.Box)`
 export const Top = styled(b.Box)`
   padding: 0 19px;
   height: auto;
+
+  & div {
+    &.top__left {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+    }
+
+    &.top__right {
+      width: 100px;
+    }
+  }
 `;
 
 export const Bottom = styled(b.Box)`

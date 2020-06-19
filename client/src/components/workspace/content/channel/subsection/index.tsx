@@ -62,12 +62,12 @@ export const SubSection: React.FC<Props> = ({ channelId }) => {
         </b.Box>
         <b.Box>
           <b.Flex alignItems='center'>
-            <Seperator />
+            <Seperator className='second' />
           </b.Flex>
         </b.Box>
         <Descriptions>
           <b.Flex alignItems='center'>
-            <b.Box>
+            <b.Box className='descriptions__wrapper'>
               <b.Span fontSize={13} color='gray__light'>
                 {getChannelById &&
                   getChannelById!.ok &&
