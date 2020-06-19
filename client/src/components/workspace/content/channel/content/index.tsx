@@ -40,27 +40,29 @@ export const Content = () => {
   const FETCH_MESSAGES = gql`
     query FetchMessages($channelId: String!) {
       fetchMessages(channelId: $channelId) {
-        messages {
-          channelId
-          fullname
-          body
-          avatarBackground
-        }
-      }
-    }
-  `;
-
-  const SUBSCRIBE_TO_MESSAGES = gql`
-    subscription SubscribeToMessages($id: String!) {
-      subscribeToMessages(id: $id) {
+        id
         fullname
-        channelId
         body
         avatarBackground
       }
     }
   `;
-  const { subscribeToMore, data } = useQuery(FETCH_MESSAGES, {
+
+  const SUBSCRIBE_TO_MESSAGES = gql`
+    subscription SubscribeToMessages($channelID: String!) {
+      subscribeToMessages(channelID: $channelID) {
+        id
+        fullname
+        body
+        avatarBackground
+      }
+    }
+  `;
+  const {
+    subscribeToMore,
+    data: fetchMessagesData,
+    loading: fetchMessagesLoading,
+  } = useQuery(FETCH_MESSAGES, {
     variables: { channelId },
   });
 
@@ -125,21 +127,19 @@ export const Content = () => {
         <DateSeperator />
 
         <b.Box className='section_content'>
-          {data && (
+          {!fetchMessagesLoading && (
             <Messages
-              data={data}
+              messages={fetchMessagesData}
               subscribeToNewMessages={() =>
                 subscribeToMore({
                   document: SUBSCRIBE_TO_MESSAGES,
-                  variables: { id: channelId },
+                  variables: { channelID: channelId },
                   updateQuery: (prev, { subscriptionData }) => {
                     if (!subscriptionData.data) return prev;
                     const newMessage =
                       subscriptionData.data.subscribeToMessages;
                     return Object.assign({}, prev, {
-                      fetchMessages: {
-                        messages: [newMessage, ...prev.fetchMessages.messages],
-                      },
+                      fetchMessages: [...prev.fetchMessages, newMessage],
                     });
                   },
                 })

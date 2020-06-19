@@ -114,19 +114,6 @@ export type BelongingUsersResponse = {
   belongingUsers?: Maybe<Array<BelongingUsers>>;
 };
 
-export type DisplayingMessages = {
-  __typename?: 'DisplayingMessages';
-  messages: Array<DisplayingMessage>;
-};
-
-export type DisplayingMessage = {
-  __typename?: 'DisplayingMessage';
-  channelId: Scalars['String'];
-  fullname: Scalars['String'];
-  body: Scalars['String'];
-  avatarBackground: Scalars['String'];
-};
-
 export type MessageResponse = {
   __typename?: 'MessageResponse';
   ok: Scalars['Boolean'];
@@ -134,16 +121,12 @@ export type MessageResponse = {
   message?: Maybe<Message>;
 };
 
-export type DisplayingMessageResponse = {
-  __typename?: 'DisplayingMessageResponse';
-  ok: Scalars['Boolean'];
-  errorlog?: Maybe<Scalars['String']>;
-  displayingMessage?: Maybe<DisplayingMessage>;
-};
-
-export type ChannelMessagesResponse = {
-  __typename?: 'ChannelMessagesResponse';
-  messages?: Maybe<Array<DisplayingMessage>>;
+export type DisplayingMessage = {
+  __typename?: 'DisplayingMessage';
+  id: Scalars['Float'];
+  fullname: Scalars['String'];
+  body: Scalars['String'];
+  avatarBackground: Scalars['String'];
 };
 
 export type TeamResponse = {
@@ -182,7 +165,7 @@ export type Query = {
   channels: ChannelsResponse;
   getBelongingTeams: BelongingTeamsResponse;
   getBelongingUsers: BelongingUsersResponse;
-  fetchMessages: ChannelMessagesResponse;
+  fetchMessages: Array<DisplayingMessage>;
   myTeams: TeamsResponse;
   team: TeamResponse;
   teams: TeamsResponse;
@@ -231,7 +214,7 @@ export type Mutation = {
   register: AuthorizationResponse;
   verifyUserByDigit: AuthorizationResponse;
   createChannel: ChannelResponse;
-  sendMessage: DisplayingMessageResponse;
+  sendMessage: DisplayingMessage;
   createTeam: TeamResponse;
   removeTeam: TeamResponse;
   removeUser: BaseResponse;
@@ -289,7 +272,7 @@ export type Subscription = {
 
 
 export type SubscriptionSubscribeToMessagesArgs = {
-  id: Scalars['String'];
+  channelID: Scalars['String'];
 };
 
 export type CheckEmailQueryVariables = {
@@ -448,13 +431,10 @@ export type FetchMessagesQueryVariables = {
 
 export type FetchMessagesQuery = (
   { __typename?: 'Query' }
-  & { fetchMessages: (
-    { __typename?: 'ChannelMessagesResponse' }
-    & { messages?: Maybe<Array<(
-      { __typename?: 'DisplayingMessage' }
-      & Pick<DisplayingMessage, 'channelId' | 'fullname' | 'body' | 'avatarBackground'>
-    )>> }
-  ) }
+  & { fetchMessages: Array<(
+    { __typename?: 'DisplayingMessage' }
+    & Pick<DisplayingMessage, 'id' | 'fullname' | 'body' | 'avatarBackground'>
+  )> }
 );
 
 export type SendMessageMutationVariables = {
@@ -467,17 +447,13 @@ export type SendMessageMutationVariables = {
 export type SendMessageMutation = (
   { __typename?: 'Mutation' }
   & { sendMessage: (
-    { __typename?: 'DisplayingMessageResponse' }
-    & Pick<DisplayingMessageResponse, 'ok'>
-    & { displayingMessage?: Maybe<(
-      { __typename?: 'DisplayingMessage' }
-      & Pick<DisplayingMessage, 'channelId' | 'fullname' | 'body' | 'avatarBackground'>
-    )> }
+    { __typename?: 'DisplayingMessage' }
+    & Pick<DisplayingMessage, 'id' | 'fullname' | 'body' | 'avatarBackground'>
   ) }
 );
 
 export type SubscribeToMessagesSubscriptionVariables = {
-  id: Scalars['String'];
+  channelID: Scalars['String'];
 };
 
 
@@ -485,7 +461,7 @@ export type SubscribeToMessagesSubscription = (
   { __typename?: 'Subscription' }
   & { subscribeToMessages: (
     { __typename?: 'DisplayingMessage' }
-    & Pick<DisplayingMessage, 'fullname' | 'channelId' | 'body' | 'avatarBackground'>
+    & Pick<DisplayingMessage, 'id' | 'fullname' | 'body' | 'avatarBackground'>
   ) }
 );
 
@@ -934,12 +910,10 @@ export type GetBelongingUsersQueryResult = ApolloReactCommon.QueryResult<GetBelo
 export const FetchMessagesDocument = gql`
     query FetchMessages($channelId: String!) {
   fetchMessages(channelId: $channelId) {
-    messages {
-      channelId
-      fullname
-      body
-      avatarBackground
-    }
+    id
+    fullname
+    body
+    avatarBackground
   }
 }
     `;
@@ -972,13 +946,10 @@ export type FetchMessagesQueryResult = ApolloReactCommon.QueryResult<FetchMessag
 export const SendMessageDocument = gql`
     mutation SendMessage($channelId: String!, $teamId: String!, $body: String!) {
   sendMessage(channelId: $channelId, body: $body, teamId: $teamId) {
-    ok
-    displayingMessage {
-      channelId
-      fullname
-      body
-      avatarBackground
-    }
+    id
+    fullname
+    body
+    avatarBackground
   }
 }
     `;
@@ -1010,10 +981,10 @@ export type SendMessageMutationHookResult = ReturnType<typeof useSendMessageMuta
 export type SendMessageMutationResult = ApolloReactCommon.MutationResult<SendMessageMutation>;
 export type SendMessageMutationOptions = ApolloReactCommon.BaseMutationOptions<SendMessageMutation, SendMessageMutationVariables>;
 export const SubscribeToMessagesDocument = gql`
-    subscription SubscribeToMessages($id: String!) {
-  subscribeToMessages(id: $id) {
+    subscription SubscribeToMessages($channelID: String!) {
+  subscribeToMessages(channelID: $channelID) {
+    id
     fullname
-    channelId
     body
     avatarBackground
   }
@@ -1032,7 +1003,7 @@ export const SubscribeToMessagesDocument = gql`
  * @example
  * const { data, loading, error } = useSubscribeToMessagesSubscription({
  *   variables: {
- *      id: // value for 'id'
+ *      channelID: // value for 'channelID'
  *   },
  * });
  */

@@ -8,17 +8,15 @@ import {
   Root,
   PubSub,
   PubSubEngine,
+  Query,
 } from 'type-graphql';
 import { getManager } from 'typeorm';
 import { Message } from '../../models/Message';
-import {
-  DisplayingMessageResponse,
-  DisplayingMessagePayload,
-  DisplayingMessage,
-} from '../response/messageResponse';
+
 import { Context } from '../../interface/Context';
 // import { isAuth } from '../../middleware/isAuthenticated';
 import { User } from '../../models/User';
+import { DisplayingMessage } from '../response/subscriptionResponse';
 
 const manager = getManager();
 const CHANNEL_MESSAGE = 'channel message';
@@ -27,15 +25,15 @@ const CHANNEL_MESSAGE = 'channel message';
 export class MessageResolver {
   @Subscription(() => DisplayingMessage, {
     topics: CHANNEL_MESSAGE,
-    filter: ({ payload, args }) => payload.channelId === args.id,
+    filter: ({ payload, args }) => payload.channelID === args.id,
   })
   subscribeToMessages(
-    @Arg('id') id: string,
+    @Arg('channelID') channelID: string,
     @Root()
-    { channelId, fullname, body, avatarBackground }: DisplayingMessagePayload
-  ): DisplayingMessagePayload {
+    { id, fullname, body, avatarBackground }: DisplayingMessage
+  ): DisplayingMessage {
     return {
-      channelId,
+      id,
       fullname,
       body,
       avatarBackground,
@@ -43,17 +41,17 @@ export class MessageResolver {
   }
 
   // @UseMiddleware(isAuth)
-  @Mutation(() => DisplayingMessageResponse)
+  @Mutation(() => DisplayingMessage)
   async sendMessage(
     @Arg('channelId') channelId: string,
     @Arg('teamId') teamId: string,
     @Arg('body') body: string,
     @PubSub() pubSub: PubSubEngine,
     @Ctx() { req }: Context
-  ): Promise<DisplayingMessageResponse | Error> {
+  ): Promise<DisplayingMessage | null> {
     try {
-      const userId = req.session!.userId;
-      // const userId = 14;
+      // const userId = req.session!.userId;
+      const userId = 16;
 
       const member = await manager.query(
         'select id from members where "userId"=$1 and "teamId"=$2',
@@ -62,7 +60,7 @@ export class MessageResolver {
 
       const memberId = member[0].id;
 
-      await manager
+      const message = await manager
         .create(Message, {
           channelId,
           memberId,
@@ -75,15 +73,12 @@ export class MessageResolver {
       });
 
       if (!user) {
-        return {
-          ok: false,
-          errorlog: 'cannot find user from given userid',
-          displayingMessage: null,
-        };
+        return null;
       }
 
       const payload = {
         // this must be channelid
+        id: message.id,
         channelId,
         fullname: user?.fullname!,
         body,
@@ -93,11 +88,29 @@ export class MessageResolver {
       await pubSub.publish(CHANNEL_MESSAGE, payload);
 
       return {
-        ok: true,
-        displayingMessage: payload,
+        id: message.id,
+        fullname: user?.fullname!,
+        body,
+        avatarBackground: user?.avatarBackground!,
       };
     } catch (err) {
       throw new Error('something went wrong when sending message');
+    }
+  }
+
+  @Query(() => [DisplayingMessage])
+  async fetchMessages(
+    @Arg('channelId') channelId: string
+  ): Promise<[DisplayingMessage] | Error> {
+    try {
+      const data = await manager.query(
+        'select mes.id, u.fullname, u."avatarBackground", mes.body from messages mes inner join members mem on mes."memberId"=mem.id inner join users u on mem."userId"=u.id where "channelId"=$1',
+        [channelId]
+      );
+
+      return data;
+    } catch (err) {
+      throw new Error(err);
     }
   }
 }
