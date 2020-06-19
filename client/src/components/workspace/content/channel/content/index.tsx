@@ -37,35 +37,6 @@ export const Content = () => {
     variables: { channelId },
   });
 
-  const FETCH_MESSAGES = gql`
-    query FetchMessages($channelId: String!) {
-      fetchMessages(channelId: $channelId) {
-        id
-        fullname
-        body
-        avatarBackground
-      }
-    }
-  `;
-
-  const SUBSCRIBE_TO_MESSAGES = gql`
-    subscription SubscribeToMessages($channelID: String!) {
-      subscribeToMessages(channelID: $channelID) {
-        id
-        fullname
-        body
-        avatarBackground
-      }
-    }
-  `;
-  const {
-    subscribeToMore,
-    data: fetchMessagesData,
-    loading: fetchMessagesLoading,
-  } = useQuery(FETCH_MESSAGES, {
-    variables: { channelId },
-  });
-
   return (
     <>
       <Wrapper>
@@ -127,27 +98,8 @@ export const Content = () => {
         <DateSeperator />
 
         <b.Box className='section_content'>
-          {!fetchMessagesLoading && (
-            <Messages
-              messages={fetchMessagesData}
-              subscribeToNewMessages={() =>
-                subscribeToMore({
-                  document: SUBSCRIBE_TO_MESSAGES,
-                  variables: { channelID: channelId },
-                  updateQuery: (prev, { subscriptionData }) => {
-                    if (!subscriptionData.data) return prev;
-                    const newMessage =
-                      subscriptionData.data.subscribeToMessages;
-                    return Object.assign({}, prev, {
-                      fetchMessages: [...prev.fetchMessages, newMessage],
-                    });
-                  },
-                })
-              }
-            />
-          )}
+          <Messages />
         </b.Box>
-
         <MessageBox />
       </Wrapper>
     </>

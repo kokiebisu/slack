@@ -14,36 +14,78 @@ import {
 } from '../../../../../generated/graphql';
 import { useEffect, useRef } from 'react';
 
-interface Props {
-  messages: any;
-  subscribeToNewMessages: any;
-  // data: any;
-}
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/react-hooks';
+
+interface Props {}
 
 interface DisplayingMessage {
-  channelId: string;
+  id: number;
   fullname: string;
-  body: string;
   avatarBackground: string;
+  body: string;
 }
 
-export const Messages: React.FC<Props> = ({
-  subscribeToNewMessages,
-  messages,
-}) => {
+export const Messages: React.FC<Props> = () => {
+  const { channelId } = useParams();
   useEffect(() => {
-    subscribeToNewMessages();
-    scrollRef.scrollIntoView;
-  }, []);
+    const unsubscribe = subscribeToNewMessages(channelId);
+    return () => {
+      unsubscribe();
+    };
+  }, [channelId]);
 
-  const scrollRef = useRef(null);
+  const SUBSCRIBE_TO_MESSAGES = gql`
+    subscription SubscribeToMessages($channelID: String!) {
+      subscribeToMessages(channelID: $channelID) {
+        id
+        fullname
+        body
+        avatarBackground
+      }
+    }
+  `;
 
-  console.log('messsss', messages);
+  const FETCH_MESSAGES = gql`
+    query FetchMessages($channelId: String!) {
+      fetchMessages(channelId: $channelId) {
+        id
+        fullname
+        body
+        avatarBackground
+      }
+    }
+  `;
+
+  const {
+    subscribeToMore,
+    data: fetchMessagesData,
+    loading: fetchMessagesLoading,
+  } = useQuery(FETCH_MESSAGES, {
+    variables: { channelId },
+  });
+
+  const subscribeToNewMessages = (latestChannel: string) =>
+    subscribeToMore({
+      document: SUBSCRIBE_TO_MESSAGES,
+      variables: { channelID: latestChannel },
+      updateQuery: (prev, { subscriptionData }) => {
+        if (!subscriptionData.data) return prev;
+        const newMessage = subscriptionData.data.subscribeToMessages;
+        return Object.assign({}, prev, {
+          fetchMessages: [...prev.fetchMessages, newMessage],
+        });
+      },
+    });
+
+  if (fetchMessagesData) {
+    console.log('log', fetchMessagesData.fetchMessages);
+  }
 
   return (
-    <Wrapper ref={scrollRef}>
-      {messages &&
-        messages.fetchMessages.map(
+    <Wrapper>
+      {fetchMessagesData &&
+        fetchMessagesData.fetchMessages.map(
           (message: DisplayingMessage, index: number) => {
             return (
               <Message
