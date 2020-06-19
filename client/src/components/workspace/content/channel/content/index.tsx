@@ -28,39 +28,43 @@ import {
 import { MessageBox } from '../../messagebox/layout';
 
 import gql from 'graphql-tag';
+import { useQuery, useSubscription } from 'react-apollo';
 
 export const Content = () => {
   const { channelId } = useParams();
+  // Queries
   const { data: { getChannelById } = {} } = useGetChannelByIdQuery({
     variables: { channelId },
   });
 
-  const { data: subscription } = useSubscribeToMessagesSubscription({
-    variables: { id: channelId },
-  });
+  const FETCH_MESSAGES = gql`
+    query FetchMessages($channelId: String!) {
+      fetchMessages(channelId: $channelId) {
+        id
+        fullname
+        body
+        avatarBackground
+      }
+    }
+  `;
 
+  const SUBSCRIBE_TO_MESSAGES = gql`
+    subscription SubscribeToMessages($channelID: String!) {
+      subscribeToMessages(channelID: $channelID) {
+        id
+        fullname
+        body
+        avatarBackground
+      }
+    }
+  `;
   const {
-    data: fetch,
-    loading: fetchLoading,
     subscribeToMore,
-  } = useFetchMessagesQuery({
+    data: fetchMessagesData,
+    loading: fetchMessagesLoading,
+  } = useQuery(FETCH_MESSAGES, {
     variables: { channelId },
   });
-
-  // const SUBSCRIBE_TO_MESSAGES = gql`
-  //   subscription SubscribeToMessages($id: String!) {
-  //     subscribeToMessages(id: $id) {
-  //       messages {
-  //         fullname
-  //         id
-  //         body
-  //         avatarBackground
-  //       }
-  //     }
-  //   }
-  // `;
-
-  console.log('fetch', fetch);
 
   return (
     <>
@@ -123,25 +127,23 @@ export const Content = () => {
         <DateSeperator />
 
         <b.Box className='section_content'>
-          {fetch && fetch.fetchMessages && (
+          {!fetchMessagesLoading && (
             <Messages
-              messages={fetch.fetchMessages!.messages}
-              // subscribeToNewMessages={() =>
-              //   subscribeToMore({
-              //     document: SubscribeToMessagesDocument,
-              //     variables: { channelId },
-              //     updateQuery: (prev, { subscriptionData }) => {
-              //       if (!subscriptionData) return prev;
-              //       return {
-              //         ...prev,
-              //         messages: [
-              //           ...prev.fetchMessages,
-              //           subscriptionData.subscribeToMessages,
-              //         ],
-              //       };
-              //     },
-              //   })
-              // }
+              messages={fetchMessagesData}
+              subscribeToNewMessages={() =>
+                subscribeToMore({
+                  document: SUBSCRIBE_TO_MESSAGES,
+                  variables: { channelID: channelId },
+                  updateQuery: (prev, { subscriptionData }) => {
+                    if (!subscriptionData.data) return prev;
+                    const newMessage =
+                      subscriptionData.data.subscribeToMessages;
+                    return Object.assign({}, prev, {
+                      fetchMessages: [...prev.fetchMessages, newMessage],
+                    });
+                  },
+                })
+              }
             />
           )}
         </b.Box>

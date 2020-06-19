@@ -12,16 +12,12 @@ import {
   useSubscribeToMessagesSubscription,
   useFetchMessagesQuery,
 } from '../../../../../generated/graphql';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface Props {
-  messages:
-    | ({ __typename?: 'DisplayingMessage' | undefined } & Pick<
-        DisplayingMessage,
-        'channelId' | 'body' | 'fullname' | 'avatarBackground'
-      >)[]
-    | null
-    | undefined;
+  messages: any;
+  subscribeToNewMessages: any;
+  // data: any;
 }
 
 interface DisplayingMessage {
@@ -31,39 +27,35 @@ interface DisplayingMessage {
   avatarBackground: string;
 }
 
-export const Messages: React.FC<Props> = ({ messages }) => {
-  // fetch all messages in channel based on channel id
-  // useEffect(() => {
-  //   // subscribeToMore({
-  //   //   document: UPDATE_MESSAGE,
-  //   //   updateQuery: (prev, { subscriptionData }) => {
-  //   //     if (!subscriptionData.data) return prev;
-  //   //     return {
-  //   //       allMessages: [
-  //   //         subscriptionData.,
-  //   //         ...prev.allMessages,
-  //   //       ],
-  //   //     };
-  //   //   },
-  //   // });
-  //   subscribeToNewMessages();
-  // });
-  console.log('conts', messages);
+export const Messages: React.FC<Props> = ({
+  subscribeToNewMessages,
+  messages,
+}) => {
+  useEffect(() => {
+    subscribeToNewMessages();
+    scrollRef.scrollIntoView;
+  }, []);
+
+  const scrollRef = useRef(null);
+
+  console.log('messsss', messages);
 
   return (
-    <Wrapper>
+    <Wrapper ref={scrollRef}>
       {messages &&
-        messages.map((message, index) => {
-          return (
-            <Message
-              key={index}
-              sender={message.fullname}
-              avatar={message.avatarBackground}
-              time='not coded'
-              body={{ type: 'message', message: message.body }}
-            />
-          );
-        })}
+        messages.fetchMessages.map(
+          (message: DisplayingMessage, index: number) => {
+            return (
+              <Message
+                key={index}
+                sender={message.fullname}
+                avatar={message.avatarBackground}
+                time='not coded'
+                body={{ type: 'message', message: message.body }}
+              />
+            );
+          }
+        )}
     </Wrapper>
   );
 };
