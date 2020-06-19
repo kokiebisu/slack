@@ -50,7 +50,7 @@ export class DisplayingMessageResponse extends BaseResponse {
 }
 
 @ObjectType()
-export class ChannelMessagesResponse extends BaseResponse {
+export class ChannelMessagesResponse {
   @Field(() => [DisplayingMessage], { nullable: true })
   messages: DisplayingMessage[] | null;
 }

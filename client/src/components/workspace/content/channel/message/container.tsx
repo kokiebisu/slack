@@ -15,13 +15,15 @@ import {
 import { useEffect } from 'react';
 
 interface Props {
-  messages:
-    | ({ __typename?: 'DisplayingMessage' | undefined } & Pick<
-        DisplayingMessage,
-        'channelId' | 'body' | 'fullname' | 'avatarBackground'
-      >)[]
-    | null
-    | undefined;
+  // messages:
+  //   | ({ __typename?: 'DisplayingMessage' | undefined } & Pick<
+  //       DisplayingMessage,
+  //       'channelId' | 'body' | 'fullname' | 'avatarBackground'
+  //     >)[]
+  //   | null
+  //   | undefined;
+  subscribeToNewMessages: any;
+  data: any;
 }
 
 interface DisplayingMessage {
@@ -31,28 +33,17 @@ interface DisplayingMessage {
   avatarBackground: string;
 }
 
-export const Messages: React.FC<Props> = ({ messages }) => {
-  // fetch all messages in channel based on channel id
-  // useEffect(() => {
-  //   // subscribeToMore({
-  //   //   document: UPDATE_MESSAGE,
-  //   //   updateQuery: (prev, { subscriptionData }) => {
-  //   //     if (!subscriptionData.data) return prev;
-  //   //     return {
-  //   //       allMessages: [
-  //   //         subscriptionData.,
-  //   //         ...prev.allMessages,
-  //   //       ],
-  //   //     };
-  //   //   },
-  //   // });
-  //   subscribeToNewMessages();
-  // });
-  console.log('conts', messages);
+export const Messages: React.FC<Props> = ({ subscribeToNewMessages, data }) => {
+  useEffect(() => {
+    subscribeToNewMessages();
+    console.log('result', data);
+  });
+
+  console.log('result', data);
 
   return (
     <Wrapper>
-      {messages &&
+      {/* {messages &&
         messages.map((message, index) => {
           return (
             <Message
@@ -63,7 +54,7 @@ export const Messages: React.FC<Props> = ({ messages }) => {
               body={{ type: 'message', message: message.body }}
             />
           );
-        })}
+        })} */}
     </Wrapper>
   );
 };

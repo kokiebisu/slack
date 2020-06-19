@@ -143,8 +143,6 @@ export type DisplayingMessageResponse = {
 
 export type ChannelMessagesResponse = {
   __typename?: 'ChannelMessagesResponse';
-  ok: Scalars['Boolean'];
-  errorlog?: Maybe<Scalars['String']>;
   messages?: Maybe<Array<DisplayingMessage>>;
 };
 
@@ -452,7 +450,6 @@ export type FetchMessagesQuery = (
   { __typename?: 'Query' }
   & { fetchMessages: (
     { __typename?: 'ChannelMessagesResponse' }
-    & Pick<ChannelMessagesResponse, 'ok'>
     & { messages?: Maybe<Array<(
       { __typename?: 'DisplayingMessage' }
       & Pick<DisplayingMessage, 'channelId' | 'fullname' | 'body' | 'avatarBackground'>
@@ -937,7 +934,6 @@ export type GetBelongingUsersQueryResult = ApolloReactCommon.QueryResult<GetBelo
 export const FetchMessagesDocument = gql`
     query FetchMessages($channelId: String!) {
   fetchMessages(channelId: $channelId) {
-    ok
     messages {
       channelId
       fullname

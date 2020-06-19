@@ -1,6 +1,10 @@
 import { Resolver, Query, Arg } from 'type-graphql';
 import { getManager } from 'typeorm';
-import { ChannelMessagesResponse } from '../response/messageResponse';
+import {
+  ChannelMessagesResponse,
+  DisplayingMessage,
+  DisplayingMessages,
+} from '../response/messageResponse';
 
 const manager = getManager();
 
@@ -13,7 +17,7 @@ interface FetchMessageInterface {
 
 @Resolver()
 export class MessageResolver {
-  @Query(() => ChannelMessagesResponse)
+  @Query(() => DisplayingMessages)
   async fetchMessages(
     @Arg('channelId') channelId: string
   ): Promise<ChannelMessagesResponse | Error> {
@@ -28,7 +32,6 @@ export class MessageResolver {
       });
 
       return {
-        ok: true,
         messages: data,
       };
     } catch (err) {
