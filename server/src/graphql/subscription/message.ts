@@ -30,13 +30,14 @@ export class MessageResolver {
   subscribeToMessages(
     @Arg('channelID') channelID: string,
     @Root()
-    { id, fullname, body, avatarBackground }: DisplayingMessage
+    { id, fullname, body, avatarBackground, createdOn }: DisplayingMessage
   ): DisplayingMessage {
     return {
       id,
       fullname,
       body,
       avatarBackground,
+      createdOn,
     };
   }
 
@@ -60,11 +61,15 @@ export class MessageResolver {
 
       const memberId = member[0].id;
 
+      // date
+      const now = new Date();
+
       const message = await manager
         .create(Message, {
           channelId,
           memberId,
           body,
+          createdOn: now,
         })
         .save();
 
@@ -83,6 +88,7 @@ export class MessageResolver {
         fullname: user?.fullname!,
         body,
         avatarBackground: user?.avatarBackground,
+        createdOn: now,
       };
 
       await pubSub.publish(CHANNEL_MESSAGE, payload);
@@ -92,6 +98,7 @@ export class MessageResolver {
         fullname: user?.fullname!,
         body,
         avatarBackground: user?.avatarBackground!,
+        createdOn: now,
       };
     } catch (err) {
       throw new Error('something went wrong when sending message');
@@ -104,7 +111,7 @@ export class MessageResolver {
   ): Promise<[DisplayingMessage] | Error> {
     try {
       const data = await manager.query(
-        'select mes.id, u.fullname, u."avatarBackground", mes.body from messages mes inner join members mem on mes."memberId"=mem.id inner join users u on mem."userId"=u.id where "channelId"=$1',
+        'select mes.id, u.fullname, u."avatarBackground", mes.body, mes."createdOn" from messages mes inner join members mem on mes."memberId"=mem.id inner join users u on mem."userId"=u.id where "channelId"=$1',
         [channelId]
       );
 

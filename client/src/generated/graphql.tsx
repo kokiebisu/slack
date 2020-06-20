@@ -24,7 +24,9 @@ export type Message = {
   memberId: Scalars['Float'];
   channelId: Scalars['String'];
   body: Scalars['String'];
+  createdOn: Scalars['DateTime'];
 };
+
 
 export type Channel = {
   __typename?: 'Channel';
@@ -36,7 +38,6 @@ export type Channel = {
   description?: Maybe<Scalars['String']>;
   created_on: Scalars['DateTime'];
 };
-
 
 export type Team = {
   __typename?: 'Team';
@@ -127,6 +128,7 @@ export type DisplayingMessage = {
   fullname: Scalars['String'];
   body: Scalars['String'];
   avatarBackground: Scalars['String'];
+  createdOn: Scalars['DateTime'];
 };
 
 export type TeamResponse = {
@@ -433,7 +435,7 @@ export type FetchMessagesQuery = (
   { __typename?: 'Query' }
   & { fetchMessages: Array<(
     { __typename?: 'DisplayingMessage' }
-    & Pick<DisplayingMessage, 'id' | 'fullname' | 'body' | 'avatarBackground'>
+    & Pick<DisplayingMessage, 'id' | 'fullname' | 'body' | 'avatarBackground' | 'createdOn'>
   )> }
 );
 
@@ -461,7 +463,7 @@ export type SubscribeToMessagesSubscription = (
   { __typename?: 'Subscription' }
   & { subscribeToMessages: (
     { __typename?: 'DisplayingMessage' }
-    & Pick<DisplayingMessage, 'id' | 'fullname' | 'body' | 'avatarBackground'>
+    & Pick<DisplayingMessage, 'id' | 'fullname' | 'body' | 'avatarBackground' | 'createdOn'>
   ) }
 );
 
@@ -914,6 +916,7 @@ export const FetchMessagesDocument = gql`
     fullname
     body
     avatarBackground
+    createdOn
   }
 }
     `;
@@ -987,6 +990,7 @@ export const SubscribeToMessagesDocument = gql`
     fullname
     body
     avatarBackground
+    createdOn
   }
 }
     `;

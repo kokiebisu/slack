@@ -13,4 +13,7 @@ export class DisplayingMessage {
 
   @Field()
   avatarBackground: string;
+
+  @Field()
+  createdOn: Date;
 }
