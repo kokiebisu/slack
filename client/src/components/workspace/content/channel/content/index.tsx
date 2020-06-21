@@ -25,16 +25,10 @@ import { MessageContainer } from '../container';
 
 export const Content = () => {
   const { channelId } = useParams();
-  console.log('channelId', channelId);
-  // Queries
   const { data: { getChannelById } = {}, loading } = useGetChannelByIdQuery({
     variables: { channelId },
     fetchPolicy: 'cache-and-network',
   });
-
-  if (getChannelById) {
-    console.log('as', getChannelById);
-  }
 
   return (
     <>
