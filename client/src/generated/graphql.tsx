@@ -24,7 +24,7 @@ export type Message = {
   memberId: Scalars['Float'];
   channelId: Scalars['String'];
   body: Scalars['String'];
-  createdOn: Scalars['DateTime'];
+  createdAt: Scalars['DateTime'];
 };
 
 
@@ -36,7 +36,7 @@ export type Channel = {
   teamId: Scalars['String'];
   topic?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
-  created_on: Scalars['DateTime'];
+  createdAt: Scalars['DateTime'];
 };
 
 export type Team = {
@@ -79,9 +79,9 @@ export type ChannelWithFullName = {
   name: Scalars['String'];
   isPublic: Scalars['Boolean'];
   teamId: Scalars['String'];
-  topic?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
-  created_on: Scalars['DateTime'];
+  description: Scalars['String'];
+  createdAt: Scalars['String'];
+  topic: Scalars['String'];
   fullname: Scalars['String'];
 };
 
@@ -147,7 +147,7 @@ export type DisplayingMessage = {
   fullname: Scalars['String'];
   body: Scalars['String'];
   avatarBackground: Scalars['String'];
-  createdOn: Scalars['String'];
+  createdAt: Scalars['String'];
 };
 
 export type TeamResponse = {
@@ -374,7 +374,7 @@ export type GetChannelByIdQuery = (
     & Pick<ChannelWithFullNameResponse, 'ok' | 'errorlog'>
     & { channel?: Maybe<(
       { __typename?: 'ChannelWithFullName' }
-      & Pick<ChannelWithFullName, 'name' | 'topic' | 'isPublic' | 'description' | 'fullname'>
+      & Pick<ChannelWithFullName, 'id' | 'name' | 'topic' | 'isPublic' | 'fullname' | 'description' | 'createdAt'>
     )> }
   ) }
 );
@@ -454,7 +454,7 @@ export type FetchMessagesQuery = (
   { __typename?: 'Query' }
   & { fetchMessages: Array<(
     { __typename?: 'DisplayingMessage' }
-    & Pick<DisplayingMessage, 'id' | 'fullname' | 'body' | 'avatarBackground' | 'createdOn'>
+    & Pick<DisplayingMessage, 'id' | 'fullname' | 'body' | 'avatarBackground' | 'createdAt'>
   )> }
 );
 
@@ -482,7 +482,7 @@ export type SubscribeToMessagesSubscription = (
   { __typename?: 'Subscription' }
   & { subscribeToMessages: (
     { __typename?: 'DisplayingMessage' }
-    & Pick<DisplayingMessage, 'id' | 'fullname' | 'body' | 'avatarBackground' | 'createdOn'>
+    & Pick<DisplayingMessage, 'id' | 'fullname' | 'body' | 'avatarBackground' | 'createdAt'>
   ) }
 );
 
@@ -742,11 +742,13 @@ export const GetChannelByIdDocument = gql`
     ok
     errorlog
     channel {
+      id
       name
       topic
       isPublic
-      description
       fullname
+      description
+      createdAt
     }
   }
 }
@@ -936,7 +938,7 @@ export const FetchMessagesDocument = gql`
     fullname
     body
     avatarBackground
-    createdOn
+    createdAt
   }
 }
     `;
@@ -1010,7 +1012,7 @@ export const SubscribeToMessagesDocument = gql`
     fullname
     body
     avatarBackground
-    createdOn
+    createdAt
   }
 }
     `;

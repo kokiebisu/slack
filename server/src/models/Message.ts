@@ -35,6 +35,6 @@ export class Message extends BaseEntity {
   body: string;
 
   @Field(() => Date)
-  @Column('timestamptz')
-  createdOn: Date;
+  @Column('timestamp', { default: () => 'CURRENT_TIMESTAMP' })
+  createdAt: Date;
 }

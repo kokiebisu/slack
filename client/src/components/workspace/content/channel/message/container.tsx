@@ -15,19 +15,20 @@ interface DisplayingMessage {
   fullname: string;
   avatarBackground: string;
   body: string;
-  createdOn: string;
+  createdAt: string;
 }
 
 export const Messages: React.FC<Props> = ({ messages }) => {
   return (
     <Wrapper>
       {messages.map((message: DisplayingMessage, index: number) => {
+        console.log(message);
         return (
           <Message
             key={index}
             sender={message.fullname}
             avatar={message.avatarBackground}
-            time={message.createdOn}
+            time={message.createdAt}
             body={{ type: 'message', message: message.body }}
           />
         );

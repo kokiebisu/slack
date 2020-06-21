@@ -3,8 +3,29 @@ import { Channel } from '../../models/Channel';
 import { BaseResponse } from './baseResponse';
 
 @ObjectType()
-export class ChannelWithFullName extends Channel {
-  @Field()
+export class ChannelWithFullName {
+  @Field(() => String)
+  id: string;
+
+  @Field(() => String)
+  name: string;
+
+  @Field(() => Boolean)
+  isPublic: boolean;
+
+  @Field(() => String)
+  teamId: string;
+
+  @Field(() => String)
+  description: string;
+
+  @Field(() => String)
+  createdAt: string;
+
+  @Field(() => String)
+  topic: string;
+
+  @Field(() => String)
   fullname: string;
 }
 

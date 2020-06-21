@@ -1,4 +1,4 @@
-import { ObjectType, Field } from 'type-graphql';
+import { ObjectType, Field, Int } from 'type-graphql';
 import {
   PrimaryGeneratedColumn,
   Column,
@@ -48,8 +48,8 @@ export class Channel extends BaseEntity {
   channelMembers: ChannelMember[];
 
   @Field(() => Date)
-  @Column('bigint', { default: Date.now() })
-  created_on: Date;
+  @Column('timestamp', { default: () => 'CURRENT_TIMESTAMP' })
+  createdAt: Date;
 
   @OneToMany(() => Message, (message) => message.channel)
   messages: Message[];

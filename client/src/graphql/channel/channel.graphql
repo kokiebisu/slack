@@ -3,11 +3,13 @@ query GetChannelById($channelId: String!) {
     ok
     errorlog
     channel {
+      id
       name
       topic
       isPublic
-      description
       fullname
+      description
+      createdAt
     }
   }
 }

@@ -4,6 +4,6 @@ query FetchMessages($channelId: String!) {
     fullname
     body
     avatarBackground
-    createdOn
+    createdAt
   }
 }

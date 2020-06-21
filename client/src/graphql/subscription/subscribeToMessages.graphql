@@ -4,6 +4,6 @@ subscription SubscribeToMessages($channelID: String!) {
     fullname
     body
     avatarBackground
-    createdOn
+    createdAt
   }
 }

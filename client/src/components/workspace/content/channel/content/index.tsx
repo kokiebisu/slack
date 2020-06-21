@@ -26,7 +26,7 @@ import { MessageContainer } from '../container';
 export const Content = () => {
   const { channelId } = useParams();
   // Queries
-  const { data: { getChannelById } = {} } = useGetChannelByIdQuery({
+  const { data: { getChannelById } = {}, loading } = useGetChannelByIdQuery({
     variables: { channelId },
   });
 
@@ -44,8 +44,12 @@ export const Content = () => {
               <b.Span className='creator'>
                 @{getChannelById?.channel?.fullname}
               </b.Span>{' '}
-              created this channel on June 5th. This is the very beginning of
-              the{' '}
+              created this channel on{' '}
+              {getChannelById?.channel?.createdAt
+                .split(',')
+                .slice(0, 2)
+                .join(',')}
+              . This is the very beginning of the{' '}
               <b.Span className='channel_name'>
                 #{getChannelById?.channel?.name}
               </b.Span>{' '}

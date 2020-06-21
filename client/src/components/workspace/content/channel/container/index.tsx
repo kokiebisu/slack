@@ -33,7 +33,7 @@ export const MessageContainer = () => {
         fullname
         body
         avatarBackground
-        createdOn
+        createdAt
       }
     }
   `;
@@ -45,7 +45,7 @@ export const MessageContainer = () => {
         fullname
         body
         avatarBackground
-        createdOn
+        createdAt
       }
     }
   `;
@@ -72,30 +72,30 @@ export const MessageContainer = () => {
       },
     });
 
-  let messagesByDates;
-
   // this gives an object with dates as keys
 
   type tplotOptions = {
     [key: string]: boolean;
   };
 
+  let messagesByDates;
+
   if (!fetchMessagesLoading && fetchMessagesData) {
     let groups: tplotOptions = fetchMessagesData.fetchMessages.reduce(
       (groups: any, message: any) => {
-        const createdOn = message.createdOn.split(',').slice(0, 2);
-        if (!groups[createdOn]) {
-          groups[createdOn] = [];
+        const createdAt = message.createdAt.split(',').slice(0, 2);
+        if (!groups[createdAt]) {
+          groups[createdAt] = [];
         }
-        groups[createdOn].push(message);
+        groups[createdAt].push(message);
         return groups;
       },
       {}
     );
-    messagesByDates = Object.keys(groups).map((createdOn) => {
+    messagesByDates = Object.keys(groups).map((createdAt) => {
       return {
-        createdOn,
-        messages: groups[createdOn],
+        createdAt,
+        messages: groups[createdAt],
       };
     });
   }
@@ -108,7 +108,7 @@ export const MessageContainer = () => {
             return (
               <React.Fragment key={index}>
                 <DateSeperator
-                  date={element.createdOn.split(',').slice(0, 2).join(', ')}
+                  date={element.createdAt.split(',').slice(0, 2).join(', ')}
                 />
                 <b.Box className='section_content'>
                   <Messages messages={element.messages} />
