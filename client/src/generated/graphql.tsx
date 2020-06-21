@@ -73,6 +73,25 @@ export type AuthorizationResponse = {
   errorlog?: Maybe<Scalars['String']>;
 };
 
+export type ChannelWithFullName = {
+  __typename?: 'ChannelWithFullName';
+  id: Scalars['String'];
+  name: Scalars['String'];
+  isPublic: Scalars['Boolean'];
+  teamId: Scalars['String'];
+  topic?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  created_on: Scalars['DateTime'];
+  fullname: Scalars['String'];
+};
+
+export type ChannelWithFullNameResponse = {
+  __typename?: 'ChannelWithFullNameResponse';
+  ok: Scalars['Boolean'];
+  errorlog?: Maybe<Scalars['String']>;
+  channel?: Maybe<ChannelWithFullName>;
+};
+
 export type ChannelResponse = {
   __typename?: 'ChannelResponse';
   ok: Scalars['Boolean'];
@@ -128,7 +147,7 @@ export type DisplayingMessage = {
   fullname: Scalars['String'];
   body: Scalars['String'];
   avatarBackground: Scalars['String'];
-  createdOn: Scalars['DateTime'];
+  createdOn: Scalars['String'];
 };
 
 export type TeamResponse = {
@@ -163,7 +182,7 @@ export type Query = {
   __typename?: 'Query';
   checkEmail: AuthorizationResponse;
   verifyUserByToken: AuthorizationResponse;
-  getChannelById: ChannelResponse;
+  getChannelById: ChannelWithFullNameResponse;
   channels: ChannelsResponse;
   getBelongingTeams: BelongingTeamsResponse;
   getBelongingUsers: BelongingUsersResponse;
@@ -351,11 +370,11 @@ export type GetChannelByIdQueryVariables = {
 export type GetChannelByIdQuery = (
   { __typename?: 'Query' }
   & { getChannelById: (
-    { __typename?: 'ChannelResponse' }
-    & Pick<ChannelResponse, 'ok' | 'errorlog'>
+    { __typename?: 'ChannelWithFullNameResponse' }
+    & Pick<ChannelWithFullNameResponse, 'ok' | 'errorlog'>
     & { channel?: Maybe<(
-      { __typename?: 'Channel' }
-      & Pick<Channel, 'name' | 'topic' | 'isPublic' | 'description'>
+      { __typename?: 'ChannelWithFullName' }
+      & Pick<ChannelWithFullName, 'name' | 'topic' | 'isPublic' | 'description' | 'fullname'>
     )> }
   ) }
 );
@@ -727,6 +746,7 @@ export const GetChannelByIdDocument = gql`
       topic
       isPublic
       description
+      fullname
     }
   }
 }
