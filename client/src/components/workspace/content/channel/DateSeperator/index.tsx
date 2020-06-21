@@ -7,9 +7,11 @@ import * as b from '../../../../../styles/blocks';
 import { Wrapper, Date, IconWrapper } from './index.styles';
 import { BottomArrow } from '../../../../../assets/svg/Arrows';
 
-// Svg
+interface Props {
+  date: string;
+}
 
-export const DateSeperator = () => {
+export const DateSeperator: React.FC<Props> = ({ date }) => {
   return (
     <Wrapper>
       <b.Box className='divider' />
@@ -17,7 +19,7 @@ export const DateSeperator = () => {
         <b.Box>
           <b.Flex alignItems='center'>
             <Date mr={2}>
-              <b.Text>Friday, June 5th</b.Text>
+              <b.Text>{date}</b.Text>
             </Date>
             <IconWrapper className='bottom_arrow'>
               <BottomArrow />

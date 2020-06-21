@@ -21,6 +21,14 @@ import { DisplayingMessage } from '../response/subscriptionResponse';
 const manager = getManager();
 const CHANNEL_MESSAGE = 'channel message';
 
+const options = {
+  weekday: 'long',
+  month: 'long',
+  day: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit',
+};
+
 @Resolver()
 export class MessageResolver {
   @Subscription(() => DisplayingMessage, {
@@ -30,13 +38,15 @@ export class MessageResolver {
   subscribeToMessages(
     @Arg('channelID') channelID: string,
     @Root()
-    { id, fullname, body, avatarBackground }: DisplayingMessage
+    { id, fullname, body, avatarBackground, createdOn }: DisplayingMessage
   ): DisplayingMessage {
+    const date = new Date(createdOn).toLocaleString('en-US', options);
     return {
       id,
       fullname,
       body,
       avatarBackground,
+      createdOn: date,
     };
   }
 
@@ -60,11 +70,14 @@ export class MessageResolver {
 
       const memberId = member[0].id;
 
+      // date
+      const now = new Date();
       const message = await manager
         .create(Message, {
           channelId,
           memberId,
           body,
+          createdOn: now,
         })
         .save();
 
@@ -83,6 +96,7 @@ export class MessageResolver {
         fullname: user?.fullname!,
         body,
         avatarBackground: user?.avatarBackground,
+        createdOn: now,
       };
 
       await pubSub.publish(CHANNEL_MESSAGE, payload);
@@ -92,6 +106,7 @@ export class MessageResolver {
         fullname: user?.fullname!,
         body,
         avatarBackground: user?.avatarBackground!,
+        createdOn: message.createdOn.toLocaleString(),
       };
     } catch (err) {
       throw new Error('something went wrong when sending message');
@@ -104,9 +119,16 @@ export class MessageResolver {
   ): Promise<[DisplayingMessage] | Error> {
     try {
       const data = await manager.query(
-        'select mes.id, u.fullname, u."avatarBackground", mes.body from messages mes inner join members mem on mes."memberId"=mem.id inner join users u on mem."userId"=u.id where "channelId"=$1',
+        'select mes.id, u.fullname, u."avatarBackground", mes.body, mes."createdOn" from messages mes inner join members mem on mes."memberId"=mem.id inner join users u on mem."userId"=u.id where "channelId"=$1',
         [channelId]
       );
+
+      let date;
+
+      data.forEach((message: DisplayingMessage) => {
+        date = new Date(message['createdOn']);
+        message['createdOn'] = date.toLocaleString('en-US', options);
+      });
 
       return data;
     } catch (err) {

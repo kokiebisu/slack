@@ -26,13 +26,13 @@ export const Wrapper = styled(b.Box)`
         top: 8px;
         height: 30px;
 
-        max-width: 150px;
+        max-width: 200px;
         transform: translateX(-50%);
         border-radius: 15px;
         padding: 6px 18px;
         background-color: ${({ theme }) => theme.colors.white};
         border: 1px solid ${({ theme }) => theme.colors.gray__lighter};
-        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
       }
     }
   }

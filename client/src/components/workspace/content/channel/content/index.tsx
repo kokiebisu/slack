@@ -17,18 +17,11 @@ import {
 import { LayerPlus, UserPlus } from '../../../../../assets/svg';
 
 // Components
-import { Messages } from '../message/container';
-import { DateSeperator } from '../DateSeperator';
 import { useParams } from 'react-router-dom';
-import {
-  useGetChannelByIdQuery,
-  useSubscribeToMessagesSubscription,
-  useFetchMessagesQuery,
-} from '../../../../../generated/graphql';
+import { useGetChannelByIdQuery } from '../../../../../generated/graphql';
 import { MessageBox } from '../../messagebox/layout';
 
-import gql from 'graphql-tag';
-import { useQuery, useSubscription } from 'react-apollo';
+import { MessageContainer } from '../container';
 
 export const Content = () => {
   const { channelId } = useParams();
@@ -95,11 +88,7 @@ export const Content = () => {
             </b.Flex>
           </Options>
         </b.Box>
-        <DateSeperator />
-
-        <b.Box className='section_content'>
-          <Messages />
-        </b.Box>
+        <MessageContainer />
         <MessageBox />
       </Wrapper>
     </>

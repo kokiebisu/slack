@@ -33,4 +33,8 @@ export class Message extends BaseEntity {
   @Field(() => String)
   @Column()
   body: string;
+
+  @Field(() => Date)
+  @Column('timestamptz')
+  createdOn: Date;
 }

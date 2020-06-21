@@ -4,7 +4,7 @@ import { size } from '../../../../../styles/sizes';
 
 export const Wrapper = styled(b.Box)`
   position: fixed;
-  z-index: 50;
+  z-index: 9999;
   bottom: 0;
 
   width: 100vw;
