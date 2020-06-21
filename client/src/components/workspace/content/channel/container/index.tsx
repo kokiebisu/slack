@@ -1,12 +1,18 @@
 import React, { useEffect } from 'react';
+
+import { useParams } from 'react-router-dom';
+
+// Blocks
 import * as b from '../../../../../styles/blocks';
 
 // Components
 import { DateSeperator } from '../DateSeperator';
 import { Messages } from '../message/container';
-import { useFetchMessagesQuery } from '../../../../../generated/graphql';
-import { useParams } from 'react-router-dom';
-import styled from 'styled-components';
+
+/// Styles
+import { Wrapper } from './index.styles';
+
+// Queries
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 
@@ -77,7 +83,7 @@ export const MessageContainer = () => {
   if (!fetchMessagesLoading && fetchMessagesData) {
     let groups: tplotOptions = fetchMessagesData.fetchMessages.reduce(
       (groups: any, message: any) => {
-        const createdOn = message.createdOn;
+        const createdOn = message.createdOn.split(',').slice(0, 2);
         if (!groups[createdOn]) {
           groups[createdOn] = [];
         }
@@ -92,10 +98,6 @@ export const MessageContainer = () => {
         messages: groups[createdOn],
       };
     });
-  }
-
-  if (messagesByDates) {
-    console.log('da', messagesByDates);
   }
 
   return (
@@ -118,7 +120,3 @@ export const MessageContainer = () => {
     </>
   );
 };
-
-const Wrapper = styled(b.Box)`
-  padding: 30px 0 100px 0;
-`;

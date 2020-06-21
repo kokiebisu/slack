@@ -21,6 +21,14 @@ import { DisplayingMessage } from '../response/subscriptionResponse';
 const manager = getManager();
 const CHANNEL_MESSAGE = 'channel message';
 
+const options = {
+  weekday: 'long',
+  month: 'long',
+  day: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit',
+};
+
 @Resolver()
 export class MessageResolver {
   @Subscription(() => DisplayingMessage, {
@@ -32,12 +40,13 @@ export class MessageResolver {
     @Root()
     { id, fullname, body, avatarBackground, createdOn }: DisplayingMessage
   ): DisplayingMessage {
+    const date = new Date(createdOn).toLocaleString('en-US', options);
     return {
       id,
       fullname,
       body,
       avatarBackground,
-      createdOn: createdOn.toLocaleString(),
+      createdOn: date,
     };
   }
 
@@ -116,13 +125,6 @@ export class MessageResolver {
 
       let date;
 
-      const options = {
-        weekday: 'long',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-      };
       data.forEach((message: DisplayingMessage) => {
         date = new Date(message['createdOn']);
         message['createdOn'] = date.toLocaleString('en-US', options);
