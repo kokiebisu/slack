@@ -12,9 +12,6 @@ interface Props {
 }
 
 export const DateSeperator: React.FC<Props> = ({ date }) => {
-  // const newDate: Date = new Date(date);
-  // console.log('date seperator', newDate);
-
   return (
     <Wrapper>
       <b.Box className='divider' />

@@ -37,7 +37,7 @@ export class MessageResolver {
       fullname,
       body,
       avatarBackground,
-      createdOn,
+      createdOn: createdOn.toLocaleString(),
     };
   }
 
@@ -63,7 +63,6 @@ export class MessageResolver {
 
       // date
       const now = new Date();
-
       const message = await manager
         .create(Message, {
           channelId,
@@ -98,7 +97,7 @@ export class MessageResolver {
         fullname: user?.fullname!,
         body,
         avatarBackground: user?.avatarBackground!,
-        createdOn: now,
+        createdOn: message.createdOn.toLocaleString(),
       };
     } catch (err) {
       throw new Error('something went wrong when sending message');
@@ -114,6 +113,20 @@ export class MessageResolver {
         'select mes.id, u.fullname, u."avatarBackground", mes.body, mes."createdOn" from messages mes inner join members mem on mes."memberId"=mem.id inner join users u on mem."userId"=u.id where "channelId"=$1',
         [channelId]
       );
+
+      let date;
+
+      const options = {
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      };
+      data.forEach((message: DisplayingMessage) => {
+        date = new Date(message['createdOn']);
+        message['createdOn'] = date.toLocaleString('en-US', options);
+      });
 
       return data;
     } catch (err) {

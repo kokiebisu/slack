@@ -15,6 +15,7 @@ interface DisplayingMessage {
   fullname: string;
   avatarBackground: string;
   body: string;
+  createdOn: string;
 }
 
 export const Messages: React.FC<Props> = ({ messages }) => {
@@ -26,7 +27,7 @@ export const Messages: React.FC<Props> = ({ messages }) => {
             key={index}
             sender={message.fullname}
             avatar={message.avatarBackground}
-            time='not coded'
+            time={message.createdOn}
             body={{ type: 'message', message: message.body }}
           />
         );

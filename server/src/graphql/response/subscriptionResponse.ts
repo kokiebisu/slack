@@ -15,5 +15,5 @@ export class DisplayingMessage {
   avatarBackground: string;
 
   @Field()
-  createdOn: Date;
+  createdOn: string;
 }

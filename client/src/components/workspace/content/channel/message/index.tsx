@@ -42,7 +42,7 @@ export const Message: React.FC<Props> = ({ sender, avatar, time, body }) => {
                 <b.Text>{sender}</b.Text>
               </b.Box>
               <b.Box className='sent_time'>
-                <b.Text>{time}</b.Text>
+                <b.Text>{time.split(',')[2]}</b.Text>
               </b.Box>
             </b.Flex>
           </Top>

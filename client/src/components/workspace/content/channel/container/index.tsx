@@ -77,7 +77,7 @@ export const MessageContainer = () => {
   if (!fetchMessagesLoading && fetchMessagesData) {
     let groups: tplotOptions = fetchMessagesData.fetchMessages.reduce(
       (groups: any, message: any) => {
-        const createdOn = message.createdOn.split('T')[0];
+        const createdOn = message.createdOn;
         if (!groups[createdOn]) {
           groups[createdOn] = [];
         }
@@ -94,6 +94,10 @@ export const MessageContainer = () => {
     });
   }
 
+  if (messagesByDates) {
+    console.log('da', messagesByDates);
+  }
+
   return (
     <>
       <Wrapper>
@@ -101,7 +105,9 @@ export const MessageContainer = () => {
           messagesByDates.map((element, index) => {
             return (
               <React.Fragment key={index}>
-                <DateSeperator date={element.createdOn} />
+                <DateSeperator
+                  date={element.createdOn.split(',').slice(0, 2).join(', ')}
+                />
                 <b.Box className='section_content'>
                   <Messages messages={element.messages} />
                 </b.Box>
@@ -114,5 +120,5 @@ export const MessageContainer = () => {
 };
 
 const Wrapper = styled(b.Box)`
-  padding: 30px 0;
+  padding: 30px 0 100px 0;
 `;
