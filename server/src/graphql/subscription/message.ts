@@ -40,15 +40,14 @@ export class MessageResolver {
     @Root()
     { id, fullname, body, avatarBackground, createdAt }: DisplayingMessage
   ): DisplayingMessage {
-    const date = new Date(parseInt(createdAt));
-    const dateString = date.toLocaleDateString('en-US', options);
+    const date = new Date(createdAt).toLocaleDateString('en-US', options);
 
     return {
       id,
       fullname,
       body,
       avatarBackground,
-      createdAt: dateString,
+      createdAt: date,
     };
   }
 
@@ -104,7 +103,7 @@ export class MessageResolver {
         fullname: user?.fullname!,
         body,
         avatarBackground: user?.avatarBackground!,
-        createdAt: message.createdAt.toLocaleString(),
+        createdAt: message.createdAt,
       };
     } catch (err) {
       throw new Error('something went wrong when sending message');
