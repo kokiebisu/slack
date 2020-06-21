@@ -8,6 +8,7 @@ import {
 import { ObjectType, Field, Int } from 'type-graphql';
 import { Member } from './Member';
 import { ChannelMember } from './ChannelMember';
+import { Channel } from './Channel';
 
 @ObjectType()
 @Entity('users')
@@ -42,4 +43,8 @@ export class User extends BaseEntity {
   @Field()
   @Column()
   avatarBackground: string;
+
+  // The channels started by user
+  @OneToMany(() => Channel, (channel) => channel.creator)
+  channels: Channel[];
 }

@@ -21,7 +21,6 @@ export class CreateChannelResolver {
     @Arg('description', { nullable: true }) description?: string
   ): Promise<ChannelResponse | Error> {
     try {
-      console.log('1');
       const userId = context.req.session!.userId;
       if (!userId) {
         return {
@@ -30,7 +29,6 @@ export class CreateChannelResolver {
           channel: null,
         };
       }
-      console.log('2');
       const team = await Team.findOne(teamId);
 
       if (!team) {
@@ -40,22 +38,20 @@ export class CreateChannelResolver {
           channel: null,
         };
       }
-      console.log('3');
+
       const channel = await Channel.create({
         name,
         teamId,
         topic,
         description,
         isPublic,
+        creator: userId,
       }).save();
 
-      console.log('4');
       await manager.query(
         'insert into channel_members ("userId", "channelId") values ($1, $2)',
         [userId, channel.id]
       );
-
-      console.log('5');
 
       return {
         ok: true,

@@ -41,8 +41,11 @@ export const Content = () => {
           </Title>
           <Description>
             <b.Text>
-              <b.Span className='creator'>@Chihiro Hasegawa</b.Span> created
-              this channel on June 5th. This is the very beginning of the{' '}
+              <b.Span className='creator'>
+                @{getChannelById?.channel?.fullname}
+              </b.Span>{' '}
+              created this channel on June 5th. This is the very beginning of
+              the{' '}
               <b.Span className='channel_name'>
                 #{getChannelById?.channel?.name}
               </b.Span>{' '}

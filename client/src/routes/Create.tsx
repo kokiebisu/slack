@@ -111,11 +111,7 @@ export const CreateRoutes: React.SFC = () => {
                   },
                 });
 
-                console.log('entered 1');
-                console.log(data);
-
                 if (data && data?.createTeam?.team!.id) {
-                  console.log('entered 2');
                   await createChannel({
                     variables: {
                       name: 'general',
@@ -128,8 +124,6 @@ export const CreateRoutes: React.SFC = () => {
                     },
                   });
 
-                  console.log('entered 3');
-
                   await createChannel({
                     variables: {
                       name: 'random',
@@ -141,8 +135,6 @@ export const CreateRoutes: React.SFC = () => {
                     },
                   });
 
-                  console.log('entered 4');
-
                   await createChannel({
                     variables: {
                       name: info.channel,
@@ -150,8 +142,6 @@ export const CreateRoutes: React.SFC = () => {
                       isPublic: true,
                     },
                   });
-
-                  console.log('entered 5');
 
                   history.push(`/client/${data.createTeam.team.id}`);
                 }
