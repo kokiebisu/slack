@@ -22,7 +22,6 @@ export const Messages: React.FC<Props> = ({ messages }) => {
   return (
     <Wrapper>
       {messages.map((message: DisplayingMessage, index: number) => {
-        console.log(message);
         return (
           <Message
             key={index}

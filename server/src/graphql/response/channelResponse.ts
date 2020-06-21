@@ -16,7 +16,7 @@ export class ChannelWithFullName {
   @Field(() => String)
   teamId: string;
 
-  @Field(() => String)
+  @Field(() => String, { nullable: true })
   description: string;
 
   @Field(() => String)

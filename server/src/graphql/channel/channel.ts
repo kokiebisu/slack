@@ -18,6 +18,7 @@ export class ChannelResolver {
   @UseMiddleware(isAuth)
   @Query(() => ChannelWithFullNameResponse)
   async getChannelById(@Arg('channelId') channelId: string) {
+    console.log('channel', channelId);
     try {
       const channelArray = await manager.query(
         'select c.id, c.name, c."isPublic", c."teamId", c.description, c."createdAt", c.topic, u.fullname from channels c inner join users u on c."creatorId" = u.id where c.id=$1',
