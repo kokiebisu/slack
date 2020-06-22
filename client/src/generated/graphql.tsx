@@ -73,6 +73,13 @@ export type AuthorizationResponse = {
   errorlog?: Maybe<Scalars['String']>;
 };
 
+export type InviteResponse = {
+  __typename?: 'InviteResponse';
+  ok: Scalars['Boolean'];
+  errorlog?: Maybe<Scalars['String']>;
+  teamId: Scalars['String'];
+};
+
 export type ChannelWithFullName = {
   __typename?: 'ChannelWithFullName';
   id: Scalars['String'];
@@ -182,8 +189,7 @@ export type Query = {
   __typename?: 'Query';
   checkEmail: AuthorizationResponse;
   verifyUserByToken: AuthorizationResponse;
-  verifyUserInvite: AuthorizationResponse;
-  verifyUserExistence: AuthorizationResponse;
+  verifyUserInvite: InviteResponse;
   getChannelById: ChannelWithFullNameResponse;
   channels: ChannelsResponse;
   getBelongingTeams: BelongingTeamsResponse;
@@ -208,14 +214,8 @@ export type QueryVerifyUserByTokenArgs = {
 
 
 export type QueryVerifyUserInviteArgs = {
+  invitorId: Scalars['String'];
   token: Scalars['String'];
-};
-
-
-export type QueryVerifyUserExistenceArgs = {
-  name: Scalars['String'];
-  teamId: Scalars['String'];
-  email: Scalars['String'];
 };
 
 
@@ -399,22 +399,8 @@ export type VerifyUserByTokenQuery = (
   ) }
 );
 
-export type VerifyUserExistenceQueryVariables = {
-  email: Scalars['String'];
-  teamId: Scalars['String'];
-  name: Scalars['String'];
-};
-
-
-export type VerifyUserExistenceQuery = (
-  { __typename?: 'Query' }
-  & { verifyUserExistence: (
-    { __typename?: 'AuthorizationResponse' }
-    & Pick<AuthorizationResponse, 'ok' | 'errorlog'>
-  ) }
-);
-
 export type VerifyUserInviteQueryVariables = {
+  invitorId: Scalars['String'];
   token: Scalars['String'];
 };
 
@@ -422,8 +408,8 @@ export type VerifyUserInviteQueryVariables = {
 export type VerifyUserInviteQuery = (
   { __typename?: 'Query' }
   & { verifyUserInvite: (
-    { __typename?: 'AuthorizationResponse' }
-    & Pick<AuthorizationResponse, 'ok'>
+    { __typename?: 'InviteResponse' }
+    & Pick<InviteResponse, 'ok' | 'errorlog' | 'teamId'>
   ) }
 );
 
@@ -836,46 +822,12 @@ export function useVerifyUserByTokenLazyQuery(baseOptions?: ApolloReactHooks.Laz
 export type VerifyUserByTokenQueryHookResult = ReturnType<typeof useVerifyUserByTokenQuery>;
 export type VerifyUserByTokenLazyQueryHookResult = ReturnType<typeof useVerifyUserByTokenLazyQuery>;
 export type VerifyUserByTokenQueryResult = ApolloReactCommon.QueryResult<VerifyUserByTokenQuery, VerifyUserByTokenQueryVariables>;
-export const VerifyUserExistenceDocument = gql`
-    query VerifyUserExistence($email: String!, $teamId: String!, $name: String!) {
-  verifyUserExistence(email: $email, teamId: $teamId, name: $name) {
+export const VerifyUserInviteDocument = gql`
+    query VerifyUserInvite($invitorId: String!, $token: String!) {
+  verifyUserInvite(invitorId: $invitorId, token: $token) {
     ok
     errorlog
-  }
-}
-    `;
-
-/**
- * __useVerifyUserExistenceQuery__
- *
- * To run a query within a React component, call `useVerifyUserExistenceQuery` and pass it any options that fit your needs.
- * When your component renders, `useVerifyUserExistenceQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useVerifyUserExistenceQuery({
- *   variables: {
- *      email: // value for 'email'
- *      teamId: // value for 'teamId'
- *      name: // value for 'name'
- *   },
- * });
- */
-export function useVerifyUserExistenceQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<VerifyUserExistenceQuery, VerifyUserExistenceQueryVariables>) {
-        return ApolloReactHooks.useQuery<VerifyUserExistenceQuery, VerifyUserExistenceQueryVariables>(VerifyUserExistenceDocument, baseOptions);
-      }
-export function useVerifyUserExistenceLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<VerifyUserExistenceQuery, VerifyUserExistenceQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<VerifyUserExistenceQuery, VerifyUserExistenceQueryVariables>(VerifyUserExistenceDocument, baseOptions);
-        }
-export type VerifyUserExistenceQueryHookResult = ReturnType<typeof useVerifyUserExistenceQuery>;
-export type VerifyUserExistenceLazyQueryHookResult = ReturnType<typeof useVerifyUserExistenceLazyQuery>;
-export type VerifyUserExistenceQueryResult = ApolloReactCommon.QueryResult<VerifyUserExistenceQuery, VerifyUserExistenceQueryVariables>;
-export const VerifyUserInviteDocument = gql`
-    query VerifyUserInvite($token: String!) {
-  verifyUserInvite(token: $token) {
-    ok
+    teamId
   }
 }
     `;
@@ -892,6 +844,7 @@ export const VerifyUserInviteDocument = gql`
  * @example
  * const { data, loading, error } = useVerifyUserInviteQuery({
  *   variables: {
+ *      invitorId: // value for 'invitorId'
  *      token: // value for 'token'
  *   },
  * });
