@@ -44,7 +44,7 @@ const ToggleProvider = ({ children }: ToggleProviderProps) => {
   const [state, dispatch] = useReducer(toggleReducer, {
     menu: false,
     channel: false,
-    invite: true,
+    invite: false,
   });
   return (
     <ToggleStateContext.Provider value={state}>

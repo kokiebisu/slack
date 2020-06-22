@@ -28,7 +28,7 @@ export const Confirm: React.FC<Props> = ({ loading }) => {
               variants={confirmVariants}
               animate={loading ? 'loading' : 'loaded'}>
               <b.Text color='white' fontFamily='SlackLato-Bold'>
-                Create Account
+                Confirm
               </b.Text>
             </b.Box>
             {loading ? (

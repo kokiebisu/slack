@@ -5,6 +5,8 @@ import { Context } from '../../interface/Context';
 import { AuthorizationResponse } from '../response/authResponse';
 import { getManager } from 'typeorm';
 
+import { User } from '../../models/User';
+
 const manager = getManager();
 
 export class VerifyResolver {
@@ -82,6 +84,80 @@ export class VerifyResolver {
       };
     } catch (err) {
       throw new Error('error occured while verifying user by token');
+    }
+  }
+
+  @Query(() => AuthorizationResponse)
+  async verifyUserInvite(
+    @Arg('token') token: string,
+    @Ctx() context: Context
+  ): Promise<AuthorizationResponse | Error> {
+    try {
+      // userid is the invitor
+      const userId = await redis.get(`${token}`);
+      if (!userId) {
+        return {
+          ok: false,
+          errorlog: 'not a valid token',
+        };
+      }
+
+      return {
+        ok: true,
+      };
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+
+  @Query(() => AuthorizationResponse)
+  async verifyUserExistence(
+    @Arg('email') email: string,
+    @Arg('teamId') teamId: string,
+    @Arg('name') name: string,
+    @Ctx() { req }: Context
+  ): Promise<AuthorizationResponse | Error> {
+    try {
+      console.log('verifyUserExistance email', email);
+      console.log('verifyUserExistance teamId', teamId);
+      console.log('verifyUserExistance name', name);
+      const user = await manager.findOne(User, {
+        email,
+      });
+      console.log('user', user);
+      if (!user) {
+        return {
+          ok: false,
+          errorlog: 'not a valid token',
+        };
+      }
+
+      req.session!.userId = user.id;
+
+      // add user into team
+      await manager.query(
+        `insert into members ("teamId", "userId") values ($1, $2)`,
+        [teamId, user.id]
+      );
+
+      // fetch all channels that is public
+      const channels = await manager.query(
+        `select * from channels where "teamId"=$1 and "isPublic"=true`,
+        [teamId]
+      );
+
+      channels.forEach(async (channel: any) => {
+        await manager.query(
+          `insert into channel_members ("userId", "channelId") values ($1, $2)`,
+          [user.id, channel.id]
+        );
+      });
+
+      return {
+        ok: true,
+      };
+    } catch (err) {
+      throw new Error(err);
     }
   }
 }

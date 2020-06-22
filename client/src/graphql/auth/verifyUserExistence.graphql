@@ -1,0 +1,6 @@
+query VerifyUserExistence($email: String!, $teamId: String!, $name: String!) {
+  verifyUserExistence(email: $email, teamId: $teamId, name: $name) {
+    ok
+    errorlog
+  }
+}

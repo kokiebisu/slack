@@ -5,37 +5,37 @@ import { useReducer } from 'react';
 import * as b from '../../../../styles/blocks';
 import { StyledInput, Wrapper } from './index.styles';
 
-// Types
-type State = { email: string; name: string };
+type Dispatch = (action: Action) => void;
 type Action =
   | { type: 'add_email'; payload: string }
   | { type: 'add_name'; payload: string };
 
-// Reducer
-const reducer = (state: State, action: Action) => {
-  switch (action.type) {
-    case 'add_email':
-      return { ...state, name: action.payload };
-    case 'add_name':
-      return { ...state, email: action.payload };
-    default:
-      return state;
-  }
-};
+interface Props {
+  input: { email: string; name: string };
+  addInput: (action: Action) => void;
+}
 
-export const EmailInput: React.FC<{}> = () => {
-  const [input, dispathInput] = useReducer(reducer, {
-    email: '',
-    name: '',
-  });
+export const EmailInput: React.FC<Props> = ({ input, addInput }) => {
   return (
     <Wrapper>
       <b.Flex>
         <StyledInput>
-          <input placeholder='name@example.com' />
+          <input
+            value={input.email}
+            placeholder='name@example.com'
+            onChange={(e) =>
+              addInput({ type: 'add_email', payload: e.target.value })
+            }
+          />
         </StyledInput>
         <StyledInput>
-          <input placeholder='Optional' />
+          <input
+            value={input.name}
+            placeholder='Optional'
+            onChange={(e) =>
+              addInput({ type: 'add_name', payload: e.target.value })
+            }
+          />
         </StyledInput>
       </b.Flex>
     </Wrapper>

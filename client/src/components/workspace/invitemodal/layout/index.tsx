@@ -1,4 +1,6 @@
 import React from 'react';
+import { useReducer } from 'react';
+import { useParams } from 'react-router-dom';
 
 // Blocks
 import * as b from '../../../../styles/blocks';
@@ -33,8 +35,37 @@ import { EmailInput } from '../emailinput';
 // Components
 import { DefaultChannels } from '../defaultchannels';
 
+// Query
+import { useSendInvitationMutation } from '../../../../generated/graphql';
+
+// Types
+type State = { email: string; name: string };
+type Action =
+  | { type: 'add_email'; payload: string }
+  | { type: 'add_name'; payload: string };
+
+// Reducer
+const reducer = (state: State, action: Action) => {
+  switch (action.type) {
+    case 'add_email':
+      return { ...state, email: action.payload };
+    case 'add_name':
+      return { ...state, name: action.payload };
+    default:
+      return state;
+  }
+};
+
 export const InviteModal = () => {
+  const { teamId } = useParams();
   const dispatchToggle = useToggleDispatch();
+
+  const [input, dispatchInput] = useReducer(reducer, {
+    email: '',
+    name: '',
+  });
+
+  const [send] = useSendInvitationMutation();
 
   return (
     <Wrapper>
@@ -77,7 +108,7 @@ export const InviteModal = () => {
                 </EmailInputHeader>
               </b.Flex>
             </b.Box>
-            <EmailInput />
+            <EmailInput input={input} addInput={dispatchInput} />
           </EmailInputs>
           <AddOptions>
             <b.Box>
@@ -124,7 +155,20 @@ export const InviteModal = () => {
                   </b.Box>
                 </b.Flex>
               </b.Box>
-              <SendButton>Send Invitations</SendButton>
+              <SendButton
+                onClick={async () => {
+                  const response = await send({
+                    variables: { email: input.email, name: input.name, teamId },
+                  });
+                  if (response.data?.sendInvitation.errorlog) {
+                    console.log('there was an error');
+                  }
+                  if (response.data?.sendInvitation.ok) {
+                    dispatchToggle({ type: 'toggle_invite' });
+                  }
+                }}>
+                Send Invitations
+              </SendButton>
             </b.Flex>
           </Footer>
         </Container>
