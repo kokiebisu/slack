@@ -35,12 +35,19 @@ import { useCreateChannelMutation } from '../../../generated/graphql';
 // Context
 import { useToggleDispatch } from '../../../context/toggle-context';
 
-const reducer = (state: any, action: any) => {
+type State = { name: string; description: string };
+type Action =
+  | { type: 'add_name'; payload: string }
+  | { type: 'add_description'; payload: string };
+
+const reducer = (state: State, action: Action) => {
   switch (action.type) {
     case 'add_name':
       return { ...state, name: action.payload };
     case 'add_description':
       return { ...state, description: action.payload };
+    default:
+      return state;
   }
 };
 

@@ -6,11 +6,15 @@ type Action =
   | { type: 'toggle_menu' }
   | {
       type: 'toggle_channel';
+    }
+  | {
+      type: 'toggle_invite';
     };
 
 type State = {
   menu: boolean;
   channel: boolean;
+  invite: boolean;
 };
 type ToggleProviderProps = { children: React.ReactNode };
 
@@ -26,6 +30,11 @@ const toggleReducer = (state: State, action: Action) => {
         ...state,
         channel: !state.channel,
       };
+    case 'toggle_invite':
+      return {
+        ...state,
+        invite: !state.invite,
+      };
     default:
       return state;
   }
@@ -35,6 +44,7 @@ const ToggleProvider = ({ children }: ToggleProviderProps) => {
   const [state, dispatch] = useReducer(toggleReducer, {
     menu: false,
     channel: false,
+    invite: true,
   });
   return (
     <ToggleStateContext.Provider value={state}>

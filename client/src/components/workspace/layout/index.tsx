@@ -14,6 +14,7 @@ import { ChannelModal } from '../channelmodal';
 // Queries
 import { useMeQuery, useTeamQuery } from '../../../generated/graphql';
 import { useToggleState } from '../../../context/toggle-context';
+import { InviteModal } from '../invitemodal/layout';
 
 interface Props {
   route: React.ReactNode;
@@ -42,8 +43,8 @@ export const Workspace: React.FC<Props> = ({ route }) => {
             {!teamLoading && !meLoading && (
               <>
                 {state.channel && <ChannelModal />}
+                {state.invite && <InviteModal />}
                 <HomeHeader />
-
                 {state.menu ? <MenuToggle /> : null}
                 <ContentWrapper>
                   <Sidebar />
