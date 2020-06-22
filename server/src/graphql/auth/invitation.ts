@@ -5,6 +5,8 @@ import { BaseResponse } from '../response/baseResponse';
 import { sendInvitationEmail } from '../../util/sendEmail';
 import { getManager } from 'typeorm';
 
+import jwt from 'jsonwebtoken';
+
 // Util
 import { createStringToken } from '../../util/tokenGenerator';
 
@@ -34,10 +36,11 @@ export class InvitationResolver {
         };
       }
 
-      const token = createStringToken(user);
-      await redis.set(`${token}`, user.id);
+      const token = jwt.sign({ email, name, teamId }, `${user.id}`);
 
-      await sendInvitationEmail(email, name, user.fullname, token, teamId);
+      // const token  = await redis.set(`${token}`, user.id);
+
+      await sendInvitationEmail(email, `${user.id}`, user.fullname, token);
 
       return {
         ok: true,

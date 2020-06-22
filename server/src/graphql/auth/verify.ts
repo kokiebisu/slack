@@ -2,10 +2,15 @@ import { Mutation, Arg, Ctx, Query } from 'type-graphql';
 import { redis } from '../../redis';
 import { getDigitToken } from '../../util/tokenGenerator';
 import { Context } from '../../interface/Context';
-import { AuthorizationResponse } from '../response/authResponse';
+import {
+  InviteResponse,
+  AuthorizationResponse,
+} from '../response/authResponse';
 import { getManager } from 'typeorm';
 
 import { User } from '../../models/User';
+
+import jwt from 'jsonwebtoken';
 
 const manager = getManager();
 
@@ -87,74 +92,67 @@ export class VerifyResolver {
     }
   }
 
-  @Query(() => AuthorizationResponse)
+  @Query(() => InviteResponse)
   async verifyUserInvite(
     @Arg('token') token: string,
-    @Ctx() context: Context
-  ): Promise<AuthorizationResponse | Error> {
+    @Arg('invitorId') invitorId: string,
+    @Ctx() { req }: Context
+  ): Promise<InviteResponse | Error> {
     try {
       // userid is the invitor
-      const userId = await redis.get(`${token}`);
-      if (!userId) {
+      // const userId = await redis.get(`${token}`);
+      const decoded: any = jwt.verify(token, invitorId);
+
+      if (!decoded) {
         return {
           ok: false,
           errorlog: 'not a valid token',
         };
       }
 
-      return {
-        ok: true,
-      };
-    } catch (err) {
-      throw new Error(err);
-    }
-  }
+      if (decoded.email && decoded.teamId && decoded.name) {
+        const { email, teamId, name } = decoded;
+        const user = await manager.findOne(User, {
+          email: email,
+        });
 
-  @Query(() => AuthorizationResponse)
-  async verifyUserExistence(
-    @Arg('email') email: string,
-    @Arg('teamId') teamId: string,
-    @Arg('name') name: string,
-    @Ctx() { req }: Context
-  ): Promise<AuthorizationResponse | Error> {
-    try {
-      console.log('verifyUserExistance email', email);
-      console.log('verifyUserExistance teamId', teamId);
-      console.log('verifyUserExistance name', name);
-      const user = await manager.findOne(User, {
-        email,
-      });
-      console.log('user', user);
-      if (!user) {
-        return {
-          ok: false,
-          errorlog: 'not a valid token',
-        };
-      }
+        if (!user) {
+          return {
+            ok: false,
+            errorlog: 'not a valid token',
+          };
+        }
 
-      req.session!.userId = user.id;
+        req.session!.userId = user.id;
 
-      // add user into team
-      await manager.query(
-        `insert into members ("teamId", "userId") values ($1, $2)`,
-        [teamId, user.id]
-      );
-
-      // fetch all channels that is public
-      const channels = await manager.query(
-        `select * from channels where "teamId"=$1 and "isPublic"=true`,
-        [teamId]
-      );
-
-      channels.forEach(async (channel: any) => {
+        // add user into team
         await manager.query(
-          `insert into channel_members ("userId", "channelId") values ($1, $2)`,
-          [user.id, channel.id]
+          `insert into members ("teamId", "userId") values ($1, $2)`,
+          [teamId, user.id]
         );
-      });
 
+        // fetch all channels that is public
+        const channels = await manager.query(
+          `select * from channels where "teamId"=$1 and "isPublic"=true`,
+          [teamId]
+        );
+
+        channels.forEach(async (channel: any) => {
+          await manager.query(
+            `insert into channel_members ("userId", "channelId") values ($1, $2)`,
+            [user.id, channel.id]
+          );
+        });
+
+        return {
+          ok: true,
+          teamId,
+        };
+      }
       return {
-        ok: true,
+        ok: false,
+        errorlog: 'not decoded successfully',
+        teamId: null,
       };
     } catch (err) {
       throw new Error(err);
