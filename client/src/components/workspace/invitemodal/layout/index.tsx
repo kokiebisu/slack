@@ -1,5 +1,6 @@
 import React from 'react';
 import { useReducer } from 'react';
+import { useParams } from 'react-router-dom';
 
 // Blocks
 import * as b from '../../../../styles/blocks';
@@ -56,6 +57,7 @@ const reducer = (state: State, action: Action) => {
 };
 
 export const InviteModal = () => {
+  const { teamId } = useParams();
   const dispatchToggle = useToggleDispatch();
 
   const [input, dispatchInput] = useReducer(reducer, {
@@ -156,7 +158,7 @@ export const InviteModal = () => {
               <SendButton
                 onClick={async () => {
                   const response = await send({
-                    variables: { email: input.email, name: input.name },
+                    variables: { email: input.email, name: input.name, teamId },
                   });
                   if (response.data?.sendInvitation.errorlog) {
                     console.log('there was an error');

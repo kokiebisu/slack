@@ -19,18 +19,13 @@ export class InvitationResolver {
   async sendInvitation(
     @Arg('email') email: string,
     @Arg('name', { nullable: true }) name: string,
+    @Arg('teamId') teamId: string,
     @Ctx() { req }: Context
   ): Promise<BaseResponse | Error> {
     try {
-      console.log('email', email);
-      console.log('name', name);
-      console.log('userid', req.session?.userId);
-
       const user = await manager.findOne(User, {
         id: req.session?.userId,
       });
-
-      console.log('entered');
 
       if (!user) {
         return {
@@ -39,13 +34,11 @@ export class InvitationResolver {
         };
       }
 
-      console.log('entered1', user);
-
       const token = createStringToken(user);
-      redis.set(`${token}`, user.id);
-      console.log('entered2', token);
-      await sendInvitationEmail(email, name, user.fullname);
-      console.log('entered3');
+      await redis.set(`${token}`, user.id);
+
+      await sendInvitationEmail(email, name, user.fullname, token, teamId);
+
       return {
         ok: true,
       };

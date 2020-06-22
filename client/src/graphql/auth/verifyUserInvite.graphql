@@ -1,0 +1,6 @@
+query VerifyUserInvite($token: String!) {
+  verifyUserInvite(token: $token) {
+    ok
+    errorlog
+  }
+}

@@ -17,7 +17,10 @@ export const GetStartedRoutes: React.SFC = () => {
         <Route path={match.url + '/find'} component={GetStartedFind} />
         <Route path={match.url + '/create'} component={GetStartedCreate} />
         <Route path={match.url + '/check/:token?'} component={ConfirmEmail} />
-        <Route path={match.url + '/invited/:token?'} component={Invited} />
+        <Route
+          path={match.url + '/invited/:name/:email/:teamId/:token?'}
+          component={Invited}
+        />
       </Switch>
     </>
   );

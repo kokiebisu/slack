@@ -182,6 +182,8 @@ export type Query = {
   __typename?: 'Query';
   checkEmail: AuthorizationResponse;
   verifyUserByToken: AuthorizationResponse;
+  verifyUserInvite: AuthorizationResponse;
+  verifyUserExistence: AuthorizationResponse;
   getChannelById: ChannelWithFullNameResponse;
   channels: ChannelsResponse;
   getBelongingTeams: BelongingTeamsResponse;
@@ -202,6 +204,18 @@ export type QueryCheckEmailArgs = {
 
 export type QueryVerifyUserByTokenArgs = {
   token: Scalars['String'];
+};
+
+
+export type QueryVerifyUserInviteArgs = {
+  token: Scalars['String'];
+};
+
+
+export type QueryVerifyUserExistenceArgs = {
+  name: Scalars['String'];
+  teamId: Scalars['String'];
+  email: Scalars['String'];
 };
 
 
@@ -244,6 +258,7 @@ export type Mutation = {
 
 
 export type MutationSendInvitationArgs = {
+  teamId: Scalars['String'];
   name?: Maybe<Scalars['String']>;
   email: Scalars['String'];
 };
@@ -346,6 +361,7 @@ export type RegisterMutation = (
 export type SendInvitationMutationVariables = {
   email: Scalars['String'];
   name?: Maybe<Scalars['String']>;
+  teamId: Scalars['String'];
 };
 
 
@@ -380,6 +396,34 @@ export type VerifyUserByTokenQuery = (
   & { verifyUserByToken: (
     { __typename?: 'AuthorizationResponse' }
     & Pick<AuthorizationResponse, 'ok' | 'errorlog'>
+  ) }
+);
+
+export type VerifyUserExistenceQueryVariables = {
+  email: Scalars['String'];
+  teamId: Scalars['String'];
+  name: Scalars['String'];
+};
+
+
+export type VerifyUserExistenceQuery = (
+  { __typename?: 'Query' }
+  & { verifyUserExistence: (
+    { __typename?: 'AuthorizationResponse' }
+    & Pick<AuthorizationResponse, 'ok' | 'errorlog'>
+  ) }
+);
+
+export type VerifyUserInviteQueryVariables = {
+  token: Scalars['String'];
+};
+
+
+export type VerifyUserInviteQuery = (
+  { __typename?: 'Query' }
+  & { verifyUserInvite: (
+    { __typename?: 'AuthorizationResponse' }
+    & Pick<AuthorizationResponse, 'ok'>
   ) }
 );
 
@@ -691,8 +735,8 @@ export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>;
 export type RegisterMutationResult = ApolloReactCommon.MutationResult<RegisterMutation>;
 export type RegisterMutationOptions = ApolloReactCommon.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>;
 export const SendInvitationDocument = gql`
-    mutation SendInvitation($email: String!, $name: String) {
-  sendInvitation(email: $email, name: $name) {
+    mutation SendInvitation($email: String!, $name: String, $teamId: String!) {
+  sendInvitation(email: $email, name: $name, teamId: $teamId) {
     ok
     errorlog
   }
@@ -715,6 +759,7 @@ export type SendInvitationMutationFn = ApolloReactCommon.MutationFunction<SendIn
  *   variables: {
  *      email: // value for 'email'
  *      name: // value for 'name'
+ *      teamId: // value for 'teamId'
  *   },
  * });
  */
@@ -791,6 +836,75 @@ export function useVerifyUserByTokenLazyQuery(baseOptions?: ApolloReactHooks.Laz
 export type VerifyUserByTokenQueryHookResult = ReturnType<typeof useVerifyUserByTokenQuery>;
 export type VerifyUserByTokenLazyQueryHookResult = ReturnType<typeof useVerifyUserByTokenLazyQuery>;
 export type VerifyUserByTokenQueryResult = ApolloReactCommon.QueryResult<VerifyUserByTokenQuery, VerifyUserByTokenQueryVariables>;
+export const VerifyUserExistenceDocument = gql`
+    query VerifyUserExistence($email: String!, $teamId: String!, $name: String!) {
+  verifyUserExistence(email: $email, teamId: $teamId, name: $name) {
+    ok
+    errorlog
+  }
+}
+    `;
+
+/**
+ * __useVerifyUserExistenceQuery__
+ *
+ * To run a query within a React component, call `useVerifyUserExistenceQuery` and pass it any options that fit your needs.
+ * When your component renders, `useVerifyUserExistenceQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useVerifyUserExistenceQuery({
+ *   variables: {
+ *      email: // value for 'email'
+ *      teamId: // value for 'teamId'
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useVerifyUserExistenceQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<VerifyUserExistenceQuery, VerifyUserExistenceQueryVariables>) {
+        return ApolloReactHooks.useQuery<VerifyUserExistenceQuery, VerifyUserExistenceQueryVariables>(VerifyUserExistenceDocument, baseOptions);
+      }
+export function useVerifyUserExistenceLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<VerifyUserExistenceQuery, VerifyUserExistenceQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<VerifyUserExistenceQuery, VerifyUserExistenceQueryVariables>(VerifyUserExistenceDocument, baseOptions);
+        }
+export type VerifyUserExistenceQueryHookResult = ReturnType<typeof useVerifyUserExistenceQuery>;
+export type VerifyUserExistenceLazyQueryHookResult = ReturnType<typeof useVerifyUserExistenceLazyQuery>;
+export type VerifyUserExistenceQueryResult = ApolloReactCommon.QueryResult<VerifyUserExistenceQuery, VerifyUserExistenceQueryVariables>;
+export const VerifyUserInviteDocument = gql`
+    query VerifyUserInvite($token: String!) {
+  verifyUserInvite(token: $token) {
+    ok
+  }
+}
+    `;
+
+/**
+ * __useVerifyUserInviteQuery__
+ *
+ * To run a query within a React component, call `useVerifyUserInviteQuery` and pass it any options that fit your needs.
+ * When your component renders, `useVerifyUserInviteQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useVerifyUserInviteQuery({
+ *   variables: {
+ *      token: // value for 'token'
+ *   },
+ * });
+ */
+export function useVerifyUserInviteQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<VerifyUserInviteQuery, VerifyUserInviteQueryVariables>) {
+        return ApolloReactHooks.useQuery<VerifyUserInviteQuery, VerifyUserInviteQueryVariables>(VerifyUserInviteDocument, baseOptions);
+      }
+export function useVerifyUserInviteLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<VerifyUserInviteQuery, VerifyUserInviteQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<VerifyUserInviteQuery, VerifyUserInviteQueryVariables>(VerifyUserInviteDocument, baseOptions);
+        }
+export type VerifyUserInviteQueryHookResult = ReturnType<typeof useVerifyUserInviteQuery>;
+export type VerifyUserInviteLazyQueryHookResult = ReturnType<typeof useVerifyUserInviteLazyQuery>;
+export type VerifyUserInviteQueryResult = ApolloReactCommon.QueryResult<VerifyUserInviteQuery, VerifyUserInviteQueryVariables>;
 export const GetChannelByIdDocument = gql`
     query GetChannelById($channelId: String!) {
   getChannelById(channelId: $channelId) {
