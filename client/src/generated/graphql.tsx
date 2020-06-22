@@ -79,7 +79,7 @@ export type ChannelWithFullName = {
   name: Scalars['String'];
   isPublic: Scalars['Boolean'];
   teamId: Scalars['String'];
-  description: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
   createdAt: Scalars['String'];
   topic: Scalars['String'];
   fullname: Scalars['String'];
@@ -231,6 +231,7 @@ export type QueryTeamArgs = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  sendInvitation: BaseResponse;
   logout: AuthorizationResponse;
   register: AuthorizationResponse;
   verifyUserByDigit: AuthorizationResponse;
@@ -239,6 +240,12 @@ export type Mutation = {
   createTeam: TeamResponse;
   removeTeam: TeamResponse;
   removeUser: BaseResponse;
+};
+
+
+export type MutationSendInvitationArgs = {
+  name?: Maybe<Scalars['String']>;
+  email: Scalars['String'];
 };
 
 
@@ -333,6 +340,20 @@ export type RegisterMutation = (
   & { register: (
     { __typename?: 'AuthorizationResponse' }
     & Pick<AuthorizationResponse, 'ok' | 'errorlog'>
+  ) }
+);
+
+export type SendInvitationMutationVariables = {
+  email: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
+};
+
+
+export type SendInvitationMutation = (
+  { __typename?: 'Mutation' }
+  & { sendInvitation: (
+    { __typename?: 'BaseResponse' }
+    & Pick<BaseResponse, 'ok' | 'errorlog'>
   ) }
 );
 
@@ -669,6 +690,40 @@ export function useRegisterMutation(baseOptions?: ApolloReactHooks.MutationHookO
 export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>;
 export type RegisterMutationResult = ApolloReactCommon.MutationResult<RegisterMutation>;
 export type RegisterMutationOptions = ApolloReactCommon.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>;
+export const SendInvitationDocument = gql`
+    mutation SendInvitation($email: String!, $name: String) {
+  sendInvitation(email: $email, name: $name) {
+    ok
+    errorlog
+  }
+}
+    `;
+export type SendInvitationMutationFn = ApolloReactCommon.MutationFunction<SendInvitationMutation, SendInvitationMutationVariables>;
+
+/**
+ * __useSendInvitationMutation__
+ *
+ * To run a mutation, you first call `useSendInvitationMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSendInvitationMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [sendInvitationMutation, { data, loading, error }] = useSendInvitationMutation({
+ *   variables: {
+ *      email: // value for 'email'
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useSendInvitationMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SendInvitationMutation, SendInvitationMutationVariables>) {
+        return ApolloReactHooks.useMutation<SendInvitationMutation, SendInvitationMutationVariables>(SendInvitationDocument, baseOptions);
+      }
+export type SendInvitationMutationHookResult = ReturnType<typeof useSendInvitationMutation>;
+export type SendInvitationMutationResult = ApolloReactCommon.MutationResult<SendInvitationMutation>;
+export type SendInvitationMutationOptions = ApolloReactCommon.BaseMutationOptions<SendInvitationMutation, SendInvitationMutationVariables>;
 export const VerifyUserByDigitDocument = gql`
     mutation VerifyUserByDigit($digit: Float!) {
   verifyUserByDigit(digit: $digit) {
