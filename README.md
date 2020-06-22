@@ -6,12 +6,10 @@
 
 <br>
 
-Does this:
+### Screenshots
 
-- Creates Channels based on the team
-- Chatting functionalities
+![screely-1592806180891](https://user-images.githubusercontent.com/43525282/85254083-549ad400-b414-11ea-9c4d-08ac67782e94.png)
 
-...and a whole lot more.
 
 ## Get started
 
