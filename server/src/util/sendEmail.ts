@@ -37,7 +37,8 @@ export async function sendLinkEmail(email: string, token: string) {
 export async function sendInvitationEmail(
   email: string,
   name: string,
-  invitor: number
+  invitor: string,
+  token: string
 ) {
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -46,11 +47,11 @@ export async function sendInvitationEmail(
       pass: 'kronos111',
     },
   });
-
+  console.log('entered send in1', email, name, invitor, token);
   transporter.sendMail({
     from: 'kenichikona@gmail.com',
     to: email,
     subject: `${invitor} has invited you to a Slack Workspace`,
-    html: `<a href='http://localhost:3000/get-started/check/${token}'>http://localhost:3000/your-workspaces/${token}</a>`,
+    html: `<a href='http://localhost:3000/get-started/invite/${token}'>http://localhost:3000/your-workspaces/${token}</a>`,
   });
 }

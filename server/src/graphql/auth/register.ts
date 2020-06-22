@@ -49,25 +49,24 @@ export class RegisterResolver {
     @Arg('email') email: string
   ): Promise<AuthorizationResponse | Error> {
     try {
-      const user = await manager.query(`select * from users where email=$1`, [
+      const user = await manager.findOne(User, {
         email,
-      ]);
+      });
 
-      if (user.length === 0) {
+      if (!user) {
         return {
           ok: false,
           errorlog: 'email is invalid',
         };
-      } else {
-        const token = createStringToken(user[0]);
-        redis.set(`${token}`, user[0].id);
-
-        await sendLinkEmail(email, token);
       }
+
+      const token = createStringToken(user);
+      redis.set(`${token}`, user.id);
+
+      await sendLinkEmail(email, token);
 
       return {
         ok: true,
-        errorlog: '',
       };
     } catch (err) {
       throw new Error('Something wrong happened when checking if email exists');
