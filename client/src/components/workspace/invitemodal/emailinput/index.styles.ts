@@ -12,6 +12,6 @@ export const StyledInput = styled(b.Box)`
     border: 1px solid ${({ theme }) => theme.colors.gray__light};
     font-size: 17px;
     color: ${({ theme }) => theme.colors.gray};
-    padding: 10px 0 10px 6px;
+    padding: 7px 0 7px 6px;
   }
 `;

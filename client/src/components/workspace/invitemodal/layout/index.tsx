@@ -14,14 +14,24 @@ import {
   IconWrapper,
   EmailInputs,
   EmailInputHeader,
+  AddOptions,
+  AddOptionText,
+  Footer,
+  SendButton,
 } from './index.styles';
 
 // Svg
 import { Close, UserPlus } from '../../../../assets/svg';
+import { PlusCircle } from '../../../../assets/svg/Plus';
+import { GoogleLogo } from '../../../../assets/svg/Logo';
+import { PaperPlaneLight } from '../../../../assets/svg';
 
 // Context
 import { useToggleDispatch } from '../../../../context/toggle-context';
 import { EmailInput } from '../emailinput';
+
+// Components
+import { DefaultChannels } from '../defaultchannels';
 
 export const InviteModal = () => {
   const dispatchToggle = useToggleDispatch();
@@ -69,6 +79,54 @@ export const InviteModal = () => {
             </b.Box>
             <EmailInput />
           </EmailInputs>
+          <AddOptions>
+            <b.Box>
+              <b.Flex alignItems='center'>
+                <IconWrapper className='plus-circle' mr={2}>
+                  <PlusCircle />
+                </IconWrapper>
+                <AddOptionText>
+                  <b.Text>
+                    <span onClick={() => console.log('add another')}>
+                      Add another
+                    </span>{' '}
+                    or{' '}
+                    <span onClick={() => console.log('add google directory')}>
+                      add many at once
+                    </span>
+                  </b.Text>
+                </AddOptionText>
+              </b.Flex>
+            </b.Box>
+            <b.Box>
+              <b.Flex alignItems='center'>
+                <IconWrapper className='google' mr={2}>
+                  <GoogleLogo />
+                </IconWrapper>
+                <AddOptionText>
+                  <b.Text>
+                    <span>Add from Google Directory</span>
+                  </b.Text>
+                </AddOptionText>
+              </b.Flex>
+            </b.Box>
+          </AddOptions>
+          <DefaultChannels />
+          <Footer>
+            <b.Flex alignItems='center' justifyContent='space-between'>
+              <b.Box>
+                <b.Flex>
+                  <IconWrapper className='paper-plane' mr={2}>
+                    <PaperPlaneLight />
+                  </IconWrapper>
+                  <b.Box>
+                    <b.Text>See past invites</b.Text>
+                  </b.Box>
+                </b.Flex>
+              </b.Box>
+              <SendButton>Send Invitations</SendButton>
+            </b.Flex>
+          </Footer>
         </Container>
       </b.Flex>
     </Wrapper>
