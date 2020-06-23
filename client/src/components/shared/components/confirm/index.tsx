@@ -1,5 +1,5 @@
 import React from 'react';
-import * as b from '../../../styles/blocks';
+import * as b from '../../../../styles/blocks';
 import {
   ConfirmButton,
   DotWrapper,
