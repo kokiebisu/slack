@@ -30,13 +30,20 @@ export const NewAccountViaInvite = () => {
     errorlog: '',
     loading: false,
   });
+
+  const createAccount = () => {};
+
   return (
     <LogoCenterLayout>
       <b.Box py={4}>
         <b.Flex flexDirection='column' alignItems='center'>
           <Wrapper>
             <b.Box>
-              <form onSubmit={(e) => console.log('hello')}>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  createAccount();
+                }}>
                 <b.Box>
                   <b.Text
                     fontSize={48}

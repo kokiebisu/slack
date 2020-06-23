@@ -6,6 +6,6 @@ export class AuthorizationResponse extends BaseResponse {}
 
 @ObjectType()
 export class InviteResponse extends BaseResponse {
-  @Field()
+  @Field({ nullable: true })
   teamId: string;
 }

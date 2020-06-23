@@ -107,6 +107,7 @@ export class VerifyResolver {
         return {
           ok: false,
           errorlog: 'not a valid token',
+          teamId: '',
         };
       }
 
@@ -120,6 +121,7 @@ export class VerifyResolver {
           return {
             ok: false,
             errorlog: 'not a valid token',
+            teamId: '',
           };
         }
 
@@ -152,7 +154,67 @@ export class VerifyResolver {
       return {
         ok: false,
         errorlog: 'not decoded successfully',
-        teamId: null,
+        teamId: '',
+      };
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+
+  @Query(() => InviteResponse)
+  async createUserInvite(
+    @Arg('token') token: string,
+    @Arg('invitorId') invitorId: string,
+    @Arg('name') name: string,
+    @Arg('password') password: string,
+    @Arg('avatarBackground') avatarBackground: string,
+    @Ctx() { req }: Context
+  ): Promise<InviteResponse | Error> {
+    try {
+      const decoded: any = jwt.verify(token, invitorId);
+
+      if (!decoded) {
+        return {
+          ok: false,
+          errorlog: 'not a valid token',
+          teamId: '',
+        };
+      }
+
+      const { email, teamId } = decoded;
+      // create a user
+      const user = await manager.create(User, {
+        fullname: name,
+        email,
+        password,
+        confirmed: true,
+        avatarBackground,
+      });
+
+      req.session!.userId = user.id;
+
+      // add user into team
+      await manager.query(
+        `insert into members ("teamId", "userId") values ($1, $2)`,
+        [teamId, user.id]
+      );
+
+      // fetch all channels that is public
+      const channels = await manager.query(
+        `select * from channels where "teamId"=$1 and "isPublic"=true`,
+        [teamId]
+      );
+
+      channels.forEach(async (channel: any) => {
+        await manager.query(
+          `insert into channel_members ("userId", "channelId") values ($1, $2)`,
+          [user.id, channel.id]
+        );
+      });
+
+      return {
+        ok: true,
+        teamId,
       };
     } catch (err) {
       throw new Error(err);

@@ -42,6 +42,8 @@ export const GetStartedCreate: React.FC<Props> = () => {
     loading: false,
   });
 
+  console.log('statee', state.email);
+
   const [register, { loading }] = useRegisterMutation();
 
   const displayError = (phrase: string) => {
@@ -78,6 +80,8 @@ export const GetStartedCreate: React.FC<Props> = () => {
     }
 
     const avatarBackground = randomColor(profile);
+
+    console.log('response entered');
 
     const response = await register({
       variables: {

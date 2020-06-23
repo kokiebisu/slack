@@ -20,7 +20,7 @@ export const inputReducer = (state: State, action: Action) => {
     case 'add_fullname':
       return { ...state, fullname: action.payload };
     case 'add_email':
-      return { ...state, fullname: action.payload };
+      return { ...state, email: action.payload };
     case 'add_password':
       return { ...state, password: action.payload };
     case 'add_errorlog':

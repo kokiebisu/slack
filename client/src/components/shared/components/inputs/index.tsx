@@ -11,7 +11,7 @@ import { CheckCircle } from '../../../../assets/svg';
 
 // Util
 import { fullNameRegex, weakRegex } from '../../../../util/passwordUtil';
-import { inputReducer, Props } from './util';
+import { Props } from './util';
 
 export const Inputs: React.FC<Props> = ({
   fullname,
@@ -59,6 +59,7 @@ export const Inputs: React.FC<Props> = ({
                 value={email}
                 onChange={(e) => {
                   if (modifyEmail) {
+                    console.log('entered');
                     modifyEmail({ type: 'add_email', payload: e.target.value });
                   }
                 }}
