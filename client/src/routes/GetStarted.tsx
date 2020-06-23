@@ -7,6 +7,7 @@ import { GetStartedFind } from '../components/GetStartedFind/layout';
 import { GetStartedCreate } from '../components/GetStartedStart/layout';
 import { ConfirmEmail } from '../components/GetStartedCheck/layout';
 import { Invited } from '../components/Invited';
+import { NewAccountViaInvite } from '../components/Invited/layout';
 
 export const GetStartedRoutes: React.SFC = () => {
   const match = useRouteMatch();
@@ -21,6 +22,7 @@ export const GetStartedRoutes: React.SFC = () => {
           path={match.url + '/invited/:invitorId/:token?'}
           component={Invited}
         />
+        <Route path={match.url + '/invi'} component={NewAccountViaInvite} />
       </Switch>
     </>
   );

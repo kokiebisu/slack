@@ -5,7 +5,7 @@ export async function sendDigitEmail(email: string, digit: number) {
     host: 'smtp.gmail.com',
     auth: {
       user: 'kenichikona@gmail.com',
-      pass: 'kronos111',
+      pass: 'Kronos140819',
     },
   });
 
@@ -22,7 +22,7 @@ export async function sendLinkEmail(email: string, token: string) {
     host: 'smtp.gmail.com',
     auth: {
       user: 'kenichikona@gmail.com',
-      pass: 'kronos111',
+      pass: 'Kronos140819',
     },
   });
 
@@ -44,7 +44,7 @@ export async function sendInvitationEmail(
     host: 'smtp.gmail.com',
     auth: {
       user: 'kenichikona@gmail.com',
-      pass: 'kronos111',
+      pass: 'Kronos140819',
     },
   });
   transporter.sendMail({
