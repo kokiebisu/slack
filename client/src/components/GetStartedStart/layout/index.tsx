@@ -42,8 +42,6 @@ export const GetStartedCreate: React.FC<Props> = () => {
     loading: false,
   });
 
-  console.log('statee', state.email);
-
   const [register, { loading }] = useRegisterMutation();
 
   const displayError = (phrase: string) => {

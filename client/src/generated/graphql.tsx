@@ -77,7 +77,7 @@ export type InviteResponse = {
   __typename?: 'InviteResponse';
   ok: Scalars['Boolean'];
   errorlog?: Maybe<Scalars['String']>;
-  teamId: Scalars['String'];
+  teamId?: Maybe<Scalars['String']>;
 };
 
 export type ChannelWithFullName = {
@@ -249,6 +249,7 @@ export type Mutation = {
   logout: AuthorizationResponse;
   register: AuthorizationResponse;
   verifyUserByDigit: AuthorizationResponse;
+  createUserInvite: InviteResponse;
   createChannel: ChannelResponse;
   sendMessage: DisplayingMessage;
   createTeam: TeamResponse;
@@ -274,6 +275,15 @@ export type MutationRegisterArgs = {
 
 export type MutationVerifyUserByDigitArgs = {
   digit: Scalars['Float'];
+};
+
+
+export type MutationCreateUserInviteArgs = {
+  avatarBackground: Scalars['String'];
+  password: Scalars['String'];
+  name: Scalars['String'];
+  invitorId: Scalars['String'];
+  token: Scalars['String'];
 };
 
 
@@ -328,6 +338,23 @@ export type CheckEmailQuery = (
   & { checkEmail: (
     { __typename?: 'AuthorizationResponse' }
     & Pick<AuthorizationResponse, 'ok' | 'errorlog'>
+  ) }
+);
+
+export type CreateUserInviteMutationVariables = {
+  token: Scalars['String'];
+  invitorId: Scalars['String'];
+  name: Scalars['String'];
+  password: Scalars['String'];
+  avatarBackground: Scalars['String'];
+};
+
+
+export type CreateUserInviteMutation = (
+  { __typename?: 'Mutation' }
+  & { createUserInvite: (
+    { __typename?: 'InviteResponse' }
+    & Pick<InviteResponse, 'ok' | 'errorlog' | 'teamId'>
   ) }
 );
 
@@ -652,6 +679,44 @@ export function useCheckEmailLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryH
 export type CheckEmailQueryHookResult = ReturnType<typeof useCheckEmailQuery>;
 export type CheckEmailLazyQueryHookResult = ReturnType<typeof useCheckEmailLazyQuery>;
 export type CheckEmailQueryResult = ApolloReactCommon.QueryResult<CheckEmailQuery, CheckEmailQueryVariables>;
+export const CreateUserInviteDocument = gql`
+    mutation CreateUserInvite($token: String!, $invitorId: String!, $name: String!, $password: String!, $avatarBackground: String!) {
+  createUserInvite(token: $token, invitorId: $invitorId, name: $name, password: $password, avatarBackground: $avatarBackground) {
+    ok
+    errorlog
+    teamId
+  }
+}
+    `;
+export type CreateUserInviteMutationFn = ApolloReactCommon.MutationFunction<CreateUserInviteMutation, CreateUserInviteMutationVariables>;
+
+/**
+ * __useCreateUserInviteMutation__
+ *
+ * To run a mutation, you first call `useCreateUserInviteMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateUserInviteMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createUserInviteMutation, { data, loading, error }] = useCreateUserInviteMutation({
+ *   variables: {
+ *      token: // value for 'token'
+ *      invitorId: // value for 'invitorId'
+ *      name: // value for 'name'
+ *      password: // value for 'password'
+ *      avatarBackground: // value for 'avatarBackground'
+ *   },
+ * });
+ */
+export function useCreateUserInviteMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CreateUserInviteMutation, CreateUserInviteMutationVariables>) {
+        return ApolloReactHooks.useMutation<CreateUserInviteMutation, CreateUserInviteMutationVariables>(CreateUserInviteDocument, baseOptions);
+      }
+export type CreateUserInviteMutationHookResult = ReturnType<typeof useCreateUserInviteMutation>;
+export type CreateUserInviteMutationResult = ApolloReactCommon.MutationResult<CreateUserInviteMutation>;
+export type CreateUserInviteMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateUserInviteMutation, CreateUserInviteMutationVariables>;
 export const LogoutDocument = gql`
     mutation Logout {
   logout {

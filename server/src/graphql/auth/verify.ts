@@ -161,7 +161,7 @@ export class VerifyResolver {
     }
   }
 
-  @Query(() => InviteResponse)
+  @Mutation(() => InviteResponse)
   async createUserInvite(
     @Arg('token') token: string,
     @Arg('invitorId') invitorId: string,
@@ -183,13 +183,22 @@ export class VerifyResolver {
 
       const { email, teamId } = decoded;
       // create a user
-      const user = await manager.create(User, {
-        fullname: name,
-        email,
-        password,
-        confirmed: true,
-        avatarBackground,
-      });
+
+      console.log('fullname', name);
+      console.log('email', email);
+      console.log('password', password);
+      console.log('avatarBackground', avatarBackground);
+      const user = await manager
+        .create(User, {
+          fullname: name,
+          email,
+          password,
+          confirmed: true,
+          avatarBackground,
+        })
+        .save();
+
+      console.log('user id', user.id);
 
       req.session!.userId = user.id;
 
