@@ -12,7 +12,7 @@ import { Wrapper } from './index.styles';
 import { Inputs } from '../../shared/components/inputs';
 import { PasswordValidationBar } from '../../shared/components/validationbar';
 import { PasswordValidationText } from '../../shared/components/validationtext';
-import { ErrorDialog } from '../../GetStartedStart/errordialog';
+import { ErrorDialog } from '../../shared/components/errordialog';
 import { Confirm } from '../../shared/components/confirm';
 import { Policy } from '../../shared/components/policy';
 
@@ -129,7 +129,7 @@ export const NewAccountViaInvite = () => {
                 />
                 <PasswordValidationBar password={state.password} />
                 <PasswordValidationText password={state.password} />
-                <ErrorDialog error={state.errorlog} />
+                <ErrorDialog width='full' error={state.errorlog} />
                 <b.Box>
                   <Confirm loading={state.loading} />
                   <Policy />
