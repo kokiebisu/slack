@@ -1,0 +1,10 @@
+query User($userId: String!) {
+  user(userId: $userId) {
+    ok
+    errorlog
+    user {
+      id
+      fullname
+    }
+  }
+}
