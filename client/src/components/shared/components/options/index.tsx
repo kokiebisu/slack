@@ -1,7 +1,7 @@
 import * as React from 'react';
-import * as b from '../../../../../styles/blocks';
+import * as b from '../../../../styles/blocks';
 import { IconWrapper } from './index.styles';
-import { Info } from '../../../../../assets/svg';
+import { Info } from '../../../../assets/svg';
 
 export const Options = () => {
   return (
