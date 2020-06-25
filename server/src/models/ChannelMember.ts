@@ -16,9 +16,9 @@ export class ChannelMember extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Field(() => Number)
+  @Field(() => String)
   @Column()
-  userId!: number;
+  userId!: string;
 
   @Field(() => String)
   @Column()
