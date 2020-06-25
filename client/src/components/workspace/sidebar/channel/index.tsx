@@ -22,8 +22,6 @@ export const Channel: React.FC<Props> = ({ id, name, isPublic }) => {
 
   const history = useHistory();
 
-  // const history = createBrow
-
   return (
     <Wrapper
       onClick={() => {
