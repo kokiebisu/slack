@@ -27,8 +27,6 @@ export const SubSection: React.FC<Props> = ({ channelId }) => {
     variables: { channelId },
   });
 
-  console.log('gsd', getBelongingUsers);
-
   return (
     <Wrapper>
       <b.Flex>

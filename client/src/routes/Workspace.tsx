@@ -19,6 +19,7 @@ import { DraftPage } from '../components/Workspace/content/draft';
 import { SavedPage } from '../components/Workspace/content/saved';
 import { Workspace } from '../components/Workspace/layout';
 import { ChannelPage } from '../components/Workspace/content/channel/layout';
+import { DirectMessagePage } from '../components/Workspace/content/directmessage';
 
 type Props = RouteComponentProps<
   {},
@@ -57,6 +58,9 @@ export const WorkspaceRoute: React.FC<{}> = () => {
           </Route>
           <Route path={match.url + '/channel/:channelId'}>
             <ChannelPage />
+          </Route>
+          <Route path={match.url + '/user/:userId'}>
+            <DirectMessagePage />
           </Route>
         </>
       ) : (
