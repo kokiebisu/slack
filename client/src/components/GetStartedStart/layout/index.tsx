@@ -22,7 +22,7 @@ import { PasswordValidationBar } from '../../shared/components/validationbar';
 import { PasswordValidationText } from '../../shared/components/validationtext';
 import { Policy } from '../../shared/components/policy';
 import { Inputs } from '../../shared/components/inputs';
-import { ErrorDialog } from '../errordialog';
+import { ErrorDialog } from '../../shared/components/errordialog';
 import { Confirm } from '../../shared/components/confirm';
 import { randomColor } from '../../../util/randomColor';
 import { profile } from '../../../styles/colors';
@@ -135,7 +135,7 @@ export const GetStartedCreate: React.FC<Props> = () => {
                 />
                 <PasswordValidationBar password={state.password} />
                 <PasswordValidationText password={state.password} />
-                <ErrorDialog error={state.errorlog} />
+                <ErrorDialog error={state.errorlog} width={370} />
                 <b.Box>
                   <Confirm loading={state.loading} />
                   <Policy />

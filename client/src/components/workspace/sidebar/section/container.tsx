@@ -14,7 +14,7 @@ import { Channels } from '../channel/container';
 import { useChannelsQuery } from '../../../../generated/graphql';
 
 // Styles
-import { Wrapper } from './container.styles';
+import { Wrapper, InviteButton } from './container.styles';
 import {
   useToggleState,
   useToggleDispatch,
@@ -70,14 +70,14 @@ export const SidebarSections: React.FC<Props> = () => {
       <SidebarSection
         title='Direct mesages'
         subtitle={
-          <b.Button
+          <InviteButton
             onClick={() => {
               dispatchToggle({ type: 'toggle_invite' });
             }}>
             <b.Text fontFamily='SlackLato-Black' color='white' fontSize={15}>
               Invite people
             </b.Text>
-          </b.Button>
+          </InviteButton>
         }
         onReveal={() =>
           setRevealed({ ...revealed, messages: !revealed.messages })

@@ -19,10 +19,11 @@ import { AnimatePresence } from 'framer-motion';
 import { After } from '../after/layout';
 
 // Types
-type State = { email: string; name: string; done: boolean };
+type State = { email: string; name: string; error: string; done: boolean };
 type Action =
   | { type: 'add_email'; payload: string }
   | { type: 'add_name'; payload: string }
+  | { type: 'give_error'; payload: string }
   | { type: 'done' };
 
 // Reducer
@@ -32,6 +33,8 @@ const reducer = (state: State, action: Action) => {
       return { ...state, email: action.payload };
     case 'add_name':
       return { ...state, name: action.payload };
+    case 'give_error':
+      return { ...state, error: action.payload };
     case 'done':
       return { ...state, done: !state.done };
     default:
@@ -40,19 +43,20 @@ const reducer = (state: State, action: Action) => {
 };
 
 export const InviteModal = () => {
-  const { teamId } = useParams();
   const dispatchToggle = useToggleDispatch();
 
   const [input, dispatchInput] = useReducer(reducer, {
     email: '',
     name: '',
+    error: '',
+
     done: false,
   });
 
   return (
-    <Wrapper>
-      <b.Flex justifyContent='center' alignItems='center'>
-        <AnimatePresence>
+    <AnimatePresence>
+      <Wrapper>
+        <b.Flex justifyContent='center' alignItems='center'>
           <Container animate={{ y: 0 }} initial={{ y: 15 }}>
             {input.done ? (
               <b.Box
@@ -76,8 +80,8 @@ export const InviteModal = () => {
               </b.Box>
             )}
           </Container>
-        </AnimatePresence>
-      </b.Flex>
-    </Wrapper>
+        </b.Flex>
+      </Wrapper>
+    </AnimatePresence>
   );
 };

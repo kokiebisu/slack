@@ -1,11 +1,10 @@
-import styled from 'styled-components';
-import * as b from '../../../styles/blocks';
+import styled, { css } from 'styled-components';
+import * as b from '../../../../styles/blocks';
 
 export const ErrorBox = styled(b.Box)`
-  width: 370px;
+  width: ${({ width }) => (width === 'full' ? '100%' : `${width}px`)};
   background-color: ${({ theme }) => theme.colors.pink__lighter};
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-radius: 3px;
   border: 1px solid ${({ theme }) => theme.colors.pink};
   padding: 10px 0 10px 10px;
 `;

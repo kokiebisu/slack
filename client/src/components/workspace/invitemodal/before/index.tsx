@@ -21,6 +21,7 @@ import { DefaultChannels } from '../defaultchannels';
 import { PlusCircle } from '../../../../assets/svg/Plus';
 import { useSendInvitationMutation } from '../../../../generated/graphql';
 import { useParams } from 'react-router-dom';
+import { ErrorDialog } from '../../../shared/components/errordialog';
 
 interface Props {
   dispatchToggle: any;
@@ -67,6 +68,7 @@ export const Before: React.FC<Props> = ({
           </b.Box>
         </b.Flex>
       </PricingPlans>
+      {input.error && <ErrorDialog width='full' error={input.error} />}
       <EmailInputs>
         <b.Box>
           <b.Flex>
@@ -127,9 +129,18 @@ export const Before: React.FC<Props> = ({
           </b.Box>
           <SendButton
             onClick={async () => {
+              if (!input.email || !input.name || !teamId) {
+                dispatchInput({
+                  type: 'give_error',
+                  payload:
+                    'Add at least one email address before sending invitations.',
+                });
+                return;
+              }
               const response = await send({
                 variables: { email: input.email, name: input.name, teamId },
               });
+
               if (response.data?.sendInvitation.errorlog) {
                 console.log('there was an error');
               }

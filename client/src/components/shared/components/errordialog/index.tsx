@@ -1,24 +1,25 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../styles/blocks';
+import * as b from '../../../../styles/blocks';
 
 // Styles
 import { ErrorBox, IconWrapper } from './index.styles';
 
 // Svgs
-import { Warning } from '../../../assets/svg';
+import { Warning } from '../../../../assets/svg';
 
 interface Props {
   error: string;
+  width: number | string;
 }
 
-export const ErrorDialog: React.FC<Props> = ({ error }) => {
+export const ErrorDialog: React.FC<Props> = ({ error, width }) => {
   return (
-    <b.Box height={35} my={2}>
+    <b.Box height={35} mb={3} mt={2}>
       <b.Flex justifyContent='center'>
         {error && (
-          <ErrorBox backgroundColor='pink__lighter' width={1}>
+          <ErrorBox width={width} backgroundColor='pink__lighter'>
             <b.Flex alignItems='center'>
               <IconWrapper className='warning' mr={2}>
                 <Warning />
