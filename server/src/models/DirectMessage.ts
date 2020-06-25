@@ -17,13 +17,13 @@ export class DirectMessage extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Field(() => Number)
+  @Field(() => String)
   @Column()
-  fromId!: number;
+  fromId!: string;
 
-  @Field(() => Number)
+  @Field(() => String)
   @Column()
-  toId!: number;
+  toId!: string;
 
   @ManyToOne(() => User, (user) => user.messagesReceived)
   from!: User;

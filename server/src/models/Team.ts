@@ -20,9 +20,9 @@ export class Team extends BaseEntity {
   @Column()
   name: string;
 
-  @Field(() => Int)
+  @Field(() => String)
   @Column()
-  ownerId: number;
+  ownerId: string;
 
   @Field()
   @Column()

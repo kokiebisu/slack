@@ -21,9 +21,9 @@ export class Member extends BaseEntity {
   @Column()
   teamId!: string;
 
-  @Field(() => Number)
+  @Field(() => String)
   @Column()
-  userId!: number;
+  userId!: string;
 
   @ManyToOne(() => User, (user) => user.members)
   user!: User;
