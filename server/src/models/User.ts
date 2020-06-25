@@ -9,6 +9,7 @@ import { ObjectType, Field, Int } from 'type-graphql';
 import { Member } from './Member';
 import { ChannelMember } from './ChannelMember';
 import { Channel } from './Channel';
+import { DirectMessage } from './DirectMessage';
 
 @ObjectType()
 @Entity('users')
@@ -47,4 +48,10 @@ export class User extends BaseEntity {
   // The channels started by user
   @OneToMany(() => Channel, (channel) => channel.creator)
   channels: Channel[];
+
+  @OneToMany(() => DirectMessage, (directMessage) => directMessage.from)
+  messagesReceived: DirectMessage[];
+
+  @OneToMany(() => DirectMessage, (directMessage) => directMessage.to)
+  messagesSent: DirectMessage[];
 }
