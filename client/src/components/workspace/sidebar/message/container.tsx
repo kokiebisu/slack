@@ -4,7 +4,7 @@ import * as b from '../../../../styles/blocks';
 // Styles
 import { Message } from '.';
 import { Heart } from '../../../../assets/svg/Heart';
-import { IconWrapper, SlackBot } from './container.styles';
+import { IconWrapper, SlackBot, Name } from './container.styles';
 
 interface Props {}
 
@@ -16,14 +16,14 @@ export const Messages: React.FC<Props> = () => {
           <IconWrapper className='heart' pr={2}>
             <Heart />
           </IconWrapper>
-          <b.Box style={{ top: 3 }}>
+          <Name>
             <b.Text
               fontFamily='SlackLato-Light'
               color='pink__lighter'
               fontSize={15}>
               Slackbot
             </b.Text>
-          </b.Box>
+          </Name>
         </b.Flex>
       </SlackBot>
       <Message />

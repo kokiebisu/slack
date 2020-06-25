@@ -2,19 +2,19 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ClientContentLayout } from '../layout';
+import { Options } from '../../../shared/components/options';
 
 interface Props {}
 
 export const DirectMessagePage: React.FC<Props> = () => {
-  const { channelId } = useParams();
-  console.log('entered rsdaf');
+  const { userId } = useParams();
+
   return (
     <>
       <ClientContentLayout
-        section='usr'
-        subsection={<div>he</div>}
+        section={`${userId}`}
         content={<div>content</div>}
-        options={<div>options</div>}
+        options={<Options />}
       />
     </>
   );

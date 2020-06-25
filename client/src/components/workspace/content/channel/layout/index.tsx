@@ -7,7 +7,7 @@ import { useGetChannelByIdQuery } from '../../../../../generated/graphql';
 
 // Components
 import { ClientContentLayout } from '../../layout';
-import { Options } from '../options';
+import { Options } from '../../../../shared/components/options';
 import { SubSection } from '../subsection';
 
 // Styles
