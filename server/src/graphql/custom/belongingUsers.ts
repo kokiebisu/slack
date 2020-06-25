@@ -14,12 +14,13 @@ export class BelongingUsersResolver {
         'select * from channel_members where "channelId" = $1',
         [channelId]
       );
+      console.log('users', users);
       return {
         ok: true,
         belongingUsers: users,
       };
     } catch (err) {
-      throw new Error('something wrong happened with getBelongingUsers query');
+      throw new Error(err);
     }
   }
 }

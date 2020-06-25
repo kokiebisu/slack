@@ -15,7 +15,7 @@ export type Scalars = {
 
 export type ChannelMember = {
   __typename?: 'ChannelMember';
-  userId: Scalars['Float'];
+  userId: Scalars['String'];
   channelId: Scalars['String'];
 };
 
@@ -43,19 +43,26 @@ export type Team = {
   __typename?: 'Team';
   id: Scalars['String'];
   name: Scalars['String'];
-  ownerId: Scalars['Int'];
+  ownerId: Scalars['String'];
   avatarBackground: Scalars['String'];
 };
 
 export type Member = {
   __typename?: 'Member';
   teamId: Scalars['String'];
-  userId: Scalars['Float'];
+  userId: Scalars['String'];
+};
+
+export type DirectMessage = {
+  __typename?: 'DirectMessage';
+  fromId: Scalars['String'];
+  toId: Scalars['String'];
+  body: Scalars['String'];
 };
 
 export type User = {
   __typename?: 'User';
-  id: Scalars['Int'];
+  id: Scalars['String'];
   fullname: Scalars['String'];
   email: Scalars['String'];
   avatarBackground: Scalars['String'];

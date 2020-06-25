@@ -7,7 +7,7 @@ class BelongingUsers {
   id: string;
 
   @Field()
-  userId: number;
+  userId: string;
 
   @Field()
   channelId: string;
