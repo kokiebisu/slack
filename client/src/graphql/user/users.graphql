@@ -1,5 +1,5 @@
-query Users {
-  users {
+query Users($teamId: String!) {
+  users(teamId: $teamId) {
     ok
     errorlog
     users {

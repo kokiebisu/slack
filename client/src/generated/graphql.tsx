@@ -256,6 +256,11 @@ export type QueryUserArgs = {
   userId: Scalars['String'];
 };
 
+
+export type QueryUsersArgs = {
+  teamId: Scalars['String'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   sendInvitation: BaseResponse;
@@ -659,7 +664,9 @@ export type UserQuery = (
   ) }
 );
 
-export type UsersQueryVariables = {};
+export type UsersQueryVariables = {
+  teamId: Scalars['String'];
+};
 
 
 export type UsersQuery = (
@@ -1446,8 +1453,8 @@ export type UserQueryHookResult = ReturnType<typeof useUserQuery>;
 export type UserLazyQueryHookResult = ReturnType<typeof useUserLazyQuery>;
 export type UserQueryResult = ApolloReactCommon.QueryResult<UserQuery, UserQueryVariables>;
 export const UsersDocument = gql`
-    query Users {
-  users {
+    query Users($teamId: String!) {
+  users(teamId: $teamId) {
     ok
     errorlog
     users {
@@ -1470,6 +1477,7 @@ export const UsersDocument = gql`
  * @example
  * const { data, loading, error } = useUsersQuery({
  *   variables: {
+ *      teamId: // value for 'teamId'
  *   },
  * });
  */

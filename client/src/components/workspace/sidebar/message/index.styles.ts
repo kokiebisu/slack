@@ -33,7 +33,7 @@ export const Name = styled(b.Box)`
   & > p {
     font-family: 'SlackLato-Light';
     color: ${({ theme }) => theme.colors.pink__lighter};
-    font-size: 15px;
+    font-size: 14px;
   }
 `;
 

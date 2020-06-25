@@ -9,24 +9,27 @@ import { Wrapper, IconWrapper, Status, Name } from './index.styles';
 import { useParams } from 'react-router-dom';
 import { useMeQuery } from '../../../../generated/graphql';
 
-export const Message = () => {
+interface Props {
+  name: string;
+  teamId: string;
+  userId: string;
+}
+
+export const Message: React.FC<Props> = ({ name, teamId, userId }) => {
   const history = useHistory();
   const { data: meData } = useMeQuery();
-  const { teamId } = useParams();
   return (
     <>
       {meData && meData.me && meData.me.user && (
         <Wrapper
-          onClick={() =>
-            history.push(`/client/${teamId}/user/${meData.me.user!.id}`)
-          }
+          onClick={() => history.push(`/client/${teamId}/user/${userId}`)}
           py={2}>
           <b.Flex alignItems='center'>
             <IconWrapper className='status' pr={2}>
               <Status />
             </IconWrapper>
             <Name>
-              <b.Text>ken</b.Text>
+              <b.Text>{name}</b.Text>
             </Name>
           </b.Flex>
         </Wrapper>

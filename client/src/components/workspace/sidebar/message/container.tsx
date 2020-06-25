@@ -1,14 +1,23 @@
 import * as React from 'react';
 import * as b from '../../../../styles/blocks';
+import { useParams } from 'react-router-dom';
 
 // Styles
 import { Message } from '.';
 import { Heart } from '../../../../assets/svg/Heart';
 import { IconWrapper, SlackBot, Name } from './container.styles';
 
+// Query
+import { useUsersQuery } from '../../../../generated/graphql';
+
 interface Props {}
 
 export const Messages: React.FC<Props> = () => {
+  const { teamId } = useParams();
+  const { data: usersData } = useUsersQuery({
+    variables: { teamId },
+  });
+
   return (
     <b.Box>
       <SlackBot py={2}>
@@ -26,7 +35,18 @@ export const Messages: React.FC<Props> = () => {
           </Name>
         </b.Flex>
       </SlackBot>
-      <Message />
+      {usersData &&
+        usersData.users &&
+        usersData.users.users!.map((user, index) => {
+          return (
+            <Message
+              key={index}
+              name={user.fullname}
+              teamId={teamId}
+              userId={user.id}
+            />
+          );
+        })}
     </b.Box>
   );
 };
