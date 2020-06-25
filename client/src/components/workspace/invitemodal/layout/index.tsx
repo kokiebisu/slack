@@ -16,6 +16,7 @@ import { Before } from '../before';
 
 // Animation
 import { AnimatePresence } from 'framer-motion';
+import { After } from '../after/layout';
 
 // Types
 type State = { email: string; name: string; done: boolean };
@@ -51,14 +52,21 @@ export const InviteModal = () => {
   return (
     <Wrapper>
       <b.Flex justifyContent='center' alignItems='center'>
-        <Container animate={{ y: 0 }} initial={{ y: 15 }}>
-          <AnimatePresence>
-            {input.done ? null : (
+        <AnimatePresence>
+          <Container animate={{ y: 0 }} initial={{ y: 15 }}>
+            {input.done ? (
               <b.Box
-                key='before'
+                key='after'
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}>
+                <After input={input} dispatchToggle={dispatchToggle} />
+              </b.Box>
+            ) : (
+              <b.Box
+                key='before'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}>
                 <Before
                   dispatchToggle={dispatchToggle}
                   input={input}
@@ -67,8 +75,8 @@ export const InviteModal = () => {
                 />
               </b.Box>
             )}
-          </AnimatePresence>
-        </Container>
+          </Container>
+        </AnimatePresence>
       </b.Flex>
     </Wrapper>
   );
