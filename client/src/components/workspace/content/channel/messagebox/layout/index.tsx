@@ -1,6 +1,5 @@
 import * as React from 'react';
-
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 
 // Blocks
 import * as b from '../../../../../../styles/blocks';
@@ -23,6 +22,7 @@ export const MessageBox = () => {
 
   const { data, loading } = useGetChannelByIdQuery({
     variables: { channelId },
+    fetchPolicy: 'cache-and-network',
   });
   const editor = useMemo(() => withReact(createEditor()), []);
   const [value, setValue] = useState<any>(
@@ -35,6 +35,19 @@ export const MessageBox = () => {
           },
         ]
   );
+
+  useEffect(() => {
+    setValue(
+      localStorage.getItem(`${channelId}`)
+        ? JSON.parse(localStorage.getItem(`${channelId}`)!)
+        : [
+            {
+              type: 'paragraph',
+              children: [{ text: '' }],
+            },
+          ]
+    );
+  }, [channelId]);
 
   const renderElement = useCallback((props) => {
     switch (props.element.type) {
@@ -66,9 +79,7 @@ export const MessageBox = () => {
               }}>
               {!loading && data?.getChannelById.ok && (
                 <Editable
-                  data-channel-name={`Message #${data?.getChannelById.channel?.name}`}
-                  aria-label={`Message #${data?.getChannelById.channel?.name}`}
-                  placeholder={`Jot down your thoughts...`}
+                  placeholder={`Message #${data.getChannelById.channel?.name}`}
                   renderLeaf={renderLeaf}
                   renderElement={renderElement}
                   onKeyDown={(event) => {
