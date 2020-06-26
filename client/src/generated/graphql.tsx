@@ -679,7 +679,7 @@ export type UserQuery = (
     & Pick<UserResponse, 'ok' | 'errorlog'>
     & { user?: Maybe<(
       { __typename?: 'User' }
-      & Pick<User, 'id' | 'fullname'>
+      & Pick<User, 'id' | 'fullname' | 'avatarBackground'>
     )> }
   ) }
 );
@@ -1442,6 +1442,7 @@ export const UserDocument = gql`
     user {
       id
       fullname
+      avatarBackground
     }
   }
 }
