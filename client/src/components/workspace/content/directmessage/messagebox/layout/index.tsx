@@ -23,6 +23,7 @@ export const MessageBox = () => {
 
   const { data: userData, loading } = useUserQuery({
     variables: { userId },
+    fetchPolicy: 'cache-and-network',
   });
   const editor = useMemo(() => withReact(createEditor()), []);
   const [value, setValue] = useState<any>(
@@ -79,7 +80,7 @@ export const MessageBox = () => {
               }}>
               {!loading && userData?.user.ok && (
                 <Editable
-                  placeholder={`Jot down your thoughts...`}
+                  placeholder={`Message ${userData.user.user?.fullname}`}
                   renderLeaf={renderLeaf}
                   renderElement={renderElement}
                   onKeyDown={(event) => {
