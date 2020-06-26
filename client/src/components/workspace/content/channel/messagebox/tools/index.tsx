@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../../styles/blocks';
+import * as b from '../../../../../../styles/blocks';
 
 // Styles
 import { Wrapper, IconWrapper, Seperator } from './index.styles';
@@ -22,10 +22,10 @@ import {
   PaperClip,
   PaperPlane,
   EllipsisH,
-} from '../../../../../assets/svg';
-import { CustomEditor } from '../../../../../util/customEditor';
+} from '../../../../../../assets/svg';
+import { CustomEditor } from '../../../../../../util/customEditor';
 import { useParams } from 'react-router-dom';
-import { useSendMessageMutation } from '../../../../../generated/graphql';
+import { useSendMessageMutation } from '../../../../../../generated/graphql';
 
 interface Props {
   editor: any;

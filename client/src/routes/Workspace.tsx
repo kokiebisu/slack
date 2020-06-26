@@ -19,7 +19,7 @@ import { DraftPage } from '../components/Workspace/content/draft';
 import { SavedPage } from '../components/Workspace/content/saved';
 import { Workspace } from '../components/Workspace/layout';
 import { ChannelPage } from '../components/Workspace/content/channel/layout';
-import { DirectMessagePage } from '../components/Workspace/content/directmessage';
+import { DirectMessagePage } from '../components/Workspace/content/directmessage/layout';
 
 type Props = RouteComponentProps<
   {},

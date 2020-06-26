@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useState, useMemo, useCallback } from 'react';
 
 // Blocks
-import * as b from '../../../../../styles/blocks';
+import * as b from '../../../../../../styles/blocks';
 
 // Styles
 import { Wrapper, Content, CommandDescription } from './index.styles';
@@ -14,8 +14,8 @@ import { createEditor } from 'slate';
 // Components
 import { MessageInput } from '../input';
 import { MessageTools } from '../tools';
-import { CustomEditor } from '../../../../../util/customEditor';
-import { useGetChannelByIdQuery } from '../../../../../generated/graphql';
+import { CustomEditor } from '../../../../../../util/customEditor';
+import { useGetChannelByIdQuery } from '../../../../../../generated/graphql';
 import { useParams } from 'react-router-dom';
 
 export const MessageBox = () => {

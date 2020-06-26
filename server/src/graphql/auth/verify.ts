@@ -184,10 +184,6 @@ export class VerifyResolver {
       const { email, teamId } = decoded;
       // create a user
 
-      console.log('fullname', name);
-      console.log('email', email);
-      console.log('password', password);
-      console.log('avatarBackground', avatarBackground);
       const user = await manager
         .create(User, {
           fullname: name,
@@ -197,8 +193,6 @@ export class VerifyResolver {
           avatarBackground,
         })
         .save();
-
-      console.log('user id', user.id);
 
       req.session!.userId = user.id;
 
