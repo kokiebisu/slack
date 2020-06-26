@@ -4,12 +4,9 @@ import {
   BaseEntity,
   Column,
   PrimaryGeneratedColumn,
-  OneToMany,
 } from 'typeorm';
 import { User } from './User';
-import { Team } from './Team';
 import { ObjectType, Field } from 'type-graphql';
-import { Message } from './Message';
 
 @ObjectType()
 @Entity('direct_messages')
@@ -34,4 +31,8 @@ export class DirectMessage extends BaseEntity {
   @Field(() => String)
   @Column()
   body: string;
+
+  @Field(() => Date)
+  @Column('timestamp', { default: () => 'CURRENT_TIMESTAMP' })
+  createdAt: Date;
 }

@@ -5,7 +5,6 @@ import {
   Column,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-
 import { ObjectType, Field } from 'type-graphql';
 import { Channel } from './Channel';
 import { Member } from './Member';
