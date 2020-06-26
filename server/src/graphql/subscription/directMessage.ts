@@ -32,12 +32,12 @@ export class DirectMessageResolver {
     filter: ({ payload, args }) => payload.userId === args.userID,
   })
   subscribeToDirectMessages(
-    @Arg('userID') userID: string,
+    @Arg('toId') toId: string,
     @Root()
     { id, fullname, body, avatarBackground, createdAt }: DisplayingMessage
   ): DisplayingMessage {
-    // const date = new Date(createdAt).toLocaleDateString('en-US', options);
-    return { id, fullname, body, avatarBackground, createdAt };
+    const date = new Date(createdAt).toLocaleDateString('en-US', options);
+    return { id, fullname, body, avatarBackground, createdAt: date };
   }
 
   @Mutation(() => DisplayingMessage, { nullable: true })
