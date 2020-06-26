@@ -12,7 +12,7 @@ import {
 import { getManager } from 'typeorm';
 import { DisplayingMessage } from '../response/subscriptionResponse';
 import { Context } from '../../interface/Context';
-import { DirectMessage } from 'src/models/DirectMessage';
+import { DirectMessage } from '../../models/DirectMessage';
 
 const manager = getManager();
 const DIRECT_MESSAGE = 'direct message';
@@ -40,40 +40,42 @@ export class DirectMessageResolver {
     return { id, fullname, body, avatarBackground, createdAt };
   }
 
-  @Mutation(() => DisplayingMessage)
+  @Mutation(() => DisplayingMessage, { nullable: true })
   async sendDirectMessage(
-    @Arg('senderId') receiverId: string,
-    @Arg('teamId') teamId: string,
+    @Arg('toId') toId: string,
     @Arg('body') body: string,
     @PubSub() pubSub: PubSubEngine,
     @Ctx() { req }: Context
   ): Promise<DisplayingMessage | null> {
     try {
-      const senderId = req.session!.userId;
+      //   const senderId = req.session!.userId;
+      const fromId = 'ac09980c-9077-41d2-b49d-dc5b68a7f40a';
 
       // get sender fullname
-      const sender = await manager.query(
+      const result = await manager.query(
         'select * from users where users.id = $1',
-        [senderId]
+        [fromId]
       );
 
-      if (sender) {
+      const fromUser = result[0];
+
+      if (!fromUser) {
         return null;
       }
 
       const directMessage = await manager
         .create(DirectMessage, {
-          fromId: sender.id,
-          toId: receiverId,
+          fromId: fromUser.id,
+          toId: toId,
           body,
         })
         .save();
 
       const payload = {
         id: directMessage.id,
-        fullname: sender.fullname,
+        fullname: fromUser.fullname,
         body,
-        avatarBackground: sender.avatarBackground,
+        avatarBackground: fromUser.avatarBackground,
         createdAt: directMessage.createdAt,
       };
 
@@ -81,9 +83,9 @@ export class DirectMessageResolver {
 
       return {
         id: directMessage.id,
-        fullname: sender.fullname,
+        fullname: fromUser.fullname,
         body,
-        avatarBackground: sender?.avatarBackground!,
+        avatarBackground: fromUser?.avatarBackground!,
         createdAt: directMessage.createdAt.toLocaleDateString('en-US', options),
       };
     } catch (err) {
@@ -92,7 +94,7 @@ export class DirectMessageResolver {
   }
 
   @Query(() => [DisplayingMessage])
-  async fetchMessages(
+  async fetchDirectMessages(
     @Arg('senderId') senderId: string,
     @Ctx() { req }: Context
   ): Promise<[DisplayingMessage] | Error | null> {
