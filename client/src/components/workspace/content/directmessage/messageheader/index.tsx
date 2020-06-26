@@ -1,9 +1,22 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
+// Blocks
 import * as b from '../../../../../styles/blocks';
-import { Wrapper, Profile, IconWrapper } from './index.styles';
+
+// Styles
+import {
+  Header,
+  Description,
+  Wrapper,
+  Profile,
+  IconWrapper,
+} from './index.styles';
+
+// Svgs
 import { UserAlt } from '../../../../../assets/svg';
+
+// Queries
 import { useUserQuery } from '../../../../../generated/graphql';
 
 export const MessageHeader = () => {
@@ -28,21 +41,21 @@ export const MessageHeader = () => {
               </Profile>
             )}
           </b.Box>
-          <b.Box>
+          <Header>
             {userData && userData.user.user && (
-              <b.Text>{userData.user.user.fullname}</b.Text>
+              <b.Text>{userData.user.user.fullname} </b.Text>
             )}
-          </b.Box>
+          </Header>
         </b.Flex>
       </b.Box>
-      <b.Box>
+      <Description>
         <b.Text>
-          This is the very beginning of your direct message history with
+          This is the very beginning of your direct message history with &nbsp;
           {userData && userData.user.user && (
-            <b.Span>&nbsp; @{userData.user.user.fullname}</b.Span>
+            <b.Span>@{userData.user.user.fullname}</b.Span>
           )}
         </b.Text>
-      </b.Box>
+      </Description>
     </Wrapper>
   );
 };

@@ -3,6 +3,6 @@ import * as b from '../../../../../styles/blocks';
 
 export const Wrapper = styled(b.Box)`
   position: absolute;
-  bottom: 130px;
+  bottom: 110px;
   width: 100%;
 `;
