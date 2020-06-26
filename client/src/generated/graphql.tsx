@@ -58,6 +58,7 @@ export type DirectMessage = {
   fromId: Scalars['String'];
   toId: Scalars['String'];
   body: Scalars['String'];
+  createdAt: Scalars['DateTime'];
 };
 
 export type User = {
@@ -201,6 +202,7 @@ export type Query = {
   channels: ChannelsResponse;
   getBelongingTeams: BelongingTeamsResponse;
   getBelongingUsers: BelongingUsersResponse;
+  fetchDirectMessages: Array<DisplayingMessage>;
   fetchMessages: Array<DisplayingMessage>;
   myTeams: TeamsResponse;
   team: TeamResponse;
@@ -242,6 +244,11 @@ export type QueryGetBelongingUsersArgs = {
 };
 
 
+export type QueryFetchDirectMessagesArgs = {
+  fromId: Scalars['String'];
+};
+
+
 export type QueryFetchMessagesArgs = {
   channelId: Scalars['String'];
 };
@@ -269,6 +276,7 @@ export type Mutation = {
   verifyUserByDigit: AuthorizationResponse;
   createUserInvite: InviteResponse;
   createChannel: ChannelResponse;
+  sendDirectMessage?: Maybe<DisplayingMessage>;
   sendMessage: DisplayingMessage;
   createTeam: TeamResponse;
   removeTeam: TeamResponse;
@@ -314,6 +322,12 @@ export type MutationCreateChannelArgs = {
 };
 
 
+export type MutationSendDirectMessageArgs = {
+  body: Scalars['String'];
+  toId: Scalars['String'];
+};
+
+
 export type MutationSendMessageArgs = {
   body: Scalars['String'];
   teamId: Scalars['String'];
@@ -338,7 +352,13 @@ export type MutationRemoveUserArgs = {
 
 export type Subscription = {
   __typename?: 'Subscription';
+  subscribeToDirectMessages: DisplayingMessage;
   subscribeToMessages: DisplayingMessage;
+};
+
+
+export type SubscriptionSubscribeToDirectMessagesArgs = {
+  fromId: Scalars['String'];
 };
 
 
@@ -659,7 +679,7 @@ export type UserQuery = (
     & Pick<UserResponse, 'ok' | 'errorlog'>
     & { user?: Maybe<(
       { __typename?: 'User' }
-      & Pick<User, 'id' | 'fullname'>
+      & Pick<User, 'id' | 'fullname' | 'avatarBackground'>
     )> }
   ) }
 );
@@ -1422,6 +1442,7 @@ export const UserDocument = gql`
     user {
       id
       fullname
+      avatarBackground
     }
   }
 }

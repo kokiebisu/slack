@@ -19,7 +19,6 @@ export class CreateTeamResolver {
     @Ctx() { req }: Context
   ): Promise<TeamResponse | Error> {
     try {
-      console.log('enterd', req.session!.userId);
       const userId = req.session!.userId;
 
       const team = await manager

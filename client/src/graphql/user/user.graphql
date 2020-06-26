@@ -5,6 +5,7 @@ query User($userId: String!) {
     user {
       id
       fullname
+      avatarBackground
     }
   }
 }

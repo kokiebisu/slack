@@ -79,8 +79,6 @@ export const GetStartedCreate: React.FC<Props> = () => {
 
     const avatarBackground = randomColor(profile);
 
-    console.log('response entered');
-
     const response = await register({
       variables: {
         email: state.email,

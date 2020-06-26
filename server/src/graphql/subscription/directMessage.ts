@@ -111,8 +111,6 @@ export class DirectMessageResolver {
         [fromId, toId]
       );
 
-      console.log('entered fet1', data);
-
       let date;
 
       data.forEach((message: DisplayingMessage) => {

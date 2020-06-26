@@ -59,7 +59,6 @@ export const Inputs: React.FC<Props> = ({
                 value={email}
                 onChange={(e) => {
                   if (modifyEmail) {
-                    console.log('entered');
                     modifyEmail({ type: 'add_email', payload: e.target.value });
                   }
                 }}

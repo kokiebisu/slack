@@ -19,7 +19,7 @@ import { LayerPlus, UserPlus } from '../../../../../assets/svg';
 // Components
 import { useParams } from 'react-router-dom';
 import { useGetChannelByIdQuery } from '../../../../../generated/graphql';
-import { MessageBox } from '../../messagebox/layout';
+import { MessageBox } from '../messagebox/layout';
 
 import { MessageContainer } from '../container';
 
