@@ -29,10 +29,10 @@ const options = {
 export class DirectMessageResolver {
   @Subscription(() => DisplayingMessage, {
     topics: DIRECT_MESSAGE,
-    filter: ({ payload, args }) => payload.userId === args.userID,
+    filter: ({ payload, args }) => payload.fromId === args.fromID,
   })
   subscribeToDirectMessages(
-    @Arg('toId') toId: string,
+    @Arg('fromId') fromId: string,
     @Root()
     { id, fullname, body, avatarBackground, createdAt }: DisplayingMessage
   ): DisplayingMessage {
@@ -77,6 +77,7 @@ export class DirectMessageResolver {
         body,
         avatarBackground: fromUser.avatarBackground,
         createdAt: directMessage.createdAt,
+        fromId: fromUser.id,
       };
 
       await pubSub.publish(DIRECT_MESSAGE, payload);
@@ -95,19 +96,22 @@ export class DirectMessageResolver {
 
   @Query(() => [DisplayingMessage])
   async fetchDirectMessages(
-    @Arg('senderId') senderId: string,
+    @Arg('fromId') fromId: string,
     @Ctx() { req }: Context
   ): Promise<[DisplayingMessage] | Error | null> {
     try {
-      const receiverId = req.session!.userId;
-      if (!receiverId) {
+      //   const toId = req.session!.userId;
+      const toId = '3b3f957a-e30c-4687-9036-d433ec4eed39';
+      if (!toId) {
         return null;
       }
 
       const data = await manager.query(
         'select u.fullname as receiver, u."avatarBackground", u2.fullname as sender, dm.body, dm."createdAt" from direct_messages dm inner join users u on dm."toId"=u.id inner join users u2 on dm."fromId"=u2.id where dm."fromId"=$1 and dm."toId"=$2',
-        [senderId, receiverId]
+        [fromId, toId]
       );
+
+      console.log('entered fet1', data);
 
       let date;
 
