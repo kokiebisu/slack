@@ -36,63 +36,87 @@ export class DirectMessageResolver {
     @Root()
     { id, fullname, body, avatarBackground, createdAt }: DisplayingMessage
   ): DisplayingMessage {
-    const date = new Date(createdAt).toLocaleDateString('en-US', options);
-    return { id, fullname, body, avatarBackground, createdAt: date };
+    // const date = new Date(createdAt).toLocaleDateString('en-US', options);
+    return { id, fullname, body, avatarBackground, createdAt };
   }
 
   @Mutation(() => DisplayingMessage)
   async sendDirectMessage(
-    @Arg('userId') userId: string,
+    @Arg('senderId') receiverId: string,
     @Arg('teamId') teamId: string,
     @Arg('body') body: string,
     @PubSub() pubSub: PubSubEngine,
     @Ctx() { req }: Context
   ): Promise<DisplayingMessage | null> {
-      try {
-          const senderId = req.session!.userId;
+    try {
+      const senderId = req.session!.userId;
 
-          // get sender fullname
-          const sender = await manager.query('', [senderId])
+      // get sender fullname
+      const sender = await manager.query(
+        'select * from users where users.id = $1',
+        [senderId]
+      );
 
-          if (senderId) {
-              return null;
-          }
-
-          const directMessage = await manager.create(DirectMessage, {
-              fromId: senderId,
-              toId: userId,
-              body
-          }).save();
-
-          const payload = {
-            id: directMessage.id,
-            fullname: sender.fullname,
-            body,
-            acatarBackground: senderId.avatarBackground,
-            createdAt: directMessage.createdAt
-
-          }
+      if (sender) {
+        return null;
       }
+
+      const directMessage = await manager
+        .create(DirectMessage, {
+          fromId: sender.id,
+          toId: receiverId,
+          body,
+        })
+        .save();
+
+      const payload = {
+        id: directMessage.id,
+        fullname: sender.fullname,
+        body,
+        avatarBackground: sender.avatarBackground,
+        createdAt: directMessage.createdAt,
+      };
+
+      await pubSub.publish(DIRECT_MESSAGE, payload);
+
+      return {
+        id: directMessage.id,
+        fullname: sender.fullname,
+        body,
+        avatarBackground: sender?.avatarBackground!,
+        createdAt: directMessage.createdAt.toLocaleDateString('en-US', options),
+      };
+    } catch (err) {
+      throw new Error(err);
+    }
   }
 
   @Query(() => [DisplayingMessage])
   async fetchMessages(
-      @Arg('senderId') senderId: string,
-      @Ctx() {req}: Context
-  ): Promise<[DisplayingMessage] | Error> {
-      try {
-          const data = await manager.query()
-
-          let date;
-
-          data.forEach((message: DisplayingMessage) => {
-              date = new Date(message['createdAt']).toLocaleString('en-US', options);
-              message['createdAt'] = date;
-          })
-
-          return data;
-      } catch (err) {
-          throw new Error(err)
+    @Arg('senderId') senderId: string,
+    @Ctx() { req }: Context
+  ): Promise<[DisplayingMessage] | Error | null> {
+    try {
+      const receiverId = req.session!.userId;
+      if (!receiverId) {
+        return null;
       }
+
+      const data = await manager.query(
+        'select u.fullname as receiver, u."avatarBackground", u2.fullname as sender, dm.body, dm."createdAt" from direct_messages dm inner join users u on dm."toId"=u.id inner join users u2 on dm."fromId"=u2.id where dm."fromId"=$1 and dm."toId"=$2',
+        [senderId, receiverId]
+      );
+
+      let date;
+
+      data.forEach((message: DisplayingMessage) => {
+        date = new Date(message['createdAt']).toLocaleString('en-US', options);
+        message['createdAt'] = date;
+      });
+
+      return data;
+    } catch (err) {
+      throw new Error(err);
+    }
   }
 }
