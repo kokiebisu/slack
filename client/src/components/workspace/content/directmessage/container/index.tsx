@@ -19,7 +19,6 @@ import { Messages } from '../../message/container';
 
 export const MessageContainer = () => {
   const { userId } = useParams();
-  console.log('message cotainer', userId);
 
   useEffect(() => {
     const unsubscribe = subscribeToNewMessages(userId);
@@ -67,7 +66,7 @@ export const MessageContainer = () => {
       variables: { fromId: latestUser },
       updateQuery: (prev, { subscriptionData }) => {
         if (!subscriptionData.data) return prev;
-        const newMessage = subscriptionData.data.subscribeToMessages;
+        const newMessage = subscriptionData.data.subscribeToDirectMessages;
         return Object.assign({}, prev, {
           fetchDirectMessages: [...prev.fetchDirectMessages, newMessage],
         });
@@ -75,8 +74,6 @@ export const MessageContainer = () => {
     });
 
   // this gives an object with dates as keys
-
-  console.log('fetch', fetchDirectMessagesData);
 
   type tplotOptions = {
     [key: string]: boolean;

@@ -36,7 +36,6 @@ export class DirectMessageResolver {
     @Root()
     { id, fullname, body, avatarBackground, createdAt }: DisplayingMessage
   ): DisplayingMessage {
-    console.log('entered');
     const date = new Date(createdAt).toLocaleDateString('en-US', options);
     return { id, fullname, body, avatarBackground, createdAt: date };
   }
@@ -119,8 +118,6 @@ export class DirectMessageResolver {
         date = new Date(message['createdAt']).toLocaleString('en-US', options);
         message['createdAt'] = date;
       });
-
-      console.log('what', data);
 
       return data;
     } catch (err) {
