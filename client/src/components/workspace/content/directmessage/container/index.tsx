@@ -19,6 +19,7 @@ import { Messages } from '../../message/container';
 
 export const MessageContainer = () => {
   const { userId } = useParams();
+  console.log('message cotainer', userId);
 
   useEffect(() => {
     const unsubscribe = subscribeToNewMessages(userId);
@@ -53,8 +54,8 @@ export const MessageContainer = () => {
 
   const {
     subscribeToMore,
-    data: fetchMessagesData,
-    loading: fetchMessagesLoading,
+    data: fetchDirectMessagesData,
+    loading: fetchDirectMessagesLoading,
   } = useQuery(FETCH_DIRECT_MESSAGES, {
     variables: { fromId: userId },
     fetchPolicy: 'cache-and-network',
@@ -75,16 +76,16 @@ export const MessageContainer = () => {
 
   // this gives an object with dates as keys
 
+  console.log('fetch', fetchDirectMessagesData);
+
   type tplotOptions = {
     [key: string]: boolean;
   };
 
   let messagesByDates;
 
-  console.log('sda', fetchMessagesData);
-
-  if (!fetchMessagesLoading && fetchMessagesData) {
-    let groups: tplotOptions = fetchMessagesData.fetchDirectMessages.reduce(
+  if (!fetchDirectMessagesLoading && fetchDirectMessagesData) {
+    let groups: tplotOptions = fetchDirectMessagesData.fetchDirectMessages.reduce(
       (groups: any, message: any) => {
         const createdAt = message.createdAt.split(',').slice(0, 2);
         if (!groups[createdAt]) {
@@ -102,8 +103,6 @@ export const MessageContainer = () => {
       };
     });
   }
-
-  console.log('dm', messagesByDates);
 
   return (
     <Wrapper>
