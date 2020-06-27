@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../../styles/blocks';
+import * as b from '../../../../styles/blocks';
 
 // Styles
 import { Profile, IconWrapper, Top } from './index.styles';
@@ -10,7 +10,7 @@ import { Profile, IconWrapper, Top } from './index.styles';
 import { MessageJoined } from './event';
 import { MessageBody } from './message';
 
-import { UserAlt } from '../../../../../assets/svg';
+import { UserAlt } from '../../../../assets/svg';
 
 interface Props {
   sender: string;
