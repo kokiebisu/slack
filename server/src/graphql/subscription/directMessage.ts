@@ -29,7 +29,7 @@ const options = {
 export class DirectMessageResolver {
   @Subscription(() => DisplayingMessage, {
     topics: DIRECT_MESSAGE,
-    filter: ({ payload, args }) => payload.fromId === args.fromID,
+    filter: ({ payload, args }) => payload.toId === args.fromId,
   })
   subscribeToDirectMessages(
     @Arg('fromId') fromId: string,
@@ -48,8 +48,8 @@ export class DirectMessageResolver {
     @Ctx() { req }: Context
   ): Promise<DisplayingMessage | null> {
     try {
-      //   const senderId = req.session!.userId;
-      const fromId = 'ac09980c-9077-41d2-b49d-dc5b68a7f40a';
+      const fromId = req.session!.userId;
+      // const fromId = 'ac09980c-9077-41d2-b49d-dc5b68a7f40a';
 
       // get sender fullname
       const result = await manager.query(
@@ -77,7 +77,7 @@ export class DirectMessageResolver {
         body,
         avatarBackground: fromUser.avatarBackground,
         createdAt: directMessage.createdAt,
-        fromId: fromUser.id,
+        toId,
       };
 
       await pubSub.publish(DIRECT_MESSAGE, payload);
@@ -100,15 +100,16 @@ export class DirectMessageResolver {
     @Ctx() { req }: Context
   ): Promise<[DisplayingMessage] | Error | null> {
     try {
-      //   const toId = req.session!.userId;
-      const toId = '3b3f957a-e30c-4687-9036-d433ec4eed39';
+      const toId = req.session!.userId;
+
+      // const toId = '3b3f957a-e30c-4687-9036-d433ec4eed39';
       if (!toId) {
         return null;
       }
 
       const data = await manager.query(
-        'select u.fullname as receiver, u."avatarBackground", u2.fullname as sender, dm.body, dm."createdAt" from direct_messages dm inner join users u on dm."toId"=u.id inner join users u2 on dm."fromId"=u2.id where dm."fromId"=$1 and dm."toId"=$2',
-        [fromId, toId]
+        'select dm.id, u."avatarBackground", u2.fullname as fullname, dm.body, dm."createdAt" from direct_messages dm inner join users u on dm."toId"=u.id inner join users u2 on dm."fromId"=u2.id where dm."fromId"=$1 and dm."toId"=$2',
+        [toId, fromId]
       );
 
       let date;

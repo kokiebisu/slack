@@ -103,7 +103,7 @@ export class MessageResolver {
         fullname: user?.fullname!,
         body,
         avatarBackground: user?.avatarBackground!,
-        createdAt: message.createdAt,
+        createdAt: message.createdAt.toLocaleDateString('en-US', options),
       };
     } catch (err) {
       throw new Error('something went wrong when sending message');

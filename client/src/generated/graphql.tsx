@@ -561,6 +561,19 @@ export type GetBelongingUsersQuery = (
   ) }
 );
 
+export type FetchDirectMessagesQueryVariables = {
+  fromId: Scalars['String'];
+};
+
+
+export type FetchDirectMessagesQuery = (
+  { __typename?: 'Query' }
+  & { fetchDirectMessages: Array<(
+    { __typename?: 'DisplayingMessage' }
+    & Pick<DisplayingMessage, 'id' | 'fullname' | 'body' | 'avatarBackground' | 'createdAt'>
+  )> }
+);
+
 export type FetchMessagesQueryVariables = {
   channelId: Scalars['String'];
 };
@@ -569,6 +582,20 @@ export type FetchMessagesQueryVariables = {
 export type FetchMessagesQuery = (
   { __typename?: 'Query' }
   & { fetchMessages: Array<(
+    { __typename?: 'DisplayingMessage' }
+    & Pick<DisplayingMessage, 'id' | 'fullname' | 'body' | 'avatarBackground' | 'createdAt'>
+  )> }
+);
+
+export type SendDirectMessageMutationVariables = {
+  toId: Scalars['String'];
+  body: Scalars['String'];
+};
+
+
+export type SendDirectMessageMutation = (
+  { __typename?: 'Mutation' }
+  & { sendDirectMessage?: Maybe<(
     { __typename?: 'DisplayingMessage' }
     & Pick<DisplayingMessage, 'id' | 'fullname' | 'body' | 'avatarBackground' | 'createdAt'>
   )> }
@@ -586,6 +613,19 @@ export type SendMessageMutation = (
   & { sendMessage: (
     { __typename?: 'DisplayingMessage' }
     & Pick<DisplayingMessage, 'id' | 'fullname' | 'body' | 'avatarBackground'>
+  ) }
+);
+
+export type SubscribeToDirectMessagesSubscriptionVariables = {
+  fromId: Scalars['String'];
+};
+
+
+export type SubscribeToDirectMessagesSubscription = (
+  { __typename?: 'Subscription' }
+  & { subscribeToDirectMessages: (
+    { __typename?: 'DisplayingMessage' }
+    & Pick<DisplayingMessage, 'id' | 'fullname' | 'body' | 'avatarBackground' | 'createdAt'>
   ) }
 );
 
@@ -1175,6 +1215,43 @@ export function useGetBelongingUsersLazyQuery(baseOptions?: ApolloReactHooks.Laz
 export type GetBelongingUsersQueryHookResult = ReturnType<typeof useGetBelongingUsersQuery>;
 export type GetBelongingUsersLazyQueryHookResult = ReturnType<typeof useGetBelongingUsersLazyQuery>;
 export type GetBelongingUsersQueryResult = ApolloReactCommon.QueryResult<GetBelongingUsersQuery, GetBelongingUsersQueryVariables>;
+export const FetchDirectMessagesDocument = gql`
+    query FetchDirectMessages($fromId: String!) {
+  fetchDirectMessages(fromId: $fromId) {
+    id
+    fullname
+    body
+    avatarBackground
+    createdAt
+  }
+}
+    `;
+
+/**
+ * __useFetchDirectMessagesQuery__
+ *
+ * To run a query within a React component, call `useFetchDirectMessagesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFetchDirectMessagesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFetchDirectMessagesQuery({
+ *   variables: {
+ *      fromId: // value for 'fromId'
+ *   },
+ * });
+ */
+export function useFetchDirectMessagesQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FetchDirectMessagesQuery, FetchDirectMessagesQueryVariables>) {
+        return ApolloReactHooks.useQuery<FetchDirectMessagesQuery, FetchDirectMessagesQueryVariables>(FetchDirectMessagesDocument, baseOptions);
+      }
+export function useFetchDirectMessagesLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FetchDirectMessagesQuery, FetchDirectMessagesQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FetchDirectMessagesQuery, FetchDirectMessagesQueryVariables>(FetchDirectMessagesDocument, baseOptions);
+        }
+export type FetchDirectMessagesQueryHookResult = ReturnType<typeof useFetchDirectMessagesQuery>;
+export type FetchDirectMessagesLazyQueryHookResult = ReturnType<typeof useFetchDirectMessagesLazyQuery>;
+export type FetchDirectMessagesQueryResult = ApolloReactCommon.QueryResult<FetchDirectMessagesQuery, FetchDirectMessagesQueryVariables>;
 export const FetchMessagesDocument = gql`
     query FetchMessages($channelId: String!) {
   fetchMessages(channelId: $channelId) {
@@ -1212,6 +1289,43 @@ export function useFetchMessagesLazyQuery(baseOptions?: ApolloReactHooks.LazyQue
 export type FetchMessagesQueryHookResult = ReturnType<typeof useFetchMessagesQuery>;
 export type FetchMessagesLazyQueryHookResult = ReturnType<typeof useFetchMessagesLazyQuery>;
 export type FetchMessagesQueryResult = ApolloReactCommon.QueryResult<FetchMessagesQuery, FetchMessagesQueryVariables>;
+export const SendDirectMessageDocument = gql`
+    mutation SendDirectMessage($toId: String!, $body: String!) {
+  sendDirectMessage(toId: $toId, body: $body) {
+    id
+    fullname
+    body
+    avatarBackground
+    createdAt
+  }
+}
+    `;
+export type SendDirectMessageMutationFn = ApolloReactCommon.MutationFunction<SendDirectMessageMutation, SendDirectMessageMutationVariables>;
+
+/**
+ * __useSendDirectMessageMutation__
+ *
+ * To run a mutation, you first call `useSendDirectMessageMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSendDirectMessageMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [sendDirectMessageMutation, { data, loading, error }] = useSendDirectMessageMutation({
+ *   variables: {
+ *      toId: // value for 'toId'
+ *      body: // value for 'body'
+ *   },
+ * });
+ */
+export function useSendDirectMessageMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SendDirectMessageMutation, SendDirectMessageMutationVariables>) {
+        return ApolloReactHooks.useMutation<SendDirectMessageMutation, SendDirectMessageMutationVariables>(SendDirectMessageDocument, baseOptions);
+      }
+export type SendDirectMessageMutationHookResult = ReturnType<typeof useSendDirectMessageMutation>;
+export type SendDirectMessageMutationResult = ApolloReactCommon.MutationResult<SendDirectMessageMutation>;
+export type SendDirectMessageMutationOptions = ApolloReactCommon.BaseMutationOptions<SendDirectMessageMutation, SendDirectMessageMutationVariables>;
 export const SendMessageDocument = gql`
     mutation SendMessage($channelId: String!, $teamId: String!, $body: String!) {
   sendMessage(channelId: $channelId, body: $body, teamId: $teamId) {
@@ -1249,6 +1363,39 @@ export function useSendMessageMutation(baseOptions?: ApolloReactHooks.MutationHo
 export type SendMessageMutationHookResult = ReturnType<typeof useSendMessageMutation>;
 export type SendMessageMutationResult = ApolloReactCommon.MutationResult<SendMessageMutation>;
 export type SendMessageMutationOptions = ApolloReactCommon.BaseMutationOptions<SendMessageMutation, SendMessageMutationVariables>;
+export const SubscribeToDirectMessagesDocument = gql`
+    subscription SubscribeToDirectMessages($fromId: String!) {
+  subscribeToDirectMessages(fromId: $fromId) {
+    id
+    fullname
+    body
+    avatarBackground
+    createdAt
+  }
+}
+    `;
+
+/**
+ * __useSubscribeToDirectMessagesSubscription__
+ *
+ * To run a query within a React component, call `useSubscribeToDirectMessagesSubscription` and pass it any options that fit your needs.
+ * When your component renders, `useSubscribeToDirectMessagesSubscription` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSubscribeToDirectMessagesSubscription({
+ *   variables: {
+ *      fromId: // value for 'fromId'
+ *   },
+ * });
+ */
+export function useSubscribeToDirectMessagesSubscription(baseOptions?: ApolloReactHooks.SubscriptionHookOptions<SubscribeToDirectMessagesSubscription, SubscribeToDirectMessagesSubscriptionVariables>) {
+        return ApolloReactHooks.useSubscription<SubscribeToDirectMessagesSubscription, SubscribeToDirectMessagesSubscriptionVariables>(SubscribeToDirectMessagesDocument, baseOptions);
+      }
+export type SubscribeToDirectMessagesSubscriptionHookResult = ReturnType<typeof useSubscribeToDirectMessagesSubscription>;
+export type SubscribeToDirectMessagesSubscriptionResult = ApolloReactCommon.SubscriptionResult<SubscribeToDirectMessagesSubscription>;
 export const SubscribeToMessagesDocument = gql`
     subscription SubscribeToMessages($channelID: String!) {
   subscribeToMessages(channelID: $channelID) {

@@ -6,8 +6,8 @@ import { useParams } from 'react-router-dom';
 import * as b from '../../../../../styles/blocks';
 
 // Components
-import { DateSeperator } from '../DateSeperator';
-import { Messages } from '../message/container';
+import { DateSeperator } from '../../DateSeperator';
+import { Messages } from '../../message/container';
 
 /// Styles
 import { Wrapper } from './index.styles';
