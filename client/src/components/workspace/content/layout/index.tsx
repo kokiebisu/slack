@@ -36,6 +36,7 @@ export const ClientContentLayout: React.FC<Props> = ({
       <input {...getInputProps()} />
 
       <Wrapper>
+        {isDragActive && <DragDrop />}
         <b.Box className='top'>
           <Top>
             <b.Flex justifyContent='space-between' alignItems='center'>
@@ -58,11 +59,7 @@ export const ClientContentLayout: React.FC<Props> = ({
             </b.Flex>
           </Top>
         </b.Box>
-        {isDragActive ? (
-          <DragDrop />
-        ) : (
-          <b.Box className='bottom'>{content}</b.Box>
-        )}
+        <b.Box className='bottom'>{content}</b.Box>
       </Wrapper>
     </div>
   );
