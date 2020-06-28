@@ -1,12 +1,28 @@
 import React from 'react';
 import * as b from '../../../../styles/blocks';
 
-import { Wrapper, Title, Description } from './index.styles';
+import {
+  Wrapper,
+  ImageWrapper,
+  Images,
+  Image,
+  Title,
+  Description,
+} from './index.styles';
 
 export const DragDrop = () => {
   return (
     <Wrapper>
       <b.Flex>
+        <ImageWrapper>
+          <b.Flex justifyContent='center' alignItems='center'>
+            <Images>
+              <Image className='third' />
+              <Image className='second' />
+              <Image className='first' />
+            </Images>
+          </b.Flex>
+        </ImageWrapper>
         <Title>
           <b.Text>Upload to コーディングスクール（仮）</b.Text>
         </Title>
