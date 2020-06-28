@@ -12,6 +12,7 @@ export const Wrapper = styled(b.Box)`
       position: relative;
       width: 100%;
       height: 1px;
+      margin-top: 30px;
 
       background-color: ${({ theme }) => theme.colors.gray__lighter};
     }

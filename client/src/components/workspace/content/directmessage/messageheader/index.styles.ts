@@ -3,7 +3,7 @@ import * as b from '../../../../../styles/blocks';
 
 export const Wrapper = styled(b.Box)`
   width: 100%;
-  padding: 10px 0;
+  padding: 20px 0 20px 0;
 
   & > div {
     padding: 0 20px;
