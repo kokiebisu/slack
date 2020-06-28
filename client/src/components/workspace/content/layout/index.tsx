@@ -33,9 +33,15 @@ export const ClientContentLayout: React.FC<Props> = ({
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
   return (
     <div {...getRootProps()}>
-      <input {...getInputProps()} />
-
       <Wrapper>
+        {/* <DragDrop /> */}
+        {isDragActive && (
+          <>
+            {' '}
+            <input {...getInputProps()} />
+            <DragDrop />
+          </>
+        )}
         <b.Box className='top'>
           <Top>
             <b.Flex justifyContent='space-between' alignItems='center'>
@@ -58,11 +64,7 @@ export const ClientContentLayout: React.FC<Props> = ({
             </b.Flex>
           </Top>
         </b.Box>
-        {isDragActive ? (
-          <DragDrop />
-        ) : (
-          <b.Box className='bottom'>{content}</b.Box>
-        )}
+        <b.Box className='bottom'>{content}</b.Box>
       </Wrapper>
     </div>
   );
