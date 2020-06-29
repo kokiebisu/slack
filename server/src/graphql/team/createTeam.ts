@@ -3,7 +3,6 @@ import { Context } from '../../interface/context';
 import { Team } from '../../models/Team';
 import { TeamResponse } from '../response/teamResponse';
 import { isAuth } from '../../middleware/isAuthenticated';
-import { Member } from '../../models/Member';
 import { getManager } from 'typeorm';
 // import { Member } from '../../models/UserTeam';
 

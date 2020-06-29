@@ -1,4 +1,4 @@
-import { Query, Arg, Ctx } from 'type-graphql';
+import { Query, Ctx } from 'type-graphql';
 import { BelongingTeamsResponse } from '../response/belongingTeamsResponse';
 import { getManager } from 'typeorm';
 import { Context } from '../../interface/Context';

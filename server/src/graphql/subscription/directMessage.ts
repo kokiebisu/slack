@@ -32,7 +32,6 @@ export class DirectMessageResolver {
     filter: ({ payload, args }) => payload.toId === args.fromId,
   })
   subscribeToDirectMessages(
-    @Arg('fromId') fromId: string,
     @Root()
     { id, fullname, body, avatarBackground, createdAt }: DisplayingMessage
   ): DisplayingMessage {

@@ -6,7 +6,6 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from './User';
-import { Team } from './Team';
 import { ObjectType, Field } from 'type-graphql';
 import { Channel } from './Channel';
 

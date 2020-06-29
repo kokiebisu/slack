@@ -3,7 +3,6 @@ import { Context } from '../../interface/context';
 import { User } from '../../models/User';
 import { isAuth } from '../../middleware/isAuthenticated';
 import { UserResponse } from '../response/userResponse';
-import { getConnection } from 'typeorm';
 
 @Resolver()
 export class MeResolver {
