@@ -26,14 +26,22 @@ const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const redis_1 = require("./redis");
 const tokenRoutes_1 = require("./routes/tokenRoutes");
 const PORT = process.env.PORT || 4000;
+const DATABASE_PORT = parseInt(process.env.DATABASE_PORT, 10) || 5432;
 const allowCrossDomain = (_, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.setHeader('Access-Control-Allow-Headers', 'http://localhost:3000');
     res.setHeader('Access-Control-Allow-Credentials', 'true');
     next();
 };
-(() => __awaiter(void 0, void 0, void 0, function* () {
-    yield typeorm_1.createConnection();
+const main = () => __awaiter(void 0, void 0, void 0, function* () {
+    yield typeorm_1.createConnection({
+        type: 'postgres',
+        host: process.env.POSTGRES_HOST,
+        port: DATABASE_PORT,
+        username: process.env.POSTGRES_USERNAME,
+        password: process.env.POSTGRES_PASSWORD,
+        database: process.env.POSTGRES_DATABASE,
+    });
     const app = express_1.default();
     app.use(cookie_parser_1.default());
     const apolloServer = new apollo_server_express_1.ApolloServer({
@@ -73,5 +81,6 @@ const allowCrossDomain = (_, res, next) => {
         console.log(`🚀 Server ready at http://localhost:${PORT}${apolloServer.graphqlPath}`);
         console.log(`🚀 Subscriptions ready at ws://localhost:${PORT}${apolloServer.subscriptionsPath}`);
     });
-}))();
+});
+main();
 //# sourceMappingURL=server.js.map
