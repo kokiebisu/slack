@@ -1,6 +1,6 @@
 import { Resolver, Query, Ctx, UseMiddleware } from 'type-graphql';
 import { Team } from '../../models/Team';
-import { Context } from '../../interface/context';
+import { Context } from '../../interface/Context';
 import { isAuth } from '../../middleware/isAuthenticated';
 import { TeamsResponse } from '../response/teamResponse';
 

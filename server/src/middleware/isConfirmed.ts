@@ -1,5 +1,5 @@
 import { MiddlewareFn } from 'type-graphql';
-import { Context } from '../interface/context';
+import { Context } from '../interface/Context';
 import { User } from 'src/models/User';
 
 export const isConfirmed: MiddlewareFn<Context> = async ({ context }, next) => {

@@ -1,4 +1,4 @@
-import { Resolver, Query, Ctx } from 'type-graphql';
+import { Resolver, Query } from 'type-graphql';
 import { Team } from '../../models/Team';
 import { TeamsResponse } from '../response/teamResponse';
 

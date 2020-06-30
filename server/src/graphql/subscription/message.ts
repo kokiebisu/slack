@@ -3,7 +3,6 @@ import {
   Resolver,
   Arg,
   Ctx,
-  UseMiddleware,
   Subscription,
   Root,
   PubSub,
@@ -36,7 +35,6 @@ export class MessageResolver {
     filter: ({ payload, args }) => payload.channelId === args.channelID,
   })
   subscribeToMessages(
-    @Arg('channelID') channelID: string,
     @Root()
     { id, fullname, body, avatarBackground, createdAt }: DisplayingMessage
   ): DisplayingMessage {

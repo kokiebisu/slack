@@ -112,7 +112,7 @@ export class VerifyResolver {
       }
 
       if (decoded.email && decoded.teamId && decoded.name) {
-        const { email, teamId, name } = decoded;
+        const { email, teamId } = decoded;
         const user = await manager.findOne(User, {
           email: email,
         });

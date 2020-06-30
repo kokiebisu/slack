@@ -1,18 +1,14 @@
 import { Mutation, Ctx, Arg } from 'type-graphql';
 import { Context } from '../../interface/Context';
-import { AuthorizationResponse } from '../response/authResponse';
+
 import { BaseResponse } from '../response/baseResponse';
 import { sendInvitationEmail } from '../../util/sendEmail';
 import { getManager } from 'typeorm';
 
 import jwt from 'jsonwebtoken';
 
-// Util
-import { createStringToken } from '../../util/tokenGenerator';
-
 // Models
 import { User } from '../../models/User';
-import { redis } from '../../redis';
 
 const manager = getManager();
 
