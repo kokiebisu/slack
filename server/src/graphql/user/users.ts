@@ -1,5 +1,4 @@
 import { Query, Resolver, Arg } from 'type-graphql';
-import { User } from '../../models/User';
 import { UsersResponse } from '../response/userResponse';
 import { getManager } from 'typeorm';
 

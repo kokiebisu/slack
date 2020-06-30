@@ -15,7 +15,7 @@ import { router as tokenRouter } from './routes/tokenRoutes';
 
 const PORT = process.env.PORT || 4000;
 
-const allowCrossDomain = (req: Request, res: Response, next: NextFunction) => {
+const allowCrossDomain = (_: Request, res: Response, next: NextFunction) => {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.setHeader('Access-Control-Allow-Headers', 'http://localhost:3000');
   res.setHeader('Access-Control-Allow-Credentials', 'true');

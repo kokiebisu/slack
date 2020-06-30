@@ -1,9 +1,8 @@
 import { Arg, Resolver, Mutation, Ctx, UseMiddleware } from 'type-graphql';
-import { Context } from '../../interface/context';
+import { Context } from '../../interface/Context';
 import { Team } from '../../models/Team';
 import { TeamResponse } from '../response/teamResponse';
 import { isAuth } from '../../middleware/isAuthenticated';
-import { Member } from '../../models/Member';
 import { getManager } from 'typeorm';
 // import { Member } from '../../models/UserTeam';
 

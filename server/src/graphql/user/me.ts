@@ -1,9 +1,8 @@
 import { Query, Ctx, Resolver, UseMiddleware } from 'type-graphql';
-import { Context } from '../../interface/context';
+import { Context } from '../../interface/Context';
 import { User } from '../../models/User';
 import { isAuth } from '../../middleware/isAuthenticated';
 import { UserResponse } from '../response/userResponse';
-import { getConnection } from 'typeorm';
 
 @Resolver()
 export class MeResolver {

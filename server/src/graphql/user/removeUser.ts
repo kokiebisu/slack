@@ -10,7 +10,7 @@ export class RemoveUser {
   async removeUser(@Arg('userId') userId: number) {
     await manager.query('delete from members where "userId"=$1', [userId]);
     await manager.query('delete from teams where "ownerId"=$1', [userId]);
-    await User.delete({ id: userId });
+    await manager.delete(User, { id: userId });
     return {
       ok: true,
     };

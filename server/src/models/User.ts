@@ -5,7 +5,7 @@ import {
   BaseEntity,
   OneToMany,
 } from 'typeorm';
-import { ObjectType, Field, Int } from 'type-graphql';
+import { ObjectType, Field } from 'type-graphql';
 import { Member } from './Member';
 import { ChannelMember } from './ChannelMember';
 import { Channel } from './Channel';
