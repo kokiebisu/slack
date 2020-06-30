@@ -23,7 +23,18 @@ const allowCrossDomain = (_: Request, res: Response, next: NextFunction) => {
 };
 
 (async () => {
-  await createConnection();
+  let retries = 5;
+  while (retries) {
+    try {
+      await createConnection();
+      break;
+    } catch (err) {
+      console.log(err);
+      retries -= 1;
+      console.log(`retries left: ${retries}`);
+      await new Promise((res) => setTimeout(res, 5000));
+    }
+  }
 
   const app = Express();
 
