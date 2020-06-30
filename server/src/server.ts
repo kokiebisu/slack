@@ -23,6 +23,12 @@ const allowCrossDomain = (_: Request, res: Response, next: NextFunction) => {
 };
 
 (async () => {
+  // let path =
+  //   process.env.NODE_ENV === 'production'
+  //     ? __dirname + '/graphql/**/*.js'
+  //     : __dirname + '/graphql/**/*.ts';
+  let path = __dirname + '/graphql/**/*.js';
+  console.log('path', path);
   let retries = 5;
   while (retries) {
     try {
@@ -42,7 +48,7 @@ const allowCrossDomain = (_: Request, res: Response, next: NextFunction) => {
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [__dirname + '/graphql/**/*.ts'],
+      resolvers: [path],
     }),
     // Enable adding cookies to the session
     context: ({ req, res }: any) => ({

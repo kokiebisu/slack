@@ -10,6 +10,8 @@ services:
       - ./pg-data:/var/lib/postgresql/data
     ports:
       - '5432:5432'
+    networks:
+      - slack
   server:
     image: slack_server
     depends_on:
@@ -17,8 +19,18 @@ services:
       - redis
     ports:
       - '4000:4000'
+    networks:
+      - slack
   redis:
     image: redis:latest
     command: ['redis-server', '--bind', 'redis', '--port', '6379']
     volumes:
       - ./data/redis:/data
+    ports:
+      - '6379:6379'
+    networks:
+      - slack
+
+networks:
+  slack:
+    driver: bridge

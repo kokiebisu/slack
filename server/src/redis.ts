@@ -1,7 +1,7 @@
 import Redis from 'ioredis';
 import { config } from './config';
 
-export const redis = new Redis({
-  host: config.REDIS_HOST,
-  port: config.REDIS_PORT,
-});
+console.log('redis_port', config.REDIS_PORT);
+console.log('redis_host', config.REDIS_HOST);
+
+export const redis = new Redis(config.REDIS_PORT, config.REDIS_HOST);
