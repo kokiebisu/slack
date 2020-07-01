@@ -11,7 +11,7 @@ import {
 
 // Components
 import { CreateTeamLayout } from '../components/CreateTeam/layout';
-import { ConfirmDigit } from '../components/ConfirmDigit/layout';
+import { ConfirmDigit } from '../components/confirmDigit/layout';
 
 // Queries
 import {

@@ -32,6 +32,18 @@ services:
       - '6379:6379'
     networks:
       - slack
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    networks:
+      - slack
+    ports:
+      - '3000:3000'
+    volumes:
+      - app/node_modules
+      - ./client:/app
+    stdin_open: true
 
 volumes:
   database_postgres:
