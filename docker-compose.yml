@@ -9,7 +9,7 @@ services:
     volumes:
       - database_postgres:/var/lib/postgresql/data
     ports:
-      - '5432:5432'
+      - '5433:5432'
     networks:
       - slack
   server:
@@ -23,6 +23,8 @@ services:
       - '4000:4000'
     networks:
       - slack
+    volumes:
+      - ./server:/app
   redis:
     image: redis:latest
     command: ['redis-server', '--bind', 'redis', '--port', '6379']
