@@ -2,10 +2,8 @@ version: '3.7'
 services:
   db:
     image: postgres
-    environment:
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_DB: slackserver
+    env_file:
+      - prod.env
     volumes:
       - database_postgres:/var/lib/postgresql/data
     ports:
@@ -15,7 +13,7 @@ services:
   server:
     build:
       context: ./server
-      dockerfile: Dockerfile
+      dockerfile: prod.Dockerfile
     depends_on:
       - db
       - redis
@@ -25,6 +23,8 @@ services:
       - slack
     volumes:
       - ./server:/app
+    env_file:
+      - prod.env
   redis:
     image: redis:latest
     command: ['redis-server', '--bind', 'redis', '--port', '6379']

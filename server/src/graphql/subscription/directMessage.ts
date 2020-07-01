@@ -33,7 +33,8 @@ export class DirectMessageResolver {
   })
   subscribeToDirectMessages(
     @Root()
-    { id, fullname, body, avatarBackground, createdAt }: DisplayingMessage
+    { id, fullname, body, avatarBackground, createdAt }: DisplayingMessage,
+    @Arg('fromId') _: string
   ): DisplayingMessage {
     const date = new Date(createdAt).toLocaleDateString('en-US', options);
     return { id, fullname, body, avatarBackground, createdAt: date };

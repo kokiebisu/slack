@@ -23,11 +23,10 @@ const allowCrossDomain = (_: Request, res: Response, next: NextFunction) => {
 };
 
 (async () => {
-  // let path =
-  //   process.env.NODE_ENV === 'production'
-  //     ? __dirname + '/graphql/**/*.js'
-  //     : __dirname + '/graphql/**/*.ts';
-  let path = __dirname + '/graphql/**/*.js';
+  let path =
+    process.env.NODE_ENV === 'production'
+      ? __dirname + '/graphql/**/*.js'
+      : __dirname + '/graphql/**/*.ts';
   console.log('path', path);
   let retries = 5;
   while (retries) {

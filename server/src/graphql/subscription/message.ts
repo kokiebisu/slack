@@ -36,7 +36,8 @@ export class MessageResolver {
   })
   subscribeToMessages(
     @Root()
-    { id, fullname, body, avatarBackground, createdAt }: DisplayingMessage
+    { id, fullname, body, avatarBackground, createdAt }: DisplayingMessage,
+    @Arg('channelID') _: string
   ): DisplayingMessage {
     const date = new Date(createdAt).toLocaleDateString('en-US', options);
 
