@@ -7,13 +7,15 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: slackserver
     volumes:
-      - ./pg-data:/var/lib/postgresql/data
+      - database_postgres:/var/lib/postgresql/data
     ports:
       - '5432:5432'
     networks:
       - slack
   server:
-    image: slack_server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
     depends_on:
       - db
       - redis
@@ -30,6 +32,9 @@ services:
       - '6379:6379'
     networks:
       - slack
+
+volumes:
+  database_postgres:
 
 networks:
   slack:
