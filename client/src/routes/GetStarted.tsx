@@ -22,7 +22,6 @@ export const GetStartedRoutes: React.SFC = () => {
           path={match.url + '/invited/:invitorId/:token?'}
           component={Invited}
         />
-        <Route path={match.url + '/invi'} component={NewAccountViaInvite} />
       </Switch>
     </>
   );

@@ -22,7 +22,9 @@ export const ConfirmEmail = () => {
   return (
     <>
       {token && !loading && data!.verifyUserByToken.ok ? (
-        <Redirect to={`/your-workspaces/${token}`} />
+        <>
+          <Redirect to={`/your-workspaces/${token}`} />
+        </>
       ) : (
         <LogoCenterLayout>
           <b.Box py={4}>

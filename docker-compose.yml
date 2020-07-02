@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 version: '3.7'
 services:
   db:
@@ -22,14 +23,31 @@ services:
     networks:
       - slack
     volumes:
-      - ./server:/app
+      - ./server:/root
     env_file:
       - prod.env
+=======
+version: '3'
+services:
+  db:
+    image: postgres
+    ports:
+      - 5432:5432
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_DB=${DB}
+    networks:
+      - slack_network
+
+>>>>>>> a5e666a7a5cb31e579f94097560e4d1f5c03e38d
   redis:
     image: redis:latest
     command: ['redis-server', '--bind', 'redis', '--port', '6379']
     volumes:
       - ./data/redis:/data
+<<<<<<< HEAD
     ports:
       - '6379:6379'
     networks:
@@ -43,7 +61,6 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - app/node_modules
       - ./client:/app
     stdin_open: true
 
@@ -52,4 +69,27 @@ volumes:
 
 networks:
   slack:
+=======
+    networks:
+      - slack_network
+
+  server:
+    build: server/
+    image: slack_server
+    ports:
+      - 4000:4000
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRSE_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB}
+    depends_on:
+      - db
+      - redis
+    networks:
+      - slack_network
+
+networks:
+  slack_network:
+>>>>>>> a5e666a7a5cb31e579f94097560e4d1f5c03e38d
     driver: bridge
