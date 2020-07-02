@@ -30,7 +30,7 @@ export async function sendLinkEmail(email: string, token: string) {
     from: 'kenichikona@gmail.com',
     to: email,
     subject: 'Slack confirmation',
-    html: `<a href='http://localhost:3000/get-started/check/${token}'>http://localhost:3000/your-workspaces/${token}</a>`,
+    html: `<a href='http://localhost:3000/get-started/check/${token}'>http://localhost:3000/get-started/check/${token}</a>`,
   });
 }
 

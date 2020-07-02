@@ -27,7 +27,6 @@ const allowCrossDomain = (_: Request, res: Response, next: NextFunction) => {
     process.env.NODE_ENV === 'production'
       ? __dirname + '/graphql/**/*.js'
       : __dirname + '/graphql/**/*.ts';
-  console.log('path', path);
   let retries = 5;
   while (retries) {
     try {
@@ -49,6 +48,8 @@ const allowCrossDomain = (_: Request, res: Response, next: NextFunction) => {
     schema: await buildSchema({
       resolvers: [path],
     }),
+    introspection: true,
+    playground: true,
     // Enable adding cookies to the session
     context: ({ req, res }: any) => ({
       req,
@@ -81,9 +82,7 @@ const allowCrossDomain = (_: Request, res: Response, next: NextFunction) => {
       resave: false,
       saveUninitialized: false,
       cookie: {
-        // javascript can't access
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
+        // secure: process.env.NODE_ENV === 'production',
         maxAge: 1000 * 60 * 60 * 24 * 7,
       },
     })

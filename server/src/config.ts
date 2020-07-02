@@ -1,3 +1,4 @@
+require('dotenv').config();
 var config: any = {};
 
 config.REDIS_PORT =

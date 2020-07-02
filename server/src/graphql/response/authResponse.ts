@@ -9,3 +9,9 @@ export class InviteResponse extends BaseResponse {
   @Field({ nullable: true })
   teamId: string;
 }
+
+@ObjectType()
+export class ExtractResponse extends BaseResponse {
+  @Field({ nullable: true })
+  userId: string;
+}

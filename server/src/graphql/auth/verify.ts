@@ -22,7 +22,6 @@ export class VerifyResolver {
   ): Promise<AuthorizationResponse | Error> {
     try {
       const token = await redis.get(`${digit}`);
-
       if (!token) {
         return {
           ok: false,
@@ -33,7 +32,6 @@ export class VerifyResolver {
       const decoded: any = getDigitToken(token, digit);
 
       await redis.del(`${digit}`);
-
       if (!decoded.userId) {
         return {
           ok: false,
