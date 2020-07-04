@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useReducer } from 'react';
 
 // Blocks
 import * as b from '../../../../styles/blocks';

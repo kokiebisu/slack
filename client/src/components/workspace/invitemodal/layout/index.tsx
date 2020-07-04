@@ -1,6 +1,5 @@
 import React from 'react';
 import { useReducer } from 'react';
-import { useParams } from 'react-router-dom';
 
 // Blocks
 import * as b from '../../../../styles/blocks';

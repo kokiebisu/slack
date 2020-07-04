@@ -20,6 +20,19 @@ import { Messages } from '../../message/container';
 export const MessageContainer = () => {
   const { userId } = useParams();
 
+  const subscribeToNewMessages = (latestUser: string) =>
+    subscribeToMore({
+      document: SUBSCRIBE_TO_DIRECT_MESSAGES,
+      variables: { fromId: latestUser },
+      updateQuery: (prev, { subscriptionData }) => {
+        if (!subscriptionData.data) return prev;
+        const newMessage = subscriptionData.data.subscribeToDirectMessages;
+        return Object.assign({}, prev, {
+          fetchDirectMessages: [...prev.fetchDirectMessages, newMessage],
+        });
+      },
+    });
+
   useEffect(() => {
     const unsubscribe = subscribeToNewMessages(userId);
     return () => {
@@ -59,19 +72,6 @@ export const MessageContainer = () => {
     variables: { fromId: userId },
     fetchPolicy: 'cache-and-network',
   });
-
-  const subscribeToNewMessages = (latestUser: string) =>
-    subscribeToMore({
-      document: SUBSCRIBE_TO_DIRECT_MESSAGES,
-      variables: { fromId: latestUser },
-      updateQuery: (prev, { subscriptionData }) => {
-        if (!subscriptionData.data) return prev;
-        const newMessage = subscriptionData.data.subscribeToDirectMessages;
-        return Object.assign({}, prev, {
-          fetchDirectMessages: [...prev.fetchDirectMessages, newMessage],
-        });
-      },
-    });
 
   // this gives an object with dates as keys
 

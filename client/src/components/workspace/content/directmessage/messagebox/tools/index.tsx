@@ -25,10 +25,7 @@ import {
 } from '../../../../../../assets/svg';
 import { CustomEditor } from '../../../../../../util/customEditor';
 import { useParams } from 'react-router-dom';
-import {
-  useSendMessageMutation,
-  useSendDirectMessageMutation,
-} from '../../../../../../generated/graphql';
+import { useSendDirectMessageMutation } from '../../../../../../generated/graphql';
 
 interface Props {
   editor: any;
