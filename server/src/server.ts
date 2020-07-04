@@ -15,11 +15,6 @@ import { router as tokenRouter } from './routes/tokenRoutes';
 
 const PORT = process.env.PORT || 4000;
 
-<<<<<<< HEAD
-=======
-const DATABASE_PORT = parseInt(process.env.DATABASE_PORT!, 10) || 5432;
-
->>>>>>> a5e666a7a5cb31e579f94097560e4d1f5c03e38d
 const allowCrossDomain = (_: Request, res: Response, next: NextFunction) => {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.setHeader('Access-Control-Allow-Headers', 'http://localhost:3000');
@@ -27,7 +22,6 @@ const allowCrossDomain = (_: Request, res: Response, next: NextFunction) => {
   next();
 };
 
-<<<<<<< HEAD
 (async () => {
   let path =
     process.env.NODE_ENV === 'production'
@@ -45,29 +39,6 @@ const allowCrossDomain = (_: Request, res: Response, next: NextFunction) => {
       await new Promise((res) => setTimeout(res, 5000));
     }
   }
-=======
-const main = async () => {
-  // const connection = await createConnection({
-  //   type: 'postgres',
-  //   // host: process.env.POSTGRES_HOST!,
-  //   port: 6379,
-  //   username: process.env.POSTGRES_USER!,
-  //   password: process.env.POSTGRES_PASSWORD!,
-  //   database: process.env.POSTGRES_DB!,
-  //   loggin: true,
-  //   synchronize: true,
-  //   entities: ['./models/*.*'],
-  // });
-
-  await createConnection({
-    type: 'postgres',
-    host: process.env.POSTGRES_HOST,
-    port: DATABASE_PORT,
-    username: process.env.POSTGRES_USERNAME,
-    password: process.env.POSTGRES_PASSWORD,
-    database: process.env.POSTGRES_DATABASE,
-  });
->>>>>>> a5e666a7a5cb31e579f94097560e4d1f5c03e38d
 
   const app = Express();
 
@@ -131,6 +102,4 @@ const main = async () => {
       `🚀 Subscriptions ready at ws://localhost:${PORT}${apolloServer.subscriptionsPath}`
     );
   });
-};
-
-main();
+})();

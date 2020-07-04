@@ -32,14 +32,18 @@ import { AppRoutes } from './routes/App';
 // });
 
 const httpLink = new HttpLink({
-  uri: 'http://localhost:4000/graphql',
+  // uri: 'http://localhost:4000/graphql',
+  // credentials: 'include',
+  uri: 'http://localhost:8081/graphql',
   credentials: 'include',
 });
 
 const wsLink = new WebSocketLink({
-  uri: `ws://localhost:4000/graphql`,
+  // uri: `ws://localhost:8081/graphql`,
+  uri: `ws://localhost:8081/graphql`,
   options: {
     reconnect: true,
+    lazy: true,
   },
 });
 

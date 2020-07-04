@@ -8,7 +8,7 @@ import { ClientRoutes } from './Workspace';
 
 // Pages
 import { Landing } from '../components/Landing/layout';
-import { SignIn } from '../components/Signin/layout';
+// import { SignIn } from '../components/Signin/layout';
 import { FindTeam } from '../components/findteam/layout';
 
 export const AppRoutes: React.SFC = (): JSX.Element => {
@@ -19,7 +19,7 @@ export const AppRoutes: React.SFC = (): JSX.Element => {
         <Route path='/get-started' component={GetStartedRoutes} />
         <Route path='/create' component={CreateRoutes} />
         <Route path='/client/:teamId' component={ClientRoutes} />
-        <Route path='/signin' component={SignIn} />
+        {/* <Route path='/signin' component={SignIn} /> */}
         <Route path='/your-workspaces/:token' component={FindTeam} />
         <Route path='/findteam' component={FindTeam} />
       </Switch>

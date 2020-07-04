@@ -6,7 +6,6 @@ import * as b from '../../../../styles/blocks';
 
 // Svgs
 import { Wrapper, IconWrapper, Status, Name } from './index.styles';
-import { useParams } from 'react-router-dom';
 import { useMeQuery } from '../../../../generated/graphql';
 
 interface Props {

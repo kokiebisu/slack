@@ -19,12 +19,25 @@ import { useQuery } from '@apollo/react-hooks';
 export const MessageContainer = () => {
   const { channelId } = useParams();
 
+  const subscribeToNewMessages = (latestChannel: string) =>
+    subscribeToMore({
+      document: SUBSCRIBE_TO_MESSAGES,
+      variables: { channelID: latestChannel },
+      updateQuery: (prev, { subscriptionData }) => {
+        if (!subscriptionData.data) return prev;
+        const newMessage = subscriptionData.data.subscribeToMessages;
+        return Object.assign({}, prev, {
+          fetchMessages: [...prev.fetchMessages, newMessage],
+        });
+      },
+    });
+
   useEffect(() => {
     const unsubscribe = subscribeToNewMessages(channelId);
     return () => {
       unsubscribe();
     };
-  }, [channelId]);
+  }, [channelId, subscribeToNewMessages]);
 
   const SUBSCRIBE_TO_MESSAGES = gql`
     subscription SubscribeToMessages($channelID: String!) {
@@ -58,19 +71,6 @@ export const MessageContainer = () => {
     variables: { channelId },
     fetchPolicy: 'cache-and-network',
   });
-
-  const subscribeToNewMessages = (latestChannel: string) =>
-    subscribeToMore({
-      document: SUBSCRIBE_TO_MESSAGES,
-      variables: { channelID: latestChannel },
-      updateQuery: (prev, { subscriptionData }) => {
-        if (!subscriptionData.data) return prev;
-        const newMessage = subscriptionData.data.subscribeToMessages;
-        return Object.assign({}, prev, {
-          fetchMessages: [...prev.fetchMessages, newMessage],
-        });
-      },
-    });
 
   // this gives an object with dates as keys
 
