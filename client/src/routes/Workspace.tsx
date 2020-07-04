@@ -13,13 +13,13 @@ import { StaticContext, Redirect } from 'react-router';
 import { useMeQuery } from '../generated/graphql';
 
 // Pages
-import { ThreadsPage } from '../components/Workspace/content/threads';
-import { MentionPage } from '../components/Workspace/content/mention';
-import { DraftPage } from '../components/Workspace/content/draft';
-import { SavedPage } from '../components/Workspace/content/saved';
-import { Workspace } from '../components/Workspace/layout';
-import { ChannelPage } from '../components/Workspace/content/channel/layout';
-import { DirectMessagePage } from '../components/Workspace/content/directmessage/layout';
+import { ThreadsPage } from '../components/workspace/content/threads';
+import { MentionPage } from '../components/workspace/content/mention';
+import { DraftPage } from '../components/workspace/content/draft';
+import { SavedPage } from '../components/workspace/content/saved';
+import { Workspace } from '../components/workspace/layout';
+import { ChannelPage } from '../components/workspace/content/channel/layout';
+import { DirectMessagePage } from '../components/workspace/content/directmessage/layout';
 
 type Props = RouteComponentProps<
   {},

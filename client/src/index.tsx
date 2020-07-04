@@ -1,12 +1,15 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { ThemeProvider } from 'styled-components';
 
-// import { Loading } from './Loading';
+/**
+ * Styles
+ */
 import { GlobalFonts } from './styles/globalFonts';
 import { GlobalStyles } from './styles/globalStyles';
+import { main } from './styles/colors';
 
 // Apollo
-// import { ApolloProvider } from '@apollo/react-hooks';
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
 import { getMainDefinition } from 'apollo-utilities';
@@ -18,29 +21,28 @@ import { WebSocketLink } from 'apollo-link-ws';
 
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
+/**
+ * Context
+ */
 import { ContextProvider } from './context';
 
-import { main } from './styles/colors';
-import { ThemeProvider } from 'styled-components';
-
+/**
+ * Routes
+ */
 import { AppRoutes } from './routes/App';
 
-// const client = new ApolloClient({
-//   uri: 'http://localhost:4000/graphql',
-//   cache: new InMemoryCache(),
-//   credentials: 'include',
-// });
+/**
+ * Config
+ */
+import { config } from './config';
 
 const httpLink = new HttpLink({
-  // uri: 'http://localhost:4000/graphql',
-  // credentials: 'include',
-  uri: 'http://localhost:8081/graphql',
+  uri: config.http!,
   credentials: 'include',
 });
 
 const wsLink = new WebSocketLink({
-  // uri: `ws://localhost:8081/graphql`,
-  uri: `ws://localhost:8081/graphql`,
+  uri: config.ws!,
   options: {
     reconnect: true,
     lazy: true,
