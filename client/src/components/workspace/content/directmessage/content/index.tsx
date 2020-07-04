@@ -1,5 +1,4 @@
 import React from 'react';
-import * as b from '../../../../../styles/blocks';
 
 // Components
 import { MessageBox } from '../messagebox/layout';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useReducer } from 'react';
+import { useReducer } from 'react';
 import { useHistory } from 'react-router-dom';
 
 // Blocks
@@ -42,7 +42,7 @@ export const GetStartedCreate: React.FC<Props> = () => {
     loading: false,
   });
 
-  const [register, { loading }] = useRegisterMutation();
+  const [register] = useRegisterMutation();
 
   const displayError = (phrase: string) => {
     dispatch({ type: 'add_errorlog', payload: phrase });

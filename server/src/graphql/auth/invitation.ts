@@ -1,9 +1,5 @@
 import { Mutation, Ctx, Arg } from 'type-graphql';
 import { Context } from '../../interface/Context';
-<<<<<<< HEAD
-
-=======
->>>>>>> a5e666a7a5cb31e579f94097560e4d1f5c03e38d
 import { BaseResponse } from '../response/baseResponse';
 import { sendInvitationEmail } from '../../util/sendEmail';
 import { getManager } from 'typeorm';

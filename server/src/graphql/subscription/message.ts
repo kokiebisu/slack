@@ -40,7 +40,7 @@ export class MessageResolver {
     @Arg('channelID') _: string
   ): DisplayingMessage {
     const date = new Date(createdAt).toLocaleDateString('en-US', options);
-
+    console.log('entered subscribe to message');
     return {
       id,
       fullname,
@@ -60,6 +60,7 @@ export class MessageResolver {
     @Ctx() { req }: Context
   ): Promise<DisplayingMessage | null> {
     try {
+      console.log('entered send message');
       const userId = req.session!.userId;
 
       const member = await manager.query(
@@ -114,6 +115,7 @@ export class MessageResolver {
     @Arg('channelId') channelId: string
   ): Promise<[DisplayingMessage] | Error> {
     try {
+      console.log('entered fetch message');
       const data = await manager.query(
         'select mes.id, u.fullname, u."avatarBackground", mes.body, mes."createdAt" from messages mes inner join members mem on mes."memberId"=mem.id inner join users u on mem."userId"=u.id where "channelId"=$1',
         [channelId]

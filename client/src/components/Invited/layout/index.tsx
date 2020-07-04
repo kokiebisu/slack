@@ -17,21 +17,12 @@ import { Confirm } from '../../shared/components/confirm';
 import { Policy } from '../../shared/components/policy';
 
 // Utils
-import {
-  State,
-  Action,
-  inputReducer,
-} from '../../shared/components/inputs/util';
+import { inputReducer } from '../../shared/components/inputs/util';
 import { useParams, useHistory } from 'react-router-dom';
-import {
-  fullNameRegex,
-  emailRegex,
-  weakRegex,
-} from '../../../util/passwordUtil';
+import { fullNameRegex, weakRegex } from '../../../util/passwordUtil';
 import { randomColor } from '../../../util/randomColor';
-import { profile, avatar } from '../../../styles/colors';
+import { profile } from '../../../styles/colors';
 import { useCreateUserInviteMutation } from '../../../generated/graphql';
-// import { useCreateUserInviteQuery } from '../../../generated/graphql';
 
 export const NewAccountViaInvite = () => {
   const { token, invitorId } = useParams();

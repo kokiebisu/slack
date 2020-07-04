@@ -21,7 +21,7 @@ import { useUserQuery } from '../../../../../generated/graphql';
 
 export const MessageHeader = () => {
   const { userId } = useParams();
-  const { data: userData, loading } = useUserQuery({
+  const { data: userData } = useUserQuery({
     variables: {
       userId,
     },

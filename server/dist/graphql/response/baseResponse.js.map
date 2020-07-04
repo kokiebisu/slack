@@ -1,1 +1,0 @@
-{"version":3,"file":"baseResponse.js","sourceRoot":"","sources":["../../../src/graphql/response/baseResponse.ts"],"names":[],"mappings":";;;;;;;;;;;AAAA,+CAAiD;AAGjD,IAAa,YAAY,GAAzB,MAAa,YAAY;CAMxB,CAAA;AAJC;IADC,oBAAK,EAAE;;wCACI;AAGZ;IADC,oBAAK,CAAC,GAAG,EAAE,CAAC,MAAM,EAAE,EAAE,QAAQ,EAAE,IAAI,EAAE,CAAC;;8CACtB;AALP,YAAY;IADxB,yBAAU,EAAE;GACA,YAAY,CAMxB;AANY,oCAAY"}
