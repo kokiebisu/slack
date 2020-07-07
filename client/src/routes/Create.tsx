@@ -13,7 +13,7 @@ import {
 // import { CreateTeamLayout } from '../components/CreateTeam/layout';
 // import { ConfirmDigit } from '../components/ConfirmDigit/layout';
 import { CreateTeamLayout } from '../components/createteam/layout';
-import { ConfirmDigit } from '../components/confirmDigit/layout';
+import { ConfirmDigit } from '../components/confirmdigit/layout';
 
 // Queries
 import {
