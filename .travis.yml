@@ -8,3 +8,15 @@ before_install:
 
 script:
   - docker run -e CI=true kokiebisu/slack npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-east-1'
+  app: 'slack test server'
+  env: 'SlackTestServer-env'
+  bucket_name: 'elasticbeanstalk-us-east-1-776733965771'
+  bucket_path: 'slack test server'
+  on:
+    branch: master
+# access_key_id: $key
+#secret_access_key: $
