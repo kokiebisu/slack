@@ -4,7 +4,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t kokiebisu/slack -f Dockerfile.dev server
+  - docker build -t kokiebisu/slack -f ./server/dev.Dockerfile .
 
 script:
   - docker run -e CI=true kokiebisu/slack npm run test -- --coverage
