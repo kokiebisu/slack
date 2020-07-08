@@ -1,9 +1,11 @@
-FROM node:12
+# stage 1
+FROM node:alpine as builder
 WORKDIR /app
-COPY yarn.lock .
 COPY package.json .
-COPY ormconfig.js .
-RUN yarn
-COPY dist .
-EXPOSE 4000
-CMD node server.js
+RUN yarn 
+COPY . .
+RUN yarn build
+
+# stage 2
+FROM nginx
+COPY --from=builder /app/dist /usr/share/nginx/html
