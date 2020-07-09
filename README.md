@@ -49,7 +49,7 @@ docker-compose build
 
 ### Tech Stacks
 
-| Stacks                                      |                                                                            |
+| Stack                                       | Description                                                                |
 | ------------------------------------------- | -------------------------------------------------------------------------- |
 | [Typescript](https://www.typescriptlang.org)| A superset of Javascript                                                   |
 | [React](https://reactjs.org)                | A javascript library to create reusable UI components                      |
