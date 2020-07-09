@@ -1,68 +1,53 @@
 <p align="center">
-  <img src="https://i.pinimg.com/originals/2b/26/43/2b26437d72e949db88e62d251c736c45.gif" width="230" alt="Slack" />
+    <img src="https://user-images.githubusercontent.com/43525282/87019103-0e20d580-c187-11ea-985f-eefc02e347bb.jpg" alt="slack" width="200" />
 </p>
 
-<br>
+<br/>
 
-<br>
+<p align="center">
+  <a href="https://travis-ci.com/github/kokiebisu/slack">
+    <img src="https://travis-ci.com/kokiebisu/slack.svg?branch=master" alt="Build Status on TravisCI" />
+  </a>
+  <br/>
+</p>
 
-### Screenshots
+This is my challenge to replicate real time connections using Graphql.
+The goal for this project was to migrate into using Typescript and stay consistent with the design using styled system.
 
-![screely-1592806180891](https://user-images.githubusercontent.com/43525282/85254083-549ad400-b414-11ea-9c4d-08ac67782e94.png)
+## Intro
+
+I previously worked on projects using Graphql. However soon it got out of hand since I was taking the schema first approach when designing the Graphql schemas. In order to lighten the workload, I transitioned into trying a code first development approach. This helped me with the following:
+- [ ] Don't have to iterate writing schemas
 
 
-## Get started
+## Table of contents
 
-### Quick start
+- ⚡️ [Getting Started](#getting-started)
+- ⚽️ [Aspects](#aspects)
+  - 🌀 [Landing](#landing)
+- 🎁 [Development](#technology)
+  - 🍴 [Hashtags](#hashtags)
+  - 💭 [Stack](#backers)
 
-Client
+## Getting Started
 
+It's really easy. But you must have docker installed.:
+
+```sh
+docker-compose build
 ```
-cd client && npm install
-```
 
-Server
 
-```
-cd server && npm install
-```
+## Aspects
 
-### Deployment
+## Development
 
-Not Deployed Yet
+### Keywords
+- [x] Code First Development vs Schema First Development
 
-### Built With
+### Tech Stacks
 
-Language
-
-- [Typescript](https://www.typescriptlang.org/) - Superset of Javascript
-
-Client
-
-- [React](https://reactjs.org/) - Javascript library
-- [Apollo Client](https://www.apollographql.com/docs/react/) - Graphql Client
-- [Styled Components](https://styled-components.com) - Styling
-- [Styled System](https://styled-system.com) - Atomic Design Approach
-- [Framer Motion](https://www.framer.com/motion/) - Animations
-- [Graphql Code Generator](https://graphql-code-generator.com) - Auto generating tool
-
-Server
-
-- [TypeGraphql](https://typegraphql.com) - Code First Development Approach
-- [TypeORM](https://typeorm.io/) - Object Relational Mapper
-- [Express](https://expressjs.com/) - Node Server
-- [Apollo Server](https://www.apollographql.com/server/) - Graphql server
-- [PostgreSQL](https://www.postgresql.org) - Database
-- [Redis](https://redis.io) - Caching
-
-## Authors
-
-- **kokoaj** - [kokoaj](https://github.com/kokiebisu)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-- [slack](https://slack.com) - inspiration & images
+| Stacks                                      |                                                                            |
+| ------------------------------------------- | -------------------------------------------------------------------------- |
+| [Typescript](https://www.typescriptlang.org)| A superset of Javascript                                                   |
+| [React](https://reactjs.org)                | A javascript library to create reusable UI components                      |
