@@ -1,39 +1,18 @@
 version: '3.7'
 services:
   db:
-    image: postgres
-    env_file:
-      - prod.env
-    volumes:
-      - database_postgres:/var/lib/postgresql/data
-    ports:
-      - '5433:5432'
-    networks:
-      - slack
+    image: postgres:latest
+    environment:
+      - POSTGRES_PASSWORD=postgres
+  redis:
+    image: redis:latest
   server:
     build:
       context: ./server
-      dockerfile: prod.Dockerfile
-    depends_on:
-      - db
-      - redis
-    # ports:
-    #   - '4000:4000'
-    networks:
-      - slack
+      dockerfile: dev.Dockerfile
     volumes:
-      - ./server:/root
-    env_file:
-      - prod.env
-  redis:
-    image: redis:latest
-    command: ['redis-server', '--bind', 'redis', '--port', '6379']
-    volumes:
-      - ./data/redis:/data
-    ports:
-      - '6379:6379'
-    networks:
-      - slack
+      - /app/node_modules
+      - ./server:/app
   client:
     build:
       context: ./client
@@ -58,7 +37,3 @@ services:
       - server
 volumes:
   database_postgres:
-
-networks:
-  slack:
-    driver: bridge
