@@ -1,8 +1,11 @@
 require('dotenv').config();
-var config: any = {};
 
-config.REDIS_PORT =
-  process.env.NODE_ENV === 'production' ? process.env.REDIS_PORT : 6379;
-config.REDIS_HOST =
-  process.env.NODE_ENV === 'production' ? process.env.REDIS_HOST : 'localhost';
-export { config };
+export const config = {
+  redisHost: process.env.REDIS_HOST,
+  redisPort: parseInt(process.env.REDIS_PORT!),
+  pgUser: process.env.POSTGRES_USER,
+  pgHost: process.env.POSTGRES_HOST,
+  pgDatabase: process.env.POSTGRES_DB,
+  pgPassword: process.env.POSTGRES_PASSWORD,
+  pgPort: parseInt(process.env.POSTGRES_PORT!),
+};
