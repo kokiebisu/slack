@@ -1,5 +1,15 @@
 version: '3.7'
 services:
+  # nginx:
+  #   restart: always
+  #   build:
+  #     context: ./nginx
+  #     dockerfile: dev.Dockerfile
+  #   ports:
+  #     - 8080:80
+  #   depends_on:
+  #     - client
+  #     - api
   db:
     image: postgres:latest
     environment:
@@ -7,16 +17,8 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_DB=slackdb
       - POSTGRES_PORT=5432
-    ports:
-      - 5432:5432
-    networks:
-      - slack
   redis:
     image: redis:latest
-    ports:
-      - 6379:6379
-    networks:
-      - slack
   api:
     build:
       context: ./server
@@ -32,27 +34,16 @@ services:
       - POSTGRES_DB=slackdb
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_PORT=5432
-    ports:
-      - 4000:4000
     depends_on:
       - db
       - redis
-    networks:
-      - slack
-  client:
-    build:
-      context: ./client
-      dockerfile: dev.Dockerfile
-    ports:
-      - 3000:3000
-    volumes:
-      - /app/node_modules
-      - ./client:/app
-    networks:
-      - slack
+  # client:
+  #   build:
+  #     context: ./client
+  #     dockerfile: dev.Dockerfile
+  #   stdin_open: true
+  #   volumes:
+  #     - /app/node_modules
+  #     - ./client:/app
 volumes:
   database_postgres:
-
-networks:
-  slack:
-    driver: bridge

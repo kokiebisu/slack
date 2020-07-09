@@ -1,7 +1,8 @@
-const config = require('./src/config');
+const { config } = require('./config');
 
 module.exports = {
   type: 'postgres',
+  host: config.pgHost,
   port: config.pgPort,
   username: config.pgUser,
   password: config.pgPassword,

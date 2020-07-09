@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+console.log('test', process.env.REDIS_HOST);
 export const config = {
   redisHost: process.env.REDIS_HOST,
   redisPort: parseInt(process.env.REDIS_PORT!),
