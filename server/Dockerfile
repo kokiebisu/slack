@@ -3,7 +3,8 @@ WORKDIR /app
 COPY package.json .
 COPY ormconfig.js .
 RUN yarn
-CMD [ "yarn", "build" ]
+COPY . .
+RUN yarn build
 
 FROM node:alpine
 WORKDIR /app
