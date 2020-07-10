@@ -1,11 +1,12 @@
-require('dotenv').config();
+const { config } = require('./config');
 
 module.exports = {
   type: 'postgres',
-  port: process.env.POSTGRES_PORT,
-  username: process.env.POSTGRES_USERNAME,
-  password: process.env.POSTGRES_PASSWORD,
-  database: process.env.POSTGRES_DATABASE,
+  host: config.pgHost,
+  port: config.pgPort,
+  username: config.pgUser,
+  password: config.pgPassword,
+  database: config.pgDatabase,
   synchronize: true,
   logging: true,
   entities: ['./dist/models/*.*'],

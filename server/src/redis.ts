@@ -1,4 +1,5 @@
 import Redis from 'ioredis';
-import { config } from './config';
+import { config } from '../config';
 
-export const redis = new Redis(config.REDIS_PORT, config.REDIS_HOST);
+console.log('config', config.pgDatabase);
+export const redis = new Redis({ host: 'redis' });
