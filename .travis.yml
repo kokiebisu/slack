@@ -4,19 +4,18 @@ services:
   - docker
 
 before_install:
-  - docker build -t kokiebisu/slack -f dev.Dockerfile .
+  - docker build -t kokiebisu/slack-test -f ./client/dev.Dockerfile ./client
 
 script:
-  - docker run -e CI=true kokiebisu/slack npm run test -- --coverage
+  - docker run -e CI=true kokiebisu/slack-test yarn test -- --coverage
 
-deploy:
-  provider: elasticbeanstalk
-  region: 'us-east-1'
-  app: 'slack test server'
-  env: 'SlackTestServer-env'
-  bucket_name: 'elasticbeanstalk-us-east-1-776733965771'
-  bucket_path: 'slack test server'
-  on:
-    branch: master
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key: $AWS_SECRET_KEY
+after_success:
+  - docker build -t kokiebisu/slack-client ./client
+  - docker build -t kokiebisu/slack-nginx ./nginx
+  - docker build -t kokiebisu/slack-server ./server
+  # login
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # push to docker hub
+  - docker push kokiebisu/slack-client
+  - docker push kokiebisu/slack-nginx
+  - docker push kokiebisu/slack-server
