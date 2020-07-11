@@ -22,7 +22,7 @@ deploy:
   provider: elasticbeanstalk
   region: us-east-1
   app: slack
-  env: Slack
+  env: Slack-env
   bucket_name: elasticbeanstalk-us-east-1-776733965771
   bucket_path: slack
   on:
