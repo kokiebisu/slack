@@ -21,10 +21,10 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: us-east-1
-  app: slack
+  app: Slack
   env: Slack-env
   bucket_name: elasticbeanstalk-us-east-1-776733965771
-  bucket_path: slack
+  bucket_path: Slack
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
