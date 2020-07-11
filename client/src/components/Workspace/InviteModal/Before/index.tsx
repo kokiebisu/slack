@@ -16,12 +16,12 @@ import {
 } from './index.styles';
 import { GoogleLogo } from '../../../../assets/svg/Logo';
 import { UserPlus, Close, PaperPlaneLight } from '../../../../assets/svg';
-import { EmailInput } from '../emailinput';
-import { DefaultChannels } from '../defaultchannels';
+import { EmailInput } from '../EmailInput';
+import { DefaultChannels } from '../DefaultChannels';
 import { PlusCircle } from '../../../../assets/svg/Plus';
 import { useSendInvitationMutation } from '../../../../generated/graphql';
 import { useParams } from 'react-router-dom';
-import { ErrorDialog } from '../../../shared/components/errordialog';
+import { ErrorDialog } from '../../../shared/components/ErrorDialog';
 
 interface Props {
   dispatchToggle: any;

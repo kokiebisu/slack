@@ -7,8 +7,8 @@ import * as b from '../../../../styles/blocks';
 
 // Components
 import { SidebarSection } from '.';
-import { Messages } from '../message/container';
-import { Channels } from '../channel/container';
+import { Messages } from '../Message/container';
+import { Channels } from '../Channel/container';
 
 // Query
 import { useChannelsQuery } from '../../../../generated/graphql';

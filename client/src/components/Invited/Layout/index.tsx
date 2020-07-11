@@ -17,7 +17,7 @@ import { Confirm } from '../../shared/components/Confirm';
 import { Policy } from '../../shared/components/Policy';
 
 // Utils
-import { inputReducer } from '../../shared/components/inputs/util';
+import { inputReducer } from '../../shared/components/Inputs/util';
 import { useParams, useHistory } from 'react-router-dom';
 import { fullNameRegex, weakRegex } from '../../../util/passwordUtil';
 import { randomColor } from '../../../util/randomColor';

@@ -28,7 +28,7 @@ import { randomColor } from '../../../util/randomColor';
 import { profile } from '../../../styles/colors';
 
 // Utils
-import { inputReducer } from '../../shared/components/inputs/util';
+import { inputReducer } from '../../shared/components/Inputs/util';
 
 interface Props {}
 

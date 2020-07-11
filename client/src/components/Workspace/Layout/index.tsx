@@ -6,15 +6,15 @@ import { Redirect, useParams } from 'react-router-dom';
 import { Wrapper, ContentWrapper } from './index.styles';
 
 // Components
-import { HomeHeader } from '../header';
-import { Sidebar } from '../sidebar/layout';
+import { HomeHeader } from '../Header';
+import { Sidebar } from '../Sidebar/Layout';
 import { MenuToggle } from '../MenuToggle';
 import { ChannelModal } from '../ChannelModal';
 
 // Queries
 import { useMeQuery, useTeamQuery } from '../../../generated/graphql';
 import { useToggleState } from '../../../context/toggle-context';
-import { InviteModal } from '../InviteModal/layout';
+import { InviteModal } from '../InviteModal/Layout';
 
 interface Props {
   route: React.ReactNode;

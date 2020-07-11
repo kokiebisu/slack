@@ -6,9 +6,9 @@ import { useParams } from 'react-router-dom';
 import * as b from '../../../../styles/blocks';
 
 // Components
-import { Options } from '../option/container';
-import { SidebarSections } from '../section/container';
-import { Profile } from '../profile';
+import { Options } from '../Option/container';
+import { SidebarSections } from '../Section/container';
+import { Profile } from '../Profile';
 
 // Query
 import { useTeamQuery } from '../../../../generated/graphql';

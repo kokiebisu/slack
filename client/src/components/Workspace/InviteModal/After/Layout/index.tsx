@@ -18,7 +18,7 @@ import {
 import { PaperPlaneLight } from '../../../../../assets/svg';
 
 // Components
-import { Sent } from '../sent';
+import { Sent } from '../Sent';
 
 interface Props {
   input: { email: string; name: string; done: boolean };

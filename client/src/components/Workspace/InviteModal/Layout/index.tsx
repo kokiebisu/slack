@@ -11,11 +11,11 @@ import { Wrapper, Container } from './index.styles';
 import { useToggleDispatch } from '../../../../context/toggle-context';
 
 // Query
-import { Before } from '../before';
+import { Before } from '../Before';
 
 // Animation
 import { AnimatePresence } from 'framer-motion';
-import { After } from '../after/layout';
+import { After } from '../After/Layout';
 
 // Types
 type State = { email: string; name: string; error: string; done: boolean };
