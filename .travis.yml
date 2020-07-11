@@ -19,3 +19,16 @@ after_success:
   - docker push kokiebisu/slack-client
   - docker push kokiebisu/slack-nginx
   - docker push kokiebisu/slack-server
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: slack
+  env: Slack
+  bucket_name: elasticbeanstalk-us-east-1-776733965771
+  bucket_path: slack
+  on:
+    branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key:
+      secure: $AWS_SECRET_KEY
