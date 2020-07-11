@@ -12,7 +12,7 @@ import { Wrapper } from './index.styles';
 
 // Components
 import { LogoCenterLayout } from '../../shared/LogoCenter/layout';
-import { Options } from '../options';
+import { Options } from '../Options';
 
 export const ConfirmEmail = () => {
   const { token } = useParams();

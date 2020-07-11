@@ -6,7 +6,7 @@ import * as b from '../../../styles/blocks';
 
 // Styles
 import { Header, Title, Description } from './index.styles';
-import { AvailableWorkspaces } from '../workspace/container';
+import { AvailableWorkspaces } from '../Workspace/container';
 
 // Sizes
 import { size } from '../../../styles/sizes';

@@ -5,7 +5,7 @@ import { useParams, Redirect } from 'react-router-dom';
 import { useVerifyUserInviteQuery } from '../../generated/graphql';
 
 // Components
-import { NewAccountViaInvite } from './layout';
+import { NewAccountViaInvite } from './Layout';
 
 export const Invited = () => {
   const { invitorId, token } = useParams();

@@ -7,9 +7,9 @@ import { GetStartedRoutes } from './GetStarted';
 import { ClientRoutes } from './Workspace';
 
 // Pages
-import { Landing } from '../components/landing/layout';
-import { SignIn } from '../components/signin/layout';
-import { FindTeam } from '../components/findteam/layout';
+import { Landing } from '../components/Landing/Layout';
+import { SignIn } from '../components/Signin/Layout';
+import { FindTeam } from '../components/FindTeam/Layout';
 
 export const AppRoutes = () => {
   return (

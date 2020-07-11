@@ -16,8 +16,8 @@ import {
   Policy,
 } from './index.styles';
 
-import { Header } from '../header';
-import { MiniWorkspace } from '../miniworkspace';
+import { Header } from '../Header';
+import { MiniWorkspace } from '../Miniworkspace';
 
 interface Props {
   title: string;

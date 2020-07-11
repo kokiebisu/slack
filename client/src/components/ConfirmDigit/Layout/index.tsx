@@ -8,8 +8,8 @@ import { useVerifyUserByDigitMutation } from '../../../generated/graphql';
 
 // Components
 import { LogoCenterLayout } from '../../shared/LogoCenter/layout';
-import { Options } from '../options';
-import { Dialog } from '../dialog';
+import { Options } from '../Options';
+import { Dialog } from '../Dialog';
 
 // Blocks
 import * as b from '../../../styles/blocks';

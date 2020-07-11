@@ -7,7 +7,7 @@ import * as b from '../../../styles/blocks';
 
 // Components
 import { LogoCenterLayout } from '../../shared/LogoCenter/layout';
-import { Confirm } from '../confirm';
+import { Confirm } from '../Confirm';
 
 // Styles
 import { Wrapper, EmailInput, ErrorBox, IconWrapper } from './index.styles';

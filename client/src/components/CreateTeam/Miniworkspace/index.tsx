@@ -18,7 +18,7 @@ import {
 } from './index.styles';
 
 // Components
-import { SkeletonLine, MockHashTag } from '../mockup';
+import { SkeletonLine, MockHashTag } from '../Mockup';
 
 // Imgs
 import teamphoto_1 from '../../../assets/img/createteam_1.png';

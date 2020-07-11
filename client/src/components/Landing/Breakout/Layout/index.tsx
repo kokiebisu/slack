@@ -5,7 +5,7 @@ import * as b from '../../../../styles/blocks';
 
 // Styles
 import { Wrapper, VideoWrapper, Title } from './index.styles';
-import { ColumnCards } from '../card/container';
+import { ColumnCards } from '../Card/container';
 
 interface Props {}
 

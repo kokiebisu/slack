@@ -4,9 +4,9 @@ import { Wrapper } from './index.styles';
 
 import { useGetBelongingTeamsQuery } from '../../../generated/graphql';
 
-import { Header } from '../header';
-import { FindTeamContent } from '../content';
-import { Footer } from '../footer';
+import { Header } from '../Header';
+import { FindTeamContent } from '../Content';
+import { Footer } from '../Footer';
 import { Redirect } from 'react-router-dom';
 
 export const FindTeam = () => {

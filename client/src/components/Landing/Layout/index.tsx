@@ -2,11 +2,11 @@ import * as React from 'react';
 import { useEffect } from 'react';
 
 // Components
-import { Header } from '../Header/layout';
-import { Banner } from '../Banner/layout';
-import { BreakOut } from '../Breakout/layout';
-import { Choose } from '../Choose/layout';
-import { Footer } from '../Footer/layout';
+import { Header } from '../Header/Layout';
+import { Banner } from '../Banner/Layout';
+import { BreakOut } from '../Breakout/Layout';
+import { Choose } from '../Choose/Layout';
+import { Footer } from '../Footer/Layout';
 
 // Graphql
 import { useMeQuery } from '../../../generated/graphql';
