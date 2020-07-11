@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-interface ConfigProps {
+interface Props {
   redisHost: string;
   redisPort: number;
   pgUser: string;
@@ -10,7 +10,7 @@ interface ConfigProps {
   pgPort: number;
 }
 
-export const config: ConfigProps = {
+export const config: Props = {
   redisHost: process.env.REDIS_HOST!,
   redisPort: parseInt(process.env.REDIS_PORT!),
   pgUser: process.env.POSTGRES_USER!,
