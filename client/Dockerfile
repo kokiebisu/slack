@@ -3,6 +3,7 @@ WORKDIR /app
 COPY ./package.json .
 RUN yarn
 COPY . .
+RUN ls -a
 RUN yarn build
 
 FROM nginx
