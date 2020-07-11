@@ -14,11 +14,11 @@ import { useMeQuery } from '../generated/graphql';
 
 // Pages
 import { ThreadsPage } from '../components/Workspace/Content/threads';
-import { MentionPage } from '../components/workspace/content/mention';
+import { MentionPage } from '../components/Workspace/';
 import { DraftPage } from '../components/workspace/content/draft';
 import { SavedPage } from '../components/workspace/content/saved';
 import { Workspace } from '../components/workspace/layout';
-import { ChannelPage } from '../components/workspace/content/channel/layout';
+import { ChannelPage } from '../components/Workspace/Content/channel';
 import { DirectMessagePage } from '../components/workspace/content/directmessage/layout';
 
 type Props = RouteComponentProps<
