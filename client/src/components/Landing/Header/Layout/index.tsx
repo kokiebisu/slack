@@ -25,8 +25,8 @@ import {
 } from './index.styles';
 
 import { MeQuery, useMyTeamsQuery } from '../../../../generated/graphql';
-import { Navigation } from '../navigation';
-import { LaunchOptions } from '../launch/container';
+import { Navigation } from '../Navigation';
+import { LaunchOptions } from '../Launch/container';
 
 interface Props {
   data: MeQuery | undefined;

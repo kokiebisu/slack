@@ -10,9 +10,9 @@ import { NoNameLogo } from '../../../../assets/svg/Logo';
 import { Wrapper, Logo, Content, IconWrapper, Copyright } from './index.styles';
 
 // Components
-import { Options } from '../option/container';
-import { SocialMedias } from '../socialmedia/container';
-import { Sections } from '../section/container';
+import { Options } from '../Option/container';
+import { SocialMedias } from '../Socialmedia/container';
+import { Sections } from '../Section/container';
 
 interface Props {}
 

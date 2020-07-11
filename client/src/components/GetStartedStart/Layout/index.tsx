@@ -18,12 +18,12 @@ import {
 // Components
 import { LogoCenterLayout } from '../../shared/LogoCenter/layout';
 import { Wrapper } from './index.styles';
-import { PasswordValidationBar } from '../../shared/components/validationbar';
-import { PasswordValidationText } from '../../shared/components/validationtext';
-import { Policy } from '../../shared/components/policy';
-import { Inputs } from '../../shared/components/inputs';
-import { ErrorDialog } from '../../shared/components/errordialog';
-import { Confirm } from '../../shared/components/confirm';
+import { PasswordValidationBar } from '../../shared/components/ValidationBar';
+import { PasswordValidationText } from '../../shared/components/ValidationText';
+import { Policy } from '../../shared/components/Policy';
+import { Inputs } from '../../shared/components/Inputs';
+import { ErrorDialog } from '../../shared/components/ErrorDialog';
+import { Confirm } from '../../shared/components/Confirm';
 import { randomColor } from '../../../util/randomColor';
 import { profile } from '../../../styles/colors';
 

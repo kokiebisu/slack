@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { SignInHeader } from '../header';
-import { SignInContent } from '../content';
-import { SignInFooter } from '../footer';
+import { SignInHeader } from '../Header';
+import { SignInContent } from '../Content';
+import { SignInFooter } from '../Footer';
 
 // Styles
 import { Wrapper } from './index.styles';

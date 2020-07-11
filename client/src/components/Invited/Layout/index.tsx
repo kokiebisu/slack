@@ -9,12 +9,12 @@ import { LogoCenterLayout } from '../../shared/LogoCenter/layout';
 
 // Styles
 import { Wrapper } from './index.styles';
-import { Inputs } from '../../shared/components/inputs';
-import { PasswordValidationBar } from '../../shared/components/validationbar';
-import { PasswordValidationText } from '../../shared/components/validationtext';
-import { ErrorDialog } from '../../shared/components/errordialog';
-import { Confirm } from '../../shared/components/confirm';
-import { Policy } from '../../shared/components/policy';
+import { Inputs } from '../../shared/components/Inputs';
+import { PasswordValidationBar } from '../../shared/components/ValidationBar';
+import { PasswordValidationText } from '../../shared/components/ValidationText';
+import { ErrorDialog } from '../../shared/components/ErrorDialog';
+import { Confirm } from '../../shared/components/Confirm';
+import { Policy } from '../../shared/components/Policy';
 
 // Utils
 import { inputReducer } from '../../shared/components/inputs/util';

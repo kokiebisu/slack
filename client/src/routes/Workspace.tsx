@@ -13,7 +13,7 @@ import { StaticContext, Redirect } from 'react-router';
 import { useMeQuery } from '../generated/graphql';
 
 // Pages
-import { ThreadsPage } from '../components/workspace/content/threads';
+import { ThreadsPage } from '../components/Workspace/Content/threads';
 import { MentionPage } from '../components/workspace/content/mention';
 import { DraftPage } from '../components/workspace/content/draft';
 import { SavedPage } from '../components/workspace/content/saved';
