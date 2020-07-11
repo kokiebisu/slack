@@ -11,7 +11,7 @@ import { Landing } from '../components/landing/layout';
 import { SignIn } from '../components/signin/layout';
 import { FindTeam } from '../components/findteam/layout';
 
-export const AppRoutes: React.SFC = (): JSX.Element => {
+export const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Switch>
