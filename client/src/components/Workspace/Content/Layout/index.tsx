@@ -11,7 +11,7 @@ import { Wrapper, Top, Section, IconWrapper } from './index.styles';
 import { Sidebar } from '../../../../assets/svg';
 
 import { useDropzone } from 'react-dropzone';
-import { DragDrop } from '../dragdrop';
+import { DragDrop } from '../DragDrop';
 
 interface Props {
   section: string;

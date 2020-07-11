@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useEffect } from 'react';
 
 // Components
-import { Activities } from '../activity/container';
+import { Activities } from '../Activity/container';
 
 // Blocks
 import * as b from '../../../../styles/blocks';
@@ -18,7 +18,7 @@ import {
   NoticeTitle,
   NoticeDescription,
 } from './index.styles';
-import { ClientContentLayout } from '../layout';
+import { ClientContentLayout } from '../Layout';
 
 interface Props {}
 

@@ -6,7 +6,7 @@ import * as b from '../../../../../styles/blocks';
 import { useParams } from 'react-router-dom';
 
 // Components
-import { MessageHeader } from '../messageheader';
+import { MessageHeader } from '../MessageHeader';
 
 // Styles
 import { Wrapper } from './index.styles';
@@ -15,7 +15,7 @@ import { Wrapper } from './index.styles';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { DateSeperator } from '../../DateSeperator';
-import { Messages } from '../../message/container';
+import { Messages } from '../../Message/container';
 
 export const MessageContainer = () => {
   const { userId } = useParams();

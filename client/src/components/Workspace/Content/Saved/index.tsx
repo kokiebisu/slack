@@ -9,7 +9,7 @@ import { Transition } from '../../../../assets/svg';
 
 // Styles
 import { Wrapper, SideOption, IconWrapper, Bottom } from './index.styles';
-import { ClientContentLayout } from '../layout';
+import { ClientContentLayout } from '../Layout';
 
 interface Props {}
 

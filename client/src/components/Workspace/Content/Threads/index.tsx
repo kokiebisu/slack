@@ -19,7 +19,7 @@ import {
 } from './index.styles';
 
 // Components
-import { ClientContentLayout } from '../layout';
+import { ClientContentLayout } from '../Layout';
 
 interface Props {}
 

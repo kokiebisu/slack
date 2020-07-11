@@ -6,12 +6,12 @@ import { useParams } from 'react-router-dom';
 import { useGetChannelByIdQuery } from '../../../../../generated/graphql';
 
 // Components
-import { ClientContentLayout } from '../../layout';
-import { Options } from '../../../../shared/components/options';
-import { SubSection } from '../subsection';
+import { ClientContentLayout } from '../../Layout';
+import { Options } from '../../../../shared/components/Options';
+import { SubSection } from '../Subsection';
 
 // Styles
-import { Content } from '../content';
+import { Content } from '../Content';
 
 interface Props {}
 

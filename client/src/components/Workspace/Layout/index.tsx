@@ -8,13 +8,13 @@ import { Wrapper, ContentWrapper } from './index.styles';
 // Components
 import { HomeHeader } from '../header';
 import { Sidebar } from '../sidebar/layout';
-import { MenuToggle } from '../menutoggle';
-import { ChannelModal } from '../channelmodal';
+import { MenuToggle } from '../MenuToggle';
+import { ChannelModal } from '../ChannelModal';
 
 // Queries
 import { useMeQuery, useTeamQuery } from '../../../generated/graphql';
 import { useToggleState } from '../../../context/toggle-context';
-import { InviteModal } from '../invitemodal/layout';
+import { InviteModal } from '../InviteModal/layout';
 
 interface Props {
   route: React.ReactNode;

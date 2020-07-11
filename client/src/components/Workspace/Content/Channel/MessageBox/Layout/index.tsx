@@ -11,8 +11,8 @@ import { Slate, Editable, withReact } from 'slate-react';
 import { createEditor } from 'slate';
 
 // Components
-import { MessageInput } from '../input';
-import { MessageTools } from '../tools';
+import { MessageInput } from '../Input';
+import { MessageTools } from '../Tools';
 import { CustomEditor } from '../../../../../../util/customEditor';
 import { useGetChannelByIdQuery } from '../../../../../../generated/graphql';
 import { useParams } from 'react-router-dom';

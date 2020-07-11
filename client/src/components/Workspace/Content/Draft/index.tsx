@@ -14,7 +14,7 @@ import {
   Description,
   NewMessage,
 } from './index.styles';
-import { ClientContentLayout } from '../layout';
+import { ClientContentLayout } from '../Layout';
 
 interface Props {}
 

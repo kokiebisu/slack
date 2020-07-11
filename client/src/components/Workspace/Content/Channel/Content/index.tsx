@@ -19,9 +19,9 @@ import { LayerPlus, UserPlus } from '../../../../../assets/svg';
 // Components
 import { useParams } from 'react-router-dom';
 import { useGetChannelByIdQuery } from '../../../../../generated/graphql';
-import { MessageBox } from '../messagebox/layout';
+import { MessageBox } from '../MessageBox/Layout';
 
-import { MessageContainer } from '../container';
+import { MessageContainer } from '../Container';
 
 export const Content = () => {
   const { channelId } = useParams();

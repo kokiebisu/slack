@@ -7,7 +7,7 @@ import * as b from '../../../../styles/blocks';
 import Thumbsup from '../../../../assets/img/thumbsup.png';
 
 // Components
-import { Reactions } from '../reaction/container';
+import { Reactions } from '../Reaction/container';
 
 // Styles
 import {

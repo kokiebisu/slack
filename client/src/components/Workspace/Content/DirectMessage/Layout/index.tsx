@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import { ClientContentLayout } from '../../layout';
-import { Options } from '../../../../shared/components/options';
+import { ClientContentLayout } from '../../Layout';
+import { Options } from '../../../../shared/components/Options';
 
 // Query
 import { useUserQuery } from '../../../../../generated/graphql';
-import { Content } from '../content';
+import { Content } from '../Content';
 
 interface Props {}
 

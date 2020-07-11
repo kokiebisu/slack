@@ -1,8 +1,8 @@
 import React from 'react';
 
 // Components
-import { MessageBox } from '../messagebox/layout';
-import { MessageContainer } from '../container';
+import { MessageBox } from '../MessageBox/layout';
+import { MessageContainer } from '../Container';
 
 // Styles
 import { Wrapper } from './index.styles';
