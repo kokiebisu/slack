@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const config: Props = {
-  redisHost: process.env.REDIS_HOST! || '127.0.0.1',
+  redisHost: process.env.REDIS_HOST! || '0.0.0.0',
   redisPort: parseInt(process.env.REDIS_PORT!) || 6379,
   pgUser: process.env.PGUSER! || 'postgres',
   pgHost: process.env.PGHOST! || '127.0.0.1',
