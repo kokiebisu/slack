@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 interface Props {
   redisHost: string;
   redisPort: number;
@@ -11,11 +9,11 @@ interface Props {
 }
 
 export const config: Props = {
-  redisHost: process.env.REDIS_HOST!,
-  redisPort: parseInt(process.env.REDIS_PORT!),
-  pgUser: process.env.POSTGRES_USER!,
-  pgHost: process.env.POSTGRES_HOST!,
-  pgDatabase: process.env.POSTGRES_DB!,
-  pgPassword: process.env.POSTGRES_PASSWORD!,
-  pgPort: parseInt(process.env.POSTGRES_PORT!),
+  redisHost: process.env.REDIS_HOST! || '127.0.0.1',
+  redisPort: parseInt(process.env.REDIS_PORT!) || 6379,
+  pgUser: process.env.PGUSER! || 'postgres',
+  pgHost: process.env.PGHOST! || '127.0.0.1',
+  pgDatabase: process.env.PGDATABASE! || 'slackdb',
+  pgPassword: process.env.PGPASSWORD! || 'postgres',
+  pgPort: parseInt(process.env.PGPORT!) || 5432,
 };

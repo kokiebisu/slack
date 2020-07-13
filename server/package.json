@@ -45,7 +45,7 @@
     "typescript": "^3.9.3"
   },
   "scripts": {
-    "start": "ts-node src/server.ts",
+    "start": "node src/server.js",
     "dev": "ts-node-dev --respawn src/server.ts",
     "build": "tsc -b"
   }

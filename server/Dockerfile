@@ -1,13 +1,19 @@
 FROM node:alpine as builder
 WORKDIR /app
-COPY package.json .
+COPY ./package.json .
 RUN yarn
 COPY . .
 RUN yarn build
 
 FROM node:alpine
 WORKDIR /app
+COPY package.json ./
+RUN yarn
+
 COPY --from=builder /app/dist .
-COPY --from=builder /app/ormconfig.js .
-RUN ls -a
-CMD ["node src/server"]
+
+COPY ormconfig.js ./
+
+EXPOSE 4000
+
+CMD node src/server.js
