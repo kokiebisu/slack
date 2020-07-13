@@ -1,0 +1,18 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t kokiebisu/slack-test -f ./client/dev.Dockerfile ./client
+
+script:
+  - docker run -e CI=true kokiebisu/slack-test yarn test -- --coverage
+
+after_success:
+  - docker build -t kokiebisu/slack-client ./client
+  - docker build -t kokiebisu/slack-nginx ./nginx
+  - docker build -t kokiebisu/slack-server ./server
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push kokiebisu/slack-client
+  - docker push kokiebisu/slack-server
