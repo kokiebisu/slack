@@ -9,5 +9,5 @@ module.exports = {
   database: config.pgDatabase,
   synchronize: true,
   logging: true,
-  entities: ['./dist/models/*.*'],
+  entities: ['./src/models/*.*'],
 };

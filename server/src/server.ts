@@ -8,18 +8,20 @@ import session from 'express-session';
 import cors from 'cors';
 import connectRedis from 'connect-redis';
 import cookieParser from 'cookie-parser';
-import { Request, Response, NextFunction } from 'express';
+// import { Request, Response, NextFunction } from 'express';
 import { redis } from './redis';
 import { router as tokenRouter } from './routes/tokenRoutes';
 
 const PORT = process.env.PORT || 4000;
 
-const allowCrossDomain = (_: Request, res: Response, next: NextFunction) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.setHeader('Access-Control-Allow-Headers', 'http://localhost:3000');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  next();
-};
+// const allowCrossDomain = (_: Request, res: Response, next: NextFunction) => {
+//   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3050');
+//   res.setHeader('Access-Control-Allow-Headers', 'http://localhost:3050');
+//   res.setHeader('Access-Control-Allow-Origin', 'http://34.105.56.225:80');
+//   res.setHeader('Access-Control-Allow-Headers', 'http://34.105.56.225:80');
+//   res.setHeader('Access-Control-Allow-Credentials', 'true');
+//   next();
+// };
 
 (async () => {
   let path = __dirname + '/graphql/**/*.js' || __dirname + '/graphql/**/*.ts';
@@ -38,6 +40,13 @@ const allowCrossDomain = (_: Request, res: Response, next: NextFunction) => {
 
   const app = Express();
 
+  app.use(
+    cors({
+      credentials: true,
+      origin: 'http://localhost:3050',
+    })
+  );
+
   app.use(cookieParser());
 
   const apolloServer = new ApolloServer({
@@ -53,18 +62,11 @@ const allowCrossDomain = (_: Request, res: Response, next: NextFunction) => {
     }),
   });
 
-  app.use(allowCrossDomain);
+  // app.use(allowCrossDomain);
 
   app.use('/refresh_token', tokenRouter);
 
   const RedisStore = connectRedis(session);
-
-  app.use(
-    cors({
-      credentials: true,
-      origin: 'http://localhost:3000',
-    })
-  );
 
   // Session will be added to the request object
   app.use(
@@ -84,7 +86,7 @@ const allowCrossDomain = (_: Request, res: Response, next: NextFunction) => {
     })
   );
 
-  apolloServer.applyMiddleware({ app, cors: false });
+  apolloServer.applyMiddleware({ app, cors: true });
 
   const httpServer = createServer(app);
 
