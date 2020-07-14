@@ -1,4 +1,4 @@
-import { Mutation, Arg } from 'type-graphql';
+import { Mutation, Arg, Resolver } from 'type-graphql';
 import { User } from '../../models/User';
 import { getManager } from 'typeorm';
 import { BaseResponse } from '../response/baseResponse';
