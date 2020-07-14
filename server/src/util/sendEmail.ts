@@ -8,7 +8,7 @@ export async function sendDigitEmail(email: string, digit: number) {
     secure: true,
     auth: {
       user: 'kenichikona@gmail.com',
-      pass: '',
+      pass: 'Kronos140819',
     },
   });
 
