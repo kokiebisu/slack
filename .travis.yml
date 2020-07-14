@@ -9,15 +9,17 @@ before_install:
   - source $HOME/google-cloud-sdk/path.bash.inc
   - gcloud components update kubectl
   - gcloud auth activate-service-account --key-file service-account.json
-  - docker build -t kokiebisu/slack-test -f ./client/dev.Dockerfile ./client
+  - gcloud config set project slack-283301
+  - gcloud config set compute/zone us-west1-a
+  - gcloud container clusters get-credentials slack-cluster
+  # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+# script:
+#   - docker run -e CI=true kokiebisu/slack-test yarn test -- --coverage
 
-script:
-  - docker run -e CI=true kokiebisu/slack-test yarn test -- --coverage
+# after_success:
+#   - docker build -t kokiebisu/slack-client ./client
+#   - docker build -t kokiebisu/slack-nginx ./nginx
+#   - docker build -t kokiebisu/slack-server ./server
 
-after_success:
-  - docker build -t kokiebisu/slack-client ./client
-  - docker build -t kokiebisu/slack-nginx ./nginx
-  - docker build -t kokiebisu/slack-server ./server
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push kokiebisu/slack-client
-  - docker push kokiebisu/slack-server
+#   - docker push kokiebisu/slack-client
+#   - docker push kokiebisu/slack-server
