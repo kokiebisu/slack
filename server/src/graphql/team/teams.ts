@@ -13,7 +13,7 @@ export class TeamsResolver {
         teams,
       };
     } catch (err) {
-      throw new Error('error when finding teams');
+      throw new Error(err);
     }
   }
 }

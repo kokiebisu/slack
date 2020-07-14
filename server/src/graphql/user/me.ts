@@ -27,7 +27,7 @@ export class MeResolver {
         user,
       };
     } catch (err) {
-      throw new Error('something wrong happened');
+      throw new Error(err);
     }
   }
 }

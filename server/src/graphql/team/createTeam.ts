@@ -38,7 +38,7 @@ export class CreateTeamResolver {
         team,
       };
     } catch (err) {
-      throw new Error('error occured when creating the team');
+      throw new Error(err);
     }
   }
 }

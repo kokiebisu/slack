@@ -58,7 +58,7 @@ export class CreateChannelResolver {
         channel,
       };
     } catch (err) {
-      throw new Error('error occured when creating channel');
+      throw new Error(err);
     }
   }
 }

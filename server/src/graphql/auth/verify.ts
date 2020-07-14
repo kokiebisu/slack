@@ -61,7 +61,7 @@ export class VerifyResolver {
         errorlog: 'successful',
       };
     } catch (err) {
-      throw new Error('error occured while confirming user');
+      throw new Error(err);
     }
   }
 
@@ -86,7 +86,7 @@ export class VerifyResolver {
         errorlog: '',
       };
     } catch (err) {
-      throw new Error('error occured while verifying user by token');
+      throw new Error(err);
     }
   }
 

@@ -18,7 +18,7 @@ export class UsersResolver {
         users,
       };
     } catch (err) {
-      throw new Error('error occured when finding users');
+      throw new Error(err);
     }
   }
 }

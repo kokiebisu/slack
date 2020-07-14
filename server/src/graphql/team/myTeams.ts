@@ -19,7 +19,7 @@ export class MyTeamsResolver {
         teams,
       };
     } catch (err) {
-      throw new Error('error occured when finding my team');
+      throw new Error(err);
     }
   }
 }
