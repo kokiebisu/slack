@@ -5,7 +5,8 @@ import { BaseResponse } from '../response/baseResponse';
 
 const manager = getManager();
 
-export class RemoveUser {
+@Resolver()
+export class RemoveUserResolver {
   @Mutation(() => BaseResponse)
   async removeUser(@Arg('userId') userId: number) {
     await manager.query('delete from members where "userId"=$1', [userId]);

@@ -5,7 +5,7 @@ import { getManager } from 'typeorm';
 const manager = getManager();
 
 @Resolver()
-export class UsersResolver {
+export class AllUsersResolver {
   @Query(() => UsersResponse)
   async allUsers(): Promise<UsersResponse | Error> {
     try {
