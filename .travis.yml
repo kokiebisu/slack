@@ -12,10 +12,11 @@ before_install:
   - gcloud config set project slack-283301
   - gcloud config set compute/zone us-west1-a
   - gcloud container clusters get-credentials slack-cluster
-  # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-# script:
-#   - docker run -e CI=true kokiebisu/slack-test yarn test -- --coverage
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build -t kokiebisu/slack-test -f ./client/dev.Dockerfile ./client
 
+script:
+  - docker run -e CI=true kokiebisu/slack-test yarn test -- --coverage
 # after_success:
 #   - docker build -t kokiebisu/slack-client ./client
 #   - docker build -t kokiebisu/slack-nginx ./nginx
