@@ -17,7 +17,7 @@ export class ChannelsResolver {
         channels,
       };
     } catch (err) {
-      throw new Error('error occured when finding channels');
+      throw new Error(err);
     }
   }
 }

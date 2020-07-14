@@ -24,7 +24,7 @@ export class VerifyResolver {
         userId,
       };
     } catch (err) {
-      throw new Error('error occured while confirming user');
+      throw new Error(err);
     }
   }
 }

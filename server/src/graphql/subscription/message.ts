@@ -106,7 +106,7 @@ export class MessageResolver {
         createdAt: message.createdAt.toLocaleDateString('en-US', options),
       };
     } catch (err) {
-      throw new Error('something went wrong when sending message');
+      throw new Error(err);
     }
   }
 

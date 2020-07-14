@@ -40,7 +40,7 @@ export class RegisterResolver {
         errorlog: 'successful',
       };
     } catch (err) {
-      throw new Error('error occured when registering user');
+      throw new Error(err);
     }
   }
 
@@ -69,7 +69,7 @@ export class RegisterResolver {
         ok: true,
       };
     } catch (err) {
-      throw new Error('Something wrong happened when checking if email exists');
+      throw new Error(err);
     }
   }
 }
