@@ -2,12 +2,13 @@ const nodemailer = require('nodemailer');
 
 export async function sendDigitEmail(email: string, digit: number) {
   const transporter = nodemailer.createTransport({
+    pool: true,
     host: 'smtp.gmail.com',
     port: 465,
     secure: true,
     auth: {
       user: 'kenichikona@gmail.com',
-      pass: 'Kronos140819',
+      pass: '',
     },
   });
 
