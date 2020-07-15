@@ -1,11 +1,12 @@
 FROM node:alpine as builder
 WORKDIR /app
 COPY ./package.json .
-RUN npm install
+USER node
+RUN yarn cache clean && yarn --update-checksums
 COPY . .
-RUN npm run build
+RUN yarn && yarn build
 
-FROM nginx
+FROM nginx:1.17-alpine
 EXPOSE 3000
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/build /usr/share/nginx/html
