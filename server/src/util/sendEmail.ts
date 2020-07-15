@@ -16,8 +16,6 @@ export async function sendDigitEmail(email: string, digit: number) {
   await sgMail.send(msg);
 }
 
-sendDigitEmail('a01056715@gmail.com', 123456);
-
 export async function sendLinkEmail(email: string, token: string) {
   const msg = {
     to: email,
