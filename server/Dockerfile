@@ -14,7 +14,6 @@ COPY --from=builder /app/dist .
 
 COPY ormconfig.js ./
 
-
 COPY sendgrid.env ./
 
 EXPOSE 4000
