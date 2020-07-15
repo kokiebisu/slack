@@ -1,20 +1,18 @@
 FROM node:alpine as builder
 WORKDIR /app
 COPY ./package.json .
-RUN npm install
+RUN yarn
 COPY . .
-RUN npm run build
+RUN yarn build
 
 FROM node:alpine
 WORKDIR /app
 COPY package.json ./
-RUN npm install
+RUN yarn
 
 COPY --from=builder /app/dist .
 
 COPY ormconfig.js ./
-
-COPY sendgrid.env ./
 
 EXPOSE 4000
 

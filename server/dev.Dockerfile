@@ -4,4 +4,4 @@ COPY package.json .
 COPY ormconfig.js .
 RUN yarn
 COPY . .
-CMD ["yarn", "dev"]
+CMD yarn dev

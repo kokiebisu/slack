@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 interface Props {
   redisHost: string;
   redisPort: number;
@@ -6,6 +8,8 @@ interface Props {
   pgDatabase: string;
   pgPassword: string;
   pgPort: number;
+  nmUser: string;
+  nmPassword: string;
 }
 
 export const config: Props = {
@@ -16,4 +20,6 @@ export const config: Props = {
   pgDatabase: process.env.PGDATABASE! || 'slackdb',
   pgPassword: process.env.PGPASSWORD! || 'postgres',
   pgPort: parseInt(process.env.PGPORT!) || 5432,
+  nmUser: process.env.MAILER_USER!,
+  nmPassword: process.env.MAILER_PASSWORD!,
 };

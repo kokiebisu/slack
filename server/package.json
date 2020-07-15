@@ -48,6 +48,7 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "ts-node-dev --respawn src/server.ts",
-    "build": "tsc -b"
+    "build": "tsc -b",
+    "shell": "sh ./heroku_deploy.sh"
   }
 }

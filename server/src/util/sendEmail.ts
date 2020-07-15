@@ -1,31 +1,38 @@
-// const nodemailer = require('nodemailer');
-require('dotenv').config();
-const sgMail = require('@sendgrid/mail');
-
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const nodemailer = require('nodemailer');
+const { config } = require('../../config');
 
 export async function sendDigitEmail(email: string, digit: number) {
-  const msg = {
-    to: email,
-    from: 'kenichikona@gmail.com',
-    subject: 'Slack confirmation',
-    text: 'confirmation',
-    html: `the number is ${digit}`,
-  };
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    auth: {
+      user: 'kenichikona@gmail.com',
+      pass: 'Kronos1408',
+    },
+  });
 
-  await sgMail.send(msg);
+  transporter.sendMail({
+    from: 'kenichikona@gmail.com',
+    to: email,
+    subject: 'Slack confirmation',
+    html: `the number is ${digit}`,
+  });
 }
 
 export async function sendLinkEmail(email: string, token: string) {
-  const msg = {
-    to: email,
-    from: 'kenichikona@gmail.com',
-    subject: email,
-    text: 'Slack confirmation',
-    html: `<a href='http://localhost:3000/get-started/check/${token}'>http://localhost:3000/get-started/check/${token}</a>`,
-  };
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    auth: {
+      user: config.nmUser,
+      pass: config.nmPassword,
+    },
+  });
 
-  sgMail.send(msg);
+  transporter.sendMail({
+    from: config.nmUser,
+    to: email,
+    subject: 'Slack confirmation',
+    html: `<a href='http://localhost:3000/get-started/check/${token}'>http://localhost:3000/get-started/check/${token}</a>`,
+  });
 }
 
 export async function sendInvitationEmail(
@@ -34,13 +41,17 @@ export async function sendInvitationEmail(
   invitor: string,
   token: string
 ) {
-  const msg = {
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    auth: {
+      user: config.nmUser,
+      pass: config.nmPassword,
+    },
+  });
+  transporter.sendMail({
+    from: config.nmUser,
     to: email,
-    from: 'kenichikona@gmail.com',
     subject: `${invitor} has invited you to a Slack Workspace`,
-    text: 'Slack confirmation',
     html: `<a href='http://localhost:3000/get-started/invited/${invitorId}/${token}'>Open Slack</a>`,
-  };
-
-  sgMail.send(msg);
+  });
 }
