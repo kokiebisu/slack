@@ -12,7 +12,7 @@ export async function sendDigitEmail(email: string, digit: number) {
     html: `the number is ${digit}`,
   };
 
-  sgMail.send(msg);
+  await sgMail.send(msg);
 }
 
 export async function sendLinkEmail(email: string, token: string) {
