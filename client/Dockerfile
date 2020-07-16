@@ -1,7 +1,6 @@
 FROM node:alpine as builder
 WORKDIR /app
 COPY ./package.json .
-USER node
 RUN yarn cache clean
 COPY . .
 RUN yarn && yarn build
