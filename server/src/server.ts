@@ -47,7 +47,7 @@ const PORT = process.env.PORT || 4000;
   app.use(
     cors({
       credentials: true,
-      origin: 'http://localhost:3050',
+      origin: '*',
     })
   );
   // app.use(allowCrossDomain);
