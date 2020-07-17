@@ -5,6 +5,6 @@ COPY . .
 RUN yarn && yarn build
 
 FROM nginx:1.17-alpine
-WORKDIR /usr/share/nginx/html
+WORKDIR /var/www/localhost/htdocs
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/build .
