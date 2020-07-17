@@ -1,4 +1,4 @@
-FROM nginx:stable-alpine as builder
+FROM node:alpine as builder
 WORKDIR /app
 COPY ./package.json .
 COPY . .
