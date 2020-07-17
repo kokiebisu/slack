@@ -12,11 +12,11 @@ services:
     image: redis:latest
     networks:
       - slack
-  nginx:
+  proxy:
     restart: always
     build:
       dockerfile: Dockerfile
-      context: ./nginx
+      context: ./proxy
     ports:
       - 80:80
     networks:
@@ -35,6 +35,9 @@ services:
       - PGDATABASE=slackdb
       - PGPASSWORD=postgres
       - PGPORT=5432
+    networks:
+      - slack
+
   client:
     build:
       dockerfile: Dockerfile
@@ -42,6 +45,8 @@ services:
     volumes:
       - /app/node_modules
       - ./client:/app
+    networks:
+      - slack
 
 networks:
   slack:

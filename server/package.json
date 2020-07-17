@@ -4,7 +4,6 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@sendgrid/mail": "^7.2.1",
     "@types/nodemailer": "^6.4.0",
     "@types/uuid": "^8.0.0",
     "apollo-server-express": "^2.15.0",
@@ -46,9 +45,8 @@
     "typescript": "^3.9.3"
   },
   "scripts": {
-    "start": "node src/server.js",
+    "start": "node dist/src/server.js",
     "dev": "ts-node-dev --respawn src/server.ts",
-    "build": "tsc -b",
-    "shell": "sh ./heroku_deploy.sh"
+    "build": "tsc"
   }
 }
