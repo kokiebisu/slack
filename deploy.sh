@@ -6,8 +6,3 @@ docker push kokiebisu/slack-server:latest
 
 docker push kokiebisu/slack-client:$SHA
 docker push kokiebisu/slack-server:$SHA
-
-kubectl apply -f kubernetes
-
-kubectl set image deployments/client-deployment client=kokiebisu/slack-client:$SHA
-kubectl set image deployments/server-deployment server=kokiebisu/slack-server:$SHA

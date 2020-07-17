@@ -1,5 +1,4 @@
 const nodemailer = require('nodemailer');
-const { config } = require('../../config');
 
 export async function sendDigitEmail(email: string, digit: number) {
   const transporter = nodemailer.createTransport({
