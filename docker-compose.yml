@@ -6,12 +6,8 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=slackdb
-    networks:
-      - slack
   redis:
     image: redis:latest
-    networks:
-      - slack
   proxy:
     restart: always
     build:
@@ -19,8 +15,6 @@ services:
       context: ./proxy
     ports:
       - 80:80
-    networks:
-      - slack
   server:
     build:
       dockerfile: Dockerfile
@@ -35,9 +29,6 @@ services:
       - PGDATABASE=slackdb
       - PGPASSWORD=postgres
       - PGPORT=5432
-    networks:
-      - slack
-
   client:
     build:
       dockerfile: Dockerfile
@@ -45,8 +36,3 @@ services:
     volumes:
       - /app/node_modules
       - ./client:/app
-    networks:
-      - slack
-
-networks:
-  slack:
