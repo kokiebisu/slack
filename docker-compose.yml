@@ -22,6 +22,8 @@ services:
     volumes:
       - /app/node_modules
     environment:
+      - NODE_ENV=development
+      - HOST=localhost
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - PGUSER=postgres
@@ -29,6 +31,8 @@ services:
       - PGDATABASE=slackdb
       - PGPASSWORD=postgres
       - PGPORT=5432
+      - MAILSENDER=kokoaj.saas@gmail.com
+      - MAILPASS=kronos111
   client:
     build:
       dockerfile: Dockerfile
@@ -36,3 +40,5 @@ services:
     volumes:
       - /app/node_modules
       - ./client:/app
+    environment:
+      - HOST=localhost

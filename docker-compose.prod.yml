@@ -22,6 +22,8 @@ services:
   server:
     image: kokiebisu/slack-server
     environment:
+      - NODE_ENV=production
+      - HOST=64.225.126.176
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - PGUSER=postgres
@@ -29,12 +31,15 @@ services:
       - PGDATABASE=slackdb
       - PGPASSWORD=postgres
       - PGPORT=5432
+      - MAILSENDER=kokoaj.saas@gmail.com
+      - MAILPASS=kronos111
     networks:
       - slack
   client:
     image: kokiebisu/slack-client
     environment:
       - NODE_ENV=production
+      - HOST=64.225.126.176
     networks:
       - slack
 
