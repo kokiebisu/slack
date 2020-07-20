@@ -6,13 +6,19 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=slackdb
+    networks:
+      - slack
   redis:
     image: redis:latest
+    networks:
+      - slack
   proxy:
     restart: always
     image: kokiebisu/slack-proxy
     ports:
       - 80:80
+    networks:
+      - slack
   server:
     image: kokiebisu/slack-server
     environment:
@@ -23,5 +29,9 @@ services:
       - PGDATABASE=slackdb
       - PGPASSWORD=postgres
       - PGPORT=5432
+    networks:
+      - slack
   client:
     image: kokiebisu/slack-client
+    networks:
+      - slack
