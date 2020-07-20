@@ -35,3 +35,6 @@ services:
     image: kokiebisu/slack-client
     networks:
       - slack
+
+networks:
+  slack:
