@@ -33,6 +33,8 @@ services:
       - slack
   client:
     image: kokiebisu/slack-client
+    env:
+      - NODE_ENV=production
     networks:
       - slack
 
