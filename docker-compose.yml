@@ -8,22 +8,15 @@ services:
       - POSTGRES_DB=slackdb
   redis:
     image: redis:latest
-  proxy:
-    restart: always
-    build:
-      dockerfile: Dockerfile
-      context: ./proxy
-    ports:
-      - 80:80
   server:
     build:
-      dockerfile: Dockerfile
+      dockerfile: dev.Dockerfile
       context: ./server
     volumes:
       - /app/node_modules
     environment:
       - NODE_ENV=development
-      - HOST=localhost
+      - HOST=localhost:4000
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - PGUSER=postgres
@@ -35,7 +28,7 @@ services:
       - MAILPASS=kronos111
   client:
     build:
-      dockerfile: Dockerfile
+      dockerfile: dev.Dockerfile
       context: ./client
     volumes:
       - /app/node_modules
