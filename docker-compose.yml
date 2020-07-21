@@ -41,4 +41,4 @@ services:
       - /app/node_modules
       - ./client:/app
     environment:
-      - HOST=localhost
+      - NODE_ENV=development

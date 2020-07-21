@@ -1,6 +1,8 @@
 const nodemailer = require('nodemailer');
 
 export async function sendDigitEmail(email: string, digit: number) {
+  console.log('sender', process.env.MAILSENDER);
+  console.log('pass', process.env.MAILPASS);
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     auth: {

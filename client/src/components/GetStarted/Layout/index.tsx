@@ -19,6 +19,7 @@ interface Props {}
 export const GetStarted: React.FC<Props> = () => {
   return (
     <Wrapper>
+      {console.log('cofig', process.env.NODE_ENV)}
       <b.Container>
         <b.Box>
           <b.Flex justifyContent='center'>

@@ -31,18 +31,21 @@ import { ContextProvider } from './context';
  */
 import { AppRoutes } from './routes/App';
 
-/**
- * Config
- */
-import { config } from './config';
-
 const httpLink = new HttpLink({
-  uri: config.http!,
+  uri: `http://${
+    process.env.NODE_ENV === 'production'
+      ? process.env.REACT_APP_PRODUCTION_HOST
+      : process.env.REACT_APP_DEVELOPMENT_HOST
+  }/graphql`,
   credentials: 'include',
 });
 
 const wsLink = new WebSocketLink({
-  uri: config.ws!,
+  uri: `ws://${
+    process.env.NODE_ENV === 'production'
+      ? process.env.REACT_APP_PRODUCTION_HOST
+      : process.env.REACT_APP_DEVELOPMENT_HOST
+  }/graphql`,
   options: {
     reconnect: true,
     lazy: true,

@@ -98,10 +98,10 @@ const PORT = process.env.PORT || 4000;
 
   httpServer.listen({ port: PORT }, () => {
     console.log(
-      `🚀 Server ready at http://localhost:${PORT}${apolloServer.graphqlPath}`
+      `🚀 Server ready at http://${process.env.HOST}/${apolloServer.graphqlPath}`
     );
     console.log(
-      `🚀 Subscriptions ready at ws://localhost:${PORT}${apolloServer.subscriptionsPath}`
+      `🚀 Subscriptions ready at ws://${process.env.HOST}/${apolloServer.subscriptionsPath}`
     );
   });
 })();
