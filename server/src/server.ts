@@ -14,7 +14,10 @@ import { router as tokenRouter } from './routes/tokenRoutes';
 const PORT = process.env.PORT || 4000;
 
 (async () => {
-  let path = __dirname + '/graphql/**/*.js' || __dirname + '/graphql/**/*.ts';
+  let path =
+    process.env.NODE_ENV === 'production'
+      ? __dirname + '/graphql/**/*.js'
+      : __dirname + '/graphql/**/*.ts';
   let retries = 5;
   while (retries) {
     try {

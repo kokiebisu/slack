@@ -1,43 +1,43 @@
 version: '3.7'
 services:
-  # db:
-  #   image: postgres:latest
-  #   environment:
-  #     - POSTGRES_USER=postgres
-  #     - POSTGRES_PASSWORD=postgres
-  #     - POSTGRES_DB=slackdb
-  # redis:
-  #   image: redis:latest
-  # server:
-  #   build:
-  #     dockerfile: dev.Dockerfile
-  #     context: ./server
-  #   volumes:
-  #     - /app/node_modules
-  #     - ./server:/app
-  #   environment:
-  #     - NODE_ENV=development
-  #     - HOST=localhost:4000
-  #     - REDIS_HOST=redis
-  #     - REDIS_PORT=6379
-  #     - PGUSER=postgres
-  #     - PGHOST=db
-  #     - PGDATABASE=slackdb
-  #     - PGPASSWORD=postgres
-  #     - PGPORT=5432
-  #     - MAILSENDER=kokoaj.saas@gmail.com
-  #     - MAILPASS=kronos111
-  #   ports:
-  #     - 4000:4000
-  client:
-    ports:
-      - 3000:3000
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=slackdb
+  redis:
+    image: redis:latest
+  server:
     build:
       dockerfile: dev.Dockerfile
-      context: ./client
+      context: ./server
     volumes:
       - /app/node_modules
-      - ./client:/app
+      - ./server:/app
     environment:
       - NODE_ENV=development
-    stdin_open: true
+      - HOST=localhost:4000
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - PGUSER=postgres
+      - PGHOST=db
+      - PGDATABASE=slackdb
+      - PGPASSWORD=postgres
+      - PGPORT=5432
+      - MAILSENDER=kokoaj.saas@gmail.com
+      - MAILPASS=kronos111
+    ports:
+      - 4000:4000
+  # client:
+  #   ports:
+  #     - 3000:3000
+  #   build:
+  #     dockerfile: dev.Dockerfile
+  #     context: ./client
+  #   volumes:
+  #     - /app/node_modules
+  #     - ./client:/app
+  #   environment:
+  #     - NODE_ENV=development
+  #   stdin_open: true
