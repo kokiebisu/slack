@@ -29,15 +29,15 @@ services:
       - MAILPASS=kronos111
     ports:
       - 4000:4000
-  # client:
-  #   ports:
-  #     - 3000:3000
-  #   build:
-  #     dockerfile: dev.Dockerfile
-  #     context: ./client
-  #   volumes:
-  #     - /app/node_modules
-  #     - ./client:/app
-  #   environment:
-  #     - NODE_ENV=development
-  #   stdin_open: true
+  client:
+    ports:
+      - 3000:3000
+    build:
+      dockerfile: dev.Dockerfile
+      context: ./client
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+    environment:
+      - NODE_ENV=development
+    stdin_open: true
