@@ -8,24 +8,10 @@ import session from 'express-session';
 import cors from 'cors';
 import connectRedis from 'connect-redis';
 import cookieParser from 'cookie-parser';
-// import { Request, Response, NextFunction } from 'express';
 import { redis } from './redis';
 import { router as tokenRouter } from './routes/tokenRoutes';
 
 const PORT = process.env.PORT || 4000;
-
-// const allowCrossDomain = (_: Request, res: Response, next: NextFunction) => {
-//   res.setHeader(
-//     'Access-Control-Allow-Origin',
-//     'http:'
-//   );
-//   res.setHeader(
-//     'Access-Control-Allow-Headers',
-//     'https://slack-green.vercel.app'
-//   );
-//   res.setHeader('Access-Control-Allow-Credentials', 'true');
-//   next();
-// };
 
 (async () => {
   let path = __dirname + '/graphql/**/*.js' || __dirname + '/graphql/**/*.ts';
