@@ -22,10 +22,10 @@ export const Right = styled(b.Box)`
 
   & > div {
     justify-content: flex-end;
-  }
 
-  @media ${size.md} {
-    justify-content: space-between;
+    @media ${size.md} {
+      justify-content: space-between;
+    }
   }
 `;
 
@@ -103,7 +103,9 @@ export const IconWrapper = styled(b.Box)`
       }
     }
   }
+`;
 
+export const IconButtonWrapper = styled(b.Button)`
   &.hamburgerbutton {
     svg {
       width: 24px;
@@ -115,6 +117,10 @@ export const IconWrapper = styled(b.Box)`
 
     @media ${size.md} {
       display: none;
+    }
+
+    &:focus {
+      outline: none;
     }
   }
 `;
