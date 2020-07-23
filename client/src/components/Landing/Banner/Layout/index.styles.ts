@@ -22,6 +22,11 @@ export const Content = styled(b.Box)`
       @media ${size.xs} {
         width: 45%;
       }
+      & > div {
+        @media ${size.md} {
+          width: 95%;
+        }
+      }
     }
     &.content__right {
       width: 100%;
@@ -77,10 +82,10 @@ export const Button = styled(b.Box)`
     width: 100%;
     padding: 20px 0;
     text-transform: uppercase;
+    height: 60px;
     @media ${size.lg} {
       width: auto;
-      height: 60px;
-      padding: 20px 40px;
+      padding: 0 40px;
     }
   }
   &.button__filled {

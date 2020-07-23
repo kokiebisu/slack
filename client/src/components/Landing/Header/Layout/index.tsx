@@ -60,7 +60,7 @@ export const Header: React.FC<Props> = () => {
               </b.Flex>
             </b.Box>
             <Right>
-              <b.Flex justifyContent='space-between' alignItems='center'>
+              <b.Flex alignItems='center'>
                 <Navigation hovered={hovered} onHovered={setHovered} />
                 {!loading &&
                 data &&
