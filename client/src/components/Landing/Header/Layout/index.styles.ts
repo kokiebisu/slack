@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import * as b from '../../../../styles/blocks';
 
 // Sizes
-import { landing } from '../../../../styles/sizes';
+import { size } from '../../../../styles/sizes';
 
 export const Wrapper = styled.div`
   position: sticky;
@@ -19,6 +19,14 @@ export const Wrapper = styled.div`
 
 export const Right = styled(b.Box)`
   flex-grow: 1;
+
+  & > div {
+    justify-content: flex-end;
+
+    @media ${size.md} {
+      justify-content: space-between;
+    }
+  }
 `;
 
 export const SignInButton = styled(b.Box)`
@@ -44,7 +52,7 @@ export const LaunchButton = styled(b.Anchor)`
   letter-spacing: 1px;
   cursor: pointer;
 
-  @media ${landing.lg} {
+  @media ${size.lg} {
     display: block;
   }
 `;
@@ -52,7 +60,7 @@ export const LaunchButton = styled(b.Anchor)`
 export const GetStartedButtonWrapper = styled(b.Flex)`
   display: none;
 
-  @media ${landing.lg} {
+  @media ${size.lg} {
     display: flex;
   }
 `;
@@ -95,7 +103,9 @@ export const IconWrapper = styled(b.Box)`
       }
     }
   }
+`;
 
+export const IconButtonWrapper = styled(b.Button)`
   &.hamburgerbutton {
     svg {
       width: 24px;
@@ -105,8 +115,12 @@ export const IconWrapper = styled(b.Box)`
       }
     }
 
-    @media ${landing.lg} {
+    @media ${size.md} {
       display: none;
+    }
+
+    &:focus {
+      outline: none;
     }
   }
 `;

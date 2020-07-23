@@ -22,6 +22,7 @@ import {
   SignInButton,
   GetStartedButton,
   GetStartedButtonWrapper,
+  IconButtonWrapper,
 } from './index.styles';
 
 import { MeQuery, useMyTeamsQuery } from '../../../../generated/graphql';
@@ -60,7 +61,7 @@ export const Header: React.FC<Props> = () => {
               </b.Flex>
             </b.Box>
             <Right>
-              <b.Flex justifyContent='space-between' alignItems='center'>
+              <b.Flex alignItems='center'>
                 <Navigation hovered={hovered} onHovered={setHovered} />
                 {!loading &&
                 data &&
@@ -100,9 +101,11 @@ export const Header: React.FC<Props> = () => {
                     </GetStartedButton>
                   </GetStartedButtonWrapper>
                 )}
-                <IconWrapper className='hamburgerbutton'>
+                <IconButtonWrapper
+                  className='hamburgerbutton'
+                  onClick={() => console.log('hello')}>
                   <HamburgerButton />
-                </IconWrapper>
+                </IconButtonWrapper>
               </b.Flex>
             </Right>
           </b.Flex>

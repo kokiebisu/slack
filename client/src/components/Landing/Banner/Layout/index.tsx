@@ -36,7 +36,7 @@ export const Banner: React.FC<Props> = () => {
         <Content>
           <b.Box>
             <b.Box className='content__left'>
-              <b.Box wp={95}>
+              <b.Box>
                 <SubHeader mb={3}>
                   <b.Text>Work from home</b.Text>
                 </SubHeader>
