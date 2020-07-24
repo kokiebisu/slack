@@ -10,6 +10,9 @@ import { Footer } from '../Footer/Layout';
 
 // Graphql
 import { useMeQuery } from '../../../generated/graphql';
+import { LandingModal } from '../Modal/layout';
+import styled from 'styled-components';
+import { useToggleState } from '../../../context/toggle-context';
 
 interface Props {}
 
@@ -20,13 +23,28 @@ export const Landing: React.FC<Props> = () => {
 
   const { data } = useMeQuery();
 
+  const state = useToggleState();
+
   return (
     <>
-      <Header data={data} />
-      <Banner />
-      <BreakOut />
-      <Choose />
-      <Footer />
+      {state.landing ? (
+        <ModalWrapper>
+          <LandingModal />
+        </ModalWrapper>
+      ) : (
+        <>
+          <Header data={data} />
+          <Banner />
+          <BreakOut />
+          <Choose />
+          <Footer />
+        </>
+      )}
     </>
   );
 };
+
+const ModalWrapper = styled.div`
+  width: 100vw;
+  height: 100vh;
+`;
