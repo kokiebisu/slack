@@ -13,6 +13,7 @@ import { useMeQuery } from '../../../generated/graphql';
 import { LandingModal } from '../Modal/layout';
 import styled from 'styled-components';
 import { useToggleState } from '../../../context/toggle-context';
+import { Box } from '../../../styles/blocks';
 
 interface Props {}
 
@@ -27,24 +28,26 @@ export const Landing: React.FC<Props> = () => {
 
   return (
     <>
-      {state.landing ? (
-        <ModalWrapper>
+      {state.landing && (
+        <ModalWrapper
+          animate={{ width: '100%', right: 0 }}
+          transition={{ duration: 0.4 }}>
           <LandingModal />
         </ModalWrapper>
-      ) : (
-        <>
-          <Header data={data} />
-          <Banner />
-          <BreakOut />
-          <Choose />
-          <Footer />
-        </>
       )}
+      <Header data={data} />
+      <Banner />
+      <BreakOut />
+      <Choose />
+      <Footer />
     </>
   );
 };
 
-const ModalWrapper = styled.div`
-  width: 100vw;
+const ModalWrapper = styled(Box)`
+  background-color: white;
+  position: absolute;
+  z-index: 200;
+  right: -500px;
   height: 100vh;
 `;
