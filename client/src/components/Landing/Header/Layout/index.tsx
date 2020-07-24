@@ -28,6 +28,7 @@ import {
 import { MeQuery, useMyTeamsQuery } from '../../../../generated/graphql';
 import { Navigation } from '../Navigation';
 import { LaunchOptions } from '../Launch/container';
+import { useToggleDispatch } from '../../../../context/toggle-context';
 
 interface Props {
   data: MeQuery | undefined;
@@ -43,6 +44,8 @@ export const Header: React.FC<Props> = () => {
   });
 
   const { data, loading } = useMyTeamsQuery();
+
+  const dispatchToggle = useToggleDispatch();
 
   const [pressed, setPressed] = useState(false);
 
@@ -103,7 +106,7 @@ export const Header: React.FC<Props> = () => {
                 )}
                 <IconButtonWrapper
                   className='hamburgerbutton'
-                  onClick={() => console.log('hello')}>
+                  onClick={() => dispatchToggle({ type: 'toggle_landing' })}>
                   <HamburgerButton />
                 </IconButtonWrapper>
               </b.Flex>
