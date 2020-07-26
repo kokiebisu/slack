@@ -4,12 +4,18 @@ import {
   IconWrapper,
   IconButtonWrapper,
   Option,
+  Buttons,
+  Button,
 } from './index.styles';
 import * as b from '../../../../styles/blocks';
 import { Close } from '../../../../assets/svg';
 import { NameLogo } from '../../../../assets/svg/Logo';
 import { ChevronRight } from '../../../../assets/svg/Arrows';
 import { useToggleDispatch } from '../../../../context/toggle-context';
+import {
+  ButtonMotion,
+  TransparentButtonMotion,
+} from '../../../../animations/Buttons';
 
 export const LandingModal = () => {
   const dispatchToggle = useToggleDispatch();
@@ -29,6 +35,7 @@ export const LandingModal = () => {
             <NameLogo />
           </IconWrapper>
           <IconButtonWrapper
+            className='close'
             onClick={() => dispatchToggle({ type: 'toggle_landing' })}>
             <Close />
           </IconButtonWrapper>
@@ -54,6 +61,24 @@ export const LandingModal = () => {
           );
         })}
       </b.Box>
+      <Buttons>
+        <b.Box>
+          <Button
+            initial='rest'
+            animate='rest'
+            whileHover='hovered'
+            className='button__filled'>
+            <b.Button variants={ButtonMotion}>Try Slack for free</b.Button>
+          </Button>
+          <Button
+            initial='rest'
+            animate='rest'
+            whileHover='hovered'
+            className='button__border'>
+            <b.Button variants={TransparentButtonMotion}>Learn more</b.Button>
+          </Button>
+        </b.Box>
+      </Buttons>
     </Wrapper>
   );
 };
