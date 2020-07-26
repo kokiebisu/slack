@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
 
 // Components
 import { Header } from '../Header/Layout';
@@ -28,13 +29,16 @@ export const Landing: React.FC<Props> = () => {
 
   return (
     <>
-      {state.landing && (
-        <ModalWrapper
-          animate={{ width: '100%', right: 0 }}
-          transition={{ duration: 0.4 }}>
-          <LandingModal />
-        </ModalWrapper>
-      )}
+      <AnimatePresence>
+        {state.landing && (
+          <ModalWrapper
+            animate={{ width: '100%', right: 0 }}
+            exit={{ right: -500 }}
+            transition={{ duration: 0.4 }}>
+            <LandingModal />
+          </ModalWrapper>
+        )}
+      </AnimatePresence>
       <Header data={data} />
       <Banner />
       <BreakOut />

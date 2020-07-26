@@ -7,7 +7,7 @@ export const Wrapper = styled(b.Box)`
     margin-bottom: 7px;
   }
   .content {
-    padding-right: 20px;
+    padding-right: 5px;
   }
 `;
 
