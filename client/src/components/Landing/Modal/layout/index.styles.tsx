@@ -5,7 +5,9 @@ import { size } from '../../../../styles/sizes';
 
 export const Wrapper = styled(b.Box)`
   background-color: white;
-  height: 100%;
+  position: absolute;
+  z-index: 200;
+  width: 100%;
 
   .header {
     padding: 25px;
@@ -67,7 +69,7 @@ export const Option = styled(b.Box)`
 
 export const Buttons = styled(b.Box)`
   position: fixed;
-  bottom: 50px;
+  bottom: 10px;
   width: 100%;
 
   & > div {

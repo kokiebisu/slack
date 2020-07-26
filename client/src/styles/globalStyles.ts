@@ -34,5 +34,4 @@ export const GlobalStyles = createGlobalStyle`
      padding: 0px;
      color: #888;
     }
-
 `;

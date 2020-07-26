@@ -8,7 +8,8 @@ export const ModalWrapper = styled(b.Box)`
   position: absolute;
   z-index: 200;
   right: -500px;
-  height: 100vh;
+  height: 100%;
+  overflow: hidden;
 
   @media ${size.lg} {
     display: none;

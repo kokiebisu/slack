@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Wrapper,
   IconWrapper,
@@ -20,6 +20,12 @@ import {
 import { MeQuery, useMyTeamsQuery } from '../../../../generated/graphql';
 
 export const LandingModal = () => {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'initial';
+    };
+  }, []);
   const dispatchToggle = useToggleDispatch();
 
   const options = [
@@ -31,6 +37,7 @@ export const LandingModal = () => {
   ];
 
   const { data, loading } = useMyTeamsQuery();
+
   return (
     <Wrapper>
       <b.Box className='header'>
