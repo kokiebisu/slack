@@ -17,6 +17,8 @@ import {
   TransparentButtonMotion,
 } from '../../../../animations/Buttons';
 
+import { MeQuery, useMyTeamsQuery } from '../../../../generated/graphql';
+
 export const LandingModal = () => {
   const dispatchToggle = useToggleDispatch();
 
@@ -27,6 +29,8 @@ export const LandingModal = () => {
     { name: 'Enterprise' },
     { name: 'Pricing' },
   ];
+
+  const { data, loading } = useMyTeamsQuery();
   return (
     <Wrapper>
       <b.Box className='header'>
@@ -63,13 +67,26 @@ export const LandingModal = () => {
       </b.Box>
       <Buttons>
         <b.Box>
-          <Button
-            initial='rest'
-            animate='rest'
-            whileHover='hovered'
-            className='button__filled'>
-            <b.Button variants={ButtonMotion}>Launch Slack</b.Button>
-          </Button>
+          {!loading &&
+          data &&
+          data.myTeams.teams! &&
+          data.myTeams.teams!.length > 0 ? (
+            <Button
+              initial='rest'
+              animate='rest'
+              whileHover='hovered'
+              className='button__filled'>
+              <b.Button>Sign In</b.Button>
+            </Button>
+          ) : (
+            <Button
+              initial='rest'
+              animate='rest'
+              whileHover='hovered'
+              className='button__filled'>
+              <b.Button>Launch</b.Button>
+            </Button>
+          )}
           <Button
             initial='rest'
             animate='rest'

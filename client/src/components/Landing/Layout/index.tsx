@@ -16,6 +16,9 @@ import styled from 'styled-components';
 import { useToggleState } from '../../../context/toggle-context';
 import { Box } from '../../../styles/blocks';
 
+// styles
+import { ModalWrapper } from './index.styles';
+
 // breakpoint
 import { size } from '../../../styles/sizes';
 
@@ -50,15 +53,3 @@ export const Landing: React.FC<Props> = () => {
     </>
   );
 };
-
-const ModalWrapper = styled(Box)`
-  background-color: white;
-  position: absolute;
-  z-index: 200;
-  right: -500px;
-  height: 100vh;
-
-  @media ${size.lg} {
-    display: none;
-  }
-`;

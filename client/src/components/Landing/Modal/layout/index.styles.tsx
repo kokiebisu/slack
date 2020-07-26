@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import { size } from '../../../../styles/sizes';
 
 export const Wrapper = styled(b.Box)`
+  background-color: white;
+  height: 100%;
+
   .header {
     padding: 25px;
     margin-bottom: 7px;
@@ -83,7 +86,7 @@ export const Button = styled(b.Box)`
   & > button {
     font-size: 14px;
     font-family: 'CircularPro-Bold';
-    border-radius: 3px;
+
     letter-spacing: 1px;
     width: 100%;
     padding: 20px 0;
@@ -95,12 +98,15 @@ export const Button = styled(b.Box)`
     }
   }
   &.button__filled {
+    border-radius: 6px;
+    background-color: ${({ theme }) => theme.colors.primary};
     & > button {
       color: ${({ theme }) => theme.colors.white};
     }
   }
 
   &.button__border {
+    border-radius: 6px;
     margin-top: 15px;
     margin-left: 0px;
     @media ${size.md} {
