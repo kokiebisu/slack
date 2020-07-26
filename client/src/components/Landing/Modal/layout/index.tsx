@@ -68,14 +68,16 @@ export const LandingModal = () => {
             animate='rest'
             whileHover='hovered'
             className='button__filled'>
-            <b.Button variants={ButtonMotion}>Try Slack for free</b.Button>
+            <b.Button variants={ButtonMotion}>Launch Slack</b.Button>
           </Button>
           <Button
             initial='rest'
             animate='rest'
             whileHover='hovered'
             className='button__border'>
-            <b.Button variants={TransparentButtonMotion}>Learn more</b.Button>
+            <b.Button variants={TransparentButtonMotion}>
+              Download Slack
+            </b.Button>
           </Button>
         </b.Box>
       </Buttons>

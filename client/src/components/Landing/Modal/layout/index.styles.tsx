@@ -18,6 +18,21 @@ export const IconWrapper = styled(b.Box)`
     svg {
       width: 100px;
       height: auto;
+
+      path {
+        &:nth-child(2) {
+          fill: ${({ theme }) => theme.colors.blue__lighter};
+        }
+        &:nth-child(3) {
+          fill: ${({ theme }) => theme.colors.green__lighter};
+        }
+        &:nth-child(4) {
+          fill: ${({ theme }) => theme.colors.yellow};
+        }
+        &:nth-child(5) {
+          fill: ${({ theme }) => theme.colors.red};
+        }
+      }
     }
   }
   &.arrow {
