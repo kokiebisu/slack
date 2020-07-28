@@ -12,6 +12,7 @@ export const main: ThemeProps = {
   colors: {
     white: '#FFFFFF',
     white__dark: '#F8F8F8',
+    white__darker: '#F5EFE7',
     primary: '#3F0F40',
     primary__light: '  #611f69',
     primary__lighter: '#5c2c5d',
