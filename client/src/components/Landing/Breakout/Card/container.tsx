@@ -18,21 +18,20 @@ export const ColumnCards: React.FC<Props> = () => {
   const cards = [
     {
       icon: <Organized />,
-      title: 'Conversations, organized',
-      subtitle:
-        'Instead of a single overstuffed inbox, conversations in Slack happen in dedicated spaces called channels.',
+      title: 'Share files',
+      subtitle: 'Keep files and the messages about them together in channels.',
     },
     {
       icon: <Looped />,
-      title: 'Get looped in, not out',
+      title: 'Connect on a call',
       subtitle:
-        'Slack makes it simple to follow conversations or find important information in an easily searchable archive.',
+        'If working face to face is easier, go from channel to voice or video call in a click',
     },
     {
       icon: <Focus />,
-      title: 'Give focus a chance',
+      title: 'Collaborate with partners',
       subtitle:
-        'Unlike email, Slack lets you choose which conversations are most important — and which can wait.',
+        'Work faster with external clients, vendors and more by working in a channel',
     },
   ];
 
