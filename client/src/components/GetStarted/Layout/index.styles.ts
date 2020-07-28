@@ -88,11 +88,13 @@ export const SelectOptionInner = styled(b.Box)`
     &.left {
       border-top-left-radius: 5px;
       border-bottom-left-radius: 5px;
+      border-top-right-radius: 0px;
     }
 
     &.right {
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 0px;
     }
   }
 `;
@@ -102,7 +104,6 @@ export const SelectOption = styled(b.Box)`
 
   &.right {
     border: 0.5px solid lightgray;
-
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
   }
@@ -113,6 +114,7 @@ export const SelectOption = styled(b.Box)`
     &.right {
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 0px;
     }
   }
 `;
