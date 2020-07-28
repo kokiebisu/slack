@@ -25,7 +25,7 @@ export const IconWrapper = styled(b.Box)`
     width: 48px;
     height: 48px;
     path {
-      fill: ${({ theme }) => theme.colors.black__light};
+      fill: ${({ theme }) => theme.colors.blue};
     }
   }
 `;

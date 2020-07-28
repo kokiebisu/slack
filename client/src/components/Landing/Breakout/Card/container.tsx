@@ -10,25 +10,25 @@ import { Columns } from './container.styles';
 import { ColumnCard } from '.';
 
 // Svgs
-import { Organized, Looped, Focus } from '../../../../assets/svg';
+import { Share, ConnectCall, Collaborate } from '../../../../assets/svg';
 
 interface Props {}
 
 export const ColumnCards: React.FC<Props> = () => {
   const cards = [
     {
-      icon: <Organized />,
+      icon: <Share />,
       title: 'Share files',
       subtitle: 'Keep files and the messages about them together in channels.',
     },
     {
-      icon: <Looped />,
+      icon: <ConnectCall />,
       title: 'Connect on a call',
       subtitle:
         'If working face to face is easier, go from channel to voice or video call in a click',
     },
     {
-      icon: <Focus />,
+      icon: <Collaborate />,
       title: 'Collaborate with partners',
       subtitle:
         'Work faster with external clients, vendors and more by working in a channel',
