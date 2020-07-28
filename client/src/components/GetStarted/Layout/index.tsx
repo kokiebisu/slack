@@ -12,14 +12,26 @@ import { Globe } from '../../../assets/svg';
 import workspace from '../../../assets/img/slack-workspace.png';
 import lightbulb from '../../../assets/img/lightbulb.png';
 
-import { getstarted } from '../../../styles/sizes';
+import {
+  Wrapper,
+  IconWrapper,
+  SelectOptionWrapper,
+  SelectOptionContainer,
+  SelectOptionInner,
+  SelectOption,
+  SignInButton,
+  WhatIsSlackWrapper,
+  WhatIsSlackContainer,
+  FooterLink,
+  ChangeRegion,
+  Image,
+} from './index.styles';
 
 interface Props {}
 
 export const GetStarted: React.FC<Props> = () => {
   return (
     <Wrapper>
-      {console.log('cofig', process.env.NODE_ENV)}
       <b.Container>
         <b.Box>
           <b.Flex justifyContent='center'>
@@ -126,9 +138,9 @@ export const GetStarted: React.FC<Props> = () => {
                 <b.Box>
                   <b.Box>
                     <b.Flex>
-                      <b.Box mr={2}>
+                      <Image mr={2}>
                         <img src={lightbulb} alt='lightbulb' />
-                      </b.Box>
+                      </Image>
                       <b.Box>
                         <b.Text fontFamily='SlackLato-Bold' fontSize={17}>
                           What's a Slack workspace?
@@ -148,9 +160,9 @@ export const GetStarted: React.FC<Props> = () => {
                     </b.Text>
                   </b.Box>
                 </b.Box>
-                <b.Box>
+                <Image className='workspace'>
                   <img src={workspace} alt='workspace' />
-                </b.Box>
+                </Image>
               </b.Flex>
             </WhatIsSlackContainer>
           </b.Flex>
@@ -179,135 +191,3 @@ export const GetStarted: React.FC<Props> = () => {
     </Wrapper>
   );
 };
-
-const Wrapper = styled(b.Box)`
-  padding: 30px 0;
-`;
-
-const IconWrapper = styled(b.Box)`
-  position: relative;
-  &.namelogo {
-    padding: 5px;
-    svg {
-      width: 140px;
-      height: 60px;
-      path {
-        &:nth-child(2) {
-          fill: ${({ theme }) => theme.colors.blue__lighter};
-        }
-        &:nth-child(3) {
-          fill: ${({ theme }) => theme.colors.green__lighter};
-        }
-        &:nth-child(4) {
-          fill: ${({ theme }) => theme.colors.yellow};
-        }
-        &:nth-child(5) {
-          fill: ${({ theme }) => theme.colors.red};
-        }
-      }
-    }
-  }
-
-  &.boldplus {
-    svg {
-      width: 13px;
-      height: 13px;
-      path {
-        fill: ${({ theme }) => theme.colors.primary};
-      }
-    }
-  }
-
-  &.globe {
-    top: 0.5px;
-    svg {
-      width: 12px;
-      height: 12px;
-      path {
-        fill: ${({ theme }) => theme.colors.gray};
-      }
-    }
-  }
-`;
-
-const SelectOptionWrapper = styled(b.Box)``;
-
-const SelectOptionContainer = styled(b.Box)`
-  max-width: 780px;
-
-  width: 100%;
-
-  border-radius: 5px;
-
-  & > div {
-    display: block;
-
-    @media ${getstarted.xs} {
-      display: flex;
-    }
-  }
-`;
-
-const SelectOptionInner = styled(b.Box)`
-  height: 100%;
-  &.left {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-  }
-
-  &.right {
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-  }
-`;
-
-const SelectOption = styled(b.Box)`
-  width: 100%;
-
-  @media ${getstarted.xs} {
-    width: 50%;
-  }
-
-  &.right {
-    border: 0.5px solid lightgray;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-  }
-`;
-
-const SignInButton = styled(b.Box)`
-  position: relative;
-  bottom: 1px;
-  border: 0.5px solid ${({ theme }) => theme.colors.gray__light};
-  padding: 16px;
-  border-radius: 5px;
-`;
-
-const WhatIsSlackWrapper = styled(b.Box)``;
-
-const WhatIsSlackContainer = styled(b.Box)`
-  width: 100%;
-  max-width: 550px;
-`;
-
-const FooterLink = styled(b.Anchor)`
-  font-size: 14px;
-  font-family: 'SlackLato-Regular';
-  color: ${({ theme }) => theme.colors.gray};
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.blue};
-    text-decoration: underline;
-  }
-`;
-
-const ChangeRegion = styled(b.Button)`
-  font-size: 14px;
-  font-family: 'SlackLato-Regular';
-  color: ${({ theme }) => theme.colors.gray__light};
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.blue};
-    text-decoration: underline;
-  }
-`;

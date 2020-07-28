@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import * as b from '../../../styles/blocks';
 
-import { getstarted } from '../../../styles/sizes';
+import { getstarted, size } from '../../../styles/sizes';
 
 export const Wrapper = styled(b.Box)`
   padding: 30px 0;
@@ -73,28 +73,47 @@ export const SelectOptionContainer = styled(b.Box)`
 
 export const SelectOptionInner = styled(b.Box)`
   height: 100%;
+
   &.left {
     border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
   }
 
   &.right {
-    border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+  @media ${size.xs} {
+    &.left {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+
+    &.right {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
   }
 `;
 
 export const SelectOption = styled(b.Box)`
   width: 100%;
 
-  @media ${getstarted.xs} {
-    width: 50%;
-  }
-
   &.right {
     border: 0.5px solid lightgray;
-    border-top-right-radius: 5px;
+
+    border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+  }
+
+  @media ${size.xs} {
+    width: 50%;
+
+    &.right {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
   }
 `;
 
@@ -132,5 +151,14 @@ export const ChangeRegion = styled(b.Button)`
   &:hover {
     color: ${({ theme }) => theme.colors.blue};
     text-decoration: underline;
+  }
+`;
+
+export const Image = styled(b.Box)`
+  &.workspace {
+    display: none;
+    @media ${size.sm} {
+      display: block;
+    }
   }
 `;
