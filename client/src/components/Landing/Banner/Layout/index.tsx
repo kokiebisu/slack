@@ -67,7 +67,26 @@ export const Banner: React.FC<Props> = () => {
               </b.Box>
             </b.Box>
             <b.Box className='content__right'>
-              <BannerVideo>
+              <BannerVideo className='desktop'>
+                <b.Flex alignItems='center'>
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    poster='https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/hero/desktop/image/hero-image.png'>
+                    <source
+                      src='https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/hero/desktop/mp4/hero-image.mp4'
+                      type='video/mp4'
+                    />
+                    <source
+                      src='https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/hero/desktop/webm/hero-image.webm'
+                      type='video/mp4'
+                    />
+                  </video>
+                </b.Flex>
+              </BannerVideo>
+              <BannerVideo className='tablet'>
                 <b.Flex alignItems='center'>
                   <video
                     autoPlay

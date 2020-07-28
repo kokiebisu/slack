@@ -5,8 +5,7 @@ import * as b from '../../../../styles/blocks';
 import { size } from '../../../../styles/sizes';
 
 export const Wrapper = styled.section`
-  padding-top: 50px;
-  padding-bottom: 30px;
+  padding: 80px 0;
   background-color: ${({ theme }) => theme.colors.white__darker};
 `;
 
@@ -15,13 +14,16 @@ export const Content = styled(b.Box)`
     @media ${size.xs} {
       display: flex;
       justify-content: space-between;
+      align-items: center;
     }
   }
   & div {
     &.content__left {
       width: 100%;
-      @media ${size.xs} {
-        width: 45%;
+
+      @media ${size.md} {
+        max-width: 450px;
+        height: min-content;
       }
       & > div {
         @media ${size.md} {
@@ -32,10 +34,9 @@ export const Content = styled(b.Box)`
     &.content__right {
       width: 100%;
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
       margin-top: 20px;
       @media ${size.xs} {
-        width: 55%;
         margin-top: 0;
       }
     }
@@ -45,16 +46,16 @@ export const Content = styled(b.Box)`
 export const Header = styled(b.Box)`
   & p {
     font-family: 'Larsseit-Bold';
-    line-height: 1.4;
-    font-size: 48px;
+    line-height: 1.1;
+    font-size: 60px;
     color: ${({ theme }) => theme.colors.black__light};
   }
 `;
 
 export const Description = styled(b.Box)`
   & p {
-    font-size: 20px;
-    line-height: 1.5;
+    font-size: 18px;
+    line-height: 1.3;
   }
 `;
 
@@ -104,10 +105,31 @@ export const Button = styled(b.Box)`
 `;
 
 export const BannerVideo = styled(b.Box)`
-  width: 100%;
-  max-width: 350px;
-  & video {
+  &.tablet {
+    display: block;
     width: 100%;
+    & video {
+      width: 100%;
+    }
+    @media ${size.md} {
+      max-width: 400px;
+    }
+
+    @media ${size.lg} {
+      display: none;
+    }
+  }
+
+  &.desktop {
+    display: none;
+    @media ${size.lg} {
+      display: block;
+      width: 100%;
+      max-width: 1000px;
+      & video {
+        width: 100%;
+      }
+    }
   }
 `;
 
