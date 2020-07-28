@@ -5,7 +5,7 @@ import { AnimatePresence } from 'framer-motion';
 // Components
 import { Header } from '../Header/Layout';
 import { Banner } from '../Banner/Layout';
-import { BreakOut } from '../Breakout/Layout';
+import { BringTeam } from '../BringTeam/Layout';
 import { Choose } from '../Choose/Layout';
 import { Footer } from '../Footer/Layout';
 
@@ -47,7 +47,7 @@ export const Landing: React.FC<Props> = () => {
       </AnimatePresence>
       <Header data={data} />
       <Banner />
-      <BreakOut />
+      <BringTeam />
       <Choose />
       <Footer />
     </>
