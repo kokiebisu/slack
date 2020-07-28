@@ -20,13 +20,14 @@ export const BreakOut: React.FC<Props> = () => {
                 fontFamily='CircularPro-Bold'
                 color='black__light'
                 lineHeight={1.4}>
-                Break out of the inbox
+                Bring your team together in channels
               </Title>
             </b.Box>
             <b.Box my={3}>
               <b.Text center fontSize={16} lineHeight={1.5}>
-                Working in channels gives everyone on your team a shared view of
-                progress and purpose.
+                A channel is the place for everything related to a project,
+                topic or team. Everyone in a channel sees the same messages and
+                stays on the same page.
               </b.Text>
             </b.Box>
           </b.Flex>
@@ -39,9 +40,13 @@ export const BreakOut: React.FC<Props> = () => {
                 autoPlay
                 muted
                 loop
-                poster='https://a.slack-edge.com/faab8/marketing/img/homepage/video/brand-campaign_inline-poster.jpg'>
+                poster='https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/channels/image/bring-your-team-together-in-channels.jpg'>
                 <source
-                  src='https://a.slack-edge.com/085e3/marketing/img/homepage/video/brand-campaign_inline-video.mp4'
+                  src='https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/channels/mp4/bring-your-team-together-in-channels.mp4'
+                  type='video/mp4'
+                />
+                <source
+                  src='https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/channels/webm/bring-your-team-together-in-channels.webm'
                   type='video/mp4'
                 />
               </video>
