@@ -7,6 +7,7 @@ import { size } from '../../../../styles/sizes';
 export const Wrapper = styled.section`
   padding-top: 50px;
   padding-bottom: 30px;
+  background-color: ${({ theme }) => theme.colors.white__darker};
 `;
 
 export const Content = styled(b.Box)`
@@ -110,7 +111,9 @@ export const Button = styled(b.Box)`
 `;
 
 export const BannerImage = styled(b.Box)`
-  & img {
+  width: 100%;
+  max-width: 600px;
+  & video {
     width: 100%;
   }
 `;

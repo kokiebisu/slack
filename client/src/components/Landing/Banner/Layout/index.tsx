@@ -94,11 +94,21 @@ export const Banner: React.FC<Props> = () => {
             <b.Box className='content__right'>
               <BannerImage>
                 <b.Flex alignItems='center'>
-                  <img
-                    src='https://a.slack-edge.com/dd0405/marketing/img/solutions/remote-work/img-hero-remote.jpg'
-                    srcSet='https://a.slack-edge.com/dd0405/marketing/img/solutions/remote-work/img-hero-remote.jpg 1x, https://a.slack-edge.com/dd0405/marketing/img/solutions/remote-work/img-hero-remote@2x.jpg 2x'
-                    alt='hero'
-                  />
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    poster='https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/hero/tablet/image/hero-image-tablet.png'>
+                    <source
+                      src='https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/hero/tablet/mp4/hero-image-tablet.mp4'
+                      type='video/mp4'
+                    />
+                    <source
+                      src='https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/hero/tablet/webm/hero-image-tablet.webm'
+                      type='video/mp4'
+                    />
+                  </video>
                 </b.Flex>
               </BannerImage>
             </b.Box>
