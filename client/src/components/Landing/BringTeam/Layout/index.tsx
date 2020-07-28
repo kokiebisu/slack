@@ -10,6 +10,8 @@ import {
   Title,
   Inner,
   Description,
+  ColumnWrapper,
+  LearnMore,
 } from './index.styles';
 import { ColumnCards } from '../Card/container';
 
@@ -37,6 +39,14 @@ export const BringTeam: React.FC<Props> = () => {
                   and stays on the same page.
                 </Description>
               </b.Box>
+              <LearnMore>
+                <b.Anchor>
+                  <b.Flex>
+                    <b.Text>Learn more about channels</b.Text>
+                    <b.Text>&nbsp;→</b.Text>
+                  </b.Flex>
+                </b.Anchor>
+              </LearnMore>
             </b.Flex>
           </b.Box>
           <b.Box mt={4} className='video'>
@@ -61,9 +71,9 @@ export const BringTeam: React.FC<Props> = () => {
             </b.Flex>
           </b.Box>
         </Inner>
-        <b.Box pt={50} pb={62}>
+        <ColumnWrapper>
           <ColumnCards />
-        </b.Box>
+        </ColumnWrapper>
       </b.Container>
     </Wrapper>
   );
