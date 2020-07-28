@@ -9,7 +9,7 @@ import { ColumnCards } from '../Card/container';
 
 interface Props {}
 
-export const BreakOut: React.FC<Props> = () => {
+export const BringTeam: React.FC<Props> = () => {
   return (
     <Wrapper>
       <b.Container>

@@ -5,16 +5,16 @@ import { AnimatePresence } from 'framer-motion';
 // Components
 import { Header } from '../Header/Layout';
 import { Banner } from '../Banner/Layout';
-import { BreakOut } from '../Breakout/Layout';
+import { BringTeam } from '../BringTeam/Layout';
+import { BetterSoftware } from '../BetterSoftware/Layout';
 import { Choose } from '../Choose/Layout';
 import { Footer } from '../Footer/Layout';
 
 // Graphql
 import { useMeQuery } from '../../../generated/graphql';
 import { LandingModal } from '../Modal/layout';
-import styled from 'styled-components';
+
 import { useToggleState } from '../../../context/toggle-context';
-import { Box } from '../../../styles/blocks';
 
 // styles
 import { ModalWrapper } from './index.styles';
@@ -47,7 +47,8 @@ export const Landing: React.FC<Props> = () => {
       </AnimatePresence>
       <Header data={data} />
       <Banner />
-      <BreakOut />
+      <BringTeam />
+      <BetterSoftware />
       <Choose />
       <Footer />
     </>

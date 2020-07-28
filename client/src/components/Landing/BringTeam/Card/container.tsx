@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as b from '../../../../styles/blocks';
 
 // Styles
-import { Columns } from './container.styles';
+import { Columns } from './container.styles.ts';
 
 // Components
 import { ColumnCard } from '.';
