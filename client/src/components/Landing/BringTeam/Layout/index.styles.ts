@@ -18,9 +18,15 @@ export const Inner = styled(b.Box)`
   }
 `;
 
+export const LearnMore = styled(b.Box)`
+  & > a {
+    font-size: 18px;
+    color: ${({ theme }) => theme.colors.blue};
+  }
+`;
+
 export const VideoWrapper = styled(b.Box)`
   position: relative;
-  bottom: 50px;
   width: 100%;
   height: 100%;
   border-radius: 5px;
@@ -28,6 +34,7 @@ export const VideoWrapper = styled(b.Box)`
   @media ${size.md} {
     flex-grow: 1;
     padding: 0 50px;
+    bottom: 50px;
   }
 
   video {
@@ -61,5 +68,12 @@ export const Description = styled(b.Text)`
 
   @media ${size.md} {
     text-align: left;
+  }
+`;
+
+export const ColumnWrapper = styled(b.Box)`
+  padding-bottom: 62px;
+  @media ${size.sm} {
+    padding-top: 50px;
   }
 `;
