@@ -4,7 +4,13 @@ import * as React from 'react';
 import * as b from '../../../../styles/blocks';
 
 // Styles
-import { Wrapper, VideoWrapper, Title, Inner } from './index.styles';
+import {
+  Wrapper,
+  VideoWrapper,
+  Title,
+  Inner,
+  Description,
+} from './index.styles';
 import { ColumnCards } from '../Card/container';
 
 interface Props {}
@@ -25,11 +31,11 @@ export const BreakOut: React.FC<Props> = () => {
                 </Title>
               </b.Box>
               <b.Box my={3}>
-                <b.Text center fontSize={16} lineHeight={1.5}>
+                <Description>
                   A channel is the place for everything related to a project,
                   topic or team. Everyone in a channel sees the same messages
                   and stays on the same page.
-                </b.Text>
+                </Description>
               </b.Box>
             </b.Flex>
           </b.Box>
