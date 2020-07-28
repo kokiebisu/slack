@@ -16,9 +16,7 @@ import {
   Content,
   Buttons,
   Button,
-  BannerImage,
-  Link,
-  SubHeader,
+  BannerVideo,
   Header,
   Description,
 } from './index.styles';
@@ -37,19 +35,13 @@ export const Banner: React.FC<Props> = () => {
           <b.Box>
             <b.Box className='content__left'>
               <b.Box>
-                <SubHeader mb={3}>
-                  <b.Text>Work from home</b.Text>
-                </SubHeader>
                 <Header>
-                  <b.Text>
-                    Slack brings the team together, wherever you are
-                  </b.Text>
+                  <b.Text>Slack is where work happens</b.Text>
                 </Header>
                 <Description my={4}>
                   <b.Text>
-                    With all of your communication and tools in one place,
-                    remote teams will stay productive no matter where you’re
-                    working from.
+                    With channels in Slack, you and your team know where to go
+                    to ask questions, share updates and stay in the loop.
                   </b.Text>
                 </Description>
                 <Buttons>
@@ -59,9 +51,7 @@ export const Banner: React.FC<Props> = () => {
                       animate='rest'
                       whileHover='hovered'
                       className='button__filled'>
-                      <b.Button variants={ButtonMotion}>
-                        Try Slack for free
-                      </b.Button>
+                      <b.Button variants={ButtonMotion}>Try for free</b.Button>
                     </Button>
                     <Button
                       initial='rest'
@@ -69,30 +59,15 @@ export const Banner: React.FC<Props> = () => {
                       whileHover='hovered'
                       className='button__border'>
                       <b.Button variants={TransparentButtonMotion}>
-                        Learn more
+                        Contact Sales
                       </b.Button>
                     </Button>
                   </b.Box>
                 </Buttons>
-                <b.Box mt={3}>
-                  <b.Text fontSize={14} color='black__light'>
-                    Need to create a workspace? &nbsp;
-                    <Link
-                      className={hovered.started ? `hovered` : ``}
-                      onMouseEnter={() =>
-                        setHovered({ ...hovered, started: true })
-                      }
-                      onMouseLeave={() =>
-                        setHovered({ ...hovered, started: false })
-                      }>
-                      Get started
-                    </Link>
-                  </b.Text>
-                </b.Box>
               </b.Box>
             </b.Box>
             <b.Box className='content__right'>
-              <BannerImage>
+              <BannerVideo>
                 <b.Flex alignItems='center'>
                   <video
                     autoPlay
@@ -110,7 +85,7 @@ export const Banner: React.FC<Props> = () => {
                     />
                   </video>
                 </b.Flex>
-              </BannerImage>
+              </BannerVideo>
             </b.Box>
           </b.Box>
         </Content>

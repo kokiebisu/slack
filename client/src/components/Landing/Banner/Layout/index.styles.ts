@@ -31,21 +31,14 @@ export const Content = styled(b.Box)`
     }
     &.content__right {
       width: 100%;
+      display: flex;
+      justify-content: center;
       margin-top: 20px;
       @media ${size.xs} {
         width: 55%;
         margin-top: 0;
       }
     }
-  }
-`;
-
-export const SubHeader = styled(b.Box)`
-  & p {
-    font-family: 'CircularPro-Bold';
-    color: ${({ theme }) => theme.colors.black__light};
-    font-size: 13px;
-    text-transform: uppercase;
   }
 `;
 
@@ -110,9 +103,9 @@ export const Button = styled(b.Box)`
   }
 `;
 
-export const BannerImage = styled(b.Box)`
+export const BannerVideo = styled(b.Box)`
   width: 100%;
-  max-width: 600px;
+  max-width: 350px;
   & video {
     width: 100%;
   }
