@@ -4,7 +4,15 @@ import * as React from 'react';
 import * as b from '../../../../styles/blocks';
 
 // Styles
-import { Wrapper, VideoWrapper, Title } from './index.styles';
+import {
+  Wrapper,
+  VideoWrapper,
+  Title,
+  Inner,
+  Description,
+  ColumnWrapper,
+  LearnMore,
+} from './index.styles';
 import { ColumnCards } from '../Card/container';
 
 interface Props {}
@@ -13,44 +21,59 @@ export const BringTeam: React.FC<Props> = () => {
   return (
     <Wrapper>
       <b.Container>
-        <b.Box>
-          <b.Flex flexDirection='column' alignItems='center'>
-            <b.Box>
-              <Title
-                fontFamily='CircularPro-Bold'
-                color='black__light'
-                lineHeight={1.4}>
-                Break out of the inbox
-              </Title>
-            </b.Box>
-            <b.Box my={3}>
-              <b.Text center fontSize={16} lineHeight={1.5}>
-                Working in channels gives everyone on your team a shared view of
-                progress and purpose.
-              </b.Text>
-            </b.Box>
-          </b.Flex>
-        </b.Box>
-        <b.Box mt={4}>
-          <b.Flex justifyContent='center'>
-            <VideoWrapper>
-              <video
-                playsInline
-                autoPlay
-                muted
-                loop
-                poster='https://a.slack-edge.com/faab8/marketing/img/homepage/video/brand-campaign_inline-poster.jpg'>
-                <source
-                  src='https://a.slack-edge.com/085e3/marketing/img/homepage/video/brand-campaign_inline-video.mp4'
-                  type='video/mp4'
-                />
-              </video>
-            </VideoWrapper>
-          </b.Flex>
-        </b.Box>
-        <b.Box pt={50} pb={62}>
+        <Inner>
+          <b.Box>
+            <b.Flex flexDirection='column' alignItems='center'>
+              <b.Box>
+                <Title
+                  fontFamily='CircularPro-Bold'
+                  color='black__light'
+                  lineHeight={1.4}>
+                  Bring your team together in channels
+                </Title>
+              </b.Box>
+              <b.Box my={3}>
+                <Description>
+                  A channel is the place for everything related to a project,
+                  topic or team. Everyone in a channel sees the same messages
+                  and stays on the same page.
+                </Description>
+              </b.Box>
+              <LearnMore>
+                <b.Anchor>
+                  <b.Flex>
+                    <b.Text>Learn more about channels</b.Text>
+                    <b.Text>&nbsp;→</b.Text>
+                  </b.Flex>
+                </b.Anchor>
+              </LearnMore>
+            </b.Flex>
+          </b.Box>
+          <b.Box mt={4} className='video'>
+            <b.Flex justifyContent='center'>
+              <VideoWrapper>
+                <video
+                  playsInline
+                  autoPlay
+                  muted
+                  loop
+                  poster='https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/channels/image/bring-your-team-together-in-channels.jpg'>
+                  <source
+                    src='https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/channels/mp4/bring-your-team-together-in-channels.mp4'
+                    type='video/mp4'
+                  />
+                  <source
+                    src='https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/channels/webm/bring-your-team-together-in-channels.webm'
+                    type='video/mp4'
+                  />
+                </video>
+              </VideoWrapper>
+            </b.Flex>
+          </b.Box>
+        </Inner>
+        <ColumnWrapper>
           <ColumnCards />
-        </b.Box>
+        </ColumnWrapper>
       </b.Container>
     </Wrapper>
   );
