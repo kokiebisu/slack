@@ -7,7 +7,6 @@ import { size } from '../../../../styles/sizes';
 export const Wrapper = styled.section`
   padding-top: 100px;
   padding-bottom: 30px;
-  border-bottom: 0.5px solid ${({ theme }) => theme.colors.gray__light};
 
   @media ${size.lg} {
     padding-top: 0px;
