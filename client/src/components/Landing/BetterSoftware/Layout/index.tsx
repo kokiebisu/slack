@@ -7,11 +7,14 @@ import {
   CheckList,
   LearnMore,
   ImageWrapper,
+  IconWrapper,
 } from './index.styles';
 
 import * as b from '../../../../styles/blocks';
 
 import integrations from '../../../../assets/img/slack-integrations.png';
+
+import { CheckCircle } from '../../../../assets/svg';
 
 export const BetterSoftware = () => {
   return (
@@ -19,40 +22,45 @@ export const BetterSoftware = () => {
       <b.Container>
         <InnerTop>
           <b.Box>
-            <b.Flex justifyContent='center'>
-              <ImageWrapper>
-                <img src={integrations} />
-              </ImageWrapper>
-            </b.Flex>
-          </b.Box>
-          <b.Box>
             <b.Flex flexDirection='column' alignItems='center'>
               <Title>
                 <b.Text>Slack makes other software better</b.Text>
               </Title>
-              <b.Box my={3}>
-                <Description>
+              <Description>
+                <b.Text>
                   Make your tools more accessible and useful by connecting them
                   all in one place.
-                </Description>
-              </b.Box>
+                </b.Text>
+              </Description>
               <CheckList>
                 <ul>
                   <li>
                     <b.Flex>
-                      <b.Box></b.Box>
+                      <IconWrapper className='checkcircle'>
+                        <b.Box>
+                          <CheckCircle />
+                        </b.Box>
+                      </IconWrapper>
                       <b.Box>Connect over 2,200 ready-to-use Slack apps</b.Box>
                     </b.Flex>
                   </li>
                   <li>
                     <b.Flex>
-                      <b.Box></b.Box>
+                      <IconWrapper className='checkcircle'>
+                        <b.Box>
+                          <CheckCircle />
+                        </b.Box>
+                      </IconWrapper>
                       <b.Box>Build your own tim-saving workflows</b.Box>
                     </b.Flex>
                   </li>
                   <li>
                     <b.Flex>
-                      <b.Box></b.Box>
+                      <IconWrapper className='checkcircle'>
+                        <b.Box>
+                          <CheckCircle />
+                        </b.Box>
+                      </IconWrapper>
                       <b.Box>
                         Integrate your internal tools with the Slack APIs
                       </b.Box>
@@ -68,6 +76,13 @@ export const BetterSoftware = () => {
                   </b.Flex>
                 </b.Anchor>
               </LearnMore>
+            </b.Flex>
+          </b.Box>
+          <b.Box>
+            <b.Flex justifyContent='center'>
+              <ImageWrapper>
+                <img src={integrations} />
+              </ImageWrapper>
             </b.Flex>
           </b.Box>
         </InnerTop>

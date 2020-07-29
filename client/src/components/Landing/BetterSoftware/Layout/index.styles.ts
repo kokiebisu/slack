@@ -5,21 +5,33 @@ import * as b from '../../../../styles/blocks';
 import { size } from '../../../../styles/sizes';
 
 export const Wrapper = styled.section`
-  padding-top: 100px;
+  padding-top: 50px;
   padding-bottom: 30px;
 
   background-color: ${({ theme }) => theme.colors.white__darker};
 `;
 
 export const InnerTop = styled(b.Box)`
-  @media ${size.md} {
+  @media ${size.sm} {
     display: flex;
-    flex-direction: row-reverse;
     align-items: center;
   }
 
   & > div:first-child {
-    padding-left: 50px;
+    @media ${size.sm} {
+      display: flex;
+      align-items: center;
+      width: 50%;
+    }
+  }
+
+  & > div:last-child {
+    @media ${size.sm} {
+      display: flex;
+      align-items: center;
+      width: 50%;
+      padding-right: 30px;
+    }
   }
 `;
 
@@ -40,13 +52,12 @@ export const LearnMore = styled(b.Box)`
 
 export const ImageWrapper = styled(b.Box)`
   position: relative;
-  width: 100%;
+  width: 80%;
   height: 100%;
   border-radius: 5px;
 
-  @media ${size.md} {
-    flex-grow: 1;
-    bottom: 50px;
+  & img {
+    width: 100%;
   }
 `;
 
@@ -54,26 +65,51 @@ export const Title = styled(b.Box)`
   & p {
     font-family: 'SlackLato-Light';
     color: ${({ theme }) => theme.colors.black__light};
-    font-size: 52px;
+    font-size: 48px;
     line-height: 1.2;
     font-family: 'Larsseit-Bold';
   }
 `;
 
-export const Description = styled(b.Text)`
-  font-size: 18px;
-  line-height: 1.4;
-  text-align: center;
+export const Description = styled(b.Box)`
+  margin-top: 16px;
+  & p {
+    font-size: 18px;
+    line-height: 1.4;
+    text-align: center;
 
-  @media ${size.md} {
-    text-align: left;
+    @media ${size.md} {
+      text-align: left;
+    }
   }
 `;
 
 export const CheckList = styled(b.Box)`
+  width: 100%;
+  margin: 20px 0;
   & ul {
     padding: 0;
+    margin: 0;
     list-style: none;
+
+    & li {
+      margin: 15px 0;
+    }
+  }
+`;
+
+export const IconWrapper = styled(b.Box)`
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  & > div {
+    & > svg {
+      width: 18px;
+      height: 18px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray};
+      }
+    }
   }
 `;
 
