@@ -8,6 +8,10 @@ export const Wrapper = styled.section`
   padding-top: 100px;
   padding-bottom: 30px;
   border-bottom: 0.5px solid ${({ theme }) => theme.colors.gray__light};
+
+  @media ${size.lg} {
+    padding-top: 0px;
+  }
 `;
 
 export const Inner = styled(b.Box)`
@@ -19,9 +23,17 @@ export const Inner = styled(b.Box)`
 `;
 
 export const LearnMore = styled(b.Box)`
+  width: 100%;
   & > a {
     font-size: 18px;
     color: ${({ theme }) => theme.colors.blue};
+  }
+
+  & div {
+    justify-content: center;
+    @media ${size.lg} {
+      justify-content: flex-start;
+    }
   }
 `;
 
@@ -33,7 +45,7 @@ export const VideoWrapper = styled(b.Box)`
 
   @media ${size.md} {
     flex-grow: 1;
-    padding: 0 50px;
+    padding-right: 50px;
     bottom: 50px;
   }
 
