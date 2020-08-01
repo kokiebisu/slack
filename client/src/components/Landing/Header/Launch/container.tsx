@@ -1,11 +1,14 @@
 import * as React from 'react';
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
-import { Wrapper, OtherOption } from './container.styles';
+import {
+  Wrapper,
+  OtherOption,
+} from 'components/Landing/Header/Launch/container.styles';
 
 // Components
-import { WorkspaceOption } from '.';
+import { WorkspaceOption } from 'components/Landing/Header/Launch';
 
 interface Props {
   teams: Team[];

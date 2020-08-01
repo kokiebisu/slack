@@ -2,11 +2,16 @@ import * as React from 'react';
 import { useHistory } from 'react-router-dom';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Svgs
-import { Wrapper, IconWrapper, Status, Name } from './index.styles';
-import { useMeQuery } from '../../../../generated/graphql';
+import {
+  Wrapper,
+  IconWrapper,
+  Status,
+  Name,
+} from 'components/Workspace/Sidebar/Message/index.styles';
+import { useMeQuery } from 'generated/graphql';
 
 interface Props {
   name: string;

@@ -3,22 +3,22 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Components
-import { SidebarSection } from '.';
-import { Messages } from '../Message/container';
-import { Channels } from '../Channel/container';
+import { SidebarSection } from 'components/Workspace/Sidebar/Section';
+import { Messages } from 'components/Workspace/Sidebar/Message/container';
+import { Channels } from 'components/Workspace/Sidebar/Channel/container';
 
 // Query
-import { useChannelsQuery } from '../../../../generated/graphql';
+import { useChannelsQuery } from 'generated/graphql';
 
 // Styles
-import { Wrapper, InviteButton } from './container.styles';
 import {
-  useToggleState,
-  useToggleDispatch,
-} from '../../../../context/toggle-context';
+  Wrapper,
+  InviteButton,
+} from 'components/Workspace/Sidebar/Section/container.styles';
+import { useToggleState, useToggleDispatch } from 'context/toggle-context';
 
 interface Props {}
 

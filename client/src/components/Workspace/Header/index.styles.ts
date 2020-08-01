@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import * as b from '../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Breakpoints
-import { home, size } from '../../../styles/sizes';
+import { home, size } from 'styles/sizes';
 
 export const Input = styled(b.Button)`
   height: 24px;

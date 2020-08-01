@@ -1,14 +1,18 @@
 import * as React from 'react';
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 import { useParams } from 'react-router-dom';
 
 // Styles
-import { Message } from '.';
-import { Heart } from '../../../../assets/svg/Heart';
-import { IconWrapper, SlackBot, Name } from './container.styles';
+import { Message } from 'components/Workspace/Sidebar/Message';
+import { Heart } from 'assets/svg/Heart';
+import {
+  IconWrapper,
+  SlackBot,
+  Name,
+} from 'components/Workspace/Sidebar/Message/container.styles';
 
 // Query
-import { useUsersQuery } from '../../../../generated/graphql';
+import { useUsersQuery } from 'generated/graphql';
 
 interface Props {}
 

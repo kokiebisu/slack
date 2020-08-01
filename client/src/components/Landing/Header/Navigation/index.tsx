@@ -2,9 +2,14 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
-import { Nav, NavItem, Dropdown, LinkWrapper } from './index.styles';
+import {
+  Nav,
+  NavItem,
+  Dropdown,
+  LinkWrapper,
+} from 'components/Landing/Header/Navigation/index.styles';
 
 interface Props {
   hovered: HoveredProps;

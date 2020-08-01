@@ -2,13 +2,13 @@ import * as React from 'react';
 import { useState } from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Svgs
-import { Play, Close } from '../../../../assets/svg';
-import { Plus } from '../../../../assets/svg/Plus';
+import { Play, Close } from 'assets/svg';
+import { Plus } from 'assets/svg/Plus';
 
-import { useToggleDispatch } from '../../../../context/toggle-context';
+import { useToggleDispatch } from 'context/toggle-context';
 
 // Styles
 import {
@@ -19,7 +19,7 @@ import {
   TitleContainer,
   SubtitleWrapper,
   IconButtonWrapper,
-} from './index.styles';
+} from 'components/Workspace/Sidebar/Section/index.styles';
 
 interface Props {
   title: string;

@@ -1,7 +1,10 @@
 import * as React from 'react';
 
 // Blocks
-import { Wrapper, Inner } from './switch.styles';
+import {
+  Wrapper,
+  Inner,
+} from 'components/Workspace/ChannelModal/switch.styles';
 
 interface Props {
   isOn: boolean;

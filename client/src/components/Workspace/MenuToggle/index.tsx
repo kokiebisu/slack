@@ -1,18 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import * as b from '../../../styles/blocks';
-import { Smile } from '../../../assets/svg';
-import { AngleRight } from '../../../assets/svg/Arrows';
+import * as b from 'styles/blocks';
+import { Smile } from 'assets/svg';
+import { AngleRight } from 'assets/svg/Arrows';
 
 // Images
-import slackappicon from '../../../assets/img/slack-app.png';
+import slackappicon from 'assets/img/slack-app.png';
 import { useHistory } from 'react-router-dom';
-import { setAccessToken } from '../../../global/token';
-import { useLogoutMutation } from '../../../generated/graphql';
+import { setAccessToken } from 'global/token';
+import { useLogoutMutation } from 'generated/graphql';
 
 // Styles
-import { Wrapper, IconWrapper, Section } from './index.styles';
+import {
+  Wrapper,
+  IconWrapper,
+  Section,
+} from 'components/Workspace/MenuToggle/index.styles';
 
 const UpdateState: React.FC<{}> = () => {
   return (

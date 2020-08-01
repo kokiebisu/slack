@@ -3,24 +3,24 @@ import { useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
 // Components
-import { Header } from '../Header/Layout';
-import { Banner } from '../Banner/Layout';
-import { BringTeam } from '../BringTeam/Layout';
-import { Choose } from '../Choose/Layout';
-import { Footer } from '../Footer/Layout';
+import { Header } from 'components/Landing/Header/Layout';
+import { Banner } from 'components/Landing/Banner/Layout';
+import { BringTeam } from 'components/Landing/BringTeam/Layout';
+import { Choose } from 'components/Landing/Choose/Layout';
+import { Footer } from 'components/Landing/Footer/Layout';
 
 // Graphql
-import { useMeQuery } from '../../../generated/graphql';
-import { LandingModal } from '../Modal/layout';
+import { useMeQuery } from 'generated/graphql';
+import { LandingModal } from 'components/Landing/Modal/Layout';
 import styled from 'styled-components';
-import { useToggleState } from '../../../context/toggle-context';
-import { Box } from '../../../styles/blocks';
+import { useToggleState } from 'context/toggle-context';
+import { Box } from 'styles/blocks';
 
 // styles
-import { ModalWrapper } from './index.styles';
+import { ModalWrapper } from 'components/Landing/Layout/index.styles';
 
 // breakpoint
-import { size } from '../../../styles/sizes';
+import { size } from 'styles/sizes';
 
 interface Props {}
 

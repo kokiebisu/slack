@@ -6,18 +6,15 @@ import {
   Option,
   Buttons,
   Button,
-} from './index.styles';
-import * as b from '../../../../styles/blocks';
-import { Close } from '../../../../assets/svg';
-import { NameLogo } from '../../../../assets/svg/Logo';
-import { ChevronRight } from '../../../../assets/svg/Arrows';
-import { useToggleDispatch } from '../../../../context/toggle-context';
-import {
-  ButtonMotion,
-  TransparentButtonMotion,
-} from '../../../../animations/Buttons';
+} from 'components/Landing/Modal/Layout/index.styles';
+import * as b from 'styles/blocks';
+import { Close } from 'assets/svg';
+import { NameLogo } from 'assets/svg/Logo';
+import { ChevronRight } from 'assets/svg/Arrows';
+import { useToggleDispatch } from 'context/toggle-context';
+import { ButtonMotion, TransparentButtonMotion } from 'animations/Buttons';
 
-import { MeQuery, useMyTeamsQuery } from '../../../../generated/graphql';
+import { MeQuery, useMyTeamsQuery } from 'generated/graphql';
 
 export const LandingModal = () => {
   useEffect(() => {

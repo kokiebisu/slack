@@ -2,15 +2,15 @@ import * as React from 'react';
 import { useState } from 'react';
 
 // Global Styles
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Svg
-import { NameLogo } from '../../../../assets/svg/Logo';
-import { BottomArrow } from '../../../../assets/svg/Arrows';
-import { HamburgerButton } from '../../../../assets/svg';
+import { NameLogo } from 'assets/svg/Logo';
+import { BottomArrow } from 'assets/svg/Arrows';
+import { HamburgerButton } from 'assets/svg';
 
 // Animations
-import { launchMotion } from '../../../../animations/Buttons';
+import { launchMotion } from 'animations/Buttons';
 
 // Styles
 import {
@@ -23,12 +23,12 @@ import {
   GetStartedButton,
   GetStartedButtonWrapper,
   IconButtonWrapper,
-} from './index.styles';
+} from 'components/Landing/Header/Layout/index.styles';
 
-import { MeQuery, useMyTeamsQuery } from '../../../../generated/graphql';
-import { Navigation } from '../Navigation';
-import { LaunchOptions } from '../Launch/container';
-import { useToggleDispatch } from '../../../../context/toggle-context';
+import { MeQuery, useMyTeamsQuery } from 'generated/graphql';
+import { Navigation } from 'components/Landing/Header/Navigation';
+import { LaunchOptions } from 'components/Landing/Header/Launch/container';
+import { useToggleDispatch } from 'context/toggle-context';
 
 interface Props {
   data: MeQuery | undefined;

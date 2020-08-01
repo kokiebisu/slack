@@ -2,14 +2,18 @@ import * as React from 'react';
 import { useParams, useHistory } from 'react-router';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Svgs
-import { Lock } from '../../../../assets/svg';
-import { FatHashTag } from '../../../../assets/svg/HashTag';
+import { Lock } from 'assets/svg';
+import { FatHashTag } from 'assets/svg/HashTag';
 
 // Styles
-import { Wrapper, Name, IconWrapper } from './index.styles';
+import {
+  Wrapper,
+  Name,
+  IconWrapper,
+} from 'components/Workspace/Sidebar/Channel/index.styles';
 
 interface Props {
   id: string;

@@ -3,18 +3,18 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Components
-import { Options } from '../Option/container';
-import { SidebarSections } from '../Section/container';
-import { Profile } from '../Profile';
+import { Options } from 'components/Workspace/Sidebar/Option/container';
+import { SidebarSections } from 'components/Workspace/Sidebar/Section/container';
+import { Profile } from 'components/Workspace/Sidebar/Profile';
 
 // Query
-import { useTeamQuery } from '../../../../generated/graphql';
+import { useTeamQuery } from 'generated/graphql';
 
 // Styles
-import { Wrapper } from './index.styles';
+import { Wrapper } from 'components/Workspace/Sidebar/Layout/index.styles';
 
 interface Props {
   team?: string;

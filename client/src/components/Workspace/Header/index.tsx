@@ -1,17 +1,17 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Svgs
-import { Clock, Magnify, Info } from '../../../assets/svg';
+import { Clock, Magnify, Info } from 'assets/svg';
 
 // Query
-import { useTeamQuery } from '../../../generated/graphql';
+import { useTeamQuery } from 'generated/graphql';
 import { useParams } from 'react-router-dom';
 
 // Styles
-import { IconWrapper, Input } from './index.styles';
+import { IconWrapper, Input } from 'components/Workspace/Header/index.styles';
 
 export const HomeHeader: React.FC<{}> = () => {
   const { teamId } = useParams();

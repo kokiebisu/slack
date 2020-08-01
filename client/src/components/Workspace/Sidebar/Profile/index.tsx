@@ -1,18 +1,24 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
-import { Wrapper, Name, Avatar, IconWrapper, StatusIcon } from './index.styles';
+import {
+  Wrapper,
+  Name,
+  Avatar,
+  IconWrapper,
+  StatusIcon,
+} from 'components/Workspace/Sidebar/Profile/index.styles';
 
 // Svgs
-import { BottomArrow } from '../../../../assets/svg/Arrows';
-import { Write } from '../../../../assets/svg/Reaction';
+import { BottomArrow } from 'assets/svg/Arrows';
+import { Write } from 'assets/svg/Reaction';
 
 // Graphql
-import { useMeQuery } from '../../../../generated/graphql';
-import { useToggleDispatch } from '../../../../context/toggle-context';
+import { useMeQuery } from 'generated/graphql';
+import { useToggleDispatch } from 'context/toggle-context';
 
 interface Props {
   hovered: boolean;

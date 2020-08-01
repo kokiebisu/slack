@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Sizes
-import { size } from '../../../../styles/sizes';
+import { size } from 'styles/sizes';
 
 export const Wrapper = styled.div`
   position: sticky;

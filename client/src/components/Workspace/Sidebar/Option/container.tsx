@@ -2,20 +2,20 @@ import * as React from 'react';
 import { useState } from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Components
-import { Option } from '.';
+import { Option } from 'components/Workspace/Sidebar/Option';
 
 // Svgs
-import { ShowLess } from '../../../../assets/svg';
+import { ShowLess } from 'assets/svg';
 import {
   OptionsWrapper,
   IconWrapper,
   TextWrapper,
   Title,
   ShowLessWrapper,
-} from './container.styles';
+} from 'components/Workspace/Sidebar/Option/container.styles';
 
 interface Props {}
 

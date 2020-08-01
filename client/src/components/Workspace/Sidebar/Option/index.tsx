@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Svgs
 import {
@@ -13,11 +13,16 @@ import {
   SavedItems,
   Apps,
   Files,
-} from '../../../../assets/svg';
-import { ThinHashTag } from '../../../../assets/svg/HashTag';
+} from 'assets/svg';
+import { ThinHashTag } from 'assets/svg/HashTag';
 
 // Styles
-import { Wrapper, IconWrapper, TextWrapper, Title } from './index.styles';
+import {
+  Wrapper,
+  IconWrapper,
+  TextWrapper,
+  Title,
+} from 'components/Workspace/Sidebar/Option/index.styles';
 
 interface Props {
   name: string;

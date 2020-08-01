@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Components
-import { Channel } from '.';
+import { Channel } from 'components/Workspace/Sidebar/Channel';
 
 interface Props {
   data: any;

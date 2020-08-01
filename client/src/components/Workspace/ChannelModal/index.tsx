@@ -3,11 +3,11 @@ import { useState, useReducer } from 'react';
 import { useParams } from 'react-router-dom';
 
 // Blocks
-import * as b from '../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Svgs
-import { Close, Info } from '../../../assets/svg';
-import { ThinHashTag } from '../../../assets/svg/HashTag';
+import { Close, Info } from 'assets/svg';
+import { ThinHashTag } from 'assets/svg/HashTag';
 
 // Styles
 import {
@@ -27,13 +27,13 @@ import {
 } from './index.styles';
 
 // Components
-import { Switch } from './switch';
+import { Switch } from 'components/Workspace/ChannelModal/switch';
 
 // Query
-import { useCreateChannelMutation } from '../../../generated/graphql';
+import { useCreateChannelMutation } from 'generated/graphql';
 
 // Context
-import { useToggleDispatch } from '../../../context/toggle-context';
+import { useToggleDispatch } from 'context/toggle-context';
 
 type State = { name: string; description: string };
 type Action =

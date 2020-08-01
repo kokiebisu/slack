@@ -2,10 +2,10 @@ import * as React from 'react';
 import { useState } from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Svgs
-import { RightArrow } from '../../../../assets/svg/Arrows';
+import { RightArrow } from 'assets/svg/Arrows';
 
 // Styles
 import {
@@ -15,7 +15,7 @@ import {
   Name,
   AvatarLetter,
   Avatar,
-} from './index.styles';
+} from 'components/Landing/Header/Launch/index.styles';
 
 interface Props {
   name: string;
