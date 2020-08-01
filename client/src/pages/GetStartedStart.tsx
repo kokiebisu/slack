@@ -12,19 +12,19 @@ import { useRegisterMutation } from 'generated/graphql';
 import { weakRegex, fullNameRegex, emailRegex } from 'util/passwordUtil';
 
 // Components
-import { LogoCenterLayout } from 'components/shared/LogoCenter/layout';
+import { LogoCenterLayout } from 'layout/LogoCenter';
 import { Wrapper } from 'styles/GetStartedStart';
-import { PasswordValidationBar } from 'components/shared/components/ValidationBar';
-import { PasswordValidationText } from 'components/shared/components/ValidationText';
-import { Policy } from 'components/shared/components/Policy';
-import { Inputs } from 'components/shared/components/Inputs';
-import { ErrorDialog } from 'components/shared/components/ErrorDialog';
-import { Confirm } from 'components/shared/components/Confirm';
+import { PasswordValidationBar } from 'components/shared/ValidationBar';
+import { PasswordValidationText } from 'components/shared/ValidationText';
+import { Policy } from 'components/shared/Policy';
+import { Inputs } from 'components/shared/Inputs';
+import { ErrorDialog } from 'components/shared/ErrorDialog';
+import { Confirm } from 'components/shared/Confirm';
 import { randomColor } from 'util/randomColor';
 import { profile } from 'global/colors';
 
 // Utils
-import { inputReducer } from 'components/shared/components/Inputs/util';
+import { inputReducer } from 'reducers/input';
 
 interface Props {}
 

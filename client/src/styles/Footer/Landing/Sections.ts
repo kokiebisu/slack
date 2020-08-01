@@ -9,6 +9,5 @@ export const Wrapper = styled(b.Flex)`
   flex-direction: column;
   @media ${size.xs} {
     flex-direction: row;
-    width: 100%;
   }
 `;

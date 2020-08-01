@@ -9,19 +9,19 @@ import { useVerifyUserInviteQuery } from 'generated/graphql';
 import * as b from 'global/blocks';
 
 // Components
-import { LogoCenterLayout } from 'components/shared/LogoCenter/layout';
+import { LogoCenterLayout } from 'layout/LogoCenter';
 
 // Styles
 import { Wrapper } from 'styles/Invited';
-import { Inputs } from 'components/shared/components/Inputs';
-import { PasswordValidationBar } from 'components/shared/components/ValidationBar';
-import { PasswordValidationText } from 'components/shared/components/ValidationText';
-import { ErrorDialog } from 'components/shared/components/ErrorDialog';
-import { Confirm } from 'components/shared/components/Confirm';
-import { Policy } from 'components/shared/components/Policy';
+import { Inputs } from 'components/shared/Inputs';
+import { PasswordValidationBar } from 'components/shared/ValidationBar';
+import { PasswordValidationText } from 'components/shared/ValidationText';
+import { ErrorDialog } from 'components/shared/ErrorDialog';
+import { Confirm } from 'components/shared/Confirm';
+import { Policy } from 'components/shared/Policy';
 
 // Utils
-import { inputReducer } from 'components/shared/components/Inputs/util';
+import { inputReducer } from 'reducers/input';
 
 import { fullNameRegex, weakRegex } from 'util/passwordUtil';
 import { randomColor } from 'util/randomColor';

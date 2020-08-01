@@ -7,7 +7,7 @@ import * as b from 'global/blocks';
 import {
   PasswordValidationWrapper,
   PasswordValidation,
-} from 'components/shared/components/ValidationBar/index.styles';
+} from 'styles/shared/ValidationBar';
 
 // Util
 import {

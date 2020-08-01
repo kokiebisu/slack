@@ -4,10 +4,7 @@ import * as React from 'react';
 import * as b from 'global/blocks';
 
 // Styles
-import {
-  Wrapper,
-  ValidationTextWrapper,
-} from 'components/shared/components/ValidationText/index.styles';
+import { Wrapper, ValidationTextWrapper } from 'styles/shared/ValidationText';
 
 // Util
 import { textValidation } from 'util/passwordUtil';

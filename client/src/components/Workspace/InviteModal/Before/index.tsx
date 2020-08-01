@@ -21,7 +21,7 @@ import { DefaultChannels } from 'components/Workspace/InviteModal/DefaultChannel
 import { PlusCircle } from 'assets/svg';
 import { useSendInvitationMutation } from 'generated/graphql';
 import { useParams } from 'react-router-dom';
-import { ErrorDialog } from 'components/shared/components/ErrorDialog';
+import { ErrorDialog } from 'components/shared/ErrorDialog';
 
 interface Props {
   dispatchToggle: any;

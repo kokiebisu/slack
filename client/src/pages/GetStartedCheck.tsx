@@ -11,7 +11,7 @@ import { useVerifyUserByTokenQuery } from 'generated/graphql';
 import { Wrapper } from 'styles/GetStartedCheck';
 
 // Components
-import { LogoCenterLayout } from 'components/shared/LogoCenter/layout';
+import { LogoCenterLayout } from 'layout/LogoCenter';
 import { Options } from 'components/GetStartedCheck/Options';
 
 export const ConfirmEmail = () => {

@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as b from 'global/blocks';
 
 // Styles
-import { PolicyWrapper } from 'components/shared/components/Policy/index.styles';
+import { PolicyWrapper } from 'styles/shared/Policy';
 
 export const Policy = () => {
   return (

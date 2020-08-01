@@ -4,10 +4,7 @@ import * as React from 'react';
 import * as b from 'global/blocks';
 
 // Styles
-import {
-  ErrorBox,
-  IconWrapper,
-} from 'components/shared/components/ErrorDialog/index.styles';
+import { ErrorBox, IconWrapper } from 'styles/shared/ErrorDialog';
 
 // Svgs
 import { Warning } from 'assets/svg';

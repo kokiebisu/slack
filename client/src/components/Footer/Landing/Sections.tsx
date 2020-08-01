@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as b from 'global/blocks';
 
 // Styles
-import { Wrapper } from 'styles/Footer/Landing/Section';
+import { Wrapper } from 'styles/Footer/Landing/Sections';
 
 // Components
 import { Section } from 'components/Footer/Landing/Section';

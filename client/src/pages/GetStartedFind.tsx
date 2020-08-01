@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 import * as b from 'global/blocks';
 
 // Components
-import { LogoCenterLayout } from 'components/shared/LogoCenter/layout';
+import { LogoCenterLayout } from 'layout/LogoCenter';
 import { Confirm } from 'components/GetStartedFind/Confirm';
 
 // Styles

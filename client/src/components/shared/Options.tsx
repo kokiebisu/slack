@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as b from 'global/blocks';
-import { IconWrapper } from 'components/shared/components/Options/index.styles';
+import { IconWrapper } from 'styles/shared/Options';
 import { Info } from 'assets/svg';
 
 export const Options = () => {

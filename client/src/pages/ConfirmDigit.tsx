@@ -5,7 +5,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 // Components
 import * as b from 'global/blocks';
 import { useVerifyUserByDigitMutation } from 'generated/graphql';
-import { LogoCenterLayout } from 'components/shared/LogoCenter/layout';
+import { LogoCenterLayout } from 'layout/LogoCenter';
 import { Options, Dialog } from 'components/ConfirmDigit';
 
 import {

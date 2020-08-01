@@ -4,18 +4,14 @@ import * as React from 'react';
 import * as b from 'global/blocks';
 
 // Styles
-import {
-  InputWrapper,
-  Input,
-  IconWrapper,
-} from 'components/shared/components/Inputs/index.styles';
+import { InputWrapper, Input, IconWrapper } from 'styles/shared/Inputs';
 
 // Svgs
 import { CheckCircle } from 'assets/svg';
 
 // Util
 import { fullNameRegex, weakRegex } from 'util/passwordUtil';
-import { Props } from 'components/shared/components/Inputs/util';
+import { Props } from 'reducers/input';
 
 export const Inputs: React.FC<Props> = ({
   fullname,

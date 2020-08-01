@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
 import { ClientContentLayout } from 'components/Workspace/Content/Layout';
-import { Options } from 'components/shared/components/Options';
+import { Options } from 'components/shared/Options';
 
 // Query
 import { useUserQuery } from 'generated/graphql';
