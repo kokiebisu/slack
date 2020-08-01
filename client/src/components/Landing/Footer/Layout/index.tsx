@@ -1,18 +1,24 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Svgs
-import { NoNameLogo } from '../../../../assets/svg/Logo';
+import { NoNameLogo } from 'assets/svg/Logo';
 
 // Styles
-import { Wrapper, Logo, Content, IconWrapper, Copyright } from './index.styles';
+import {
+  Wrapper,
+  Logo,
+  Content,
+  IconWrapper,
+  Copyright,
+} from 'components/Landing/Footer/Layout/index.styles';
 
 // Components
-import { Options } from '../Option/container';
-import { SocialMedias } from '../Socialmedia/container';
-import { Sections } from '../Section/container';
+import { Options } from 'components/Landing/Footer/Option/container';
+import { SocialMedias } from 'components/Landing/Footer/Socialmedia/container';
+import { Sections } from 'components/Landing/Footer/Section/container';
 
 interface Props {}
 

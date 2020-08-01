@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
-import { IconWrapper } from './index.styles';
+import { IconWrapper } from 'components/Landing/Footer/Socialmedia/index.styles';
 
 interface Props {
   type: string;

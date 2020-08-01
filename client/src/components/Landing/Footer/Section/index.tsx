@@ -1,7 +1,13 @@
 import * as React from 'react';
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
-import { Wrapper, SectionName, Items, Item, ItemLink } from './index.styles';
+import {
+  Wrapper,
+  SectionName,
+  Items,
+  Item,
+  ItemLink,
+} from 'components/Landing/Footer/Section/index.styles';
 
 interface Props {
   title: string;

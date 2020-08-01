@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
-import { Wrapper } from './container.styles';
+import { Wrapper } from 'components/Landing/Footer/Section/container.styles';
 
 // Components
 import { Section } from '.';

@@ -1,10 +1,15 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
-import { Wrapper, Header, Buttons, Button } from './index.styles';
+import {
+  Wrapper,
+  Header,
+  Buttons,
+  Button,
+} from 'components/Landing/Choose/Layout/index.styles';
 
 interface Props {}
 

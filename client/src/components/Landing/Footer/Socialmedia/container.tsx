@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // Styles
-import { Wrapper } from './container.styles';
+import { Wrapper } from 'components/Landing/Footer/Socialmedia/container.styles';
 
 // Svgs
 import {
@@ -9,7 +9,7 @@ import {
   FacebookLogo,
   LinkedinLogo,
   YoutubeLogo,
-} from '../../../../assets/svg/Logo';
+} from 'assets/svg/Logo';
 
 // Components
 import { SocialMedia } from '.';

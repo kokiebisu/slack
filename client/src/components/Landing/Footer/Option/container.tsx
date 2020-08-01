@@ -1,17 +1,21 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Components
 import { Option } from '.';
 
 // Styles
-import { Wrapper, ChangeRegionButton, IconWrapper } from './container.styles';
+import {
+  Wrapper,
+  ChangeRegionButton,
+  IconWrapper,
+} from 'components/Landing/Footer/Option/container.styles';
 
 // Svgs
-import { Globe } from '../../../../assets/svg';
-import { BottomArrow } from '../../../../assets/svg/Arrows';
+import { Globe } from 'assets/svg';
+import { BottomArrow } from 'assets/svg/Arrows';
 
 export const Options = () => {
   const options = [

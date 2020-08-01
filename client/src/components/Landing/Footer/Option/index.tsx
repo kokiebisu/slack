@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
-import { Wrapper } from './index.styles';
+import { Wrapper } from 'components/Landing/Footer/Option/index.styles';
 
 interface Props {
   name: string;
