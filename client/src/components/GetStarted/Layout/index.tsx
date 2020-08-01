@@ -1,16 +1,16 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import * as b from '../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Svg
-import { BoldPlus } from '../../../assets/svg/Plus';
-import { NameLogo } from '../../../assets/svg/Logo';
-import { Globe } from '../../../assets/svg';
+import { BoldPlus } from 'assets/svg/Plus';
+import { NameLogo } from 'assets/svg/Logo';
+import { Globe } from 'assets/svg';
 
 // Image
-import workspace from '../../../assets/img/slack-workspace.png';
-import lightbulb from '../../../assets/img/lightbulb.png';
+import workspace from 'assets/img/slack-workspace.png';
+import lightbulb from 'assets/img/lightbulb.png';
 
 import {
   Wrapper,
@@ -25,7 +25,7 @@ import {
   FooterLink,
   ChangeRegion,
   Image,
-} from './index.styles';
+} from 'components/GetStarted/Layout/index.styles';
 
 interface Props {}
 
