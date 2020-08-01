@@ -1,10 +1,13 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Components
-import { PasswordValidationWrapper, PasswordValidation } from './index.styles';
+import {
+  PasswordValidationWrapper,
+  PasswordValidation,
+} from 'components/shared/components/ValidationBar/index.styles';
 
 // Util
 import {
@@ -12,7 +15,7 @@ import {
   mediumRegex,
   strongRegex,
   veryStrongRegex,
-} from '../../../../util/passwordUtil';
+} from 'util/passwordUtil';
 
 interface Props {
   password: string;

@@ -1,13 +1,16 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
-import { Wrapper, ValidationTextWrapper } from './index.styles';
+import {
+  Wrapper,
+  ValidationTextWrapper,
+} from 'components/shared/components/ValidationText/index.styles';
 
 // Util
-import { textValidation } from '../../../../util/passwordUtil';
+import { textValidation } from 'util/passwordUtil';
 
 interface Props {
   password: string;

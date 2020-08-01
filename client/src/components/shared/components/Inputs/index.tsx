@@ -1,17 +1,21 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
-import { InputWrapper, Input, IconWrapper } from './index.styles';
+import {
+  InputWrapper,
+  Input,
+  IconWrapper,
+} from 'components/shared/components/Inputs/index.styles';
 
 // Svgs
-import { CheckCircle } from '../../../../assets/svg';
+import { CheckCircle } from 'assets/svg';
 
 // Util
-import { fullNameRegex, weakRegex } from '../../../../util/passwordUtil';
-import { Props } from './util';
+import { fullNameRegex, weakRegex } from 'util/passwordUtil';
+import { Props } from 'components/shared/components/Inputs/util';
 
 export const Inputs: React.FC<Props> = ({
   fullname,

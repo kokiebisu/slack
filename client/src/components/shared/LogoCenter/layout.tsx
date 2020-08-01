@@ -1,13 +1,13 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import * as b from '../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 import { Link } from 'react-router-dom';
 
 // Svg
-import { Globe } from '../../../assets/svg';
-import { NameLogo } from '../../../assets/svg/Logo';
+import { Globe } from 'assets/svg';
+import { NameLogo } from 'assets/svg/Logo';
 
 interface Props {}
 

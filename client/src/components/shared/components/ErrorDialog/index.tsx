@@ -1,13 +1,16 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
-import { ErrorBox, IconWrapper } from './index.styles';
+import {
+  ErrorBox,
+  IconWrapper,
+} from 'components/shared/components/ErrorDialog/index.styles';
 
 // Svgs
-import { Warning } from '../../../../assets/svg';
+import { Warning } from 'assets/svg';
 
 interface Props {
   error: string;

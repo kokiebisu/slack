@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
-import { PolicyWrapper } from './index.styles';
+import { PolicyWrapper } from 'components/shared/components/Policy/index.styles';
 
 export const Policy = () => {
   return (
