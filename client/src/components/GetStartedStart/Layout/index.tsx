@@ -3,32 +3,28 @@ import { useReducer } from 'react';
 import { useHistory } from 'react-router-dom';
 
 // Blocks
-import * as b from '../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Queries
-import { useRegisterMutation } from '../../../generated/graphql';
+import { useRegisterMutation } from 'generated/graphql';
 
 // Utils
-import {
-  weakRegex,
-  fullNameRegex,
-  emailRegex,
-} from '../../../util/passwordUtil';
+import { weakRegex, fullNameRegex, emailRegex } from 'util/passwordUtil';
 
 // Components
-import { LogoCenterLayout } from '../../shared/LogoCenter/layout';
-import { Wrapper } from './index.styles';
-import { PasswordValidationBar } from '../../shared/components/ValidationBar';
-import { PasswordValidationText } from '../../shared/components/ValidationText';
-import { Policy } from '../../shared/components/Policy';
-import { Inputs } from '../../shared/components/Inputs';
-import { ErrorDialog } from '../../shared/components/ErrorDialog';
-import { Confirm } from '../../shared/components/Confirm';
-import { randomColor } from '../../../util/randomColor';
-import { profile } from '../../../styles/colors';
+import { LogoCenterLayout } from 'components/shared/LogoCenter/layout';
+import { Wrapper } from 'components/GetStartedStart/Layout/index.styles';
+import { PasswordValidationBar } from 'components/shared/components/ValidationBar';
+import { PasswordValidationText } from 'components/shared/components/ValidationText';
+import { Policy } from 'components/shared/components/Policy';
+import { Inputs } from 'components/shared/components/Inputs';
+import { ErrorDialog } from 'components/shared/components/ErrorDialog';
+import { Confirm } from 'components/shared/components/Confirm';
+import { randomColor } from 'util/randomColor';
+import { profile } from 'styles/colors';
 
 // Utils
-import { inputReducer } from '../../shared/components/Inputs/util';
+import { inputReducer } from 'components/shared/components/Inputs/util';
 
 interface Props {}
 
