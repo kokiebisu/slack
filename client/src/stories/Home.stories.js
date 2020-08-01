@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Home
-import { Box } from 'styles/blocks';
+import { Box } from 'global/blocks';
 import { Channel } from '../components/Home/Channel';
 import { NavSection } from '../components/Home/NavSection';
 

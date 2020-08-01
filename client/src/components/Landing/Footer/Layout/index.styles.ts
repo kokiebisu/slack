@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 // Blocks
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
 // B
-import { landing, size } from 'styles/sizes';
+import { landing, size } from 'global/sizes';
 
 export const Wrapper = styled.footer`
   @media ${landing.xl} {

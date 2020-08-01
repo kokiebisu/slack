@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 // Blocks
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
 // Components
 import { SidebarSection } from 'components/Workspace/Sidebar/Section';

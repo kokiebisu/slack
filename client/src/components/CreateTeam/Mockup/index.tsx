@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
 import { ThinHashTag } from 'assets/svg';
 

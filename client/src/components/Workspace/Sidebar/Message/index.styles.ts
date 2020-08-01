@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
 export const Wrapper = styled(b.Button)`
   padding: 5px 0px 5px 23px;

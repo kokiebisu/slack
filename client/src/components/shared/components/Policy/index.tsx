@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
 // Styles
 import { PolicyWrapper } from 'components/shared/components/Policy/index.styles';

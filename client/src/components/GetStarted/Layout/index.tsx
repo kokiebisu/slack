@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
 // Svg
 import { NameLogo } from 'assets/svg/Logo';

@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 // Blocks
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
 // Styles
 import {

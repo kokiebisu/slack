@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import * as b from 'styles/blocks';
-import { size } from 'styles/sizes';
+import * as b from 'global/blocks';
+import { size } from 'global/sizes';
 
 export const Nav = styled.div`
   display: none;

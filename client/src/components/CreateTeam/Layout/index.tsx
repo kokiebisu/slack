@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Dispatch, SetStateAction, FormEvent } from 'react';
 
 // Blocks
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
 // Styles
 import {

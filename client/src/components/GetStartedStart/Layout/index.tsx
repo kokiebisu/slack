@@ -3,7 +3,7 @@ import { useReducer } from 'react';
 import { useHistory } from 'react-router-dom';
 
 // Blocks
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
 // Queries
 import { useRegisterMutation } from 'generated/graphql';
@@ -21,7 +21,7 @@ import { Inputs } from 'components/shared/components/Inputs';
 import { ErrorDialog } from 'components/shared/components/ErrorDialog';
 import { Confirm } from 'components/shared/components/Confirm';
 import { randomColor } from 'util/randomColor';
-import { profile } from 'styles/colors';
+import { profile } from 'global/colors';
 
 // Utils
 import { inputReducer } from 'components/shared/components/Inputs/util';

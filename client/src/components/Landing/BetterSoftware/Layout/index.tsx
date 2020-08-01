@@ -10,11 +10,11 @@ import {
   IconWrapper,
 } from './index.styles';
 
-import * as b from '../../../../styles/blocks';
+import * as b from 'global/blocks';
 
-import integrations from '../../../../assets/img/slack-integrations.png';
+import integrations from 'assets/img/slack-integrations.png';
 
-import { CheckCircle } from '../../../../assets/svg';
+import { CheckCircle } from 'assets/svg';
 
 export const BetterSoftware = () => {
   return (

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
 // Blocks
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
 // Components
 import { LogoCenterLayout } from 'components/shared/LogoCenter/layout';

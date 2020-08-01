@@ -1,19 +1,12 @@
 import * as React from 'react';
 
-// Blocks
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
-// Styles
-import {
-  Wrapper,
-  IconWrapper,
-  Option,
-} from 'components/ConfirmDigit/Options/index.styles';
+import { Wrapper, IconWrapper, Option } from 'styles/ConfirmDigit/Options';
 
-// Svgs
 import { Outlook, Gmail } from 'assets/svg/Logo';
 
-export const Options = () => {
+export default () => {
   return (
     <Wrapper mt={5}>
       <b.Flex justifyContent='center'>

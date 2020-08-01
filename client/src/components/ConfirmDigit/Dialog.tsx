@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
 // Styles
 import {
@@ -11,17 +11,17 @@ import {
   Error,
   IconWrapper,
   spinTransition,
-} from 'components/ConfirmDigit/Dialog/index.styles';
+} from 'styles/ConfirmDigit/Dialog';
 
 // Svg
 import { Warning } from 'assets/svg';
 
-interface Props {
+type Props = {
   loading: boolean;
   error: string;
-}
+};
 
-export const Dialog: React.FC<Props> = ({ loading, error }) => {
+export default ({ loading, error }: Props) => {
   return (
     <Wrapper mt={2} mb={3}>
       {loading ? (

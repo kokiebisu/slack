@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useReducer } from 'react';
 
 // Blocks
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
 // Components
 import { LogoCenterLayout } from 'components/shared/LogoCenter/layout';
@@ -21,7 +21,7 @@ import { inputReducer } from 'components/shared/components/Inputs/util';
 import { useParams, useHistory } from 'react-router-dom';
 import { fullNameRegex, weakRegex } from 'util/passwordUtil';
 import { randomColor } from 'util/randomColor';
-import { profile } from 'styles/colors';
+import { profile } from 'global/colors';
 import { useCreateUserInviteMutation } from 'generated/graphql';
 
 export const NewAccountViaInvite = () => {

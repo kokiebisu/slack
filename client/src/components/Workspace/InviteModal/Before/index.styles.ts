@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
 export const Header = styled(b.Box)`
   margin-bottom: 20px;

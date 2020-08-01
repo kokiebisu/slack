@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
 const dragdrop = require('assets/img/dragdrop.png');
 

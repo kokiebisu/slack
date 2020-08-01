@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { Activities } from 'components/Workspace/Content/Activity/container';
 
 // Blocks
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
 // Svgs
 import { AtSign, Close, Settings, Transition } from 'assets/svg';

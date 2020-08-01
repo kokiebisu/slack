@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 // Blocks
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
 // Styles
 import {
@@ -13,7 +13,7 @@ import {
 import { AvailableWorkspaces } from 'components/FindTeam/Workspace/container';
 
 // Sizes
-import { size } from 'styles/sizes';
+import { size } from 'global/sizes';
 
 interface Props {
   teams: any;

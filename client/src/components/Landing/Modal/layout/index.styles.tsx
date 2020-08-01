@@ -1,7 +1,7 @@
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 import styled from 'styled-components';
 
-import { size } from 'styles/sizes';
+import { size } from 'global/sizes';
 
 export const Wrapper = styled(b.Box)`
   background-color: white;

@@ -7,7 +7,7 @@ import {
   Buttons,
   Button,
 } from 'components/Landing/Modal/Layout/index.styles';
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 import { Close } from 'assets/svg';
 import { NameLogo } from 'assets/svg/Logo';
 import { ChevronRight } from 'assets/svg';

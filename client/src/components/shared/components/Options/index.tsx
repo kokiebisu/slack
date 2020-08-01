@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 import { IconWrapper } from 'components/shared/components/Options/index.styles';
 import { Info } from 'assets/svg';
 

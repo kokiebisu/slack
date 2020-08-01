@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 
 // Blocks
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
 // Svgs
 import { Play, Close } from 'assets/svg';

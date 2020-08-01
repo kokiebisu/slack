@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
 // Svgs
 import { RightArrow } from 'assets/svg';

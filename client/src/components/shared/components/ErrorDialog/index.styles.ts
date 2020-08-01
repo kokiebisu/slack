@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
 export const ErrorBox = styled(b.Box)`
   width: ${({ width }) => (width === 'full' ? '100%' : `${width}px`)};
