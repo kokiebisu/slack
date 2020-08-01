@@ -15,7 +15,8 @@
     "noEmit": true,
     "jsx": "react",
     "downlevelIteration": true,
-    "suppressImplicitAnyIndexErrors": true
+    "suppressImplicitAnyIndexErrors": true,
+    "baseUrl": "./src"
   },
   "include": ["src"]
 }

@@ -2,14 +2,14 @@ import * as React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // Routes
-import { CreateRoutes } from './Create';
-import { GetStartedRoutes } from './GetStarted';
-import { ClientRoutes } from './Workspace';
+import { CreateRoutes } from 'routes/Create';
+import { GetStartedRoutes } from 'routes/GetStarted';
+import { ClientRoutes } from 'routes/Workspace';
 
 // Pages
-import { Landing } from '../components/Landing/Layout';
-import { SignIn } from '../components/Signin/Layout';
-import { FindTeam } from '../components/FindTeam/Layout';
+import { Landing } from 'components/Landing/Layout';
+import { SignIn } from 'components/Signin/Layout';
+import { FindTeam } from 'components/FindTeam/Layout';
 
 export const AppRoutes = () => {
   return (
