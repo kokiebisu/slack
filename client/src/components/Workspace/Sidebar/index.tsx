@@ -6,15 +6,15 @@ import { useParams } from 'react-router-dom';
 import * as b from 'global/blocks';
 
 // Components
-import { Options } from 'components/Workspace/Sidebar/Option/container';
-import { SidebarSections } from 'components/Workspace/Sidebar/Section/container';
+import { Options } from 'components/Workspace/Sidebar/Options';
+import { SidebarSections } from 'components/Workspace/Sidebar/Sections';
 import { Profile } from 'components/Workspace/Sidebar/Profile';
 
 // Query
 import { useTeamQuery } from 'generated/graphql';
 
 // Styles
-import { Wrapper } from 'components/Workspace/Sidebar/Layout/index.styles';
+import { Wrapper } from 'styles/Workspace/Sidebar';
 
 interface Props {
   team?: string;

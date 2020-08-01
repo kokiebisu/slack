@@ -2,10 +2,7 @@ import * as React from 'react';
 
 // Blocks
 import * as b from 'global/blocks';
-import {
-  StyledInput,
-  Wrapper,
-} from 'components/Workspace/InviteModal/EmailInput/index.styles';
+import { StyledInput, Wrapper } from 'modals/Invite/EmailInput.styles';
 
 type Dispatch = (action: Action) => void;
 type Action =

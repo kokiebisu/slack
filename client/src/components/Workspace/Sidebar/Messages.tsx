@@ -5,11 +5,7 @@ import { useParams } from 'react-router-dom';
 // Styles
 import { Message } from 'components/Workspace/Sidebar/Message';
 import { Heart } from 'assets/svg';
-import {
-  IconWrapper,
-  SlackBot,
-  Name,
-} from 'components/Workspace/Sidebar/Message/container.styles';
+import { IconWrapper, SlackBot, Name } from 'styles/Workspace/Sidebar/Messages';
 
 // Query
 import { useUsersQuery } from 'generated/graphql';

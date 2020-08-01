@@ -7,7 +7,7 @@ import * as b from 'global/blocks';
 import Thumbsup from 'assets/img/thumbsup.png';
 
 // Components
-import { Reactions } from 'components/Workspace/Content/Reaction/container';
+import { Reactions } from 'components/Workspace/Content/Reactions';
 
 // Styles
 import {
@@ -17,7 +17,7 @@ import {
   Name,
   Time,
   Message,
-} from 'components/Workspace/Content/Activity/index.styles';
+} from 'styles/Workspace/Content/Activity';
 
 interface Props {}
 

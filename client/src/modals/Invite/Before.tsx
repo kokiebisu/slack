@@ -13,11 +13,11 @@ import {
   AddOptionText,
   EmailInputHeader,
   AddOptions,
-} from 'components/Workspace/InviteModal/Before/index.styles';
+} from 'modals/Invite/Before.styles';
 import { GoogleLogo } from 'assets/svg/Logo';
 import { UserPlus, Close, PaperPlaneLight } from 'assets/svg';
-import { EmailInput } from 'components/Workspace/InviteModal/EmailInput';
-import { DefaultChannels } from 'components/Workspace/InviteModal/DefaultChannels';
+import { EmailInput } from 'modals/Invite/EmailInput';
+import { DefaultChannels } from 'modals/Invite/DefaultChannels';
 import { PlusCircle } from 'assets/svg';
 import { useSendInvitationMutation } from 'generated/graphql';
 import { useParams } from 'react-router-dom';

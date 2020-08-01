@@ -12,13 +12,13 @@ import {
   Content,
   ContentHeader,
   Line,
-} from 'components/Workspace/InviteModal/After/Layout/index.styles';
+} from 'modals/Invite/After.styles';
 
 // Svg
 import { PaperPlaneLight } from 'assets/svg';
 
 // Components
-import { Sent } from 'components/Workspace/InviteModal/After/Sent';
+import { Sent } from 'modals/Invite/Sent';
 
 interface Props {
   input: { email: string; name: string; done: boolean };

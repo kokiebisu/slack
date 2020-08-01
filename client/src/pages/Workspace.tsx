@@ -3,21 +3,18 @@ import * as React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 
 // Styles
-import {
-  Wrapper,
-  ContentWrapper,
-} from 'components/Workspace/Layout/index.styles';
+import { Wrapper, ContentWrapper } from 'styles/Workspace';
 
 // Components
-import { HomeHeader } from 'components/Workspace/Header';
-import { Sidebar } from 'components/Workspace/Sidebar/Layout';
+import { HomeHeader } from 'components/Header/Workspace';
+import { Sidebar } from 'components/Workspace/Sidebar';
 import { MenuToggle } from 'components/Workspace/MenuToggle';
-import { ChannelModal } from 'components/Workspace/ChannelModal';
+import { ChannelModal } from 'modals/Channel';
 
 // Queries
 import { useMeQuery, useTeamQuery } from 'generated/graphql';
 import { useToggleState } from 'context/toggle-context';
-import { InviteModal } from 'components/Workspace/InviteModal/Layout';
+import { InviteModal } from 'modals/Invite';
 
 interface Props {
   route: React.ReactNode;

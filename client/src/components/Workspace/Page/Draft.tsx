@@ -13,8 +13,8 @@ import {
   Title,
   Description,
   NewMessage,
-} from 'components/Workspace/Content/Draft/index.styles';
-import { ClientContentLayout } from 'components/Workspace/Content/Layout';
+} from 'styles/Workspace/Page/Draft';
+import { ClientContentLayout } from 'layout/Workspace';
 
 interface Props {}
 

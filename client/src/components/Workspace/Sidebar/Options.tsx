@@ -15,7 +15,7 @@ import {
   TextWrapper,
   Title,
   ShowLessWrapper,
-} from 'components/Workspace/Sidebar/Option/container.styles';
+} from 'styles/Workspace/Sidebar/Options';
 
 interface Props {}
 

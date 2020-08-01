@@ -8,11 +8,7 @@ import * as b from 'global/blocks';
 import { Lock, FatHashTag } from 'assets/svg';
 
 // Styles
-import {
-  Wrapper,
-  Name,
-  IconWrapper,
-} from 'components/Workspace/Sidebar/Channel/index.styles';
+import { Wrapper, Name, IconWrapper } from 'styles/Workspace/Sidebar/Channel';
 
 interface Props {
   id: string;

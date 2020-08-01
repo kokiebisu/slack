@@ -23,10 +23,10 @@ import {
   LearnMore,
   LearnButton,
   NameWrapper,
-} from 'components/Workspace/ChannelModal/index.styles';
+} from 'modals/Channel/index.styles';
 
 // Components
-import { Switch } from 'components/Workspace/ChannelModal/switch';
+import { Switch } from 'components/Workspace/Switch';
 
 // Query
 import { useCreateChannelMutation } from 'generated/graphql';
@@ -198,16 +198,6 @@ export const ChannelModal: React.FC<Props> = () => {
           </b.Box>
         </Container>
       </b.Flex>
-    </Wrapper>
-  );
-};
-
-const Switch: React.FC<SwitchProps> = ({ isOn, switchToggle }) => {
-  return (
-    <Wrapper
-      className={isOn ? `switch on` : `switch off`}
-      onClick={switchToggle}>
-      <Inner className={isOn ? `switch on` : `switch off`} />
     </Wrapper>
   );
 };

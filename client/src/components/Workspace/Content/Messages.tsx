@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // Styles
-import { Wrapper } from 'components/Workspace/Content/Message/container.styles';
+import { Wrapper } from 'styles/Workspace/Content/Messages';
 
 // Components
 import { Message } from 'components/Workspace/Content/Message';

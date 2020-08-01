@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import { ClientContentLayout } from 'components/Workspace/Content/Layout';
+import { ClientContentLayout } from 'layout/Workspace';
 import { Options } from 'components/shared/Options';
 
 // Query

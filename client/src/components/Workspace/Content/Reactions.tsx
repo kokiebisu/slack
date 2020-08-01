@@ -5,7 +5,7 @@ import * as b from 'global/blocks';
 import { SmilePlus } from 'assets/svg';
 
 // Styles
-import { IconWrapper } from 'components/Workspace/Content/Reaction/container.styles';
+import { IconWrapper } from 'styles/Workspace/Content/Reactions';
 
 // Components
 import { Reaction } from 'components/Workspace/Content/Reaction';

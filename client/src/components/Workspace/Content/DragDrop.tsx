@@ -8,7 +8,7 @@ import {
   Image,
   Title,
   Description,
-} from 'components/Workspace/Content/DragDrop/index.styles';
+} from 'styles/Workspace/Content/DragDrop';
 
 export const DragDrop = () => {
   return (

@@ -12,11 +12,7 @@ import { setAccessToken } from 'global/token';
 import { useLogoutMutation } from 'generated/graphql';
 
 // Styles
-import {
-  Wrapper,
-  IconWrapper,
-  Section,
-} from 'components/Workspace/MenuToggle/index.styles';
+import { Wrapper, IconWrapper, Section } from 'styles/Workspace/MenuToggle';
 
 const UpdateState: React.FC<{}> = () => {
   return (

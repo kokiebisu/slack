@@ -2,10 +2,7 @@ import React from 'react';
 import * as b from 'global/blocks';
 
 // Styles
-import {
-  Wrapper,
-  Section,
-} from 'components/Workspace/InviteModal/After/Sent/index.styles';
+import { Wrapper, Section } from 'modals/Invite/Sent.styles';
 
 interface Props {
   email: string;

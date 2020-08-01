@@ -5,20 +5,17 @@ import { useReducer } from 'react';
 import * as b from 'global/blocks';
 
 // Styles
-import {
-  Wrapper,
-  Container,
-} from 'components/Workspace/InviteModal/Layout/index.styles';
+import { Wrapper, Container } from 'modals/Invite/index.styles';
 
 // Context
 import { useToggleDispatch } from 'context/toggle-context';
 
 // Query
-import { Before } from 'components/Workspace/InviteModal/Before';
+import { Before } from 'modals/Invite/Before';
 
 // Animation
 import { AnimatePresence } from 'framer-motion';
-import { After } from 'components/Workspace/InviteModal/After/Layout';
+import { After } from 'modals/Invite/After';
 
 // Types
 type State = { email: string; name: string; error: string; done: boolean };

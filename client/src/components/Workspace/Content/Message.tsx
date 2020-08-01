@@ -5,15 +5,7 @@ import styled from 'styled-components';
 import * as b from 'global/blocks';
 
 // Styles
-import {
-  Profile,
-  IconWrapper,
-  Top,
-} from 'components/Workspace/Content/Message/index.styles';
-
-// Components
-import { MessageJoined } from 'components/Workspace/Content/Message/event';
-import { MessageBody } from 'components/Workspace/Content/Message/message';
+import { Profile, IconWrapper, Top } from 'styles/Workspace/Content/Message';
 
 import { UserAlt } from 'assets/svg';
 
@@ -67,7 +59,7 @@ const renderBody = (body: Body) => {
         </Wrapper>
       );
     case 'message':
-      return <Content dangerouslySetInnerHTML={{ __html: text }} />;
+      return <Content dangerouslySetInnerHTML={{ __html: body.message! }} />;
     default:
       return;
   }

@@ -15,7 +15,7 @@ import { Wrapper } from 'components/Workspace/Content/DirectMessage/Container/in
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { DateSeperator } from 'components/Workspace/Content/DateSeperator';
-import { Messages } from 'components/Workspace/Content/Message/container';
+import { Messages } from 'components/Workspace/Content/Messages';
 
 export const MessageContainer = () => {
   const { userId } = useParams();

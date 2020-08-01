@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import { useGetChannelByIdQuery } from 'generated/graphql';
 
 // Components
-import { ClientContentLayout } from 'components/Workspace/Content/Layout';
+import { ClientContentLayout } from 'layout/Workspace';
 import { Options } from 'components/shared/Options';
 import { SubSection } from 'components/Workspace/Content/Channel/Subsection';
 

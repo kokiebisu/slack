@@ -8,7 +8,7 @@ import {
   Wrapper,
   Date,
   IconWrapper,
-} from 'components/Workspace/Content/DateSeperator/index.styles';
+} from 'styles/Workspace/Content/DateSeperator';
 import { BottomArrow } from 'assets/svg';
 
 interface Props {

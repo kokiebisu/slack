@@ -7,17 +7,14 @@ import * as b from 'global/blocks';
 
 // Components
 import { SidebarSection } from 'components/Workspace/Sidebar/Section';
-import { Messages } from 'components/Workspace/Sidebar/Message/container';
-import { Channels } from 'components/Workspace/Sidebar/Channel/container';
+import { Messages } from 'components/Workspace/Sidebar/Messages';
+import { Channels } from 'components/Workspace/Sidebar/Channels';
 
 // Query
 import { useChannelsQuery } from 'generated/graphql';
 
 // Styles
-import {
-  Wrapper,
-  InviteButton,
-} from 'components/Workspace/Sidebar/Section/container.styles';
+import { Wrapper, InviteButton } from 'styles/Workspace/Sidebar/Sections';
 import { useToggleState, useToggleDispatch } from 'context/toggle-context';
 
 interface Props {}

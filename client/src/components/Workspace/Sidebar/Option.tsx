@@ -22,7 +22,7 @@ import {
   IconWrapper,
   TextWrapper,
   Title,
-} from 'components/Workspace/Sidebar/Option/index.styles';
+} from 'styles/Workspace/Sidebar/Option';
 
 interface Props {
   name: string;

@@ -19,7 +19,7 @@ import {
   TitleContainer,
   SubtitleWrapper,
   IconButtonWrapper,
-} from 'components/Workspace/Sidebar/Section/index.styles';
+} from 'styles/Workspace/Sidebar/Section';
 
 interface Props {
   title: string;

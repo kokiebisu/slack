@@ -16,10 +16,10 @@ import {
   Title,
   Description,
   LearnButton,
-} from 'components/Workspace/Content/Threads/index.styles';
+} from 'styles/Workspace/Page/Threads';
 
 // Components
-import { ClientContentLayout } from 'components/Workspace/Content/Layout';
+import { ClientContentLayout } from 'layout/Workspace';
 
 interface Props {}
 

@@ -1,16 +1,11 @@
 import * as React from 'react';
+import styled from 'styled-components';
 import { useCallback } from 'react';
 
 // Blocks
 import * as b from 'global/blocks';
 
-// Styles
-import {
-  Wrapper,
-  Top,
-  Section,
-  IconWrapper,
-} from 'components/Workspace/Content/Layout/index.styles';
+import { size } from 'global/sizes';
 
 // Svgs
 import { Sidebar } from 'assets/svg';

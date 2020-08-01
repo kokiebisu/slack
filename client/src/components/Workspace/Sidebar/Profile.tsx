@@ -10,7 +10,7 @@ import {
   Avatar,
   IconWrapper,
   StatusIcon,
-} from 'components/Workspace/Sidebar/Profile/index.styles';
+} from 'styles/Workspace/Sidebar/Profile';
 
 // Svgs
 import { BottomArrow } from 'assets/svg';

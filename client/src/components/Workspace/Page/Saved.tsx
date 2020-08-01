@@ -13,8 +13,8 @@ import {
   SideOption,
   IconWrapper,
   Bottom,
-} from 'components/Workspace/Content/Saved/index.styles';
-import { ClientContentLayout } from 'components/Workspace/Content/Layout';
+} from 'styles/Workspace/Page/Saved';
+import { ClientContentLayout } from 'layout/Workspace';
 
 interface Props {}
 

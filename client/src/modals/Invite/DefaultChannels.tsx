@@ -11,7 +11,7 @@ import {
   IconWrapper,
   Description,
   Share,
-} from 'components/Workspace/InviteModal/DefaultChannels/index.styles';
+} from 'modals/Invite/DefaultChannels.styles';
 
 // Svgs
 import { Link } from 'assets/svg';

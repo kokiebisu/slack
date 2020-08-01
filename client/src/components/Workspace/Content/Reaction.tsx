@@ -7,10 +7,7 @@ import * as b from 'global/blocks';
 import Thumbsup from 'assets/img/thumbsup.png';
 
 // Styles
-import {
-  Wrapper,
-  Container,
-} from 'components/Workspace/Content/Reaction/index.styles';
+import { Wrapper, Container } from 'styles/Workspace/Content/Reaction';
 
 interface Props {}
 

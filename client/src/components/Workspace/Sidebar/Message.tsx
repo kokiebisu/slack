@@ -10,7 +10,7 @@ import {
   IconWrapper,
   Status,
   Name,
-} from 'components/Workspace/Sidebar/Message/index.styles';
+} from 'styles/Workspace/Sidebar/Message';
 import { useMeQuery } from 'generated/graphql';
 
 interface Props {
