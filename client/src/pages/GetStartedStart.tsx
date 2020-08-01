@@ -13,7 +13,7 @@ import { weakRegex, fullNameRegex, emailRegex } from 'util/passwordUtil';
 
 // Components
 import { LogoCenterLayout } from 'components/shared/LogoCenter/layout';
-import { Wrapper } from 'components/GetStartedStart/Layout/index.styles';
+import { Wrapper } from 'styles/GetStartedStart';
 import { PasswordValidationBar } from 'components/shared/components/ValidationBar';
 import { PasswordValidationText } from 'components/shared/components/ValidationText';
 import { Policy } from 'components/shared/components/Policy';

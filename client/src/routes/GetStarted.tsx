@@ -4,7 +4,7 @@ import { Switch, Route, useRouteMatch } from 'react-router-dom';
 // Pages
 import { GetStarted } from 'pages/GetStarted';
 import { GetStartedFind } from 'pages/GetStartedFind';
-import { GetStartedCreate } from 'components/GetStartedStart/Layout';
+import { GetStartedCreate } from 'pages/GetStartedStart';
 import { ConfirmEmail } from 'pages/GetStartedCheck';
 import { Invited } from 'pages/Invited';
 
