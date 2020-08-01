@@ -7,7 +7,7 @@ import { GetStartedRoutes } from 'routes/GetStarted';
 import { ClientRoutes } from 'routes/Workspace';
 
 // Pages
-import { Landing } from 'components/Landing/Layout';
+import { Landing } from 'pages/Landing';
 import { SignIn } from 'components/Signin/Layout';
 import { FindTeam } from 'pages/FindTeam';
 
