@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Dispatch, SetStateAction, FormEvent } from 'react';
 
 // Blocks
-import * as b from '../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
 import {
@@ -16,8 +16,8 @@ import {
   Policy,
 } from './index.styles';
 
-import { Header } from '../Header';
-import { MiniWorkspace } from '../Miniworkspace';
+import { Header } from 'components/CreateTeam/Header';
+import { MiniWorkspace } from 'components/CreateTeam/Miniworkspace';
 
 interface Props {
   title: string;

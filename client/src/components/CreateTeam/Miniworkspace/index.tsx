@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
 import {
@@ -21,10 +21,10 @@ import {
 import { SkeletonLine, MockHashTag } from '../Mockup';
 
 // Imgs
-import teamphoto_1 from '../../../assets/img/createteam_1.png';
-import teamphoto_2 from '../../../assets/img/createteam_2.png';
-import teamphoto_3 from '../../../assets/img/createteam_3.png';
-import { stagger, fadeInUp } from '../../../animations/FadeInStagger';
+import teamphoto_1 from 'assets/img/createteam_1.png';
+import teamphoto_2 from 'assets/img/createteam_2.png';
+import teamphoto_3 from 'assets/img/createteam_3.png';
+import { stagger, fadeInUp } from 'animations/FadeInStagger';
 
 interface Props {
   team?: string;

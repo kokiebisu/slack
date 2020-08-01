@@ -1,12 +1,12 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 
-import * as b from '../../../styles/blocks';
+import * as b from 'styles/blocks';
 
-import { ThinHashTag } from '../../../assets/svg/HashTag';
+import { ThinHashTag } from 'assets/svg/HashTag';
 
 // Styles
-import { IconWrapper } from './index.styles';
+import { IconWrapper } from 'components/CreateTeam/Mockup/index.styles';
 
 export const MockHashTag = () => {
   return (

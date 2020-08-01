@@ -2,13 +2,16 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 // Blocks
-import * as b from '../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
-import { Wrapper, IconWrapper } from './index.styles';
+import {
+  Wrapper,
+  IconWrapper,
+} from 'components/CreateTeam/Header/index.styles';
 
 // Svgs
-import { NameLogo } from '../../../assets/svg/Logo';
+import { NameLogo } from 'assets/svg/Logo';
 
 export const Header = () => {
   return (
