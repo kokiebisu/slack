@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Redirect } from 'react-router-dom';
 
-import { Wrapper } from 'components/FindTeam/Layout/index.styles';
+import { Wrapper } from 'styles/FindTeam';
 
 import { useGetBelongingTeamsQuery } from 'generated/graphql';
 

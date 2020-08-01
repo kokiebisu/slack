@@ -10,7 +10,7 @@ import {
   WorkspaceName,
   WorkspaceURL,
   LaunchButton,
-} from 'components/FindTeam/Workspace/index.styles';
+} from 'styles/FindTeam/Workspace';
 
 interface Props {
   name: string;

@@ -23,7 +23,7 @@ import {
   Item,
   BottomContainer,
   ContactWrapper,
-} from 'components/FindTeam/Footer/index.styles';
+} from 'styles/FindTeam/Footer';
 
 interface Props {}
 

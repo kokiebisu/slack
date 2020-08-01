@@ -17,7 +17,7 @@ import {
   NavItem,
   SignInItem,
   IconWrapper,
-} from 'components/FindTeam/Header/index.styles';
+} from 'styles/FindTeam/Header';
 
 interface Props {}
 

@@ -9,7 +9,7 @@ import { ClientRoutes } from 'routes/Workspace';
 // Pages
 import { Landing } from 'components/Landing/Layout';
 import { SignIn } from 'components/Signin/Layout';
-import { FindTeam } from 'components/FindTeam/Layout';
+import { FindTeam } from 'pages/FindTeam';
 
 export const AppRoutes = () => {
   return (

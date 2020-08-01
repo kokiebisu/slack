@@ -5,12 +5,8 @@ import styled from 'styled-components';
 import * as b from 'global/blocks';
 
 // Styles
-import {
-  Header,
-  Title,
-  Description,
-} from 'components/FindTeam/Content/index.styles';
-import { AvailableWorkspaces } from 'components/FindTeam/Workspace/container';
+import { Header, Title, Description } from 'styles/FindTeam/Content';
+import { AvailableWorkspaces } from 'components/FindTeam/Workspaces';
 
 // Sizes
 import { size } from 'global/sizes';
