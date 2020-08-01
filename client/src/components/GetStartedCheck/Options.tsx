@@ -1,11 +1,7 @@
 import * as React from 'react';
 import * as b from 'global/blocks';
 
-import {
-  Wrapper,
-  IconWrapper,
-  Option,
-} from 'components/GetStartedCheck/Options/index.styles';
+import { Wrapper, IconWrapper, Option } from 'styles/GetStartedCheck/Options';
 
 import { Outlook, Gmail } from 'assets/svg/Logo';
 

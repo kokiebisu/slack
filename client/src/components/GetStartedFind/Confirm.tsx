@@ -9,7 +9,7 @@ import {
   DotVariants,
   DotContainerVariants,
   DotTransition,
-} from 'components/GetStartedFind/Confirm/index.styles';
+} from 'styles/GetStartedFind/Confirm';
 
 interface Props {
   loading: boolean;

@@ -2,10 +2,10 @@ import React from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 
 // Pages
-import { GetStarted } from 'components/GetStarted/Layout';
-import { GetStartedFind } from 'components/GetStartedFind/Layout';
+import { GetStarted } from 'pages/GetStarted';
+import { GetStartedFind } from 'pages/GetStartedFind';
 import { GetStartedCreate } from 'components/GetStartedStart/Layout';
-import { ConfirmEmail } from 'components/GetStartedCheck/Layout';
+import { ConfirmEmail } from 'pages/GetStartedCheck';
 import { Invited } from 'pages/Invited';
 
 export const GetStartedRoutes: React.SFC = () => {

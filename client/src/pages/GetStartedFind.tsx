@@ -15,7 +15,7 @@ import {
   EmailInput,
   ErrorBox,
   IconWrapper,
-} from 'components/GetStartedFind/Layout/index.styles';
+} from 'styles/GetStartedFind';
 
 // Graphql
 import { useCheckEmailLazyQuery } from 'generated/graphql';

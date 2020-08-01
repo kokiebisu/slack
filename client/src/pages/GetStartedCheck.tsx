@@ -8,7 +8,7 @@ import * as b from 'global/blocks';
 import { useVerifyUserByTokenQuery } from 'generated/graphql';
 
 // Styles
-import { Wrapper } from 'components/GetStartedCheck/Layout/index.styles';
+import { Wrapper } from 'styles/GetStartedCheck';
 
 // Components
 import { LogoCenterLayout } from 'components/shared/LogoCenter/layout';
