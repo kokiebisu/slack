@@ -4,15 +4,15 @@ import { useState, useRef, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 
 // Graphql
-import { useVerifyUserByDigitMutation } from '../../../generated/graphql';
+import { useVerifyUserByDigitMutation } from 'generated/graphql';
 
 // Components
-import { LogoCenterLayout } from '../../shared/LogoCenter/layout';
-import { Options } from '../Options';
-import { Dialog } from '../Dialog';
+import { LogoCenterLayout } from 'components/shared/LogoCenter/layout';
+import { Options } from 'components/ConfirmDigit/Options';
+import { Dialog } from 'components/ConfirmDigit/Dialog';
 
 // Blocks
-import * as b from '../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 export const ConfirmDigit = () => {
   const input_1: any = useRef(null);

@@ -1,13 +1,17 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
-import { Wrapper, IconWrapper, Option } from './index.styles';
+import {
+  Wrapper,
+  IconWrapper,
+  Option,
+} from 'components/ConfirmDigit/Options/index.styles';
 
 // Svgs
-import { Outlook, Gmail } from '../../../assets/svg/Logo';
+import { Outlook, Gmail } from 'assets/svg/Logo';
 
 export const Options = () => {
   return (

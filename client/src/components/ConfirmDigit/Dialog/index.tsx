@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
 import {
@@ -11,10 +11,10 @@ import {
   Error,
   IconWrapper,
   spinTransition,
-} from './index.styles';
+} from 'components/ConfirmDigit/Dialog/index.styles';
 
 // Svg
-import { Warning } from '../../../assets/svg';
+import { Warning } from 'assets/svg';
 
 interface Props {
   loading: boolean;
