@@ -1,13 +1,13 @@
 import * as React from 'react';
-
-import { Wrapper } from './index.styles';
-
-import { useGetBelongingTeamsQuery } from '../../../generated/graphql';
-
-import { Header } from '../Header';
-import { FindTeamContent } from '../Content';
-import { Footer } from '../Footer';
 import { Redirect } from 'react-router-dom';
+
+import { Wrapper } from 'components/FindTeam/Layout/index.styles';
+
+import { useGetBelongingTeamsQuery } from 'generated/graphql';
+
+import { Header } from 'components/FindTeam/Header';
+import { FindTeamContent } from 'components/FindTeam/Content';
+import { Footer } from 'components/FindTeam/Footer';
 
 export const FindTeam = () => {
   const {

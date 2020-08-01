@@ -2,14 +2,18 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 // Blocks
-import * as b from '../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
-import { Header, Title, Description } from './index.styles';
-import { AvailableWorkspaces } from '../Workspace/container';
+import {
+  Header,
+  Title,
+  Description,
+} from 'components/FindTeam/Content/index.styles';
+import { AvailableWorkspaces } from 'components/FindTeam/Workspace/container';
 
 // Sizes
-import { size } from '../../../styles/sizes';
+import { size } from 'styles/sizes';
 
 interface Props {
   teams: any;

@@ -2,17 +2,13 @@ import * as React from 'react';
 import { useState } from 'react';
 
 // Blocks
-import * as b from '../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Svgs
-import { RoundedHeart } from '../../../assets/svg/Heart';
-import {
-  NoNameLogoMono,
-  TwitterLogo,
-  YoutubeLogo,
-} from '../../../assets/svg/Logo';
-import { Minus } from '../../../assets/svg/Minus';
-import { Plus } from '../../../assets/svg/Plus';
+import { RoundedHeart } from 'assets/svg/Heart';
+import { NoNameLogoMono, TwitterLogo, YoutubeLogo } from 'assets/svg/Logo';
+import { Minus } from 'assets/svg/Minus';
+import { Plus } from 'assets/svg/Plus';
 
 // Styles
 import {
@@ -29,7 +25,7 @@ import {
   Item,
   BottomContainer,
   ContactWrapper,
-} from './index.styles';
+} from 'components/FindTeam/Footer/index.styles';
 
 interface Props {}
 
