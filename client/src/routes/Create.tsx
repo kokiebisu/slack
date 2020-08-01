@@ -10,19 +10,19 @@ import {
 } from 'react-router-dom';
 
 // Components
-import { CreateTeamLayout } from '../components/CreateTeam/Layout';
-import { ConfirmDigit } from '../components/ConfirmDigit/Layout';
+import { CreateTeamLayout } from 'components/CreateTeam/Layout';
+import { ConfirmDigit } from 'components/ConfirmDigit/Layout';
 
 // Queries
 import {
   useMeQuery,
   useCreateTeamMutation,
   useCreateChannelMutation,
-} from '../generated/graphql';
+} from 'generated/graphql';
 
 // Util
-import { randomColor } from '../util/randomColor';
-import { avatar } from '../styles/colors';
+import { randomColor } from 'util/randomColor';
+import { avatar } from 'styles/colors';
 
 export const CreateRoutes: React.SFC = () => {
   const history = useHistory();
