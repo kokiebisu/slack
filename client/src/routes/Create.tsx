@@ -10,7 +10,7 @@ import {
 } from 'react-router-dom';
 
 // Components
-import { CreateTeamLayout } from 'components/CreateTeam/Layout';
+import { CreateTeamLayout } from 'pages/CreateTeam';
 import { ConfirmDigit } from 'pages/ConfirmDigit';
 
 // Queries

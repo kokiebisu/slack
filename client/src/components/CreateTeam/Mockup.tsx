@@ -6,7 +6,7 @@ import * as b from 'global/blocks';
 import { ThinHashTag } from 'assets/svg';
 
 // Styles
-import { IconWrapper } from 'components/CreateTeam/Mockup/index.styles';
+import { IconWrapper } from 'styles/CreateTeam/Mockup';
 
 export const MockHashTag = () => {
   return (

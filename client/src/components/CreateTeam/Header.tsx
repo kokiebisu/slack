@@ -5,10 +5,7 @@ import { Link } from 'react-router-dom';
 import * as b from 'global/blocks';
 
 // Styles
-import {
-  Wrapper,
-  IconWrapper,
-} from 'components/CreateTeam/Header/index.styles';
+import { Wrapper, IconWrapper } from 'styles/CreateTeam/Header';
 
 // Svgs
 import { NameLogo } from 'assets/svg/Logo';

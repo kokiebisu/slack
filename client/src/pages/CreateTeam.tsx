@@ -14,7 +14,7 @@ import {
   Input,
   NextButton,
   Policy,
-} from 'components/CreateTeam/Layout/index.styles';
+} from 'styles/CreateTeam';
 
 import { Header } from 'components/CreateTeam/Header';
 import { MiniWorkspace } from 'components/CreateTeam/Miniworkspace';

@@ -15,7 +15,7 @@ import {
   BulletPoint,
   Line,
   ContentWrapper,
-} from 'components/CreateTeam/Miniworkspace/index.styles';
+} from 'styles/CreateTeam/Miniworkspace';
 
 // Components
 import { SkeletonLine, MockHashTag } from 'components/CreateTeam/Mockup';

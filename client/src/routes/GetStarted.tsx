@@ -6,7 +6,7 @@ import { GetStarted } from 'components/GetStarted/Layout';
 import { GetStartedFind } from 'components/GetStartedFind/Layout';
 import { GetStartedCreate } from 'components/GetStartedStart/Layout';
 import { ConfirmEmail } from 'components/GetStartedCheck/Layout';
-import { Invited } from 'components/Invited';
+import { Invited } from 'pages/Invited';
 
 export const GetStartedRoutes: React.SFC = () => {
   const match = useRouteMatch();
