@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
 import {
@@ -12,8 +12,8 @@ import {
   Description,
   ColumnWrapper,
   LearnMore,
-} from './index.styles';
-import { ColumnCards } from '../Card/container';
+} from 'components/Landing/BringTeam/Layout/index.styles';
+import { ColumnCards } from 'components/Landing/BringTeam/Card/container';
 
 interface Props {}
 

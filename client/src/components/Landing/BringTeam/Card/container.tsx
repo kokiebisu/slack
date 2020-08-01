@@ -1,16 +1,16 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
-import { Columns } from './container.styles';
+import { Columns } from 'components/Landing/BringTeam/Card/container.styles';
 
 // Components
-import { ColumnCard } from '.';
+import { ColumnCard } from 'components/Landing/BringTeam/Card';
 
 // Svgs
-import { Share, ConnectCall, Collaborate } from '../../../../assets/svg';
+import { Share, ConnectCall, Collaborate } from 'assets/svg';
 
 interface Props {}
 

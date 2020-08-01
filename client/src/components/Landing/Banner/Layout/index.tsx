@@ -2,13 +2,10 @@ import * as React from 'react';
 import { useState } from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Motions
-import {
-  ButtonMotion,
-  TransparentButtonMotion,
-} from '../../../../animations/Buttons';
+import { ButtonMotion, TransparentButtonMotion } from 'animations/Buttons';
 
 // Styles
 import {
@@ -19,7 +16,7 @@ import {
   BannerVideo,
   Header,
   Description,
-} from './index.styles';
+} from 'components/Landing/Banner/Layout/index.styles';
 
 interface Props {}
 

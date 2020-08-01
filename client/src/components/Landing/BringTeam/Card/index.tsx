@@ -1,8 +1,13 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
-import { Wrapper, IconWrapper, Title, SubTitle } from './index.styles';
+import * as b from 'styles/blocks';
+import {
+  Wrapper,
+  IconWrapper,
+  Title,
+  SubTitle,
+} from 'components/Landing/BringTeam/Card/index.styles';
 
 // Styles
 
