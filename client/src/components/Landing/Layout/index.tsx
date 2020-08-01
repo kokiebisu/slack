@@ -3,18 +3,16 @@ import { useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
 // Components
-import { Header } from '../Header/Layout';
-import { Banner } from '../Banner/Layout';
-import { BringTeam } from '../BringTeam/Layout';
-import { BetterSoftware } from '../BetterSoftware/Layout';
-import { Choose } from '../Choose/Layout';
-import { Footer } from '../Footer/Layout';
+import { Header } from 'components/Landing/Header/Layout';
+import { Banner } from 'components/Landing/Banner/Layout';
+import { BringTeam } from 'components/Landing/BringTeam/Layout';
+import { BetterSoftware } from 'components/Landing/BetterSoftware/Layout';
+import { Choose } from 'components/Landing/Choose/Layout';
+import { Footer } from 'components/Landing/Footer/Layout';
 
 // Graphql
-import { useMeQuery } from '../../../generated/graphql';
-import { LandingModal } from '../Modal/layout';
-
-import { useToggleState } from '../../../context/toggle-context';
+import { useMeQuery } from 'generated/graphql';
+import { LandingModal } from 'components/Landing/Modal/Layout';
 
 import { useToggleState } from 'context/toggle-context';
 
