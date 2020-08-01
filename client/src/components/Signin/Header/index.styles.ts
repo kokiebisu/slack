@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import * as b from '../../../styles/blocks';
+import * as b from 'styles/blocks';
 
-import { signin } from '../../../styles/sizes';
+import { signin } from 'styles/sizes';
 
 export const HeaderWrapper = styled.div`
   position: sticky;

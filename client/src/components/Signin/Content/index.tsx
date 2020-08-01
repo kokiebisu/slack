@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Svgs
-import { RightArrow } from '../../../assets/svg/Arrows';
+import { RightArrow } from 'assets/svg/Arrows';
 
 // Styles
 import {
@@ -14,7 +14,7 @@ import {
   CreateWorkspaceWrapper,
   CreateWorkspaceContainer,
   IconWrapper,
-} from './index.styles';
+} from 'components/Signin/Content/index.styles';
 
 interface Props {}
 

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import * as b from '../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Breakpoints;
-import { signin } from '../../../styles/sizes';
+import { signin } from 'styles/sizes';
 
 export const Content = styled(b.Box)`
   width: 100%;

@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Svgs
-import { NameLogo } from '../../../assets/svg/Logo';
+import { NameLogo } from 'assets/svg/Logo';
 
 // Styles
 import {
