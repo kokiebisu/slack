@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import * as b from 'styles/blocks';
 import { Smile } from 'assets/svg';
-import { AngleRight } from 'assets/svg/Arrows';
+import { AngleRight } from 'assets/svg';
 
 // Images
 import slackappicon from 'assets/img/slack-app.png';

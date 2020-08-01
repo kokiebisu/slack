@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as b from 'styles/blocks';
 
 // Svg
-import { Clipboard } from 'assets/svg/DraftPage';
+import { Clipboard } from 'assets/svg';
 
 import {
   Wrapper,

@@ -6,7 +6,7 @@ import * as b from 'styles/blocks';
 
 // Svgs
 import { Play, Close } from 'assets/svg';
-import { Plus } from 'assets/svg/Plus';
+import { Plus } from 'assets/svg';
 
 import { useToggleDispatch } from 'context/toggle-context';
 

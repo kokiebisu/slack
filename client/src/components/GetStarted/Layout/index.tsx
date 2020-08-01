@@ -3,9 +3,8 @@ import * as React from 'react';
 import * as b from 'styles/blocks';
 
 // Svg
-import { BoldPlus } from 'assets/svg/Plus';
 import { NameLogo } from 'assets/svg/Logo';
-import { Globe } from 'assets/svg';
+import { Globe, BoldPlus } from 'assets/svg';
 
 // Image
 import workspace from 'assets/img/slack-workspace.png';

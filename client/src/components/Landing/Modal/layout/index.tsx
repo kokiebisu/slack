@@ -10,7 +10,7 @@ import {
 import * as b from 'styles/blocks';
 import { Close } from 'assets/svg';
 import { NameLogo } from 'assets/svg/Logo';
-import { ChevronRight } from 'assets/svg/Arrows';
+import { ChevronRight } from 'assets/svg';
 import { useToggleDispatch } from 'context/toggle-context';
 import { TransparentButtonMotion } from 'animations/Buttons';
 

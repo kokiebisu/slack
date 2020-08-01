@@ -5,8 +5,7 @@ import { useParams, useHistory } from 'react-router';
 import * as b from 'styles/blocks';
 
 // Svgs
-import { Lock } from 'assets/svg';
-import { FatHashTag } from 'assets/svg/HashTag';
+import { Lock, FatHashTag } from 'assets/svg';
 
 // Styles
 import {

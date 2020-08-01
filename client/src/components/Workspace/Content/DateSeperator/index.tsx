@@ -9,7 +9,7 @@ import {
   Date,
   IconWrapper,
 } from 'components/Workspace/Content/DateSeperator/index.styles';
-import { BottomArrow } from 'assets/svg/Arrows';
+import { BottomArrow } from 'assets/svg';
 
 interface Props {
   date: string;

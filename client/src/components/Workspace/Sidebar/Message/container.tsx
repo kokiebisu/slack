@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 // Styles
 import { Message } from 'components/Workspace/Sidebar/Message';
-import { Heart } from 'assets/svg/Heart';
+import { Heart } from 'assets/svg';
 import {
   IconWrapper,
   SlackBot,

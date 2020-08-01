@@ -6,7 +6,7 @@ import * as b from 'styles/blocks';
 
 // Svg
 import { NameLogo } from 'assets/svg/Logo';
-import { BottomArrow } from 'assets/svg/Arrows';
+import { BottomArrow } from 'assets/svg';
 import { HamburgerButton } from 'assets/svg';
 
 // Animations

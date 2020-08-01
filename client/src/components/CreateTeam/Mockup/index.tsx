@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 import * as b from 'styles/blocks';
 
-import { ThinHashTag } from 'assets/svg/HashTag';
+import { ThinHashTag } from 'assets/svg';
 
 // Styles
 import { IconWrapper } from 'components/CreateTeam/Mockup/index.styles';

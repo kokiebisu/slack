@@ -5,10 +5,8 @@ import { useState } from 'react';
 import * as b from 'styles/blocks';
 
 // Svgs
-import { RoundedHeart } from 'assets/svg/Heart';
 import { NoNameLogoMono, TwitterLogo, YoutubeLogo } from 'assets/svg/Logo';
-import { Minus } from 'assets/svg/Minus';
-import { Plus } from 'assets/svg/Plus';
+import { Minus, Plus, RoundedHeart } from 'assets/svg';
 
 // Styles
 import {

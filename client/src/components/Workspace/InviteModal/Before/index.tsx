@@ -18,7 +18,7 @@ import { GoogleLogo } from 'assets/svg/Logo';
 import { UserPlus, Close, PaperPlaneLight } from 'assets/svg';
 import { EmailInput } from 'components/Workspace/InviteModal/EmailInput';
 import { DefaultChannels } from 'components/Workspace/InviteModal/DefaultChannels';
-import { PlusCircle } from 'assets/svg/Plus';
+import { PlusCircle } from 'assets/svg';
 import { useSendInvitationMutation } from 'generated/graphql';
 import { useParams } from 'react-router-dom';
 import { ErrorDialog } from 'components/shared/components/ErrorDialog';

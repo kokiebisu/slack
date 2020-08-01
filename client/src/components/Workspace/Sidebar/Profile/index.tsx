@@ -13,8 +13,8 @@ import {
 } from 'components/Workspace/Sidebar/Profile/index.styles';
 
 // Svgs
-import { BottomArrow } from 'assets/svg/Arrows';
-import { Write } from 'assets/svg/Reaction';
+import { BottomArrow } from 'assets/svg';
+import { Write } from 'assets/svg';
 
 // Graphql
 import { useMeQuery } from 'generated/graphql';

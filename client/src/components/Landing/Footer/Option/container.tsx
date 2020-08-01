@@ -15,7 +15,7 @@ import {
 
 // Svgs
 import { Globe } from 'assets/svg';
-import { BottomArrow } from 'assets/svg/Arrows';
+import { BottomArrow } from 'assets/svg';
 
 export const Options = () => {
   const options = [

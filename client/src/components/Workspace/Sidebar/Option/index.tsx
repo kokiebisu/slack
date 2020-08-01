@@ -13,8 +13,8 @@ import {
   SavedItems,
   Apps,
   Files,
+  ThinHashTag,
 } from 'assets/svg';
-import { ThinHashTag } from 'assets/svg/HashTag';
 
 // Styles
 import {

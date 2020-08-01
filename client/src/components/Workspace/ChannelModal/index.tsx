@@ -6,8 +6,7 @@ import { useParams } from 'react-router-dom';
 import * as b from 'styles/blocks';
 
 // Svgs
-import { Close, Info } from 'assets/svg';
-import { ThinHashTag } from 'assets/svg/HashTag';
+import { Close, Info, ThinHashTag } from 'assets/svg';
 
 // Styles
 import {
