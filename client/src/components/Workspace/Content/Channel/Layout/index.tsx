@@ -3,15 +3,15 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 // Query
-import { useGetChannelByIdQuery } from '../../../../../generated/graphql';
+import { useGetChannelByIdQuery } from 'generated/graphql';
 
 // Components
-import { ClientContentLayout } from '../../Layout';
-import { Options } from '../../../../shared/components/Options';
-import { SubSection } from '../Subsection';
+import { ClientContentLayout } from 'components/Workspace/Content/Layout';
+import { Options } from 'components/shared/components/Options';
+import { SubSection } from 'components/Workspace/Content/Channel/Subsection';
 
 // Styles
-import { Content } from '../Content';
+import { Content } from 'components/Workspace/Content/Channel/Content';
 
 interface Props {}
 

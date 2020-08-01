@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 // Styles
-import { Wrapper } from './container.styles';
+import { Wrapper } from 'components/Workspace/Content/Message/container.styles';
 
 // Components
-import { Message } from '.';
+import { Message } from 'components/Workspace/Content/Message';
 
 interface Props {
   messages: any;

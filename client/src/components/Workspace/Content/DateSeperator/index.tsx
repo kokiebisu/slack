@@ -1,11 +1,15 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Components
-import { Wrapper, Date, IconWrapper } from './index.styles';
-import { BottomArrow } from '../../../../assets/svg/Arrows';
+import {
+  Wrapper,
+  Date,
+  IconWrapper,
+} from 'components/Workspace/Content/DateSeperator/index.styles';
+import { BottomArrow } from 'assets/svg/Arrows';
 
 interface Props {
   date: string;

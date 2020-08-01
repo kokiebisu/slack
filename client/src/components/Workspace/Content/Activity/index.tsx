@@ -1,13 +1,13 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Img
-import Thumbsup from '../../../../assets/img/thumbsup.png';
+import Thumbsup from 'assets/img/thumbsup.png';
 
 // Components
-import { Reactions } from '../Reaction/container';
+import { Reactions } from 'components/Workspace/Content/Reaction/container';
 
 // Styles
 import {
@@ -17,7 +17,7 @@ import {
   Name,
   Time,
   Message,
-} from './index.styles';
+} from 'components/Workspace/Content/Activity/index.styles';
 
 interface Props {}
 

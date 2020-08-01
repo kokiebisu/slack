@@ -2,13 +2,13 @@ import * as React from 'react';
 import { useEffect } from 'react';
 
 // Components
-import { Activities } from '../Activity/container';
+import { Activities } from 'components/Workspace/Content/Activity/container';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Svgs
-import { AtSign, Close, Settings, Transition } from '../../../../assets/svg';
+import { AtSign, Close, Settings, Transition } from 'assets/svg';
 
 // Styles
 import {
@@ -17,8 +17,8 @@ import {
   Notice,
   NoticeTitle,
   NoticeDescription,
-} from './index.styles';
-import { ClientContentLayout } from '../Layout';
+} from 'components/Workspace/Content/Mention/index.styles';
+import { ClientContentLayout } from 'components/Workspace/Content/Layout';
 
 interface Props {}
 

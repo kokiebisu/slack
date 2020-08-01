@@ -7,7 +7,7 @@ import * as b from 'styles/blocks';
 import { Wrapper } from 'components/Landing/Footer/Section/container.styles';
 
 // Components
-import { Section } from '.';
+import { Section } from 'components/Landing/Footer/Section';
 
 export const Sections: React.FC<{}> = () => {
   const sections = [

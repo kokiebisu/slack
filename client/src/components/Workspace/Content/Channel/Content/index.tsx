@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
 import {
@@ -11,17 +11,17 @@ import {
   Options,
   Option,
   IconWrapper,
-} from './index.styles';
+} from 'components/Workspace/Content/Channel/Content/index.styles';
 
 // Svg
-import { LayerPlus, UserPlus } from '../../../../../assets/svg';
+import { LayerPlus, UserPlus } from 'assets/svg';
 
 // Components
 import { useParams } from 'react-router-dom';
-import { useGetChannelByIdQuery } from '../../../../../generated/graphql';
-import { MessageBox } from '../MessageBox/Layout';
+import { useGetChannelByIdQuery } from 'generated/graphql';
+import { MessageBox } from 'components/Workspace/Content/Channel/MessageBox/Layout';
 
-import { MessageContainer } from '../Container';
+import { MessageContainer } from 'components/Workspace/Content/Channel/Container';
 
 export const Content = () => {
   const { channelId } = useParams();

@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as b from 'styles/blocks';
 
 // Components
-import { AvailableWorkspace } from '.';
+import { AvailableWorkspace } from 'components/FindTeam/Workspace';
 
 interface Props {
   teams: any;

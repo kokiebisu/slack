@@ -1,21 +1,21 @@
 import React from 'react';
 import { useEffect } from 'react';
 
-import * as b from '../../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 import { useParams } from 'react-router-dom';
 
 // Components
-import { MessageHeader } from '../MessageHeader';
+import { MessageHeader } from 'components/Workspace/Content/DirectMessage/MessageHeader';
 
 // Styles
-import { Wrapper } from './index.styles';
+import { Wrapper } from 'components/Workspace/Content/DirectMessage/Container/index.styles';
 
 // Queries
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
-import { DateSeperator } from '../../DateSeperator';
-import { Messages } from '../../Message/container';
+import { DateSeperator } from 'components/Workspace/Content/DateSeperator';
+import { Messages } from 'components/Workspace/Content/Message/container';
 
 export const MessageContainer = () => {
   const { userId } = useParams();

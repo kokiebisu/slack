@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 export const Wrapper = styled(b.Box)`
   background-color: ${({ theme }) => theme.colors.white__dark};

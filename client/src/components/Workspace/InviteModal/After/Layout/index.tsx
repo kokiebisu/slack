@@ -1,5 +1,5 @@
 import React from 'react';
-import * as b from '../../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
 import {
@@ -12,13 +12,13 @@ import {
   Content,
   ContentHeader,
   Line,
-} from './index.styles';
+} from 'components/Workspace/InviteModal/After/Layout/index.styles';
 
 // Svg
-import { PaperPlaneLight } from '../../../../../assets/svg';
+import { PaperPlaneLight } from 'assets/svg';
 
 // Components
-import { Sent } from '../Sent';
+import { Sent } from 'components/Workspace/InviteModal/After/Sent';
 
 interface Props {
   input: { email: string; name: string; done: boolean };

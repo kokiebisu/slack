@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
-import { Wrapper } from './index.styles';
+import { Wrapper } from 'components/Workspace/Content/DirectMessage/MessageBox/input/index.styles';
 
 interface Props {
   children: React.ReactNode;

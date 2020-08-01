@@ -1,14 +1,14 @@
 import * as React from 'react';
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Svgs
-import { SmilePlus } from '../../../../assets/svg/Reaction';
+import { SmilePlus } from 'assets/svg/Reaction';
 
 // Styles
-import { IconWrapper } from './container.styles';
+import { IconWrapper } from 'components/Workspace/Content/Reaction/container.styles';
 
 // Components
-import { Reaction } from '.';
+import { Reaction } from 'components/Workspace/Content/Reaction';
 
 interface Props {}
 

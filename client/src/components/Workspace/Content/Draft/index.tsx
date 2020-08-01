@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Svg
-import { Clipboard } from '../../../../assets/svg/DraftPage';
+import { Clipboard } from 'assets/svg/DraftPage';
 
 import {
   Wrapper,
@@ -13,8 +13,8 @@ import {
   Title,
   Description,
   NewMessage,
-} from './index.styles';
-import { ClientContentLayout } from '../Layout';
+} from 'components/Workspace/Content/Draft/index.styles';
+import { ClientContentLayout } from 'components/Workspace/Content/Layout';
 
 interface Props {}
 

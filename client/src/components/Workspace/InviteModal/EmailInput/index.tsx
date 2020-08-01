@@ -1,8 +1,11 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
-import { StyledInput, Wrapper } from './index.styles';
+import * as b from 'styles/blocks';
+import {
+  StyledInput,
+  Wrapper,
+} from 'components/Workspace/InviteModal/EmailInput/index.styles';
 
 type Dispatch = (action: Action) => void;
 type Action =

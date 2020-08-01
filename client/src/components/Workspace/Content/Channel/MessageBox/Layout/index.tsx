@@ -2,19 +2,23 @@ import * as React from 'react';
 import { useState, useEffect, useMemo, useCallback } from 'react';
 
 // Blocks
-import * as b from '../../../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
-import { Wrapper, Content, CommandDescription } from './index.styles';
+import {
+  Wrapper,
+  Content,
+  CommandDescription,
+} from 'components/Workspace/Content/Channel/MessageBox/Layout/index.styles';
 
 import { Slate, Editable, withReact } from 'slate-react';
 import { createEditor } from 'slate';
 
 // Components
-import { MessageInput } from '../Input';
-import { MessageTools } from '../Tools';
-import { CustomEditor } from '../../../../../../util/customEditor';
-import { useGetChannelByIdQuery } from '../../../../../../generated/graphql';
+import { MessageInput } from 'components/Workspace/Content/Channel/MessageBox/Input';
+import { MessageTools } from 'components/Workspace/Content/Channel/MessageBox/Tools';
+import { CustomEditor } from 'util/customEditor';
+import { useGetChannelByIdQuery } from 'generated/graphql';
 import { useParams } from 'react-router-dom';
 
 export const MessageBox = () => {

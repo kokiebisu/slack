@@ -23,7 +23,7 @@ import {
 } from 'styled-system';
 
 // Sizes
-import { landing } from './sizes';
+import { landing } from 'styles/sizes';
 
 type BoxProps = SpaceProps &
   ColorProps &

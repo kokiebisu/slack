@@ -1,13 +1,13 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Image
-import Leaf from '../../../../assets/img/leaf.png';
+import Leaf from 'assets/img/leaf.png';
 
 // Hooks
-import { useTabTitle } from '../../../../hooks/useTabTitle';
+import { useTabTitle } from 'hooks/useTabTitle';
 
 // Styles
 import {
@@ -16,10 +16,10 @@ import {
   Title,
   Description,
   LearnButton,
-} from './index.styles';
+} from 'components/Workspace/Content/Threads/index.styles';
 
 // Components
-import { ClientContentLayout } from '../Layout';
+import { ClientContentLayout } from 'components/Workspace/Content/Layout';
 
 interface Props {}
 

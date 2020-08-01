@@ -2,20 +2,23 @@ import React from 'react';
 import { useReducer } from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
-import { Wrapper, Container } from './index.styles';
+import {
+  Wrapper,
+  Container,
+} from 'components/Workspace/InviteModal/Layout/index.styles';
 
 // Context
-import { useToggleDispatch } from '../../../../context/toggle-context';
+import { useToggleDispatch } from 'context/toggle-context';
 
 // Query
-import { Before } from '../Before';
+import { Before } from 'components/Workspace/InviteModal/Before';
 
 // Animation
 import { AnimatePresence } from 'framer-motion';
-import { After } from '../After/Layout';
+import { After } from 'components/Workspace/InviteModal/After/Layout';
 
 // Types
 type State = { email: string; name: string; error: string; done: boolean };

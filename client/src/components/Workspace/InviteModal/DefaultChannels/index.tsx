@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
 import {
@@ -11,10 +11,10 @@ import {
   IconWrapper,
   Description,
   Share,
-} from './index.styles';
+} from 'components/Workspace/InviteModal/DefaultChannels/index.styles';
 
 // Svgs
-import { Link } from '../../../../assets/svg';
+import { Link } from 'assets/svg';
 
 export const DefaultChannels = () => {
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 // Blocks
-import * as b from '../../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
 import {
@@ -11,13 +11,13 @@ import {
   Wrapper,
   Profile,
   IconWrapper,
-} from './index.styles';
+} from 'components/Workspace/Content/DirectMessage/MessageHeader/index.styles';
 
 // Svgs
-import { UserAlt } from '../../../../../assets/svg';
+import { UserAlt } from 'assets/svg';
 
 // Queries
-import { useUserQuery } from '../../../../../generated/graphql';
+import { useUserQuery } from 'generated/graphql';
 
 export const MessageHeader = () => {
   const { userId } = useParams();

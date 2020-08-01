@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as b from 'styles/blocks';
 
 // Components
-import { Option } from '.';
+import { Option } from 'components/Landing/Footer/Option';
 
 // Styles
 import {

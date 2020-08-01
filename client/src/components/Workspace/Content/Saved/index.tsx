@@ -1,15 +1,20 @@
 import React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Svgs
-import { Bookmark } from '../../../../assets/svg';
-import { Transition } from '../../../../assets/svg';
+import { Bookmark } from 'assets/svg';
+import { Transition } from 'assets/svg';
 
 // Styles
-import { Wrapper, SideOption, IconWrapper, Bottom } from './index.styles';
-import { ClientContentLayout } from '../Layout';
+import {
+  Wrapper,
+  SideOption,
+  IconWrapper,
+  Bottom,
+} from 'components/Workspace/Content/Saved/index.styles';
+import { ClientContentLayout } from 'components/Workspace/Content/Layout';
 
 interface Props {}
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Activity } from '.';
+import { Activity } from 'components/Workspace/Content/Activity';
 
 export const Activities = () => {
   return (

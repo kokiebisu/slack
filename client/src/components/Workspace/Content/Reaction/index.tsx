@@ -1,13 +1,16 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Imgs
-import Thumbsup from '../../../../assets/img/thumbsup.png';
+import Thumbsup from 'assets/img/thumbsup.png';
 
 // Styles
-import { Wrapper, Container } from './index.styles';
+import {
+  Wrapper,
+  Container,
+} from 'components/Workspace/Content/Reaction/index.styles';
 
 interface Props {}
 

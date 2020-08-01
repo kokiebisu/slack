@@ -1,4 +1,4 @@
-import { main } from '../styles/colors';
+import { main } from 'styles/colors';
 
 export const validationVariant = {
   satisfied: {

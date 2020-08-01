@@ -5,9 +5,9 @@ import { ThemeProvider } from 'styled-components';
 /**
  * Styles
  */
-import { GlobalFonts } from './styles/globalFonts';
-import { GlobalStyles } from './styles/globalStyles';
-import { main } from './styles/colors';
+import { GlobalFonts } from 'styles/globalFonts';
+import { GlobalStyles } from 'styles/globalStyles';
+import { main } from 'styles/colors';
 
 // Apollo
 import { ApolloProvider } from 'react-apollo';
@@ -24,12 +24,12 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 /**
  * Context
  */
-import { ContextProvider } from './context';
+import { ContextProvider } from 'context';
 
 /**
  * Routes
  */
-import { AppRoutes } from './routes/App';
+import { AppRoutes } from 'routes/App';
 
 const httpLink = new HttpLink({
   uri: `http://${

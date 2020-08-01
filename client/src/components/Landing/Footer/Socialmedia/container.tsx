@@ -12,7 +12,7 @@ import {
 } from 'assets/svg/Logo';
 
 // Components
-import { SocialMedia } from '.';
+import { SocialMedia } from 'components/Landing/Footer/Socialmedia';
 
 export const SocialMedias = () => {
   const icons = [

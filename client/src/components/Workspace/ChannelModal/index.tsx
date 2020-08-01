@@ -24,7 +24,7 @@ import {
   LearnMore,
   LearnButton,
   NameWrapper,
-} from './index.styles';
+} from 'components/Workspace/ChannelModal/index.styles';
 
 // Components
 import { Switch } from 'components/Workspace/ChannelModal/switch';

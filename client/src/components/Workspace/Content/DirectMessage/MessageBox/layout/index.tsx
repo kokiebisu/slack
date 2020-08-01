@@ -5,18 +5,22 @@ import { Slate, Editable, withReact } from 'slate-react';
 import { createEditor } from 'slate';
 
 // Blocks
-import * as b from '../../../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
-import { Wrapper, Content, CommandDescription } from './index.styles';
+import {
+  Wrapper,
+  Content,
+  CommandDescription,
+} from 'components/Workspace/Content/DirectMessage/MessageBox/layout/index.styles';
 
 // Components
-import { MessageInput } from '../input';
-import { MessageTools } from '../tools';
-import { CustomEditor } from '../../../../../../util/customEditor';
+import { MessageInput } from 'components/Workspace/Content/DirectMessage/MessageBox/input';
+import { MessageTools } from 'components/Workspace/Content/DirectMessage/MessageBox/tools';
+import { CustomEditor } from 'util/customEditor';
 
 // Queries
-import { useUserQuery } from '../../../../../../generated/graphql';
+import { useUserQuery } from 'generated/graphql';
 
 export const MessageBox = () => {
   const { userId } = useParams();

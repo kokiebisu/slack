@@ -2,16 +2,21 @@ import * as React from 'react';
 import { useCallback } from 'react';
 
 // Blocks
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
-import { Wrapper, Top, Section, IconWrapper } from './index.styles';
+import {
+  Wrapper,
+  Top,
+  Section,
+  IconWrapper,
+} from 'components/Workspace/Content/Layout/index.styles';
 
 // Svgs
-import { Sidebar } from '../../../../assets/svg';
+import { Sidebar } from 'assets/svg';
 
 import { useDropzone } from 'react-dropzone';
-import { DragDrop } from '../DragDrop';
+import { DragDrop } from 'components/Workspace/Content/DragDrop';
 
 interface Props {
   section: string;

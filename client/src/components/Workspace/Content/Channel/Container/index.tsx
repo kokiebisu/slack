@@ -3,14 +3,14 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 // Blocks
-import * as b from '../../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Components
-import { DateSeperator } from '../../DateSeperator';
-import { Messages } from '../../Message/container';
+import { DateSeperator } from 'components/Workspace/Content/DateSeperator';
+import { Messages } from 'components/Workspace/Content/Message/container';
 
 /// Styles
-import { Wrapper } from './index.styles';
+import { Wrapper } from 'components/Workspace/Content/Channel/Container/index.styles';
 
 // Queries
 import gql from 'graphql-tag';

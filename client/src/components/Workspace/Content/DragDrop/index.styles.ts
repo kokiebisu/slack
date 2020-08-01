@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
-const dragdrop = require('../../../../assets/img/dragdrop.png');
+const dragdrop = require('assets/img/dragdrop.png');
 
 export const Wrapper = styled(b.Box)`
   background-color: rgba(255, 255, 255, 0.9);

@@ -1,19 +1,24 @@
 import * as React from 'react';
 
 // Blocks
-import * as b from '../../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
-import { Wrapper, Seperator, IconWrapper, Descriptions } from './index.styles';
+import {
+  Wrapper,
+  Seperator,
+  IconWrapper,
+  Descriptions,
+} from 'components/Workspace/Content/Channel/Subsection/index.styles';
 
 // Svgs
-import { User, MapPinAlt } from '../../../../../assets/svg';
+import { User, MapPinAlt } from 'assets/svg';
 
 // Query
 import {
   useGetBelongingUsersQuery,
   useGetChannelByIdQuery,
-} from '../../../../../generated/graphql';
+} from 'generated/graphql';
 
 interface Props {
   channelId: string;

@@ -15,10 +15,10 @@ import {
   BulletPoint,
   Line,
   ContentWrapper,
-} from './index.styles';
+} from 'components/CreateTeam/Miniworkspace/index.styles';
 
 // Components
-import { SkeletonLine, MockHashTag } from '../Mockup';
+import { SkeletonLine, MockHashTag } from 'components/CreateTeam/Mockup';
 
 // Imgs
 import teamphoto_1 from 'assets/img/createteam_1.png';

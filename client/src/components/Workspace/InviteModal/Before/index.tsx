@@ -1,5 +1,5 @@
 import React from 'react';
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 import {
   Header,
@@ -13,15 +13,15 @@ import {
   AddOptionText,
   EmailInputHeader,
   AddOptions,
-} from './index.styles';
-import { GoogleLogo } from '../../../../assets/svg/Logo';
-import { UserPlus, Close, PaperPlaneLight } from '../../../../assets/svg';
-import { EmailInput } from '../EmailInput';
-import { DefaultChannels } from '../DefaultChannels';
-import { PlusCircle } from '../../../../assets/svg/Plus';
-import { useSendInvitationMutation } from '../../../../generated/graphql';
+} from 'components/Workspace/InviteModal/Before/index.styles';
+import { GoogleLogo } from 'assets/svg/Logo';
+import { UserPlus, Close, PaperPlaneLight } from 'assets/svg';
+import { EmailInput } from 'components/Workspace/InviteModal/EmailInput';
+import { DefaultChannels } from 'components/Workspace/InviteModal/DefaultChannels';
+import { PlusCircle } from 'assets/svg/Plus';
+import { useSendInvitationMutation } from 'generated/graphql';
 import { useParams } from 'react-router-dom';
-import { ErrorDialog } from '../../../shared/components/ErrorDialog';
+import { ErrorDialog } from 'components/shared/components/ErrorDialog';
 
 interface Props {
   dispatchToggle: any;

@@ -1,5 +1,5 @@
 import React from 'react';
-import * as b from '../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 import {
   Wrapper,
@@ -8,7 +8,7 @@ import {
   Image,
   Title,
   Description,
-} from './index.styles';
+} from 'components/Workspace/Content/DragDrop/index.styles';
 
 export const DragDrop = () => {
   return (

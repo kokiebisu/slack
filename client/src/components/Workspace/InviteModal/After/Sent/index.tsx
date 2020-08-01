@@ -1,8 +1,11 @@
 import React from 'react';
-import * as b from '../../../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Styles
-import { Wrapper, Section } from './index.styles';
+import {
+  Wrapper,
+  Section,
+} from 'components/Workspace/InviteModal/After/Sent/index.styles';
 
 interface Props {
   email: string;
