@@ -4,10 +4,10 @@ import * as React from 'react';
 import * as b from 'global/blocks';
 
 // Styles
-import { Wrapper } from 'styles/Footer/Section';
+import { Wrapper } from 'styles/Footer/Landing/Section';
 
 // Components
-import { Section } from 'components/Footer/Section';
+import { Section } from 'components/Footer/Landing/Section';
 
 export const Sections: React.FC<{}> = () => {
   const sections = [

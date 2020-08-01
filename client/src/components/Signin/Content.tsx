@@ -14,7 +14,7 @@ import {
   CreateWorkspaceWrapper,
   CreateWorkspaceContainer,
   IconWrapper,
-} from 'components/Signin/Content/index.styles';
+} from 'styles/Signin/Content';
 
 interface Props {}
 

@@ -7,7 +7,7 @@ import {
   Items,
   Item,
   ItemLink,
-} from 'styles/Footer/Section';
+} from 'styles/Footer/Landing/Section';
 
 interface Props {
   title: string;

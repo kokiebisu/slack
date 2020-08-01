@@ -23,7 +23,7 @@ import {
   Item,
   BottomContainer,
   ContactWrapper,
-} from 'components/Signin/Footer/index.styles';
+} from 'styles/Footer/Signin';
 
 interface Props {}
 

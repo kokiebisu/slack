@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import * as b from 'global/blocks';
 
 // Styles
-import { Wrapper } from 'styles/Footer/Option';
+import { Wrapper } from 'styles/Footer/Landing/Option';
 
 interface Props {
   name: string;

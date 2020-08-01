@@ -15,7 +15,7 @@ import {
   Name,
   AvatarLetter,
   Avatar,
-} from 'styles/Header/LaunchOption';
+} from 'styles/Header/Landing/LaunchOption';
 
 interface Props {
   name: string;

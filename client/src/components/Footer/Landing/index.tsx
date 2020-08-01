@@ -7,12 +7,18 @@ import * as b from 'global/blocks';
 import { NoNameLogo } from 'assets/svg/Logo';
 
 // Styles
-import { Wrapper, Logo, Content, IconWrapper, Copyright } from 'styles/Footer';
+import {
+  Wrapper,
+  Logo,
+  Content,
+  IconWrapper,
+  Copyright,
+} from 'styles/Footer/Landing';
 
 // Components
-import { Options } from 'components/Footer/Options';
-import { SocialMedias } from 'components/Footer/SocialMedias';
-import { Sections } from 'components/Footer/Sections';
+import { Options } from 'components/Footer/Landing/Options';
+import { SocialMedias } from 'components/Footer/Landing/SocialMedias';
+import { Sections } from 'components/Footer/Landing/Sections';
 
 interface Props {}
 

@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as b from 'global/blocks';
 
 // Styles
-import { IconWrapper } from 'styles/Footer/SocialMedia';
+import { IconWrapper } from 'styles/Footer/Landing/SocialMedia';
 
 interface Props {
   type: string;

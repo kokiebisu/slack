@@ -2,10 +2,10 @@ import * as React from 'react';
 import * as b from 'global/blocks';
 
 // Styles
-import { Wrapper, OtherOption } from 'styles/Header/LaunchOptions';
+import { Wrapper, OtherOption } from 'styles/Header/Landing/LaunchOptions';
 
 // Components
-import { WorkspaceOption } from 'components/Header/LaunchOption';
+import { WorkspaceOption } from 'components/Header/Landing/LaunchOption';
 
 interface Props {
   teams: Team[];

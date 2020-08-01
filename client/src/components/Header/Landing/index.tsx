@@ -23,11 +23,11 @@ import {
   GetStartedButton,
   GetStartedButtonWrapper,
   IconButtonWrapper,
-} from 'styles/Header';
+} from 'styles/Header/Landing';
 
 import { MeQuery, useMyTeamsQuery } from 'generated/graphql';
-import { Navigation } from 'components/Header/Navigation';
-import { LaunchOptions } from 'components/Header/LaunchOptions';
+import { Navigation } from 'components/Header/Landing/Navigation';
+import { LaunchOptions } from 'components/Header/Landing/LaunchOptions';
 import { useToggleDispatch } from 'context/toggle-context';
 
 interface Props {

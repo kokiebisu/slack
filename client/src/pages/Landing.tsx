@@ -3,12 +3,12 @@ import { useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
 // Components
-import { Header } from 'components/Header';
+import { Header } from 'components/Header/Landing';
 import { Banner } from 'components/Landing/Banner';
 import { BringTeam } from 'components/Landing/BringTeam';
 import { BetterSoftware } from 'components/Landing/BetterSoftware';
 import { Choose } from 'components/Landing/Choose';
-import { Footer } from 'components/Footer';
+import { Footer } from 'components/Footer/Landing';
 
 // Graphql
 import { useMeQuery } from 'generated/graphql';

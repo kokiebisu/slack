@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import { SignInHeader } from 'components/Signin/Header';
+import { SignInHeader } from 'components/Header/Signin';
 import { SignInContent } from 'components/Signin/Content';
-import { SignInFooter } from 'components/Signin/Footer';
+import { SignInFooter } from 'components/Footer/Signin';
 
 // Styles
-import { Wrapper } from 'components/Signin/Layout/index.styles';
+import { Wrapper } from 'styles/Signin';
 
 interface Props {}
 

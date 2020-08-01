@@ -4,14 +4,14 @@ import * as React from 'react';
 import * as b from 'global/blocks';
 
 // Components
-import { Option } from 'components/Footer/Option';
+import { Option } from 'components/Footer/Landing/Option';
 
 // Styles
 import {
   Wrapper,
   ChangeRegionButton,
   IconWrapper,
-} from 'styles/Footer/Options';
+} from 'styles/Footer/Landing/Options';
 
 // Svgs
 import { Globe } from 'assets/svg';

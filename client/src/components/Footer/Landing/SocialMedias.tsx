@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // Styles
-import { Wrapper } from 'styles/Footer/SocialMedias';
+import { Wrapper } from 'styles/Footer/Landing/SocialMedias';
 
 // Svgs
 import {
@@ -12,7 +12,7 @@ import {
 } from 'assets/svg/Logo';
 
 // Components
-import { SocialMedia } from 'components/Footer/SocialMedia';
+import { SocialMedia } from 'components/Footer/Landing/SocialMedia';
 
 export const SocialMedias = () => {
   const icons = [

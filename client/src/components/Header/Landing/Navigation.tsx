@@ -4,7 +4,12 @@ import { Link } from 'react-router-dom';
 // Blocks
 import * as b from 'global/blocks';
 
-import { Nav, NavItem, Dropdown, LinkWrapper } from 'styles/Header/Navigation';
+import {
+  Nav,
+  NavItem,
+  Dropdown,
+  LinkWrapper,
+} from 'styles/Header/Landing/Navigation';
 
 interface Props {
   hovered: HoveredProps;

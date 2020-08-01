@@ -17,7 +17,7 @@ import {
   NavItem,
   SignInItem,
   IconWrapper,
-} from 'components/Signin/Header/index.styles';
+} from 'styles/Header/Signin';
 
 interface Props {}
 

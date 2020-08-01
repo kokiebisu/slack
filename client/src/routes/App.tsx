@@ -8,7 +8,7 @@ import { ClientRoutes } from 'routes/Workspace';
 
 // Pages
 import { Landing } from 'pages/Landing';
-import { SignIn } from 'components/Signin/Layout';
+import { SignIn } from 'pages/Signin';
 import { FindTeam } from 'pages/FindTeam';
 
 export const AppRoutes = () => {
