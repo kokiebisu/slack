@@ -3,8 +3,7 @@ import * as React from 'react';
 import * as b from 'global/blocks';
 
 // Svg
-import { NameLogo } from 'assets/svg/Logo';
-import { Globe, BoldPlus } from 'assets/svg';
+import { Globe, BoldPlus, NameLogo } from 'assets/svg';
 
 // Image
 import workspace from 'assets/img/slack-workspace.png';
@@ -23,7 +22,7 @@ import {
   FooterLink,
   ChangeRegion,
   Image,
-} from 'components/GetStarted/Layout/index.styles';
+} from 'styles/GetStarted';
 
 interface Props {}
 
