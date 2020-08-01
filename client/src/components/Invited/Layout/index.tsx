@@ -2,27 +2,27 @@ import * as React from 'react';
 import { useReducer } from 'react';
 
 // Blocks
-import * as b from '../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Components
-import { LogoCenterLayout } from '../../shared/LogoCenter/layout';
+import { LogoCenterLayout } from 'components/shared/LogoCenter/layout';
 
 // Styles
-import { Wrapper } from './index.styles';
-import { Inputs } from '../../shared/components/Inputs';
-import { PasswordValidationBar } from '../../shared/components/ValidationBar';
-import { PasswordValidationText } from '../../shared/components/ValidationText';
-import { ErrorDialog } from '../../shared/components/ErrorDialog';
-import { Confirm } from '../../shared/components/Confirm';
-import { Policy } from '../../shared/components/Policy';
+import { Wrapper } from 'components/Invited/Layout/index.styles';
+import { Inputs } from 'components/shared/components/Inputs';
+import { PasswordValidationBar } from 'components/shared/components/ValidationBar';
+import { PasswordValidationText } from 'components/shared/components/ValidationText';
+import { ErrorDialog } from 'components/shared/components/ErrorDialog';
+import { Confirm } from 'components/shared/components/Confirm';
+import { Policy } from 'components/shared/components/Policy';
 
 // Utils
-import { inputReducer } from '../../shared/components/Inputs/util';
+import { inputReducer } from 'components/shared/components/Inputs/util';
 import { useParams, useHistory } from 'react-router-dom';
-import { fullNameRegex, weakRegex } from '../../../util/passwordUtil';
-import { randomColor } from '../../../util/randomColor';
-import { profile } from '../../../styles/colors';
-import { useCreateUserInviteMutation } from '../../../generated/graphql';
+import { fullNameRegex, weakRegex } from 'util/passwordUtil';
+import { randomColor } from 'util/randomColor';
+import { profile } from 'styles/colors';
+import { useCreateUserInviteMutation } from 'generated/graphql';
 
 export const NewAccountViaInvite = () => {
   const { token, invitorId } = useParams();
