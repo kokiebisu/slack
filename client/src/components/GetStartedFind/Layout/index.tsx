@@ -3,20 +3,25 @@ import { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
 // Blocks
-import * as b from '../../../styles/blocks';
+import * as b from 'styles/blocks';
 
 // Components
-import { LogoCenterLayout } from '../../shared/LogoCenter/layout';
-import { Confirm } from '../Confirm';
+import { LogoCenterLayout } from 'components/shared/LogoCenter/layout';
+import { Confirm } from 'components/GetStartedFind/Confirm';
 
 // Styles
-import { Wrapper, EmailInput, ErrorBox, IconWrapper } from './index.styles';
+import {
+  Wrapper,
+  EmailInput,
+  ErrorBox,
+  IconWrapper,
+} from 'components/GetStartedFind/Layout/index.styles';
 
 // Graphql
-import { useCheckEmailLazyQuery } from '../../../generated/graphql';
+import { useCheckEmailLazyQuery } from 'generated/graphql';
 
 // Svg
-import { Warning } from '../../../assets/svg';
+import { Warning } from 'assets/svg';
 
 interface Props {}
 

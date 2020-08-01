@@ -1,5 +1,5 @@
 import React from 'react';
-import * as b from '../../../styles/blocks';
+import * as b from 'styles/blocks';
 import {
   ConfirmButton,
   DotWrapper,
@@ -9,7 +9,7 @@ import {
   DotVariants,
   DotContainerVariants,
   DotTransition,
-} from './index.styles';
+} from 'components/GetStartedFind/Confirm/index.styles';
 
 interface Props {
   loading: boolean;
