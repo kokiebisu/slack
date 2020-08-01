@@ -1,5 +1,9 @@
 import * as React from 'react';
 import { useReducer } from 'react';
+import { useParams, Redirect, useHistory } from 'react-router-dom';
+
+// Queries
+import { useVerifyUserInviteQuery } from 'generated/graphql';
 
 // Blocks
 import * as b from 'global/blocks';
@@ -8,7 +12,7 @@ import * as b from 'global/blocks';
 import { LogoCenterLayout } from 'components/shared/LogoCenter/layout';
 
 // Styles
-import { Wrapper } from 'components/Invited/Layout/index.styles';
+import { Wrapper } from 'styles/Invited';
 import { Inputs } from 'components/shared/components/Inputs';
 import { PasswordValidationBar } from 'components/shared/components/ValidationBar';
 import { PasswordValidationText } from 'components/shared/components/ValidationText';
@@ -18,14 +22,17 @@ import { Policy } from 'components/shared/components/Policy';
 
 // Utils
 import { inputReducer } from 'components/shared/components/Inputs/util';
-import { useParams, useHistory } from 'react-router-dom';
+
 import { fullNameRegex, weakRegex } from 'util/passwordUtil';
 import { randomColor } from 'util/randomColor';
 import { profile } from 'global/colors';
 import { useCreateUserInviteMutation } from 'generated/graphql';
 
-export const NewAccountViaInvite = () => {
-  const { token, invitorId } = useParams();
+export const Invited = () => {
+  const { invitorId, token } = useParams();
+  const { data: VerifyUserInvite } = useVerifyUserInviteQuery({
+    variables: { token, invitorId },
+  });
   const history = useHistory();
   const [state, dispatch] = useReducer(inputReducer, {
     fullname: '',
@@ -90,46 +97,58 @@ export const NewAccountViaInvite = () => {
   };
 
   return (
-    <LogoCenterLayout>
-      <b.Box py={4}>
-        <b.Flex flexDirection='column' alignItems='center'>
-          <Wrapper>
-            <b.Box>
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  createAccount();
-                }}>
-                <b.Box>
-                  <b.Text
-                    fontSize={48}
-                    color='black__light'
-                    fontFamily='Larsseit-Bold'
-                    textAlign='center'>
-                    First, create your account
-                  </b.Text>
-                </b.Box>
+    <>
+      {token && (
+        <>
+          {VerifyUserInvite?.verifyUserInvite.ok ? (
+            <Redirect
+              to={`/client/${VerifyUserInvite?.verifyUserInvite.teamId}`}
+            />
+          ) : (
+            <LogoCenterLayout>
+              <b.Box py={4}>
+                <b.Flex flexDirection='column' alignItems='center'>
+                  <Wrapper>
+                    <b.Box>
+                      <form
+                        onSubmit={(e) => {
+                          e.preventDefault();
+                          createAccount();
+                        }}>
+                        <b.Box>
+                          <b.Text
+                            fontSize={48}
+                            color='black__light'
+                            fontFamily='Larsseit-Bold'
+                            textAlign='center'>
+                            First, create your account
+                          </b.Text>
+                        </b.Box>
 
-                <Inputs
-                  invite
-                  fullname={state.fullname}
-                  password={state.password}
-                  modifyFullname={dispatch}
-                  modifyEmail={dispatch}
-                  modifyPassword={dispatch}
-                />
-                <PasswordValidationBar password={state.password} />
-                <PasswordValidationText password={state.password} />
-                <ErrorDialog width='full' error={state.errorlog} />
-                <b.Box>
-                  <Confirm loading={state.loading} />
-                  <Policy />
-                </b.Box>
-              </form>
-            </b.Box>
-          </Wrapper>
-        </b.Flex>
-      </b.Box>
-    </LogoCenterLayout>
+                        <Inputs
+                          invite
+                          fullname={state.fullname}
+                          password={state.password}
+                          modifyFullname={dispatch}
+                          modifyEmail={dispatch}
+                          modifyPassword={dispatch}
+                        />
+                        <PasswordValidationBar password={state.password} />
+                        <PasswordValidationText password={state.password} />
+                        <ErrorDialog width='full' error={state.errorlog} />
+                        <b.Box>
+                          <Confirm loading={state.loading} />
+                          <Policy />
+                        </b.Box>
+                      </form>
+                    </b.Box>
+                  </Wrapper>
+                </b.Flex>
+              </b.Box>
+            </LogoCenterLayout>
+          )}
+        </>
+      )}
+    </>
   );
 };
