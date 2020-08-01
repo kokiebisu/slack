@@ -12,7 +12,7 @@ import { Footer } from 'components/Footer/Landing';
 
 // Graphql
 import { useMeQuery } from 'generated/graphql';
-import { LandingModal } from 'components/Modal/Landing';
+import { LandingModal } from 'modals/Landing/Landing';
 
 import { useToggleState } from 'context/toggle-context';
 

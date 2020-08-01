@@ -50,6 +50,11 @@ const reducer = (state: State, action: Action) => {
   }
 };
 
+interface SwitchProps {
+  isOn: boolean;
+  switchToggle: () => void;
+}
+
 interface Props {}
 
 export const ChannelModal: React.FC<Props> = () => {
@@ -193,6 +198,16 @@ export const ChannelModal: React.FC<Props> = () => {
           </b.Box>
         </Container>
       </b.Flex>
+    </Wrapper>
+  );
+};
+
+const Switch: React.FC<SwitchProps> = ({ isOn, switchToggle }) => {
+  return (
+    <Wrapper
+      className={isOn ? `switch on` : `switch off`}
+      onClick={switchToggle}>
+      <Inner className={isOn ? `switch on` : `switch off`} />
     </Wrapper>
   );
 };

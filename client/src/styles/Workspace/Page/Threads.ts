@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import * as b from 'global/blocks';
+import * as b from 'styles/blocks';
 
 export const Wrapper = styled(b.Box)`
   height: 100%;
@@ -8,7 +8,6 @@ export const Wrapper = styled(b.Box)`
 
 export const IconWrapper = styled(b.Box)`
   margin: 5px 0;
-
   &.leaf {
     img {
       width: 60px;

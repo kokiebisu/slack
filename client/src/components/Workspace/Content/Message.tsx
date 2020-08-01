@@ -1,4 +1,5 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
 // Blocks
 import * as b from 'global/blocks';
@@ -60,10 +61,26 @@ export const Message: React.FC<Props> = ({ sender, avatar, time, body }) => {
 const renderBody = (body: Body) => {
   switch (body.type) {
     case 'joined':
-      return <MessageJoined />;
+      return (
+        <Wrapper>
+          <b.Text>joined #general</b.Text>
+        </Wrapper>
+      );
     case 'message':
-      return <MessageBody text={body.message!} />;
+      return <Content dangerouslySetInnerHTML={{ __html: text }} />;
     default:
       return;
   }
 };
+
+const Content = styled(b.Box)`
+  word-break: break-all;
+`;
+
+const Wrapper = styled(b.Box)`
+  & p {
+    font-size: 15px;
+    font-family: 'SlackLato-Regular';
+    color: ${({ theme }) => theme.colors.gray__light};
+  }
+`;
