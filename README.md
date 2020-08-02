@@ -2,13 +2,19 @@
     <img src="https://user-images.githubusercontent.com/43525282/87019103-0e20d580-c187-11ea-985f-eefc02e347bb.jpg" alt="slack" width="200" />
 </p>
 
+
 <br/>
 
 <p align="center">
-  <a href="https://travis-ci.com/github/kokiebisu/slack">
+    <a href="https://travis-ci.com/github/kokiebisu/slack">
     <img src="https://travis-ci.com/kokiebisu/slack.svg?branch=master" alt="Build Status on TravisCI" />
   </a>
-  <br/>
+  <a href="https://github.com/kokiebisu/slack/issues">
+    <img src="https://img.shields.io/github/issues/kokiebisu/slack" alt="Issues" />
+  </a>
+      <a href="https://github.com/kokiebisu/slack/issues">
+    <img src="https://img.shields.io/github/languages/top/kokiebisu/slack" alt="Issues" />
+  </a>
 </p>
 
 This is my challenge to replicate real time connections using Graphql.
