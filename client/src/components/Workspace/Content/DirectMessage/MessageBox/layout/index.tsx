@@ -5,7 +5,7 @@ import { Slate, Editable, withReact } from 'slate-react';
 import { createEditor } from 'slate';
 
 // Blocks
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
 // Styles
 import {

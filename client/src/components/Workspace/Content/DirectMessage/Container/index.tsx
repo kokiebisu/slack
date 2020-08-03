@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
 import { useParams } from 'react-router-dom';
 
@@ -15,7 +15,7 @@ import { Wrapper } from 'components/Workspace/Content/DirectMessage/Container/in
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { DateSeperator } from 'components/Workspace/Content/DateSeperator';
-import { Messages } from 'components/Workspace/Content/Message/container';
+import { Messages } from 'components/Workspace/Content/Messages';
 
 export const MessageContainer = () => {
   const { userId } = useParams();

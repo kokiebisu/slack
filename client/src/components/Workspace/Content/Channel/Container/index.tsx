@@ -3,11 +3,11 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 // Blocks
-import * as b from 'styles/blocks';
+import * as b from 'global/blocks';
 
 // Components
 import { DateSeperator } from 'components/Workspace/Content/DateSeperator';
-import { Messages } from 'components/Workspace/Content/Message/container';
+import { Messages } from 'components/Workspace/Content/Messages';
 
 /// Styles
 import { Wrapper } from 'components/Workspace/Content/Channel/Container/index.styles';

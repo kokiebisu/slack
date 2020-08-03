@@ -18,6 +18,7 @@ services:
     environment:
       - NODE_ENV=development
       - HOST=localhost:4000
+      - ORIGIN=localhost:3000
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - PGUSER=postgres

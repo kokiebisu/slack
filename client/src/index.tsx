@@ -5,9 +5,9 @@ import { ThemeProvider } from 'styled-components';
 /**
  * Styles
  */
-import { GlobalFonts } from 'styles/globalFonts';
-import { GlobalStyles } from 'styles/globalStyles';
-import { main } from 'styles/colors';
+import { GlobalFonts } from 'global/globalFonts';
+import { GlobalStyles } from 'global/globalStyles';
+import { main } from 'global/colors';
 
 // Apollo
 import { ApolloProvider } from 'react-apollo';

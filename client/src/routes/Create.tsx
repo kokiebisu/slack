@@ -10,8 +10,8 @@ import {
 } from 'react-router-dom';
 
 // Components
-import { CreateTeamLayout } from 'components/CreateTeam/Layout';
-import { ConfirmDigit } from 'components/ConfirmDigit/Layout';
+import { CreateTeamLayout } from 'pages/CreateTeam';
+import { ConfirmDigit } from 'pages/ConfirmDigit';
 
 // Queries
 import {
@@ -22,7 +22,7 @@ import {
 
 // Util
 import { randomColor } from 'util/randomColor';
-import { avatar } from 'styles/colors';
+import { avatar } from 'global/colors';
 
 export const CreateRoutes: React.SFC = () => {
   const history = useHistory();
