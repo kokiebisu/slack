@@ -32,13 +32,8 @@ const PORT = process.env.PORT || 4000;
   }
 
   const app = Express();
-
-  app.use(
-    cors({
-      credentials: true,
-      origin: '*',
-    })
-  );
+  const origin = `http://${process.env.ORIGIN}`;
+  console.log('origin', origin);
   // app.use(allowCrossDomain);
   app.use(cookieParser());
 
@@ -58,6 +53,13 @@ const PORT = process.env.PORT || 4000;
   // app.use(allowCrossDomain);
 
   app.use('/refresh_token', tokenRouter);
+
+  app.use(
+    cors({
+      credentials: true,
+      origin,
+    })
+  );
 
   const RedisStore = connectRedis(session);
 
@@ -79,7 +81,7 @@ const PORT = process.env.PORT || 4000;
     })
   );
 
-  apolloServer.applyMiddleware({ app, cors: true });
+  apolloServer.applyMiddleware({ app, cors: false });
 
   const httpServer = createServer(app);
 
