@@ -31,6 +31,7 @@ export const Inputs: React.FC<Props> = ({
           </b.Box>
           <InputWrapper>
             <Input
+              autoCapitalize='sentences'
               value={fullname}
               onChange={(e) =>
                 modifyFullname({
@@ -56,6 +57,7 @@ export const Inputs: React.FC<Props> = ({
             </b.Box>
             <InputWrapper>
               <Input
+                autoCapitalize='none'
                 value={email}
                 onChange={(e) => {
                   if (modifyEmail) {
@@ -80,6 +82,7 @@ export const Inputs: React.FC<Props> = ({
           </b.Box>
           <InputWrapper>
             <Input
+              autoCapitalize='none'
               value={password}
               onChange={(e) =>
                 modifyPassword({
