@@ -19,7 +19,6 @@ import { LayerPlus, UserPlus } from 'assets/svg';
 // Components
 import { useParams } from 'react-router-dom';
 import { useGetChannelByIdQuery } from 'generated/graphql';
-import { MessageBox } from 'components/Workspace/Channel/MessageBox/Layout';
 
 import { MessageContainer } from 'components/Workspace/Channel/Container';
 
@@ -96,7 +95,6 @@ export const Content = () => {
           </Options>
         </b.Box>
         <MessageContainer />
-        <MessageBox />
       </Wrapper>
     </>
   );

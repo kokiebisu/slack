@@ -1,8 +1,8 @@
 import React from 'react';
 
 // Components
-import { MessageBox } from 'components/Workspace/DirectMessage/MessageBox/layout';
 import { MessageContainer } from 'components/Workspace/DirectMessage/Container';
+import { MessageBox } from 'components/Workspace/MessageBox';
 
 // Styles
 import { Wrapper } from 'styles/Workspace/DirectMessage/Content';
