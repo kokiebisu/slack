@@ -9,8 +9,7 @@ import { useParams } from 'react-router-dom';
 import { MessageHeader } from 'components/Workspace/DirectMessage/MessageHeader';
 
 // Styles
-import { Wrapper } from 'styles/Workspace/DirectMessage/MessageHeader';
-
+import { Wrapper } from 'styles/Workspace/DirectMessage/Container';
 // Queries
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
