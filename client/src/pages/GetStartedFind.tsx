@@ -67,6 +67,7 @@ export const GetStartedFind: React.FC<Props> = () => {
                     <b.Box>
                       <b.Flex justifyContent='center'>
                         <EmailInput
+                          autoCapitalize='none'
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           border='1px solid gray'
