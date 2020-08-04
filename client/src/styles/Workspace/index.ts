@@ -8,6 +8,7 @@ export const Wrapper = styled(b.Box)`
   height: 100vh;
   display: grid;
   grid-template-rows: 37px auto;
+  overscroll-behavior: none;
 `;
 
 export const ContentWrapper = styled(b.Box)`

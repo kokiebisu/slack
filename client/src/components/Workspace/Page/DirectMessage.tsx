@@ -5,7 +5,7 @@ import { Options } from 'components/shared/Options';
 
 // Query
 import { useUserQuery } from 'generated/graphql';
-import { Content } from 'components/Workspace/Content/DirectMessage/Content';
+import { Content } from 'components/Workspace/DirectMessage/Content';
 
 interface Props {}
 

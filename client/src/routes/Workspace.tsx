@@ -18,7 +18,7 @@ import { MentionPage } from 'components/Workspace/Page/Mention';
 import { DraftPage } from 'components/Workspace/Page/Draft';
 import { SavedPage } from 'components/Workspace/Page/Saved';
 import { Workspace } from 'pages/Workspace';
-import { ChannelPage } from 'components/Workspace/Content/Channel/Layout';
+import { ChannelPage } from 'components/Workspace/Page/Channel';
 import { DirectMessagePage } from 'components/Workspace/Page/DirectMessage';
 
 type Props = RouteComponentProps<

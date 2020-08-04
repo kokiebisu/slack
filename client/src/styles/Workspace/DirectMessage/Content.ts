@@ -4,6 +4,5 @@ import * as b from 'global/blocks';
 export const Wrapper = styled(b.Box)`
   height: calc(100vh - 65px - 37px);
   overflow-y: auto;
-
   position: relative;
 `;
