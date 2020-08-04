@@ -8,10 +8,10 @@ import { useGetChannelByIdQuery } from 'generated/graphql';
 // Components
 import { ClientContentLayout } from 'layout/Workspace';
 import { Options } from 'components/shared/Options';
-import { SubSection } from 'components/Workspace/Content/Channel/Subsection';
+import { SubSection } from 'components/Workspace/Channel/Subsection';
 
 // Styles
-import { Content } from 'components/Workspace/Content/Channel/Content';
+import { Content } from 'components/Workspace/Channel/Content';
 
 interface Props {}
 

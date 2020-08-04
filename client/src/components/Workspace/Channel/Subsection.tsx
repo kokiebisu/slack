@@ -9,7 +9,7 @@ import {
   Seperator,
   IconWrapper,
   Descriptions,
-} from 'components/Workspace/Content/Channel/Subsection/index.styles';
+} from 'styles/Workspace/Channel/Subsection';
 
 // Svgs
 import { User, MapPinAlt } from 'assets/svg';

@@ -6,10 +6,10 @@ import * as b from 'global/blocks';
 import { useParams } from 'react-router-dom';
 
 // Components
-import { MessageHeader } from 'components/Workspace/Content/DirectMessage/MessageHeader';
+import { MessageHeader } from 'components/Workspace/DirectMessage/MessageHeader';
 
 // Styles
-import { Wrapper } from 'components/Workspace/Content/DirectMessage/Container/index.styles';
+import { Wrapper } from 'styles/Workspace/DirectMessage/MessageHeader';
 
 // Queries
 import gql from 'graphql-tag';

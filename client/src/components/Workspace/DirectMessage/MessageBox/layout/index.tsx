@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { Slate, Editable, withReact } from 'slate-react';
+import { createEditor } from 'slate';
 
 // Blocks
 import * as b from 'global/blocks';
@@ -9,29 +12,27 @@ import {
   Wrapper,
   Content,
   CommandDescription,
-} from 'components/Workspace/Content/Channel/MessageBox/Layout/index.styles';
-
-import { Slate, Editable, withReact } from 'slate-react';
-import { createEditor } from 'slate';
+} from 'components/Workspace/DirectMessage/MessageBox/layout/index.styles';
 
 // Components
-import { MessageInput } from 'components/Workspace/Content/Channel/MessageBox/Input';
-import { MessageTools } from 'components/Workspace/Content/Channel/MessageBox/Tools';
+import { MessageInput } from 'components/Workspace/DirectMessage/MessageBox/input';
+import { MessageTools } from 'components/Workspace/DirectMessage/MessageBox/tools';
 import { CustomEditor } from 'util/customEditor';
-import { useGetChannelByIdQuery } from 'generated/graphql';
-import { useParams } from 'react-router-dom';
+
+// Queries
+import { useUserQuery } from 'generated/graphql';
 
 export const MessageBox = () => {
-  const { channelId } = useParams();
+  const { userId } = useParams();
 
-  const { data, loading } = useGetChannelByIdQuery({
-    variables: { channelId },
+  const { data: userData, loading } = useUserQuery({
+    variables: { userId },
     fetchPolicy: 'cache-and-network',
   });
   const editor = useMemo(() => withReact(createEditor()), []);
   const [value, setValue] = useState<any>(
-    localStorage.getItem(`${channelId}`)
-      ? JSON.parse(localStorage.getItem(`${channelId}`)!)
+    localStorage.getItem(`${userId}`)
+      ? JSON.parse(localStorage.getItem(`${userId}`)!)
       : [
           {
             type: 'paragraph',
@@ -42,8 +43,8 @@ export const MessageBox = () => {
 
   useEffect(() => {
     setValue(
-      localStorage.getItem(`${channelId}`)
-        ? JSON.parse(localStorage.getItem(`${channelId}`)!)
+      localStorage.getItem(`${userId}`)
+        ? JSON.parse(localStorage.getItem(`${userId}`)!)
         : [
             {
               type: 'paragraph',
@@ -51,7 +52,7 @@ export const MessageBox = () => {
             },
           ]
     );
-  }, [channelId]);
+  }, [userId]);
 
   const renderElement = useCallback((props) => {
     switch (props.element.type) {
@@ -79,11 +80,11 @@ export const MessageBox = () => {
               onChange={(newValue) => {
                 setValue(newValue);
                 const content = JSON.stringify(value);
-                localStorage.setItem(`${channelId}`, content);
+                localStorage.setItem(`${userId}`, content);
               }}>
-              {!loading && data?.getChannelById.ok && (
+              {!loading && userData?.user.ok && (
                 <Editable
-                  placeholder={`Message #${data.getChannelById.channel?.name}`}
+                  placeholder={`Message ${userData.user.user?.fullname}`}
                   renderLeaf={renderLeaf}
                   renderElement={renderElement}
                   onKeyDown={(event) => {
@@ -119,7 +120,7 @@ export const MessageBox = () => {
                   children: [{ text: '' }],
                 },
               ]);
-              localStorage.setItem(`${channelId}`, '');
+              localStorage.setItem(`${userId}`, '');
             }}
           />
         </Content>
