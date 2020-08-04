@@ -15,6 +15,7 @@ import { ChannelModal } from 'modals/Channel';
 import { useMeQuery, useTeamQuery } from 'generated/graphql';
 import { useToggleState } from 'context/toggle-context';
 import { InviteModal } from 'modals/Invite';
+import { useEffect } from 'react';
 
 interface Props {
   route: React.ReactNode;
@@ -32,6 +33,14 @@ export const Workspace: React.FC<Props> = ({ route }) => {
       teamId,
     },
   });
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = 'initial';
+    };
+  }, []);
 
   return (
     <>
