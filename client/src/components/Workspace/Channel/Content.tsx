@@ -11,7 +11,7 @@ import {
   Options,
   Option,
   IconWrapper,
-} from 'components/Workspace/Content/Channel/Content/index.styles';
+} from 'styles/Workspace/Channel/Content';
 
 // Svg
 import { LayerPlus, UserPlus } from 'assets/svg';
@@ -19,9 +19,9 @@ import { LayerPlus, UserPlus } from 'assets/svg';
 // Components
 import { useParams } from 'react-router-dom';
 import { useGetChannelByIdQuery } from 'generated/graphql';
-import { MessageBox } from 'components/Workspace/Content/Channel/MessageBox/Layout';
+import { MessageBox } from 'components/Workspace/Channel/MessageBox/Layout';
 
-import { MessageContainer } from 'components/Workspace/Content/Channel/Container';
+import { MessageContainer } from 'components/Workspace/Channel/Container';
 
 export const Content = () => {
   const { channelId } = useParams();

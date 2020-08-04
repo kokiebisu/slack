@@ -8,7 +8,7 @@ import {
   Wrapper,
   IconWrapper,
   Seperator,
-} from 'components/Workspace/Content/DirectMessage/MessageBox/tools/index.styles';
+} from 'components/Workspace/Channel/MessageBox/Tools/index.styles';
 import {
   Bolt,
   Bold,
@@ -29,7 +29,7 @@ import {
 } from 'assets/svg';
 import { CustomEditor } from 'util/customEditor';
 import { useParams } from 'react-router-dom';
-import { useSendDirectMessageMutation } from 'generated/graphql';
+import { useSendMessageMutation } from 'generated/graphql';
 
 interface Props {
   editor: any;
@@ -42,8 +42,8 @@ export const MessageTools: React.FC<Props> = ({
   value,
   resetValue,
 }) => {
-  const { userId } = useParams();
-  const [send] = useSendDirectMessageMutation();
+  const { channelId } = useParams();
+  const [send] = useSendMessageMutation();
   let message = '';
   value.forEach((element: any, index: any) => {
     if (index === 0) {
@@ -157,7 +157,8 @@ export const MessageTools: React.FC<Props> = ({
                     if (localStorage.getItem('teamId')) {
                       await send({
                         variables: {
-                          toId: userId,
+                          channelId,
+                          teamId: localStorage.getItem('teamId')!,
                           body: message,
                         },
                       });

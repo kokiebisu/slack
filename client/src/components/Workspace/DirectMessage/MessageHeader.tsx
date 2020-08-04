@@ -11,7 +11,7 @@ import {
   Wrapper,
   Profile,
   IconWrapper,
-} from 'components/Workspace/Content/DirectMessage/MessageHeader/index.styles';
+} from 'styles/Workspace/DirectMessage/MessageHeader';
 
 // Svgs
 import { UserAlt } from 'assets/svg';

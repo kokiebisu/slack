@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as b from 'global/blocks';
 
 // Styles
-import { Wrapper } from 'components/Workspace/Content/Channel/MessageBox/Input/index.styles';
+import { Wrapper } from 'components/Workspace/DirectMessage/MessageBox/input/index.styles';
 
 interface Props {
   children: React.ReactNode;
