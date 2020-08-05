@@ -19,10 +19,6 @@ export const Wrapper = styled(b.Box)`
       &.hovered {
         background-color: ${({ theme }) => theme.colors.primary__dark};
       }
-
-      &:focus {
-        outline: none;
-      }
     }
 
     &.sidebar {

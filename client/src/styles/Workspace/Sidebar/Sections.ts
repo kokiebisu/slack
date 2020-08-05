@@ -6,8 +6,4 @@ export const Wrapper = styled(b.Box)`
   padding: 15px 0;
 `;
 
-export const InviteButton = styled(b.Box)`
-  &:focus {
-    outline: none;
-  }
-`;
+export const InviteButton = styled(b.Box)``;

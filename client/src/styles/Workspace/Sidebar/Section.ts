@@ -31,10 +31,6 @@ export const TitleContainer = styled(b.Button)`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-
-  &:focus {
-    outline: none;
-  }
 `;
 
 export const IconButtonWrapper = styled(b.Button)`
@@ -55,10 +51,6 @@ export const IconButtonWrapper = styled(b.Button)`
     &:hover {
       background: ${({ theme }) => theme.colors.primary__lighter};
     }
-  }
-
-  &:focus {
-    outline: none;
   }
 
   &.smallplus {
