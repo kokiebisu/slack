@@ -1,7 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
 import { Editor, EditorState, RichUtils, convertToRaw } from 'draft-js';
-import 'draft-js/dist/Draft.css';
+import styled from 'styled-components';
+import { Bold } from 'assets/svg';
+
+import { Wrapper } from 'styles/Workspace/MessageBox/Editor';
 
 export const MyEditor = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -15,22 +18,18 @@ export const MyEditor = () => {
     setEditorState(nextState);
   };
 
-  const underlineText = (e: any) => {
-    e.preventDefault();
-
-    let nextState = RichUtils.toggleInlineStyle(editorState, 'UNDERLINE');
-
-    setEditorState(nextState);
-  };
-
   return (
-    <div className='MyEditor'>
-      <button onMouseDown={(e) => boldText(e)}>Bold</button>
-      <button onMouseDown={(e) => underlineText(e)}>Underline</button>
+    <Wrapper className='MyEditor'>
       <Editor
+        placeholder='Message #general'
         editorState={editorState}
         onChange={(editorState) => setEditorState(editorState)}
       />
-    </div>
+      <div>
+        <button onMouseDown={(e) => boldText(e)}>
+          <Bold />
+        </button>
+      </div>
+    </Wrapper>
   );
 };
