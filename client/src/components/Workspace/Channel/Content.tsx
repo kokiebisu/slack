@@ -21,7 +21,7 @@ import { useParams } from 'react-router-dom';
 import { useGetChannelByIdQuery } from 'generated/graphql';
 
 import { MessageContainer } from 'components/Workspace/Channel/Container';
-
+import { MessageBox } from 'components/Workspace/MessageBox';
 export const Content = () => {
   const { channelId } = useParams();
   const { data: { getChannelById } = {} } = useGetChannelByIdQuery({
@@ -95,6 +95,7 @@ export const Content = () => {
           </Options>
         </b.Box>
         <MessageContainer />
+        <MessageBox />
       </Wrapper>
     </>
   );

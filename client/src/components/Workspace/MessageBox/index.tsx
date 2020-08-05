@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 
 import 'draft-js/dist/Draft.css';
 // Blocks
@@ -18,22 +19,6 @@ import { MyEditor } from './Editor';
 
 export const MessageBox = () => {
   // const { channelId } = useParams();
-
-  // const { data, loading } = useGetChannelByIdQuery({
-  //   variables: { channelId },
-  //   fetchPolicy: 'cache-and-network',
-  // });
-  // const [value, setValue] = useState<any>(
-  //   localStorage.getItem(`${channelId}`)
-  //     ? JSON.parse(localStorage.getItem(`${channelId}`)!)
-  //     : [
-  //         {
-  //           type: 'paragraph',
-  //           children: [{ text: '' }],
-  //         },
-  //       ]
-  // );
-
   return (
     <Wrapper>
       <b.Box>
