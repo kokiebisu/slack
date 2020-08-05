@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
 
+import 'draft-js/dist/Draft.css';
 // Blocks
 import * as b from 'global/blocks';
 
@@ -17,35 +17,22 @@ import { useParams } from 'react-router-dom';
 import { MyEditor } from './Editor';
 
 export const MessageBox = () => {
-  const { channelId } = useParams();
+  // const { channelId } = useParams();
 
-  const { data, loading } = useGetChannelByIdQuery({
-    variables: { channelId },
-    fetchPolicy: 'cache-and-network',
-  });
-  const [value, setValue] = useState<any>(
-    localStorage.getItem(`${channelId}`)
-      ? JSON.parse(localStorage.getItem(`${channelId}`)!)
-      : [
-          {
-            type: 'paragraph',
-            children: [{ text: '' }],
-          },
-        ]
-  );
-
-  useEffect(() => {
-    setValue(
-      localStorage.getItem(`${channelId}`)
-        ? JSON.parse(localStorage.getItem(`${channelId}`)!)
-        : [
-            {
-              type: 'paragraph',
-              children: [{ text: '' }],
-            },
-          ]
-    );
-  }, [channelId]);
+  // const { data, loading } = useGetChannelByIdQuery({
+  //   variables: { channelId },
+  //   fetchPolicy: 'cache-and-network',
+  // });
+  // const [value, setValue] = useState<any>(
+  //   localStorage.getItem(`${channelId}`)
+  //     ? JSON.parse(localStorage.getItem(`${channelId}`)!)
+  //     : [
+  //         {
+  //           type: 'paragraph',
+  //           children: [{ text: '' }],
+  //         },
+  //       ]
+  // );
 
   return (
     <Wrapper>

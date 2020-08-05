@@ -74,6 +74,9 @@ export const Wrapper = styled(b.Box)`
   height: 100%;
   display: grid;
   grid-template-rows: 65px auto;
+  &:focus {
+    outline: none !important;
+  }
 
   & > div {
     &.top {
@@ -84,6 +87,9 @@ export const Wrapper = styled(b.Box)`
 
     &.bottom {
       height: 100%;
+      &:focus {
+        outline: none;
+      }
     }
   }
 `;

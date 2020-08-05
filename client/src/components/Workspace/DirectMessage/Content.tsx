@@ -11,7 +11,7 @@ export const Content = () => {
   return (
     <Wrapper>
       <MessageContainer />
-      <MessageBox />
+      {/* <MessageBox /> */}
     </Wrapper>
   );
 };
