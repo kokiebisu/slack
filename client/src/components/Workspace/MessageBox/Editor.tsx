@@ -11,7 +11,11 @@ import { Bold } from 'assets/svg';
 
 import { Wrapper } from 'styles/Workspace/MessageBox/Editor';
 
-export const MyEditor = () => {
+interface Props {
+  sendMessage: (message: string) => Promise<void>;
+}
+
+export const MyEditor: React.FC<Props> = ({ sendMessage }) => {
   const { hasCommandModifier } = KeyBindingUtil;
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
@@ -34,7 +38,7 @@ export const MyEditor = () => {
   const handleKeyCommand = (command: string) => {
     let newState;
     if (command === 'send') {
-      // send
+      sendMessage('hello');
       newState = EditorState.createEmpty();
     }
     if (newState) {

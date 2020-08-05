@@ -8,7 +8,7 @@ import { MessageBox } from 'components/Workspace/MessageBox';
 // Styles
 import { Wrapper } from 'styles/Workspace/DirectMessage/Content';
 import { useParams } from 'react-router';
-import { useUserQuery } from 'generated/graphql';
+import { useSendDirectMessageMutation, useUserQuery } from 'generated/graphql';
 
 export const Content = () => {
   const { userId } = useParams();
@@ -27,11 +27,23 @@ export const Content = () => {
           },
         ]
   );
+  const [send] = useSendDirectMessageMutation();
+
+  const sendMessage = async (message: any) => {
+    if (localStorage.getItem('teamId')) {
+      await send({
+        variables: {
+          toId: userId,
+          body: message,
+        },
+      });
+    }
+  };
 
   return (
     <Wrapper>
       <MessageContainer />
-      <MessageBox />
+      <MessageBox sendMessage={sendMessage} />
     </Wrapper>
   );
 };
