@@ -35,7 +35,8 @@ export const Landing: React.FC<Props> = () => {
       <AnimatePresence>
         {state.landing && (
           <ModalWrapper
-            animate={{ width: '100%', right: 0 }}
+            initial={{ width: 0 }}
+            animate={{ width: '100%' }}
             exit={{ right: -500 }}
             transition={{ duration: 0.3 }}>
             <LandingModal />

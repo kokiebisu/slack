@@ -5,11 +5,13 @@ import { size } from 'global/sizes';
 
 export const ModalWrapper = styled(b.Box)`
   background-color: white;
-  position: absolute;
-  z-index: 200;
+  position: fixed;
+  z-index: 9999;
   right: -500px;
   height: 100%;
-  overflow: hidden;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
 
   @media ${size.lg} {
     display: none;

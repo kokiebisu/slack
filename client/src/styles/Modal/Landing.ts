@@ -66,7 +66,7 @@ export const Option = styled(b.Box)`
 `;
 
 export const Buttons = styled(b.Box)`
-  position: fixed;
+  position: absolute;
   bottom: 10px;
   width: 100%;
 
