@@ -44,9 +44,7 @@ export const IconButtonWrapper = styled(b.Button)`
         fill: ${({ theme }) => theme.colors.black};
       }
     }
-    &:focus {
-      outline: none;
-    }
+
     &:hover {
       border-radius: 100%;
       background-color: ${({ theme }) => theme.colors.white__dark};

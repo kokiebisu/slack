@@ -153,6 +153,9 @@ export {
   BoldPlus,
   Plus,
   PlusCircle,
+};
+
+export {
   NameLogo,
   NoNameLogo,
   NoNameLogoMono,

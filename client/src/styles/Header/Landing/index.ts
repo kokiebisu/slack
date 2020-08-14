@@ -118,9 +118,5 @@ export const IconButtonWrapper = styled(b.Button)`
     @media ${size.md} {
       display: none;
     }
-
-    &:focus {
-      outline: none;
-    }
   }
 `;

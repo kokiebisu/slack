@@ -54,10 +54,6 @@ export const IconButtonWrapper = styled(b.Button)`
     svg {
       width: 14px;
     }
-
-    &:focus {
-      outline: none;
-    }
   }
 `;
 

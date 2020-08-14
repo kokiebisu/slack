@@ -8,9 +8,7 @@ export const Wrapper = styled(b.Button)`
   padding: 5px;
   display: flex;
   cursor: pointer;
-  &:focus {
-    outline: none;
-  }
+
   &.switch {
     &.on {
       background-color: ${({ theme }) => theme.colors.green};

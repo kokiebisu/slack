@@ -11,6 +11,8 @@ import { Landing } from 'pages/Landing';
 import { SignIn } from 'pages/Signin';
 import { FindTeam } from 'pages/FindTeam';
 
+import { DirectMessagePage } from 'components/Workspace/Page/DirectMessage';
+
 export const AppRoutes = () => {
   return (
     <BrowserRouter>
@@ -22,6 +24,7 @@ export const AppRoutes = () => {
         <Route path='/signin' component={SignIn} />
         <Route path='/your-workspaces/:token' component={FindTeam} />
         <Route path='/findteam' component={FindTeam} />
+        <Route path='/w' component={DirectMessagePage} />
       </Switch>
     </BrowserRouter>
   );

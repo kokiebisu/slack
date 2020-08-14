@@ -11,10 +11,6 @@ export const ShowLessWrapper = styled(b.Button)`
   padding: 5px 15px;
   width: 100%;
 
-  &:focus {
-    outline: none;
-  }
-
   &:hover {
     path {
       fill: ${({ theme }) => theme.colors.white};

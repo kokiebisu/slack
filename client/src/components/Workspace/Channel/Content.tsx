@@ -19,16 +19,29 @@ import { LayerPlus, UserPlus } from 'assets/svg';
 // Components
 import { useParams } from 'react-router-dom';
 import { useGetChannelByIdQuery } from 'generated/graphql';
-import { MessageBox } from 'components/Workspace/Channel/MessageBox/Layout';
 
 import { MessageContainer } from 'components/Workspace/Channel/Container';
-
+import { MessageBox } from 'components/Workspace/MessageBox';
+import { useSendMessageMutation } from 'generated/graphql';
 export const Content = () => {
   const { channelId } = useParams();
   const { data: { getChannelById } = {} } = useGetChannelByIdQuery({
     variables: { channelId },
     fetchPolicy: 'cache-and-network',
   });
+
+  const [send] = useSendMessageMutation();
+  const sendMessage = async (message: string) => {
+    if (localStorage.getItem('teamId')) {
+      await send({
+        variables: {
+          channelId,
+          teamId: localStorage.getItem('teamId')!,
+          body: message,
+        },
+      });
+    }
+  };
 
   return (
     <>
@@ -96,7 +109,7 @@ export const Content = () => {
           </Options>
         </b.Box>
         <MessageContainer />
-        <MessageBox />
+        <MessageBox sendMessage={sendMessage} />
       </Wrapper>
     </>
   );

@@ -8,6 +8,10 @@ export const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    *:focus {
+        outline: none !important
+    }
+
     html {
         box-sizing: inherit;
         /* overflow: hidden; */
