@@ -32,17 +32,17 @@ export const Landing: React.FC<Props> = () => {
 
   return (
     <>
-      {state.landing && (
-        <AnimatePresence>
+      <AnimatePresence>
+        {state.landing && (
           <ModalWrapper
             initial={{ width: 0 }}
             animate={{ width: '100%' }}
-            exit={{ width: 0 }}
+            exit={{ right: -500 }}
             transition={{ duration: 0.3 }}>
             <LandingModal />
           </ModalWrapper>
-        </AnimatePresence>
-      )}
+        )}
+      </AnimatePresence>
       <Header data={data} />
       <Banner />
       <BringTeam />
