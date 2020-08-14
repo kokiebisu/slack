@@ -30,7 +30,7 @@ export async function sendLinkEmail(email: string, token: string) {
     from: process.env.MAILSENDER,
     to: email,
     subject: 'Slack confirmation',
-    html: `<a href='http://${process.env.HOST}/get-started/check/${token}'>http://localhost:3000/get-started/check/${token}</a>`,
+    html: `<a href='http://${process.env.ORIGIN}/get-started/check/${token}'>http://localhost:3000/get-started/check/${token}</a>`,
   });
 }
 
@@ -51,6 +51,6 @@ export async function sendInvitationEmail(
     from: process.env.MAILSENDER,
     to: email,
     subject: `${invitor} has invited you to a Slack Workspace`,
-    html: `<a href='http://${process.env.HOST}/get-started/invited/${invitorId}/${token}'>Open Slack</a>`,
+    html: `<a href='http://${process.env.ORIGIN}/get-started/invited/${invitorId}/${token}'>Open Slack</a>`,
   });
 }
