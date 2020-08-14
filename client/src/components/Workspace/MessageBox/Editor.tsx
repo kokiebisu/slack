@@ -5,7 +5,7 @@ import {
   EditorState,
   RichUtils,
   getDefaultKeyBinding,
-  KeyBindingUtil,
+  convertToRaw,
 } from 'draft-js';
 import { Bold } from 'assets/svg';
 
@@ -16,7 +16,6 @@ interface Props {
 }
 
 export const MyEditor: React.FC<Props> = ({ sendMessage }) => {
-  const { hasCommandModifier } = KeyBindingUtil;
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   const boldText = (e: any) => {
@@ -29,7 +28,6 @@ export const MyEditor: React.FC<Props> = ({ sendMessage }) => {
   function keyBindingFn(e: any) {
     const content = editorState.getCurrentContent();
     if (e.keyCode === 13 && content.hasText()) {
-      console.log('entered');
       return 'send';
     }
     return getDefaultKeyBinding(e);
@@ -38,7 +36,8 @@ export const MyEditor: React.FC<Props> = ({ sendMessage }) => {
   const handleKeyCommand = (command: string) => {
     let newState;
     if (command === 'send') {
-      sendMessage('hello');
+      const text = convertToRaw(editorState.getCurrentContent()).blocks[0].text;
+      sendMessage(text);
       newState = EditorState.createEmpty();
     }
     if (newState) {
