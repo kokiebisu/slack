@@ -5,7 +5,7 @@ import { size } from 'global/sizes';
 
 export const Wrapper = styled(b.Box)`
   background-color: white;
-  position: absolute;
+  position: fixed;
   z-index: 200;
   width: 100%;
   height: 100%;
