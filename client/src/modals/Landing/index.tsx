@@ -19,8 +19,10 @@ import { useMyTeamsQuery } from 'generated/graphql';
 export const LandingModal = () => {
   useEffect(() => {
     document.body.style.overflow = 'hidden';
+    document.body.style.height = '100vh';
     return () => {
       document.body.style.overflow = 'initial';
+      document.body.style.height = 'initial';
     };
   }, []);
   const dispatchToggle = useToggleDispatch();
