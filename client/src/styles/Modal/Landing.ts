@@ -43,6 +43,7 @@ export const IconWrapper = styled(b.Box)`
     }
   }
   &.arrow {
+    margin-right: 16px;
     svg {
       width: 10px;
     }
@@ -51,8 +52,9 @@ export const IconWrapper = styled(b.Box)`
 
 export const IconButtonWrapper = styled(b.Button)`
   &.close {
+    margin-right: 8px;
     svg {
-      width: 14px;
+      width: 16px;
     }
   }
 `;
@@ -69,6 +71,7 @@ export const Buttons = styled(b.Box)`
   position: absolute;
   bottom: 10px;
   width: 100%;
+  background-color: white;
 
   & > div {
     display: block;
