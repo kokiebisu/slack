@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Wrapper,
   InnerTop,
+  InnerBottom,
   Title,
   Description,
   CheckList,
@@ -13,6 +14,7 @@ import {
 import * as b from 'global/blocks';
 
 import integrations from 'assets/img/slack-integrations.png';
+import enterprise from 'assets/img/slack-enterprise.png';
 
 import { CheckCircle } from 'assets/svg';
 
@@ -80,12 +82,80 @@ export const BetterSoftware = () => {
           </b.Box>
           <b.Box>
             <b.Flex justifyContent='center'>
-              <ImageWrapper>
+              <ImageWrapper className='integrations'>
                 <img src={integrations} />
               </ImageWrapper>
             </b.Flex>
           </b.Box>
         </InnerTop>
+        <InnerBottom>
+          <b.Box>
+            <b.Flex justifyContent='center'>
+              <ImageWrapper className='enterprise'>
+                <img src={enterprise} />
+              </ImageWrapper>
+            </b.Flex>
+          </b.Box>
+          <b.Box>
+            <b.Flex flexDirection='column' alignItems='center'>
+              <Title>
+                <b.Text>Enterprise-grade for everyone</b.Text>
+              </Title>
+              <Description>
+                <b.Text>
+                  Companies large and small rely on Slack to help them securely
+                  scale their business.
+                </b.Text>
+              </Description>
+              <CheckList>
+                <ul>
+                  <li>
+                    <b.Flex>
+                      <IconWrapper className='checkcircle'>
+                        <b.Box>
+                          <CheckCircle />
+                        </b.Box>
+                      </IconWrapper>
+                      <b.Box>Bridge global departments and offices</b.Box>
+                    </b.Flex>
+                  </li>
+                  <li>
+                    <b.Flex>
+                      <IconWrapper className='checkcircle'>
+                        <b.Box>
+                          <CheckCircle />
+                        </b.Box>
+                      </IconWrapper>
+                      <b.Box>
+                        Scale up with channels and workspaces of any size
+                      </b.Box>
+                    </b.Flex>
+                  </li>
+                  <li>
+                    <b.Flex>
+                      <IconWrapper className='checkcircle'>
+                        <b.Box>
+                          <CheckCircle />
+                        </b.Box>
+                      </IconWrapper>
+                      <b.Box>
+                        Meet your security and compliance requirements
+                      </b.Box>
+                    </b.Flex>
+                  </li>
+                </ul>
+              </CheckList>
+              <LearnMore>
+                <b.Anchor>
+                  <b.Flex>
+                    <b.Text>Learn more about Slack for enterprise</b.Text>
+                    <b.Text>&nbsp;→</b.Text>
+                  </b.Flex>
+                </b.Anchor>
+              </LearnMore>
+            </b.Flex>
+          </b.Box>
+        </InnerBottom>
       </b.Container>
     </Wrapper>
   );

@@ -6,22 +6,24 @@ import { size } from 'global/sizes';
 
 export const Wrapper = styled.section`
   padding-top: 50px;
-  padding-bottom: 30px;
+  padding-bottom: 70px;
 
   background-color: ${({ theme }) => theme.colors.white__darker};
 `;
 
 export const InnerTop = styled(b.Box)`
+  margin-bottom: 50px;
   @media ${size.sm} {
     display: flex;
     align-items: center;
+    justify-content: space-between;
   }
 
   & > div:first-child {
     @media ${size.sm} {
       display: flex;
       align-items: center;
-      width: 50%;
+      width: 40%;
     }
   }
 
@@ -29,8 +31,37 @@ export const InnerTop = styled(b.Box)`
     @media ${size.sm} {
       display: flex;
       align-items: center;
-      width: 50%;
-      padding-right: 30px;
+      justify-content: flex-end;
+      width: 60%;
+    }
+  }
+`;
+
+export const InnerBottom = styled(b.Box)`
+  display: flex;
+  flex-direction: column-reverse;
+  @media ${size.sm} {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  & > div:first-child {
+    @media ${size.sm} {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60%;
+    }
+  }
+
+  & > div:last-child {
+    margin-bottom: 30px;
+    @media ${size.sm} {
+      display: flex;
+      align-items: center;
+      width: 40%;
+      margin-bottom: 0px;
     }
   }
 `;
@@ -52,12 +83,23 @@ export const LearnMore = styled(b.Box)`
 
 export const ImageWrapper = styled(b.Box)`
   position: relative;
-  width: 80%;
-  height: 100%;
   border-radius: 5px;
+  &.integrations {
+    width: 60%;
+    height: 60%;
+  }
+  &.enterprise {
+    width: 35%;
+    height: 35%;
+  }
 
   & img {
     width: 100%;
+  }
+
+  @media ${size.md} {
+    width: 100%;
+    height: 100%;
   }
 `;
 
