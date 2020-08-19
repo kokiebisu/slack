@@ -30,7 +30,6 @@ export const InnerTop = styled(b.Box)`
       display: flex;
       align-items: center;
       width: 50%;
-      padding-right: 30px;
     }
   }
 `;
@@ -46,6 +45,7 @@ export const InnerBottom = styled(b.Box)`
       display: flex;
       align-items: center;
       width: 50%;
+      padding-left: 30px;
     }
   }
 
@@ -54,7 +54,6 @@ export const InnerBottom = styled(b.Box)`
       display: flex;
       align-items: center;
       width: 50%;
-      padding-left: 30px;
     }
   }
 `;
@@ -76,7 +75,7 @@ export const LearnMore = styled(b.Box)`
 
 export const ImageWrapper = styled(b.Box)`
   position: relative;
-  width: 80%;
+  width: 100%;
   height: 100%;
   border-radius: 5px;
 
