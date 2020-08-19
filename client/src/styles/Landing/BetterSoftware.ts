@@ -6,12 +6,13 @@ import { size } from 'global/sizes';
 
 export const Wrapper = styled.section`
   padding-top: 50px;
-  padding-bottom: 30px;
+  padding-bottom: 70px;
 
   background-color: ${({ theme }) => theme.colors.white__darker};
 `;
 
 export const InnerTop = styled(b.Box)`
+  margin-bottom: 50px;
   @media ${size.sm} {
     display: flex;
     align-items: center;
@@ -49,16 +50,18 @@ export const InnerBottom = styled(b.Box)`
     @media ${size.sm} {
       display: flex;
       align-items: center;
-      width: 50%;
-      padding-left: 30px;
+      justify-content: center;
+      width: 60%;
     }
   }
 
   & > div:last-child {
+    margin-bottom: 30px;
     @media ${size.sm} {
       display: flex;
       align-items: center;
-      width: 50%;
+      width: 40%;
+      margin-bottom: 0px;
     }
   }
 `;
@@ -80,9 +83,15 @@ export const LearnMore = styled(b.Box)`
 
 export const ImageWrapper = styled(b.Box)`
   position: relative;
-  width: 60%;
-  height: 60%;
   border-radius: 5px;
+  &.integrations {
+    width: 60%;
+    height: 60%;
+  }
+  &.enterprise {
+    width: 35%;
+    height: 35%;
+  }
 
   & img {
     width: 100%;

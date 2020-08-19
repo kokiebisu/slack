@@ -82,7 +82,7 @@ export const BetterSoftware = () => {
           </b.Box>
           <b.Box>
             <b.Flex justifyContent='center'>
-              <ImageWrapper>
+              <ImageWrapper className='integrations'>
                 <img src={integrations} />
               </ImageWrapper>
             </b.Flex>
@@ -91,7 +91,7 @@ export const BetterSoftware = () => {
         <InnerBottom>
           <b.Box>
             <b.Flex justifyContent='center'>
-              <ImageWrapper>
+              <ImageWrapper className='enterprise'>
                 <img src={enterprise} />
               </ImageWrapper>
             </b.Flex>
