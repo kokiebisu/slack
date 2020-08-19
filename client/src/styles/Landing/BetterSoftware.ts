@@ -17,12 +17,16 @@ export const InnerTop = styled(b.Box)`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 100px;
   }
 
   & > div:first-child {
     @media ${size.sm} {
       display: flex;
       align-items: center;
+      width: 50%;
+    }
+    @media ${size.md} {
       width: 40%;
     }
   }
@@ -32,6 +36,9 @@ export const InnerTop = styled(b.Box)`
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      width: 50%;
+    }
+    @media ${size.md} {
       width: 60%;
     }
   }
@@ -51,6 +58,9 @@ export const InnerBottom = styled(b.Box)`
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 50%;
+    }
+    @media ${size.md} {
       width: 60%;
     }
   }
@@ -60,8 +70,11 @@ export const InnerBottom = styled(b.Box)`
     @media ${size.sm} {
       display: flex;
       align-items: center;
-      width: 40%;
+      width: 50%;
       margin-bottom: 0px;
+    }
+    @media ${size.md} {
+      width: 40%;
     }
   }
 `;
@@ -85,21 +98,22 @@ export const ImageWrapper = styled(b.Box)`
   position: relative;
   border-radius: 5px;
   &.integrations {
-    width: 60%;
-    height: 60%;
+    width: 50%;
+
+    @media ${size.sm} {
+      width: 100%;
+    }
   }
   &.enterprise {
-    width: 35%;
-    height: 35%;
+    max-width: 230px;
+
+    @media ${size.md} {
+      max-width: 400px;
+    }
   }
 
   & img {
     width: 100%;
-  }
-
-  @media ${size.md} {
-    width: 100%;
-    height: 100%;
   }
 `;
 
