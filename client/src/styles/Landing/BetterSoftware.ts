@@ -35,6 +35,30 @@ export const InnerTop = styled(b.Box)`
   }
 `;
 
+export const InnerBottom = styled(b.Box)`
+  @media ${size.sm} {
+    display: flex;
+    align-items: center;
+  }
+
+  & > div:first-child {
+    @media ${size.sm} {
+      display: flex;
+      align-items: center;
+      width: 50%;
+    }
+  }
+
+  & > div:last-child {
+    @media ${size.sm} {
+      display: flex;
+      align-items: center;
+      width: 50%;
+      padding-left: 30px;
+    }
+  }
+`;
+
 export const LearnMore = styled(b.Box)`
   width: 100%;
   & > a {
