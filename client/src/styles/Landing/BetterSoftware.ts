@@ -15,13 +15,14 @@ export const InnerTop = styled(b.Box)`
   @media ${size.sm} {
     display: flex;
     align-items: center;
+    justify-content: space-between;
   }
 
   & > div:first-child {
     @media ${size.sm} {
       display: flex;
       align-items: center;
-      width: 50%;
+      width: 40%;
     }
   }
 
@@ -29,14 +30,18 @@ export const InnerTop = styled(b.Box)`
     @media ${size.sm} {
       display: flex;
       align-items: center;
-      width: 50%;
+      justify-content: flex-end;
+      width: 60%;
     }
   }
 `;
 
 export const InnerBottom = styled(b.Box)`
+  display: flex;
+  flex-direction: column-reverse;
   @media ${size.sm} {
     display: flex;
+    flex-direction: row;
     align-items: center;
   }
 
@@ -75,12 +80,17 @@ export const LearnMore = styled(b.Box)`
 
 export const ImageWrapper = styled(b.Box)`
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 60%;
+  height: 60%;
   border-radius: 5px;
 
   & img {
     width: 100%;
+  }
+
+  @media ${size.md} {
+    width: 100%;
+    height: 100%;
   }
 `;
 
