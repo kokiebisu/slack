@@ -8,7 +8,7 @@ export const Wrapper = styled(b.Box)`
 
   & > div {
     &.section_content {
-      height: 100%;
+      height: auto;
       overflow-y: scroll;
     }
   }
