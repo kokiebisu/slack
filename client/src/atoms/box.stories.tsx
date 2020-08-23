@@ -21,7 +21,7 @@ const Wrapper = styled(Box)`
   }
 `;
 
-const BoxTemplate: Story<BoxProps> = ({ children, className, ...args }) => (
+const BoxTemplate: Story<BoxProps> = ({ children, ...args }) => (
   <Wrapper {...args}>{children}</Wrapper>
 );
 
