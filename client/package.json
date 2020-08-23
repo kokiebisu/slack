@@ -40,7 +40,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "gen": "graphql-codegen --config codegen.yml"
+    "gen": "graphql-codegen --config codegen.yml",
+    "chromatic": "npx chromatic --project-token xyqfz3w3ums --auto-accept-changes"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -77,6 +78,7 @@
     "@types/styled-components": "^5.1.0",
     "@types/styled-system": "^5.1.9",
     "babel-loader": "^8.1.0",
+    "chromatic": "^5.1.0",
     "react-is": "^16.13.1"
   }
 }
