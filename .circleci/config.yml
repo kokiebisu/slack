@@ -1,0 +1,21 @@
+version: 2
+jobs:
+  visual_testing:
+    working_directory: ~/slack/client
+    docker:
+      - image: circleci/node:10
+    steps:
+      - checkout:
+          path: ~/slack
+      - run:
+          name: Installing Dependencies
+          command: yarn
+      - run:
+          name: Comparing Snapshots
+          command: yarn chromatic
+
+workflows:
+  version: 2
+  tasks:
+    jobs:
+      - visual_testing
