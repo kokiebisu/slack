@@ -38,9 +38,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
+    "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "gen": "graphql-codegen --config codegen.yml"
+    "gen": "graphql-codegen --config codegen.yml",
+    "chromatic": "npx chromatic --project-token xyqfz3w3ums --auto-accept-changes"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -58,21 +59,26 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.11.4",
     "@graphql-codegen/cli": "1.15.0",
     "@graphql-codegen/typescript": "1.15.0",
     "@graphql-codegen/typescript-operations": "1.15.0",
     "@graphql-codegen/typescript-react-apollo": "1.15.0",
-    "@storybook/addon-actions": "^5.3.18",
-    "@storybook/addon-links": "^5.3.18",
-    "@storybook/addons": "^5.3.18",
-    "@storybook/preset-create-react-app": "^2.1.1",
-    "@storybook/react": "^5.3.18",
+    "@storybook/addon-actions": "^6.0.16",
+    "@storybook/addon-essentials": "^6.0.16",
+    "@storybook/addon-links": "^6.0.16",
+    "@storybook/node-logger": "^6.0.16",
+    "@storybook/preset-create-react-app": "^3.1.4",
+    "@storybook/react": "^6.0.16",
     "@types/draft-js": "^0.10.43",
     "@types/graphql": "^14.5.0",
     "@types/jwt-decode": "^2.2.1",
     "@types/react-router": "^5.1.7",
     "@types/react-router-dom": "^5.1.5",
     "@types/styled-components": "^5.1.0",
-    "@types/styled-system": "^5.1.9"
+    "@types/styled-system": "^5.1.9",
+    "babel-loader": "^8.1.0",
+    "chromatic": "^5.1.0",
+    "react-is": "^16.13.1"
   }
 }
