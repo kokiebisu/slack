@@ -8,10 +8,10 @@ jobs:
       - checkout:
           path: ~/slack
       - run:
-          name: Installing Dependencies
+          name: Installing dependencies
           command: yarn
       - run:
-          name: Comparing Snapshots
+          name: Comparing snapshots
           command: yarn chromatic
 
 workflows:
