@@ -1,3 +1,4 @@
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalFonts } from 'global/globalFonts';
 import { GlobalStyles } from 'global/globalStyles';
