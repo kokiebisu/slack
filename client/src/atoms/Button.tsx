@@ -25,9 +25,16 @@ const Element = styled(motion.button)<StyledProps>`
       `}
 `;
 
-export interface ButtonProps extends ElementProps, StyledProps {}
+export interface ButtonProps extends ElementProps, StyledProps {
+  onPress: () => void;
+}
 
 export const Button: React.FC<ButtonProps> = ({
   children,
+  onPress,
   ...props
-}: ButtonProps) => <Element {...props}>{children}</Element>;
+}: ButtonProps) => (
+  <Element onClick={onPress} {...props}>
+    {children}
+  </Element>
+);

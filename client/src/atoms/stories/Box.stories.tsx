@@ -1,12 +1,11 @@
-import { Story, Meta } from '@storybook/react/types-6-0';
-import { Box, Text, BoxProps } from 'atoms';
 import React from 'react';
+import { Story, Meta } from '@storybook/react/types-6-0';
+import { Box, BoxProps, Text } from 'atoms';
 import styled from 'styled-components';
 
 export default {
-  title: 'Design System/atoms',
+  title: 'Design System/Atoms/Box',
   component: Box,
-  argTypes: { label: { control: 'text' } },
 } as Meta;
 
 const Wrapper = styled(Box)`
