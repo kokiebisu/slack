@@ -1,12 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { ElementProps } from 'atoms';
 
-interface ElementProps {
-  children?: React.ReactNode;
-  className?: string;
-}
+export interface BoxProps extends ElementProps {}
 
-export default ({ children, ...props }: ElementProps) => (
-  <motion.div {...props}>{children}</motion.div>
+export const Box: React.FC<BoxProps> = ({ children, className, ...props }) => (
+  <motion.div className={className} {...props}>
+    {children}
+  </motion.div>
 );

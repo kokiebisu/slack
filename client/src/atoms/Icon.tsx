@@ -1,15 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Box } from 'atoms';
-
-interface ElementProps {
-  label: string;
-  className?: string;
-}
-
-interface MapProps {
-  [key: string]: () => JSX.Element;
-}
+import { Box, ElementProps, MapProps } from 'atoms';
 
 const icons: MapProps = {};
 
@@ -19,7 +10,11 @@ const Element = styled(Box)`
   align-items: center;
 `;
 
-export default ({ label, ...props }: ElementProps) => {
+export interface IconProps extends ElementProps {
+  label: string;
+}
+
+export const Icon: React.FC<IconProps> = ({ label, ...props }: IconProps) => {
   const Component: React.FC<{}> = icons[label];
   return (
     <Element {...props}>

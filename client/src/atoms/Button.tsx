@@ -1,11 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
-
-interface ElementProps extends StyledProps {
-  children: React.ReactNode;
-  className?: string;
-}
+import { ElementProps } from 'atoms';
 
 interface StyledProps {
   size?: 'sm' | 'md' | 'lg';
@@ -29,6 +25,9 @@ const Element = styled(motion.button)<StyledProps>`
       `}
 `;
 
-export default ({ children, ...props }: ElementProps) => (
-  <Element {...props}>{children}</Element>
-);
+export interface ButtonProps extends ElementProps, StyledProps {}
+
+export const Button: React.FC<ButtonProps> = ({
+  children,
+  ...props
+}: ButtonProps) => <Element {...props}>{children}</Element>;

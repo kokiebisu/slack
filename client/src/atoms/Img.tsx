@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Box } from 'atoms';
+import { Box, ElementProps } from 'atoms';
 
 interface Props {
   src: any;
   alt: string;
-  className?: string;
 }
 
 const Element = styled.img`
@@ -13,7 +12,9 @@ const Element = styled.img`
   height: auto;
 `;
 
-export default ({ src, alt, ...props }: Props) => (
+export interface ImgProps extends ElementProps, Props {}
+
+export const Img: React.FC<ImgProps> = ({ src, alt, ...props }: ImgProps) => (
   <Box {...props}>
     <Element src={src} alt={alt} />
   </Box>

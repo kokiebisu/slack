@@ -1,6 +1,13 @@
-import Box from 'atoms/Box';
-import Button from 'atoms/Button';
-import Icon from 'atoms/Icon';
-import Img from 'atoms/Img';
+/**
+ * Atoms
+ */
+export * from 'atoms/Box';
+export * from 'atoms/Button';
+export * from 'atoms/Icon';
+export * from 'atoms/Img';
+export * from 'atoms/Text';
 
-export { Box, Button, Icon, Img };
+/**
+ * Props
+ */
+export * from 'atoms/Props';
