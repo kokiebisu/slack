@@ -2,6 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalFonts } from 'global/globalFonts';
 import { GlobalStyles } from 'global/globalStyles';
+import { main } from 'global/colors';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
