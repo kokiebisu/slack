@@ -1,17 +1,12 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import 'jest-styled-components';
+import { render } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { Button } from 'atoms';
+import { base } from 'atoms/stories/Button.stories';
 
-describe('Button', () => {
-  it('renders correctly', () => {
-    const testingData = {
-      action: () => console.log('test'),
-    };
-
-    const tree = renderer
-      .create(<Button onPress={testingData.action} />)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
+it('renders the button in the primary state', () => {
+  const { getByText } = render(
+    <Button onPress={() => console.log('clicked')} size='md' {...base.args} />
+  );
+  expect(getByText('Button')).toBeInTheDocument();
 });

@@ -20,14 +20,16 @@ const Wrapper = styled(Box)`
   }
 `;
 
-const BoxTemplate: Story<BoxProps> = ({ children, ...args }) => (
-  <Wrapper {...args}>{children}</Wrapper>
-);
+const data = {
+  children: <Text>Box</Text>,
+};
+
+const BoxTemplate: Story<BoxProps> = ({ ...args }) => <Wrapper {...args} />;
 
 export const base = BoxTemplate.bind({});
 base.args = {
   className: 'with-content',
-  children: <Text>Hello</Text>,
+  ...data,
 };
 
 export const withoutContent = BoxTemplate.bind({});
