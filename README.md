@@ -15,6 +15,13 @@
       <a href="https://github.com/kokiebisu/slack/issues">
     <img src="https://img.shields.io/github/languages/top/kokiebisu/slack" alt="Issues" />
   </a>
+    <a href="https://circleci.com/gh/kokiebisu/slack">
+    <img src="https://circleci.com/gh/kokiebisu/slack.svg?style=shield" alt="Build Status on CircleCI" />
+  </a>
+  <a href="https://slack-storybook.netlify.app/">
+    <img src="https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg" alt="Storybook" />
+  </a>
+  <br/>
 </p>
 
 This is my challenge to replicate real time connections using Graphql.
@@ -26,7 +33,6 @@ The goal for this project was to migrate into using Typescript and stay consiste
 
 I previously worked on projects using Graphql. However soon it got out of hand since I was taking the schema first approach when designing the Graphql schemas. In order to lighten the workload, I transitioned into trying a code first development approach. This helped me with the following:
 - [ ] Don't have to iterate writing schemas
-
 
 ## Table of contents
 
@@ -45,6 +51,9 @@ It's really easy. But you must have docker installed.:
 docker-compose build
 ```
 
+## Design System
+
+Check it out [here](https://slack-storybook.netlify.app)
 
 ## Aspects
 
