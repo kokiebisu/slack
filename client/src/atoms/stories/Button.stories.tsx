@@ -1,6 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { Button, ButtonProps, Text } from 'atoms';
+import { Box, Button, ButtonProps, Text, Icon } from 'atoms';
+import styled from 'styled-components';
 
 export default {
   title: 'Design System/Atoms/Button',
@@ -8,13 +9,34 @@ export default {
   argTypes: { onPress: { action: 'clicked' } },
 } as Meta;
 
-const ButtonTemplate: Story<ButtonProps> = ({ ...args }) => (
-  <Button {...args}>Button</Button>
+const Flex = styled(Box)`
+  display: flex;
+  align-items: center;
+`;
+
+const TextWrapper = styled(Box)`
+  margin-right: 15px;
+`;
+
+const ButtonTemplate: Story<ButtonProps> = ({ children, ...args }) => (
+  <Button {...args}>{children}</Button>
 );
 
 export const primary = ButtonTemplate.bind({});
 primary.args = {
   children: <Text>Button</Text>,
+};
+
+export const launch = ButtonTemplate.bind({});
+launch.args = {
+  children: (
+    <Flex>
+      <TextWrapper>
+        <Text>Launch</Text>
+      </TextWrapper>
+      <Icon label='BottomArrow' width={10} />
+    </Flex>
+  ),
 };
 
 export const inverse = ButtonTemplate.bind({});

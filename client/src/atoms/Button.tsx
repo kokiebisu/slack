@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 import { ElementProps } from 'atoms';
 import theme from 'styled-theming';
-import { lighten } from 'polished';
+import { darken, lighten } from 'polished';
 import { colors } from 'global/colors';
 
 interface StyledProps {
@@ -45,10 +45,18 @@ const Element = styled(motion.button)<StyledProps>`
         ? css`
             color: ${primary};
             background-color: transparent;
+            &:hover {
+              transition: all 1s ease-in-out;
+              border-width: 2px;
+            }
           `
         : css`
             color: ${secondary};
             background-color: ${primary};
+            &:hover {
+              transition: all 1s ease-in-out;
+              background-color: ${colors.primary};
+            }
           `}
       text-transform: uppercase;
       font-size: 14px;
@@ -57,7 +65,7 @@ const Element = styled(motion.button)<StyledProps>`
       border-radius: 3px;
       letter-spacing: 1px;
       cursor: pointer;
-      
+
 `;
 
 export interface ButtonProps extends ElementProps, StyledProps {

@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { Button } from 'atoms';
-import { primary } from 'atoms/stories/Button.stories';
+import { primary, inverse } from 'atoms/stories/Button.stories';
 
 describe('Button', () => {
   it('renders properly in the primary state', () => {
@@ -21,7 +21,7 @@ describe('Button', () => {
         inverse
         onPress={() => console.log('clicked')}
         size='md'
-        {...primary.args}
+        {...inverse.args}
       />
     );
     expect(getByText('Button')).toBeInTheDocument();
