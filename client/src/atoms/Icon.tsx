@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Box, ElementProps, MapProps } from 'atoms';
 import { BottomArrow } from 'assets/svg';
 
@@ -7,13 +7,30 @@ const icons: MapProps = {
   BottomArrow: BottomArrow,
 };
 
-const Element = styled(Box)`
+interface StyledProps {
+  width: number;
+  fill?: string;
+}
+
+const Element = styled(Box)<StyledProps>`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
+  width: ${({ width }) =>
+    width &&
+    css`
+      ${width}px
+    `};
+  & > svg {
+    width: 100%;
+    path {
+      fill: ${({ fill }) => (fill ? fill : 'white')};
+    }
+  }
 `;
 
-export interface IconProps extends ElementProps {
+export interface IconProps extends ElementProps, StyledProps {
   label: string;
 }
 
