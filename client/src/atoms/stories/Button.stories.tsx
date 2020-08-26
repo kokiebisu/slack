@@ -2,6 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { Box, Button, ButtonProps, Text, Icon } from 'atoms';
 import styled from 'styled-components';
+import { colors } from 'global/colors';
 
 export default {
   title: 'Design System/Atoms/Button',
@@ -27,14 +28,21 @@ primary.args = {
   children: <Text>Button</Text>,
 };
 
+export const signin = ButtonTemplate.bind({});
+signin.args = {
+  size: 'sm',
+  children: <Text>Sign in</Text>,
+};
+
 export const launch = ButtonTemplate.bind({});
 launch.args = {
+  size: 'md',
   children: (
     <Flex>
       <TextWrapper>
         <Text>Launch</Text>
       </TextWrapper>
-      <Icon label='BottomArrow' width={10} />
+      <Icon label='BottomArrow' width={10} fill={colors.white} />
     </Flex>
   ),
 };

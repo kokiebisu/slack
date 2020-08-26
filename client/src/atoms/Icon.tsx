@@ -1,10 +1,11 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { Box, ElementProps, MapProps } from 'atoms';
-import { BottomArrow } from 'assets/svg';
+import { BottomArrow, NameLogo } from 'assets/svg';
 
 const icons: MapProps = {
   BottomArrow: BottomArrow,
+  NameLogo: NameLogo,
 };
 
 interface StyledProps {
@@ -25,7 +26,11 @@ const Element = styled(Box)<StyledProps>`
   & > svg {
     width: 100%;
     path {
-      fill: ${({ fill }) => (fill ? fill : 'white')};
+      ${({ fill }) =>
+        fill &&
+        css`
+          fill: ${fill};
+        `}
     }
   }
 `;
