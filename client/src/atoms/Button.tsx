@@ -8,14 +8,15 @@ import { colors } from 'global/colors';
 
 interface StyledProps {
   size?: 'sm' | 'md' | 'lg';
+  inverse?: boolean;
 }
 
-const text = theme('mode', {
-  light: colors.white,
+const primary = theme('mode', {
+  light: lighten(0.05, colors.primary),
 });
 
-const background = theme('mode', {
-  light: lighten(0.05, colors.primary),
+const secondary = theme('mode', {
+  light: colors.white,
 });
 
 const Element = styled(motion.button)<StyledProps>`
@@ -39,15 +40,24 @@ const Element = styled(motion.button)<StyledProps>`
       css`
         padding: 20px 35px;
       `}
+    ${({ inverse }) =>
+      inverse
+        ? css`
+            color: ${primary};
+            background-color: transparent;
+          `
+        : css`
+            color: ${secondary};
+            background-color: ${primary};
+          `}
       text-transform: uppercase;
       font-size: 14px;
-      color: ${text};
-      border: none;
+      border: 1px solid ${primary};
       font-family: 'CircularPro-Bold';
       border-radius: 3px;
       letter-spacing: 1px;
       cursor: pointer;
-      background-color: ${background};
+      
 `;
 
 export interface ButtonProps extends ElementProps, StyledProps {

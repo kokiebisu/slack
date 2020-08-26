@@ -16,3 +16,9 @@ export const primary = ButtonTemplate.bind({});
 primary.args = {
   children: <Text>Button</Text>,
 };
+
+export const inverse = ButtonTemplate.bind({});
+inverse.args = {
+  children: <Text>Button</Text>,
+  inverse: true,
+};
