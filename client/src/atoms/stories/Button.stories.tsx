@@ -12,7 +12,7 @@ const ButtonTemplate: Story<ButtonProps> = ({ ...args }) => (
   <Button {...args}>Button</Button>
 );
 
-export const base = ButtonTemplate.bind({});
-base.args = {
+export const primary = ButtonTemplate.bind({});
+primary.args = {
   children: <Text>Button</Text>,
 };

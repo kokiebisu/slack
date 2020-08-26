@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Box, ElementProps, MapProps } from 'atoms';
+import { BottomArrow } from 'assets/svg';
 
-const icons: MapProps = {};
+const icons: MapProps = {
+  BottomArrow: BottomArrow,
+};
 
 const Element = styled(Box)`
   display: flex;
