@@ -2,10 +2,21 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 import { ElementProps } from 'atoms';
+import theme from 'styled-theming';
+import { lighten } from 'polished';
+import { colors } from 'global/colors';
 
 interface StyledProps {
   size?: 'sm' | 'md' | 'lg';
 }
+
+const text = theme('mode', {
+  light: colors.white,
+});
+
+const background = theme('mode', {
+  light: lighten(0.05, colors.primary),
+});
 
 const Element = styled(motion.button)<StyledProps>`
     ${({ size }) =>
@@ -30,13 +41,13 @@ const Element = styled(motion.button)<StyledProps>`
       `}
       text-transform: uppercase;
       font-size: 14px;
-      color: ${({ theme }) => theme.colors.white};
+      color: ${text};
       border: none;
       font-family: 'CircularPro-Bold';
       border-radius: 3px;
       letter-spacing: 1px;
       cursor: pointer;
-      background-color: ${({ theme }) => theme.colors.primary__light};
+      background-color: ${background};
 `;
 
 export interface ButtonProps extends ElementProps, StyledProps {
