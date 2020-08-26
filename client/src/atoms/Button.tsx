@@ -9,6 +9,7 @@ import { colors } from 'global/colors';
 interface StyledProps {
   size?: 'sm' | 'md' | 'lg';
   inverse?: boolean;
+  transparent?: boolean;
 }
 
 const primary = theme('mode', {
@@ -19,7 +20,18 @@ const secondary = theme('mode', {
   light: colors.white,
 });
 
+const hover = theme('mode', {
+  light: colors.blue,
+});
+
 const Element = styled(motion.button)<StyledProps>`
+
+color: ${secondary};
+      font-size: 14px;
+      font-family: 'CircularPro-Bold';
+      border-radius: 3px;
+      letter-spacing: 1px;
+      cursor: pointer;
     ${({ size }) =>
       !size &&
       css`
@@ -40,31 +52,41 @@ const Element = styled(motion.button)<StyledProps>`
       css`
         padding: 20px 35px;
       `}
-    ${({ inverse }) =>
-      inverse
+    ${({ transparent }) =>
+      transparent
         ? css`
-            color: ${primary};
-            background-color: transparent;
+            background: transparent;
+            border: none;
+            color: ${colors.black};
+            letter-spacing: 0;
+            font-size: 16px;
+            font-family: 'CircularPro-Book';
             &:hover {
-              transition: all 1s ease-in-out;
-              border-width: 2px;
+              color: ${hover};
+              text-decoration: underline;
             }
           `
         : css`
-            color: ${secondary};
             background-color: ${primary};
+            text-transform: uppercase;
             &:hover {
               transition: all 1s ease-in-out;
               background-color: ${colors.primary};
             }
           `}
-      text-transform: uppercase;
-      font-size: 14px;
-      border: 1px solid ${primary};
-      font-family: 'CircularPro-Bold';
-      border-radius: 3px;
-      letter-spacing: 1px;
-      cursor: pointer;
+    ${({ inverse }) =>
+      inverse &&
+      css`
+        text-transform: uppercase;
+        color: ${primary};
+        background-color: transparent;
+        border: 1px solid ${primary};
+        &:hover {
+          transition: all 1s ease-in-out;
+          border-width: 2px;
+        }
+      `}
+
 
 `;
 
