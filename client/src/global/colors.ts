@@ -8,6 +8,11 @@ interface BackgroundColorProps {
 
 const fontSizes = {};
 
+export const colors = {
+  white: '#FFFFFF',
+  primary: '#3F0F40',
+};
+
 export const main: ThemeProps = {
   colors: {
     white: '#FFFFFF',

@@ -10,7 +10,7 @@ export const parameters = {
 
 const globalProvider = (Story, context) => {
   return (
-    <ThemeProvider theme={main}>
+    <ThemeProvider theme={{ mode: 'light' }}>
       <GlobalFonts />
       <GlobalStyles />
       <Story {...context} />
