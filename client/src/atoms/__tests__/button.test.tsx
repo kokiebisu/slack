@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { Button } from 'atoms';
-import { primary, inverse, launch, signin } from 'atoms/stories/Button.stories';
+import { primary, inverse, launch, signin } from 'atoms/stories/button.stories';
 
 describe('Button', () => {
   it('renders properly in the primary state', () => {
