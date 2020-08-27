@@ -14,6 +14,7 @@ interface StyledProps {
 }
 
 const Element = styled(Box)<StyledProps>`
+  ${({ styles }) => styles}
   display: flex;
   justify-content: center;
   align-items: center;

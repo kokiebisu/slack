@@ -7,15 +7,23 @@ interface Props {
   alt: string;
 }
 
+interface StyledProps {
+  styles?: any;
+}
+
+const Wrapper = styled(Box)<StyledProps>`
+  ${({ styles }) => styles}
+`;
+
 const Element = styled.img`
   max-width: 100%;
   height: auto;
 `;
 
-export interface ImgProps extends ElementProps, Props {}
+export interface ImgProps extends ElementProps, Props, StyledProps {}
 
 export const Img: React.FC<ImgProps> = ({ src, alt, ...props }: ImgProps) => (
-  <Box {...props}>
+  <Wrapper {...props}>
     <Element src={src} alt={alt} />
-  </Box>
+  </Wrapper>
 );

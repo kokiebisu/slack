@@ -1,7 +1,8 @@
 import React from 'react';
 import { Box, Button, Icon, Text } from 'atoms';
 import styled from 'styled-components';
-import { launch } from 'atoms/stories/button.stories';
+import { launch, signin } from 'atoms/stories/button.stories';
+import { navItem } from 'atoms/stories/text.stories';
 
 const Wrapper = styled(Box)`
   width: 100%;
@@ -21,7 +22,14 @@ const Left = styled(Box)`
   }
 `;
 
-const Right = styled(Box)``;
+const Right = styled(Box)`
+  display: flex;
+  align-items: center;
+`;
+
+const TextWrapper = styled(Box)`
+  margin-right: 25px;
+`;
 
 export const Header = () => {
   const items = [
@@ -36,14 +44,13 @@ export const Header = () => {
       <Left>
         <Icon label='NameLogo' width={120} />
         {items.map((item) => {
-          return (
-            <Box>
-              <Text>{item}</Text>
-            </Box>
-          );
+          return <Text {...navItem.args} children={item} />;
         })}
       </Left>
       <Right>
+        <TextWrapper>
+          <Text {...signin.args} />
+        </TextWrapper>
         <Button {...launch.args} onPress={() => console.log('clicked')} />
       </Right>
     </Wrapper>
