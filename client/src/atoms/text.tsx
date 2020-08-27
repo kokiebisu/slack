@@ -12,7 +12,7 @@ const Element = styled(motion.p)<StyledProps>`
   margin: 0;
 `;
 
-export interface TextProps extends ElementProps {}
+export interface TextProps extends ElementProps, StyledProps {}
 
 export const Text: React.FC<TextProps> = ({ children, ...props }) => {
   return <Element {...props}>{children}</Element>;

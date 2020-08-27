@@ -1,9 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ElementProps } from 'atoms';
+import styled from 'styled-components';
 
-export interface BoxProps extends ElementProps {}
+interface StyledProps {
+  styles?: any;
+}
+
+export interface BoxProps extends ElementProps, StyledProps {}
+
+const Element = styled(motion.div)<StyledProps>`
+  ${({ styles }) => styles}
+`;
 
 export const Box: React.FC<BoxProps> = ({ children, ...props }) => (
-  <motion.div {...props}>{children}</motion.div>
+  <Element {...props}>{children}</Element>
 );

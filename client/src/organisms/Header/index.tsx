@@ -31,6 +31,10 @@ const TextWrapper = styled(Box)`
   margin-right: 25px;
 `;
 
+const ItemWrapper = styled(Box)`
+  margin: 0 10px;
+`;
+
 export const Header = () => {
   const items = [
     'Why Slack?',
@@ -44,12 +48,16 @@ export const Header = () => {
       <Left>
         <Icon label='NameLogo' width={120} />
         {items.map((item) => {
-          return <Text {...navItem.args} children={item} />;
+          return (
+            <ItemWrapper>
+              <Text {...navItem.args} children={item} />
+            </ItemWrapper>
+          );
         })}
       </Left>
       <Right>
         <TextWrapper>
-          <Text {...signin.args} />
+          <Button {...signin.args} onPress={() => console.log('clicked')} />
         </TextWrapper>
         <Button {...launch.args} onPress={() => console.log('clicked')} />
       </Right>
