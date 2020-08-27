@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Button, Icon, Text } from 'atoms';
 import styled from 'styled-components';
-import { launch } from 'atoms/stories/Button.stories';
+import { launch } from 'atoms/stories/button.stories';
 
 const Wrapper = styled(Box)`
   width: 100%;
