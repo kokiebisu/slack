@@ -10,4 +10,4 @@ export * from 'atoms/text';
 /**
  * Props
  */
-export * from 'atoms/Props';
+export * from 'atoms/props';

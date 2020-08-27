@@ -10,7 +10,6 @@ interface StyledProps {
   size?: 'sm' | 'md' | 'lg';
   inverse?: boolean;
   transparent?: boolean;
-  styles?: any;
 }
 
 const primary = theme('mode', {
@@ -26,67 +25,69 @@ const hover = theme('mode', {
 });
 
 const Element = styled(motion.button)<StyledProps>`
-    ${({ styles }) => styles}
-    color: ${secondary};
-          font-size: 14px;
-          font-family: 'CircularPro-Bold';
-          border-radius: 3px;
-          letter-spacing: 1px;
-          cursor: pointer;
-        ${({ size }) =>
-          !size &&
-          css`
-            padding: 15px 15px;
-          `}
-        ${({ size }) =>
-          size === 'sm' &&
-          css`
-            padding: 15px 15px;
-          `}
-        ${({ size }) =>
-          size === 'md' &&
-          css`
-            padding: 18px 25px;
-          `}
-        ${({ size }) =>
-          size === 'lg' &&
-          css`
-            padding: 20px 35px;
-          `}
-        ${({ transparent }) =>
-          transparent
-            ? css`
-                background: transparent;
-                border: none;
-                color: ${colors.black};
-                letter-spacing: 0;
-                font-size: 16px;
-                font-family: 'CircularPro-Book';
-                &:hover {
-                  color: ${hover};
-                  text-decoration: underline;
-                }
-              `
-            : css`
-                background-color: ${primary};
-                text-transform: uppercase;
-                &:hover {
-                  transition: all 1s ease-in-out;
-                  background-color: ${colors.primary};
-                }
-              `}
-        ${({ inverse }) =>
-          inverse &&
-          css`
+
+color: ${secondary};
+      font-size: 14px;
+      font-family: 'CircularPro-Bold';
+      border-radius: 3px;
+      letter-spacing: 1px;
+      cursor: pointer;
+    ${({ size }) =>
+      !size &&
+      css`
+        padding: 15px 15px;
+      `}
+    ${({ size }) =>
+      size === 'sm' &&
+      css`
+        padding: 15px 15px;
+      `}
+    ${({ size }) =>
+      size === 'md' &&
+      css`
+        padding: 18px 25px;
+      `}
+    ${({ size }) =>
+      size === 'lg' &&
+      css`
+        padding: 20px 35px;
+      `}
+    ${({ transparent }) =>
+      transparent
+        ? css`
+            background: transparent;
+            border: none;
+            color: ${colors.black};
+            letter-spacing: 0;
+            font-size: 16px;
+            font-family: 'CircularPro-Book';
+            &:hover {
+              color: ${hover};
+              text-decoration: underline;
+            }
+          `
+        : css`
+            background-color: ${primary};
             text-transform: uppercase;
-            color: ${primary};
-            background-color: transparent;
-            border: 1px solid ${primary};
             &:hover {
               transition: all 1s ease-in-out;
-              border-width: 2px;
+              background-color: ${colors.primary};
             }
           `}
+    ${({ inverse }) =>
+      inverse &&
+      css`
+        text-transform: uppercase;
+        color: ${primary};
+        background-color: transparent;
+        border: 1px solid ${primary};
+        &:hover {
+          transition: all 1s ease-in-out;
+          border-width: 2px;
+        }
+      `}
+
+
 `;
 
 export interface ButtonProps extends ElementProps, StyledProps {
