@@ -3,7 +3,12 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { ElementProps } from 'atoms';
 
-const Element = styled(motion.p)`
+interface StyledProps {
+  styles?: any;
+}
+
+const Element = styled(motion.p)<StyledProps>`
+  ${({ styles }) => styles}
   margin: 0;
 `;
 

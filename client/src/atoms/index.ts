@@ -1,11 +1,11 @@
 /**
  * Atoms
  */
-export * from 'atoms/Box';
-export * from 'atoms/Button';
-export * from 'atoms/Icon';
-export * from 'atoms/Img';
-export * from 'atoms/Text';
+export * from 'atoms/box';
+export * from 'atoms/button';
+export * from 'atoms/icon';
+export * from 'atoms/img';
+export * from 'atoms/text';
 
 /**
  * Props
