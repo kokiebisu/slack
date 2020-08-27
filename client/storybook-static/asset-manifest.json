@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "./static/css/main.cc6f50a5.chunk.css",
+    "main.js": "./main.992b81f8136b032e4f4d.bundle.js",
+    "main.css.map": "./static/css/main.cc6f50a5.chunk.css.map",
+    "main.js.map": "./main.992b81f8136b032e4f4d.bundle.js.map",
+    "runtime~main.js": "./runtime~main.992b81f8136b032e4f4d.bundle.js",
+    "runtime~main.js.map": "./runtime~main.992b81f8136b032e4f4d.bundle.js.map",
+    "vendors~main.js": "./vendors~main.992b81f8136b032e4f4d.bundle.js",
+    "vendors~main.js.map": "./vendors~main.992b81f8136b032e4f4d.bundle.js.map",
+    "iframe.html": "./iframe.html",
+    "precache-manifest.2106c5ad77bad70b9d55941d3eab3736.js": "./precache-manifest.2106c5ad77bad70b9d55941d3eab3736.js",
+    "service-worker.js": "./service-worker.js",
+    "static/media/CircularPro-Bold.woff2": "./static/media/CircularPro-Bold.f7a0d964.woff2",
+    "static/media/CircularPro-Book.woff2": "./static/media/CircularPro-Book.6d78fbcd.woff2",
+    "static/media/Larsseit-Bold.woff2": "./static/media/Larsseit-Bold.0b912510.woff2",
+    "static/media/SlackIcons.woff2": "./static/media/SlackIcons.17b58bb8.woff2",
+    "static/media/SlackLato-Black.woff2": "./static/media/SlackLato-Black.b64f5e4d.woff2",
+    "static/media/SlackLato-Bold.woff": "./static/media/SlackLato-Bold.a5323817.woff",
+    "static/media/SlackLato-Light.woff": "./static/media/SlackLato-Light.1475c14a.woff",
+    "static/media/SlackLato-Regular.woff": "./static/media/SlackLato-Regular.ea6d1e46.woff",
+    "static/media/code-brackets.svg": "./static/media/code-brackets.d43eb968.svg",
+    "static/media/colors.svg": "./static/media/colors.8104e6f5.svg",
+    "static/media/comments.svg": "./static/media/comments.3f9a1398.svg",
+    "static/media/direction.svg": "./static/media/direction.d3dc567b.svg",
+    "static/media/flow.svg": "./static/media/flow.e3812c4f.svg",
+    "static/media/plugin.svg": "./static/media/plugin.5ba97e9b.svg",
+    "static/media/repo.svg": "./static/media/repo.3452b916.svg",
+    "static/media/stackalt.svg": "./static/media/stackalt.66f4b748.svg",
+    "vendors~main.992b81f8136b032e4f4d.bundle.js.LICENSE.txt": "./vendors~main.992b81f8136b032e4f4d.bundle.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "runtime~main.992b81f8136b032e4f4d.bundle.js",
+    "vendors~main.992b81f8136b032e4f4d.bundle.js",
+    "static/css/main.cc6f50a5.chunk.css",
+    "main.992b81f8136b032e4f4d.bundle.js"
+  ]
+}
