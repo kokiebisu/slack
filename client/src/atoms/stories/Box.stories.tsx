@@ -14,8 +14,8 @@ const data = {
 
 const BoxTemplate: Story<BoxProps> = ({ ...args }) => <Box {...args} />;
 
-export const base = BoxTemplate.bind({});
-base.args = {
+export const primary = BoxTemplate.bind({});
+primary.args = {
   styles: css`
     padding: 15px;
     background: blue;
