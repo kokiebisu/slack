@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { Box, TextProps, Text, Icon } from 'atoms';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { colors } from 'global/colors';
 import theme from 'styled-theming';
 
@@ -15,19 +15,15 @@ const hover = theme('mode', {
   light: colors.blue,
 });
 
-const Wrapper = styled(Text)`
-  &.navitem {
+const TextTemplate: Story<TextProps> = ({ ...args }) => <Text {...args} />;
+
+export const navItem = TextTemplate.bind({});
+navItem.args = {
+  styles: css`
+    margin: 0 15px;
     &:hover {
       color: ${hover};
       cursor: pointer;
     }
-  }
-`;
-
-const TextTemplate: Story<TextProps> = ({ ...args }) => <Wrapper {...args} />;
-
-export const navItem = TextTemplate.bind({});
-navItem.args = {
-  children: 'Text',
-  className: 'navitem',
+  `,
 };

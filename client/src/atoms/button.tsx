@@ -10,6 +10,7 @@ interface StyledProps {
   size?: 'sm' | 'md' | 'lg';
   inverse?: boolean;
   transparent?: boolean;
+  styles?: any;
 }
 
 const primary = theme('mode', {
@@ -25,7 +26,7 @@ const hover = theme('mode', {
 });
 
 const Element = styled(motion.button)<StyledProps>`
-
+  ${({ styles }) => styles}
 color: ${secondary};
       font-size: 14px;
       font-family: 'CircularPro-Bold';
@@ -86,8 +87,6 @@ color: ${secondary};
           border-width: 2px;
         }
       `}
-
-
 `;
 
 export interface ButtonProps extends ElementProps, StyledProps {

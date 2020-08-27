@@ -3,6 +3,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { Box, Button, ButtonProps, Text, Icon } from 'atoms';
 import styled from 'styled-components';
 import { colors } from 'global/colors';
+import { navItem } from 'atoms/stories/text.stories';
 
 export default {
   title: 'Design System/Atoms/Button',

@@ -11,6 +11,7 @@ const icons: MapProps = {
 interface StyledProps {
   width: number;
   fill?: string;
+  styles?: any;
 }
 
 const Element = styled(Box)<StyledProps>`
