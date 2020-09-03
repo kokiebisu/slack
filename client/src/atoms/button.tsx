@@ -13,31 +13,68 @@ interface StyledProps {
   styles?: any;
 }
 
-const primary = theme('mode', {
-  light: lighten(0.05, colors.primary),
-});
+export const buttonColors = {
+  primary: theme('mode', {
+    light: lighten(0.05, colors.primary),
+  }),
+  secondary: theme('mode', {
+    light: colors.white,
+  }),
+  hover: theme('mode', {
+    light: colors.blue,
+  }),
+};
 
-const secondary = theme('mode', {
-  light: colors.white,
-});
+export const primaryButtonStyles = {
+  wrapper: css`
+    background-color: ${buttonColors.primary};
+    color: ${buttonColors.secondary};
+    &:hover {
+      transition: all 1s ease-in-out;
+      background-color: ${buttonColors.primary};
+    }
+  `,
+  flex: css`
+    display: flex;
+    align-items: center;
+  `,
+  textwrapper: css`
+    margin-right: 15px;
+  `,
+  text: css`
+    font-size: 14px;
+    font-family: 'CircularPro-Bold';
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  `,
+};
 
-const hover = theme('mode', {
-  light: colors.blue,
-});
+export const transparentButtonStyles = {
+  text: css`
+    color: ${colors.black};
+    letter-spacing: 0;
+    font-size: 16px;
+    text-transform: initial;
+    font-family: 'CircularPro-Book';
+    &:hover {
+      color: ${buttonColors.hover};
+      text-decoration: underline;
+    }
+  `,
+};
+
+export const inverseButtonStyles = {
+  text: css`
+    color: ${buttonColors.primary};
+  `,
+};
 
 const Element = styled(motion.button)<StyledProps>`
-  ${({ styles }) => styles}
-color: ${secondary};
-      font-size: 14px;
-      font-family: 'CircularPro-Bold';
       border-radius: 3px;
-      letter-spacing: 1px;
       cursor: pointer;
-    ${({ size }) =>
-      !size &&
-      css`
-        padding: 15px 15px;
-      `}
+      padding: 15px 15px;
+      border: none;
+    
     ${({ size }) =>
       size === 'sm' &&
       css`
@@ -54,39 +91,21 @@ color: ${secondary};
         padding: 20px 35px;
       `}
     ${({ transparent }) =>
-      transparent
-        ? css`
-            background: transparent;
-            border: none;
-            color: ${colors.black};
-            letter-spacing: 0;
-            font-size: 16px;
-            font-family: 'CircularPro-Book';
-            &:hover {
-              color: ${hover};
-              text-decoration: underline;
-            }
-          `
-        : css`
-            background-color: ${primary};
-            text-transform: uppercase;
-            &:hover {
-              transition: all 1s ease-in-out;
-              background-color: ${colors.primary};
-            }
-          `}
+      transparent &&
+      css`
+        background: transparent;
+      `}
     ${({ inverse }) =>
       inverse &&
       css`
-        text-transform: uppercase;
-        color: ${primary};
         background-color: transparent;
-        border: 1px solid ${primary};
+        border: 1px solid ${buttonColors.primary};
         &:hover {
           transition: all 1s ease-in-out;
           border-width: 2px;
         }
       `}
+      ${({ styles }) => styles}
 `;
 
 export interface ButtonProps extends ElementProps, StyledProps {

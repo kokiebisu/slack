@@ -8,8 +8,8 @@ interface StyledProps {
 }
 
 const Element = styled(motion.p)<StyledProps>`
-  ${({ styles }) => styles}
   margin: 0;
+  ${({ styles }) => styles}
 `;
 
 export interface TextProps extends ElementProps, StyledProps {}

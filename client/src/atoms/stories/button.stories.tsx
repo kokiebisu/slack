@@ -1,9 +1,17 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { Box, Button, ButtonProps, Text, Icon } from 'atoms';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import theme from 'styled-theming';
+import { lighten } from 'polished';
 import { colors } from 'global/colors';
 import { navItem } from 'atoms/stories/text.stories';
+
+import {
+  primaryButtonStyles,
+  inverseButtonStyles,
+  transparentButtonStyles,
+} from 'atoms/button';
 
 export default {
   title: 'Design System/Atoms/Button',
@@ -11,46 +19,38 @@ export default {
   argTypes: { onPress: { action: 'clicked' } },
 } as Meta;
 
-const Flex = styled(Box)`
-  display: flex;
-  align-items: center;
-`;
-
-const TextWrapper = styled(Box)`
-  margin-right: 15px;
-`;
-
 const ButtonTemplate: Story<ButtonProps> = ({ children, ...args }) => (
   <Button {...args}>{children}</Button>
 );
 
 export const primary = ButtonTemplate.bind({});
 primary.args = {
-  children: <Text>Button</Text>,
+  children: <Text styles={primaryButtonStyles.text}>Button</Text>,
 };
 
 export const signin = ButtonTemplate.bind({});
 signin.args = {
   transparent: true,
   size: 'sm',
-  children: <Text>Sign in</Text>,
+  children: <Text styles={transparentButtonStyles.text}>Sign in</Text>,
 };
 
 export const launch = ButtonTemplate.bind({});
 launch.args = {
+  styles: primaryButtonStyles.wrapper,
   size: 'md',
   children: (
-    <Flex>
-      <TextWrapper>
-        <Text>Launch</Text>
-      </TextWrapper>
+    <Box styles={primaryButtonStyles.flex}>
+      <Box styles={primaryButtonStyles.textwrapper}>
+        <Text styles={primaryButtonStyles.text}>Launch</Text>
+      </Box>
       <Icon label='BottomArrow' width={10} fill={colors.white} />
-    </Flex>
+    </Box>
   ),
 };
 
 export const inverse = ButtonTemplate.bind({});
 inverse.args = {
-  children: <Text>Button</Text>,
+  children: <Text styles={inverseButtonStyles.text}>Button</Text>,
   inverse: true,
 };
