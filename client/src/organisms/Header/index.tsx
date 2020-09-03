@@ -34,8 +34,10 @@ interface Props {
   extend: {
     wrapper: any;
     left: any;
-    itemwrapper: any;
-    textwrapper: any;
+    right: any;
+    signupwrapper: any;
+    launchwrapper: any;
+    iconwrapper: any;
   };
 }
 
@@ -59,11 +61,16 @@ export const Header: React.FC<Props> = ({ extend }) => {
           );
         })}
       </Box>
-      <Box styles={extend.left}>
-        <Box styles={extend.textwrapper}>
+      <Box styles={extend.right}>
+        <Box styles={extend.signupwrapper}>
           <Button {...signin.args} onPress={() => console.log('clicked')} />
         </Box>
-        <Button {...launch.args} onPress={() => console.log('clicked')} />
+        <Box styles={extend.launchwrapper}>
+          <Button {...launch.args} onPress={() => console.log('clicked')} />
+        </Box>
+        <Box styles={extend.iconwrapper}>
+          <Button {...menu.args} />
+        </Box>
       </Box>
     </Box>
   );
