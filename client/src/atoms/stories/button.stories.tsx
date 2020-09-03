@@ -7,7 +7,11 @@ import { lighten } from 'polished';
 import { colors } from 'global/colors';
 import { navItem } from 'atoms/stories/text.stories';
 
-import { launchButtonStyles } from 'atoms/button';
+import {
+  primaryButtonStyles,
+  inverseButtonStyles,
+  transparentButtonStyles,
+} from 'atoms/button';
 
 export default {
   title: 'Design System/Atoms/Button',
@@ -21,24 +25,24 @@ const ButtonTemplate: Story<ButtonProps> = ({ children, ...args }) => (
 
 export const primary = ButtonTemplate.bind({});
 primary.args = {
-  children: <Text>Button</Text>,
+  children: <Text styles={primaryButtonStyles.text}>Button</Text>,
 };
 
 export const signin = ButtonTemplate.bind({});
 signin.args = {
   transparent: true,
   size: 'sm',
-  children: <Text>Sign in</Text>,
+  children: <Text styles={transparentButtonStyles.text}>Sign in</Text>,
 };
 
 export const launch = ButtonTemplate.bind({});
 launch.args = {
-  styles: launchButtonStyles.wrapper,
+  styles: primaryButtonStyles.wrapper,
   size: 'md',
   children: (
-    <Box styles={launchButtonStyles.flex}>
-      <Box styles={launchButtonStyles.textwrapper}>
-        <Text>Launch</Text>
+    <Box styles={primaryButtonStyles.flex}>
+      <Box styles={primaryButtonStyles.textwrapper}>
+        <Text styles={primaryButtonStyles.text}>Launch</Text>
       </Box>
       <Icon label='BottomArrow' width={10} fill={colors.white} />
     </Box>
@@ -47,6 +51,6 @@ launch.args = {
 
 export const inverse = ButtonTemplate.bind({});
 inverse.args = {
-  children: <Text>Button</Text>,
+  children: <Text styles={inverseButtonStyles.text}>Button</Text>,
   inverse: true,
 };

@@ -25,7 +25,7 @@ export const buttonColors = {
   }),
 };
 
-export const launchButtonStyles = {
+export const primaryButtonStyles = {
   wrapper: css`
     background-color: ${buttonColors.primary};
     color: ${buttonColors.secondary};
@@ -41,16 +41,38 @@ export const launchButtonStyles = {
   textwrapper: css`
     margin-right: 15px;
   `,
+  text: css`
+    font-size: 14px;
+    font-family: 'CircularPro-Bold';
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  `,
+};
+
+export const transparentButtonStyles = {
+  text: css`
+    color: ${colors.black};
+    letter-spacing: 0;
+    font-size: 16px;
+    text-transform: initial;
+    font-family: 'CircularPro-Book';
+    &:hover {
+      color: ${buttonColors.hover};
+      text-decoration: underline;
+    }
+  `,
+};
+
+export const inverseButtonStyles = {
+  text: css`
+    color: ${buttonColors.primary};
+  `,
 };
 
 const Element = styled(motion.button)<StyledProps>`
-      font-size: 14px;
-      font-family: 'CircularPro-Bold';
       border-radius: 3px;
-      letter-spacing: 1px;
       cursor: pointer;
       padding: 15px 15px;
-      text-transform: uppercase;
       border: none;
     
     ${({ size }) =>
@@ -72,20 +94,10 @@ const Element = styled(motion.button)<StyledProps>`
       transparent &&
       css`
         background: transparent;
-        color: ${colors.black};
-        letter-spacing: 0;
-        font-size: 16px;
-        text-transform: initial;
-        font-family: 'CircularPro-Book';
-        &:hover {
-          color: ${buttonColors.hover};
-          text-decoration: underline;
-        }
       `}
     ${({ inverse }) =>
       inverse &&
       css`
-        color: ${buttonColors.primary};
         background-color: transparent;
         border: 1px solid ${buttonColors.primary};
         &:hover {
