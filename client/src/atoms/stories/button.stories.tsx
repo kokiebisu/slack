@@ -1,24 +1,19 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { Box, Button, ButtonProps, Text, Icon } from 'atoms';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import theme from 'styled-theming';
+import { lighten } from 'polished';
 import { colors } from 'global/colors';
 import { navItem } from 'atoms/stories/text.stories';
+
+import { launchButtonStyles } from 'atoms/button';
 
 export default {
   title: 'Design System/Atoms/Button',
   component: Button,
   argTypes: { onPress: { action: 'clicked' } },
 } as Meta;
-
-const Flex = styled(Box)`
-  display: flex;
-  align-items: center;
-`;
-
-const TextWrapper = styled(Box)`
-  margin-right: 15px;
-`;
 
 const ButtonTemplate: Story<ButtonProps> = ({ children, ...args }) => (
   <Button {...args}>{children}</Button>
@@ -38,14 +33,15 @@ signin.args = {
 
 export const launch = ButtonTemplate.bind({});
 launch.args = {
+  styles: launchButtonStyles.wrapper,
   size: 'md',
   children: (
-    <Flex>
-      <TextWrapper>
+    <Box styles={launchButtonStyles.flex}>
+      <Box styles={launchButtonStyles.textwrapper}>
         <Text>Launch</Text>
-      </TextWrapper>
+      </Box>
       <Icon label='BottomArrow' width={10} fill={colors.white} />
-    </Flex>
+    </Box>
   ),
 };
 
