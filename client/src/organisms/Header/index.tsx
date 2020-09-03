@@ -1,8 +1,9 @@
 import React from 'react';
 import { Box, Button, Icon, Text } from 'atoms';
 import styled, { css } from 'styled-components';
-import { launch, signin } from 'atoms/stories/button.stories';
+import { launch, signin, menu } from 'atoms/stories/button.stories';
 import { navItem } from 'atoms/stories/text.stories';
+import { size } from 'global';
 
 export const landingHeaderStyles = {
   wrapper: css`
@@ -18,15 +19,35 @@ export const landingHeaderStyles = {
       margin-right: 10px;
     }
   `,
+  itemwrapper: css`
+    margin: 0 10px;
+    display: none;
+    @media ${size['md']} {
+      display: block;
+    }
+  `,
   right: css`
     display: flex;
     align-items: center;
   `,
-  textwrapper: css`
+  signupwrapper: css`
     margin-right: 25px;
+    display: none;
+    @media ${size['xs']} {
+      display: block;
+    }
   `,
-  itemwrapper: css`
-    margin: 0 10px;
+  launchwrapper: css`
+    display: none;
+    @media ${size['xs']} {
+      display: block;
+    }
+  `,
+  menuwrapper: css`
+    display: block;
+    @media ${size['xs']} {
+      display: none;
+    }
   `,
 };
 
@@ -35,6 +56,7 @@ interface Props {
     wrapper: any;
     left: any;
     right: any;
+    itemwrapper: any;
     signupwrapper: any;
     launchwrapper: any;
     iconwrapper: any;
@@ -69,7 +91,7 @@ export const Header: React.FC<Props> = ({ extend }) => {
           <Button {...launch.args} onPress={() => console.log('clicked')} />
         </Box>
         <Box styles={extend.iconwrapper}>
-          <Button {...menu.args} />
+          <Button {...menu.args} onPress={() => console.log('clicked')} />
         </Box>
       </Box>
     </Box>
