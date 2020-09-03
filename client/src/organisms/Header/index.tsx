@@ -1,41 +1,45 @@
 import React from 'react';
 import { Box, Button, Icon, Text } from 'atoms';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { launch, signin } from 'atoms/stories/button.stories';
 import { navItem } from 'atoms/stories/text.stories';
 
-const Wrapper = styled(Box)`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
+export const landingHeaderStyles = {
+  wrapper: css`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  `,
+  left: css`
+    display: flex;
+    align-items: center;
+    & > div:first-child {
+      margin-right: 10px;
+    }
+  `,
+  right: css`
+    display: flex;
+    align-items: center;
+  `,
+  textwrapper: css`
+    margin-right: 25px;
+  `,
+  itemwrapper: css`
+    margin: 0 10px;
+  `,
+};
 
-const Left = styled(Box)`
-  display: flex;
-  align-items: center;
-  & > div:first-child {
-    margin-right: 10px;
-  }
-  & > div:not(:first-child) {
-    padding: 15px 20px;
-  }
-`;
+interface Props {
+  extend: {
+    wrapper: any;
+    left: any;
+    itemwrapper: any;
+    textwrapper: any;
+  };
+}
 
-const Right = styled(Box)`
-  display: flex;
-  align-items: center;
-`;
-
-const TextWrapper = styled(Box)`
-  margin-right: 25px;
-`;
-
-const ItemWrapper = styled(Box)`
-  margin: 0 10px;
-`;
-
-export const Header = () => {
+export const Header: React.FC<Props> = ({ extend }) => {
   const items = [
     'Why Slack?',
     'Solutions',
@@ -44,23 +48,23 @@ export const Header = () => {
     'Pricing',
   ];
   return (
-    <Wrapper>
-      <Left>
+    <Box styles={extend.wrapper}>
+      <Box styles={extend.left}>
         <Icon label='NameLogo' width={120} />
         {items.map((item) => {
           return (
-            <ItemWrapper>
+            <Box styles={extend.itemwrapper}>
               <Text {...navItem.args} children={item} />
-            </ItemWrapper>
+            </Box>
           );
         })}
-      </Left>
-      <Right>
-        <TextWrapper>
+      </Box>
+      <Box styles={extend.left}>
+        <Box styles={extend.textwrapper}>
           <Button {...signin.args} onPress={() => console.log('clicked')} />
-        </TextWrapper>
+        </Box>
         <Button {...launch.args} onPress={() => console.log('clicked')} />
-      </Right>
-    </Wrapper>
+      </Box>
+    </Box>
   );
 };
