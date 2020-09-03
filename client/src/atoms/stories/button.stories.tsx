@@ -54,3 +54,9 @@ inverse.args = {
   children: <Text styles={inverseButtonStyles.text}>Button</Text>,
   inverse: true,
 };
+
+export const menu = ButtonTemplate.bind({});
+menu.args = {
+  transparent: true,
+  children: <Icon label='HamburgerButton' width={22} fill={colors.black} />,
+};

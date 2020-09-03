@@ -1,11 +1,12 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { Box, ElementProps, MapProps } from 'atoms';
-import { BottomArrow, NameLogo } from 'assets/svg';
+import { BottomArrow, NameLogo, HamburgerButton } from 'assets/svg';
 
 const icons: MapProps = {
   BottomArrow: BottomArrow,
   NameLogo: NameLogo,
+  HamburgerButton: HamburgerButton,
 };
 
 interface StyledProps {
