@@ -5,7 +5,7 @@ import { landingHeaderStyles, Header } from 'organisms/Header';
 
 export default {
   title: 'Design System/Organisms/Header',
-  component: Box,
+  component: Header,
 } as Meta;
 
 interface Props {
@@ -14,7 +14,7 @@ interface Props {
 
 const HeaderTemplate: Story<Props> = ({ ...args }) => <Header {...args} />;
 
-export const LandingHeader = HeaderTemplate.bind({});
-LandingHeader.args = {
+export const landingHeader = HeaderTemplate.bind({});
+landingHeader.args = {
   extend: landingHeaderStyles,
 };

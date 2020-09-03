@@ -4,6 +4,9 @@ module.exports = {
     '../src/**/*.stories.@(js|jsx|ts|tsx)',
     '../src/**/stories/*.stories.mdx',
     '../src/**/stories/*.stories.@(js|jsx|ts|tsx)',
+    '../src/**/**/stories/*.stories.mdx',
+    '../src/**/**/stories/*.stories.@(js|jsx|ts|tsx)',
+    '../src/organisms/Header/stories/header.landing.stories.tsx',
   ],
   addons: [
     '@storybook/addon-links',

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Button, Icon, Text } from 'atoms';
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 import { launch, signin, menu } from 'atoms/stories/button.stories';
 import { navItem } from 'atoms/stories/text.stories';
 import { size } from 'global';
@@ -22,7 +22,7 @@ export const landingHeaderStyles = {
   itemwrapper: css`
     margin: 0 10px;
     display: none;
-    @media ${size['md']} {
+    @media (min-width: 500px) {
       display: block;
     }
   `,
@@ -33,19 +33,19 @@ export const landingHeaderStyles = {
   signupwrapper: css`
     margin-right: 25px;
     display: none;
-    @media ${size['xs']} {
+    @media (min-width: 500px) {
       display: block;
     }
   `,
   launchwrapper: css`
     display: none;
-    @media ${size['xs']} {
+    @media (min-width: 500px) {
       display: block;
     }
   `,
-  menuwrapper: css`
+  iconwrapper: css`
     display: block;
-    @media ${size['xs']} {
+    @media (min-width: 500px) {
       display: none;
     }
   `,
@@ -55,8 +55,8 @@ interface Props {
   extend: {
     wrapper: any;
     left: any;
-    right: any;
     itemwrapper: any;
+    right: any;
     signupwrapper: any;
     launchwrapper: any;
     iconwrapper: any;
