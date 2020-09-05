@@ -30,6 +30,7 @@ primary.args = {
 
 export const signin = ButtonTemplate.bind({});
 signin.args = {
+  styles: transparentButtonStyles,
   transparent: true,
   size: 'sm',
   children: <Text styles={transparentButtonStyles.text}>Sign in</Text>,
@@ -37,7 +38,7 @@ signin.args = {
 
 export const launch = ButtonTemplate.bind({});
 launch.args = {
-  styles: primaryButtonStyles.wrapper,
+  styles: primaryButtonStyles,
   size: 'md',
   children: (
     <Box styles={primaryButtonStyles.flex}>

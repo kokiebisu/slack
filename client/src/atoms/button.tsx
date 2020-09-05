@@ -50,6 +50,9 @@ export const primaryButtonStyles = {
 };
 
 export const transparentButtonStyles = {
+  wrapper: css`
+    background: transparent;
+  `,
   text: css`
     color: ${colors.black};
     letter-spacing: 0;
@@ -64,6 +67,14 @@ export const transparentButtonStyles = {
 };
 
 export const inverseButtonStyles = {
+  wrapper: css`
+    background-color: transparent;
+    border: 1px solid ${buttonColors.primary};
+    &:hover {
+      transition: all 1s ease-in-out;
+      border-width: 2px;
+    }
+  `,
   text: css`
     color: ${buttonColors.primary};
   `,
@@ -90,22 +101,7 @@ const Element = styled(motion.button)<StyledProps>`
       css`
         padding: 20px 35px;
       `}
-    ${({ transparent }) =>
-      transparent &&
-      css`
-        background: transparent;
-      `}
-    ${({ inverse }) =>
-      inverse &&
-      css`
-        background-color: transparent;
-        border: 1px solid ${buttonColors.primary};
-        &:hover {
-          transition: all 1s ease-in-out;
-          border-width: 2px;
-        }
-      `}
-      ${({ styles }) => styles}
+    ${({ styles }) => styles}
 `;
 
 export interface ButtonProps extends ElementProps, StyledProps {
