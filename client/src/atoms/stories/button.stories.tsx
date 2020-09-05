@@ -30,6 +30,7 @@ primary.args = {
 
 export const signin = ButtonTemplate.bind({});
 signin.args = {
+  styles: transparentButtonStyles.wrapper,
   transparent: true,
   size: 'sm',
   children: <Text styles={transparentButtonStyles.text}>Sign in</Text>,
