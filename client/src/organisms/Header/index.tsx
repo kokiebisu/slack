@@ -6,7 +6,7 @@ import { navItem } from 'atoms/stories/text.stories';
 import { size } from 'global';
 
 interface Props {
-  extend: {
+  styles: {
     wrapper: any;
     left: any;
     itemwrapper: any;
@@ -17,7 +17,7 @@ interface Props {
   };
 }
 
-export const Header: React.FC<Props> = ({ extend }) => {
+export const Header: React.FC<Props> = ({ styles }) => {
   const items = [
     'Why Slack?',
     'Solutions',
@@ -26,25 +26,25 @@ export const Header: React.FC<Props> = ({ extend }) => {
     'Pricing',
   ];
   return (
-    <Box styles={extend.wrapper}>
-      <Box styles={extend.left}>
+    <Box styles={styles.wrapper}>
+      <Box styles={styles.left}>
         <Icon label='NameLogo' width={120} />
         {items.map((item) => {
           return (
-            <Box styles={extend.itemwrapper}>
+            <Box styles={styles.itemwrapper}>
               <Text {...navItem.args} children={item} />
             </Box>
           );
         })}
       </Box>
-      <Box styles={extend.right}>
-        <Box styles={extend.signupwrapper}>
+      <Box styles={styles.right}>
+        <Box styles={styles.signupwrapper}>
           <Button {...signin.args} onPress={() => console.log('clicked')} />
         </Box>
-        <Box styles={extend.launchwrapper}>
+        <Box styles={styles.launchwrapper}>
           <Button {...launch.args} onPress={() => console.log('clicked')} />
         </Box>
-        <Box styles={extend.iconwrapper}>
+        <Box styles={styles.iconwrapper}>
           <Button {...menu.args} onPress={() => console.log('clicked')} />
         </Box>
       </Box>
