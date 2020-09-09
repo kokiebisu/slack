@@ -1,10 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
-import { ElementProps } from 'atoms';
+import { Text, ElementProps } from 'atoms';
 import theme from 'styled-theming';
 import { darken, lighten } from 'polished';
-import { colors } from 'global/colors';
+import { colors } from 'global';
 
 interface StyledProps {
   size?: 'sm' | 'md' | 'lg';
@@ -109,11 +109,11 @@ export interface ButtonProps extends ElementProps, StyledProps {
 }
 
 export const Button: React.FC<ButtonProps> = ({
-  children,
+  children = <Text>Button</Text>,
   onPress,
   ...props
 }: ButtonProps) => (
-  <Element onClick={onPress} {...props}>
+  <Element data-testid='button' onClick={onPress} {...props}>
     {children}
   </Element>
 );

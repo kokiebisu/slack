@@ -25,7 +25,7 @@ const ButtonTemplate: Story<ButtonProps> = ({ children, ...args }) => (
 
 export const primary = ButtonTemplate.bind({});
 primary.args = {
-  children: <Text styles={primaryButtonStyles.text}>Button</Text>,
+  children: <Text styles={primaryButtonStyles.text}>Primary</Text>,
 };
 
 export const signin = ButtonTemplate.bind({});

@@ -29,9 +29,9 @@ export const Header: React.FC<Props> = ({ styles }) => {
     <Box styles={styles.wrapper}>
       <Box styles={styles.left}>
         <Icon label='NameLogo' width={120} />
-        {items.map((item) => {
+        {items.map((item, index) => {
           return (
-            <Box styles={styles.itemwrapper}>
+            <Box key={index} styles={styles.itemwrapper}>
               <Text {...navItem.args} children={item} />
             </Box>
           );
