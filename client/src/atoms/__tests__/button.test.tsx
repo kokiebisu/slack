@@ -1,21 +1,43 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { Button } from 'atoms';
 import { primary, inverse, launch, signin } from 'atoms/stories/button.stories';
 
-describe('Button', () => {
-  it('renders properly in the primary state', () => {
+describe('Base Button', () => {
+  it('renders the component without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(
+      <Button onPress={() => console.log('clicked')} {...primary.args} />,
+      div
+    );
+  });
+  it('renders correctly', () => {
+    const { getByTestId } = render(
+      <Button onPress={() => console.log('clicked')} />
+    );
+    expect(getByTestId('button')).toHaveTextContent('Button');
+  });
+  it('renders correctly with specified size', () => {
+    const { getByTestId } = render(
+      <Button size='md' onPress={() => console.log('clicked')} />
+    );
+    expect(getByTestId('button')).toHaveTextContent('Button');
+  });
+  it('renders correctly in transparent state', () => {
+    const { getByTestId } = render(
+      <Button transparent onPress={() => console.log('clicked')} />
+    );
+    expect(getByTestId('button')).toHaveTextContent('Button');
+  });
+  it('renders inner text properly', () => {
     const { getByText } = render(
-      <Button
-        onPress={() => console.log('clicked')}
-        size='md'
-        {...primary.args}
-      />
+      <Button onPress={() => console.log('clicked')} />
     );
     expect(getByText('Button')).toBeInTheDocument();
   });
-  it('renders properly in the inverse state', () => {
+  it('renders inner text properly in the inverse state', () => {
     const { getByText } = render(
       <Button
         inverse
@@ -26,7 +48,7 @@ describe('Button', () => {
     );
     expect(getByText('Button')).toBeInTheDocument();
   });
-  it('renders properly in the transparent state', () => {
+  it('renders inner text properly in the transparent state', () => {
     const { getByText } = render(
       <Button
         transparent
@@ -37,7 +59,7 @@ describe('Button', () => {
     );
     expect(getByText('Sign in')).toBeInTheDocument();
   });
-  it('renders properly with icon', () => {
+  it('renders inner text properly with icon', () => {
     const { getByText } = render(
       <Button onPress={() => console.log('clicked')} {...launch.args} />
     );

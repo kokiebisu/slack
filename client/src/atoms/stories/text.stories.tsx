@@ -11,16 +11,16 @@ export default {
   argTypes: { onPress: { action: 'clicked' } },
 } as Meta;
 
+const TextTemplate: Story<TextProps> = ({ ...args }) => <Text {...args} />;
+
 const hover = theme('mode', {
   light: colors.blue,
 });
 
-const TextTemplate: Story<TextProps> = ({ ...args }) => <Text {...args} />;
-
 export const navItem = TextTemplate.bind({});
 navItem.args = {
   styles: css`
-    margin: 0 15px;
+    margin: 0 8px;
     &:hover {
       color: ${hover};
       cursor: pointer;

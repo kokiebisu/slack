@@ -1,17 +1,12 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { Box, Button, ButtonProps, Text, Icon } from 'atoms';
-import styled, { css } from 'styled-components';
-import theme from 'styled-theming';
-import { lighten } from 'polished';
 import { colors } from 'global/colors';
-import { navItem } from 'atoms/stories/text.stories';
-
 import {
   primaryButtonStyles,
-  inverseButtonStyles,
   transparentButtonStyles,
-} from 'atoms/button';
+  inverseButtonStyles,
+} from 'atoms/styles/button.styles';
 
 export default {
   title: 'Design System/Atoms/Button',
@@ -19,13 +14,12 @@ export default {
   argTypes: { onPress: { action: 'clicked' } },
 } as Meta;
 
-const ButtonTemplate: Story<ButtonProps> = ({ children, ...args }) => (
-  <Button {...args}>{children}</Button>
-);
+const ButtonTemplate: Story<ButtonProps> = (args) => <Button {...args} />;
 
 export const primary = ButtonTemplate.bind({});
 primary.args = {
-  children: <Text styles={primaryButtonStyles.text}>Button</Text>,
+  styles: primaryButtonStyles,
+  children: <Text styles={primaryButtonStyles.text}>Primary</Text>,
 };
 
 export const signin = ButtonTemplate.bind({});
@@ -52,12 +46,14 @@ launch.args = {
 
 export const inverse = ButtonTemplate.bind({});
 inverse.args = {
+  styles: inverseButtonStyles,
   children: <Text styles={inverseButtonStyles.text}>Button</Text>,
   inverse: true,
 };
 
 export const menu = ButtonTemplate.bind({});
 menu.args = {
+  styles: transparentButtonStyles,
   transparent: true,
   children: <Icon label='HamburgerButton' width={22} fill={colors.black} />,
 };
