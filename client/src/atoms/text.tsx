@@ -14,10 +14,6 @@ const Element = styled(motion.p)<StyledProps>`
 
 export interface TextProps extends ElementProps, StyledProps {}
 
-export const Text: React.FC<TextProps> = ({ children, styles, ...props }) => {
-  return (
-    <Element styles={styles.wrapper} {...props}>
-      {children}
-    </Element>
-  );
+export const Text: React.FC<TextProps> = ({ children, ...props }) => {
+  return <Element {...props}>{children}</Element>;
 };
