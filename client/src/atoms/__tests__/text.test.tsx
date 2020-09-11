@@ -2,7 +2,6 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { Text } from 'atoms';
-import { primary, inverse, launch, signin } from 'atoms/stories/button.stories';
 import { navItem } from 'atoms/stories/text.stories';
 
 describe('NavItem', () => {

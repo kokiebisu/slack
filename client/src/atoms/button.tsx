@@ -13,78 +13,12 @@ interface StyledProps {
   styles?: any;
 }
 
-export const buttonColors = {
-  primary: theme('mode', {
-    light: lighten(0.05, colors.primary),
-  }),
-  secondary: theme('mode', {
-    light: colors.white,
-  }),
-  hover: theme('mode', {
-    light: colors.blue,
-  }),
-};
-
-export const primaryButtonStyles = {
-  wrapper: css`
-    background-color: ${buttonColors.primary};
-    color: ${buttonColors.secondary};
-    &:hover {
-      transition: all 1s ease-in-out;
-      background-color: ${buttonColors.primary};
-    }
-  `,
-  flex: css`
-    display: flex;
-    align-items: center;
-  `,
-  textwrapper: css`
-    margin-right: 15px;
-  `,
-  text: css`
-    font-size: 14px;
-    font-family: 'CircularPro-Bold';
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  `,
-};
-
-export const transparentButtonStyles = {
-  wrapper: css`
-    background: transparent;
-  `,
-  text: css`
-    color: ${colors.black};
-    letter-spacing: 0;
-    font-size: 16px;
-    text-transform: initial;
-    font-family: 'CircularPro-Book';
-    &:hover {
-      color: ${buttonColors.hover};
-      text-decoration: underline;
-    }
-  `,
-};
-
-export const inverseButtonStyles = {
-  wrapper: css`
-    background-color: transparent;
-    border: 1px solid ${buttonColors.primary};
-    &:hover {
-      transition: all 1s ease-in-out;
-      border-width: 2px;
-    }
-  `,
-  text: css`
-    color: ${buttonColors.primary};
-  `,
-};
-
 const Element = styled(motion.button)<StyledProps>`
       border-radius: 3px;
       cursor: pointer;
       padding: 15px 15px;
       border: none;
+      background-color: gray;
     
     ${({ size }) =>
       size === 'sm' &&
@@ -110,10 +44,15 @@ export interface ButtonProps extends ElementProps, StyledProps {
 
 export const Button: React.FC<ButtonProps> = ({
   children = <Text>Button</Text>,
+  styles,
   onPress,
   ...props
 }: ButtonProps) => (
-  <Element data-testid='button' onClick={onPress} {...props}>
+  <Element
+    styles={styles && styles.wrapper}
+    data-testid='button'
+    onClick={onPress}
+    {...props}>
     {children}
   </Element>
 );

@@ -17,7 +17,7 @@ export const landingHeaderStyles = {
   itemwrapper: css`
     margin: 0 10px;
     display: none;
-    @media (min-width: 500px) {
+    @media (min-width: 1085px) {
       display: block;
     }
   `,
@@ -28,19 +28,19 @@ export const landingHeaderStyles = {
   signupwrapper: css`
     margin-right: 25px;
     display: none;
-    @media (min-width: 500px) {
+    @media (min-width: 1085px) {
       display: block;
     }
   `,
   launchwrapper: css`
     display: none;
-    @media (min-width: 500px) {
+    @media (min-width: 1085px) {
       display: block;
     }
   `,
   iconwrapper: css`
     display: block;
-    @media (min-width: 500px) {
+    @media (min-width: 1085px) {
       display: none;
     }
   `,
