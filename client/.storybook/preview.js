@@ -1,21 +1,17 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
-import { GlobalFonts } from 'global/globalFonts';
-import { GlobalStyles } from 'global/globalStyles';
-import { main } from 'global/colors';
+import { GlobalFonts } from '../src/global/globalFonts';
+import { GlobalStyles } from '../src/global/globalStyles';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
 };
 
-const globalProvider = (Story, context) => {
-  return (
-    <ThemeProvider theme={{ mode: 'light' }}>
+export const decorators = [
+  (Story) => (
+    <>
       <GlobalFonts />
       <GlobalStyles />
-      <Story {...context} />
-    </ThemeProvider>
-  );
-};
-
-export const decorators = [globalProvider];
+      <Story />
+    </>
+  ),
+];
