@@ -27,7 +27,8 @@ export class RegisterResolver {
         })
         .save();
 
-      const digit = Math.floor(100000 + Math.random() * 900000);
+      // const digit = Math.floor(100000 + Math.random() * 900000);
+      const digit = 111111;
 
       const token = createDigitToken(digit, user);
 

@@ -79,7 +79,7 @@ ReactDOM.render(
     <ContextProvider>
       <GlobalFonts />
       <GlobalStyles />
-      <ThemeProvider theme={{ mode: 'light' }}>
+      <ThemeProvider theme={main}>
         <AppRoutes />
       </ThemeProvider>
     </ContextProvider>
