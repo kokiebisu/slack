@@ -41,3 +41,8 @@ primary.argTypes = {
     },
   },
 };
+
+export const nav = ButtonStories.bind({});
+nav.args = {
+  type: 'nav',
+};

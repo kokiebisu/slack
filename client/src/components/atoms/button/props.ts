@@ -5,6 +5,8 @@ export interface PrimaryButtonProps {
   size?: 'sm' | 'lg';
 }
 
+export interface NavButtonProps {}
+
 export interface ButtonProps {
   to?: string;
   type: string;
