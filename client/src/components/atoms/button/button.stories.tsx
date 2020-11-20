@@ -8,6 +8,13 @@ import { main } from '../../../global/colors';
 export default {
   title: 'Design System/Atoms/Button',
   component: Button,
+  argTypes: {
+    to: {
+      control: {
+        disable: true,
+      },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider theme={main}>
@@ -26,5 +33,11 @@ primary.args = {
 primary.argTypes = {
   inverse: {
     control: 'boolean',
+  },
+  size: {
+    control: {
+      type: 'select',
+      options: ['sm', 'lg'],
+    },
   },
 };
