@@ -7,8 +7,8 @@ before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t kokiebisu/slack-test -f ./client/dev.Dockerfile ./client
 
-# script:
-#   - docker run -e CI=true kokiebisu/slack-test yarn test
+script:
+  - docker run -e CI=true kokiebisu/slack-test yarn test
 
 deploy:
   provider: script
