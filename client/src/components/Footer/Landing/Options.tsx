@@ -1,17 +1,14 @@
 import * as React from 'react';
 
+import styled, { css } from 'styled-components';
+
+// Breakpoints
+import { size } from 'global/sizes';
 // Blocks
 import * as b from 'global/blocks';
 
 // Components
 import { Option } from 'components/Footer/Landing/Option';
-
-// Styles
-import {
-  Wrapper,
-  ChangeRegionButton,
-  IconWrapper,
-} from 'styles/Footer/Landing/Options';
 
 // Svgs
 import { Globe } from 'assets/svg';
@@ -24,7 +21,7 @@ export const Options = () => {
     { name: 'Contact Us', url: '/' },
   ];
   return (
-    <Wrapper>
+    <OptionsWrapper>
       <b.Flex alignItems='center'>
         <b.Flex>
           {options.map((option, index) => {
@@ -45,6 +42,110 @@ export const Options = () => {
           </b.Flex>
         </ChangeRegionButton>
       </b.Flex>
-    </Wrapper>
+    </OptionsWrapper>
   );
 };
+
+const OptionsWrapper = styled(b.Box)`
+  & > div {
+    flex-direction: column;
+    @media ${size.sm} {
+      flex-direction: row;
+    }
+  }
+`;
+
+const ChangeRegionButton = styled(b.Button)`
+  margin: 30px 0;
+
+  & p {
+    font-size: 14px;
+    color: ${({ theme }) => theme.colors.gray};
+    font-family: 'CircularPro-Bold';
+  }
+
+  & > div {
+    & > div {
+      &:nth-child(3) {
+        display: none;
+        @media ${size.sm} {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    & p {
+      color: ${({ theme }) => theme.colors.blue};
+    }
+
+    & > div {
+      & > div {
+        &:nth-child(1) {
+          & > svg {
+            path {
+              fill: ${({ theme }) => theme.colors.blue} !important;
+            }
+          }
+        }
+        &:nth-child(3) {
+          & > div {
+            & > svg {
+              path {
+                fill: ${({ theme }) => theme.colors.blue} !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media ${size.sm} {
+    margin: 0px;
+  }
+`;
+
+const IconWrapper = styled(b.Box)`
+  position: relative;
+  &.bottom__arrow {
+    bottom: 2px;
+    svg {
+      width: 8px;
+      height: 8px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray};
+      }
+    }
+  }
+
+  &.globe {
+    top: 2px;
+    svg {
+      width: 16px;
+      height: 16px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray};
+      }
+    }
+  }
+`;
+
+const Link = styled(b.Anchor)`
+  text-transform: none;
+
+  &.hovered {
+    color: #1264a3;
+    border-bottom: 1px solid #1264a3;
+    cursor: pointer !important;
+  }
+
+  ${({ fontFamily }) =>
+    fontFamily &&
+    css`
+      font-family: ${fontFamily};
+    `}
+`;
+
+const ArrowWrapper = styled(b.Box)``;
