@@ -1,5 +1,6 @@
 export interface LandingHeaderProps {
-  authenticated?: boolean;
+  data?: any;
+  loading?: boolean;
 }
 
 export interface HeaderProps {

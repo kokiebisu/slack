@@ -4,26 +4,16 @@ import { useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
 import * as b from 'global/blocks';
-
-// Components
 import { Header } from 'components/organisms/header/header.component';
-// import { Header } from 'components/Header/Landing';
 import { Banner } from 'components/organisms/banner/banner.component';
 import { Footer } from 'components/organisms/footer/footer.component';
-
-// Graphql
 import { useMeQuery, useMyTeamsQuery } from 'generated/graphql';
 import { LandingModal } from 'modals/Landing';
-
 import { useToggleState } from 'context/toggle-context';
-
-// styles
 import { ModalWrapper } from 'styles/Landing';
 import { Section } from 'components/organisms/section/section.component';
 
-interface Props {}
-
-export const Landing: React.FC<Props> = () => {
+export const Landing: React.FC<{}> = () => {
   useEffect(() => {
     document.title = 'Where work happens | Slack';
   }, []);
@@ -47,19 +37,9 @@ export const Landing: React.FC<Props> = () => {
       </AnimatePresence>
       <HeaderWrapper>
         <b.Container>
-          <Header
-            type='landing'
-            data={
-              !loading &&
-              teamsData &&
-              teamsData.myTeams.teams! &&
-              teamsData.myTeams.teams!.length > 0
-            }
-          />
+          <Header type='landing' data={teamsData} loading={loading} />
         </b.Container>
       </HeaderWrapper>
-
-      {/* <Header data={data} /> */}
       <Banner type='landing' />
       <Section type='together' />
       <Section type='software' />

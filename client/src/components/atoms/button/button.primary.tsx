@@ -47,7 +47,12 @@ export const Wrapper = styled.button`
   }
 
   &.sm {
-    padding: 13px 13px;
+    padding: 13px 20px;
+    border-radius: 5px;
+  }
+
+  &.md {
+    padding: 22px 24px;
     border-radius: 5px;
   }
 

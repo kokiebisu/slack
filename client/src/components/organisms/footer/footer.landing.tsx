@@ -20,7 +20,6 @@ import { BottomArrow } from 'assets/svg';
 import styled, { css } from 'styled-components';
 
 // Components
-import { Option } from 'components/Footer/Landing/Option';
 import { size } from 'global/sizes';
 import { Button } from 'components/atoms/button/button.component';
 

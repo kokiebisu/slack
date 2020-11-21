@@ -1,26 +1,9 @@
 import React from 'react';
-
-// import {
-//   Wrapper,
-//   InnerTop,
-//   InnerBottom,
-//   Title,
-//   Description,
-//   CheckList,
-//   LearnMore,
-//   ImageWrapper,
-//   IconWrapper,
-// } from 'styles/Landing/BetterSoftware';
-
 import styled from 'styled-components';
 import * as b from 'global/blocks';
-
-// Breakpoints;
 import { size } from 'global/sizes';
-
 import integrations from 'assets/img/slack-integrations.png';
 import enterprise from 'assets/img/slack-enterprise.png';
-
 import { CheckCircle } from 'assets/svg';
 import { SoftwareSectionProps } from './props';
 

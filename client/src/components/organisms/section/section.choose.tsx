@@ -1,11 +1,6 @@
 import * as React from 'react';
-
-// Blocks
 import * as b from 'global/blocks';
-
 import styled from 'styled-components';
-
-// Breakpoints
 import { size } from 'global/sizes';
 import { ChooseSectionProps } from './props';
 

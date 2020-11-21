@@ -1,20 +1,12 @@
 import * as React from 'react';
-
-// Blocks
 import * as b from 'global/blocks';
-
 import styled from 'styled-components';
-
-// Breakpoints;
 import { size } from 'global/sizes';
-
-// Styles
-import { ColumnCards } from 'components/Landing/ColumnCards';
 import { TogetherSectionProps } from './props';
-
-interface Props {}
+import { Bullet } from 'components/atoms/bullet/bullet.component';
 
 export const TogetherSection: React.FC<TogetherSectionProps> = () => {
+  const bullets = ['share', 'connect', 'collaborate'];
   return (
     <Wrapper>
       <b.Container>
@@ -69,7 +61,17 @@ export const TogetherSection: React.FC<TogetherSectionProps> = () => {
           </b.Box>
         </Inner>
         <ColumnWrapper>
-          <ColumnCards />
+          <Columns>
+            <b.Flex>
+              {bullets.map((bullet, index) => {
+                return (
+                  <BulletWrapper key={index}>
+                    <Bullet type='together' together={bullet} />
+                  </BulletWrapper>
+                );
+              })}
+            </b.Flex>
+          </Columns>
         </ColumnWrapper>
       </b.Container>
     </Wrapper>
@@ -158,5 +160,28 @@ const ColumnWrapper = styled(b.Box)`
   padding-bottom: 62px;
   @media ${size.sm} {
     padding-top: 50px;
+  }
+`;
+
+const Columns = styled(b.Box)`
+  & > div {
+    flex-wrap: wrap;
+  }
+`;
+
+const BulletWrapper = styled.div`
+  width: 100%;
+  margin-top: 50px;
+
+  @media ${size.lg} {
+    width: 50%;
+  }
+
+  @media ${size.xl} {
+    width: 33%;
+  }
+
+  & > div {
+    padding-right: 15px;
   }
 `;
