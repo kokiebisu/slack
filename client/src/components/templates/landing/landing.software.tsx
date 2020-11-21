@@ -1,13 +1,41 @@
 import React from 'react';
 import styled from 'styled-components';
+
+/**
+ * Global
+ */
 import * as b from 'global/blocks';
 import { size } from 'global/sizes';
+
+/**
+ * Assets
+ */
 import integrations from 'assets/img/slack-integrations.png';
 import enterprise from 'assets/img/slack-enterprise.png';
-import { CheckCircle } from 'assets/svg';
-import { SoftwareSectionProps } from './props';
 
-export const SoftwareSection: React.FC<SoftwareSectionProps> = () => {
+/**
+ * Components
+ */
+import { Bullet } from 'components/atoms/bullet/bullet.component';
+
+/**
+ * Props
+ */
+import { SoftwareTemplateProps } from './props';
+
+export const SoftwareTemplate: React.FC<SoftwareTemplateProps> = () => {
+  const bullets = [
+    [
+      'Connect over 2,200 ready-to-use Slack apps',
+      'Build your own tim-saving workflows',
+      'Integrate your internal tools with the Slack APIs',
+    ],
+    [
+      'Bridge global departments and offices',
+      'Scale up with channels and workspaces of any size',
+      'Meet your security and compliance requirements',
+    ],
+  ];
   return (
     <Wrapper>
       <b.Container>
@@ -25,48 +53,18 @@ export const SoftwareSection: React.FC<SoftwareSectionProps> = () => {
               </Description>
               <CheckList>
                 <ul>
-                  <li>
-                    <b.Flex>
-                      <IconWrapper className='checkcircle'>
-                        <b.Box>
-                          <CheckCircle />
-                        </b.Box>
-                      </IconWrapper>
-                      <b.Box>Connect over 2,200 ready-to-use Slack apps</b.Box>
-                    </b.Flex>
-                  </li>
-                  <li>
-                    <b.Flex>
-                      <IconWrapper className='checkcircle'>
-                        <b.Box>
-                          <CheckCircle />
-                        </b.Box>
-                      </IconWrapper>
-                      <b.Box>Build your own tim-saving workflows</b.Box>
-                    </b.Flex>
-                  </li>
-                  <li>
-                    <b.Flex>
-                      <IconWrapper className='checkcircle'>
-                        <b.Box>
-                          <CheckCircle />
-                        </b.Box>
-                      </IconWrapper>
-                      <b.Box>
-                        Integrate your internal tools with the Slack APIs
-                      </b.Box>
-                    </b.Flex>
-                  </li>
+                  {bullets[0].map((bullet, index) => {
+                    return (
+                      <li>
+                        <Bullet type='check' title={bullet} />
+                      </li>
+                    );
+                  })}
                 </ul>
               </CheckList>
-              <LearnMore>
-                <b.Anchor>
-                  <b.Flex>
-                    <b.Text>Learn more about integrations</b.Text>
-                    <b.Text>&nbsp;→</b.Text>
-                  </b.Flex>
-                </b.Anchor>
-              </LearnMore>
+              <div>
+                <Bullet type='more' more='integrations' />
+              </div>
             </b.Flex>
           </b.Box>
           <b.Box>
@@ -98,50 +96,18 @@ export const SoftwareSection: React.FC<SoftwareSectionProps> = () => {
               </Description>
               <CheckList>
                 <ul>
-                  <li>
-                    <b.Flex>
-                      <IconWrapper className='checkcircle'>
-                        <b.Box>
-                          <CheckCircle />
-                        </b.Box>
-                      </IconWrapper>
-                      <b.Box>Bridge global departments and offices</b.Box>
-                    </b.Flex>
-                  </li>
-                  <li>
-                    <b.Flex>
-                      <IconWrapper className='checkcircle'>
-                        <b.Box>
-                          <CheckCircle />
-                        </b.Box>
-                      </IconWrapper>
-                      <b.Box>
-                        Scale up with channels and workspaces of any size
-                      </b.Box>
-                    </b.Flex>
-                  </li>
-                  <li>
-                    <b.Flex>
-                      <IconWrapper className='checkcircle'>
-                        <b.Box>
-                          <CheckCircle />
-                        </b.Box>
-                      </IconWrapper>
-                      <b.Box>
-                        Meet your security and compliance requirements
-                      </b.Box>
-                    </b.Flex>
-                  </li>
+                  {bullets[1].map((bullet, index) => {
+                    return (
+                      <li>
+                        <Bullet type='check' title={bullet} />
+                      </li>
+                    );
+                  })}
                 </ul>
               </CheckList>
-              <LearnMore>
-                <b.Anchor>
-                  <b.Flex>
-                    <b.Text>Learn more about Slack for enterprise</b.Text>
-                    <b.Text>&nbsp;→</b.Text>
-                  </b.Flex>
-                </b.Anchor>
-              </LearnMore>
+              <div>
+                <Bullet type='more' more='Slack for enterprise' />
+              </div>
             </b.Flex>
           </b.Box>
         </InnerBottom>
@@ -225,21 +191,6 @@ const InnerBottom = styled(b.Box)`
   }
 `;
 
-const LearnMore = styled(b.Box)`
-  width: 100%;
-  & > a {
-    font-size: 18px;
-    color: ${({ theme }) => theme.colors.blue};
-  }
-
-  & div {
-    justify-content: center;
-    @media ${size.lg} {
-      justify-content: flex-start;
-    }
-  }
-`;
-
 const ImageWrapper = styled(b.Box)`
   position: relative;
   border-radius: 5px;
@@ -297,27 +248,5 @@ const CheckList = styled(b.Box)`
     & li {
       margin: 15px 0;
     }
-  }
-`;
-
-const IconWrapper = styled(b.Box)`
-  display: flex;
-  align-items: center;
-  margin-right: 10px;
-  & > div {
-    & > svg {
-      width: 18px;
-      height: 18px;
-      path {
-        fill: ${({ theme }) => theme.colors.gray};
-      }
-    }
-  }
-`;
-
-const ColumnWrapper = styled(b.Box)`
-  padding-bottom: 62px;
-  @media ${size.sm} {
-    padding-top: 50px;
   }
 `;

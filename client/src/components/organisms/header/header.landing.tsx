@@ -9,6 +9,8 @@ import { useToggleDispatch } from 'context/toggle-context';
 import styled from 'styled-components';
 import { LaunchOptions } from 'components/Header/Landing/LaunchOptions';
 
+import { size } from 'global/sizes';
+
 export const LandingHeader: React.FC<LandingHeaderProps> = ({
   data,
   loading,
@@ -50,24 +52,30 @@ export const LandingHeader: React.FC<LandingHeaderProps> = ({
               />
             </div>
           ) : (
-            <b.Flex alignItems='center'>
-              <b.Box mr={3}>
-                <Button type='transparent' title='Sign in' to='/signin' />
-              </b.Box>
-              <div>
+            <>
+              <Normal>
+                <b.Flex alignItems='center'>
+                  <b.Box mr={3}>
+                    <Button type='transparent' title='Sign in' to='/signin' />
+                  </b.Box>
+                  <div>
+                    <Button
+                      type='primary'
+                      size='sm'
+                      title='Get started'
+                      to='/get-started'
+                    />
+                  </div>
+                </b.Flex>
+              </Normal>
+              <Mobile>
                 <Button
-                  type='primary'
-                  size='sm'
-                  title='Get started'
-                  to='/get-started'
+                  type='hamburger'
+                  onPress={() => dispatchToggle({ type: 'toggle_landing' })}
                 />
-              </div>
-            </b.Flex>
+              </Mobile>
+            </>
           )}
-          <Button
-            type='hamburger'
-            onPress={() => dispatchToggle({ type: 'toggle_landing' })}
-          />
         </b.Flex>
       </Wrapper>
       {pressed && data?.myTeams.teams ? (
@@ -79,4 +87,18 @@ export const LandingHeader: React.FC<LandingHeaderProps> = ({
 
 const Wrapper = styled(b.Box)`
   background-color: white;
+`;
+
+const Normal = styled.div`
+  display: none;
+  @media ${size.sm} {
+    display: block;
+  }
+`;
+
+const Mobile = styled.div`
+  display: block;
+  @media ${size.sm} {
+    display: none;
+  }
 `;

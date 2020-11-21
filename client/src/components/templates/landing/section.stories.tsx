@@ -1,15 +1,15 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { Section } from './section.component';
-import { SectionProps } from './props';
+import { Template } from './landing.component';
+import { TemplateProps } from './props';
 import { ThemeProvider } from 'styled-components';
 import { main } from '../../../global/colors';
 import { ToggleProvider } from 'context/toggle-context';
 import { MemoryRouter } from 'react-router-dom';
 
 export default {
-  title: 'Design System/Organisms/Section',
-  component: Section,
+  title: 'Design System/Organisms/Section/Landing',
+  component: Template,
   decorators: [
     (Story) => (
       <MemoryRouter>
@@ -23,19 +23,19 @@ export default {
   ],
 } as Meta;
 
-const SectionStories: Story<SectionProps> = (args) => <Section {...args} />;
+const TemplateStories: Story<TemplateProps> = (args) => <Template {...args} />;
 
-export const together = SectionStories.bind({});
+export const together = TemplateStories.bind({});
 together.args = {
   type: 'together',
 };
 
-export const software = SectionStories.bind({});
+export const software = TemplateStories.bind({});
 software.args = {
   type: 'software',
 };
 
-export const choose = SectionStories.bind({});
+export const choose = TemplateStories.bind({});
 choose.args = {
   type: 'choose',
 };

@@ -11,7 +11,7 @@ import { useMeQuery, useMyTeamsQuery } from 'generated/graphql';
 import { LandingModal } from 'modals/Landing';
 import { useToggleState } from 'context/toggle-context';
 import { ModalWrapper } from 'styles/Landing';
-import { Section } from 'components/organisms/section/section.component';
+import { Template } from 'components/templates/landing/landing.component';
 
 export const Landing: React.FC<{}> = () => {
   useEffect(() => {
@@ -41,9 +41,9 @@ export const Landing: React.FC<{}> = () => {
         </b.Container>
       </HeaderWrapper>
       <Banner type='landing' />
-      <Section type='together' />
-      <Section type='software' />
-      <Section type='choose' />
+      <Template type='together' />
+      <Template type='software' />
+      <Template type='choose' />
       <Footer type='landing' />
     </>
   );

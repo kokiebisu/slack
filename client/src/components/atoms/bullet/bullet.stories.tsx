@@ -15,18 +15,21 @@ export default {
       },
     },
   },
-  decorators: [
-    (Story) => (
-      <ThemeProvider theme={main}>
-        <Story />
-      </ThemeProvider>
-    ),
-  ],
 } as Meta;
 
-const ButtonStories: Story<BulletProps> = (args) => <Bullet {...args} />;
+const BulletStories: Story<BulletProps> = (args) => <Bullet {...args} />;
 
-export const together = ButtonStories.bind({});
+export const together = BulletStories.bind({});
 together.args = {
   type: 'together',
+};
+
+export const check = BulletStories.bind({});
+check.args = {
+  type: 'check',
+};
+
+export const more = BulletStories.bind({});
+more.args = {
+  type: 'more',
 };

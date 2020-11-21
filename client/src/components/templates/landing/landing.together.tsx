@@ -1,11 +1,23 @@
 import * as React from 'react';
-import * as b from 'global/blocks';
 import styled from 'styled-components';
+
+/**
+ * Global
+ */
+import * as b from 'global/blocks';
 import { size } from 'global/sizes';
-import { TogetherSectionProps } from './props';
+
+/**
+ * Props
+ */
+import { TogetherTemplateProps } from './props';
+
+/**
+ * Components
+ */
 import { Bullet } from 'components/atoms/bullet/bullet.component';
 
-export const TogetherSection: React.FC<TogetherSectionProps> = () => {
+export const TogetherTemplate: React.FC<TogetherTemplateProps> = () => {
   const bullets = ['share', 'connect', 'collaborate'];
   return (
     <Wrapper>
@@ -29,12 +41,7 @@ export const TogetherSection: React.FC<TogetherSectionProps> = () => {
                 </Description>
               </b.Box>
               <LearnMore>
-                <b.Anchor>
-                  <b.Flex>
-                    <b.Text>Learn more about channels</b.Text>
-                    <b.Text>&nbsp;→</b.Text>
-                  </b.Flex>
-                </b.Anchor>
+                <Bullet type='more' more='channels' />
               </LearnMore>
             </b.Flex>
           </b.Box>

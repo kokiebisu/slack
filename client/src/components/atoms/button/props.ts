@@ -4,6 +4,8 @@ export interface PrimaryButtonProps {
   onPress?: () => void;
   size?: 'sm' | 'lg';
   to?: string;
+  fill?: any;
+  textColor?: any;
 }
 
 export interface NavButtonProps {
