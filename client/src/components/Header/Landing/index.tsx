@@ -7,7 +7,7 @@ import * as b from 'global/blocks';
 // Svg
 import { NameLogo } from 'assets/svg/Logo';
 import { BottomArrow } from 'assets/svg';
-import { HamburgerButton } from 'assets/svg';
+import { Hamburger } from 'assets/svg';
 
 // Animations
 import { launchMotion } from 'animations/Buttons';
@@ -107,7 +107,7 @@ export const Header: React.FC<Props> = () => {
                 <IconButtonWrapper
                   className='hamburgerbutton'
                   onClick={() => dispatchToggle({ type: 'toggle_landing' })}>
-                  <HamburgerButton />
+                  <Hamburger />
                 </IconButtonWrapper>
               </b.Flex>
             </Right>

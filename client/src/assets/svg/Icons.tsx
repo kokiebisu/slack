@@ -4,9 +4,9 @@ import * as React from 'react';
  * Shared
  */
 
-export const HamburgerButton = () => {
+export const Hamburger = (props: any) => {
   return (
-    <svg viewBox='0 0 24 17'>
+    <svg {...props} viewBox='0 0 24 17'>
       <path d='M0 0h24v3H0zm0 7h24v3H0zm0 7h24v3H0z' />
     </svg>
   );

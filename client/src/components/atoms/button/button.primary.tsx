@@ -5,22 +5,24 @@ import { size } from '../../../global/sizes';
 
 export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   title = 'Primary Button',
-  onPress = () => alert('You pressed'),
+  onPress,
   inverse = false,
   size = 'sm',
 }) => {
   return (
-    <Wrapper inverse={inverse} className={` ${size}`} onClick={onPress}>
+    <Wrapper inverse={inverse} className={`${size}`} onClick={onPress}>
       {title}
     </Wrapper>
   );
 };
 
 export const Wrapper = styled.button`
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-block;
   font-size: 14px;
   font-family: 'CircularPro-Bold';
   letter-spacing: 1px;
-  width: 100%;
   text-transform: uppercase;
   border: 1px solid
     ${({ inverse, theme }: { inverse: boolean; theme: any }) =>

@@ -29,6 +29,7 @@ const ButtonStories: Story<ButtonProps> = (args) => <Button {...args} />;
 export const primary = ButtonStories.bind({});
 primary.args = {
   type: 'primary',
+  onPress: () => alert('button pressed'),
 };
 primary.argTypes = {
   inverse: {
@@ -45,4 +46,11 @@ primary.argTypes = {
 export const nav = ButtonStories.bind({});
 nav.args = {
   type: 'nav',
+  onPress: () => alert('button pressed'),
+};
+
+export const transparent = ButtonStories.bind({});
+transparent.args = {
+  type: 'transparent',
+  onPress: () => alert('button pressed'),
 };
