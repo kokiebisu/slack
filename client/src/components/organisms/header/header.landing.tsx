@@ -1,15 +1,32 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
+
+/**
+ * Context
+ */
+import { useToggleDispatch } from 'context/toggle-context';
+
+/**
+ * Global
+ */
+import * as b from 'global/blocks';
+import { size } from 'global/sizes';
+
+/**
+ * Props
+ */
 import { LandingHeaderProps } from './props';
 
-import * as b from 'global/blocks';
-
+/**
+ * Assets
+ */
 import { NameLogo } from 'assets/svg/Logo';
-import { Button } from 'components/atoms/button/button.component';
-import { useToggleDispatch } from 'context/toggle-context';
-import styled from 'styled-components';
-import { LaunchOptions } from 'components/Header/Landing/LaunchOptions';
 
-import { size } from 'global/sizes';
+/**
+ * Components
+ */
+import { Button } from 'components/atoms/button/button.component';
+import { Modal } from '../modal/modal.component';
 
 export const LandingHeader: React.FC<LandingHeaderProps> = ({
   data,
@@ -23,10 +40,10 @@ export const LandingHeader: React.FC<LandingHeaderProps> = ({
         <b.Flex alignItems='center' justifyContent='space-between'>
           <b.Box width={1}>
             <b.Flex alignItems='center'>
-              <div>
+              <b.Box mr={3}>
                 <NameLogo width={110} />
-              </div>
-              <b.Flex>
+              </b.Box>
+              <Options>
                 <div>
                   <Button type='nav' nav='why' />
                 </div>
@@ -36,7 +53,7 @@ export const LandingHeader: React.FC<LandingHeaderProps> = ({
                 <div>
                   <Button type='nav' nav='resources' />
                 </div>
-              </b.Flex>
+              </Options>
             </b.Flex>
           </b.Box>
           {!loading &&
@@ -79,7 +96,9 @@ export const LandingHeader: React.FC<LandingHeaderProps> = ({
         </b.Flex>
       </Wrapper>
       {pressed && data?.myTeams.teams ? (
-        <LaunchOptions teams={data?.myTeams.teams} />
+        <LaunchWrapper>
+          <Modal type='launch' teams={data?.myTeams.teams} />
+        </LaunchWrapper>
       ) : null}
     </>
   );
@@ -100,5 +119,24 @@ const Mobile = styled.div`
   display: block;
   @media ${size.sm} {
     display: none;
+  }
+`;
+
+export const LaunchWrapper = styled(b.Box)`
+  display: none;
+
+  @media ${size.md} {
+    display: block;
+    position: absolute;
+    top: 80px;
+    right: calc(5%);
+    border-radius: 3px;
+  }
+`;
+
+const Options = styled(b.Flex)`
+  display: none;
+  @media ${size.sm} {
+    display: flex;
   }
 `;

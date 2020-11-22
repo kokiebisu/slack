@@ -1,12 +1,17 @@
-import * as React from 'react';
+import React from 'react';
 
-// Blocks
+/**
+ * Global
+ */
 import * as b from 'global/blocks';
 
-// Styles
-import { PolicyWrapper } from 'styles/shared/Policy';
+/**
+ * Props
+ */
+import { PolicyCardProps } from './props';
+import styled from 'styled-components';
 
-export const Policy = () => {
+export const PolicyCard: React.FC<PolicyCardProps> = () => {
   return (
     <b.Box>
       <b.Flex justifyContent='center'>
@@ -33,3 +38,11 @@ export const Policy = () => {
     </b.Box>
   );
 };
+
+const PolicyWrapper = styled(b.Box)`
+  width: 370px;
+
+  span {
+    color: ${({ theme }) => theme.colors.blue};
+  }
+`;

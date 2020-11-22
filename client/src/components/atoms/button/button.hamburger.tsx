@@ -1,8 +1,20 @@
-import { Hamburger } from 'assets/svg';
-import { main } from 'global/colors';
 import React from 'react';
 import styled from 'styled-components';
+
+/**
+ * Props
+ */
 import { HamburgerButtonProps } from './props';
+
+/**
+ * Assets
+ */
+import { Hamburger } from 'assets/svg';
+
+/**
+ * Colors
+ */
+import { main } from 'global/colors';
 
 export const HamburgerButton: React.FC<HamburgerButtonProps> = ({
   onPress = () => alert('hamburger button pressed'),

@@ -1,5 +1,13 @@
 import React from 'react';
+
+/**
+ * Props
+ */
 import { TemplateProps } from './props';
+
+/**
+ * Templates
+ */
 import { ChooseTemplate } from './landing.choose';
 import { SoftwareTemplate } from './landing.software';
 import { TogetherTemplate } from './landing.together';

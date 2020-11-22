@@ -21,6 +21,10 @@ export interface HamburgerButtonProps {
   onPress?: () => void;
 }
 
+export interface SocialMediaButtonProps {
+  platform?: string;
+}
+
 export interface ButtonProps {
   to?: string;
   type: string;

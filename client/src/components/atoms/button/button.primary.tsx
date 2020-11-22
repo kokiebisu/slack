@@ -1,7 +1,15 @@
 import React from 'react';
-import { PrimaryButtonProps } from './props';
 import styled from 'styled-components';
-import { size } from '../../../global/sizes';
+
+/**
+ * Props
+ */
+import { PrimaryButtonProps } from './props';
+
+/**
+ * Global
+ */
+import { size } from 'global/sizes';
 import { main } from 'global/colors';
 
 export const PrimaryButton: React.FC<PrimaryButtonProps> = ({

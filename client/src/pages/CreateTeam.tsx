@@ -16,7 +16,7 @@ import {
   Policy,
 } from 'styles/CreateTeam';
 
-import { Header } from 'components/CreateTeam/Header';
+import { Header } from 'components/organisms/header/header.component';
 import { MiniWorkspace } from 'components/CreateTeam/Miniworkspace';
 
 interface Props {
@@ -53,7 +53,7 @@ export const CreateTeamLayout: React.FC<Props> = ({
 }) => {
   return (
     <Wrapper exit={{ opacity: 0 }} initial='initial' animate='animate'>
-      <Header />
+      <Header type='create' />
       <InnerWrapper>
         <b.Flex>
           <Left>

@@ -1,11 +1,23 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { Template } from './landing.component';
-import { TemplateProps } from './props';
 import { ThemeProvider } from 'styled-components';
-import { main } from '../../../global/colors';
 import { ToggleProvider } from 'context/toggle-context';
 import { MemoryRouter } from 'react-router-dom';
+
+/**
+ * Components
+ */
+import { Template } from './landing.component';
+
+/**
+ * Props
+ */
+import { TemplateProps } from './props';
+
+/**
+ * Global
+ */
+import { main } from '../../../global/colors';
 
 export default {
   title: 'Design System/Organisms/Section/Landing',

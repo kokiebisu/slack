@@ -1,6 +1,14 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
+
+/**
+ * Props
+ */
 import { FooterProps } from './props';
+
+/**
+ * Components
+ */
 import { Footer } from 'components/organisms/footer/footer.component';
 
 export default {

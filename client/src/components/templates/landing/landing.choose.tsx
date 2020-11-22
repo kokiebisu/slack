@@ -1,9 +1,21 @@
 import * as React from 'react';
-import * as b from 'global/blocks';
 import styled from 'styled-components';
+
+/**
+ * Global
+ */
+import * as b from 'global/blocks';
 import { size } from 'global/sizes';
-import { ChooseTemplateProps } from './props';
 import { main } from 'global/colors';
+
+/**
+ * Props
+ */
+import { ChooseTemplateProps } from './props';
+
+/**
+ * Components
+ */
 import { Button } from 'components/atoms/button/button.component';
 
 export const ChooseTemplate: React.FC<ChooseTemplateProps> = () => {
@@ -63,12 +75,8 @@ const Header = styled(b.Text)`
 const Buttons = styled(b.Box)`
   & > div {
     display: flex;
-    flex-direction: column;
+
     align-items: center;
     justify-content: center;
-
-    @media ${size.md} {
-      flex-direction: row;
-    }
   }
 `;

@@ -1,29 +1,26 @@
-import * as React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
-// Blocks
+/**
+ * Global
+ */
 import * as b from 'global/blocks';
 
-// Svgs
+/**
+ * Assets
+ */
 import { RightArrow } from 'assets/svg';
 
-// Styles
-import {
-  IconWrapper,
-  launchArrow,
-  Wrapper,
-  Name,
-  AvatarLetter,
-  Avatar,
-} from 'styles/Header/Landing/LaunchOption';
+/**
+ * Props
+ */
+import { LaunchCardProps } from './props';
 
-interface Props {
-  name: string;
-  url: string;
-  color: string;
-}
-
-export const WorkspaceOption: React.FC<Props> = ({ name, url, color }) => {
+export const LaunchCard: React.FC<LaunchCardProps> = ({
+  name = 'workspace',
+  url,
+  color = 'red',
+}) => {
   const [hovered, setHovered] = useState({
     launch: false,
   });
@@ -68,4 +65,62 @@ export const WorkspaceOption: React.FC<Props> = ({ name, url, color }) => {
       </b.Box>
     </Wrapper>
   );
+};
+
+const Wrapper = styled(b.Anchor)`
+  & > div {
+    padding: 15px;
+    border-bottom: 0.5px solid ${({ theme }) => theme.colors.white__dark};
+  }
+`;
+
+const Name = styled(b.Box)`
+  & > p {
+    color: #1d1d1d;
+
+    &.hovered {
+      color: ${({ theme }) => theme.colors.blue};
+    }
+  }
+`;
+
+const Avatar = styled(b.Box)`
+  & > div {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+  }
+`;
+
+const AvatarLetter = styled(b.Box)`
+  & > p {
+    color: ${({ theme }) => theme.colors.white};
+    font-family: 'SlackLato-Bold';
+    font-size: 18px;
+  }
+`;
+
+const IconWrapper = styled(b.Box)`
+  svg {
+    width: 15px;
+    height: 15px;
+    path {
+      fill: ${({ theme }) => theme.colors.blue};
+    }
+  }
+`;
+
+const launchArrow = {
+  initial: {
+    x: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+  animate: {
+    x: 5,
+    transition: {
+      duration: 0.5,
+    },
+  },
 };

@@ -1,10 +1,20 @@
 import * as React from 'react';
-
 import styled from 'styled-components';
-import * as b from 'global/blocks';
 
+/**
+ * Global
+ */
+import * as b from 'global/blocks';
 import { size } from 'global/sizes';
+
+/**
+ * Props
+ */
 import { TogetherBulletProps } from './props';
+
+/**
+ * Assets
+ */
 import { Collaborate, ConnectCall, Share } from 'assets/svg/Icons';
 
 export const TogetherBullet: React.FC<TogetherBulletProps> = ({

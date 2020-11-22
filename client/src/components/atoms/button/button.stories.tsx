@@ -1,8 +1,20 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { Button } from './button.component';
-import { ButtonProps } from './props';
 import { ThemeProvider } from 'styled-components';
+
+/**
+ * Components
+ */
+import { Button } from './button.component';
+
+/**
+ * Props
+ */
+import { ButtonProps } from './props';
+
+/**
+ * Global
+ */
 import { main } from '../../../global/colors';
 
 export default {
@@ -53,4 +65,9 @@ export const transparent = ButtonStories.bind({});
 transparent.args = {
   type: 'transparent',
   onPress: () => alert('button pressed'),
+};
+
+export const socialmedia = ButtonStories.bind({});
+socialmedia.args = {
+  type: 'socialmedia',
 };
