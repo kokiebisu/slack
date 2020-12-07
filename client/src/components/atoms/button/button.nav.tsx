@@ -1,10 +1,16 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
+/**
+ * Global
+ */
 import * as b from 'global/blocks';
+
+/**
+ * Props
+ */
 import { NavButtonProps } from './props';
-import { useState } from 'react';
 
 export const NavButton: React.FC<NavButtonProps> = ({ nav = 'why' }) => {
   const [hovered, setHovered] = useState(false);

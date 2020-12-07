@@ -4,6 +4,8 @@ export interface PrimaryButtonProps {
   onPress?: () => void;
   size?: 'sm' | 'lg';
   to?: string;
+  fill?: any;
+  textColor?: any;
 }
 
 export interface NavButtonProps {
@@ -17,6 +19,10 @@ export interface TransparentButtonProps {
 
 export interface HamburgerButtonProps {
   onPress?: () => void;
+}
+
+export interface SocialMediaButtonProps {
+  platform?: string;
 }
 
 export interface ButtonProps {

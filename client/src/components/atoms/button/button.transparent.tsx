@@ -1,5 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+
+/**
+ * Props
+ */
 import { TransparentButtonProps } from './props';
 
 export const TransparentButton: React.FC<TransparentButtonProps> = ({

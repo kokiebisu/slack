@@ -1,13 +1,20 @@
-import * as React from 'react';
-import { useState } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 
-// Blocks
+/**
+ * Global
+ */
 import * as b from 'global/blocks';
-
-// Styles
-import { LandingBannerProps } from './props';
 import { size } from 'global/sizes';
+
+/**
+ * Props
+ */
+import { LandingBannerProps } from './props';
+
+/**
+ * Components
+ */
 import { Button } from 'components/atoms/button/button.component';
 
 export const LandingBanner: React.FC<LandingBannerProps> = () => {

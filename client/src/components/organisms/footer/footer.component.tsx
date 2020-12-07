@@ -1,5 +1,14 @@
 import React from 'react';
-import { LandingFooter } from './footer.landing';
+
+/**
+ * Components
+ */
+import { SignInFooter } from 'components/organisms/footer/footer.signin';
+import { LandingFooter } from 'components/organisms/footer/footer.landing';
+
+/**
+ * Props
+ */
 import { FooterProps } from './props';
 
 export const Footer: React.FC<FooterProps> = ({
@@ -8,6 +17,7 @@ export const Footer: React.FC<FooterProps> = ({
 }) => {
   const types = {
     landing: <LandingFooter {...props} />,
+    signin: <SignInFooter {...props} />,
   };
   return types[type];
 };

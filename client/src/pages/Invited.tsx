@@ -18,7 +18,6 @@ import { PasswordValidationBar } from 'components/shared/ValidationBar';
 import { PasswordValidationText } from 'components/shared/ValidationText';
 import { ErrorDialog } from 'components/shared/ErrorDialog';
 import { Confirm } from 'components/shared/Confirm';
-import { Policy } from 'components/shared/Policy';
 
 // Utils
 import { inputReducer } from 'reducers/input';
@@ -27,6 +26,7 @@ import { fullNameRegex, weakRegex } from 'util/passwordUtil';
 import { randomColor } from 'util/randomColor';
 import { profile } from 'global/colors';
 import { useCreateUserInviteMutation } from 'generated/graphql';
+import { Card } from 'components/molecules/card/card.component';
 
 export const Invited = () => {
   const { invitorId, token } = useParams();
@@ -138,7 +138,7 @@ export const Invited = () => {
                         <ErrorDialog width='full' error={state.errorlog} />
                         <b.Box>
                           <Confirm loading={state.loading} />
-                          <Policy />
+                          <Card type='policy' />
                         </b.Box>
                       </form>
                     </b.Box>

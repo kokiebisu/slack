@@ -16,12 +16,12 @@ import { LogoCenterLayout } from 'layout/LogoCenter';
 import { Wrapper } from 'styles/GetStartedStart';
 import { PasswordValidationBar } from 'components/shared/ValidationBar';
 import { PasswordValidationText } from 'components/shared/ValidationText';
-import { Policy } from 'components/shared/Policy';
 import { Inputs } from 'components/shared/Inputs';
 import { ErrorDialog } from 'components/shared/ErrorDialog';
 import { Confirm } from 'components/shared/Confirm';
 import { randomColor } from 'util/randomColor';
 import { profile } from 'global/colors';
+import { Card } from 'components/molecules/card/card.component';
 
 // Utils
 import { inputReducer } from 'reducers/input';
@@ -132,7 +132,7 @@ export const GetStartedCreate: React.FC<Props> = () => {
                 <ErrorDialog error={state.errorlog} width={370} />
                 <b.Box>
                   <Confirm loading={state.loading} />
-                  <Policy />
+                  <Card type='policy' />
                 </b.Box>
               </form>
             </b.Box>

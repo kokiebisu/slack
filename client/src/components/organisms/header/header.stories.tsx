@@ -1,11 +1,27 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { HeaderProps } from './props';
 import { ThemeProvider } from 'styled-components';
-import { main } from '../../../global/colors';
-import { Header } from './header.component';
-import { ToggleProvider } from 'context/toggle-context';
 import { MemoryRouter } from 'react-router-dom';
+
+/**
+ * Context
+ */
+import { ToggleProvider } from 'context/toggle-context';
+
+/**
+ * Props
+ */
+import { HeaderProps } from './props';
+
+/**
+ * Global
+ */
+import { main } from '../../../global/colors';
+
+/**
+ * Components
+ */
+import { Header } from './header.component';
 
 export default {
   title: 'Design System/Organisms/Header',
@@ -28,4 +44,9 @@ const HeaderStories: Story<HeaderProps> = (args) => <Header {...args} />;
 export const landing = HeaderStories.bind({});
 landing.args = {
   type: 'landing',
+};
+
+export const create = HeaderStories.bind({});
+create.args = {
+  type: 'create',
 };

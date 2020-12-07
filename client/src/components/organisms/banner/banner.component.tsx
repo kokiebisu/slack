@@ -1,5 +1,13 @@
 import React from 'react';
+
+/**
+ * Components
+ */
 import { LandingBanner } from './banner.landing';
+
+/**
+ * Props
+ */
 import { BannerProps } from './props';
 
 export const Banner: React.FC<BannerProps> = ({

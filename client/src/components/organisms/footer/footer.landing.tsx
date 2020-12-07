@@ -1,27 +1,28 @@
-import * as React from 'react';
-
-// Blocks
+import React from 'react';
 import * as b from 'global/blocks';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-// Svgs
-import { NoNameLogo } from 'assets/svg/Logo';
-
-// Styles
-import { Wrapper, Content, Copyright } from 'styles/Footer/Landing';
-
-// Components
-import { SocialMedias } from 'components/Footer/Landing/SocialMedias';
-import { Sections } from 'components/Footer/Landing/Sections';
-import { LandingFooterProps } from './props';
-
-// Svgs
+/**
+ * Assets
+ */
 import { Globe } from 'assets/svg';
 import { BottomArrow } from 'assets/svg';
-import styled, { css } from 'styled-components';
+import { NoNameLogo } from 'assets/svg/Logo';
 
-// Components
-import { Option } from 'components/Footer/Landing/Option';
+/**
+ * Global
+ */
 import { size } from 'global/sizes';
+
+/**
+ * Props
+ */
+import { LandingFooterProps } from './props';
+
+/**
+ * Components
+ */
 import { Button } from 'components/atoms/button/button.component';
 
 export const LandingFooter: React.FC<LandingFooterProps> = () => {
@@ -31,8 +32,70 @@ export const LandingFooter: React.FC<LandingFooterProps> = () => {
     { name: 'Contact Us', url: '/' },
   ];
 
+  const socialmedias = ['twitter', 'facebook', 'linkedin', 'youtube'];
+
+  const sections = [
+    {
+      subsections: [
+        {
+          title: 'Product',
+          items: [
+            { name: 'Features', url: '/' },
+            { name: 'Enterprise', url: '/' },
+            { name: 'Security', url: '/' },
+            { name: 'Customer Stories', url: '/' },
+            { name: 'Pricing', url: '/' },
+            { name: 'Slack Demo', url: '/' },
+          ],
+        },
+        {
+          title: 'Slack for teams',
+          items: [
+            { name: 'Engineering', url: '/' },
+            { name: 'Financial Services', url: '/' },
+            { name: 'Sales', url: '/' },
+            { name: 'IT', url: '/' },
+            { name: 'Marketing', url: '/' },
+            { name: 'Customer Support', url: '/' },
+            { name: 'Human Resources', url: '/' },
+            { name: 'Project Management', url: '/' },
+            { name: 'Media', url: '/' },
+          ],
+        },
+      ],
+    },
+    {
+      subsections: [
+        {
+          title: 'Resources',
+          items: [
+            { name: 'Slack Tips', url: '/' },
+            { name: 'Blog', url: '/' },
+            { name: 'Events', url: '/' },
+            { name: 'Slack Certified Program', url: '/' },
+            { name: 'Help Center', url: '/' },
+            { name: 'API', url: '/' },
+            { name: 'App Directory', url: '/' },
+            { name: 'Download Slack', url: '/' },
+            { name: 'Partners', url: '/' },
+          ],
+        },
+        {
+          title: 'Company',
+          items: [
+            { name: 'About Us', url: '/' },
+            { name: 'Leadership', url: '/' },
+            { name: 'News', url: '/' },
+            { name: 'Media Kit', url: '/' },
+            { name: 'Careers', url: '/' },
+          ],
+        },
+      ],
+    },
+  ];
+
   return (
-    <Wrapper>
+    <div>
       <b.Box className='footer__logo'>
         <b.Container>
           <Content className='logo'>
@@ -40,7 +103,38 @@ export const LandingFooter: React.FC<LandingFooterProps> = () => {
               <Logo>
                 <NoNameLogo width={65} />
               </Logo>
-              <Sections />
+              <Sections>
+                {sections.map((section, index) => {
+                  return (
+                    <b.Box width={1} key={index}>
+                      <b.Flex>
+                        {section.subsections.map((subsection, index) => {
+                          return (
+                            <SectionWrapper key={index}>
+                              <b.Box>
+                                <SectionName py={2}>
+                                  <b.Text>Product</b.Text>
+                                </SectionName>
+                                <Items>
+                                  {subsection.items.map((item, index) => {
+                                    return (
+                                      <Item key={index}>
+                                        <ItemLink to={item.url}>
+                                          {item.name}
+                                        </ItemLink>
+                                      </Item>
+                                    );
+                                  })}
+                                </Items>
+                              </b.Box>
+                            </SectionWrapper>
+                          );
+                        })}
+                      </b.Flex>
+                    </b.Box>
+                  );
+                })}
+              </Sections>
             </b.Flex>
           </Content>
         </b.Container>
@@ -79,22 +173,42 @@ export const LandingFooter: React.FC<LandingFooterProps> = () => {
                   </ChangeRegionButton>
                 </b.Flex>
               </OptionsWrapper>
-              <SocialMedias />
+              <SocialMediaWrapper>
+                {socialmedias.map((socialmedia, index) => {
+                  return (
+                    <div key={index}>
+                      <Button type='socialmedia' platform={socialmedia} />
+                    </div>
+                  );
+                })}
+              </SocialMediaWrapper>
             </b.Flex>
           </b.Container>
         </Content>
       </b.Box>
-      <b.Box className='footer__copyright'>
+      <CopyrightWrapper>
         <b.Container>
           <Copyright>
             © Copyright 2020 Slack Technologies, Inc. All rights reserved.
             Various trademarks held by their respective owners.
           </Copyright>
         </b.Container>
-      </b.Box>
-    </Wrapper>
+      </CopyrightWrapper>
+    </div>
   );
 };
+
+const Content = styled(b.Box)`
+  padding: 24px 0;
+`;
+
+const CopyrightWrapper = styled.div`
+  background-color: gray;
+`;
+
+const Copyright = styled.p`
+  font-size: 12px;
+`;
 
 const OptionsWrapper = styled(b.Box)`
   & > div {
@@ -182,24 +296,6 @@ const IconWrapper = styled(b.Box)`
   }
 `;
 
-const Link = styled(b.Anchor)`
-  text-transform: none;
-
-  &.hovered {
-    color: #1264a3;
-    border-bottom: 1px solid #1264a3;
-    cursor: pointer !important;
-  }
-
-  ${({ fontFamily }) =>
-    fontFamily &&
-    css`
-      font-family: ${fontFamily};
-    `}
-`;
-
-const ArrowWrapper = styled(b.Box)``;
-
 const Logo = styled(b.Box)`
   width: 100%;
   margin-bottom: 30px;
@@ -209,18 +305,62 @@ const Logo = styled(b.Box)`
   }
 `;
 
-const OptionWrapper = styled(b.Box)`
+const Sections = styled(b.Box)`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  @media ${size.xs} {
+    flex-direction: row;
+  }
+`;
+
+export const SectionWrapper = styled(b.Flex)`
+  width: 100%;
+  flex-direction: row;
+  @media ${size.xs} {
+    width: 50%;
+  }
+
+  & > div {
+    width: 50%;
+  }
+`;
+
+export const SectionName = styled(b.Box)`
+  & > p {
+    color: #464646;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: 'CircularPro-Bold';
+  }
+`;
+
+export const Items = styled.ul`
+  color: #696969;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`;
+
+export const Item = styled.li`
+  color: #868686;
+  font-family: 'SlackLato-Regular';
+  padding: 10px 0;
+  font-size: 14px;
+`;
+
+export const ItemLink = styled(Link)`
+  cursor: pointer;
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.gray};
   &:hover {
     color: #1264a3;
   }
+`;
 
-  & p {
-    font-size: 14px;
-    color: ${({ theme }) => theme.colors.gray__dark};
-    font-family: 'CircularPro-Bold';
-  }
-
-  & > a {
-    text-decoration: none;
+const SocialMediaWrapper = styled(b.Flex)`
+  justify-content: center;
+  @media ${size.sm} {
+    justify-content: flex-end;
   }
 `;
