@@ -1,23 +1,21 @@
-import React from 'react';
+import React from "react";
 
-/**
- * Components
- */
-import { LandingHeader } from 'components/organisms/header/header.landing';
-import { CreateHeader } from './header.create';
+/** components */
+import { LandingHeader } from "components/organisms/header/header.landing";
+import { CreateHeader } from "components/organisms/header/header.create";
+import { SignInHeader } from "components/organisms/header/header.signin";
 
-/**
- * Props
- */
-import { HeaderProps } from './props';
+/** props */
+import { HeaderProps } from "./props";
 
 export const Header: React.FC<HeaderProps> = ({
-  type = 'landing',
+  type = "landing",
   ...props
 }) => {
   const types = {
     landing: <LandingHeader {...props} />,
     create: <CreateHeader {...props} />,
+    signin: <SignInHeader {...props} />,
   };
   return <div>{types[type]}</div>;
 };

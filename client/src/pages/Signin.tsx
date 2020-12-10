@@ -1,10 +1,11 @@
-import * as React from "react";
+import React from "react";
 
-import { SignInHeader } from "components/Header/Signin";
+/** components */
+import { Header } from "components/organisms/header/header.component";
 import { SignInContent } from "components/Signin/Content";
 import { Footer } from "components/organisms/footer/footer.component";
 
-// Styles
+/** styles */
 import { Wrapper } from "styles/Signin";
 
 interface Props {}
@@ -12,7 +13,7 @@ interface Props {}
 export const SignIn: React.FC<Props> = () => {
   return (
     <Wrapper>
-      <SignInHeader />
+      <Header type="signin" />
       <SignInContent />
       <Footer type="signin" />
     </Wrapper>
