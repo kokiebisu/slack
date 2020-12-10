@@ -1,34 +1,59 @@
 import React from 'react';
-import { PrimaryButtonProps } from './props';
 import styled from 'styled-components';
-import { size } from '../../../global/sizes';
+
+/**
+ * Props
+ */
+import { PrimaryButtonProps } from './props';
+
+/**
+ * Global
+ */
+import { size } from 'global/sizes';
+import { main } from 'global/colors';
 
 export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
+  fill = main.colors.primary__light,
   title = 'Primary Button',
-  onPress = () => alert('You pressed'),
+  textColor = main.colors.white,
+  onPress,
   inverse = false,
   size = 'sm',
 }) => {
   return (
-    <Wrapper inverse={inverse} className={` ${size}`} onClick={onPress}>
+    <Wrapper
+      fill={fill}
+      textColor={textColor}
+      inverse={inverse}
+      className={`${size}`}
+      onClick={onPress}>
       {title}
     </Wrapper>
   );
 };
 
 export const Wrapper = styled.button`
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-block;
   font-size: 14px;
   font-family: 'CircularPro-Bold';
   letter-spacing: 1px;
-  width: 100%;
   text-transform: uppercase;
   border: 1px solid
-    ${({ inverse, theme }: { inverse: boolean; theme: any }) =>
-      inverse ? theme.colors.primary__light : 'transparent'};
-  background-color: ${({ inverse, theme }: { inverse: boolean; theme: any }) =>
-    inverse ? 'transparent' : theme.colors.primary__light};
-  color: ${({ inverse, theme }: { inverse: boolean; theme: any }) =>
-    inverse ? theme.colors.primary__light : theme.colors.white};
+    ${({ inverse, fill }: { inverse: boolean; fill: any }) =>
+      inverse ? fill : 'transparent'};
+  background-color: ${({ inverse, fill }: { inverse: boolean; fill: any }) =>
+    inverse ? 'transparent' : fill};
+  color: ${({
+    inverse,
+    fill,
+    textColor,
+  }: {
+    inverse: boolean;
+    fill: any;
+    textColor: any;
+  }) => (inverse ? fill : textColor)};
 
   @media ${size.lg} {
     width: auto;
@@ -45,7 +70,12 @@ export const Wrapper = styled.button`
   }
 
   &.sm {
-    padding: 13px 13px;
+    padding: 13px 20px;
+    border-radius: 5px;
+  }
+
+  &.md {
+    padding: 22px 24px;
     border-radius: 5px;
   }
 

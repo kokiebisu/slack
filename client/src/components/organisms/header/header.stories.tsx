@@ -1,8 +1,26 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { HeaderProps } from './props';
 import { ThemeProvider } from 'styled-components';
+import { MemoryRouter } from 'react-router-dom';
+
+/**
+ * Context
+ */
+import { ToggleProvider } from 'context/toggle-context';
+
+/**
+ * Props
+ */
+import { HeaderProps } from './props';
+
+/**
+ * Global
+ */
 import { main } from '../../../global/colors';
+
+/**
+ * Components
+ */
 import { Header } from './header.component';
 
 export default {
@@ -10,9 +28,13 @@ export default {
   component: Header,
   decorators: [
     (Story) => (
-      <ThemeProvider theme={main}>
-        <Story />
-      </ThemeProvider>
+      <MemoryRouter>
+        <ToggleProvider>
+          <ThemeProvider theme={main}>
+            <Story />
+          </ThemeProvider>
+        </ToggleProvider>
+      </MemoryRouter>
     ),
   ],
 } as Meta;
@@ -22,4 +44,9 @@ const HeaderStories: Story<HeaderProps> = (args) => <Header {...args} />;
 export const landing = HeaderStories.bind({});
 landing.args = {
   type: 'landing',
+};
+
+export const create = HeaderStories.bind({});
+create.args = {
+  type: 'create',
 };

@@ -3,9 +3,27 @@ export interface PrimaryButtonProps {
   inverse?: boolean;
   onPress?: () => void;
   size?: 'sm' | 'lg';
+  to?: string;
+  fill?: any;
+  textColor?: any;
 }
 
-export interface NavButtonProps {}
+export interface NavButtonProps {
+  nav?: 'why' | 'solutions' | 'resources';
+}
+
+export interface TransparentButtonProps {
+  title?: string;
+  onPress?: () => void;
+}
+
+export interface HamburgerButtonProps {
+  onPress?: () => void;
+}
+
+export interface SocialMediaButtonProps {
+  platform?: string;
+}
 
 export interface ButtonProps {
   to?: string;
