@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import * as b from 'global/blocks';
+import styled from "styled-components";
+import * as b from "global/blocks";
 
 // Breakpoints
-import { signin } from 'global/sizes';
+import { signin } from "global/sizes";
 
 export const Wrapper = styled.footer`
   width: 100%;
@@ -38,7 +38,7 @@ export const SectionWrapper = styled(b.Box)`
 `;
 
 export const SectionName = styled(b.Text)`
-  font-family: 'SlackLato-Bold';
+  font-family: "SlackLato-Bold";
   color: ${({ color }) => color};
   margin: 0;
   text-transform: uppercase;
@@ -139,20 +139,7 @@ export const SmallList = styled.ul`
   }
 
   div {
-    font-family: 'SlackLato-Regular';
-  }
-`;
-
-export const Item = styled.li`
-  list-style: none;
-  color: ${({ theme }) => theme.colors.gray};
-  font-size: 0.79rem;
-  font-family: 'SlackLato-Light';
-  margin: 5px 0;
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.gray__dark};
-    cursor: pointer;
+    font-family: "SlackLato-Regular";
   }
 `;
 
