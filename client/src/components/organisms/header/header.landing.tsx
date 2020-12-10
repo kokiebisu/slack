@@ -1,34 +1,21 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import styled from "styled-components";
 
-/**
- * Context
- */
-import { useToggleDispatch } from 'context/toggle-context';
+/** context */
+import { useToggleDispatch } from "context/toggle-context";
 
-/**
- * Global
- */
-import * as b from 'global/blocks';
-import { size } from 'global/sizes';
+/** global */
+import * as b from "global/blocks";
+import { size } from "global/sizes";
 
-/**
- * Props
- */
-import { LandingHeaderProps } from './props';
+/** assets */
+import { NameLogo } from "assets/svg/Logo";
 
-/**
- * Assets
- */
-import { NameLogo } from 'assets/svg/Logo';
+/** components */
+import { Button } from "components/atoms/button/button.component";
+import { Modal } from "../modal/modal.component";
 
-/**
- * Components
- */
-import { Button } from 'components/atoms/button/button.component';
-import { Modal } from '../modal/modal.component';
-
-export const LandingHeader: React.FC<LandingHeaderProps> = ({
+export const LandingHeader: React.FC<{ data?: any; loading?: boolean }> = ({
   data,
   loading,
 }) => {
@@ -37,21 +24,21 @@ export const LandingHeader: React.FC<LandingHeaderProps> = ({
   return (
     <>
       <Wrapper py={3}>
-        <b.Flex alignItems='center' justifyContent='space-between'>
+        <b.Flex alignItems="center" justifyContent="space-between">
           <b.Box width={1}>
-            <b.Flex alignItems='center'>
+            <b.Flex alignItems="center">
               <b.Box mr={3}>
                 <NameLogo width={110} />
               </b.Box>
               <Options>
                 <div>
-                  <Button type='nav' nav='why' />
+                  <Button type="nav" nav="why" />
                 </div>
                 <div>
-                  <Button type='nav' nav='solutions' />
+                  <Button type="nav" nav="solutions" />
                 </div>
                 <div>
-                  <Button type='nav' nav='resources' />
+                  <Button type="nav" nav="resources" />
                 </div>
               </Options>
             </b.Flex>
@@ -62,33 +49,33 @@ export const LandingHeader: React.FC<LandingHeaderProps> = ({
           data.myTeams.teams!.length > 0 ? (
             <div>
               <Button
-                type='primary'
-                size='sm'
-                title='Launch'
+                type="primary"
+                size="sm"
+                title="Launch"
                 onPress={() => setPressed(!pressed)}
               />
             </div>
           ) : (
             <>
               <Normal>
-                <b.Flex alignItems='center'>
+                <b.Flex alignItems="center">
                   <b.Box mr={3}>
-                    <Button type='transparent' title='Sign in' to='/signin' />
+                    <Button type="transparent" title="Sign in" to="/signin" />
                   </b.Box>
                   <div>
                     <Button
-                      type='primary'
-                      size='sm'
-                      title='Get started'
-                      to='/get-started'
+                      type="primary"
+                      size="sm"
+                      title="Get started"
+                      to="/get-started"
                     />
                   </div>
                 </b.Flex>
               </Normal>
               <Mobile>
                 <Button
-                  type='hamburger'
-                  onPress={() => dispatchToggle({ type: 'toggle_landing' })}
+                  type="hamburger"
+                  onPress={() => dispatchToggle({ type: "toggle_landing" })}
                 />
               </Mobile>
             </>
@@ -97,7 +84,7 @@ export const LandingHeader: React.FC<LandingHeaderProps> = ({
       </Wrapper>
       {pressed && data?.myTeams.teams ? (
         <LaunchWrapper>
-          <Modal type='launch' teams={data?.myTeams.teams} />
+          <Modal type="launch" teams={data?.myTeams.teams} />
         </LaunchWrapper>
       ) : null}
     </>

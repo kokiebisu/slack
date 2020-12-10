@@ -11,7 +11,7 @@ import { Wrapper } from "styles/Signin";
 export const SignIn: React.FC<{}> = () => {
   return (
     <Wrapper>
-      <Header type="signin" />
+      <Header variant="signin" />
       <Auth variant="signin" />
       <Footer type="signin" />
     </Wrapper>

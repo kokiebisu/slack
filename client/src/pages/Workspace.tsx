@@ -1,21 +1,21 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect, useParams } from "react-router-dom";
 
 // Styles
-import { Wrapper, ContentWrapper } from 'styles/Workspace';
+import { Wrapper, ContentWrapper } from "styles/Workspace";
 
 // Components
-import { HomeHeader } from 'components/Header/Workspace';
-import { Sidebar } from 'components/Workspace/Sidebar';
-import { MenuToggle } from 'components/Workspace/MenuToggle';
-import { ChannelModal } from 'modals/Channel';
+import { Header } from "components/organisms/header/header.component";
+import { Sidebar } from "components/Workspace/Sidebar";
+import { MenuToggle } from "components/Workspace/MenuToggle";
+import { ChannelModal } from "modals/Channel";
 
 // Queries
-import { useMeQuery, useTeamQuery } from 'generated/graphql';
-import { useToggleState } from 'context/toggle-context';
-import { InviteModal } from 'modals/Invite';
-import { useEffect } from 'react';
+import { useMeQuery, useTeamQuery } from "generated/graphql";
+import { useToggleState } from "context/toggle-context";
+import { InviteModal } from "modals/Invite";
+import { useEffect } from "react";
 
 interface Props {
   route: React.ReactNode;
@@ -25,7 +25,7 @@ export const Workspace: React.FC<Props> = ({ route }) => {
   const state = useToggleState();
 
   const { teamId } = useParams();
-  localStorage.setItem('teamId', teamId);
+  localStorage.setItem("teamId", teamId);
   const { loading: meLoading, error } = useMeQuery();
 
   const { loading: teamLoading } = useTeamQuery({
@@ -35,10 +35,10 @@ export const Workspace: React.FC<Props> = ({ route }) => {
   });
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
 
     return () => {
-      document.body.style.overflow = 'initial';
+      document.body.style.overflow = "initial";
     };
   }, []);
 
@@ -46,14 +46,14 @@ export const Workspace: React.FC<Props> = ({ route }) => {
     <>
       <Wrapper>
         {error ? (
-          <Redirect to='/' />
+          <Redirect to="/" />
         ) : (
           <>
             {!teamLoading && !meLoading && (
               <>
                 {state.channel && <ChannelModal />}
                 {state.invite && <InviteModal />}
-                <HomeHeader />
+                <Header variant="workspace" />
                 {state.menu ? <MenuToggle /> : null}
                 <ContentWrapper>
                   <Sidebar />

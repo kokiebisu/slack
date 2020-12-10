@@ -1,21 +1,21 @@
-import * as React from 'react';
-import styled from 'styled-components';
-import { useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import * as React from "react";
+import styled from "styled-components";
+import { useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
 
-import * as b from 'global/blocks';
-import { Header } from 'components/organisms/header/header.component';
-import { Banner } from 'components/organisms/banner/banner.component';
-import { Footer } from 'components/organisms/footer/footer.component';
-import { useMeQuery, useMyTeamsQuery } from 'generated/graphql';
-import { LandingModal } from 'modals/Landing';
-import { useToggleState } from 'context/toggle-context';
-import { ModalWrapper } from 'styles/Landing';
-import { Template } from 'components/templates/landing/landing.component';
+import * as b from "global/blocks";
+import { Header } from "components/organisms/header/header.component";
+import { Banner } from "components/organisms/banner/banner.component";
+import { Footer } from "components/organisms/footer/footer.component";
+import { useMeQuery, useMyTeamsQuery } from "generated/graphql";
+import { LandingModal } from "modals/Landing";
+import { useToggleState } from "context/toggle-context";
+import { ModalWrapper } from "styles/Landing";
+import { Template } from "components/templates/landing/landing.component";
 
 export const Landing: React.FC<{}> = () => {
   useEffect(() => {
-    document.title = 'Where work happens | Slack';
+    document.title = "Where work happens | Slack";
   }, []);
 
   const { data: meData } = useMeQuery();
@@ -28,23 +28,24 @@ export const Landing: React.FC<{}> = () => {
         {state.landing && (
           <ModalWrapper
             initial={{ width: 0 }}
-            animate={{ width: '100%' }}
+            animate={{ width: "100%" }}
             exit={{ width: 0 }}
-            transition={{ duration: 0.3 }}>
+            transition={{ duration: 0.3 }}
+          >
             <LandingModal />
           </ModalWrapper>
         )}
       </AnimatePresence>
       <HeaderWrapper>
         <b.Container>
-          <Header type='landing' data={teamsData} loading={loading} />
+          <Header variant="landing" data={teamsData} loading={loading} />
         </b.Container>
       </HeaderWrapper>
-      <Banner type='landing' />
-      <Template type='together' />
-      <Template type='software' />
-      <Template type='choose' />
-      <Footer type='landing' />
+      <Banner type="landing" />
+      <Template type="together" />
+      <Template type="software" />
+      <Template type="choose" />
+      <Footer type="landing" />
     </>
   );
 };

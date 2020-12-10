@@ -1,30 +1,21 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import React from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-/**
- * Global
- */
-import * as b from 'global/blocks';
+/** global */
+import * as b from "global/blocks";
 
-/**
- * Props
- */
-import { CreateHeaderProps } from './props';
+/** assets */
+import { NameLogo } from "assets/svg";
 
-/**
- * Assets
- */
-import { NameLogo } from 'assets/svg';
-
-export const CreateHeader: React.FC<CreateHeaderProps> = () => {
+export const CreateHeader: React.FC<{}> = () => {
   return (
     <Wrapper>
       <b.Box>
         <b.Container>
-          <b.Flex alignItems='center' justifyContent='center'>
-            <Link to='/'>
-              <IconWrapper mr={4} className='namelogo'>
+          <b.Flex alignItems="center" justifyContent="center">
+            <Link to="/">
+              <IconWrapper mr={4} className="namelogo">
                 <NameLogo />
               </IconWrapper>
             </Link>

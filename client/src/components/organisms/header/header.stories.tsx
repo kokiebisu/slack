@@ -3,55 +3,53 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import { ThemeProvider } from "styled-components";
 import { MemoryRouter } from "react-router-dom";
 
-/**
- * Context
- */
+/** context */
 import { ToggleProvider } from "context/toggle-context";
 
-/**
- * Props
- */
-import { HeaderProps } from "./props";
-
-/**
- * Global
- */
+/** global */
 import { main } from "../../../global/colors";
 
-/**
- * Components
- */
-import { Header } from "./header.component";
+/** components */
+import { Header, HeaderProps } from "./header.component";
+import { ApolloProvider } from "react-apollo";
+import { client } from "index";
 
 export default {
   title: "Design System/Organisms/Header",
   component: Header,
   decorators: [
     (Story) => (
-      <MemoryRouter>
-        <ToggleProvider>
-          <ThemeProvider theme={main}>
-            <Story />
-          </ThemeProvider>
-        </ToggleProvider>
-      </MemoryRouter>
+      <ApolloProvider client={client}>
+        <MemoryRouter>
+          <ToggleProvider>
+            <ThemeProvider theme={main}>
+              <Story />
+            </ThemeProvider>
+          </ToggleProvider>
+        </MemoryRouter>
+      </ApolloProvider>
     ),
   ],
 } as Meta;
 
-const HeaderStories: Story<HeaderProps> = (args) => <Header {...args} />;
+const Template: Story<HeaderProps> = (args) => <Header {...args} />;
 
-export const landing = HeaderStories.bind({});
+export const landing = Template.bind({});
 landing.args = {
-  type: "landing",
+  variant: "landing",
 };
 
-export const create = HeaderStories.bind({});
+export const create = Template.bind({});
 create.args = {
-  type: "create",
+  variant: "create",
 };
 
-export const signin = HeaderStories.bind({});
+export const signin = Template.bind({});
 signin.args = {
-  type: "signin",
+  variant: "signin",
+};
+
+export const workspace = Template.bind({});
+workspace.args = {
+  variant: "workspace",
 };

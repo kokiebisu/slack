@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { Dispatch, SetStateAction, FormEvent } from 'react';
+import * as React from "react";
+import { Dispatch, SetStateAction, FormEvent } from "react";
 
 // Blocks
-import * as b from 'global/blocks';
+import * as b from "global/blocks";
 
 // Styles
 import {
@@ -14,10 +14,10 @@ import {
   Input,
   NextButton,
   Policy,
-} from 'styles/CreateTeam';
+} from "styles/CreateTeam";
 
-import { Header } from 'components/organisms/header/header.component';
-import { MiniWorkspace } from 'components/CreateTeam/Miniworkspace';
+import { Header } from "components/organisms/header/header.component";
+import { MiniWorkspace } from "components/CreateTeam/Miniworkspace";
 
 interface Props {
   title: string;
@@ -52,8 +52,8 @@ export const CreateTeamLayout: React.FC<Props> = ({
   modifyInput,
 }) => {
   return (
-    <Wrapper exit={{ opacity: 0 }} initial='initial' animate='animate'>
-      <Header type='create' />
+    <Wrapper exit={{ opacity: 0 }} initial="initial" animate="animate">
+      <Header variant="create" />
       <InnerWrapper>
         <b.Flex>
           <Left>
@@ -61,9 +61,10 @@ export const CreateTeamLayout: React.FC<Props> = ({
               <LeftWrapper>
                 <b.Box>
                   <b.Text
-                    fontFamily='SlackLato-Black'
+                    fontFamily="SlackLato-Black"
                     fontSize={26}
-                    color='black__light'>
+                    color="black__light"
+                  >
                     {title}
                   </b.Text>
                 </b.Box>
@@ -85,17 +86,17 @@ export const CreateTeamLayout: React.FC<Props> = ({
                     </b.Box>
                   )}
                   <b.Box width={1}>
-                    <NextButton name={name} type='submit'>
+                    <NextButton name={name} type="submit">
                       <b.Text>{buttonName ? `${buttonName}` : `Next`}</b.Text>
                     </NextButton>
                   </b.Box>
                 </form>
                 {requirePolicy ? (
                   <Policy my={4}>
-                    <b.Text fontSize={12} fontFamily='SlackLato-Light'>
-                      By continuing, you're agreeing to our{' '}
-                      <span>Customer Terms of Service</span>,{' '}
-                      <span>Privacy Policy</span>, and{' '}
+                    <b.Text fontSize={12} fontFamily="SlackLato-Light">
+                      By continuing, you're agreeing to our{" "}
+                      <span>Customer Terms of Service</span>,{" "}
+                      <span>Privacy Policy</span>, and{" "}
                       <span>Cookie Policy</span>.
                     </b.Text>
                   </Policy>
@@ -104,7 +105,7 @@ export const CreateTeamLayout: React.FC<Props> = ({
             </b.Flex>
           </Left>
           <Right pl={5}>
-            <b.Flex alignItems='center'>
+            <b.Flex alignItems="center">
               <MiniWorkspace
                 team={team}
                 opacity={opacity}
