@@ -2,19 +2,17 @@ import React from "react";
 
 /** components */
 import { Header } from "components/organisms/header/header.component";
-import { SignInContent } from "components/Signin/Content";
+import { Auth } from "components/organisms/auth/auth.component";
 import { Footer } from "components/organisms/footer/footer.component";
 
 /** styles */
 import { Wrapper } from "styles/Signin";
 
-interface Props {}
-
-export const SignIn: React.FC<Props> = () => {
+export const SignIn: React.FC<{}> = () => {
   return (
     <Wrapper>
       <Header type="signin" />
-      <SignInContent />
+      <Auth variant="signin" />
       <Footer type="signin" />
     </Wrapper>
   );
