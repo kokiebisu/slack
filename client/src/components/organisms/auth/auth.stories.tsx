@@ -15,3 +15,8 @@ export const signin = Template.bind({});
 signin.args = {
   variant: "signin",
 };
+
+export const getstarted = Template.bind({});
+getstarted.args = {
+  variant: "getstarted",
+};
