@@ -17,7 +17,7 @@ export const Animation: React.FC<AnimationProps> = ({
   ...props
 }) => {
   const variants = {
-    loading: <LoadingAnimation {...props} />,
+    loading: <div>animation</div>,
   };
   return <div data-testid={`${variant}-animation`}>{variants[variant]}</div>;
 };

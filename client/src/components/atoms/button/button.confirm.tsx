@@ -2,9 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import * as b from "global/blocks";
 
-/** components */
-import { Animation } from "components/animation/animation.component";
-
 export const ConfirmButton: React.FC<{ loading?: boolean }> = ({
   loading = false,
 }) => {
@@ -19,7 +16,6 @@ export const ConfirmButton: React.FC<{ loading?: boolean }> = ({
             Confirm
           </b.Text>
         </b.Box>
-        {loading && <Animation variant="loading" />}
       </b.Flex>
     </Wrapper>
   );
