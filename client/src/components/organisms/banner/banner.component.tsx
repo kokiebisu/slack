@@ -1,21 +1,19 @@
-import React from 'react';
+import React from "react";
 
-/**
- * Components
- */
-import { LandingBanner } from './banner.landing';
+/** variants */
+import { LandingBanner } from "./banner.landing";
 
-/**
- * Props
- */
-import { BannerProps } from './props';
+export interface BannerProps {
+  variant?: string;
+  [x: string]: any;
+}
 
 export const Banner: React.FC<BannerProps> = ({
-  type = 'landing',
+  variant = "landing",
   ...props
 }) => {
-  const types = {
+  const variants = {
     landing: <LandingBanner {...props} />,
   };
-  return types[type];
+  return <div data-testid={`${variant}-banner`}>{variants[variant]}</div>;
 };

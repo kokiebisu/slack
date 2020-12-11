@@ -1,23 +1,24 @@
-import React from 'react';
+import React from "react";
 
-/**
- * Components
- */
-import { SignInFooter } from 'components/organisms/footer/footer.signin';
-import { LandingFooter } from 'components/organisms/footer/footer.landing';
+/** variants */
+import { SignInFooter } from "components/organisms/footer/footer.signin";
+import { LandingFooter } from "components/organisms/footer/footer.landing";
+import { FindFooter } from "components/organisms/footer/footer.find";
 
-/**
- * Props
- */
-import { FooterProps } from './props';
+/** props */
+export interface FooterProps {
+  variant?: string;
+  [x: string]: any;
+}
 
 export const Footer: React.FC<FooterProps> = ({
-  type = 'landing',
+  variant = "landing",
   ...props
 }) => {
-  const types = {
+  const variants = {
     landing: <LandingFooter {...props} />,
     signin: <SignInFooter {...props} />,
+    find: <FindFooter {...props} />,
   };
-  return types[type];
+  return <div data-testid={`${variant}-footer`}>{variants[variant]}</div>;
 };

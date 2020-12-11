@@ -25,9 +25,7 @@ import {
 } from "styles/Footer/Signin";
 import { Button } from "components/atoms/button/button.component";
 
-interface Props {}
-
-export const SignInFooter: React.FC<Props> = () => {
+export const SignInFooter: React.FC<{}> = () => {
   const sections = {
     "Using Slack": [
       { name: "Product", url: "/" },
@@ -98,7 +96,7 @@ export const SignInFooter: React.FC<Props> = () => {
                     {sections["Using Slack"].map((params, index) => {
                       return (
                         <div key={index}>
-                          <Button type="link" {...params} />
+                          <Button variant="link" {...params} />
                         </div>
                       );
                     })}
@@ -108,7 +106,7 @@ export const SignInFooter: React.FC<Props> = () => {
                       {sections["Using Slack"].map((params, index) => {
                         return (
                           <div key={index}>
-                            <Button type="link" {...params} />
+                            <Button variant="link" {...params} />
                           </div>
                         );
                       })}
@@ -146,7 +144,7 @@ export const SignInFooter: React.FC<Props> = () => {
                     {sections["Slack"].map((params, index) => {
                       return (
                         <div key={index}>
-                          <Button type="link" {...params} />
+                          <Button variant="link" {...params} />
                         </div>
                       );
                     })}
@@ -157,7 +155,7 @@ export const SignInFooter: React.FC<Props> = () => {
                       {sections["Slack"].map((params, index) => {
                         return (
                           <div key={index}>
-                            <Button type="link" {...params} />
+                            <Button variant="link" {...params} />
                           </div>
                         );
                       })}
@@ -188,7 +186,7 @@ export const SignInFooter: React.FC<Props> = () => {
                     {sections["Legal"].map((params, index) => {
                       return (
                         <div key={index}>
-                          <Button type="link" {...params} />
+                          <Button variant="link" {...params} />
                         </div>
                       );
                     })}
@@ -198,7 +196,7 @@ export const SignInFooter: React.FC<Props> = () => {
                       {sections["Legal"].map((params, index) => {
                         return (
                           <div key={index}>
-                            <Button type="link" {...params} />
+                            <Button variant="link" {...params} />
                           </div>
                         );
                       })}
@@ -229,7 +227,7 @@ export const SignInFooter: React.FC<Props> = () => {
                     {sections["Handy Links"].map((params, index) => {
                       return (
                         <div key={index}>
-                          <Button type="link" {...params} />
+                          <Button variant="link" {...params} />
                         </div>
                       );
                     })}
@@ -240,7 +238,7 @@ export const SignInFooter: React.FC<Props> = () => {
                       {sections["Handy Links"].map((params, index) => {
                         return (
                           <div key={index}>
-                            <Button type="link" {...params} />
+                            <Button variant="link" {...params} />
                           </div>
                         );
                       })}

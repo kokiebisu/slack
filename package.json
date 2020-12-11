@@ -1,1 +1,20 @@
-{}
+{
+  "name": "slack",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">     <img src=\"https://user-images.githubusercontent.com/43525282/87019103-0e20d580-c187-11ea-985f-eefc02e347bb.jpg\" alt=\"slack\" width=\"200\" /> </p>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kokiebisu/slack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kokiebisu/slack/issues"
+  },
+  "homepage": "https://github.com/kokiebisu/slack#readme"
+}

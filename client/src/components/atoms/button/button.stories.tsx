@@ -1,20 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 import { ThemeProvider } from "styled-components";
-
-/**
- * Components
- */
-import { Button } from "./button.component";
-
-/**
- * Props
- */
-import { ButtonProps } from "./props";
-
-/**
- * Global
- */
+import { Button, ButtonProps } from "./button.component";
 import { main } from "../../../global/colors";
 
 export default {
@@ -40,7 +27,7 @@ const ButtonStories: Story<ButtonProps> = (args) => <Button {...args} />;
 
 export const primary = ButtonStories.bind({});
 primary.args = {
-  type: "primary",
+  variant: "primary",
   onPress: () => alert("button pressed"),
 };
 primary.argTypes = {
@@ -57,22 +44,22 @@ primary.argTypes = {
 
 export const nav = ButtonStories.bind({});
 nav.args = {
-  type: "nav",
+  variant: "nav",
   onPress: () => alert("button pressed"),
 };
 
 export const transparent = ButtonStories.bind({});
 transparent.args = {
-  type: "transparent",
+  variant: "transparent",
   onPress: () => alert("button pressed"),
 };
 
 export const socialmedia = ButtonStories.bind({});
 socialmedia.args = {
-  type: "socialmedia",
+  variant: "socialmedia",
 };
 
 export const link = ButtonStories.bind({});
 link.args = {
-  type: "link",
+  variant: "link",
 };

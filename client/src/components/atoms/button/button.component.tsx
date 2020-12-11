@@ -2,28 +2,39 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-/** components */
+/** variants */
 import { PrimaryButton } from "./button.primary";
 import { NavButton } from "./button.nav";
 import { TransparentButton } from "./button.transparent";
 import { HamburgerButton } from "./button.hamburger";
 import { SocialMediaButton } from "./button.socialmedia";
-
-/** props */
-import { ButtonProps } from "./props";
+import { ConfirmButton } from "./button.confirm";
 import { LinkButton } from "./button.link";
+import { EmailButton } from "./button.email";
 
-export const Button: React.FC<ButtonProps> = ({ to, type, ...props }) => {
-  const types = {
+export interface ButtonProps {
+  to?: string;
+  variant?: string;
+  [x: string]: any;
+}
+
+export const Button: React.FC<ButtonProps> = ({
+  to,
+  variant = "primary",
+  ...props
+}) => {
+  const variants = {
     primary: <PrimaryButton {...props} />,
     nav: <NavButton {...props} />,
     transparent: <TransparentButton {...props} />,
     hamburger: <HamburgerButton {...props} />,
     socialmedia: <SocialMediaButton {...props} />,
     link: <LinkButton {...props} />,
+    confirm: <ConfirmButton {...props} />,
+    email: <EmailButton {...props} />,
   };
   if (to) {
-    return <Link to={to}>{types[type]}</Link>;
+    return <Link to={to}>{variants[variant]}</Link>;
   }
-  return <motion.div>{types[type]}</motion.div>;
+  return <motion.div>{variants[variant]}</motion.div>;
 };

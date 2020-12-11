@@ -1,13 +1,10 @@
-import * as React from 'react';
-import { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import * as React from "react";
+import { useState } from "react";
+import { Redirect } from "react-router-dom";
+import * as b from "global/blocks";
 
-// Blocks
-import * as b from 'global/blocks';
-
-// Components
-import { LogoCenterLayout } from 'layout/LogoCenter';
-import { Confirm } from 'components/GetStartedFind/Confirm';
+/** components */
+import { LogoCenterLayout } from "layout/LogoCenter";
 
 // Styles
 import {
@@ -15,80 +12,84 @@ import {
   EmailInput,
   ErrorBox,
   IconWrapper,
-} from 'styles/GetStartedFind';
+} from "styles/GetStartedFind";
 
-// Graphql
-import { useCheckEmailLazyQuery } from 'generated/graphql';
+import { useCheckEmailLazyQuery } from "generated/graphql";
 
-// Svg
-import { Warning } from 'assets/svg';
+/** vectors */
+import { Warning } from "assets/svg";
+import { Button } from "components/atoms/button/button.component";
 
 interface Props {}
 
 export const GetStartedFind: React.FC<Props> = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
   const [check, { loading, data }] = useCheckEmailLazyQuery();
 
   return (
     <>
       {data?.checkEmail.ok ? (
-        <Redirect to='/get-started/check' />
+        <Redirect to="/get-started/check" />
       ) : (
         <LogoCenterLayout>
           <b.Box py={4}>
-            <b.Flex flexDirection='column' alignItems='center'>
+            <b.Flex flexDirection="column" alignItems="center">
               <Wrapper>
                 <form
                   onSubmit={async (e) => {
                     e.preventDefault();
                     check({ variables: { email } });
-                  }}>
+                  }}
+                >
                   <b.Box>
                     <b.Box>
                       <b.Text
                         fontSize={48}
-                        color='black__light'
-                        fontFamily='Larsseit-Bold'
-                        textAlign='center'>
+                        color="black__light"
+                        fontFamily="Larsseit-Bold"
+                        textAlign="center"
+                      >
                         Let’s find your team
                       </b.Text>
                     </b.Box>
                     <b.Box pt={2} pb={4}>
                       <b.Text
                         lineHeight={1.5}
-                        textAlign='center'
-                        color='gray'
-                        fontFamily='SlackLato-Regular'
-                        fontSize={20}>
+                        textAlign="center"
+                        color="gray"
+                        fontFamily="SlackLato-Regular"
+                        fontSize={20}
+                      >
                         Enter the email you usually collaborate with
                       </b.Text>
                     </b.Box>
                     <b.Box>
-                      <b.Flex justifyContent='center'>
+                      <b.Flex justifyContent="center">
                         <EmailInput
-                          autoCapitalize='none'
+                          autoCapitalize="none"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          border='1px solid gray'
+                          border="1px solid gray"
                           borderRadius={3}
-                          placeholder='name@work-email.com'
+                          placeholder="name@work-email.com"
                         />
                       </b.Flex>
                     </b.Box>
 
                     <b.Box height={35} my={2}>
-                      <b.Flex justifyContent='center'>
+                      <b.Flex justifyContent="center">
                         {data?.checkEmail && (
-                          <ErrorBox backgroundColor='pink__lighter' width={1}>
-                            <b.Flex alignItems='center'>
-                              <IconWrapper className='warning' mr={2}>
+                          <ErrorBox backgroundColor="pink__lighter" width={1}>
+                            <b.Flex alignItems="center">
+                              <IconWrapper className="warning" mr={2}>
                                 <Warning />
                               </IconWrapper>
                               <b.Box py={2}>
                                 <b.Text
-                                  fontFamily='SlackLato-Regular'
-                                  fontSize={14}>
+                                  fontFamily="SlackLato-Regular"
+                                  fontSize={14}
+                                >
                                   {data?.checkEmail &&
                                     data?.checkEmail.errorlog}
                                 </b.Text>
@@ -100,7 +101,7 @@ export const GetStartedFind: React.FC<Props> = () => {
                     </b.Box>
 
                     <b.Box>
-                      <Confirm loading={loading} />
+                      <Button variant="confirm" loading={loading} />
                     </b.Box>
                   </b.Box>
                 </form>

@@ -1,13 +1,14 @@
-import * as React from 'react';
-import { Redirect } from 'react-router-dom';
+import * as React from "react";
+import { Redirect } from "react-router-dom";
+import { useGetBelongingTeamsQuery } from "generated/graphql";
 
-import { Wrapper } from 'styles/FindTeam';
+/** styles */
+import { Wrapper } from "styles/FindTeam";
 
-import { useGetBelongingTeamsQuery } from 'generated/graphql';
-
-import { Header } from 'components/FindTeam/Header';
-import { FindTeamContent } from 'components/FindTeam/Content';
-import { Footer } from 'components/FindTeam/Footer';
+/** components */
+import { FindTeamContent } from "components/FindTeam/Content";
+import { Header } from "components/organisms/header/header.component";
+import { Footer } from "components/organisms/footer/footer.component";
 
 export const FindTeam = () => {
   const {
@@ -19,18 +20,18 @@ export const FindTeam = () => {
   return (
     <>
       {!error && !loading && !getBelongingTeams?.ok! ? (
-        <Redirect to='/' />
+        <Redirect to="/" />
       ) : (
         <Wrapper>
           <>
-            <Header />
+            <Header variant="find" />
             <>
               {getBelongingTeams?.belongingTeams! &&
                 getBelongingTeams!.belongingTeams!.length > 0 && (
                   <FindTeamContent teams={getBelongingTeams?.belongingTeams} />
                 )}
             </>
-            <Footer />
+            <Footer variant="find" />
           </>
         </Wrapper>
       )}

@@ -1,26 +1,29 @@
-import React from 'react';
-import { ContextProvider } from '../src/context';
-import { GlobalFonts } from '../src/global/globalFonts';
-import { GlobalStyles } from '../src/global/globalStyles';
-import { ThemeProvider } from 'styled-components';
-import { main } from '../src/global/colors';
-import { MemoryRouter } from 'react-router-dom';
+import React from "react";
+import { ApolloProvider } from "react-apollo";
+import { MemoryRouter } from "react-router-dom";
+import { ToggleProvider } from "../src/context/toggle-context";
+import { ThemeProvider } from "styled-components";
+import { client } from "../src/index";
+import { main } from "../src/global/colors";
+import { GlobalStyles } from "../src/global/globalStyles";
+import { GlobalFonts } from "../src/global/globalFonts";
+
 export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
+  actions: { argTypesRegex: "^on[A-Z].*" },
 };
 
 export const decorators = [
   (Story) => (
-    <>
+    <ApolloProvider client={client}>
       <MemoryRouter>
-        <ContextProvider>
-          <GlobalFonts />
-          <GlobalStyles />
+        <ToggleProvider>
           <ThemeProvider theme={main}>
+            <GlobalStyles />
+            <GlobalFonts />
             <Story />
           </ThemeProvider>
-        </ContextProvider>
+        </ToggleProvider>
       </MemoryRouter>
-    </>
+    </ApolloProvider>
   ),
 ];

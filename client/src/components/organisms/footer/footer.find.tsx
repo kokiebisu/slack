@@ -1,12 +1,12 @@
-import * as React from 'react';
-import { useState } from 'react';
+import * as React from "react";
+import { useState } from "react";
 
 // Blocks
-import * as b from 'global/blocks';
+import * as b from "global/blocks";
 
 // Svgs
-import { RoundedHeart, Minus, Plus } from 'assets/svg';
-import { NoNameLogoMono, TwitterLogo, YoutubeLogo } from 'assets/svg/Logo';
+import { RoundedHeart, Minus, Plus } from "assets/svg";
+import { NoNameLogoMono, TwitterLogo, YoutubeLogo } from "assets/svg/Logo";
 
 // Styles
 import {
@@ -23,40 +23,38 @@ import {
   Item,
   BottomContainer,
   ContactWrapper,
-} from 'styles/FindTeam/Footer';
+} from "styles/FindTeam/Footer";
 
-interface Props {}
-
-export const Footer: React.FC<Props> = () => {
+export const FindFooter: React.FC<{}> = () => {
   const sections = {
-    'Using Slack': [
-      { name: 'Product', url: '/' },
-      { name: 'Enterprise', url: '/' },
-      { name: 'Pricing', url: '/' },
-      { name: 'Support', url: '/' },
-      { name: 'Slack guides', url: '/' },
-      { name: 'App Directory', url: '/' },
-      { name: 'API', url: '/' },
+    "Using Slack": [
+      { name: "Product", url: "/" },
+      { name: "Enterprise", url: "/" },
+      { name: "Pricing", url: "/" },
+      { name: "Support", url: "/" },
+      { name: "Slack guides", url: "/" },
+      { name: "App Directory", url: "/" },
+      { name: "API", url: "/" },
     ],
     Slack: [
-      { name: 'Jobs', url: '/' },
-      { name: 'Customers', url: '/' },
-      { name: 'Developers', url: '/' },
-      { name: 'Events', url: '/' },
-      { name: 'Blog', url: '/' },
+      { name: "Jobs", url: "/" },
+      { name: "Customers", url: "/" },
+      { name: "Developers", url: "/" },
+      { name: "Events", url: "/" },
+      { name: "Blog", url: "/" },
     ],
     Legal: [
-      { name: 'Privacy', url: '/' },
-      { name: 'Security', url: '/' },
-      { name: 'Terms of Service', url: '/' },
-      { name: 'Policies', url: '/' },
+      { name: "Privacy", url: "/" },
+      { name: "Security", url: "/" },
+      { name: "Terms of Service", url: "/" },
+      { name: "Policies", url: "/" },
     ],
-    'Handy Links': [
-      { name: 'Download desktop app', url: '/' },
-      { name: 'Download mobile app', url: '/' },
-      { name: 'Brand guidelines', url: '/' },
-      { name: 'Slack at work', url: '/' },
-      { name: 'Status', url: '/' },
+    "Handy Links": [
+      { name: "Download desktop app", url: "/" },
+      { name: "Download mobile app", url: "/" },
+      { name: "Brand guidelines", url: "/" },
+      { name: "Slack at work", url: "/" },
+      { name: "Status", url: "/" },
     ],
   };
 
@@ -69,8 +67,8 @@ export const Footer: React.FC<Props> = () => {
 
   return (
     <Wrapper>
-      <b.Box borderTop='1px solid' borderColor='gray__lighter'>
-        <b.Flex justifyContent='center'>
+      <b.Box borderTop="1px solid" borderColor="gray__lighter">
+        <b.Flex justifyContent="center">
           <TopContainer>
             <b.Box px={3}>
               <ListWrapper>
@@ -80,21 +78,22 @@ export const Footer: React.FC<Props> = () => {
                       ...revealed,
                       usingslack: !revealed.usingslack,
                     })
-                  }>
+                  }
+                >
                   <SectionNameWrapper>
-                    <SectionName color='orange__dark'>Using Slack</SectionName>
+                    <SectionName color="orange__dark">Using Slack</SectionName>
                     {revealed.usingslack ? (
-                      <IconWrapper className='reveal'>
+                      <IconWrapper className="reveal">
                         <Minus />
                       </IconWrapper>
                     ) : (
-                      <IconWrapper className='reveal'>
+                      <IconWrapper className="reveal">
                         <Plus />
                       </IconWrapper>
                     )}
                   </SectionNameWrapper>
                   <LargeList>
-                    {sections['Using Slack'].map((section, index) => {
+                    {sections["Using Slack"].map((section, index) => {
                       return (
                         <React.Fragment key={index}>
                           <Item>
@@ -108,7 +107,7 @@ export const Footer: React.FC<Props> = () => {
                   </LargeList>
                   {revealed.usingslack ? (
                     <SmallList>
-                      {sections['Using Slack'].map((section, index) => {
+                      {sections["Using Slack"].map((section, index) => {
                         return (
                           <React.Fragment key={index}>
                             <Item>
@@ -128,28 +127,29 @@ export const Footer: React.FC<Props> = () => {
                       ...revealed,
                       slack: !revealed.slack,
                     })
-                  }>
+                  }
+                >
                   <SectionNameWrapper>
                     <SectionWrapper>
-                      <b.Flex alignItems='center'>
-                        <SectionName color='pink__dark'>Slack</SectionName>
-                        <IconWrapper className='roundedheart' ml={1}>
+                      <b.Flex alignItems="center">
+                        <SectionName color="pink__dark">Slack</SectionName>
+                        <IconWrapper className="roundedheart" ml={1}>
                           <RoundedHeart />
                         </IconWrapper>
                       </b.Flex>
                     </SectionWrapper>
                     {revealed.slack ? (
-                      <IconWrapper className='reveal'>
+                      <IconWrapper className="reveal">
                         <Minus />
                       </IconWrapper>
                     ) : (
-                      <IconWrapper className='reveal'>
+                      <IconWrapper className="reveal">
                         <Plus />
                       </IconWrapper>
                     )}
                   </SectionNameWrapper>
                   <LargeList>
-                    {sections['Slack'].map((section, index) => {
+                    {sections["Slack"].map((section, index) => {
                       return (
                         <React.Fragment key={index}>
                           <Item>
@@ -164,7 +164,7 @@ export const Footer: React.FC<Props> = () => {
 
                   {revealed.slack ? (
                     <SmallList>
-                      {sections['Slack'].map((section, index) => {
+                      {sections["Slack"].map((section, index) => {
                         return (
                           <React.Fragment key={index}>
                             <Item>
@@ -184,21 +184,22 @@ export const Footer: React.FC<Props> = () => {
                       ...revealed,
                       legal: !revealed.legal,
                     })
-                  }>
+                  }
+                >
                   <SectionNameWrapper>
-                    <SectionName color='green'>Legal</SectionName>
+                    <SectionName color="green">Legal</SectionName>
                     {revealed.legal ? (
-                      <IconWrapper className='reveal'>
+                      <IconWrapper className="reveal">
                         <Minus />
                       </IconWrapper>
                     ) : (
-                      <IconWrapper className='reveal'>
+                      <IconWrapper className="reveal">
                         <Plus />
                       </IconWrapper>
                     )}
                   </SectionNameWrapper>
                   <LargeList>
-                    {sections['Legal'].map((section, index) => {
+                    {sections["Legal"].map((section, index) => {
                       return (
                         <React.Fragment key={index}>
                           <Item>
@@ -212,7 +213,7 @@ export const Footer: React.FC<Props> = () => {
                   </LargeList>
                   {revealed.legal ? (
                     <SmallList>
-                      {sections['Legal'].map((section, index) => {
+                      {sections["Legal"].map((section, index) => {
                         return (
                           <React.Fragment key={index}>
                             <Item>
@@ -232,27 +233,28 @@ export const Footer: React.FC<Props> = () => {
                       ...revealed,
                       handylinks: !revealed.handylinks,
                     })
-                  }>
+                  }
+                >
                   <SectionNameWrapper>
-                    <SectionName color='purple__light'>Handy Links</SectionName>
+                    <SectionName color="purple__light">Handy Links</SectionName>
                     {revealed.handylinks ? (
-                      <IconWrapper className='reveal'>
+                      <IconWrapper className="reveal">
                         <Minus />
                       </IconWrapper>
                     ) : (
-                      <IconWrapper className='reveal'>
+                      <IconWrapper className="reveal">
                         <Plus />
                       </IconWrapper>
                     )}
                   </SectionNameWrapper>
                   <LargeList>
-                    {sections['Handy Links'].map((section, index) => {
+                    {sections["Handy Links"].map((section, index) => {
                       return (
                         <React.Fragment key={index}>
                           <Item>
                             <b.Anchor href={section.url}>
                               <b.Box py={1}>
-                                <b.Text color='gray'>{section.name}</b.Text>
+                                <b.Text color="gray">{section.name}</b.Text>
                               </b.Box>
                             </b.Anchor>
                           </Item>
@@ -263,13 +265,13 @@ export const Footer: React.FC<Props> = () => {
 
                   {revealed.handylinks ? (
                     <SmallList>
-                      {sections['Handy Links'].map((section, index) => {
+                      {sections["Handy Links"].map((section, index) => {
                         return (
                           <React.Fragment key={index}>
                             <Item>
                               <b.Anchor href={section.url}>
                                 <b.Box py={1}>
-                                  <b.Text color='gray'>{section.name}</b.Text>
+                                  <b.Text color="gray">{section.name}</b.Text>
                                 </b.Box>
                               </b.Anchor>
                             </Item>
@@ -284,25 +286,25 @@ export const Footer: React.FC<Props> = () => {
           </TopContainer>
         </b.Flex>
       </b.Box>
-      <b.Box backgroundColor='white__dark' py={3}>
-        <b.Flex justifyContent='center'>
+      <b.Box backgroundColor="white__dark" py={3}>
+        <b.Flex justifyContent="center">
           <BottomContainer>
             <b.Box px={3}>
-              <b.Flex justifyContent='space-between'>
-                <IconWrapper className='nonamelogomono'>
+              <b.Flex justifyContent="space-between">
+                <IconWrapper className="nonamelogomono">
                   <NoNameLogoMono />
                 </IconWrapper>
                 <b.Box>
-                  <b.Flex alignItems='center'>
+                  <b.Flex alignItems="center">
                     <ContactWrapper mx={2}>
-                      <b.Text fontSize={13} fontFamily='SlackLato-Regular'>
+                      <b.Text fontSize={13} fontFamily="SlackLato-Regular">
                         Contact us
                       </b.Text>
                     </ContactWrapper>
-                    <IconWrapper mx={2} className='socialmedia'>
+                    <IconWrapper mx={2} className="socialmedia">
                       <TwitterLogo />
                     </IconWrapper>
-                    <IconWrapper mx={2} className='socialmedia'>
+                    <IconWrapper mx={2} className="socialmedia">
                       <YoutubeLogo />
                     </IconWrapper>
                   </b.Flex>

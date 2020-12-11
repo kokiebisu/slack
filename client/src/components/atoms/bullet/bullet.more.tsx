@@ -1,10 +1,12 @@
-import React from 'react';
-import * as b from 'global/blocks';
-import { MoreBulletProps } from './props';
-import styled from 'styled-components';
-import { size } from 'global/sizes';
+import React from "react";
+import * as b from "global/blocks";
 
-export const MoreBullet: React.FC<MoreBulletProps> = ({ more = 'Content' }) => {
+import styled from "styled-components";
+import { size } from "global/sizes";
+
+export const MoreBullet: React.FC<{ more?: string }> = ({
+  more = "Content",
+}) => {
   return (
     <Wrapper>
       <Flex>

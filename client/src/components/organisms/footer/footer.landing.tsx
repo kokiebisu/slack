@@ -1,65 +1,54 @@
-import React from 'react';
-import * as b from 'global/blocks';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import React from "react";
+import * as b from "global/blocks";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-/**
- * Assets
- */
-import { Globe } from 'assets/svg';
-import { BottomArrow } from 'assets/svg';
-import { NoNameLogo } from 'assets/svg/Logo';
+/** assets */
+import { Globe } from "assets/svg";
+import { BottomArrow } from "assets/svg";
+import { NoNameLogo } from "assets/svg/Logo";
 
-/**
- * Global
- */
-import { size } from 'global/sizes';
+/** global */
+import { size } from "global/sizes";
 
-/**
- * Props
- */
-import { LandingFooterProps } from './props';
+/** components */
+import { Button } from "components/atoms/button/button.component";
 
-/**
- * Components
- */
-import { Button } from 'components/atoms/button/button.component';
-
-export const LandingFooter: React.FC<LandingFooterProps> = () => {
+export const LandingFooter: React.FC<{}> = () => {
   const options = [
-    { name: 'Status', url: '/' },
-    { name: 'Privacy & Terms', url: '/' },
-    { name: 'Contact Us', url: '/' },
+    { name: "Status", url: "/" },
+    { name: "Privacy & Terms", url: "/" },
+    { name: "Contact Us", url: "/" },
   ];
 
-  const socialmedias = ['twitter', 'facebook', 'linkedin', 'youtube'];
+  const socialmedias = ["twitter", "facebook", "linkedin", "youtube"];
 
   const sections = [
     {
       subsections: [
         {
-          title: 'Product',
+          title: "Product",
           items: [
-            { name: 'Features', url: '/' },
-            { name: 'Enterprise', url: '/' },
-            { name: 'Security', url: '/' },
-            { name: 'Customer Stories', url: '/' },
-            { name: 'Pricing', url: '/' },
-            { name: 'Slack Demo', url: '/' },
+            { name: "Features", url: "/" },
+            { name: "Enterprise", url: "/" },
+            { name: "Security", url: "/" },
+            { name: "Customer Stories", url: "/" },
+            { name: "Pricing", url: "/" },
+            { name: "Slack Demo", url: "/" },
           ],
         },
         {
-          title: 'Slack for teams',
+          title: "Slack for teams",
           items: [
-            { name: 'Engineering', url: '/' },
-            { name: 'Financial Services', url: '/' },
-            { name: 'Sales', url: '/' },
-            { name: 'IT', url: '/' },
-            { name: 'Marketing', url: '/' },
-            { name: 'Customer Support', url: '/' },
-            { name: 'Human Resources', url: '/' },
-            { name: 'Project Management', url: '/' },
-            { name: 'Media', url: '/' },
+            { name: "Engineering", url: "/" },
+            { name: "Financial Services", url: "/" },
+            { name: "Sales", url: "/" },
+            { name: "IT", url: "/" },
+            { name: "Marketing", url: "/" },
+            { name: "Customer Support", url: "/" },
+            { name: "Human Resources", url: "/" },
+            { name: "Project Management", url: "/" },
+            { name: "Media", url: "/" },
           ],
         },
       ],
@@ -67,27 +56,27 @@ export const LandingFooter: React.FC<LandingFooterProps> = () => {
     {
       subsections: [
         {
-          title: 'Resources',
+          title: "Resources",
           items: [
-            { name: 'Slack Tips', url: '/' },
-            { name: 'Blog', url: '/' },
-            { name: 'Events', url: '/' },
-            { name: 'Slack Certified Program', url: '/' },
-            { name: 'Help Center', url: '/' },
-            { name: 'API', url: '/' },
-            { name: 'App Directory', url: '/' },
-            { name: 'Download Slack', url: '/' },
-            { name: 'Partners', url: '/' },
+            { name: "Slack Tips", url: "/" },
+            { name: "Blog", url: "/" },
+            { name: "Events", url: "/" },
+            { name: "Slack Certified Program", url: "/" },
+            { name: "Help Center", url: "/" },
+            { name: "API", url: "/" },
+            { name: "App Directory", url: "/" },
+            { name: "Download Slack", url: "/" },
+            { name: "Partners", url: "/" },
           ],
         },
         {
-          title: 'Company',
+          title: "Company",
           items: [
-            { name: 'About Us', url: '/' },
-            { name: 'Leadership', url: '/' },
-            { name: 'News', url: '/' },
-            { name: 'Media Kit', url: '/' },
-            { name: 'Careers', url: '/' },
+            { name: "About Us", url: "/" },
+            { name: "Leadership", url: "/" },
+            { name: "News", url: "/" },
+            { name: "Media Kit", url: "/" },
+            { name: "Careers", url: "/" },
           ],
         },
       ],
@@ -96,9 +85,9 @@ export const LandingFooter: React.FC<LandingFooterProps> = () => {
 
   return (
     <div>
-      <b.Box className='footer__logo'>
+      <b.Box className="footer__logo">
         <b.Container>
-          <Content className='logo'>
+          <Content className="logo">
             <b.Flex>
               <Logo>
                 <NoNameLogo width={65} />
@@ -139,18 +128,18 @@ export const LandingFooter: React.FC<LandingFooterProps> = () => {
           </Content>
         </b.Container>
       </b.Box>
-      <b.Box className='footer__options'>
-        <Content className='options' py={4}>
+      <b.Box className="footer__options">
+        <Content className="options" py={4}>
           <b.Container>
             <b.Flex>
               <OptionsWrapper>
-                <b.Flex alignItems='center'>
+                <b.Flex alignItems="center">
                   <b.Flex>
                     {options.map((option, index) => {
                       return (
                         <b.Box mr={3}>
                           <Button
-                            type='transparent'
+                            variant="transparent"
                             to={option.url}
                             title={option.name}
                           />
@@ -159,13 +148,13 @@ export const LandingFooter: React.FC<LandingFooterProps> = () => {
                     })}
                   </b.Flex>
                   <ChangeRegionButton>
-                    <b.Flex alignItems='center'>
-                      <IconWrapper className='globe' mr={1}>
+                    <b.Flex alignItems="center">
+                      <IconWrapper className="globe" mr={1}>
                         <Globe />
                       </IconWrapper>
                       <b.Text>Change Region</b.Text>
                       <b.Box ml={2}>
-                        <IconWrapper className='bottom__arrow'>
+                        <IconWrapper className="bottom__arrow">
                           <BottomArrow />
                         </IconWrapper>
                       </b.Box>
@@ -177,7 +166,7 @@ export const LandingFooter: React.FC<LandingFooterProps> = () => {
                 {socialmedias.map((socialmedia, index) => {
                   return (
                     <div key={index}>
-                      <Button type='socialmedia' platform={socialmedia} />
+                      <Button variant="socialmedia" platform={socialmedia} />
                     </div>
                   );
                 })}
@@ -225,7 +214,7 @@ const ChangeRegionButton = styled(b.Button)`
   & p {
     font-size: 14px;
     color: ${({ theme }) => theme.colors.gray};
-    font-family: 'CircularPro-Bold';
+    font-family: "CircularPro-Bold";
   }
 
   & > div {
@@ -331,7 +320,7 @@ export const SectionName = styled(b.Box)`
     color: #464646;
     text-transform: uppercase;
     font-size: 14px;
-    font-family: 'CircularPro-Bold';
+    font-family: "CircularPro-Bold";
   }
 `;
 
@@ -344,7 +333,7 @@ export const Items = styled.ul`
 
 export const Item = styled.li`
   color: #868686;
-  font-family: 'SlackLato-Regular';
+  font-family: "SlackLato-Regular";
   padding: 10px 0;
   font-size: 14px;
 `;
