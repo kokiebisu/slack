@@ -1,20 +1,18 @@
-import React from 'react';
+import React from "react";
 
-/**
- * Components
- */
-import { LaunchCard } from './card.launch';
-import { PolicyCard } from './card.policy';
+/** variants */
+import { LaunchCard } from "./card.launch";
+import { PolicyCard } from "./card.policy";
 
-/**
- * Props
- */
-import { CardProps } from './props';
+export interface CardProps {
+  variant?: string;
+  [x: string]: any;
+}
 
-export const Card: React.FC<CardProps> = ({ type = 'launch', ...props }) => {
-  const types = {
+export const Card: React.FC<CardProps> = ({ variant = "launch", ...props }) => {
+  const variants = {
     launch: <LaunchCard {...props} />,
     policy: <PolicyCard {...props} />,
   };
-  return types[type];
+  return <div data-testid={`${variant}-card`}>{variants[variant]}</div>;
 };

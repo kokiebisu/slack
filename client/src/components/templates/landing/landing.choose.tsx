@@ -1,24 +1,11 @@
-import * as React from 'react';
-import styled from 'styled-components';
+import * as React from "react";
+import styled from "styled-components";
+import * as b from "global/blocks";
+import { size } from "global/sizes";
+import { main } from "global/colors";
+import { Button } from "components/atoms/button/button.component";
 
-/**
- * Global
- */
-import * as b from 'global/blocks';
-import { size } from 'global/sizes';
-import { main } from 'global/colors';
-
-/**
- * Props
- */
-import { ChooseTemplateProps } from './props';
-
-/**
- * Components
- */
-import { Button } from 'components/atoms/button/button.component';
-
-export const ChooseTemplate: React.FC<ChooseTemplateProps> = () => {
+export const ChooseTemplate: React.FC<{}> = () => {
   return (
     <Wrapper>
       <b.Container>
@@ -30,16 +17,16 @@ export const ChooseTemplate: React.FC<ChooseTemplateProps> = () => {
             <b.Box>
               <b.Box mr={2}>
                 <Button
-                  type='primary'
-                  title='Try Slack'
+                  variant="primary"
+                  title="Try Slack"
                   fill={main.colors.white}
                   textColor={main.colors.primary__light}
                 />
               </b.Box>
               <div>
                 <Button
-                  type='primary'
-                  title='Contact Sales'
+                  variant="primary"
+                  title="Contact Sales"
                   inverse
                   fill={main.colors.white}
                 />
@@ -58,7 +45,7 @@ const Wrapper = styled.section`
 `;
 
 const Header = styled(b.Text)`
-  font-family: 'Larsseit-Bold';
+  font-family: "Larsseit-Bold";
   font-size: 6vw;
   color: ${({ theme }) => theme.colors.white};
   text-align: center;

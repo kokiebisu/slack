@@ -1,26 +1,15 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import styled from "styled-components";
+import * as b from "global/blocks";
 
-/**
- * Global
- */
-import * as b from 'global/blocks';
+/** assets */
+import { RightArrow } from "assets/svg";
 
-/**
- * Assets
- */
-import { RightArrow } from 'assets/svg';
-
-/**
- * Props
- */
-import { LaunchCardProps } from './props';
-
-export const LaunchCard: React.FC<LaunchCardProps> = ({
-  name = 'workspace',
-  url,
-  color = 'red',
-}) => {
+export const LaunchCard: React.FC<{
+  name?: string;
+  url?: string;
+  color?: string;
+}> = ({ name = "workspace", url, color = "red" }) => {
   const [hovered, setHovered] = useState({
     launch: false,
   });
@@ -33,13 +22,14 @@ export const LaunchCard: React.FC<LaunchCardProps> = ({
         }}
         onMouseLeave={() => {
           setHovered({ ...hovered, launch: false });
-        }}>
-        <b.Flex alignItems='center' justifyContent='space-between'>
+        }}
+      >
+        <b.Flex alignItems="center" justifyContent="space-between">
           <b.Box>
-            <b.Flex alignItems='center'>
+            <b.Flex alignItems="center">
               <Avatar mr={3}>
                 <b.Box backgroundColor={color}>
-                  <b.Flex alignItems='center' justifyContent='center'>
+                  <b.Flex alignItems="center" justifyContent="center">
                     <AvatarLetter>
                       <b.Text>{name.charAt(0).toUpperCase()}</b.Text>
                     </AvatarLetter>
@@ -48,9 +38,10 @@ export const LaunchCard: React.FC<LaunchCardProps> = ({
               </Avatar>
               <Name>
                 <b.Text
-                  fontFamily='CircularPro-Bold'
+                  fontFamily="CircularPro-Bold"
                   fontSize={17}
-                  className={hovered.launch ? `hovered` : ``}>
+                  className={hovered.launch ? `hovered` : ``}
+                >
                   {name}
                 </b.Text>
               </Name>
@@ -58,7 +49,8 @@ export const LaunchCard: React.FC<LaunchCardProps> = ({
           </b.Box>
           <IconWrapper
             variants={launchArrow}
-            animate={hovered.launch ? 'animate' : 'initial'}>
+            animate={hovered.launch ? "animate" : "initial"}
+          >
             <RightArrow />
           </IconWrapper>
         </b.Flex>
@@ -95,7 +87,7 @@ const Avatar = styled(b.Box)`
 const AvatarLetter = styled(b.Box)`
   & > p {
     color: ${({ theme }) => theme.colors.white};
-    font-family: 'SlackLato-Bold';
+    font-family: "SlackLato-Bold";
     font-size: 18px;
   }
 `;

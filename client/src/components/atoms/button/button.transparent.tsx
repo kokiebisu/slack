@@ -1,15 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-/**
- * Props
- */
-import { TransparentButtonProps } from './props';
-
-export const TransparentButton: React.FC<TransparentButtonProps> = ({
-  title = 'Transparent Button',
-  onPress,
-}) => {
+export const TransparentButton: React.FC<{
+  title?: string;
+  onPress?: () => void;
+}> = ({ title = "Transparent Button", onPress }) => {
   return <Wrapper onClick={onPress}>{title}</Wrapper>;
 };
 

@@ -1,23 +1,14 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-/**
- * Props
- */
-import { HamburgerButtonProps } from './props';
+/** assets */
+import { Hamburger } from "assets/svg";
 
-/**
- * Assets
- */
-import { Hamburger } from 'assets/svg';
+/** colors */
+import { main } from "global/colors";
 
-/**
- * Colors
- */
-import { main } from 'global/colors';
-
-export const HamburgerButton: React.FC<HamburgerButtonProps> = ({
-  onPress = () => alert('hamburger button pressed'),
+export const HamburgerButton: React.FC<{ onPress?: () => void }> = ({
+  onPress = () => alert("hamburger button pressed"),
 }) => {
   return (
     <Wrapper onClick={onPress}>

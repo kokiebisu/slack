@@ -1,16 +1,16 @@
-import React from 'react';
-import styled from 'styled-components';
-import { CheckBulletProps } from './props';
-import { CheckCircle } from 'assets/svg';
+import React from "react";
+import styled from "styled-components";
 
-import * as b from 'global/blocks';
+import { CheckCircle } from "assets/svg";
 
-export const CheckBullet: React.FC<CheckBulletProps> = ({
-  title = 'Bullet point here',
+import * as b from "global/blocks";
+
+export const CheckBullet: React.FC<{ title?: string }> = ({
+  title = "Bullet point here",
 }) => {
   return (
     <b.Flex>
-      <IconWrapper className='checkcircle'>
+      <IconWrapper className="checkcircle">
         <b.Box>
           <CheckCircle />
         </b.Box>

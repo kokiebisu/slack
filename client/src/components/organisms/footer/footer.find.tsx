@@ -5,8 +5,8 @@ import { useState } from "react";
 import * as b from "global/blocks";
 
 // Svgs
+import { RoundedHeart, Minus, Plus } from "assets/svg";
 import { NoNameLogoMono, TwitterLogo, YoutubeLogo } from "assets/svg/Logo";
-import { Minus, Plus, RoundedHeart } from "assets/svg";
 
 // Styles
 import {
@@ -20,12 +20,12 @@ import {
   ListContainer,
   LargeList,
   SmallList,
+  Item,
   BottomContainer,
   ContactWrapper,
-} from "styles/Footer/Signin";
-import { Button } from "components/atoms/button/button.component";
+} from "styles/FindTeam/Footer";
 
-export const SignInFooter: React.FC<{}> = () => {
+export const FindFooter: React.FC<{}> = () => {
   const sections = {
     "Using Slack": [
       { name: "Product", url: "/" },
@@ -93,21 +93,29 @@ export const SignInFooter: React.FC<{}> = () => {
                     )}
                   </SectionNameWrapper>
                   <LargeList>
-                    {sections["Using Slack"].map((params, index) => {
+                    {sections["Using Slack"].map((section, index) => {
                       return (
-                        <div key={index}>
-                          <Button variant="link" {...params} />
-                        </div>
+                        <React.Fragment key={index}>
+                          <Item>
+                            <b.Anchor href={section.url}>
+                              <b.Box py={1}>{section.name}</b.Box>
+                            </b.Anchor>
+                          </Item>
+                        </React.Fragment>
                       );
                     })}
                   </LargeList>
                   {revealed.usingslack ? (
                     <SmallList>
-                      {sections["Using Slack"].map((params, index) => {
+                      {sections["Using Slack"].map((section, index) => {
                         return (
-                          <div key={index}>
-                            <Button variant="link" {...params} />
-                          </div>
+                          <React.Fragment key={index}>
+                            <Item>
+                              <b.Anchor href={section.url}>
+                                <b.Box py={1}>{section.name}</b.Box>
+                              </b.Anchor>
+                            </Item>
+                          </React.Fragment>
                         );
                       })}
                     </SmallList>
@@ -141,22 +149,30 @@ export const SignInFooter: React.FC<{}> = () => {
                     )}
                   </SectionNameWrapper>
                   <LargeList>
-                    {sections["Slack"].map((params, index) => {
+                    {sections["Slack"].map((section, index) => {
                       return (
-                        <div key={index}>
-                          <Button variant="link" {...params} />
-                        </div>
+                        <React.Fragment key={index}>
+                          <Item>
+                            <b.Anchor href={section.url}>
+                              <b.Box py={1}>{section.name}</b.Box>
+                            </b.Anchor>
+                          </Item>
+                        </React.Fragment>
                       );
                     })}
                   </LargeList>
 
                   {revealed.slack ? (
                     <SmallList>
-                      {sections["Slack"].map((params, index) => {
+                      {sections["Slack"].map((section, index) => {
                         return (
-                          <div key={index}>
-                            <Button variant="link" {...params} />
-                          </div>
+                          <React.Fragment key={index}>
+                            <Item>
+                              <b.Anchor href={section.url}>
+                                <b.Box py={1}>{section.name}</b.Box>
+                              </b.Anchor>
+                            </Item>
+                          </React.Fragment>
                         );
                       })}
                     </SmallList>
@@ -183,21 +199,29 @@ export const SignInFooter: React.FC<{}> = () => {
                     )}
                   </SectionNameWrapper>
                   <LargeList>
-                    {sections["Legal"].map((params, index) => {
+                    {sections["Legal"].map((section, index) => {
                       return (
-                        <div key={index}>
-                          <Button variant="link" {...params} />
-                        </div>
+                        <React.Fragment key={index}>
+                          <Item>
+                            <b.Anchor href={section.url}>
+                              <b.Box py={1}>{section.name}</b.Box>
+                            </b.Anchor>
+                          </Item>
+                        </React.Fragment>
                       );
                     })}
                   </LargeList>
                   {revealed.legal ? (
                     <SmallList>
-                      {sections["Legal"].map((params, index) => {
+                      {sections["Legal"].map((section, index) => {
                         return (
-                          <div key={index}>
-                            <Button variant="link" {...params} />
-                          </div>
+                          <React.Fragment key={index}>
+                            <Item>
+                              <b.Anchor href={section.url}>
+                                <b.Box py={1}>{section.name}</b.Box>
+                              </b.Anchor>
+                            </Item>
+                          </React.Fragment>
                         );
                       })}
                     </SmallList>
@@ -224,26 +248,38 @@ export const SignInFooter: React.FC<{}> = () => {
                     )}
                   </SectionNameWrapper>
                   <LargeList>
-                    {sections["Handy Links"].map((params, index) => {
+                    {sections["Handy Links"].map((section, index) => {
                       return (
-                        <div key={index}>
-                          <Button variant="link" {...params} />
-                        </div>
+                        <React.Fragment key={index}>
+                          <Item>
+                            <b.Anchor href={section.url}>
+                              <b.Box py={1}>
+                                <b.Text color="gray">{section.name}</b.Text>
+                              </b.Box>
+                            </b.Anchor>
+                          </Item>
+                        </React.Fragment>
                       );
                     })}
                   </LargeList>
 
-                  {revealed.handylinks && (
+                  {revealed.handylinks ? (
                     <SmallList>
-                      {sections["Handy Links"].map((params, index) => {
+                      {sections["Handy Links"].map((section, index) => {
                         return (
-                          <div key={index}>
-                            <Button variant="link" {...params} />
-                          </div>
+                          <React.Fragment key={index}>
+                            <Item>
+                              <b.Anchor href={section.url}>
+                                <b.Box py={1}>
+                                  <b.Text color="gray">{section.name}</b.Text>
+                                </b.Box>
+                              </b.Anchor>
+                            </Item>
+                          </React.Fragment>
                         );
                       })}
                     </SmallList>
-                  )}
+                  ) : null}
                 </ListContainer>
               </ListWrapper>
             </b.Box>

@@ -1,18 +1,23 @@
-import React from 'react';
+import React from "react";
 
-/**
- * Components
- */
-import { LaunchModal } from './modal.launch';
+/** variants */
+import { LaunchModal } from "./modal.launch";
+import { ChannelModal } from "./modal.channel";
+import { LandingModal } from "./modal.landing";
 
-/**
- * Props
- */
-import { ModalProps } from './props';
+export interface ModalProps {
+  variant?: string;
+  [x: string]: any;
+}
 
-export const Modal: React.FC<ModalProps> = ({ type = 'launch', ...props }) => {
-  const types = {
+export const Modal: React.FC<ModalProps> = ({
+  variant = "launch",
+  ...props
+}) => {
+  const variants = {
     launch: <LaunchModal {...props} />,
+    channel: <ChannelModal {...props} />,
+    landing: <LandingModal {...props} />,
   };
-  return types[type];
+  return <div data-testid={`${variant}-modal`}>{variants[variant]}</div>;
 };

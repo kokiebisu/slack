@@ -1,21 +1,21 @@
-import * as React from 'react';
-import { useState } from 'react';
+import * as React from "react";
+import { useState } from "react";
 
-import 'draft-js/dist/Draft.css';
+import "draft-js/dist/Draft.css";
 // Blocks
-import * as b from 'global/blocks';
+import * as b from "global/blocks";
 
 // Styles
 import {
   Wrapper,
   Content,
   CommandDescription,
-} from 'styles/Workspace/MessageBox/';
+} from "styles/Workspace/MessageBox/";
 
 // Components
-import { useGetChannelByIdQuery } from 'generated/graphql';
-import { useParams } from 'react-router-dom';
-import { MyEditor } from './Editor';
+import { useGetChannelByIdQuery } from "generated/graphql";
+import { useParams } from "react-router-dom";
+import { MyEditor } from "./Editor";
 
 interface Props {
   sendMessage: (message: string) => Promise<void>;
@@ -27,7 +27,7 @@ export const MessageBox: React.FC<Props> = ({ sendMessage }) => {
       <b.Box>
         <MyEditor sendMessage={sendMessage} />
         <CommandDescription py={2}>
-          <b.Flex justifyContent='flex-end'>
+          <b.Flex justifyContent="flex-end">
             <b.Box>
               <b.Flex>
                 <b.Box mr={3}>
