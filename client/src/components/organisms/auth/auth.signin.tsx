@@ -1,12 +1,7 @@
-import * as React from 'react';
+import * as React from "react";
 
-// Blocks
-import * as b from 'global/blocks';
-
-// Svgs
-import { RightArrow } from 'assets/svg';
-
-// Styles
+/** styles */
+import * as b from "global/blocks";
 import {
   Content,
   ContentInner,
@@ -14,41 +9,44 @@ import {
   CreateWorkspaceWrapper,
   CreateWorkspaceContainer,
   IconWrapper,
-} from 'styles/Signin/Content';
+} from "styles/Signin/Content";
 
-interface Props {}
+/** vectors */
+import { RightArrow } from "assets/svg";
 
-export const SignInContent: React.FC<Props> = () => {
+export const SignInAuth: React.FC<{}> = () => {
   return (
-    <b.Box backgroundColor='white__dark'>
+    <b.Box backgroundColor="white__dark">
       <b.Box py={5}>
         <b.Container>
-          <b.Flex flexDirection='column' alignItems='center'>
+          <b.Flex flexDirection="column" alignItems="center">
             <Content>
-              <b.Flex justifyContent='center'>
+              <b.Flex justifyContent="center">
                 <ContentInner py={2}>
                   <b.Box pt={4} pb={3}>
                     <b.Text
-                      fontFamily='SlackLato-Bold'
+                      fontFamily="SlackLato-Bold"
                       fontSize={28}
-                      textAlign='center'>
+                      textAlign="center"
+                    >
                       Sign in to your workspace
                     </b.Text>
                   </b.Box>
                   <b.Box mt={2} mb={3}>
                     <b.Text
                       fontSize={16}
-                      fontFamily='SlackLato-Regular'
-                      textAlign='center'>
+                      fontFamily="SlackLato-Regular"
+                      textAlign="center"
+                    >
                       Enter your workspace's Slack URL
                     </b.Text>
                   </b.Box>
                   <b.Box>
                     <b.Box width={1}>
-                      <b.Flex alignItems='center' justifyContent='center'>
-                        <WorkspaceInput placeholder='your-workspace-url' />
+                      <b.Flex alignItems="center" justifyContent="center">
+                        <WorkspaceInput placeholder="your-workspace-url" />
                         <b.Box ml={2}>
-                          <b.Text fontSize={20} fontFamily='SlackLato-Bold'>
+                          <b.Text fontSize={20} fontFamily="SlackLato-Bold">
                             .slack.com
                           </b.Text>
                         </b.Box>
@@ -59,11 +57,12 @@ export const SignInContent: React.FC<Props> = () => {
                     <b.Button width={1}>
                       <b.Box
                         borderRadius={5}
-                        backgroundColor='green'
+                        backgroundColor="green"
                         py={3}
-                        width={1}>
-                        <b.Flex justifyContent='center'>
-                          <b.Text color='white' fontFamily='SlackLato-Bold'>
+                        width={1}
+                      >
+                        <b.Flex justifyContent="center">
+                          <b.Text color="white" fontFamily="SlackLato-Bold">
                             Continue
                           </b.Text>
                           <IconWrapper>
@@ -74,7 +73,7 @@ export const SignInContent: React.FC<Props> = () => {
                     </b.Button>
                   </b.Box>
                   <b.Box my={3}>
-                    <b.Text fontFamily='SlackLato-Regular'>
+                    <b.Text fontFamily="SlackLato-Regular">
                       Don't know your workspace URL? Find your workspace
                     </b.Text>
                   </b.Box>
@@ -90,10 +89,11 @@ export const SignInContent: React.FC<Props> = () => {
                 </b.Box>
                 <b.Box>
                   <b.Anchor
-                    href='/get-started'
+                    href="/get-started"
                     fontSize={15}
-                    fontFamily='SlackLato-Black'
-                    color='blue'>
+                    fontFamily="SlackLato-Black"
+                    color="blue"
+                  >
                     Create a new workspace
                   </b.Anchor>
                 </b.Box>

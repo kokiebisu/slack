@@ -1,20 +1,19 @@
-import * as React from 'react';
+import React from "react";
 
-import { SignInHeader } from 'components/Header/Signin';
-import { SignInContent } from 'components/Signin/Content';
-import { SignInFooter } from 'components/Footer/Signin';
+/** components */
+import { Header } from "components/organisms/header/header.component";
+import { Auth } from "components/organisms/auth/auth.component";
+import { Footer } from "components/organisms/footer/footer.component";
 
-// Styles
-import { Wrapper } from 'styles/Signin';
+/** styles */
+import { Wrapper } from "styles/Signin";
 
-interface Props {}
-
-export const SignIn: React.FC<Props> = () => {
+export const SignIn: React.FC<{}> = () => {
   return (
     <Wrapper>
-      <SignInHeader />
-      <SignInContent />
-      <SignInFooter />
+      <Header variant="signin" />
+      <Auth variant="signin" />
+      <Footer type="signin" />
     </Wrapper>
   );
 };

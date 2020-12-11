@@ -1,24 +1,24 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
-import { ThemeProvider } from 'styled-components';
+import React from "react";
+import { Story, Meta } from "@storybook/react/types-6-0";
+import { ThemeProvider } from "styled-components";
 
 /**
  * Components
  */
-import { Button } from './button.component';
+import { Button } from "./button.component";
 
 /**
  * Props
  */
-import { ButtonProps } from './props';
+import { ButtonProps } from "./props";
 
 /**
  * Global
  */
-import { main } from '../../../global/colors';
+import { main } from "../../../global/colors";
 
 export default {
-  title: 'Design System/Atoms/Button',
+  title: "Design System/Atoms/Button",
   component: Button,
   argTypes: {
     to: {
@@ -40,34 +40,39 @@ const ButtonStories: Story<ButtonProps> = (args) => <Button {...args} />;
 
 export const primary = ButtonStories.bind({});
 primary.args = {
-  type: 'primary',
-  onPress: () => alert('button pressed'),
+  type: "primary",
+  onPress: () => alert("button pressed"),
 };
 primary.argTypes = {
   inverse: {
-    control: 'boolean',
+    control: "boolean",
   },
   size: {
     control: {
-      type: 'select',
-      options: ['sm', 'lg'],
+      type: "select",
+      options: ["sm", "lg"],
     },
   },
 };
 
 export const nav = ButtonStories.bind({});
 nav.args = {
-  type: 'nav',
-  onPress: () => alert('button pressed'),
+  type: "nav",
+  onPress: () => alert("button pressed"),
 };
 
 export const transparent = ButtonStories.bind({});
 transparent.args = {
-  type: 'transparent',
-  onPress: () => alert('button pressed'),
+  type: "transparent",
+  onPress: () => alert("button pressed"),
 };
 
 export const socialmedia = ButtonStories.bind({});
 socialmedia.args = {
-  type: 'socialmedia',
+  type: "socialmedia",
+};
+
+export const link = ButtonStories.bind({});
+link.args = {
+  type: "link",
 };
