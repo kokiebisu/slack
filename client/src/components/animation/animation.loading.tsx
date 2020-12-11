@@ -4,17 +4,18 @@ import styled from "styled-components";
 
 export const LoadingAnimation: React.FC<{}> = () => {
   return (
-    <DotWrapper animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
-      <DotContainer
-        variants={DotContainerVariants}
-        initial="start"
-        animate="end"
-      >
-        <Dot variants={DotVariants} transition={DotTransition} />
-        <Dot variants={DotVariants} transition={DotTransition} />
-        <Dot variants={DotVariants} transition={DotTransition} />
-      </DotContainer>
-    </DotWrapper>
+    // <DotWrapper animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
+    //   <DotContainer
+    //     variants={DotContainerVariants}
+    //     initial="start"
+    //     animate="end"
+    //   >
+    //     <Dot variants={DotVariants} transition={DotTransition} />
+    //     <Dot variants={DotVariants} transition={DotTransition} />
+    //     <Dot variants={DotVariants} transition={DotTransition} />
+    //   </DotContainer>
+    // </DotWrapper>
+    <div>hello</div>
   );
 };
 
