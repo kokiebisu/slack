@@ -1,29 +1,18 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
+import React from "react";
+import styled, { css } from "styled-components";
+import * as b from "global/blocks";
+import { size } from "global/sizes";
 
-/**
- * Global
- */
-import * as b from 'global/blocks';
-import { size } from 'global/sizes';
+/** components */
+import { Button } from "components/atoms/button/button.component";
 
-/**
- * Props
- */
-import { LandingBannerProps } from './props';
-
-/**
- * Components
- */
-import { Button } from 'components/atoms/button/button.component';
-
-export const LandingBanner: React.FC<LandingBannerProps> = () => {
+export const LandingBanner: React.FC<{}> = () => {
   return (
     <Wrapper>
       <b.Container>
         <Content>
           <b.Box>
-            <b.Box className='content__left'>
+            <b.Box className="content__left">
               <b.Box>
                 <div>
                   <Header>Slack is where work happens</Header>
@@ -36,49 +25,51 @@ export const LandingBanner: React.FC<LandingBannerProps> = () => {
                 </b.Box>
                 <Buttons>
                   <b.Box mr={2} mb={2}>
-                    <Button type='primary' title='Try for free' />
+                    <Button variant="primary" title="Try for free" />
                   </b.Box>
                   <div>
-                    <Button type='primary' inverse title='Contact Sales' />
+                    <Button variant="primary" inverse title="Contact Sales" />
                   </div>
                 </Buttons>
               </b.Box>
             </b.Box>
-            <b.Box className='content__right'>
-              <BannerVideo className='desktop'>
-                <b.Flex alignItems='center'>
+            <b.Box className="content__right">
+              <BannerVideo className="desktop">
+                <b.Flex alignItems="center">
                   <video
                     autoPlay
                     loop
                     muted
                     playsInline
-                    poster='https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/hero/desktop/image/hero-image.png'>
+                    poster="https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/hero/desktop/image/hero-image.png"
+                  >
                     <source
-                      src='https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/hero/desktop/mp4/hero-image.mp4'
-                      type='video/mp4'
+                      src="https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/hero/desktop/mp4/hero-image.mp4"
+                      type="video/mp4"
                     />
                     <source
-                      src='https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/hero/desktop/webm/hero-image.webm'
-                      type='video/mp4'
+                      src="https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/hero/desktop/webm/hero-image.webm"
+                      type="video/mp4"
                     />
                   </video>
                 </b.Flex>
               </BannerVideo>
-              <BannerVideo className='tablet'>
-                <b.Flex alignItems='center'>
+              <BannerVideo className="tablet">
+                <b.Flex alignItems="center">
                   <video
                     autoPlay
                     loop
                     muted
                     playsInline
-                    poster='https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/hero/tablet/image/hero-image-tablet.png'>
+                    poster="https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/hero/tablet/image/hero-image-tablet.png"
+                  >
                     <source
-                      src='https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/hero/tablet/mp4/hero-image-tablet.mp4'
-                      type='video/mp4'
+                      src="https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/hero/tablet/mp4/hero-image-tablet.mp4"
+                      type="video/mp4"
                     />
                     <source
-                      src='https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/hero/tablet/webm/hero-image-tablet.webm'
-                      type='video/mp4'
+                      src="https://a.slack-edge.com/9b527/marketing/img/homepage/hp-prospect/hero/tablet/webm/hero-image-tablet.webm"
+                      type="video/mp4"
                     />
                   </video>
                 </b.Flex>
@@ -131,7 +122,7 @@ const Content = styled(b.Box)`
 `;
 
 const Header = styled.h3`
-  font-family: 'Larsseit-Bold';
+  font-family: "Larsseit-Bold";
   line-height: 1.1;
   font-size: 60px;
   color: ${({ theme }) => theme.colors.black__light};

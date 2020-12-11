@@ -1,18 +1,22 @@
-import React from 'react';
+import React from "react";
 
-import { CheckBullet } from './bullet.check';
-import { MoreBullet } from './bullet.more';
-import { TogetherBullet } from './bullet.together';
-import { BulletProps } from './props';
+import { CheckBullet } from "./bullet.check";
+import { MoreBullet } from "./bullet.more";
+import { TogetherBullet } from "./bullet.together";
+
+export interface BulletProps {
+  variant?: string;
+  [x: string]: any;
+}
 
 export const Bullet: React.FC<BulletProps> = ({
-  type = 'together',
+  variant = "together",
   ...props
 }) => {
-  const types = {
+  const variants = {
     together: <TogetherBullet {...props} />,
     check: <CheckBullet {...props} />,
     more: <MoreBullet {...props} />,
   };
-  return types[type];
+  return <div data-testid={`${variant}-bullet`}>{variants[variant]}</div>;
 };

@@ -1,25 +1,18 @@
-import * as React from 'react';
-import styled from 'styled-components';
+import * as React from "react";
+import styled from "styled-components";
+import * as b from "global/blocks";
+import { Card } from "components/molecules/card/card.component";
 
-/**
- * Global
- */
-import * as b from 'global/blocks';
-
-/**
- * Components
- */
-import { Card } from 'components/molecules/card/card.component';
-
-/**
- * Props
- */
-import { LaunchModalProps } from './props';
-
-export const LaunchModal: React.FC<LaunchModalProps> = ({
+export const LaunchModal: React.FC<{
+  teams?: {
+    id: string;
+    name: string;
+    avatarBackground: string;
+  }[];
+}> = ({
   teams = [
-    { id: '1', name: 'Team Name', avatarBackground: 'red' },
-    { id: '1', name: 'Team Name', avatarBackground: 'red' },
+    { id: "1", name: "Team Name", avatarBackground: "red" },
+    { id: "1", name: "Team Name", avatarBackground: "red" },
   ],
 }) => {
   return (
@@ -38,10 +31,10 @@ export const LaunchModal: React.FC<LaunchModalProps> = ({
       })}
       <b.Box pt={4} pb={3}>
         <OtherOption>
-          <b.Anchor href='/get-started/create'>Create a new workspace</b.Anchor>
+          <b.Anchor href="/get-started/create">Create a new workspace</b.Anchor>
         </OtherOption>
         <OtherOption mt={3}>
-          <b.Anchor href='/signin-workspace'>
+          <b.Anchor href="/signin-workspace">
             Sign in to another workspace
           </b.Anchor>
         </OtherOption>
@@ -63,7 +56,7 @@ const OtherOption = styled(b.Box)`
   & > a {
     font-size: 16px;
     color: ${({ theme }) => theme.colors.blue};
-    font-family: 'CircularPro-Book';
+    font-family: "CircularPro-Book";
 
     &:hover {
       text-decoration: underline;

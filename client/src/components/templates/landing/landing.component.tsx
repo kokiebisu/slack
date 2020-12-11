@@ -1,25 +1,25 @@
-import React from 'react';
-
-/**
- * Props
- */
-import { TemplateProps } from './props';
+import React from "react";
 
 /**
  * Templates
  */
-import { ChooseTemplate } from './landing.choose';
-import { SoftwareTemplate } from './landing.software';
-import { TogetherTemplate } from './landing.together';
+import { ChooseTemplate } from "./landing.choose";
+import { SoftwareTemplate } from "./landing.software";
+import { TogetherTemplate } from "./landing.together";
+
+export interface TemplateProps {
+  variant?: string;
+  [x: string]: any;
+}
 
 export const Template: React.FC<TemplateProps> = ({
-  type = 'together',
+  variant = "together",
   ...props
 }) => {
-  const types = {
+  const variants = {
     together: <TogetherTemplate {...props} />,
     software: <SoftwareTemplate {...props} />,
     choose: <ChooseTemplate {...props} />,
   };
-  return <div>{types[type]}</div>;
+  return <div>{variants[variant]}</div>;
 };

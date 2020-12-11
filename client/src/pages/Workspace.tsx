@@ -9,7 +9,7 @@ import { Wrapper, ContentWrapper } from "styles/Workspace";
 import { Header } from "components/organisms/header/header.component";
 import { Sidebar } from "components/Workspace/Sidebar";
 import { MenuToggle } from "components/Workspace/MenuToggle";
-import { ChannelModal } from "modals/Channel";
+import { Modal } from "components/organisms/modal/modal.component";
 
 // Queries
 import { useMeQuery, useTeamQuery } from "generated/graphql";
@@ -51,7 +51,7 @@ export const Workspace: React.FC<Props> = ({ route }) => {
           <>
             {!teamLoading && !meLoading && (
               <>
-                {state.channel && <ChannelModal />}
+                {state.channel && <Modal variant="channel" />}
                 {state.invite && <InviteModal />}
                 <Header variant="workspace" />
                 {state.menu ? <MenuToggle /> : null}

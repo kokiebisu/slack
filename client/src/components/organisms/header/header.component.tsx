@@ -5,6 +5,7 @@ import { LandingHeader } from "components/organisms/header/header.landing";
 import { CreateHeader } from "components/organisms/header/header.create";
 import { SignInHeader } from "components/organisms/header/header.signin";
 import { WorkspaceHeader } from "components/organisms/header/header.workspace";
+import { FindHeader } from "./header.find";
 
 export interface HeaderProps {
   variant?: string;
@@ -20,6 +21,7 @@ export const Header: React.FC<HeaderProps> = ({
     create: <CreateHeader {...props} />,
     signin: <SignInHeader {...props} />,
     workspace: <WorkspaceHeader {...props} />,
+    find: <FindHeader {...props} />,
   };
-  return <div>{variants[variant]}</div>;
+  return <div data-testid={`${variant}-header`}>{variants[variant]}</div>;
 };

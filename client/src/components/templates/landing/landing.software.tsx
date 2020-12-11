@@ -1,39 +1,22 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+import * as b from "global/blocks";
+import { size } from "global/sizes";
+import integrations from "assets/img/slack-integrations.png";
+import enterprise from "assets/img/slack-enterprise.png";
+import { Bullet } from "components/atoms/bullet/bullet.component";
 
-/**
- * Global
- */
-import * as b from 'global/blocks';
-import { size } from 'global/sizes';
-
-/**
- * Assets
- */
-import integrations from 'assets/img/slack-integrations.png';
-import enterprise from 'assets/img/slack-enterprise.png';
-
-/**
- * Components
- */
-import { Bullet } from 'components/atoms/bullet/bullet.component';
-
-/**
- * Props
- */
-import { SoftwareTemplateProps } from './props';
-
-export const SoftwareTemplate: React.FC<SoftwareTemplateProps> = () => {
+export const SoftwareTemplate: React.FC<{}> = () => {
   const bullets = [
     [
-      'Connect over 2,200 ready-to-use Slack apps',
-      'Build your own tim-saving workflows',
-      'Integrate your internal tools with the Slack APIs',
+      "Connect over 2,200 ready-to-use Slack apps",
+      "Build your own tim-saving workflows",
+      "Integrate your internal tools with the Slack APIs",
     ],
     [
-      'Bridge global departments and offices',
-      'Scale up with channels and workspaces of any size',
-      'Meet your security and compliance requirements',
+      "Bridge global departments and offices",
+      "Scale up with channels and workspaces of any size",
+      "Meet your security and compliance requirements",
     ],
   ];
   return (
@@ -41,7 +24,7 @@ export const SoftwareTemplate: React.FC<SoftwareTemplateProps> = () => {
       <b.Container>
         <InnerTop>
           <b.Box>
-            <b.Flex flexDirection='column' alignItems='center'>
+            <b.Flex flexDirection="column" alignItems="center">
               <Title>
                 <b.Text>Slack makes other software better</b.Text>
               </Title>
@@ -56,35 +39,35 @@ export const SoftwareTemplate: React.FC<SoftwareTemplateProps> = () => {
                   {bullets[0].map((bullet, index) => {
                     return (
                       <li>
-                        <Bullet type='check' title={bullet} />
+                        <Bullet typvariante="check" title={bullet} />
                       </li>
                     );
                   })}
                 </ul>
               </CheckList>
               <div>
-                <Bullet type='more' more='integrations' />
+                <Bullet variant="more" more="integrations" />
               </div>
             </b.Flex>
           </b.Box>
           <b.Box>
-            <b.Flex justifyContent='center'>
-              <ImageWrapper className='integrations'>
-                <img src={integrations} />
+            <b.Flex justifyContent="center">
+              <ImageWrapper className="integrations">
+                <img src={integrations} alt="integrations" />
               </ImageWrapper>
             </b.Flex>
           </b.Box>
         </InnerTop>
         <InnerBottom>
           <b.Box>
-            <b.Flex justifyContent='center'>
-              <ImageWrapper className='enterprise'>
-                <img src={enterprise} />
+            <b.Flex justifyContent="center">
+              <ImageWrapper className="enterprise">
+                <img src={enterprise} alt="enterprise" />
               </ImageWrapper>
             </b.Flex>
           </b.Box>
           <b.Box>
-            <b.Flex flexDirection='column' alignItems='center'>
+            <b.Flex flexDirection="column" alignItems="center">
               <Title>
                 <b.Text>Enterprise-grade for everyone</b.Text>
               </Title>
@@ -99,14 +82,14 @@ export const SoftwareTemplate: React.FC<SoftwareTemplateProps> = () => {
                   {bullets[1].map((bullet, index) => {
                     return (
                       <li>
-                        <Bullet type='check' title={bullet} />
+                        <Bullet variant="check" title={bullet} />
                       </li>
                     );
                   })}
                 </ul>
               </CheckList>
               <div>
-                <Bullet type='more' more='Slack for enterprise' />
+                <Bullet variant="more" more="Slack for enterprise" />
               </div>
             </b.Flex>
           </b.Box>
@@ -216,11 +199,11 @@ const ImageWrapper = styled(b.Box)`
 
 const Title = styled(b.Box)`
   & p {
-    font-family: 'SlackLato-Light';
+    font-family: "SlackLato-Light";
     color: ${({ theme }) => theme.colors.black__light};
     font-size: 48px;
     line-height: 1.2;
-    font-family: 'Larsseit-Bold';
+    font-family: "Larsseit-Bold";
   }
 `;
 

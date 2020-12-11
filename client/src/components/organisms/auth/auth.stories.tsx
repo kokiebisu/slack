@@ -13,5 +13,5 @@ const Template: Story<AuthProps> = (args) => <Auth {...args} />;
 
 export const signin = Template.bind({});
 signin.args = {
-  type: "signin",
+  variant: "signin",
 };

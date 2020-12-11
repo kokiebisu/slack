@@ -13,7 +13,7 @@ export const SignIn: React.FC<{}> = () => {
     <Wrapper>
       <Header variant="signin" />
       <Auth variant="signin" />
-      <Footer type="signin" />
+      <Footer variant="signin" />
     </Wrapper>
   );
 };

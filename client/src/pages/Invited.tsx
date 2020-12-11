@@ -1,32 +1,32 @@
-import * as React from 'react';
-import { useReducer } from 'react';
-import { useParams, Redirect, useHistory } from 'react-router-dom';
+import * as React from "react";
+import { useReducer } from "react";
+import { useParams, Redirect, useHistory } from "react-router-dom";
 
 // Queries
-import { useVerifyUserInviteQuery } from 'generated/graphql';
+import { useVerifyUserInviteQuery } from "generated/graphql";
 
 // Blocks
-import * as b from 'global/blocks';
+import * as b from "global/blocks";
 
 // Components
-import { LogoCenterLayout } from 'layout/LogoCenter';
+import { LogoCenterLayout } from "layout/LogoCenter";
 
 // Styles
-import { Wrapper } from 'styles/Invited';
-import { Inputs } from 'components/shared/Inputs';
-import { PasswordValidationBar } from 'components/shared/ValidationBar';
-import { PasswordValidationText } from 'components/shared/ValidationText';
-import { ErrorDialog } from 'components/shared/ErrorDialog';
-import { Confirm } from 'components/shared/Confirm';
+import { Wrapper } from "styles/Invited";
+import { Inputs } from "components/shared/Inputs";
+import { PasswordValidationBar } from "components/shared/ValidationBar";
+import { PasswordValidationText } from "components/shared/ValidationText";
+import { ErrorDialog } from "components/shared/ErrorDialog";
+import { Confirm } from "components/shared/Confirm";
 
 // Utils
-import { inputReducer } from 'reducers/input';
+import { inputReducer } from "reducers/input";
 
-import { fullNameRegex, weakRegex } from 'util/passwordUtil';
-import { randomColor } from 'util/randomColor';
-import { profile } from 'global/colors';
-import { useCreateUserInviteMutation } from 'generated/graphql';
-import { Card } from 'components/molecules/card/card.component';
+import { fullNameRegex, weakRegex } from "util/passwordUtil";
+import { randomColor } from "util/randomColor";
+import { profile } from "global/colors";
+import { useCreateUserInviteMutation } from "generated/graphql";
+import { Card } from "components/molecules/card/card.component";
 
 export const Invited = () => {
   const { invitorId, token } = useParams();
@@ -35,39 +35,39 @@ export const Invited = () => {
   });
   const history = useHistory();
   const [state, dispatch] = useReducer(inputReducer, {
-    fullname: '',
-    password: '',
-    errorlog: '',
+    fullname: "",
+    password: "",
+    errorlog: "",
     loading: false,
   });
 
   const [create] = useCreateUserInviteMutation();
 
   const displayError = (phrase: string) => {
-    dispatch({ type: 'add_errorlog', payload: phrase });
+    dispatch({ type: "add_errorlog", payload: phrase });
     setTimeout(() => {
-      dispatch({ type: 'add_errorlog', payload: '' });
+      dispatch({ type: "add_errorlog", payload: "" });
     }, 5000);
   };
 
   const createAccount = async () => {
     if (!state.fullname) {
-      displayError('Whoops! You forgot your name!');
+      displayError("Whoops! You forgot your name!");
       return;
     }
 
     if (!state.password) {
-      displayError('Password field is empty');
+      displayError("Password field is empty");
       return;
     }
 
     if (!state.fullname.match(fullNameRegex)) {
-      displayError('I want your full name! Not your nickname!');
+      displayError("I want your full name! Not your nickname!");
       return;
     }
 
     if (!state.password.match(weakRegex)) {
-      displayError('The password is not 6 characters! Give it another try!');
+      displayError("The password is not 6 characters! Give it another try!");
       return;
     }
 
@@ -90,7 +90,7 @@ export const Invited = () => {
     }
     if (response && response.data && !response.data.createUserInvite.ok) {
       dispatch({
-        type: 'add_errorlog',
+        type: "add_errorlog",
         payload: response.data.createUserInvite!.errorlog as string,
       });
     }
@@ -107,20 +107,22 @@ export const Invited = () => {
           ) : (
             <LogoCenterLayout>
               <b.Box py={4}>
-                <b.Flex flexDirection='column' alignItems='center'>
+                <b.Flex flexDirection="column" alignItems="center">
                   <Wrapper>
                     <b.Box>
                       <form
                         onSubmit={(e) => {
                           e.preventDefault();
                           createAccount();
-                        }}>
+                        }}
+                      >
                         <b.Box>
                           <b.Text
                             fontSize={48}
-                            color='black__light'
-                            fontFamily='Larsseit-Bold'
-                            textAlign='center'>
+                            color="black__light"
+                            fontFamily="Larsseit-Bold"
+                            textAlign="center"
+                          >
                             First, create your account
                           </b.Text>
                         </b.Box>
@@ -135,10 +137,10 @@ export const Invited = () => {
                         />
                         <PasswordValidationBar password={state.password} />
                         <PasswordValidationText password={state.password} />
-                        <ErrorDialog width='full' error={state.errorlog} />
+                        <ErrorDialog width="full" error={state.errorlog} />
                         <b.Box>
                           <Confirm loading={state.loading} />
-                          <Card type='policy' />
+                          <Card variant="policy" />
                         </b.Box>
                       </form>
                     </b.Box>

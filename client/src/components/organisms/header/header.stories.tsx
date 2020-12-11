@@ -53,3 +53,8 @@ export const workspace = Template.bind({});
 workspace.args = {
   variant: "workspace",
 };
+
+export const find = Template.bind({});
+find.args = {
+  variant: "find",
+};

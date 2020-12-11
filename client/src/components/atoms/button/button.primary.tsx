@@ -1,24 +1,23 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+import { size } from "global/sizes";
+import { main } from "global/colors";
 
-/**
- * Props
- */
-import { PrimaryButtonProps } from './props';
-
-/**
- * Global
- */
-import { size } from 'global/sizes';
-import { main } from 'global/colors';
-
-export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
+export const PrimaryButton: React.FC<{
+  title?: string;
+  inverse?: boolean;
+  onPress?: () => void;
+  size?: "sm" | "lg";
+  to?: string;
+  fill?: any;
+  textColor?: any;
+}> = ({
   fill = main.colors.primary__light,
-  title = 'Primary Button',
+  title = "Primary Button",
   textColor = main.colors.white,
   onPress,
   inverse = false,
-  size = 'sm',
+  size = "sm",
 }) => {
   return (
     <Wrapper
@@ -26,7 +25,8 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
       textColor={textColor}
       inverse={inverse}
       className={`${size}`}
-      onClick={onPress}>
+      onClick={onPress}
+    >
       {title}
     </Wrapper>
   );
@@ -37,14 +37,14 @@ export const Wrapper = styled.button`
   white-space: nowrap;
   display: inline-block;
   font-size: 14px;
-  font-family: 'CircularPro-Bold';
+  font-family: "CircularPro-Bold";
   letter-spacing: 1px;
   text-transform: uppercase;
   border: 1px solid
     ${({ inverse, fill }: { inverse: boolean; fill: any }) =>
-      inverse ? fill : 'transparent'};
+      inverse ? fill : "transparent"};
   background-color: ${({ inverse, fill }: { inverse: boolean; fill: any }) =>
-    inverse ? 'transparent' : fill};
+    inverse ? "transparent" : fill};
   color: ${({
     inverse,
     fill,

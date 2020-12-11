@@ -1,10 +1,10 @@
-import * as React from 'react';
+import * as React from "react";
 
 // Blocks
-import * as b from 'global/blocks';
+import * as b from "global/blocks";
 
 // Svgs
-import { NameLogo } from 'assets/svg/Logo';
+import { NameLogo } from "assets/svg/Logo";
 
 // Styles
 import {
@@ -17,34 +17,34 @@ import {
   NavItem,
   SignInItem,
   IconWrapper,
-} from 'styles/FindTeam/Header';
+} from "styles/FindTeam/Header";
 
 interface Props {}
 
-export const Header: React.FC<Props> = () => {
+export const FindHeader: React.FC<Props> = () => {
   const navItems = [
-    { name: 'Product', url: '/product' },
-    { name: 'Pricing', url: '/pricing' },
-    { name: 'Support', url: '/support' },
-    { name: 'Create a new workspace', url: '/create' },
-    { name: 'Find your workspace', url: '/get-started' },
+    { name: "Product", url: "/product" },
+    { name: "Pricing", url: "/pricing" },
+    { name: "Support", url: "/support" },
+    { name: "Create a new workspace", url: "/create" },
+    { name: "Find your workspace", url: "/get-started" },
   ];
 
   return (
     <HeaderWrapper>
       <Wrapper>
         <b.Container signin>
-          <b.Flex alignItems='center' justifyContent='space-between'>
-            <Left alignItems='center'>
-              <b.Anchor href='/'>
+          <b.Flex alignItems="center" justifyContent="space-between">
+            <Left alignItems="center">
+              <b.Anchor href="/">
                 <b.Box top={2} mr={4}>
-                  <IconWrapper className='namelogo'>
+                  <IconWrapper className="namelogo">
                     <NameLogo />
                   </IconWrapper>
                 </b.Box>
               </b.Anchor>
             </Left>
-            <Right alignItems='center'>
+            <Right alignItems="center">
               <LargeNav>
                 {navItems.map((navItem, index) => {
                   return (

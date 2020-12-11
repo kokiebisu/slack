@@ -32,13 +32,13 @@ export const LandingHeader: React.FC<{ data?: any; loading?: boolean }> = ({
               </b.Box>
               <Options>
                 <div>
-                  <Button type="nav" nav="why" />
+                  <Button variant="nav" nav="why" />
                 </div>
                 <div>
-                  <Button type="nav" nav="solutions" />
+                  <Button variant="nav" nav="solutions" />
                 </div>
                 <div>
-                  <Button type="nav" nav="resources" />
+                  <Button variant="nav" nav="resources" />
                 </div>
               </Options>
             </b.Flex>
@@ -49,7 +49,7 @@ export const LandingHeader: React.FC<{ data?: any; loading?: boolean }> = ({
           data.myTeams.teams!.length > 0 ? (
             <div>
               <Button
-                type="primary"
+                variant="primary"
                 size="sm"
                 title="Launch"
                 onPress={() => setPressed(!pressed)}
@@ -60,11 +60,15 @@ export const LandingHeader: React.FC<{ data?: any; loading?: boolean }> = ({
               <Normal>
                 <b.Flex alignItems="center">
                   <b.Box mr={3}>
-                    <Button type="transparent" title="Sign in" to="/signin" />
+                    <Button
+                      variant="transparent"
+                      title="Sign in"
+                      to="/signin"
+                    />
                   </b.Box>
                   <div>
                     <Button
-                      type="primary"
+                      variant="primary"
                       size="sm"
                       title="Get started"
                       to="/get-started"
@@ -74,7 +78,7 @@ export const LandingHeader: React.FC<{ data?: any; loading?: boolean }> = ({
               </Normal>
               <Mobile>
                 <Button
-                  type="hamburger"
+                  variant="hamburger"
                   onPress={() => dispatchToggle({ type: "toggle_landing" })}
                 />
               </Mobile>
@@ -84,7 +88,7 @@ export const LandingHeader: React.FC<{ data?: any; loading?: boolean }> = ({
       </Wrapper>
       {pressed && data?.myTeams.teams ? (
         <LaunchWrapper>
-          <Modal type="launch" teams={data?.myTeams.teams} />
+          <Modal variant="launch" teams={data?.myTeams.teams} />
         </LaunchWrapper>
       ) : null}
     </>

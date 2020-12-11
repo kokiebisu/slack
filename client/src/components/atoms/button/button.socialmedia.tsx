@@ -1,29 +1,18 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+import * as b from "global/blocks";
 
-/**
- * Global
- */
-import * as b from 'global/blocks';
-
-/**
- * Assets
- */
+/** assets */
 import {
   FacebookLogo,
   TwitterLogo,
   LinkedinLogo,
   YoutubeLogo,
-} from 'assets/svg';
+} from "assets/svg";
 
-/**
- * Props
- */
-import { SocialMediaButtonProps } from './props';
-
-export const SocialMediaButton: React.FC<SocialMediaButtonProps> = ({
-  platform = 'twitter',
-}) => {
+export const SocialMediaButton: React.FC<{
+  platform?: string;
+}> = ({ platform = "twitter" }) => {
   const types = {
     twitter: <TwitterLogo width={20} />,
     facebook: <FacebookLogo width={20} />,

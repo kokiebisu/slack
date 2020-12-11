@@ -18,7 +18,7 @@ export const Auth: React.FC<AuthProps> = ({
     signin: <SignInAuth {...props} />,
   };
   return (
-    <div data-testid="auth" style={extendsTo}>
+    <div data-testid={`${variant}-auth`} style={extendsTo}>
       {variants[variant]}
     </div>
   );

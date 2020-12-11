@@ -1,10 +1,9 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
-import { Bullet } from './bullet.component';
-import { BulletProps } from './props';
+import React from "react";
+import { Story, Meta } from "@storybook/react/types-6-0";
+import { Bullet, BulletProps } from "./bullet.component";
 
 export default {
-  title: 'Design System/Atoms/Bullet',
+  title: "Design System/Atoms/Bullet",
   component: Bullet,
   argTypes: {
     to: {
@@ -19,15 +18,15 @@ const BulletStories: Story<BulletProps> = (args) => <Bullet {...args} />;
 
 export const together = BulletStories.bind({});
 together.args = {
-  type: 'together',
+  variant: "together",
 };
 
 export const check = BulletStories.bind({});
 check.args = {
-  type: 'check',
+  variant: "check",
 };
 
 export const more = BulletStories.bind({});
 more.args = {
-  type: 'more',
+  variant: "more",
 };

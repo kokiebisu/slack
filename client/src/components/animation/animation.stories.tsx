@@ -11,5 +11,5 @@ const Template: Story<AnimationProps> = (args) => <Template {...args} />;
 
 export const loading = Template.bind({});
 loading.args = {
-  type: "loading",
+  variant: "loading",
 };
