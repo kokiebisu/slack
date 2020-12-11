@@ -1,22 +1,31 @@
-import * as React from 'react';
+import * as React from "react";
 
 // Blocks
-import * as b from 'global/blocks';
+import * as b from "global/blocks";
 
 // Styles
-import { InputWrapper, Input, IconWrapper } from 'styles/shared/Inputs';
+import { InputWrapper, Input, IconWrapper } from "styles/shared/Inputs";
 
 // Svgs
-import { CheckCircle } from 'assets/svg';
+import { CheckCircle } from "assets/svg";
 
 // Util
-import { fullNameRegex, weakRegex } from 'util/passwordUtil';
-import { Props } from 'reducers/input';
+import { fullNameRegex, weakRegex } from "util/passwordUtil";
 
-export const Inputs: React.FC<Props> = ({
-  fullname,
-  email,
-  password,
+import { Dispatch } from "react";
+
+export const PlainInput: React.FC<{
+  fullname?: string;
+  email?: string;
+  password?: string;
+  modifyFullname?: any;
+  modifyEmail?: any;
+  modifyPassword?: any;
+  invite?: boolean;
+}> = ({
+  fullname = "full name",
+  email = "email",
+  password = "password",
   modifyFullname,
   modifyEmail,
   modifyPassword,
@@ -24,27 +33,27 @@ export const Inputs: React.FC<Props> = ({
 }) => {
   return (
     <b.Box mt={3}>
-      <b.Flex alignItems='center' flexDirection='column'>
+      <b.Flex alignItems="center" flexDirection="column">
         <b.Box my={2}>
           <b.Box my={2}>
-            <b.Text fontFamily='SlackLato-Bold'>Name</b.Text>
+            <b.Text fontFamily="SlackLato-Bold">Name</b.Text>
           </b.Box>
           <InputWrapper>
             <Input
-              autoCapitalize='sentences'
+              autoCapitalize="sentences"
               value={fullname}
               onChange={(e) =>
                 modifyFullname({
-                  type: 'add_fullname',
+                  type: "add_fullname",
                   payload: e.target.value,
                 })
               }
-              border='1px solid gray'
+              border="1px solid gray"
               borderRadius={3}
-              placeholder='Your full name'
+              placeholder="Your full name"
             />
             {fullname && fullname.match(fullNameRegex) ? (
-              <IconWrapper className='checkcircle'>
+              <IconWrapper className="checkcircle">
                 <CheckCircle />
               </IconWrapper>
             ) : null}
@@ -53,23 +62,23 @@ export const Inputs: React.FC<Props> = ({
         {!invite && (
           <b.Box my={2}>
             <b.Box my={2}>
-              <b.Text fontFamily='SlackLato-Bold'>Email address</b.Text>
+              <b.Text fontFamily="SlackLato-Bold">Email address</b.Text>
             </b.Box>
             <InputWrapper>
               <Input
-                autoCapitalize='none'
+                autoCapitalize="none"
                 value={email}
                 onChange={(e) => {
                   if (modifyEmail) {
-                    modifyEmail({ type: 'add_email', payload: e.target.value });
+                    modifyEmail({ type: "add_email", payload: e.target.value });
                   }
                 }}
-                border='1px solid gray'
+                border="1px solid gray"
                 borderRadius={3}
-                placeholder='name@work-email.com'
+                placeholder="name@work-email.com"
               />
               {email ? (
-                <IconWrapper className='checkcircle'>
+                <IconWrapper className="checkcircle">
                   <CheckCircle />
                 </IconWrapper>
               ) : null}
@@ -78,24 +87,24 @@ export const Inputs: React.FC<Props> = ({
         )}
         <b.Box my={2}>
           <b.Box my={2}>
-            <b.Text fontFamily='SlackLato-Bold'>Password</b.Text>
+            <b.Text fontFamily="SlackLato-Bold">Password</b.Text>
           </b.Box>
           <InputWrapper>
             <Input
-              autoCapitalize='none'
+              autoCapitalize="none"
               value={password}
               onChange={(e) =>
                 modifyPassword({
-                  type: 'add_password',
+                  type: "add_password",
                   payload: e.target.value,
                 })
               }
-              border='1px solid gray'
+              border="1px solid gray"
               borderRadius={3}
-              placeholder='6 characters or more'
+              placeholder="6 characters or more"
             />
             {password.match(weakRegex) ? (
-              <IconWrapper className='checkcircle'>
+              <IconWrapper className="checkcircle">
                 <CheckCircle />
               </IconWrapper>
             ) : null}

@@ -13,20 +13,47 @@ import { LogoCenterLayout } from "layout/LogoCenter";
 
 // Styles
 import { Wrapper } from "styles/Invited";
-import { Inputs } from "components/shared/Inputs";
+
 import { PasswordValidationBar } from "components/shared/ValidationBar";
 import { PasswordValidationText } from "components/shared/ValidationText";
 import { ErrorDialog } from "components/shared/ErrorDialog";
 import { Confirm } from "components/shared/Confirm";
 
 // Utils
-import { inputReducer } from "reducers/input";
+import { Input } from "components/atoms/input/input.component";
 
 import { fullNameRegex, weakRegex } from "util/passwordUtil";
 import { randomColor } from "util/randomColor";
 import { profile } from "global/colors";
 import { useCreateUserInviteMutation } from "generated/graphql";
 import { Card } from "components/molecules/card/card.component";
+
+type State = {
+  fullname: string;
+  password: string;
+  errorlog: boolean;
+  loading: boolean;
+};
+type Action =
+  | { type: "add_fullname"; payload: string }
+  | { type: "add_password"; payload: string }
+  | { type: "add_errorlog"; payload: string }
+  | { type: "loading"; payload: string };
+
+const inputReducer = (state: State, action: Action) => {
+  switch (action.type) {
+    case "add_fullname":
+      return { ...state, fullname: action.payload };
+    case "add_password":
+      return { ...state, password: action.payload };
+    case "add_errorlog":
+      return { ...state, errorlog: action.payload };
+    case "loading":
+      return { ...state, loading: !state.loading };
+    default:
+      return state;
+  }
+};
 
 export const Invited = () => {
   const { invitorId, token } = useParams();
@@ -127,7 +154,8 @@ export const Invited = () => {
                           </b.Text>
                         </b.Box>
 
-                        <Inputs
+                        <Input
+                          variant="plain"
                           invite
                           fullname={state.fullname}
                           password={state.password}

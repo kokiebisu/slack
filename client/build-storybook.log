@@ -1,5 +1,0 @@
-Watching /Users/ken/Desktop/slack/client and all sub-directories not excluded by your .gitignore. Will not monitor dotfiles.
-Found & ignored ./node_modules ; is listed in .gitignore
-
-Starting: --silent build-storybook -- --output-dir /var/folders/b6/g83mw8h9531btnbcmd3s7dh80000gn/T/chromatic--18085-y8h44dBF03lw
-/usr/local/bin/node: bad option: --silent
