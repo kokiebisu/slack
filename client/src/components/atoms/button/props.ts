@@ -2,14 +2,14 @@ export interface PrimaryButtonProps {
   title?: string;
   inverse?: boolean;
   onPress?: () => void;
-  size?: 'sm' | 'lg';
+  size?: "sm" | "lg";
   to?: string;
   fill?: any;
   textColor?: any;
 }
 
 export interface NavButtonProps {
-  nav?: 'why' | 'solutions' | 'resources';
+  nav?: "why" | "solutions" | "resources";
 }
 
 export interface TransparentButtonProps {
@@ -23,10 +23,4 @@ export interface HamburgerButtonProps {
 
 export interface SocialMediaButtonProps {
   platform?: string;
-}
-
-export interface ButtonProps {
-  to?: string;
-  type: string;
-  [x: string]: any;
 }
