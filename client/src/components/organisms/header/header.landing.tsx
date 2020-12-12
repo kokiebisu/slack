@@ -113,7 +113,7 @@ const Mobile = styled.div`
   }
 `;
 
-export const LaunchWrapper = styled(b.Box)`
+const LaunchWrapper = styled(b.Box)`
   display: none;
 
   @media ${size.md} {

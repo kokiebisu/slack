@@ -27,3 +27,12 @@ export const decorators = [
     </ApolloProvider>
   ),
 ];
+
+export const argTypes = {
+  extendsTo: {
+    control: { disable: true },
+  },
+  to: {
+    control: { disable: true },
+  },
+};

@@ -14,19 +14,24 @@ export default {
   },
 } as Meta;
 
-const BulletStories: Story<BulletProps> = (args) => <Bullet {...args} />;
+const Template: Story<BulletProps> = (args) => <Bullet {...args} />;
 
-export const together = BulletStories.bind({});
+export const together = Template.bind({});
 together.args = {
   variant: "together",
 };
 
-export const check = BulletStories.bind({});
+export const check = Template.bind({});
 check.args = {
   variant: "check",
 };
 
-export const more = BulletStories.bind({});
+export const more = Template.bind({});
 more.args = {
   variant: "more",
+};
+
+export const hashtag = Template.bind({});
+hashtag.args = {
+  variant: "hashtag",
 };

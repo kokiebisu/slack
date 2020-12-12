@@ -7,14 +7,24 @@ export default {
   component: Card,
 } as Meta;
 
-const CardStories: Story<CardProps> = (args) => <Card {...args} />;
+const Template: Story<CardProps> = (args) => <Card {...args} />;
 
-export const launch = CardStories.bind({});
+export const launch = Template.bind({});
 launch.args = {
   variant: "launch",
 };
 
-export const policy = CardStories.bind({});
-policy.args = {
-  variant: "policy",
+export const available = Template.bind({});
+available.args = {
+  variant: "available",
+};
+
+export const message = Template.bind({});
+message.args = {
+  variant: "message",
+};
+
+export const activity = Template.bind({});
+activity.args = {
+  variant: "activity",
 };

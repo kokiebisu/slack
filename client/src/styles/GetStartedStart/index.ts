@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import * as b from 'global/blocks';
+import styled from "styled-components";
+import * as b from "global/blocks";
 
 export const confirmVariants = {
   loading: {
@@ -9,11 +9,6 @@ export const confirmVariants = {
     x: 0,
   },
 };
-
-export const Wrapper = styled(b.Box)`
-  max-width: 768px;
-  width: 100%;
-`;
 
 export const IconWrapper = styled(b.Box)`
   position: relative;

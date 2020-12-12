@@ -1,23 +1,23 @@
-import React from 'react';
-import { useEffect } from 'react';
+import React from "react";
+import { useEffect } from "react";
 
-import * as b from 'global/blocks';
+import * as b from "global/blocks";
 
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 // Components
-import { MessageHeader } from 'components/Workspace/DirectMessage/MessageHeader';
+import { MessageHeader } from "components/Workspace/DirectMessage/MessageHeader";
 
 // Styles
-import { Wrapper } from 'styles/Workspace/DirectMessage/Container';
+import { Wrapper } from "styles/Workspace/DirectMessage/Container";
 // Queries
-import gql from 'graphql-tag';
-import { useQuery } from '@apollo/react-hooks';
-import { DateSeperator } from 'components/Workspace/Content/DateSeperator';
-import { Messages } from 'components/Workspace/Content/Messages';
+import gql from "graphql-tag";
+import { useQuery } from "@apollo/react-hooks";
+import { DateSeperator } from "components/Workspace/Content/DateSeperator";
+import { Card } from "components/molecules/card/card.component";
 
 export const MessageContainer = () => {
-  const { userId } = useParams();
+  const { userId }: { userId: string } = useParams();
 
   const subscribeToNewMessages = (latestUser: string) =>
     subscribeToMore({
@@ -69,13 +69,19 @@ export const MessageContainer = () => {
     loading: fetchDirectMessagesLoading,
   } = useQuery(FETCH_DIRECT_MESSAGES, {
     variables: { fromId: userId },
-    fetchPolicy: 'cache-and-network',
+    fetchPolicy: "cache-and-network",
   });
 
   // this gives an object with dates as keys
 
   type tplotOptions = {
-    [key: string]: boolean;
+    [key: string]: {
+      id: number;
+      fullname: string;
+      avatarBackground: string;
+      body: string;
+      createdAt: string;
+    }[];
   };
 
   let messagesByDates;
@@ -83,7 +89,7 @@ export const MessageContainer = () => {
   if (!fetchDirectMessagesLoading && fetchDirectMessagesData) {
     let groups: tplotOptions = fetchDirectMessagesData.fetchDirectMessages.reduce(
       (groups: any, message: any) => {
-        const createdAt = message.createdAt.split(',').slice(0, 2);
+        const createdAt = message.createdAt.split(",").slice(0, 2);
         if (!groups[createdAt]) {
           groups[createdAt] = [];
         }
@@ -103,19 +109,31 @@ export const MessageContainer = () => {
   return (
     <Wrapper>
       <MessageHeader />
-      {messagesByDates &&
-        messagesByDates.map((element, index) => {
-          return (
-            <React.Fragment key={index}>
-              <DateSeperator
-                date={element.createdAt.split(',').slice(0, 2).join(', ')}
-              />
-              <b.Box className='section_content'>
-                <Messages messages={element.messages} />
-              </b.Box>
-            </React.Fragment>
-          );
-        })}
+      {messagesByDates?.map((element, index) => {
+        return (
+          <React.Fragment key={index}>
+            <DateSeperator
+              date={element.createdAt.split(",").slice(0, 2).join(", ")}
+            />
+            <b.Box className="section_content">
+              {element.messages.map((message, index) => {
+                return (
+                  <div key={index}>
+                    <Card
+                      variant="message"
+                      id={message.id}
+                      sender={message.fullname}
+                      avatar={message.avatarBackground}
+                      time={message.createdAt}
+                      body={{ type: "message", message: message.body }}
+                    />
+                  </div>
+                );
+              })}
+            </b.Box>
+          </React.Fragment>
+        );
+      })}
     </Wrapper>
   );
 };

@@ -17,7 +17,7 @@ import {
 } from "styles/CreateTeam";
 
 import { Header } from "components/organisms/header/header.component";
-import { MiniWorkspace } from "components/CreateTeam/Miniworkspace";
+import { Others } from "components/organisms/others/others.component";
 
 interface Props {
   title: string;
@@ -106,7 +106,8 @@ export const CreateTeamLayout: React.FC<Props> = ({
           </Left>
           <Right pl={5}>
             <b.Flex alignItems="center">
-              <MiniWorkspace
+              <Others
+                variant="workspace"
                 team={team}
                 opacity={opacity}
                 channel={channel}
