@@ -1,33 +1,31 @@
-import * as React from 'react';
-import styled from 'styled-components';
-import { useCallback } from 'react';
+import * as React from "react";
+import styled from "styled-components";
+import { useCallback } from "react";
 
 // Blocks
-import * as b from 'global/blocks';
+import * as b from "global/blocks";
 
-import { size } from 'global/sizes';
+import { size } from "global/sizes";
 
 // Svgs
-import { Sidebar } from 'assets/svg';
+import { Sidebar } from "assets/svg";
 
-import { useDropzone } from 'react-dropzone';
-import { DragDrop } from 'components/Workspace/Content/DragDrop';
+import { useDropzone } from "react-dropzone";
+import { DragDrop } from "components/Workspace/Content/DragDrop";
 
-interface Props {
-  section: string;
-  subsection?: React.ReactNode;
-  options?: React.ReactNode;
-  content: React.ReactNode;
-}
-
-export const ClientContentLayout: React.FC<Props> = ({
-  section,
-  subsection,
-  options,
-  content,
+export const WorkspaceLayout: React.FC<{
+  section?: string;
+  subsection?: React.ReactChild;
+  options?: React.ReactChild;
+  content?: React.ReactChild;
+}> = ({
+  section = <h3>Section</h3>,
+  subsection = <h3>SubSection</h3>,
+  options = <h3>Options</h3>,
+  content = <h3>Content</h3>,
 }) => {
   const onDrop = useCallback((acceptedFiles) => {
-    console.log('accepted', acceptedFiles);
+    console.log("accepted", acceptedFiles);
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
@@ -37,18 +35,17 @@ export const ClientContentLayout: React.FC<Props> = ({
         {/* <DragDrop /> */}
         {isDragActive && (
           <>
-            {' '}
             <input {...getInputProps()} />
             <DragDrop />
           </>
         )}
-        <b.Box className='top'>
+        <b.Box className="top">
           <Top>
-            <b.Flex justifyContent='space-between' alignItems='center'>
-              <b.Box className='top__left'>
-                <b.Flex alignItems='center'>
-                  <IconWrapper className='sidebar' mr={3}>
-                    <b.Flex alignItems='center'>
+            <b.Flex justifyContent="space-between" alignItems="center">
+              <b.Box className="top__left">
+                <b.Flex alignItems="center">
+                  <IconWrapper className="sidebar" mr={3}>
+                    <b.Flex alignItems="center">
                       <Sidebar />
                     </b.Flex>
                   </IconWrapper>
@@ -60,11 +57,11 @@ export const ClientContentLayout: React.FC<Props> = ({
                   </b.Box>
                 </b.Flex>
               </b.Box>
-              <b.Box className='top__right'>{options}</b.Box>
+              <b.Box className="top__right">{options}</b.Box>
             </b.Flex>
           </Top>
         </b.Box>
-        <b.Box className='bottom'>{content}</b.Box>
+        <b.Box className="bottom">{content}</b.Box>
       </Wrapper>
     </div>
   );
@@ -125,7 +122,7 @@ export const IconWrapper = styled(b.Box)`
       }
     }
 
-    @media ${size['7xs']} {
+    @media ${size["7xs"]} {
       display: none;
     }
 
@@ -139,7 +136,7 @@ export const IconWrapper = styled(b.Box)`
 export const Title = styled(b.Box)`
   & > p {
     font-size: 17px;
-    font-family: 'SlackLato-Bold';
+    font-family: "SlackLato-Bold";
     color: ${({ theme }) => theme.colors.black};
   }
 `;
@@ -147,7 +144,7 @@ export const Title = styled(b.Box)`
 export const Description = styled(b.Box)`
   & > p {
     font-size: 15px;
-    font-family: 'SlackLato-Regular';
+    font-family: "SlackLato-Regular";
     color: ${({ theme }) => theme.colors.gray__light};
   }
 `;
@@ -157,7 +154,7 @@ export const NewMessage = styled(b.Button)`
   border: 1px solid ${({ theme }) => theme.colors.gray__lighter};
   & > p {
     font-size: 15px;
-    font-family: 'SlackLato-Regular';
+    font-family: "SlackLato-Regular";
     color: ${({ theme }) => theme.colors.black__light};
   }
 
@@ -169,7 +166,7 @@ export const NewMessage = styled(b.Button)`
 export const Section = styled(b.Box)`
   & > p {
     color: ${({ theme }) => theme.colors.black};
-    font-family: 'SlackLato-Black';
+    font-family: "SlackLato-Black";
     font-size: 15px;
   }
 `;
@@ -178,7 +175,7 @@ export const SubSection = styled(b.Text)`
   margin: 4px 0;
   & > p {
     font-size: 13px;
-    font-family: 'SlackLato-Regular';
+    font-family: "SlackLato-Regular";
     color: ${({ theme }) => theme.colors.gray};
   }
 `;

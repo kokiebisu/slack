@@ -39,7 +39,7 @@ export const SoftwareTemplate: React.FC<{}> = () => {
                   {bullets[0].map((bullet, index) => {
                     return (
                       <li>
-                        <Bullet typvariante="check" title={bullet} />
+                        <Bullet variant="check" title={bullet} />
                       </li>
                     );
                   })}

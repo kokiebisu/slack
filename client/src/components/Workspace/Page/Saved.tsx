@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 // Blocks
-import * as b from 'global/blocks';
+import * as b from "global/blocks";
 
 // Svgs
-import { Bookmark } from 'assets/svg';
-import { Transition } from 'assets/svg';
+import { Bookmark } from "assets/svg";
+import { Transition } from "assets/svg";
 
 // Styles
 import {
@@ -13,15 +13,14 @@ import {
   SideOption,
   IconWrapper,
   Bottom,
-} from 'styles/Workspace/Page/Saved';
-import { ClientContentLayout } from 'layout/Workspace';
+} from "styles/Workspace/Page/Saved";
+import { Layout } from "components/layout/layout.component";
 
-interface Props {}
-
-export const SavedPage: React.FC<Props> = () => {
+export const SavedPage: React.FC<{}> = () => {
   return (
-    <ClientContentLayout
-      section='Saved items'
+    <Layout
+      variant="workspace"
+      section="Saved items"
       content={<ContentLayout />}
       options={<Options />}
     />
@@ -31,21 +30,22 @@ export const SavedPage: React.FC<Props> = () => {
 const ContentLayout = () => {
   return (
     <Wrapper>
-      <b.Flex justifyContent='center' alignItems='center'>
+      <b.Flex justifyContent="center" alignItems="center">
         <Bottom>
-          <IconWrapper className='bookmark'>
+          <IconWrapper className="bookmark">
             <Bookmark />
           </IconWrapper>
           <b.Box pt={3} pb={2}>
-            <b.Text fontSize={17} fontFamily='SlackLato-Bold' color='black'>
+            <b.Text fontSize={17} fontFamily="SlackLato-Bold" color="black">
               Save messages and files to come back to later
             </b.Text>
           </b.Box>
           <b.Box>
             <b.Text
               fontSize={15}
-              fontFamily='SlackLato-Regular'
-              color='gray__light'>
+              fontFamily="SlackLato-Regular"
+              color="gray__light"
+            >
               Mark your to-dos or save something for another time. Only you can
               see your saved items, so use them however you’d like.
             </b.Text>
@@ -59,7 +59,7 @@ const ContentLayout = () => {
 const Options = () => {
   return (
     <SideOption>
-      <IconWrapper className='transition'>
+      <IconWrapper className="transition">
         <Transition />
       </IconWrapper>
     </SideOption>

@@ -1,27 +1,23 @@
-import * as React from "react";
+import React from "react";
 
-// Blocks
 import * as b from "global/blocks";
 
-// Styles
-import { InputWrapper, Input, IconWrapper } from "./input.styles";
+import { Bar } from "components/atoms/bar/bar.component";
+import { Dialog } from "components/atoms/dialog/dialog.component";
+import { IconWrapper, Input, InputWrapper } from "./input.styles";
+import { CheckCircle } from "assets/svg/Icons";
 
-// Svgs
-import { CheckCircle } from "assets/svg";
-
-import "util/string";
-
-export const PlainInput: React.FC<{
+export const PasswordInput: React.FC<{
   value?: string;
   info?: any;
   setInfo?: any;
   criteria?: boolean;
   placeholder?: string;
 }> = ({
-  value = "property",
+  value = "password",
   setInfo,
   info = {
-    name: "",
+    password: "",
   },
   placeholder = "Placeholder here",
   criteria = false,
@@ -48,6 +44,12 @@ export const PlainInput: React.FC<{
           </IconWrapper>
         ) : null}
       </InputWrapper>
+      <b.Box mt={2}>
+        <Bar variant="validation" password={info.password} />
+      </b.Box>
+      <div>
+        <Dialog variant="password" password={info.password} />
+      </div>
     </div>
   );
 };

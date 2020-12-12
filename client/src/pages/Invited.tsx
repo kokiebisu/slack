@@ -1,5 +1,4 @@
-import * as React from "react";
-import { useReducer } from "react";
+import React, { useState } from "react";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 
 // Queries
@@ -9,15 +8,12 @@ import { useVerifyUserInviteQuery } from "generated/graphql";
 import * as b from "global/blocks";
 
 // Components
-import { LogoCenterLayout } from "layout/LogoCenter";
+import { Layout } from "components/layout/layout.component";
 
 // Styles
 import { Wrapper } from "styles/Invited";
-
-import { PasswordValidationBar } from "components/shared/ValidationBar";
-import { PasswordValidationText } from "components/shared/ValidationText";
-import { ErrorDialog } from "components/shared/ErrorDialog";
-import { Confirm } from "components/shared/Confirm";
+import { Bar } from "components/atoms/bar/bar.component";
+import { Dialog } from "components/atoms/dialog/dialog.component";
 
 // Utils
 import { Input } from "components/atoms/input/input.component";
@@ -27,6 +23,7 @@ import { randomColor } from "util/randomColor";
 import { profile } from "global/colors";
 import { useCreateUserInviteMutation } from "generated/graphql";
 import { Card } from "components/molecules/card/card.component";
+import { Button } from "components/atoms/button/button.component";
 
 type State = {
   fullname: string;
@@ -61,39 +58,40 @@ export const Invited = () => {
     variables: { token, invitorId },
   });
   const history = useHistory();
-  const [state, dispatch] = useReducer(inputReducer, {
+
+  const [info, setInfo] = useState({
     fullname: "",
     password: "",
-    errorlog: "",
-    loading: false,
   });
+  const [errorLog, setErrorLog] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const [create] = useCreateUserInviteMutation();
 
   const displayError = (phrase: string) => {
-    dispatch({ type: "add_errorlog", payload: phrase });
+    setErrorLog(phrase);
     setTimeout(() => {
-      dispatch({ type: "add_errorlog", payload: "" });
+      setErrorLog("");
     }, 5000);
   };
 
   const createAccount = async () => {
-    if (!state.fullname) {
+    if (!info.fullname) {
       displayError("Whoops! You forgot your name!");
       return;
     }
 
-    if (!state.password) {
+    if (!info.password) {
       displayError("Password field is empty");
       return;
     }
 
-    if (!state.fullname.match(fullNameRegex)) {
+    if (!info.fullname.match(fullNameRegex)) {
       displayError("I want your full name! Not your nickname!");
       return;
     }
 
-    if (!state.password.match(weakRegex)) {
+    if (!info.password.match(weakRegex)) {
       displayError("The password is not 6 characters! Give it another try!");
       return;
     }
@@ -104,8 +102,8 @@ export const Invited = () => {
       variables: {
         token,
         invitorId,
-        name: state.fullname,
-        password: state.password,
+        name: info.fullname,
+        password: info.password,
         avatarBackground,
       },
     });
@@ -115,11 +113,8 @@ export const Invited = () => {
         pathname: `/client/${response.data.createUserInvite.teamId}`,
       });
     }
-    if (response && response.data && !response.data.createUserInvite.ok) {
-      dispatch({
-        type: "add_errorlog",
-        payload: response.data.createUserInvite!.errorlog as string,
-      });
+    if (!response?.data?.createUserInvite.ok) {
+      setErrorLog(response?.data?.createUserInvite!.errorlog as string);
     }
   };
 
@@ -132,7 +127,7 @@ export const Invited = () => {
               to={`/client/${VerifyUserInvite?.verifyUserInvite.teamId}`}
             />
           ) : (
-            <LogoCenterLayout>
+            <Layout variant="center">
               <b.Box py={4}>
                 <b.Flex flexDirection="column" alignItems="center">
                   <Wrapper>
@@ -153,21 +148,24 @@ export const Invited = () => {
                             First, create your account
                           </b.Text>
                         </b.Box>
-
-                        <Input
-                          variant="plain"
-                          invite
-                          fullname={state.fullname}
-                          password={state.password}
-                          modifyFullname={dispatch}
-                          modifyEmail={dispatch}
-                          modifyPassword={dispatch}
-                        />
-                        <PasswordValidationBar password={state.password} />
-                        <PasswordValidationText password={state.password} />
-                        <ErrorDialog width="full" error={state.errorlog} />
+                        {[{ value: "fullname" }, { value: "password" }].map(
+                          (params, index) => (
+                            <b.Box key={index}>
+                              <Input
+                                variant="plain"
+                                invite
+                                info={info}
+                                setInfo={setInfo}
+                                {...params}
+                              />
+                            </b.Box>
+                          )
+                        )}
+                        <Bar variant="validation" password={info.password} />
+                        <Dialog variant="password" password={info.password} />
+                        <Dialog variant="error" error={errorLog} />
                         <b.Box>
-                          <Confirm loading={state.loading} />
+                          <Button variant="confirm" />
                           <Card variant="policy" />
                         </b.Box>
                       </form>
@@ -175,7 +173,7 @@ export const Invited = () => {
                   </Wrapper>
                 </b.Flex>
               </b.Box>
-            </LogoCenterLayout>
+            </Layout>
           )}
         </>
       )}

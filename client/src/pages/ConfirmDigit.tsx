@@ -1,12 +1,12 @@
-import * as React from 'react';
-import { useState, useRef, useEffect } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import * as React from "react";
+import { useState, useRef, useEffect } from "react";
+import { useHistory, useLocation } from "react-router-dom";
 
 // Components
-import * as b from 'global/blocks';
-import { useVerifyUserByDigitMutation } from 'generated/graphql';
-import { LogoCenterLayout } from 'layout/LogoCenter';
-import { Options, Dialog } from 'components/ConfirmDigit';
+import * as b from "global/blocks";
+import { useVerifyUserByDigitMutation } from "generated/graphql";
+import { Layout } from "components/layout/layout.component";
+import { Button } from "components/atoms/button/button.component";
 
 import {
   Wrapper,
@@ -14,7 +14,13 @@ import {
   Title,
   Description,
   CheckNotice,
-} from 'styles/ConfirmDigit';
+} from "styles/ConfirmDigit";
+import {
+  LoadingText,
+  Rotate,
+  spinTransition,
+} from "styles/ConfirmDigit/Dialog";
+import { Warning } from "assets/svg";
 
 export const ConfirmDigit = () => {
   const input_1: any = useRef(null);
@@ -26,15 +32,15 @@ export const ConfirmDigit = () => {
   const formRef = useRef(null);
 
   const history = useHistory();
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [verify, { loading }] = useVerifyUserByDigitMutation();
 
-  const [first, setFirst] = useState('');
-  const [second, setSecond] = useState('');
-  const [third, setThird] = useState('');
-  const [fourth, setFourth] = useState('');
-  const [fifth, setFifth] = useState('');
-  const [sixth, setSixth] = useState('');
+  const [first, setFirst] = useState("");
+  const [second, setSecond] = useState("");
+  const [third, setThird] = useState("");
+  const [fourth, setFourth] = useState("");
+  const [fifth, setFifth] = useState("");
+  const [sixth, setSixth] = useState("");
 
   const location: any = useLocation();
 
@@ -60,25 +66,26 @@ export const ConfirmDigit = () => {
       }
       if (response && response.data?.verifyUserByDigit.ok) {
         history.push({
-          pathname: '/create/teamname',
+          pathname: "/create/teamname",
           state: { authenticated: true },
         });
       }
     } catch (err) {
-      setError('something went awfully wrong');
+      setError("something went awfully wrong");
     }
   };
 
   return (
-    <LogoCenterLayout>
+    <Layout variant="center">
       <b.Box py={4}>
-        <b.Flex flexDirection='column' alignItems='center'>
+        <b.Flex flexDirection="column" alignItems="center">
           <Wrapper>
             <form
               ref={formRef}
               onSubmit={() => {
                 console.log(`${first}`);
-              }}>
+              }}
+            >
               <b.Box>
                 <Title>
                   <b.Text>Check your email for a code</b.Text>
@@ -92,14 +99,14 @@ export const ConfirmDigit = () => {
                 </Description>
 
                 <b.Box>
-                  <b.Flex justifyContent='center'>
+                  <b.Flex justifyContent="center">
                     <b.Box>
                       <b.Flex>
                         <b.Box>
                           <TextInput
-                            type='text'
+                            type="text"
                             className={
-                              first !== '' ? `added input_1` : `input_1`
+                              first !== "" ? `added input_1` : `input_1`
                             }
                             ref={input_1}
                             maxLength={1}
@@ -112,7 +119,7 @@ export const ConfirmDigit = () => {
                         <b.Box>
                           <TextInput
                             className={
-                              second !== '' ? `added input_2` : `input_2`
+                              second !== "" ? `added input_2` : `input_2`
                             }
                             ref={input_2}
                             maxLength={1}
@@ -125,7 +132,7 @@ export const ConfirmDigit = () => {
                         <b.Box>
                           <TextInput
                             className={
-                              third !== '' ? `added input_3` : `input_3`
+                              third !== "" ? `added input_3` : `input_3`
                             }
                             ref={input_3}
                             maxLength={1}
@@ -138,9 +145,9 @@ export const ConfirmDigit = () => {
                       </b.Flex>
                     </b.Box>
                     <b.Box mx={3}>
-                      <b.Flex alignItems='center'>
+                      <b.Flex alignItems="center">
                         <b.Box>
-                          <b.Text fontFamily='SlackLato-Thin' fontSize={32}>
+                          <b.Text fontFamily="SlackLato-Thin" fontSize={32}>
                             -
                           </b.Text>
                         </b.Box>
@@ -151,7 +158,7 @@ export const ConfirmDigit = () => {
                         <b.Box>
                           <TextInput
                             className={
-                              fourth !== '' ? `added input_4` : `input_4`
+                              fourth !== "" ? `added input_4` : `input_4`
                             }
                             ref={input_4}
                             maxLength={1}
@@ -164,7 +171,7 @@ export const ConfirmDigit = () => {
                         <b.Box>
                           <TextInput
                             className={
-                              fifth !== '' ? `added input_5` : `input_5`
+                              fifth !== "" ? `added input_5` : `input_5`
                             }
                             ref={input_5}
                             maxLength={1}
@@ -178,7 +185,7 @@ export const ConfirmDigit = () => {
                         <b.Box>
                           <TextInput
                             className={
-                              sixth !== '' ? `added input_6` : `input_6`
+                              sixth !== "" ? `added input_6` : `input_6`
                             }
                             ref={input_6}
                             maxLength={1}
@@ -193,10 +200,47 @@ export const ConfirmDigit = () => {
                 </b.Box>
               </b.Box>
             </form>
-            <Dialog loading={loading} error={error} />
-            <Options />
+            <b.Box mt={2} mb={3}>
+              {loading ? (
+                <b.Flex justifyContent="center" alignItems="center">
+                  <b.Box>
+                    <b.Flex justifyContent="center" alignItems="center">
+                      <LoadingText mr={3}>
+                        <b.Text>Hold on...</b.Text>
+                      </LoadingText>
+                      <Rotate>
+                        <b.Span
+                          transition={spinTransition}
+                          animate={{ rotate: 360 }}
+                        />
+                      </Rotate>
+                    </b.Flex>
+                  </b.Box>
+                </b.Flex>
+              ) : null}
+              {error !== "" ? (
+                <b.Flex justifyContent="center" alignItems="center">
+                  <b.Flex justifyContent="center" alignItems="center">
+                    <Warning />
+                    <b.Box>
+                      <b.Text
+                        color="black"
+                        fontSize={13}
+                        fontFamily="SlackLato-Thin"
+                      >
+                        That code wasn't valid. Give it another go!
+                      </b.Text>
+                    </b.Box>
+                  </b.Flex>
+                </b.Flex>
+              ) : null}
+            </b.Box>
+            <b.Flex justifyContent="center">
+              <Button type="email" />
+              <Button type="email" />
+            </b.Flex>
             <b.Box my={4}>
-              <b.Flex justifyContent='center'>
+              <b.Flex justifyContent="center">
                 <CheckNotice>
                   <b.Text>Can't find your code? Check your spam folder!</b.Text>
                 </CheckNotice>
@@ -205,6 +249,6 @@ export const ConfirmDigit = () => {
           </Wrapper>
         </b.Flex>
       </b.Box>
-    </LogoCenterLayout>
+    </Layout>
   );
 };

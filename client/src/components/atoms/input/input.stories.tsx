@@ -29,3 +29,8 @@ export const plain = Template.bind({});
 plain.args = {
   variant: "plain",
 };
+
+export const password = Template.bind({});
+password.args = {
+  variant: "password",
+};

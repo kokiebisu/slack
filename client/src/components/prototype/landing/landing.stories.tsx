@@ -3,12 +3,12 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import { ThemeProvider } from "styled-components";
 import { ToggleProvider } from "context/toggle-context";
 import { MemoryRouter } from "react-router-dom";
-import { Template, TemplateProps } from "./landing.component";
+import { Prototype, PrototypeProps } from "./landing.component";
 import { main } from "../../../global/colors";
 
 export default {
-  title: "Design System/Organisms/Section/Landing",
-  component: Template,
+  title: "Design System/Prototype/Landing",
+  component: Prototype,
   decorators: [
     (Story) => (
       <MemoryRouter>
@@ -22,7 +22,9 @@ export default {
   ],
 } as Meta;
 
-const TemplateStories: Story<TemplateProps> = (args) => <Template {...args} />;
+const TemplateStories: Story<PrototypeProps> = (args) => (
+  <Prototype {...args} />
+);
 
 export const together = TemplateStories.bind({});
 together.args = {

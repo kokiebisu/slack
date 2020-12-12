@@ -11,7 +11,7 @@ import { useVerifyUserByTokenQuery } from "generated/graphql";
 import { Wrapper } from "styles/GetStartedCheck";
 
 // Components
-import { LogoCenterLayout } from "layout/LogoCenter";
+import { Layout } from "components/layout/layout.component";
 import { Button } from "components/atoms/button/button.component";
 
 export const ConfirmEmail = () => {
@@ -26,7 +26,7 @@ export const ConfirmEmail = () => {
           <Redirect to={`/your-workspaces/${token}`} />
         </>
       ) : (
-        <LogoCenterLayout>
+        <Layout variant="center">
           <b.Box py={4}>
             <b.Flex flexDirection="column" alignItems="center">
               <Wrapper>
@@ -61,7 +61,7 @@ export const ConfirmEmail = () => {
               </Wrapper>
             </b.Flex>
           </b.Box>
-        </LogoCenterLayout>
+        </Layout>
       )}
     </>
   );

@@ -11,6 +11,7 @@ import { SocialMediaButton } from "./button.socialmedia";
 import { ConfirmButton } from "./button.confirm";
 import { LinkButton } from "./button.link";
 import { EmailButton } from "./button.email";
+import { LaunchButton } from "./button.launch";
 
 export interface ButtonProps {
   to?: string;
@@ -32,6 +33,7 @@ export const Button: React.FC<ButtonProps> = ({
     link: <LinkButton {...props} />,
     confirm: <ConfirmButton {...props} />,
     email: <EmailButton {...props} />,
+    launch: <LaunchButton {...props} />,
   };
   if (to) {
     return <Link to={to}>{variants[variant]}</Link>;

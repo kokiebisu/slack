@@ -1,5 +1,5 @@
-import React from 'react';
-import * as b from 'global/blocks';
+import React from "react";
+import * as b from "global/blocks";
 
 import {
   Header,
@@ -13,15 +13,15 @@ import {
   AddOptionText,
   EmailInputHeader,
   AddOptions,
-} from 'modals/Invite/Before.styles';
-import { GoogleLogo } from 'assets/svg/Logo';
-import { UserPlus, Close, PaperPlaneLight } from 'assets/svg';
-import { EmailInput } from 'modals/Invite/EmailInput';
-import { DefaultChannels } from 'modals/Invite/DefaultChannels';
-import { PlusCircle } from 'assets/svg';
-import { useSendInvitationMutation } from 'generated/graphql';
-import { useParams } from 'react-router-dom';
-import { ErrorDialog } from 'components/shared/ErrorDialog';
+} from "modals/Invite/Before.styles";
+import { GoogleLogo } from "assets/svg/Logo";
+import { UserPlus, Close, PaperPlaneLight } from "assets/svg";
+import { EmailInput } from "modals/Invite/EmailInput";
+import { DefaultChannels } from "modals/Invite/DefaultChannels";
+import { PlusCircle } from "assets/svg";
+import { useSendInvitationMutation } from "generated/graphql";
+import { useParams } from "react-router-dom";
+import { Dialog } from "components/atoms/dialog/dialog.component";
 
 interface Props {
   dispatchToggle: any;
@@ -43,32 +43,33 @@ export const Before: React.FC<Props> = ({
   return (
     <>
       <Header>
-        <b.Flex justifyContent='space-between'>
+        <b.Flex justifyContent="space-between">
           <Title>
             <b.Text>Invite people to dsaf</b.Text>
           </Title>
           <IconButtonWrapper
-            className='close'
-            onClick={() => dispatchToggle({ type: 'toggle_invite' })}>
+            className="close"
+            onClick={() => dispatchToggle({ type: "toggle_invite" })}
+          >
             <Close />
           </IconButtonWrapper>
         </b.Flex>
       </Header>
       <PricingPlans py={3} px={3}>
         <b.Flex>
-          <IconWrapper className='user-plus'>
+          <IconWrapper className="user-plus">
             <UserPlus />
           </IconWrapper>
           <b.Box>
             <b.Text>
               Workspaces with paid plans can also invite <span>guests</span>,
-              like contractors, vendors, or clients.{' '}
-              <a href='/pricing'>See pricing plans</a>
+              like contractors, vendors, or clients.{" "}
+              <a href="/pricing">See pricing plans</a>
             </b.Text>
           </b.Box>
         </b.Flex>
       </PricingPlans>
-      {input.error && <ErrorDialog width='full' error={input.error} />}
+      {input.error && <Dialog variant="error" error={input.error} />}
       <EmailInputs>
         <b.Box>
           <b.Flex>
@@ -84,17 +85,17 @@ export const Before: React.FC<Props> = ({
       </EmailInputs>
       <AddOptions>
         <b.Box>
-          <b.Flex alignItems='center'>
-            <IconWrapper className='plus-circle' mr={2}>
+          <b.Flex alignItems="center">
+            <IconWrapper className="plus-circle" mr={2}>
               <PlusCircle />
             </IconWrapper>
             <AddOptionText>
               <b.Text>
-                <span onClick={() => console.log('add another')}>
+                <span onClick={() => console.log("add another")}>
                   Add another
-                </span>{' '}
-                or{' '}
-                <span onClick={() => console.log('add google directory')}>
+                </span>{" "}
+                or{" "}
+                <span onClick={() => console.log("add google directory")}>
                   add many at once
                 </span>
               </b.Text>
@@ -102,8 +103,8 @@ export const Before: React.FC<Props> = ({
           </b.Flex>
         </b.Box>
         <b.Box>
-          <b.Flex alignItems='center'>
-            <IconWrapper className='google' mr={2}>
+          <b.Flex alignItems="center">
+            <IconWrapper className="google" mr={2}>
               <GoogleLogo />
             </IconWrapper>
             <AddOptionText>
@@ -116,10 +117,10 @@ export const Before: React.FC<Props> = ({
       </AddOptions>
       <DefaultChannels />
       <Footer>
-        <b.Flex alignItems='center' justifyContent='space-between'>
+        <b.Flex alignItems="center" justifyContent="space-between">
           <b.Box>
             <b.Flex>
-              <IconWrapper className='paper-plane' mr={2}>
+              <IconWrapper className="paper-plane" mr={2}>
                 <PaperPlaneLight />
               </IconWrapper>
               <b.Box>
@@ -131,9 +132,9 @@ export const Before: React.FC<Props> = ({
             onClick={async () => {
               if (!input.email || !input.name || !teamId) {
                 dispatchInput({
-                  type: 'give_error',
+                  type: "give_error",
                   payload:
-                    'Add at least one email address before sending invitations.',
+                    "Add at least one email address before sending invitations.",
                 });
                 return;
               }
@@ -142,10 +143,11 @@ export const Before: React.FC<Props> = ({
               });
 
               if (response.data?.sendInvitation.errorlog) {
-                console.log('there was an error');
+                console.log("there was an error");
               }
               finish();
-            }}>
+            }}
+          >
             Send Invitations
           </SendButton>
         </b.Flex>

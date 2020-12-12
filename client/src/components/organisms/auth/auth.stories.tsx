@@ -16,7 +16,17 @@ signin.args = {
   variant: "signin",
 };
 
-export const getstarted = Template.bind({});
-getstarted.args = {
+export const getStarted = Template.bind({});
+getStarted.args = {
   variant: "getstarted",
+};
+
+export const signup = Template.bind({});
+signup.args = {
+  variant: "signup",
+};
+
+export const find = Template.bind({});
+find.args = {
+  variant: "find",
 };

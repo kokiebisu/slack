@@ -6,9 +6,10 @@ import { useGetBelongingTeamsQuery } from "generated/graphql";
 import { Wrapper } from "styles/FindTeam";
 
 /** components */
-import { FindTeamContent } from "components/FindTeam/Content";
+
 import { Header } from "components/organisms/header/header.component";
 import { Footer } from "components/organisms/footer/footer.component";
+import { Auth } from "components/organisms/auth/auth.component";
 
 export const FindTeam = () => {
   const {
@@ -28,7 +29,10 @@ export const FindTeam = () => {
             <>
               {getBelongingTeams?.belongingTeams! &&
                 getBelongingTeams!.belongingTeams!.length > 0 && (
-                  <FindTeamContent teams={getBelongingTeams?.belongingTeams} />
+                  <Auth
+                    variant="find"
+                    teams={getBelongingTeams?.belongingTeams}
+                  />
                 )}
             </>
             <Footer variant="find" />

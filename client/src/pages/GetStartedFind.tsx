@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import * as b from "global/blocks";
 
 /** components */
-import { LogoCenterLayout } from "layout/LogoCenter";
+import { Layout } from "components/layout/layout.component";
 
 // Styles
 import {
@@ -32,7 +32,7 @@ export const GetStartedFind: React.FC<Props> = () => {
       {data?.checkEmail.ok ? (
         <Redirect to="/get-started/check" />
       ) : (
-        <LogoCenterLayout>
+        <Layout variant="center">
           <b.Box py={4}>
             <b.Flex flexDirection="column" alignItems="center">
               <Wrapper>
@@ -108,7 +108,7 @@ export const GetStartedFind: React.FC<Props> = () => {
               </Wrapper>
             </b.Flex>
           </b.Box>
-        </LogoCenterLayout>
+        </Layout>
       )}
     </>
   );

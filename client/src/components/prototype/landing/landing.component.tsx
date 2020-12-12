@@ -7,12 +7,12 @@ import { ChooseTemplate } from "./landing.choose";
 import { SoftwareTemplate } from "./landing.software";
 import { TogetherTemplate } from "./landing.together";
 
-export interface TemplateProps {
+export interface PrototypeTemplate {
   variant?: string;
   [x: string]: any;
 }
 
-export const Template: React.FC<TemplateProps> = ({
+export const Prototype: React.FC<TemplateProps> = ({
   variant = "together",
   ...props
 }) => {

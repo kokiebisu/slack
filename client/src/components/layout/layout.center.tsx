@@ -1,24 +1,22 @@
-import * as React from 'react';
-import styled from 'styled-components';
+import * as React from "react";
+import styled from "styled-components";
 
-import * as b from 'global/blocks';
+import * as b from "global/blocks";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 // Svg
-import { Globe } from 'assets/svg';
-import { NameLogo } from 'assets/svg/Logo';
+import { Globe } from "assets/svg";
+import { NameLogo } from "assets/svg/Logo";
 
-interface Props {}
-
-export const LogoCenterLayout: React.FC<Props> = ({ children }) => {
+export const CenterLayout: React.FC<{}> = ({ children }) => {
   return (
     <Wrapper>
       <Container>
-        <Link to='/'>
+        <Link to="/">
           <b.Box pt={4}>
-            <b.Flex justifyContent='center'>
-              <IconWrapper className='namelogo'>
+            <b.Flex justifyContent="center">
+              <IconWrapper className="namelogo">
                 <NameLogo />
               </IconWrapper>
             </b.Flex>
@@ -26,12 +24,12 @@ export const LogoCenterLayout: React.FC<Props> = ({ children }) => {
         </Link>
         <ChildWrapper>{children}</ChildWrapper>
         <b.Box py={4}>
-          <b.Flex alignItems='center' justifyContent='center'>
+          <b.Flex alignItems="center" justifyContent="center">
             <b.Box mr={2}>
-              <FooterLink href='/legal'>Privacy & terms</FooterLink>
+              <FooterLink href="/legal">Privacy & terms</FooterLink>
             </b.Box>
             <b.Box mr={2}>
-              <FooterLink href='/help'>Contact us</FooterLink>
+              <FooterLink href="/help">Contact us</FooterLink>
             </b.Box>
             <b.Box mr={2}>
               <b.Flex>
@@ -103,7 +101,7 @@ const IconWrapper = styled(b.Box)`
 
 const FooterLink = styled(b.Anchor)`
   font-size: 16px;
-  font-family: 'SlackLato-Regular';
+  font-family: "SlackLato-Regular";
   color: ${({ theme }) => theme.colors.gray__light};
 
   &:hover {
@@ -114,7 +112,7 @@ const FooterLink = styled(b.Anchor)`
 
 const ChangeRegion = styled(b.Button)`
   font-size: 16px;
-  font-family: 'SlackLato-Regular';
+  font-family: "SlackLato-Regular";
   color: ${({ theme }) => theme.colors.gray__light};
 
   &:hover {

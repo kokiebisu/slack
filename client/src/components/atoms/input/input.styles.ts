@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import * as b from 'global/blocks';
+import styled from "styled-components";
+import * as b from "global/blocks";
 
 export const InputWrapper = styled(b.Box)`
   position: relative;

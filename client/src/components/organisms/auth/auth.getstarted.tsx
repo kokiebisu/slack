@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import * as b from "global/blocks";
 import {
   SelectOptionWrapper,
@@ -21,7 +22,7 @@ import lightbulb from "assets/img/lightbulb.png";
 
 export const GetStartedAuth: React.FC<{}> = () => {
   return (
-    <div>
+    <Wrapper>
       <SelectOptionWrapper
         animate={{ y: -20, transition: { duration: 0.2 } }}
         py={4}
@@ -158,6 +159,10 @@ export const GetStartedAuth: React.FC<{}> = () => {
           </WhatIsSlackContainer>
         </b.Flex>
       </WhatIsSlackWrapper>
-    </div>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled(b.Box)`
+  width: fit-content;
+`;

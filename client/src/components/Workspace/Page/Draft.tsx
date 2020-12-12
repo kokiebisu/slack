@@ -1,10 +1,10 @@
-import * as React from 'react';
+import * as React from "react";
 
 // Blocks
-import * as b from 'global/blocks';
+import * as b from "global/blocks";
 
 // Svg
-import { Clipboard } from 'assets/svg';
+import { Clipboard } from "assets/svg";
 
 import {
   Wrapper,
@@ -13,16 +13,17 @@ import {
   Title,
   Description,
   NewMessage,
-} from 'styles/Workspace/Page/Draft';
-import { ClientContentLayout } from 'layout/Workspace';
+} from "styles/Workspace/Page/Draft";
+import { Layout } from "components/layout/layout.component";
 
 interface Props {}
 
 export const DraftPage: React.FC<Props> = () => {
   return (
-    <ClientContentLayout
-      section='Drafts'
-      subsection='No drafts'
+    <Layout
+      variant="workspace"
+      section="Drafts"
+      subsection="No drafts"
       content={<ContentLayout />}
     />
   );
@@ -31,9 +32,9 @@ export const DraftPage: React.FC<Props> = () => {
 const ContentLayout = () => {
   return (
     <Wrapper>
-      <b.Flex justifyContent='center' alignItems='center'>
+      <b.Flex justifyContent="center" alignItems="center">
         <Content>
-          <IconWrapper className='clipboard'>
+          <IconWrapper className="clipboard">
             <Clipboard />
           </IconWrapper>
           <Title pt={3} pb={2}>

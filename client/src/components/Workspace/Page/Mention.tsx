@@ -1,14 +1,14 @@
-import * as React from 'react';
-import { useEffect } from 'react';
+import * as React from "react";
+import { useEffect } from "react";
 
 // Components
-import { Activities } from 'components/Workspace/Content/Activities';
+import { Activities } from "components/Workspace/Content/Activities";
 
 // Blocks
-import * as b from 'global/blocks';
+import * as b from "global/blocks";
 
 // Svgs
-import { AtSign, Close, Settings, Transition } from 'assets/svg';
+import { AtSign, Close, Settings, Transition } from "assets/svg";
 
 // Styles
 import {
@@ -17,20 +17,19 @@ import {
   Notice,
   NoticeTitle,
   NoticeDescription,
-} from 'styles/Workspace/Page/Mention';
-import { ClientContentLayout } from 'layout/Workspace';
+} from "styles/Workspace/Page/Mention";
+import { Layout } from "components/layout/layout.component";
 
-interface Props {}
-
-export const MentionPage: React.FC<Props> = () => {
-  const group = 'temporary';
+export const MentionPage: React.FC<{}> = () => {
+  const group = "temporary";
   useEffect(() => {
     document.title = `Mentions & reactions | ${group}`;
   }, [group]);
 
   return (
-    <ClientContentLayout
-      section='Mentions & reactions'
+    <Layout
+      variant="workspace"
+      section="Mentions & reactions"
       content={<ContentLayout />}
       options={<Options />}
     />
@@ -42,10 +41,10 @@ const ContentLayout = () => {
     <Bottom>
       <Notice p={3}>
         <b.Box>
-          <b.Flex justifyContent='space-between'>
+          <b.Flex justifyContent="space-between">
             <NoticeTitle>
-              <b.Flex alignItems='center'>
-                <IconWrapper className='atsign' mr={2}>
+              <b.Flex alignItems="center">
+                <IconWrapper className="atsign" mr={2}>
                   <AtSign />
                 </IconWrapper>
                 <b.Box mb={1}>
@@ -53,7 +52,7 @@ const ContentLayout = () => {
                 </b.Box>
               </b.Flex>
             </NoticeTitle>
-            <IconWrapper className='close'>
+            <IconWrapper className="close">
               <Close />
             </IconWrapper>
           </b.Flex>
@@ -73,11 +72,11 @@ const ContentLayout = () => {
 const Options = () => {
   return (
     <b.Box>
-      <b.Flex alignItems='center'>
-        <IconWrapper className='sideoption' mr={2}>
+      <b.Flex alignItems="center">
+        <IconWrapper className="sideoption" mr={2}>
           <Settings />
         </IconWrapper>
-        <IconWrapper className='sideoption'>
+        <IconWrapper className="sideoption">
           <Transition />
         </IconWrapper>
       </b.Flex>

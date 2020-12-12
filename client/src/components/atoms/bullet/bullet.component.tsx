@@ -1,6 +1,8 @@
 import React from "react";
 
+/** variants */
 import { CheckBullet } from "./bullet.check";
+import { HashtagBullet } from "./bullet.hashtag";
 import { MoreBullet } from "./bullet.more";
 import { TogetherBullet } from "./bullet.together";
 
@@ -17,6 +19,7 @@ export const Bullet: React.FC<BulletProps> = ({
     together: <TogetherBullet {...props} />,
     check: <CheckBullet {...props} />,
     more: <MoreBullet {...props} />,
+    hashtag: <HashtagBullet {...props} />,
   };
   return <div data-testid={`${variant}-bullet`}>{variants[variant]}</div>;
 };
