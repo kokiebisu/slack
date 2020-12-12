@@ -21,7 +21,7 @@ export const MessageCard: React.FC<{
         <b.Text>joined #general</b.Text>
       </Wrapper>
     ),
-    message: <Content dangerouslySetInnerHTML={{ __html: body.message! }} />,
+    message: <Content dangerouslySetInnerHTML={{ __html: body?.message! }} />,
   };
   return (
     <b.Box mb={3}>
@@ -40,11 +40,11 @@ export const MessageCard: React.FC<{
                 <b.Text>{sender}</b.Text>
               </b.Box>
               <b.Box className="sent_time">
-                <b.Text>{time.split(",")[2]}</b.Text>
+                <b.Text>{time?.split(",")[2]}</b.Text>
               </b.Box>
             </b.Flex>
           </Top>
-          {status[body.type]}
+          {body && status[body.type!]}
         </b.Box>
       </b.Flex>
     </b.Box>

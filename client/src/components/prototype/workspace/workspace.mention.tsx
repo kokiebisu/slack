@@ -3,6 +3,8 @@ import * as React from "react";
 // Blocks
 import * as b from "global/blocks";
 
+import styled from "styled-components";
+
 // Svgs
 import { AtSign, Close, Settings, Transition } from "assets/svg";
 
@@ -41,7 +43,7 @@ const IconWrapper = styled(b.Box)`
     padding: 8px 10px 6px 10px;
     background-color: transparent;
     &:hover {
-      background-color: ${({ theme }) => theme.colors.white__dark};
+      background-color: ${({ theme }: any) => theme.colors.white__dark};
       border-radius: 3px;
     }
 
@@ -49,7 +51,7 @@ const IconWrapper = styled(b.Box)`
       width: 17px;
       height: 17px;
       path {
-        fill: ${({ theme }) => theme.colors.gray};
+        fill: ${({ theme }: any) => theme.colors.gray};
       }
     }
   }

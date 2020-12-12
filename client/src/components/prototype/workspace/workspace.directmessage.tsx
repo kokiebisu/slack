@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Layout } from "components/layout/layout.component";
 import * as b from "global/blocks";
 
+import styled from "styled-components";
 import { Info } from "assets/svg";
 // Query
 import { useUserQuery } from "generated/graphql";
@@ -41,7 +42,7 @@ const IconWrapper = styled(b.Box)`
     padding: 8px 10px 6px 10px;
     background-color: transparent;
     &:hover {
-      background-color: ${({ theme }) => theme.colors.white__dark};
+      background-color: ${({ theme }: any) => theme.colors.white__dark};
       border-radius: 3px;
     }
 
@@ -49,7 +50,7 @@ const IconWrapper = styled(b.Box)`
       width: 17px;
       height: 17px;
       path {
-        fill: ${({ theme }) => theme.colors.gray};
+        fill: ${({ theme }: any) => theme.colors.gray};
       }
     }
   }

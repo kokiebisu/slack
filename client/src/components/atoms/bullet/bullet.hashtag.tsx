@@ -1,11 +1,11 @@
 import * as React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 import * as b from "global/blocks";
 
 import { ThinHashTag } from "assets/svg";
 
-export const HashtagBullet = () => {
+export const HashtagBullet: React.FC<{}> = () => {
   return (
     <IconWrapper>
       <ThinHashTag />

@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import styled from "styled-components";
+
 // Blocks
 import * as b from "global/blocks";
 
@@ -60,8 +62,8 @@ export const ActivityCard: React.FC<{}> = () => {
 const Wrapper = styled(b.Box)`
   position: relative;
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.white};
-  border: 1px solid ${({ theme }) => theme.colors.white__dark};
+  background-color: ${({ theme }: any) => theme.colors.white};
+  border: 1px solid ${({ theme }: any) => theme.colors.white__dark};
   padding: 15px;
   border-radius: 15px;
   margin-bottom: 25px;
@@ -86,7 +88,7 @@ const Name = styled(b.Box)`
 
 const Time = styled(b.Box)`
   p {
-    color: ${({ theme }) => theme.colors.gray__light};
+    color: ${({ theme }: any) => theme.colors.gray__light};
     font-family: "SlackLato-Regular";
     font-size: 13px;
   }
@@ -96,14 +98,14 @@ const Message = styled(b.Box)`
   text-align: left;
 
   p {
-    color: ${({ theme }) => theme.colors.black__light};
+    color: ${({ theme }: any) => theme.colors.black__light};
     font-family: "SlackLato-Regular";
     font-size: 13px;
   }
 `;
 
 const ToolBoxWrapper = styled(b.Box)`
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }: any) => theme.colors.white};
   position: absolute;
   top: 10px;
   right: 10px;
