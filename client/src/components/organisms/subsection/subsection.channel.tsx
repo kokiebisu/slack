@@ -18,7 +18,7 @@ import {
 
 export const ChannelSubSection: React.FC<{
   channelId?: string;
-}> = ({ channelId }) => {
+}> = ({ channelId = "channelId" }) => {
   const { data: { getBelongingUsers } = {} } = useGetBelongingUsersQuery({
     variables: { channelId },
   });

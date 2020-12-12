@@ -73,7 +73,7 @@ export const MessageContainer = () => {
 
   if (!fetchMessagesLoading && fetchMessagesData) {
     let groups: tplotOptions = fetchMessagesData.fetchMessages.reduce(
-      (groups: any, message: any[]) => {
+      (groups: any, message: any) => {
         const createdAt = message.createdAt.split(",").slice(0, 2);
         if (!groups[createdAt]) {
           groups[createdAt] = [];
@@ -86,7 +86,13 @@ export const MessageContainer = () => {
     messagesByDates = Object.keys(groups).map((createdAt) => {
       return {
         createdAt,
-        messages: groups[createdAt],
+        messages: groups[createdAt] as {
+          id: number;
+          fullname: string;
+          avatarBackground: string;
+          body: string;
+          createdAt: string;
+        }[],
       };
     });
   }
