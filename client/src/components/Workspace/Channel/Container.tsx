@@ -8,7 +8,7 @@ import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
 
 export const MessageContainer = () => {
-  const { channelId } = useParams();
+  const { channelId }: { channelId: string } = useParams();
 
   const subscribeToNewMessages = (latestChannel: string) =>
     subscribeToMore({
@@ -107,29 +107,20 @@ export const MessageContainer = () => {
                 date={element.createdAt.split(",").slice(0, 2).join(", ")}
               />
               <b.Box className="section_content">
-                {element.messages.map(
-                  (
-                    message: {
-                      id: number;
-                      fullname: string;
-                      avatarBackground: string;
-                      body: string;
-                      createdAt: string;
-                    },
-                    index: number
-                  ) => {
-                    return (
+                {element.messages.map((message, index) => {
+                  return (
+                    <div key={index}>
                       <Card
                         variant="message"
-                        key={index}
+                        id={message.id}
                         sender={message.fullname}
                         avatar={message.avatarBackground}
                         time={message.createdAt}
                         body={{ type: "message", message: message.body }}
                       />
-                    );
-                  }
-                )}
+                    </div>
+                  );
+                })}
               </b.Box>
             </React.Fragment>
           );
