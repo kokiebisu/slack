@@ -14,12 +14,17 @@ launch.args = {
   variant: "launch",
 };
 
-export const policy = Template.bind({});
-policy.args = {
-  variant: "policy",
-};
-
 export const available = Template.bind({});
 available.args = {
   variant: "available",
+};
+
+export const message = Template.bind({});
+message.args = {
+  variant: "message",
+};
+
+export const activity = Template.bind({});
+activity.args = {
+  variant: "activity",
 };

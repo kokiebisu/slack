@@ -68,3 +68,8 @@ export const launch = Template.bind({});
 launch.args = {
   variant: "launch",
 };
+
+export const reaction = Template.bind({});
+reaction.args = {
+  variant: "reaction",
+};

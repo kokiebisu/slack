@@ -12,6 +12,7 @@ import { ConfirmButton } from "./button.confirm";
 import { LinkButton } from "./button.link";
 import { EmailButton } from "./button.email";
 import { LaunchButton } from "./button.launch";
+import { ReactionButton } from "./button.reaction";
 
 export interface ButtonProps {
   to?: string;
@@ -34,6 +35,7 @@ export const Button: React.FC<ButtonProps> = ({
     confirm: <ConfirmButton {...props} />,
     email: <EmailButton {...props} />,
     launch: <LaunchButton {...props} />,
+    reaction: <ReactionButton {...props} />
   };
   if (to) {
     return <Link to={to}>{variants[variant]}</Link>;

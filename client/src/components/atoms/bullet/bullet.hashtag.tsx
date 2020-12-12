@@ -5,9 +5,6 @@ import * as b from "global/blocks";
 
 import { ThinHashTag } from "assets/svg";
 
-// Styles
-import { IconWrapper } from "styles/CreateTeam/Mockup";
-
 export const HashtagBullet = () => {
   return (
     <IconWrapper>
@@ -15,3 +12,15 @@ export const HashtagBullet = () => {
     </IconWrapper>
   );
 };
+
+const IconWrapper = styled(b.Box)`
+  position: relative;
+  bottom: 1.5px;
+  svg {
+    width: 8px;
+    height: 8px;
+    path {
+      fill: ${({ theme }) => theme.colors.pink__light};
+    }
+  }
+`;

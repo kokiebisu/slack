@@ -5,8 +5,6 @@ import styled from "styled-components";
 import * as b from "global/blocks";
 
 import { Card } from "components/molecules/card/card.component";
-// Styles
-import { Header, Title, Description } from "styles/FindTeam/Content";
 
 // Sizes
 import { size } from "global/sizes";
@@ -109,4 +107,31 @@ const Container = styled(b.Box)`
     max-width: 570px;
     width: 100%;
   }
+`;
+
+const Header = styled(b.Box)`
+  width: 100%;
+  max-width: 570px;
+  border-bottom: 0.5px solid ${({ theme }) => theme.colors.gray__lighter};
+`;
+
+const Title = styled(b.Box)`
+  & > p {
+    font-size: 24px;
+    font-family: "SlackLato-Black";
+  }
+`;
+
+const Description = styled(b.Box)`
+  & > p {
+    font-size: 14px;
+    font-family: "SlackLato-Regular";
+    color: ${({ theme }) => theme.colors.gray__light};
+  }
+`;
+
+const Top = styled(b.Box)`
+  border-bottom: 2px solid red;
+  max-width: 500px;
+  background-color: red;
 `;

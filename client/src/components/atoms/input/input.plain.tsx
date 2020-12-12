@@ -3,8 +3,7 @@ import * as React from "react";
 // Blocks
 import * as b from "global/blocks";
 
-// Styles
-import { InputWrapper, Input, IconWrapper } from "./input.styles";
+import styled from "styled-components";
 
 // Svgs
 import { CheckCircle } from "assets/svg";
@@ -24,7 +23,7 @@ export const PlainInput: React.FC<{
     name: "",
   },
   placeholder = "Placeholder here",
-  criteria = false,
+  criteria = info.name.length > 0,
 }) => {
   return (
     <div>
@@ -51,3 +50,41 @@ export const PlainInput: React.FC<{
     </div>
   );
 };
+
+const InputWrapper = styled(b.Box)`
+  position: relative;
+`;
+
+const Input = styled(b.Input)`
+  width: 370px;
+  padding: 13px 35px 13px 13px;
+`;
+
+const IconWrapper = styled(b.Box)`
+  position: relative;
+  &.checkcircle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-45%);
+    right: 12px;
+    svg {
+      width: 18px;
+      height: 18px;
+      path {
+        fill: ${({ theme }) => theme.colors.blue};
+      }
+    }
+  }
+  &.warning {
+    svg {
+      width: 15px;
+      height: 15px;
+      path {
+        fill: ${({ theme }) => theme.colors.pink};
+      }
+      rect {
+        fill: ${({ theme }) => theme.colors.pink};
+      }
+    }
+  }
+`;
