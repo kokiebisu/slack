@@ -66,7 +66,13 @@ export const MessageContainer = () => {
   // this gives an object with dates as keys
 
   type tplotOptions = {
-    [key: string]: boolean;
+    [key: string]: {
+      id: number;
+      fullname: string;
+      avatarBackground: string;
+      body: string;
+      createdAt: string;
+    }[];
   };
 
   let messagesByDates;
@@ -86,13 +92,7 @@ export const MessageContainer = () => {
     messagesByDates = Object.keys(groups).map((createdAt) => {
       return {
         createdAt,
-        messages: groups[createdAt] as {
-          id: number;
-          fullname: string;
-          avatarBackground: string;
-          body: string;
-          createdAt: string;
-        }[],
+        messages: groups[createdAt],
       };
     });
   }
