@@ -17,7 +17,7 @@ import { DateSeperator } from "components/Workspace/Content/DateSeperator";
 import { Card } from "components/molecules/card/card.component";
 
 export const MessageContainer = () => {
-  const { userId } = useParams();
+  const { userId }: { userId: string } = useParams();
 
   const subscribeToNewMessages = (latestUser: string) =>
     subscribeToMore({
@@ -75,7 +75,13 @@ export const MessageContainer = () => {
   // this gives an object with dates as keys
 
   type tplotOptions = {
-    [key: string]: boolean;
+    [key: string]: {
+      id: number;
+      fullname: string;
+      avatarBackground: string;
+      body: string;
+      createdAt: string;
+    }[];
   };
 
   let messagesByDates;
@@ -110,29 +116,20 @@ export const MessageContainer = () => {
               date={element.createdAt.split(",").slice(0, 2).join(", ")}
             />
             <b.Box className="section_content">
-              {element.messages.map(
-                (
-                  message: {
-                    id: number;
-                    fullname: string;
-                    avatarBackground: string;
-                    body: string;
-                    createdAt: string;
-                  },
-                  index: number
-                ) => {
-                  return (
+              {element.messages.map((message, index) => {
+                return (
+                  <div key={index}>
                     <Card
                       variant="message"
-                      key={index}
+                      id={message.id}
                       sender={message.fullname}
                       avatar={message.avatarBackground}
                       time={message.createdAt}
                       body={{ type: "message", message: message.body }}
                     />
-                  );
-                }
-              )}
+                  </div>
+                );
+              })}
             </b.Box>
           </React.Fragment>
         );
