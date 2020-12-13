@@ -1,10 +1,15 @@
+require("dotenv").config();
 import "reflect-metadata";
 import Express from "express";
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
-import { UserResolver } from "./resolver/user";
 import { createConnection } from "typeorm";
 import cors from "cors";
+import connectRedis from "connect-redis";
+import { redis } from "./redis";
+import session from "express-session";
+
+/** entities */
 import { User } from "./entity/user";
 import { DirectMessage } from "./entity/direct-message";
 import { ChannelMember } from "./entity/channel-member";
@@ -12,9 +17,15 @@ import { Team } from "./entity/team";
 import { Message } from "./entity/message";
 import { Member } from "./entity/member";
 import { Channel } from "./entity/channel";
-import connectRedis from "connect-redis";
-import Redis from "ioredis";
-import session from "express-session";
+
+/** resolvers */
+import { UserResolver } from "./resolver/user";
+import { TeamResolver } from "./resolver/team";
+import { createServer } from "http";
+import { AuthResolver } from "./resolver/auth";
+import { DirectMessageResolver } from "./resolver/directMessage";
+import { MessageResolver } from "./resolver/message";
+import { ChannelResolver } from "./resolver/channel";
 
 const main = async () => {
   await createConnection({
@@ -40,7 +51,6 @@ const main = async () => {
   const app = Express();
 
   const RedisStore = connectRedis(session);
-  const redis = new Redis({});
 
   app.use(
     (_req, _res, next) => next(),
@@ -70,7 +80,14 @@ const main = async () => {
 
   const server = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [UserResolver],
+      resolvers: [
+        UserResolver,
+        TeamResolver,
+        ChannelResolver,
+        DirectMessageResolver,
+        MessageResolver,
+        AuthResolver,
+      ],
       validate: false,
     }),
     // passes data to resolvers
@@ -79,8 +96,17 @@ const main = async () => {
 
   server.applyMiddleware({ app, cors: false });
 
-  app.listen(process.env.PORT, () => {
-    console.log("listening on 4000...");
+  const httpServer = createServer(app);
+
+  server.installSubscriptionHandlers(httpServer);
+
+  httpServer.listen({ port: 4000 }, () => {
+    console.log(
+      `🚀 Server ready at http://localhost:4000${server.graphqlPath}`
+    );
+    console.log(
+      `🚀 Subscriptions ready at ws://localhost:4000${server.subscriptionsPath}`
+    );
   });
 };
 

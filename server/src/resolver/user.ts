@@ -3,8 +3,6 @@ import { Context } from "../types";
 import { getManager } from "typeorm";
 import { Ctx, Resolver, Query, Arg, Mutation } from "type-graphql";
 
-const manager = getManager();
-
 @Resolver()
 export class UserResolver {
   @Query(() => User)
@@ -43,6 +41,7 @@ export class UserResolver {
   async getBelongingUsers(
     @Arg("channelId") channelId: string
   ): Promise<User[] | Error> {
+    const manager = getManager();
     try {
       const users = await manager.query(
         'select * from channel_members where "channelId" = $1',

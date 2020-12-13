@@ -12,8 +12,6 @@ import { isAuth } from "../middleware/isAuth";
 import { getManager } from "typeorm";
 import { Member } from "../entity/member";
 
-const manager = getManager();
-
 @Resolver()
 export class TeamResolver {
   @Query(() => [Team])
@@ -33,6 +31,7 @@ export class TeamResolver {
     @Arg("avatarBackground") avatarBackground: string,
     @Ctx() { req }: Context
   ): Promise<Team | undefined> {
+    const manager = getManager();
     try {
       const userId = req.session!.userId;
 
@@ -94,6 +93,7 @@ export class TeamResolver {
 
   @Query(() => [Team])
   async getBelongingTeams(@Ctx() { req }: Context): Promise<Team[] | Error> {
+    const manager = getManager();
     try {
       const userId = req.session!.userId;
 

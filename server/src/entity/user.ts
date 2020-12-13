@@ -47,4 +47,8 @@ export class User extends BaseEntity {
 
   @OneToMany(() => DirectMessage, (directMessage) => directMessage.to)
   messagesSent: DirectMessage[];
+
+  @Field()
+  @Column({ default: false })
+  confirmed: boolean;
 }
