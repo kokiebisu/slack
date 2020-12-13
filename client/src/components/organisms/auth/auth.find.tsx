@@ -1,137 +1,57 @@
-import * as React from "react";
-import styled from "styled-components";
-
-// Blocks
+import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
+import { Input } from "components/atoms/input/input.component";
 import * as b from "global/blocks";
+import { emailRegex } from "util/passwordUtil";
+import { Dialog } from "components/atoms/dialog/dialog.component";
+import { Button } from "components/atoms/button/button.component";
+import { useCheckEmailLazyQuery } from "generated/graphql";
 
-import { Card } from "components/molecules/card/card.component";
-
-// Sizes
-import { size } from "global/sizes";
-
-export const FindAuth: React.FC<{
-  teams?: {
-    id: string;
-    name: string;
-    avatarBackground: string;
-  }[];
-}> = ({
-  teams = [
-    { id: "channel1", name: "Channel 1", avatarBackground: "red" },
-    { id: "channel2", name: "Channel 2", avatarBackground: "blue" },
-  ],
-}) => {
+export const FindAuth: React.FC<{}> = () => {
+  const [check, { loading, data }] = useCheckEmailLazyQuery();
+  const [info, setInfo] = useState({
+    email: "",
+  });
   return (
-    <Container>
-      <b.Box>
-        <b.Flex justifyContent="center">
-          <Header>
-            <Title>
-              <b.Text>Your workspaces</b.Text>
-            </Title>
-            <Description my={3}>
-              <b.Text>You're already a member of these Slack teams:</b.Text>
-            </Description>
-          </Header>
-        </b.Flex>
-      </b.Box>
-      <b.Box>
-        <b.Flex flexDirection="column" alignItems="center">
-          {teams.map(({ id, name, avatarBackground }, index) => {
-            return (
-              <b.Box width={1} key={index}>
-                <Card
-                  variant="available"
-                  name={name}
-                  url={id}
-                  avatarBackground={avatarBackground}
+    <div>
+      {data?.checkEmail.ok ? (
+        <Redirect to="/get-started/check" />
+      ) : (
+        <form
+          onSubmit={async (e) => {
+            e.preventDefault();
+            check({ variables: { email: info.email } });
+          }}
+        >
+          <b.Box>
+            <b.Flex justifyContent="center">
+              <b.Box my={2}>
+                <Input
+                  variant="plain"
+                  setInfo={setInfo}
+                  info={info}
+                  value="email"
+                  placeholder="name@work-email.com"
+                  criteria={info.email?.match(emailRegex)}
                 />
               </b.Box>
-            );
-          })}
-        </b.Flex>
-      </b.Box>
-      <b.Box>
-        <b.Flex justifyContent="center">
-          <ShowMore my={4}>
-            <b.Text>Show {teams.length} more workspaces</b.Text>
-          </ShowMore>
-        </b.Flex>
-      </b.Box>
-      <b.Box>
-        <b.Flex justifyContent="center">
-          <NotFound>
-            <b.Text>
-              Looking for a different workspace? You can try{" "}
-              <span className="anotheremail">another email address</span> or ask
-              your Workspace Administrator for an invitation.
-            </b.Text>
-          </NotFound>
-        </b.Flex>
-      </b.Box>
-    </Container>
+            </b.Flex>
+          </b.Box>
+
+          <b.Box height={35} my={2}>
+            <b.Flex justifyContent="center">
+              {data?.checkEmail && (
+                <b.Box>
+                  <Dialog variant="error" />
+                </b.Box>
+              )}
+            </b.Flex>
+          </b.Box>
+          <b.Box>
+            <Button variant="confirm" loading={false} />
+          </b.Box>
+        </form>
+      )}
+    </div>
   );
 };
-
-const ShowMore = styled(b.Button)`
-  & > p {
-    font-size: 15px;
-    color: ${({ theme }) => theme.colors.blue};
-    font-family: "SlackLato-Regular";
-
-    &:hover {
-      cursor: pointer;
-      text-decoration: underline;
-    }
-  }
-`;
-
-const NotFound = styled(b.Box)`
-  & > p {
-    font-family: "SlackLato-Regular";
-    line-height: 1.5;
-    font-size: 14px;
-    color: ${({ theme }) => theme.colors.gray__light};
-    & > span {
-      color: ${({ theme }) => theme.colors.blue};
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-`;
-
-const Container = styled(b.Box)`
-  padding: 0 15px;
-  @media ${size.sm} {
-    max-width: 570px;
-    width: 100%;
-  }
-`;
-
-const Header = styled(b.Box)`
-  width: 100%;
-  max-width: 570px;
-  border-bottom: 0.5px solid ${({ theme }) => theme.colors.gray__lighter};
-`;
-
-const Title = styled(b.Box)`
-  & > p {
-    font-size: 24px;
-    font-family: "SlackLato-Black";
-  }
-`;
-
-const Description = styled(b.Box)`
-  & > p {
-    font-size: 14px;
-    font-family: "SlackLato-Regular";
-    color: ${({ theme }) => theme.colors.gray__light};
-  }
-`;
-
-const Top = styled(b.Box)`
-  border-bottom: 2px solid red;
-  max-width: 500px;
-  background-color: red;
-`;
