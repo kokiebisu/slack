@@ -15,14 +15,14 @@ export const EmailButton: React.FC<{ platform?: string }> = ({
     gmail: <Gmail />,
   };
   return (
-    <div>
+    <b.Flex>
       <IconWrapper className="outlook" mr={2}>
         {platforms[platform]}
       </IconWrapper>
       <b.Box className="option">
         <b.Text>Open {platform}</b.Text>
       </b.Box>
-    </div>
+    </b.Flex>
   );
 };
 

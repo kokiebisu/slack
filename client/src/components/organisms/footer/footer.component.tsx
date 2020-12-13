@@ -4,6 +4,7 @@ import React from "react";
 import { SignInFooter } from "components/organisms/footer/footer.signin";
 import { LandingFooter } from "components/organisms/footer/footer.landing";
 import { FindFooter } from "components/organisms/footer/footer.find";
+import { GetStartedFooter } from "./footer.getstarted";
 
 /** props */
 export interface FooterProps {
@@ -19,6 +20,7 @@ export const Footer: React.FC<FooterProps> = ({
     landing: <LandingFooter {...props} />,
     signin: <SignInFooter {...props} />,
     find: <FindFooter {...props} />,
+    getstarted: <GetStartedFooter {...props} />
   };
   return <div data-testid={`${variant}-footer`}>{variants[variant]}</div>;
 };
