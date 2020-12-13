@@ -8,7 +8,7 @@ export const LaunchButton: React.FC<{ title?: string }> = ({
   return <Wrapper>{title}</Wrapper>;
 };
 
-export const Wrapper = styled(b.Button)`
+export const Wrapper = styled(b.Box)`
   padding: 8px 15px;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 5px;

@@ -73,3 +73,26 @@ export const reaction = Template.bind({});
 reaction.args = {
   variant: "reaction",
 };
+
+export const confirm = Template.bind({});
+confirm.args = {
+  variant: "confirm",
+};
+
+export const email = Template.bind({});
+email.args = {
+  variant: "email",
+};
+email.argTypes = {
+  platform: {
+    control: {
+      type: "select",
+      options: ["outlook", "gmail"],
+    },
+  },
+};
+
+export const hamburger = Template.bind({});
+hamburger.args = {
+  variant: "hamburger",
+};

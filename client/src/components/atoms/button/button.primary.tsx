@@ -1,4 +1,5 @@
 import React from "react";
+import * as b from "global/blocks";
 import styled from "styled-components";
 import { size } from "global/sizes";
 import { main } from "global/colors";
@@ -32,7 +33,7 @@ export const PrimaryButton: React.FC<{
   );
 };
 
-export const Wrapper = styled.button`
+export const Wrapper = styled(b.Box)`
   cursor: pointer;
   white-space: nowrap;
   display: inline-block;

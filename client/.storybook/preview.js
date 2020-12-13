@@ -35,4 +35,7 @@ export const argTypes = {
   to: {
     control: { disable: true },
   },
+  variant: {
+    control: { disable: true },
+  },
 };
