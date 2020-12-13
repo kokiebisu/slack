@@ -23,29 +23,23 @@ export const FindAuth: React.FC<{}> = () => {
             check({ variables: { email: info.email } });
           }}
         >
-          <b.Box>
-            <b.Flex justifyContent="center">
-              <b.Box my={2}>
-                <Input
-                  variant="plain"
-                  setInfo={setInfo}
-                  info={info}
-                  value="email"
-                  placeholder="name@work-email.com"
-                  criteria={info.email?.match(emailRegex)}
-                />
-              </b.Box>
-            </b.Flex>
+          <b.Box my={2}>
+            <Input
+              variant="plain"
+              setInfo={setInfo}
+              info={info}
+              value="email"
+              placeholder="name@work-email.com"
+              criteria={info.email?.match(emailRegex)}
+            />
           </b.Box>
 
           <b.Box height={35} my={2}>
-            <b.Flex justifyContent="center">
-              {data?.checkEmail && (
-                <b.Box>
-                  <Dialog variant="error" />
-                </b.Box>
-              )}
-            </b.Flex>
+            {data?.checkEmail && (
+              <b.Box>
+                <Dialog variant="error" />
+              </b.Box>
+            )}
           </b.Box>
           <b.Box>
             <Button variant="confirm" loading={false} />

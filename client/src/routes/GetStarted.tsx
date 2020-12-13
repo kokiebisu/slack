@@ -1,9 +1,6 @@
 import React from "react";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
 
-import { ConfirmEmail } from "pages/GetStartedCheck";
-import { Invited } from "pages/Invited";
-
 /** components */
 import { Auth } from "components/organisms/auth/auth.component";
 import { Layout } from "components/layout/layout.component";
@@ -34,11 +31,23 @@ export const GetStartedRoutes: React.SFC = () => {
             content={<Auth variant="signup" />}
           />
         </Route>
-        <Route path={`${match.url}/check/:token?`} component={ConfirmEmail} />
-        <Route
-          path={match.url + "/invited/:invitorId/:token?"}
-          component={Invited}
-        />
+        <Route path={`${match.url}/check/:token?`}>
+          <Layout
+            variant="getstarted"
+            title=" Check your email!"
+            subtitle="We’ve emailed a special link to . Click the link to
+                      confirm your address and get started. Wrong email? Please
+                      re-enter your address."
+            content={<Auth variant="confirm" />}
+          />
+        </Route>
+        <Route path={`${match.url}/invited/:invitorId/:token?`}>
+          <Layout
+            variant="getstarted"
+            title="First create your account"
+            content={<Auth variant="invited" />}
+          />
+        </Route>
       </Switch>
     </>
   );

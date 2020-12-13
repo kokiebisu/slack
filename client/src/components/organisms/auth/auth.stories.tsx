@@ -30,3 +30,13 @@ export const find = Template.bind({});
 find.args = {
   variant: "find",
 };
+
+export const confirm = Template.bind({});
+confirm.args = {
+  variant: "confirm",
+};
+
+export const invited = Template.bind({});
+invited.args = {
+  variant: "invited",
+};
