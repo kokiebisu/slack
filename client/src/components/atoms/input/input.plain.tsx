@@ -23,7 +23,7 @@ export const PlainInput: React.FC<{
     name: "",
   },
   placeholder = "Placeholder here",
-  criteria = info.name.length > 0,
+  criteria = false,
 }) => {
   return (
     <div>

@@ -4,9 +4,8 @@ import styled from "styled-components";
 
 export const TransparentButton: React.FC<{
   title?: string;
-  onPress?: () => void;
-}> = ({ title = "Transparent Button", onPress }) => {
-  return <Wrapper onClick={onPress}>{title}</Wrapper>;
+}> = ({ title = "Transparent Button" }) => {
+  return <Wrapper>{title}</Wrapper>;
 };
 
 const Wrapper = styled(b.Box)`

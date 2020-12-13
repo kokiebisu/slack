@@ -6,10 +6,13 @@ import { Globe, NameLogo } from "assets/svg";
 import styled from "styled-components";
 
 import { getstarted, size } from "global/sizes";
+import { Footer } from "components/organisms/footer/footer.component";
 
-export const GetStarted: React.FC<{ content?: any }> = ({
-  content = "Content",
-}) => {
+export const GetStartedLayout: React.FC<{
+  content?: any;
+  title?: string;
+  subtitle?: string;
+}> = ({ content = "Content", title, subtitle }) => {
   return (
     <Wrapper>
       <b.Container>
@@ -19,36 +22,42 @@ export const GetStarted: React.FC<{ content?: any }> = ({
               <NameLogo />
             </IconWrapper>
           </b.Flex>
+          {title && (
+            <b.Box>
+              <b.Text
+                fontSize={48}
+                color="black__light"
+                fontFamily="Larsseit-Bold"
+                textAlign="center"
+              >
+                {title}
+              </b.Text>
+            </b.Box>
+          )}
+          {subtitle && (
+            <b.Box pt={2} pb={4}>
+              <b.Text
+                lineHeight={1.5}
+                textAlign="center"
+                color="gray"
+                fontFamily="SlackLato-Regular"
+                fontSize={20}
+              >
+                Enter the email you usually collaborate with
+              </b.Text>
+            </b.Box>
+          )}
         </b.Box>
       </b.Container>
-      {content}
+      <b.Box px={4}>
+        <b.Flex justifyContent="center">{content}</b.Flex>
+      </b.Box>
       <b.Box py={4}>
-        <b.Flex alignItems="center" justifyContent="center">
-          <b.Box mr={2}>
-            <FooterLink href="/legal">Privacy & terms</FooterLink>
-          </b.Box>
-          <b.Box mr={2}>
-            <FooterLink href="/help">Contact us</FooterLink>
-          </b.Box>
-          <b.Box mr={2}>
-            <b.Flex>
-              <IconWrapper className="globe" mr={1}>
-                <Globe />
-              </IconWrapper>
-              <b.Box>
-                <ChangeRegion>Change region</ChangeRegion>
-              </b.Box>
-            </b.Flex>
-          </b.Box>
-        </b.Flex>
+        <Footer variant="getstarted" />
       </b.Box>
     </Wrapper>
   );
 };
-
-const Wrapper = styled(b.Box)`
-  padding: 30px 0;
-`;
 
 const IconWrapper = styled(b.Box)`
   position: relative;
@@ -94,6 +103,10 @@ const IconWrapper = styled(b.Box)`
       }
     }
   }
+`;
+
+const Wrapper = styled(b.Box)`
+  padding: 30px 0;
 `;
 
 const SelectOptionWrapper = styled(b.Box)``;

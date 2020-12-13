@@ -2,15 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import * as b from "../../../global/blocks";
 
-export const LinkButton: React.FC<{ url?: string; name?: string }> = ({
+export const LinkButton: React.FC<{ url?: string; title?: string }> = ({
   url = "/",
-  name = "Button",
+  title = "Button",
 }) => {
   return (
     <Item>
       <b.Anchor href={url}>
         <b.Box py={1}>
-          <b.Text color="gray">{name}</b.Text>
+          <b.Text color="gray">{title}</b.Text>
         </b.Box>
       </b.Anchor>
     </Item>

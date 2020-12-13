@@ -52,7 +52,7 @@ const inputReducer = (state: State, action: Action) => {
   }
 };
 
-export const Invited = () => {
+export const InvitedAuth: React.FC<{}> = () => {
   const { invitorId, token } = useParams();
   const { data: VerifyUserInvite } = useVerifyUserInviteQuery({
     variables: { token, invitorId },
@@ -119,64 +119,31 @@ export const Invited = () => {
   };
 
   return (
-    <>
-      {token && (
-        <>
-          {VerifyUserInvite?.verifyUserInvite.ok ? (
-            <Redirect
-              to={`/client/${VerifyUserInvite?.verifyUserInvite.teamId}`}
-            />
-          ) : (
-            <Layout variant="center">
-              <b.Box py={4}>
-                <b.Flex flexDirection="column" alignItems="center">
-                  <Wrapper>
-                    <b.Box>
-                      <form
-                        onSubmit={(e) => {
-                          e.preventDefault();
-                          createAccount();
-                        }}
-                      >
-                        <b.Box>
-                          <b.Text
-                            fontSize={48}
-                            color="black__light"
-                            fontFamily="Larsseit-Bold"
-                            textAlign="center"
-                          >
-                            First, create your account
-                          </b.Text>
-                        </b.Box>
-                        {[{ value: "fullname" }, { value: "password" }].map(
-                          (params, index) => (
-                            <b.Box key={index}>
-                              <Input
-                                variant="plain"
-                                invite
-                                info={info}
-                                setInfo={setInfo}
-                                {...params}
-                              />
-                            </b.Box>
-                          )
-                        )}
-                        <Bar variant="validation" password={info.password} />
-                        <Dialog variant="password" password={info.password} />
-                        <Dialog variant="error" error={errorLog} />
-                        <b.Box>
-                          <Button variant="confirm" />
-                          <Card variant="policy" />
-                        </b.Box>
-                      </form>
-                    </b.Box>
-                  </Wrapper>
-                </b.Flex>
-              </b.Box>
-            </Layout>
-          )}
-        </>
+    <div>
+      {token && VerifyUserInvite?.verifyUserInvite.ok ? (
+        <Redirect to={`/client/${VerifyUserInvite?.verifyUserInvite.teamId}`} />
+      ) : (
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            createAccount();
+          }}
+        >
+          {[
+            { value: "fullname", variant: "plain" },
+            { value: "password", variant: "password" },
+          ].map((params, index) => (
+            <b.Box key={index}>
+              <Input invite info={info} setInfo={setInfo} {...params} />
+            </b.Box>
+          ))}
+          <Dialog variant="password" password={info.password} />
+          <Dialog variant="error" error={errorLog} />
+          <b.Box mt={3}>
+            <Button variant="confirm" />
+          </b.Box>
+        </form>
       )}
-    </>
+    </div>
   );
 };

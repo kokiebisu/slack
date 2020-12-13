@@ -19,3 +19,8 @@ export const workspace = Template.bind({});
 workspace.args = {
   variant: "workspace",
 };
+
+export const getstarted = Template.bind({});
+getstarted.args = {
+  variant: "getstarted",
+};
