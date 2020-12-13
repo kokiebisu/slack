@@ -6,7 +6,7 @@ export const ConfirmButton: React.FC<{ loading?: boolean }> = ({
   loading = false,
 }) => {
   return (
-    <Wrapper className="confirmbutton" type="submit" disabled={loading}>
+    <Wrapper className="confirmbutton">
       <b.Flex justifyContent="center" alignItems="center">
         <b.Box
           variants={confirmVariants}
@@ -21,7 +21,7 @@ export const ConfirmButton: React.FC<{ loading?: boolean }> = ({
   );
 };
 
-const Wrapper = styled(b.Button)`
+const Wrapper = styled(b.Box)`
   width: 370px;
   border-radius: 5px;
   padding: 13px 0;

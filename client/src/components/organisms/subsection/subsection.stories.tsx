@@ -10,7 +10,7 @@ export default {
 
 const Template: Story<SubSectionProps> = (args) => <SubSection {...args} />;
 
-export const launch = Template.bind({});
-launch.args = {
-  variant: "launch",
+export const channel = Template.bind({});
+channel.args = {
+  variant: "channel",
 };
