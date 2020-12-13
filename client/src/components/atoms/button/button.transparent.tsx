@@ -1,4 +1,5 @@
 import React from "react";
+import * as b from "global/blocks";
 import styled from "styled-components";
 
 export const TransparentButton: React.FC<{
@@ -7,7 +8,7 @@ export const TransparentButton: React.FC<{
   return <Wrapper>{title}</Wrapper>;
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled(b.Box)`
   white-space: nowrap;
   display: inline-block;
   padding: 8px 13px;

@@ -20,11 +20,11 @@ export const SocialMediaButton: React.FC<{
     youtube: <YoutubeLogo width={20} />,
   };
   return (
-    <b.Button mx={2}>
+    <b.Box mx={2}>
       <IconWrapper className={`socialmedia ${platform}`}>
         {types[platform]}
       </IconWrapper>
-    </b.Button>
+    </b.Box>
   );
 };
 

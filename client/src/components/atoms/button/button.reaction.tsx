@@ -30,11 +30,4 @@ const Wrapper = styled(b.Box)`
   align-items: center;
   padding: 4px 6px;
   border-radius: 15px;
-  margin-right: 5px;
-
-  &:hover {
-    padding: 0px 7px;
-    border: 1px solid ${({ theme }) => theme.colors.gray__dark};
-    background-color: ${({ theme }) => theme.colors.white};
-  }
 `;

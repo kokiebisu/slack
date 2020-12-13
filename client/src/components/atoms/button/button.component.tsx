@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import * as b from "global/blocks";
+import styled from "styled-components";
 
 /** variants */
 import { PrimaryButton } from "./button.primary";
@@ -35,10 +36,22 @@ export const Button: React.FC<ButtonProps> = ({
     confirm: <ConfirmButton {...props} />,
     email: <EmailButton {...props} />,
     launch: <LaunchButton {...props} />,
-    reaction: <ReactionButton {...props} />
+    reaction: <ReactionButton {...props} />,
   };
   if (to) {
     return <Link to={to}>{variants[variant]}</Link>;
   }
-  return <motion.div>{variants[variant]}</motion.div>;
+  return (
+    <Wrapper
+      whileTap={{ scale: 0.99 }}
+      whileHover={{ scale: 1.01 }}
+      data-testid={`${variant}-button`}
+    >
+      {variants[variant]}
+    </Wrapper>
+  );
 };
+
+const Wrapper = styled(b.Button)`
+  background-color: transparent;
+`;
