@@ -7,11 +7,9 @@ import { Hamburger } from "assets/svg";
 /** colors */
 import { main } from "global/colors";
 
-export const HamburgerButton: React.FC<{ onPress?: () => void }> = ({
-  onPress = () => alert("hamburger button pressed"),
-}) => {
+export const HamburgerButton: React.FC<{}> = () => {
   return (
-    <Wrapper onClick={onPress}>
+    <Wrapper>
       <Hamburger width={25} fill={main.colors.black} />
     </Wrapper>
   );

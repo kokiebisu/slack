@@ -1,10 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
-export const useTabTitle: (section: string, group: string) => void = (
-  section,
-  group
+export const useTabTitle: (name: string) => void = (
+  name = "Where work happens | Slack"
 ) => {
   useEffect(() => {
-    document.title = `Slack | Threads | ${group}`;
-  }, [group]);
+    document.title = name;
+  }, []);
 };

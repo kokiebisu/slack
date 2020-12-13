@@ -8,22 +8,10 @@ import * as b from "global/blocks";
 import { RoundedHeart, Minus, Plus } from "assets/svg";
 import { NoNameLogoMono, TwitterLogo, YoutubeLogo } from "assets/svg/Logo";
 
-// Styles
-import {
-  Wrapper,
-  TopContainer,
-  SectionNameWrapper,
-  SectionWrapper,
-  SectionName,
-  IconWrapper,
-  ListWrapper,
-  ListContainer,
-  LargeList,
-  SmallList,
-  Item,
-  BottomContainer,
-  ContactWrapper,
-} from "styles/FindTeam/Footer";
+import styled from "styled-components";
+
+// Breakpoints
+import { signin } from "global/sizes";
 
 export const FindFooter: React.FC<{}> = () => {
   const sections = {
@@ -317,3 +305,169 @@ export const FindFooter: React.FC<{}> = () => {
     </Wrapper>
   );
 };
+
+const Wrapper = styled.footer`
+  width: 100%;
+  height: 350px;
+  background-color: ${({ theme }) => theme.colors.white};
+`;
+
+const TopContainer = styled(b.Box)`
+  width: 100%;
+  padding: 0;
+  max-width: 1050px;
+
+  @media ${signin.sm} {
+    padding: 32px 0;
+  }
+`;
+
+const SectionNameWrapper = styled(b.Flex)`
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+
+  @media ${signin.sm} {
+    padding: 0;
+    height: auto;
+    display: block;
+  }
+`;
+
+const SectionWrapper = styled(b.Box)`
+  position: relative;
+  height: 10px;
+`;
+
+const SectionName = styled(b.Text)`
+  font-family: "SlackLato-Bold";
+  color: ${({ color }) => color};
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+
+  @media ${signin.sm} {
+    font-size: 0.65rem;
+  }
+`;
+
+const IconWrapper = styled(b.Box)`
+  &.roundedheart {
+    position: absolute;
+    top: -4px;
+    left: 32px;
+
+    svg {
+      width: 10px;
+      height: 10px;
+      path {
+        fill: ${({ theme }) => theme.colors.pink__dark};
+      }
+    }
+  }
+
+  &.nonamelogomono {
+    svg {
+      width: 20px;
+      height: 20px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray__light};
+      }
+    }
+  }
+
+  &.socialmedia {
+    top: 2px;
+    svg {
+      width: 20px;
+      height: 20px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray__dark};
+      }
+    }
+  }
+
+  &.reveal {
+    display: block;
+
+    svg {
+      width: 15px;
+      height: 15px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray};
+      }
+    }
+
+    @media ${signin.sm} {
+      padding: 0;
+      display: none;
+    }
+  }
+`;
+
+const ListWrapper = styled(b.Flex)`
+  display: block;
+  @media ${signin.sm} {
+    display: flex;
+  }
+`;
+
+const ListContainer = styled(b.Box)`
+  border-bottom: 1px solid ${({ theme }) => theme.colors.white__dark};
+  width: 100%;
+  cursor: pointer;
+
+  @media ${signin.sm} {
+    border-bottom: 0;
+    width: 25%;
+  }
+`;
+
+const LargeList = styled.ul`
+  display: none;
+
+  @media ${signin.sm} {
+    display: block;
+    padding: 0;
+  }
+`;
+
+const SmallList = styled.ul`
+  display: block;
+  padding-left: 10px;
+
+  @media ${signin.sm} {
+    display: none;
+  }
+
+  div {
+    font-family: "SlackLato-Regular";
+  }
+`;
+
+const Item = styled.li`
+  list-style: none;
+  color: ${({ theme }) => theme.colors.gray};
+  font-size: 0.79rem;
+  font-family: "SlackLato-Light";
+  margin: 5px 0;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.gray__dark};
+    cursor: pointer;
+  }
+`;
+
+const BottomContainer = styled(b.Box)`
+  width: 100%;
+  max-width: 1050px;
+`;
+
+const ContactWrapper = styled(b.Anchor)`
+  position: relative;
+  bottom: 1px;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.gray__light};
+  }
+`;

@@ -23,9 +23,9 @@ export default {
   ],
 } as Meta;
 
-const ButtonStories: Story<ButtonProps> = (args) => <Button {...args} />;
+const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
-export const primary = ButtonStories.bind({});
+export const primary = Template.bind({});
 primary.args = {
   variant: "primary",
   onPress: () => alert("button pressed"),
@@ -42,24 +42,57 @@ primary.argTypes = {
   },
 };
 
-export const nav = ButtonStories.bind({});
+export const nav = Template.bind({});
 nav.args = {
   variant: "nav",
   onPress: () => alert("button pressed"),
 };
 
-export const transparent = ButtonStories.bind({});
+export const transparent = Template.bind({});
 transparent.args = {
   variant: "transparent",
   onPress: () => alert("button pressed"),
 };
 
-export const socialmedia = ButtonStories.bind({});
+export const socialmedia = Template.bind({});
 socialmedia.args = {
   variant: "socialmedia",
 };
 
-export const link = ButtonStories.bind({});
+export const link = Template.bind({});
 link.args = {
   variant: "link",
+};
+
+export const launch = Template.bind({});
+launch.args = {
+  variant: "launch",
+};
+
+export const reaction = Template.bind({});
+reaction.args = {
+  variant: "reaction",
+};
+
+export const confirm = Template.bind({});
+confirm.args = {
+  variant: "confirm",
+};
+
+export const email = Template.bind({});
+email.args = {
+  variant: "email",
+};
+email.argTypes = {
+  platform: {
+    control: {
+      type: "select",
+      options: ["outlook", "gmail"],
+    },
+  },
+};
+
+export const hamburger = Template.bind({});
+hamburger.args = {
+  variant: "hamburger",
 };

@@ -17,7 +17,7 @@ export const LinkButton: React.FC<{ url?: string; name?: string }> = ({
   );
 };
 
-export const Item = styled.li`
+export const Item = styled.div`
   list-style: none;
   color: ${({ theme }) => theme.colors.gray};
   font-size: 0.79rem;

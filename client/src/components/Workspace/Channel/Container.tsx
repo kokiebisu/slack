@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import * as b from 'global/blocks';
-import { DateSeperator } from 'components/Workspace/Content/DateSeperator';
-import { Messages } from 'components/Workspace/Content/Messages';
-import { Wrapper } from 'styles/Workspace/Channel/Container';
-import gql from 'graphql-tag';
-import { useQuery } from '@apollo/react-hooks';
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import * as b from "global/blocks";
+import { DateSeperator } from "components/Workspace/Content/DateSeperator";
+import { Card } from "components/molecules/card/card.component";
+import { Wrapper } from "styles/Workspace/Channel/Container";
+import gql from "graphql-tag";
+import { useQuery } from "@apollo/react-hooks";
 
 export const MessageContainer = () => {
-  const { channelId } = useParams();
+  const { channelId }: { channelId: string } = useParams();
 
   const subscribeToNewMessages = (latestChannel: string) =>
     subscribeToMore({
@@ -60,13 +60,19 @@ export const MessageContainer = () => {
     loading: fetchMessagesLoading,
   } = useQuery(FETCH_MESSAGES, {
     variables: { channelId },
-    fetchPolicy: 'cache-and-network',
+    fetchPolicy: "cache-and-network",
   });
 
   // this gives an object with dates as keys
 
   type tplotOptions = {
-    [key: string]: boolean;
+    [key: string]: {
+      id: number;
+      fullname: string;
+      avatarBackground: string;
+      body: string;
+      createdAt: string;
+    }[];
   };
 
   let messagesByDates;
@@ -74,7 +80,7 @@ export const MessageContainer = () => {
   if (!fetchMessagesLoading && fetchMessagesData) {
     let groups: tplotOptions = fetchMessagesData.fetchMessages.reduce(
       (groups: any, message: any) => {
-        const createdAt = message.createdAt.split(',').slice(0, 2);
+        const createdAt = message.createdAt.split(",").slice(0, 2);
         if (!groups[createdAt]) {
           groups[createdAt] = [];
         }
@@ -94,19 +100,31 @@ export const MessageContainer = () => {
   return (
     <>
       <Wrapper>
-        {messagesByDates &&
-          messagesByDates.map((element, index) => {
-            return (
-              <React.Fragment key={index}>
-                <DateSeperator
-                  date={element.createdAt.split(',').slice(0, 2).join(', ')}
-                />
-                <b.Box className='section_content'>
-                  <Messages messages={element.messages} />
-                </b.Box>
-              </React.Fragment>
-            );
-          })}
+        {messagesByDates?.map((element, index) => {
+          return (
+            <React.Fragment key={index}>
+              <DateSeperator
+                date={element.createdAt.split(",").slice(0, 2).join(", ")}
+              />
+              <b.Box className="section_content">
+                {element.messages.map((message, index) => {
+                  return (
+                    <div key={index}>
+                      <Card
+                        variant="message"
+                        id={message.id}
+                        sender={message.fullname}
+                        avatar={message.avatarBackground}
+                        time={message.createdAt}
+                        body={{ type: "message", message: message.body }}
+                      />
+                    </div>
+                  );
+                })}
+              </b.Box>
+            </React.Fragment>
+          );
+        })}
       </Wrapper>
     </>
   );

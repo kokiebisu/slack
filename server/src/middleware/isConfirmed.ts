@@ -1,22 +1,15 @@
-import { MiddlewareFn } from 'type-graphql';
-import { Context } from '../interface/Context';
-import { User } from 'src/models/User';
+import { MiddlewareFn } from "type-graphql";
+import { Context } from "../types";
+import { User } from "../entity/user";
 
 export const isConfirmed: MiddlewareFn<Context> = async ({ context }, next) => {
   try {
     const user = await User.findOne(context.req.session!.userId);
     if (!user?.confirmed) {
-      return {
-        ok: false,
-        errorlog: "you haven't confirmed via email",
-        user: null,
-      };
+      return null;
     }
     return next();
   } catch (err) {
-    return {
-      ok: false,
-      errorlog: "wasn't able to find user",
-    };
+    throw new Error(err);
   }
 };

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 // Routing
 import {
@@ -6,20 +6,14 @@ import {
   Switch,
   useRouteMatch,
   RouteComponentProps,
-} from 'react-router-dom';
-import { StaticContext, Redirect } from 'react-router';
+} from "react-router-dom";
+import { StaticContext, Redirect } from "react-router";
 
 // Query
-import { useMeQuery } from 'generated/graphql';
+import { useMeQuery } from "generated/graphql";
 
-// Pages
-import { ThreadsPage } from 'components/Workspace/Page/Threads';
-import { MentionPage } from 'components/Workspace/Page/Mention';
-import { DraftPage } from 'components/Workspace/Page/Draft';
-import { SavedPage } from 'components/Workspace/Page/Saved';
-import { Workspace } from 'pages/Workspace';
-import { ChannelPage } from 'components/Workspace/Page/Channel';
-import { DirectMessagePage } from 'components/Workspace/Page/DirectMessage';
+import { Prototype } from "components/prototype/workspace/workspace.component";
+import { Workspace } from "pages/Workspace";
 
 type Props = RouteComponentProps<
   {},
@@ -44,27 +38,27 @@ export const WorkspaceRoute: React.FC<{}> = () => {
     <>
       {!loading && data?.me.ok ? (
         <>
-          <Route exact path={match.url + '/saved-page'}>
-            <SavedPage />
+          <Route exact path={match.url + "/saved-page"}>
+            <Prototype variant="saved" />
           </Route>
-          <Route exact path={match.url + '/threads'}>
-            <ThreadsPage />
+          <Route exact path={match.url + "/threads"}>
+            <Prototype variant="threads" />
           </Route>
-          <Route path={match.url + '/drafts'}>
-            <DraftPage />
+          <Route path={match.url + "/drafts"}>
+            <Prototype variant="drafts" />
           </Route>
-          <Route path={match.url + '/activity-page'}>
-            <MentionPage />
+          <Route path={match.url + "/activity-page"}>
+            <Prototype variant="mention" />
           </Route>
-          <Route path={match.url + '/channel/:channelId'}>
-            <ChannelPage />
+          <Route path={match.url + "/channel/:channelId"}>
+            <Prototype variant="channel" />
           </Route>
-          <Route path={match.url + '/user/:userId'}>
-            <DirectMessagePage />
+          <Route path={match.url + "/user/:userId"}>
+            <Prototype variant="directmessage" />
           </Route>
         </>
       ) : (
-        <Redirect to='/' />
+        <Redirect to="/" />
       )}
     </>
   );
