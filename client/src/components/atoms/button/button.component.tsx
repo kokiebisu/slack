@@ -18,12 +18,14 @@ import { ReactionButton } from "./button.reaction";
 export interface ButtonProps {
   to?: string;
   variant?: string;
+  block?: boolean;
   [x: string]: any;
 }
 
 export const Button: React.FC<ButtonProps> = ({
   to,
   variant = "primary",
+  block = false,
   ...props
 }) => {
   const variants = {
@@ -42,16 +44,15 @@ export const Button: React.FC<ButtonProps> = ({
     return <Link to={to}>{variants[variant]}</Link>;
   }
   return (
-    <Wrapper
+    <b.Button
       whileTap={{ scale: 0.99 }}
       whileHover={{ scale: 1.01 }}
       data-testid={`${variant}-button`}
+      backgroundColor="transparent"
+      display={block ? "block" : "inline-block"}
+      width={block ? 1 : "auto"}
     >
       {variants[variant]}
-    </Wrapper>
+    </b.Button>
   );
 };
-
-const Wrapper = styled(b.Button)`
-  background-color: transparent;
-`;

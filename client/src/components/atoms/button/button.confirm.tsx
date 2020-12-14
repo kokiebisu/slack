@@ -22,9 +22,10 @@ export const ConfirmButton: React.FC<{ loading?: boolean }> = ({
 };
 
 const Wrapper = styled(b.Box)`
-  width: 370px;
+  display: inline-block;
+  width: 100%;
   border-radius: 5px;
-  padding: 13px 0;
+  padding: 13px;
   text-align: center;
   background-color: ${({ theme }) => theme.colors.primary};
 

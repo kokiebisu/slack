@@ -40,6 +40,7 @@ export const PasswordInput: React.FC<{
           borderRadius={3}
           placeholder={placeholder}
         />
+        <b.Box></b.Box>
         {criteria ? (
           <IconWrapper className="checkcircle">
             <CheckCircle />
@@ -61,7 +62,7 @@ const InputWrapper = styled(b.Box)`
 `;
 
 const Input = styled(b.Input)`
-  width: 370px;
+  width: 100%;
   padding: 13px 35px 13px 13px;
 `;
 

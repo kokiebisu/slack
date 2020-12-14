@@ -1,5 +1,7 @@
 import React from "react";
 
+import * as b from "global/blocks";
+
 /** variants */
 import { SignInAuth } from "./auth.signin";
 import { GetStartedAuth } from "./auth.getstarted";
@@ -17,6 +19,7 @@ export interface AuthProps {
 export const Auth: React.FC<AuthProps> = ({
   variant = "signin",
   extendsTo,
+  width,
   ...props
 }) => {
   const variants = {
@@ -28,8 +31,8 @@ export const Auth: React.FC<AuthProps> = ({
     invited: <InvitedAuth {...props} />,
   };
   return (
-    <div data-testid={`${variant}-auth`} style={extendsTo}>
+    <b.Box data-testid={`${variant}-auth`} style={extendsTo} width={width}>
       {variants[variant]}
-    </div>
+    </b.Box>
   );
 };

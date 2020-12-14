@@ -9,28 +9,19 @@ export const CheckBullet: React.FC<{ title?: string }> = ({
   title = "Bullet point here",
 }) => {
   return (
-    <b.Flex>
-      <IconWrapper className="checkcircle">
-        <b.Box>
-          <CheckCircle />
-        </b.Box>
-      </IconWrapper>
-      <b.Box>{title}</b.Box>
-    </b.Flex>
+    <div>
+      <b.Flex alignItems="center">
+        <IconWrapper mr={3}>
+          <CheckCircle width={18} height={18} />
+        </IconWrapper>
+        <b.Box>{title}</b.Box>
+      </b.Flex>
+    </div>
   );
 };
 
 const IconWrapper = styled(b.Box)`
-  display: flex;
-  align-items: center;
-  margin-right: 10px;
-  & > div {
-    & > svg {
-      width: 18px;
-      height: 18px;
-      path {
-        fill: ${({ theme }) => theme.colors.gray};
-      }
-    }
+  & path {
+    fill: ${({ theme }) => theme.colors.gray};
   }
 `;

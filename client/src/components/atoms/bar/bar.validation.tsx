@@ -32,7 +32,7 @@ export const ValidationBar: React.FC<{ password?: string }> = ({
 };
 
 const PasswordValidationWrapper = styled(b.Box)`
-  width: 370px;
+  width: 100%;
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);

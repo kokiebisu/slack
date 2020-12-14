@@ -28,7 +28,7 @@ export const GetStartedRoutes: React.SFC = () => {
           <Layout
             variant="getstarted"
             title="First, create your account"
-            content={<Auth variant="signup" />}
+            content={<Auth variant="signup" width={370} />}
           />
         </Route>
         <Route path={`${match.url}/check/:token?`}>

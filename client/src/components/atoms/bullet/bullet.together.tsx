@@ -28,37 +28,26 @@ export const TogetherBullet: React.FC<{ together?: string }> = ({
   return (
     <b.Box>
       <IconWrapper>{togethers[together].icon}</IconWrapper>
-      <Title my={3}>
-        <b.Text>{togethers[together].title}</b.Text>
-      </Title>
-      <SubTitle>
-        <b.Text>{togethers[together].subtitle}</b.Text>
-      </SubTitle>
+      <b.Box my={3}>
+        <b.Text
+          fontFamily="CircularPro-Bold"
+          fontSize={18}
+          color="black__light"
+        >
+          {togethers[together].title}
+        </b.Text>
+      </b.Box>
+      <div>
+        <b.Text fontSize={18} lineHeight={1.6}>
+          {togethers[together].subtitle}
+        </b.Text>
+      </div>
     </b.Box>
   );
 };
 
 const IconWrapper = styled(b.Box)`
-  svg {
-    width: 48px;
-    height: 48px;
-    path {
-      fill: ${({ theme }) => theme.colors.blue};
-    }
-  }
-`;
-
-const Title = styled(b.Box)`
-  & p {
-    font-family: "CircularPro-Bold";
-    color: ${({ theme }) => theme.colors.black__light};
-    font-size: 18px;
-  }
-`;
-
-const SubTitle = styled(b.Box)`
-  & p {
-    font-size: 18px;
-    line-height: 1.6;
+  path {
+    fill: ${({ theme }) => theme.colors.blue};
   }
 `;

@@ -84,7 +84,7 @@ export const SignUpAuth: React.FC<{}> = () => {
         createAccount();
       }}
     >
-      <Wrapper>
+      <div>
         <b.Box mt={3}>
           {[
             {
@@ -111,17 +111,13 @@ export const SignUpAuth: React.FC<{}> = () => {
             </b.Box>
           ))}
         </b.Box>
-        <b.Box>
+        <div>
           <Dialog variant="error" error={errorLog} />
-        </b.Box>
-        <b.Box>
-          <Button variant="confirm" />
-        </b.Box>
-      </Wrapper>
+        </div>
+        <div>
+          <Button variant="confirm" block />
+        </div>
+      </div>
     </form>
   );
 };
-
-export const Wrapper = styled.div`
-  width: fit-content;
-`;

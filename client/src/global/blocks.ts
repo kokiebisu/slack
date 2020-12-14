@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { motion } from 'framer-motion';
+import styled, { css } from "styled-components";
+import { motion } from "framer-motion";
 
 import {
   space,
@@ -20,10 +20,12 @@ import {
   FlexboxProps,
   typography,
   TypographyProps,
-} from 'styled-system';
+  position,
+  PositionProps,
+} from "styled-system";
 
 // Sizes
-import { landing } from 'global/sizes';
+import { landing } from "global/sizes";
 
 type BoxProps = SpaceProps &
   ColorProps &
@@ -67,6 +69,10 @@ export const Box = styled(motion.div)<BoxProps>`
     css`
       height: ${hp}%;
     `}
+`;
+
+export const Position = styled(motion.button)<PositionProps>`
+  ${position}
 `;
 
 type ButtonProps = SpaceProps &
@@ -243,6 +249,56 @@ export const Input = styled.input<InputProps>`
 
 type TextProps = TypographyProps &
   ColorProps & { uppercase?: boolean; center?: boolean; right?: boolean };
+
+export const H3 = styled(motion.h3)<TextProps>`
+  ${typography}
+  ${color}
+  padding: 0;
+  margin: 0;
+
+  ${({ uppercase }) =>
+    uppercase &&
+    css`
+      text-transform: uppercase;
+    `}
+
+  ${({ center }) =>
+    center &&
+    css`
+      text-align: center;
+    `}
+
+  ${({ right }) =>
+    right &&
+    css`
+      text-align: right;
+    `}
+`;
+
+export const P = styled(motion.h3)<TextProps>`
+  ${typography}
+  ${color}
+  padding: 0;
+  margin: 0;
+
+  ${({ uppercase }) =>
+    uppercase &&
+    css`
+      text-transform: uppercase;
+    `}
+
+  ${({ center }) =>
+    center &&
+    css`
+      text-align: center;
+    `}
+
+  ${({ right }) =>
+    right &&
+    css`
+      text-align: right;
+    `}
+`;
 
 export const Text = styled(motion.p)<TextProps>`
   ${typography}
