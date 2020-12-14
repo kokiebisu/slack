@@ -8,10 +8,14 @@ export const MoreBullet: React.FC<{ more?: string }> = ({
   more = "Content",
 }) => {
   return (
-    <b.Box fontSize={18} color="blue">
+    <b.Box>
       <Flex>
-        <b.Text>Learn more about {more}</b.Text>
-        <b.Text>&nbsp;→</b.Text>
+        <b.Text color="blue" fontSize={18}>
+          Learn more about {more}
+        </b.Text>
+        <b.Text color="blue" fontSize={18}>
+          &nbsp;→
+        </b.Text>
       </Flex>
     </b.Box>
   );
