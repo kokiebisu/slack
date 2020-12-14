@@ -9,11 +9,6 @@ export default {
 
 const Template: Story<LayoutProps> = (args) => <Layout {...args} />;
 
-export const center = Template.bind({});
-center.args = {
-  variant: "center",
-};
-
 export const workspace = Template.bind({});
 workspace.args = {
   variant: "workspace",

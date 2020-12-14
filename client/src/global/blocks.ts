@@ -254,18 +254,6 @@ export const Flex = styled.div<FlexboxProps & { noHeight?: boolean }>`
     `}
 `;
 
-// type GridProps = { gridGap?: number };
-
-// export const Grid = styled.div<GridProps>`
-//   display: grid;
-
-//   ${({ gridGap }) =>
-//     gridGap &&
-//     css`
-//       grid-column-gap: ${gridGap};
-//     `}
-// `;
-
 export const Span = styled.span<
   SpaceProps &
     ColorProps &
