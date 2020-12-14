@@ -5,11 +5,14 @@ import styled from "styled-components";
 export const TransparentButton: React.FC<{
   title?: string;
 }> = ({ title = "Transparent Button" }) => {
-  return <Wrapper>{title}</Wrapper>;
+  return (
+    <Wrapper>
+      <b.Text>{title}</b.Text>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled(b.Box)`
-  white-space: nowrap;
   display: inline-block;
   padding: 8px 13px;
   border-radius: 3px;
@@ -23,4 +26,8 @@ const Wrapper = styled(b.Box)`
     border-color: ${({ theme }) => theme.colors.gray};
     text-decoration: underline;
   }
+`;
+
+const H3 = styled(b.Text)`
+  white-space: nowrap;
 `;

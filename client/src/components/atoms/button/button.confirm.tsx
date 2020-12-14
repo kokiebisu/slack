@@ -6,29 +6,29 @@ export const ConfirmButton: React.FC<{ loading?: boolean }> = ({
   loading = false,
 }) => {
   return (
-    <Wrapper className="confirmbutton">
+    <Wrapper
+      display="inline-block"
+      width={1}
+      borderRadius={2}
+      p={5}
+      className="confirmbutton"
+    >
       <b.Flex justifyContent="center" alignItems="center">
-        <b.Box
+        <b.AnimatedBox
           variants={confirmVariants}
           animate={loading ? "loading" : "loaded"}
         >
-          <b.Text color="white" fontFamily="SlackLato-Bold">
+          <b.Text textAlign="center" color="white" fontFamily="SlackLato-Bold">
             Confirm
           </b.Text>
-        </b.Box>
+        </b.AnimatedBox>
       </b.Flex>
     </Wrapper>
   );
 };
 
 const Wrapper = styled(b.Box)`
-  display: inline-block;
-  width: 100%;
-  border-radius: 5px;
-  padding: 13px;
-  text-align: center;
   background-color: ${({ theme }) => theme.colors.primary};
-
   &:hover {
     background-color: ${({ theme }) => theme.colors.primary__light};
   }

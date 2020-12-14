@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 /** vectors */
 import { Gmail, Outlook } from "assets/svg/Logo";
@@ -11,40 +10,17 @@ export const EmailButton: React.FC<{ platform?: string }> = ({
   platform = "outlook",
 }) => {
   const platforms = {
-    outlook: <Outlook />,
-    gmail: <Gmail />,
+    outlook: <Outlook width={20} height={20} />,
+    gmail: <Gmail width={20} height={20} />,
   };
   return (
     <b.Flex>
-      <IconWrapper className="outlook" mr={2}>
+      <b.Box className="outlook" mr={2} bottom={1}>
         {platforms[platform]}
-      </IconWrapper>
+      </b.Box>
       <b.Box className="option">
         <b.Text>Open {platform}</b.Text>
       </b.Box>
     </b.Flex>
   );
 };
-
-const IconWrapper = styled(b.Box)`
-  position: relative;
-  &.gmail {
-    bottom: 2px;
-    svg {
-      width: 20px;
-      height: 20px;
-      path {
-      }
-    }
-  }
-
-  &.outlook {
-    bottom: 1px;
-    svg {
-      width: 20px;
-      height: 20px;
-      path {
-      }
-    }
-  }
-`;

@@ -88,6 +88,7 @@ export const Box = styled.div<
       left?: number;
       wp?: number;
       hp?: number;
+      fill?: string;
     }
 >`
   position: relative;
@@ -117,6 +118,16 @@ export const Box = styled.div<
     css`
       height: ${hp}%;
     `}
+
+
+  fill: ${({ fill }) =>
+    fill &&
+    css`
+      & path {
+        fill: ${fill};
+      }
+    `}
+
 `;
 
 export const Grid = styled.div<GridProps & LayoutProps>`
@@ -297,88 +308,19 @@ export const Input = styled.input<SpaceProps & BorderProps & TypographyProps>`
   ${typography}
 `;
 
-export const H3 = styled.h3<
-  TypographyProps &
-    ColorProps & { uppercase?: boolean; center?: boolean; right?: boolean }
->`
-  ${typography}
-  ${color}
-  padding: 0;
-  margin: 0;
-
-  ${({ uppercase }) =>
-    uppercase &&
-    css`
-      text-transform: uppercase;
-    `}
-
-  ${({ center }) =>
-    center &&
-    css`
-      text-align: center;
-    `}
-
-  ${({ right }) =>
-    right &&
-    css`
-      text-align: right;
-    `}
-`;
-
-export const P = styled.p<
-  TypographyProps &
-    ColorProps & { uppercase?: boolean; center?: boolean; right?: boolean }
->`
-  ${typography}
-  ${color}
-  padding: 0;
-  margin: 0;
-
-  ${({ uppercase }) =>
-    uppercase &&
-    css`
-      text-transform: uppercase;
-    `}
-
-  ${({ center }) =>
-    center &&
-    css`
-      text-align: center;
-    `}
-
-  ${({ right }) =>
-    right &&
-    css`
-      text-align: right;
-    `}
-`;
-
 export const Text = styled.p<
   TypographyProps &
-    ColorProps & { uppercase?: boolean; center?: boolean; right?: boolean }
+    ColorProps & {
+      uppercase?: boolean;
+      nowrap?: boolean;
+    }
 >`
   ${typography}
   ${color}
   padding: 0;
   margin: 0;
-
-  ${({ uppercase }) =>
-    uppercase &&
-    css`
-      text-transform: uppercase;
-    `}
-
-  ${({ center }) =>
-    center &&
-    css`
-      text-align: center;
-    `}
-
-  ${({ right }) =>
-    right &&
-    css`
-      text-align: right;
-    `}
+  text-transform: ${({ uppercase }) => uppercase && "uppercase"};
+  white-space: ${({ nowrap }) => nowrap && "nowrap"};
 `;
 
 export const LayoutWrapper = styled.div<SpaceProps>`
