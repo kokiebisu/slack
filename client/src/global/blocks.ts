@@ -82,13 +82,8 @@ export const Box = styled.div<
     ShadowProps &
     GridProps &
     PositionProps & {
-      top?: number;
-      bottom?: number;
-      right?: number;
-      left?: number;
       wp?: number;
       hp?: number;
-      fill?: string;
     }
 >`
   position: relative;
@@ -100,11 +95,6 @@ export const Box = styled.div<
   ${shadow}
   ${grid}
   ${position}
-
-  top: ${({ top }) => `${top}px`};
-  bottom: ${({ bottom }) => `${bottom}px`};
-  right: ${({ right }) => `${right}px`};
-  left: ${({ left }) => `${left}px`};
 
 
   ${({ wp }) =>
@@ -118,16 +108,6 @@ export const Box = styled.div<
     css`
       height: ${hp}%;
     `}
-
-
-  fill: ${({ fill }) =>
-    fill &&
-    css`
-      & path {
-        fill: ${fill};
-      }
-    `}
-
 `;
 
 export const Grid = styled.div<GridProps & LayoutProps>`
@@ -302,8 +282,11 @@ export const Span = styled.span<
   ${typography}
 `;
 
-export const Input = styled.input<SpaceProps & BorderProps & TypographyProps>`
+export const Input = styled.input<
+  SpaceProps & BorderProps & TypographyProps & LayoutProps
+>`
   ${space}
+  ${layout}
   ${border}
   ${typography}
 `;
