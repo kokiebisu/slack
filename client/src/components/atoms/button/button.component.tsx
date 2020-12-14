@@ -14,6 +14,8 @@ import { LinkButton } from "./button.link";
 import { EmailButton } from "./button.email";
 import { LaunchButton } from "./button.launch";
 import { ReactionButton } from "./button.reaction";
+import { WorkspaceButton } from "./button.workspace";
+import { GetStartedButton } from "./button.getstarted";
 
 export interface ButtonProps {
   to?: string;
@@ -39,6 +41,8 @@ export const Button: React.FC<ButtonProps> = ({
     email: <EmailButton {...props} />,
     launch: <LaunchButton {...props} />,
     reaction: <ReactionButton {...props} />,
+    workspace: <WorkspaceButton {...props} />,
+    getstarted: <GetStartedButton {...props} />,
   };
   if (to) {
     return <Link to={to}>{variants[variant]}</Link>;

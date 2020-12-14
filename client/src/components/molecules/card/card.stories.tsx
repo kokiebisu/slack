@@ -9,11 +9,6 @@ export default {
 
 const Template: Story<CardProps> = (args) => <Card {...args} />;
 
-export const launch = Template.bind({});
-launch.args = {
-  variant: "launch",
-};
-
 export const available = Template.bind({});
 available.args = {
   variant: "available",

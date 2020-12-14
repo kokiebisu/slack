@@ -20,11 +20,25 @@ export const getStarted = Template.bind({});
 getStarted.args = {
   variant: "getstarted",
 };
+getStarted.decorators = [
+  (Story) => (
+    <div style={{ maxWidth: 780 }}>
+      <Story />
+    </div>
+  ),
+];
 
 export const signup = Template.bind({});
 signup.args = {
   variant: "signup",
 };
+signup.decorators = [
+  (Story) => (
+    <div style={{ maxWidth: 370 }}>
+      <Story />
+    </div>
+  ),
+];
 
 export const find = Template.bind({});
 find.args = {

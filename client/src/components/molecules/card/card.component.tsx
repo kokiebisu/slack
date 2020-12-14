@@ -1,7 +1,7 @@
 import React from "react";
 
 /** variants */
-import { LaunchCard } from "./card.launch";
+
 import { AvailableCard } from "./card.available";
 import { ActivityCard } from "./card.activity";
 import { MessageCard } from "./card.message";
@@ -13,7 +13,6 @@ export interface CardProps {
 
 export const Card: React.FC<CardProps> = ({ variant = "launch", ...props }) => {
   const variants = {
-    launch: <LaunchCard {...props} />,
     available: <AvailableCard {...props} />,
     activity: <ActivityCard {...props} />,
     message: <MessageCard {...props} />,
