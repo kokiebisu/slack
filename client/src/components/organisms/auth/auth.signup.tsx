@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import * as b from "global/blocks";
 import { Input } from "components/atoms/input/input.component";
 import { Dialog } from "components/atoms/dialog/dialog.component";

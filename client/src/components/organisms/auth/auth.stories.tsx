@@ -15,6 +15,13 @@ export const signin = Template.bind({});
 signin.args = {
   variant: "signin",
 };
+signin.decorators = [
+  (Story) => (
+    <div style={{ maxWidth: 620 }}>
+      <Story />
+    </div>
+  ),
+];
 
 export const getStarted = Template.bind({});
 getStarted.args = {
@@ -68,3 +75,8 @@ invited.decorators = [
     </div>
   ),
 ];
+
+export const workspaces = Template.bind({});
+workspaces.args = {
+  variant: "workspaces",
+};

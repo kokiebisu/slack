@@ -7,12 +7,6 @@ import { useVerifyUserInviteQuery } from "generated/graphql";
 // Blocks
 import * as b from "global/blocks";
 
-// Components
-import { Layout } from "components/layout/layout.component";
-
-// Styles
-import { Wrapper } from "styles/Invited";
-import { Bar } from "components/atoms/bar/bar.component";
 import { Dialog } from "components/atoms/dialog/dialog.component";
 
 // Utils
@@ -22,35 +16,8 @@ import { fullNameRegex, weakRegex } from "util/passwordUtil";
 import { randomColor } from "util/randomColor";
 import { profile } from "global/colors";
 import { useCreateUserInviteMutation } from "generated/graphql";
-import { Card } from "components/molecules/card/card.component";
+
 import { Button } from "components/atoms/button/button.component";
-
-type State = {
-  fullname: string;
-  password: string;
-  errorlog: boolean;
-  loading: boolean;
-};
-type Action =
-  | { type: "add_fullname"; payload: string }
-  | { type: "add_password"; payload: string }
-  | { type: "add_errorlog"; payload: string }
-  | { type: "loading"; payload: string };
-
-const inputReducer = (state: State, action: Action) => {
-  switch (action.type) {
-    case "add_fullname":
-      return { ...state, fullname: action.payload };
-    case "add_password":
-      return { ...state, password: action.payload };
-    case "add_errorlog":
-      return { ...state, errorlog: action.payload };
-    case "loading":
-      return { ...state, loading: !state.loading };
-    default:
-      return state;
-  }
-};
 
 export const InvitedAuth: React.FC<{}> = () => {
   const { invitorId, token } = useParams();

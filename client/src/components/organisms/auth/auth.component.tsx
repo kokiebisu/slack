@@ -9,6 +9,7 @@ import { SignUpAuth } from "./auth.signup";
 import { FindAuth } from "./auth.find";
 import { ConfirmAuth } from "./auth.confirm";
 import { InvitedAuth } from "./auth.invited";
+import { WorkspacesAuth } from "./auth.workspaces";
 
 export interface AuthProps {
   variant?: string;
@@ -29,6 +30,7 @@ export const Auth: React.FC<AuthProps> = ({
     find: <FindAuth {...props} />,
     confirm: <ConfirmAuth {...props} />,
     invited: <InvitedAuth {...props} />,
+    workspaces: <WorkspacesAuth {...props} />,
   };
   return (
     <b.Box data-testid={`${variant}-auth`} style={extendsTo} width={width}>

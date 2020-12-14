@@ -114,3 +114,8 @@ export const getstarted = Template.bind({});
 getstarted.args = {
   variant: "getstarted",
 };
+
+export const continue = Template.bind({});
+continue.args = {
+  variant: "continue",
+};

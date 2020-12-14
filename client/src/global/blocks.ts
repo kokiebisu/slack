@@ -110,6 +110,49 @@ export const Box = styled.div<
     `}
 `;
 
+export const Footer = styled.div<
+  SpaceProps &
+    ColorProps &
+    LayoutProps &
+    BackgroundProps &
+    BorderProps &
+    ShadowProps &
+    GridProps &
+    PositionProps & {
+      wp?: number;
+      hp?: number;
+    }
+>`
+  position: relative;
+  ${space}
+  ${color}
+  ${layout}
+  ${background}
+  ${border}
+  ${shadow}
+  ${grid}
+  ${position}
+
+
+  ${({ wp }) =>
+    wp &&
+    css`
+      width: ${wp}%;
+    `}
+
+  ${({ hp }) =>
+    hp &&
+    css`
+      height: ${hp}%;
+    `}
+`;
+
+export const Ul = styled.ul<LayoutProps & SpaceProps>`
+  ${layout}
+  ${space}
+    display: block;
+`;
+
 export const Grid = styled.div<GridProps & LayoutProps>`
   display: grid;
   ${grid}

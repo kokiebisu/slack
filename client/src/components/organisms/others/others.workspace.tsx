@@ -21,7 +21,7 @@ export const WorkspaceOthers: React.FC<{
 }> = ({ team, channel, opacity = 1, children }) => {
   return (
     <RightWrapper>
-      <b.Box animate={{ opacity: opacity }} initial={{ opacity: 0 }}>
+      <b.AnimatedBox animate={{ opacity: opacity }} initial={{ opacity: 0 }}>
         <LeftMock>
           <b.Box>
             <TeamWrapper px={2}>
@@ -131,21 +131,21 @@ export const WorkspaceOthers: React.FC<{
             {channel && (
               <ContentWrapper variants={stagger}>
                 <b.Box mt={2}>
-                  <b.Box pt={3} pb={3} variants={fadeInUp}>
+                  <b.AnimatedBox pt={3} pb={3} variants={fadeInUp}>
                     <img src={teamphoto_1} alt="team_photo_1" />
-                  </b.Box>
+                  </b.AnimatedBox>
                   <b.Box py={3} variants={fadeInUp}>
                     <img src={teamphoto_2} alt="team_photo_2" />
-                  </b.Box>
-                  <b.Box py={3} variants={fadeInUp}>
+                  </b.AnimatedBox>
+                  <b.AnimatedBox py={3} variants={fadeInUp}>
                     <img src={teamphoto_3} alt="team_photo_3" />
-                  </b.Box>
+                  </b.AnimatedBox>
                 </b.Box>
               </ContentWrapper>
             )}
           </b.Box>
         </RightMock>
-      </b.Box>
+      </b.AnimatedBox>
     </RightWrapper>
   );
 };
@@ -227,7 +227,7 @@ const RightMock = styled(b.Box)`
   }
 `;
 
-const ContentWrapper = styled(b.Box)`
+const ContentWrapper = styled(b.AnimatedBox)`
   display: grid;
   grid-template-rows: repeat(3, 30px);
 `;
