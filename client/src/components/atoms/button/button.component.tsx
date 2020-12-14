@@ -16,7 +16,7 @@ import { LaunchButton } from "./button.launch";
 import { ReactionButton } from "./button.reaction";
 import { WorkspaceButton } from "./button.workspace";
 import { GetStartedButton } from "./button.getstarted";
-import { ContinueButton } from "./button.next";
+import { NextButton } from "./button.next";
 
 export interface ButtonProps {
   to?: string;

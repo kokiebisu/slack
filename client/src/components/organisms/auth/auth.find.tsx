@@ -8,7 +8,7 @@ import { Button } from "components/atoms/button/button.component";
 import { useCheckEmailLazyQuery } from "generated/graphql";
 
 export const FindAuth: React.FC<{}> = () => {
-  const [check, { loading, data }] = useCheckEmailLazyQuery();
+  const [check, { data }] = useCheckEmailLazyQuery();
   const [info, setInfo] = useState({
     email: "",
   });

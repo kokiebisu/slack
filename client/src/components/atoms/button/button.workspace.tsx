@@ -5,7 +5,7 @@ import * as b from "global/blocks";
 /** assets */
 import { RightArrow } from "assets/svg";
 
-export const LaunchCard: React.FC<{
+export const WorkspaceButton: React.FC<{
   name?: string;
   url?: string;
   color?: string;
