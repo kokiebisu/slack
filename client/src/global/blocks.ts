@@ -71,6 +71,12 @@ export const Box = styled(motion.div)<BoxProps>`
     `}
 `;
 
+export const Grid = styled(motion.div)<GridProps & LayoutProps>`
+  display: grid;
+  ${grid}
+  ${layout}
+`;
+
 export const Position = styled(motion.button)<PositionProps>`
   ${position}
 `;
