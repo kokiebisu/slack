@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import * as b from 'global/blocks';
+import styled from "styled-components";
+import * as b from "global/blocks";
 
 export const Wrapper = styled(b.Box)`
   display: relative;
@@ -10,7 +10,7 @@ export const Wrapper = styled(b.Box)`
   background-color: rgba(0, 0, 0, 0.8);
 `;
 
-export const Container = styled(b.Box)`
+export const Container = styled(b.AnimatedBox)`
   background-color: white;
   max-width: 650px;
   width: 100%;

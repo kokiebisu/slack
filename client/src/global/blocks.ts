@@ -84,6 +84,7 @@ export const Box = styled.div<
     PositionProps & {
       wp?: number;
       hp?: number;
+      breakall?: boolean;
     }
 >`
   position: relative;
@@ -107,6 +108,12 @@ export const Box = styled.div<
     hp &&
     css`
       height: ${hp}%;
+    `}
+
+  ${({ breakall }) =>
+    breakall &&
+    css`
+      word-break: break-all;
     `}
 `;
 

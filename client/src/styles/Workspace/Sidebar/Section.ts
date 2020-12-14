@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import * as b from 'global/blocks';
+import styled from "styled-components";
+import * as b from "global/blocks";
 
 // Sizes
-import { home } from 'global/sizes';
+import { home } from "global/sizes";
 
 export const Wrapper = styled(b.Box)`
   padding: 10px 0;
@@ -66,7 +66,7 @@ export const IconButtonWrapper = styled(b.Button)`
   }
 `;
 
-export const IconWrapper = styled(b.Box)`
+export const IconWrapper = styled(b.AnimatedBox)`
   position: relative;
 
   &.play {
