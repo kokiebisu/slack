@@ -29,14 +29,16 @@ export const PrimaryButton: React.FC<{
       borderColor={inverse ? fill : "transparent"}
       borderRadius={3}
     >
-      <Title
+      <b.Text
         color={inverse ? fill : textColor}
         fontSize={14}
         letterSpacing={1}
         fontFamily="CircularPro-Bold"
+        nowrap
+        uppercase
       >
         {title}
-      </Title>
+      </b.Text>
     </Wrapper>
   );
 };
@@ -50,9 +52,4 @@ const Wrapper = styled(b.Box)`
   &.sm {
     padding: 15px;
   }
-`;
-
-const Title = styled(b.Text)`
-  white-space: nowrap;
-  text-transform: uppercase;
 `;

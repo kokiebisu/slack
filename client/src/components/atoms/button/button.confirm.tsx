@@ -9,8 +9,9 @@ export const ConfirmButton: React.FC<{ loading?: boolean }> = ({
     <Wrapper
       display="inline-block"
       width={1}
-      borderRadius={2}
-      p={5}
+      borderRadius={5}
+      px={6}
+      py={3}
       className="confirmbutton"
     >
       <b.Flex justifyContent="center" alignItems="center">

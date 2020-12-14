@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { motion } from "framer-motion";
+import React, { useState, useContext } from "react";
+import styled, { ThemeContext } from "styled-components";
+
 import * as b from "global/blocks";
 
 export const NavButton: React.FC<{
   nav?: "why" | "solutions" | "resources";
 }> = ({ nav = "why" }) => {
+  const theme = useContext(ThemeContext);
   const [hovered, setHovered] = useState(false);
 
   const dropdowns = {
@@ -64,41 +65,45 @@ export const NavButton: React.FC<{
         setHovered(false);
       }}
     >
-      <b.Text color="gray" fontSize={16} fontFamily="CircularPro-Book">
+      <b.Text
+        color={theme.colors.gray}
+        fontSize={16}
+        fontFamily="CircularPro-Book"
+      >
         {dropdowns[nav].name}
       </b.Text>
       {hovered && (
-        <Dropdown position="absolute" borderRadius={3} backgroundColor="white">
+        <b.Box
+          width="250px"
+          position="absolute"
+          top={45}
+          boxShadow="medium"
+          py={4}
+          px={6}
+          borderRadius={3}
+          backgroundColor={theme.colors.white}
+        >
           {dropdowns[nav].items.map((dropdown, index) => {
             return (
-              <LinkWrapper py={2} key={index}>
-                <b.Text
-                  color="gray"
+              <b.Box py={2} key={index}>
+                <Text
+                  color={theme.colors.gray}
                   fontSize={16}
                   fontFamily="CircularPro-Book"
                 >
                   {dropdown.name}
-                </b.Text>
-              </LinkWrapper>
+                </Text>
+              </b.Box>
             );
           })}
-        </Dropdown>
+        </b.Box>
       )}
     </b.AnimatedBox>
   );
 };
 
-const Dropdown = styled(b.Box)`
-  width: 250px;
-  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
-  top: 45px;
-  padding: 13px 20px;
-`;
-
-const LinkWrapper = styled(b.Box)`
+const Text = styled(b.Text)`
   &:hover {
-    & p {
-      color: ${({ theme }) => theme.colors.blue};
-    }
+    color: ${({ theme }) => theme.colors.blue};
   }
 `;

@@ -58,6 +58,14 @@ export const socialmedia = Template.bind({});
 socialmedia.args = {
   variant: "socialmedia",
 };
+socialmedia.argTypes = {
+  platform: {
+    control: {
+      type: "select",
+      options: ["twitter", "facebook", "youtube", "linkedin"],
+    },
+  },
+};
 
 export const link = Template.bind({});
 link.args = {
