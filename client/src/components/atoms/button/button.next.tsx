@@ -5,7 +5,7 @@ import { ThemeContext } from "styled-components";
 /** vectors */
 import { RightArrow } from "assets/svg";
 
-export const ContinueButton: React.FC<{}> = () => {
+export const NextButton: React.FC<{}> = () => {
   const theme = useContext(ThemeContext);
   return (
     <b.Flex justifyContent="center">

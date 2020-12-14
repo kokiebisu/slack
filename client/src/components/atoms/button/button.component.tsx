@@ -16,7 +16,7 @@ import { LaunchButton } from "./button.launch";
 import { ReactionButton } from "./button.reaction";
 import { WorkspaceButton } from "./button.workspace";
 import { GetStartedButton } from "./button.getstarted";
-import { ContinueButton } from "./button.continue";
+import { ContinueButton } from "./button.next";
 
 export interface ButtonProps {
   to?: string;
@@ -44,6 +44,7 @@ export const Button: React.FC<ButtonProps> = ({
     reaction: <ReactionButton {...props} />,
     workspace: <WorkspaceButton {...props} />,
     getstarted: <GetStartedButton {...props} />,
+    next: <NextButton {...props} />,
   };
   if (to) {
     return <Link to={to}>{variants[variant]}</Link>;

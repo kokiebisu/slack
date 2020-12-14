@@ -134,7 +134,7 @@ export const WorkspaceOthers: React.FC<{
                   <b.AnimatedBox pt={3} pb={3} variants={fadeInUp}>
                     <img src={teamphoto_1} alt="team_photo_1" />
                   </b.AnimatedBox>
-                  <b.Box py={3} variants={fadeInUp}>
+                  <b.AnimatedBox py={3} variants={fadeInUp}>
                     <img src={teamphoto_2} alt="team_photo_2" />
                   </b.AnimatedBox>
                   <b.AnimatedBox py={3} variants={fadeInUp}>
