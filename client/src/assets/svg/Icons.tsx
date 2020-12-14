@@ -45,7 +45,7 @@ export const Globe = () => {
  * Landing Breakout Section
  * @param
  */
-export const Share = ({ fill, ...props }) => {
+export const Share = ({ fill, ...props }: { fill?: any; props?: any }) => {
   return (
     <svg {...props} viewBox="0 0 32 32" fill="none">
       <path
@@ -68,7 +68,13 @@ export const Share = ({ fill, ...props }) => {
   );
 };
 
-export const ConnectCall = ({ fill, ...props }) => {
+export const ConnectCall = ({
+  fill,
+  ...props
+}: {
+  fill?: any;
+  props?: any;
+}) => {
   return (
     <svg {...props} fill="none">
       <path
@@ -87,7 +93,13 @@ export const ConnectCall = ({ fill, ...props }) => {
   );
 };
 
-export const Collaborate = ({ fill, ...props }) => {
+export const Collaborate = ({
+  fill,
+  ...props
+}: {
+  fill?: any;
+  props?: any;
+}) => {
   return (
     <svg {...props}>
       <path
@@ -131,7 +143,7 @@ export const Info = () => {
   );
 };
 
-export const Warning = ({ fill, ...props }) => {
+export const Warning = ({ fill, ...props }: { fill?: any; props?: any }) => {
   return (
     <svg {...props} viewBox="0 0 512.001 512.001">
       <g>
@@ -601,7 +613,13 @@ export const Laugh = () => {
   );
 };
 
-export const CheckCircle = ({ fill, ...props }) => {
+export const CheckCircle = ({
+  fill,
+  ...props
+}: {
+  fill?: any;
+  props?: any;
+}) => {
   return (
     <svg {...props} viewBox="0 0 512 512">
       <path
@@ -821,7 +839,7 @@ export const BottomArrow = () => {
   );
 };
 
-export const RightArrow = ({ fill, ...props }) => {
+export const RightArrow = ({ fill, ...props }: { fill?: any; props?: any }) => {
   return (
     <svg {...props} viewBox="0 0 448 512">
       <path
@@ -863,7 +881,13 @@ export const Clipboard = () => {
  * Tags
  */
 
-export const ThinHashTag = ({ fill, ...props }) => {
+export const ThinHashTag = ({
+  fill,
+  ...props
+}: {
+  fill?: any;
+  props?: any;
+}) => {
   return (
     <svg {...props} viewBox="0 0 448 512">
       <path
@@ -975,7 +999,7 @@ export const SmilePlus = () => {
  * Plus
  */
 
-export const BoldPlus = ({ fill, ...props }) => {
+export const BoldPlus = ({ fill, ...props }: { fill?: any; props?: any }) => {
   return (
     <svg {...props} viewBox="0 0 448 448">
       <path
