@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "styled-components";
 import * as b from "global/blocks";
 import { Button } from "components/atoms/button/button.component";
 import { Globe } from "assets/svg";
-import styled from "styled-components";
 
 export const GetStartedFooter: React.FC<{}> = () => {
+  const theme = useContext(ThemeContext);
   return (
     <b.Flex alignItems="center" justifyContent="center">
       <b.Box mr={2}>
@@ -15,9 +16,9 @@ export const GetStartedFooter: React.FC<{}> = () => {
       </b.Box>
       <b.Box mr={2}>
         <b.Flex>
-          <IconWrapper className="globe" mr={1}>
-            <Globe />
-          </IconWrapper>
+          <b.Box top={0.5} mr={1}>
+            <Globe width={12} height={12} fill={theme.colors.gray} />
+          </b.Box>
           <b.Box>
             <b.Box>Change region</b.Box>
           </b.Box>
@@ -26,49 +27,3 @@ export const GetStartedFooter: React.FC<{}> = () => {
     </b.Flex>
   );
 };
-
-const IconWrapper = styled(b.Box)`
-  position: relative;
-  &.namelogo {
-    padding: 5px;
-    svg {
-      width: 140px;
-      height: 60px;
-      path {
-        &:nth-child(2) {
-          fill: ${({ theme }) => theme.colors.blue__lighter};
-        }
-        &:nth-child(3) {
-          fill: ${({ theme }) => theme.colors.green__lighter};
-        }
-        &:nth-child(4) {
-          fill: ${({ theme }) => theme.colors.yellow};
-        }
-        &:nth-child(5) {
-          fill: ${({ theme }) => theme.colors.red};
-        }
-      }
-    }
-  }
-
-  &.boldplus {
-    svg {
-      width: 13px;
-      height: 13px;
-      path {
-        fill: ${({ theme }) => theme.colors.primary};
-      }
-    }
-  }
-
-  &.globe {
-    top: 0.5px;
-    svg {
-      width: 12px;
-      height: 12px;
-      path {
-        fill: ${({ theme }) => theme.colors.gray};
-      }
-    }
-  }
-`;

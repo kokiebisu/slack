@@ -1,23 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import * as b from "global/blocks";
-import styled from "styled-components";
+import styled, { ThemeContext } from "styled-components";
 
 export const LaunchButton: React.FC<{ title?: string }> = ({
   title = "Button",
 }) => {
-  return <Wrapper>{title}</Wrapper>;
+  const theme = useContext(ThemeContext);
+  return (
+    <Wrapper
+      px={3}
+      py={2}
+      borderRadius={5}
+      border="1px solid"
+      backgroundColor={theme.colors.white}
+      borderColor={theme.colors.gray__light}
+    >
+      <b.Text fontSize={15} fontFamily="SlackLato-Bold">
+        {title}
+      </b.Text>
+    </Wrapper>
+  );
 };
 
 export const Wrapper = styled(b.Box)`
-  padding: 8px 15px;
-  background-color: ${({ theme }) => theme.colors.white};
-  border-radius: 5px;
-  border: 1px solid ${({ theme }) => theme.colors.gray__lighter};
-  & > p {
-    font-size: 15px;
-    font-family: "SlackLato-Bold";
-  }
-
   &:hover {
     background-color: ${({ theme }) => theme.colors.white__dark};
   }

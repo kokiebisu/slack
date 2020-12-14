@@ -1,5 +1,5 @@
-import * as React from "react";
-import styled from "styled-components";
+import React, { useContext } from "react";
+import styled, { ThemeContext } from "styled-components";
 
 // Blocks
 import * as b from "global/blocks";
@@ -14,36 +14,66 @@ export const MessageCard: React.FC<{
     type: string;
     message?: string;
   };
-}> = ({ sender, avatar, time, body }) => {
+}> = ({
+  sender = "Ken",
+  avatar = "green",
+  time = "12, 12",
+  body = {
+    type: "message",
+    message: "Hello",
+  },
+}) => {
+  const theme = useContext(ThemeContext);
   const status = {
     joined: (
-      <Wrapper>
-        <b.Text>joined #general</b.Text>
-      </Wrapper>
+      <b.Box>
+        <b.Text
+          fontSize={15}
+          fontFamily="SlackLato-Regular"
+          color={theme.colors.gray__light}
+        >
+          joined #general
+        </b.Text>
+      </b.Box>
     ),
-    message: <Content dangerouslySetInnerHTML={{ __html: body?.message! }} />,
+    message: (
+      <b.Box breakall dangerouslySetInnerHTML={{ __html: body?.message! }} />
+    ),
   };
   return (
     <b.Box mb={3}>
       <b.Flex>
         <b.Box mr={2}>
-          <Profile backgroundColor={avatar} mr={2}>
-            <IconWrapper className="avatar">
-              <UserAlt />
+          <b.Box
+            width={36}
+            height={36}
+            borderRadius={5}
+            backgroundColor={avatar}
+            mr={2}
+          >
+            <IconWrapper
+              position="absolute"
+              bottom={-4}
+              left="50%"
+              className="avatar"
+            >
+              <UserAlt width={30} height={30} fill={theme.colors.white} />
             </IconWrapper>
-          </Profile>
+          </b.Box>
         </b.Box>
         <b.Box>
-          <Top>
+          <b.Box>
             <b.Flex alignItems="center">
-              <b.Box className="sender_name" mr={2}>
-                <b.Text>{sender}</b.Text>
+              <b.Box mr={2}>
+                <b.Text breakall fontSize={15} fontFamily="SlackLato-Black">
+                  {sender}
+                </b.Text>
               </b.Box>
-              <b.Box className="sent_time">
-                <b.Text>{time?.split(",")[2]}</b.Text>
+              <b.Box font-size={12} font-family="SlackLato-Light">
+                <b.Text breakall>{time?.split(",")[2]}</b.Text>
               </b.Box>
             </b.Flex>
-          </Top>
+          </b.Box>
           {body && status[body.type!]}
         </b.Box>
       </b.Flex>
@@ -51,56 +81,6 @@ export const MessageCard: React.FC<{
   );
 };
 
-const Content = styled(b.Box)`
-  word-break: break-all;
-`;
-
-const Wrapper = styled(b.Box)`
-  & p {
-    font-size: 15px;
-    font-family: "SlackLato-Regular";
-    color: ${({ theme }) => theme.colors.gray__light};
-  }
-`;
-
-const Profile = styled(b.Box)`
-  position: relative;
-
-  width: 36px;
-  height: 36px;
-  border-radius: 5px;
-`;
-
 const IconWrapper = styled(b.Box)`
-  &.avatar {
-    position: absolute;
-    bottom: -4px;
-    left: 50%;
-    transform: translateX(-50%);
-    & > svg {
-      width: 30px;
-      height: 30px;
-      path {
-        fill: ${({ theme }) => theme.colors.white};
-      }
-    }
-  }
-`;
-
-const Top = styled(b.Box)`
-  & div {
-    &.sender_name {
-      font-size: 15px;
-      font-family: "SlackLato-Black";
-    }
-
-    &.sent_time {
-      font-size: 12px;
-      font-family: "SlackLato-Light";
-    }
-  }
-
-  & p {
-    word-break: break-all;
-  }
+  transform: translateX(-50%);
 `;

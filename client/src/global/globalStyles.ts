@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
-import { normalize } from 'styled-normalize';
+import { createGlobalStyle } from "styled-components";
+import { normalize } from "styled-normalize";
 
 export const GlobalStyles = createGlobalStyle`
     ${normalize}
@@ -37,5 +37,10 @@ export const GlobalStyles = createGlobalStyle`
      content: attr(data-placeholder);
      padding: 0px;
      color: #888;
+    }
+
+    button {
+        padding: 0;
+        margin: 0;
     }
 `;

@@ -6,10 +6,10 @@ import { useVerifyUserByTokenQuery } from "generated/graphql";
 import { Button } from "components/atoms/button/button.component";
 
 export const ConfirmAuth: React.FC<{}> = () => {
-  const { token } = useParams();
-  const { data, loading } = useVerifyUserByTokenQuery({
-    variables: { token },
-  });
+  const { token }: { token?: string } = useParams();
+  // const { data, loading } = useVerifyUserByTokenQuery({
+  //   variables: { token },
+  // });
   //   token && !loading && data!.verifyUserByToken.ok
   const criteria = false;
   return (

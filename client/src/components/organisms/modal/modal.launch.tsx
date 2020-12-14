@@ -19,7 +19,7 @@ export const LaunchModal: React.FC<{
     <Wrapper>
       {teams.map((team: any, index) => {
         return (
-          <div>
+          <div key={index}>
             <Card
               key={team.id}
               name={team.name}

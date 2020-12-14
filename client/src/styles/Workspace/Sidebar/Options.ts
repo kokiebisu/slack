@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import * as b from 'global/blocks';
+import styled from "styled-components";
+import * as b from "global/blocks";
 
 export const OptionsWrapper = styled(b.Box)`
   position: relative;
@@ -23,7 +23,7 @@ export const TextWrapper = styled(b.Box)`
   top: 2px;
 `;
 
-export const IconWrapper = styled(b.Box)`
+export const IconWrapper = styled(b.AnimatedBox)`
   margin-right: 8px;
 
   svg {

@@ -40,3 +40,8 @@ export const choose = TemplateStories.bind({});
 choose.args = {
   variant: "choose",
 };
+
+export const banner = TemplateStories.bind({});
+banner.args = {
+  variant: "banner",
+};

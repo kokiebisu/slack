@@ -58,6 +58,14 @@ export const socialmedia = Template.bind({});
 socialmedia.args = {
   variant: "socialmedia",
 };
+socialmedia.argTypes = {
+  platform: {
+    control: {
+      type: "select",
+      options: ["twitter", "facebook", "youtube", "linkedin"],
+    },
+  },
+};
 
 export const link = Template.bind({});
 link.args = {
@@ -95,4 +103,19 @@ email.argTypes = {
 export const hamburger = Template.bind({});
 hamburger.args = {
   variant: "hamburger",
+};
+
+export const workspace = Template.bind({});
+workspace.args = {
+  variant: "workspace",
+};
+
+export const getstarted = Template.bind({});
+getstarted.args = {
+  variant: "getstarted",
+};
+
+export const next = Template.bind({});
+next.args = {
+  variant: "next",
 };

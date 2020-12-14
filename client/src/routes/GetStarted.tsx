@@ -13,7 +13,9 @@ export const GetStartedRoutes: React.SFC = () => {
         <Route exact path={`${match.url}/`}>
           <Layout
             variant="getstarted"
-            content={<Auth variant="getstarted" />}
+            content={
+              <Auth variant="getstarted" extendsTo={{ maxWidth: 780 }} />
+            }
           />
         </Route>
         <Route path={`${match.url}/find`}>
@@ -21,14 +23,14 @@ export const GetStartedRoutes: React.SFC = () => {
             variant="getstarted"
             title="Let's find your team"
             subtitle="Enter the email you usually collaborate with"
-            content={<Auth variant="find" />}
+            content={<Auth variant="find" extendsTo={{ maxWidth: 370 }} />}
           />
         </Route>
         <Route path={`${match.url}/create`}>
           <Layout
             variant="getstarted"
             title="First, create your account"
-            content={<Auth variant="signup" />}
+            content={<Auth variant="signup" extendsTo={{ maxWidth: 370 }} />}
           />
         </Route>
         <Route path={`${match.url}/check/:token?`}>
@@ -45,7 +47,7 @@ export const GetStartedRoutes: React.SFC = () => {
           <Layout
             variant="getstarted"
             title="First create your account"
-            content={<Auth variant="invited" />}
+            content={<Auth variant="invited" extendsTo={{ maxWidth: 370 }} />}
           />
         </Route>
       </Switch>

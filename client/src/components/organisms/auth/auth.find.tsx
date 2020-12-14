@@ -8,7 +8,7 @@ import { Button } from "components/atoms/button/button.component";
 import { useCheckEmailLazyQuery } from "generated/graphql";
 
 export const FindAuth: React.FC<{}> = () => {
-  const [check, { loading, data }] = useCheckEmailLazyQuery();
+  const [check, { data }] = useCheckEmailLazyQuery();
   const [info, setInfo] = useState({
     email: "",
   });
@@ -42,7 +42,7 @@ export const FindAuth: React.FC<{}> = () => {
             )}
           </b.Box>
           <b.Box>
-            <Button variant="confirm" loading={false} />
+            <Button variant="confirm" loading={false} block />
           </b.Box>
         </form>
       )}

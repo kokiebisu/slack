@@ -8,20 +8,18 @@ export const MoreBullet: React.FC<{ more?: string }> = ({
   more = "Content",
 }) => {
   return (
-    <Wrapper>
+    <b.Box>
       <Flex>
-        <b.Text>Learn more about {more}</b.Text>
-        <b.Text>&nbsp;→</b.Text>
+        <b.Text color="blue" fontSize={18}>
+          Learn more about {more}
+        </b.Text>
+        <b.Text color="blue" fontSize={18}>
+          &nbsp;→
+        </b.Text>
       </Flex>
-    </Wrapper>
+    </b.Box>
   );
 };
-
-const Wrapper = styled(b.Anchor)`
-  display: block;
-  font-size: 18px;
-  color: ${({ theme }) => theme.colors.blue};
-`;
 
 const Flex = styled(b.Flex)`
   justify-content: center;

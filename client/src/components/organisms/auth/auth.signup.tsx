@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import * as b from "global/blocks";
 import { Input } from "components/atoms/input/input.component";
 import { Dialog } from "components/atoms/dialog/dialog.component";
@@ -84,26 +83,20 @@ export const SignUpAuth: React.FC<{}> = () => {
         createAccount();
       }}
     >
-      <Wrapper>
+      <div>
         <b.Box mt={3}>
           {[
             {
               value: "fullname",
               variant: "plain",
-              placeholder: "Your full name",
-              criteria: info.fullname?.match(fullNameRegex),
             },
             {
               value: "email",
               variant: "plain",
-              placeholder: "name@work-email.com",
-              criteria: info.email?.match(emailRegex),
             },
             {
               value: "password",
               variant: "password",
-              placeholder: "6 characters or more",
-              criteria: info.password?.length > 6,
             },
           ].map((params, index) => (
             <b.Box my={2} key={index}>
@@ -111,17 +104,13 @@ export const SignUpAuth: React.FC<{}> = () => {
             </b.Box>
           ))}
         </b.Box>
-        <b.Box>
+        <div>
           <Dialog variant="error" error={errorLog} />
-        </b.Box>
-        <b.Box>
-          <Button variant="confirm" />
-        </b.Box>
-      </Wrapper>
+        </div>
+        <div>
+          <Button variant="confirm" block />
+        </div>
+      </div>
     </form>
   );
 };
-
-export const Wrapper = styled.div`
-  width: fit-content;
-`;

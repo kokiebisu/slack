@@ -1,14 +1,20 @@
-import * as React from "react";
+import React, { useContext } from "react";
 
-import styled from "styled-components";
+import { ThemeContext } from "styled-components";
 import * as b from "global/blocks";
 
 // Imgs
 import Thumbsup from "assets/img/thumbsup.png";
 
 export const ReactionButton: React.FC<{}> = () => {
+  const theme = useContext(ThemeContext);
   return (
-    <Wrapper>
+    <b.Box
+      py={1}
+      px={2}
+      borderRadius={15}
+      backgroundColor={theme.colors.white__dark}
+    >
       <b.Flex alignItems="center">
         <b.Box mr={1}>
           <img width={14} height={14} src={Thumbsup} alt="icon" />
@@ -19,15 +25,6 @@ export const ReactionButton: React.FC<{}> = () => {
           </b.Text>
         </b.Box>
       </b.Flex>
-    </Wrapper>
+    </b.Box>
   );
 };
-
-const Wrapper = styled(b.Box)`
-  background-color: ${({ theme }) => theme.colors.white__dark};
-  display: flex;
-  width: fit-content;
-  align-items: center;
-  padding: 4px 6px;
-  border-radius: 15px;
-`;

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import styled from "styled-components";
+import styled, { ThemeContext } from "styled-components";
 
 import * as b from "global/blocks";
 
@@ -14,23 +14,26 @@ export const PasswordInput: React.FC<{
   info?: any;
   setInfo?: any;
   criteria?: boolean;
-  placeholder?: string;
 }> = ({
   value = "password",
   setInfo,
   info = {
     password: "",
   },
-  placeholder = "Placeholder here",
-  criteria = false,
+  criteria = info.password.length > 6,
 }) => {
+  const theme = useContext(ThemeContext);
   return (
     <div>
       <b.Box my={2}>
         <b.Text fontFamily="SlackLato-Bold">{value.capitalize()}</b.Text>
       </b.Box>
-      <InputWrapper>
-        <Input
+      <b.Box>
+        <b.Input
+          py={3}
+          pr={6}
+          pl={3}
+          width={1}
           autoCapitalize="sentences"
           value={info[value]}
           onChange={(e) =>
@@ -38,14 +41,15 @@ export const PasswordInput: React.FC<{
           }
           border="1px solid gray"
           borderRadius={3}
-          placeholder={placeholder}
+          placeholder="6 characters or more"
         />
+        <b.Box></b.Box>
         {criteria ? (
-          <IconWrapper className="checkcircle">
-            <CheckCircle />
+          <IconWrapper position="absolute" top="50%" right={12}>
+            <CheckCircle width={18} height={18} fill={theme.colors.blue} />
           </IconWrapper>
         ) : null}
-      </InputWrapper>
+      </b.Box>
       <b.Box mt={2}>
         <Bar variant="validation" password={info.password} />
       </b.Box>
@@ -56,40 +60,6 @@ export const PasswordInput: React.FC<{
   );
 };
 
-const InputWrapper = styled(b.Box)`
-  position: relative;
-`;
-
-const Input = styled(b.Input)`
-  width: 370px;
-  padding: 13px 35px 13px 13px;
-`;
-
 const IconWrapper = styled(b.Box)`
-  position: relative;
-  &.checkcircle {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-45%);
-    right: 12px;
-    svg {
-      width: 18px;
-      height: 18px;
-      path {
-        fill: ${({ theme }) => theme.colors.blue};
-      }
-    }
-  }
-  &.warning {
-    svg {
-      width: 15px;
-      height: 15px;
-      path {
-        fill: ${({ theme }) => theme.colors.pink};
-      }
-      rect {
-        fill: ${({ theme }) => theme.colors.pink};
-      }
-    }
-  }
+  transform: translateY(-45%);
 `;

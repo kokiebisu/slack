@@ -1,31 +1,31 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useContext } from "react";
+import styled, { ThemeContext } from "styled-components";
 import * as b from "../../../global/blocks";
 
 export const LinkButton: React.FC<{ url?: string; title?: string }> = ({
   url = "/",
   title = "Button",
 }) => {
+  const theme = useContext(ThemeContext);
   return (
-    <Item>
+    <Wrapper my={2}>
       <b.Anchor href={url}>
         <b.Box py={1}>
-          <b.Text color="gray">{title}</b.Text>
+          <b.Text
+            color={theme.colors.gray}
+            fontSize={14}
+            fontFamily="SlackLato-Light"
+          >
+            {title}
+          </b.Text>
         </b.Box>
       </b.Anchor>
-    </Item>
+    </Wrapper>
   );
 };
 
-export const Item = styled.div`
-  list-style: none;
-  color: ${({ theme }) => theme.colors.gray};
-  font-size: 0.79rem;
-  font-family: "SlackLato-Light";
-  margin: 5px 0;
-
+export const Wrapper = styled(b.Box)`
   &:hover {
     color: ${({ theme }) => theme.colors.gray__dark};
-    cursor: pointer;
   }
 `;

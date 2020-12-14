@@ -5,7 +5,7 @@ import { AnimatePresence } from "framer-motion";
 
 import * as b from "global/blocks";
 import { Header } from "components/organisms/header/header.component";
-import { Banner } from "components/organisms/banner/banner.component";
+
 import { Footer } from "components/organisms/footer/footer.component";
 import { useMeQuery, useMyTeamsQuery } from "generated/graphql";
 import { Modal } from "components/organisms/modal/modal.component";
@@ -41,7 +41,7 @@ export const Landing: React.FC<{}> = () => {
           <Header variant="landing" data={teamsData} loading={loading} />
         </b.Container>
       </HeaderWrapper>
-      <Banner variant="landing" />
+      <Prototype variant="banner" />
       <Prototype variant="together" />
       <Prototype variant="software" />
       <Prototype variant="choose" />
