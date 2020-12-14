@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export const NameLogo = ({
-  fill,
+  fill = ["#01C6F3", "#00BE7E", "#F0B101", "#F20151"],
   ...props
 }: {
   fill?: any;
