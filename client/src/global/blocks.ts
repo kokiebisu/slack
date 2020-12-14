@@ -300,6 +300,7 @@ export const Text = styled.p<
     ColorProps & {
       uppercase?: boolean;
       nowrap?: boolean;
+      breakall?: boolean;
     }
 >`
   ${typography}
@@ -308,6 +309,7 @@ export const Text = styled.p<
   margin: 0;
   text-transform: ${({ uppercase }) => uppercase && "uppercase"};
   white-space: ${({ nowrap }) => nowrap && "nowrap"};
+  word-break: ${({ breakall }) => breakall && "break-all"};
 `;
 
 export const LayoutWrapper = styled.div<SpaceProps>`

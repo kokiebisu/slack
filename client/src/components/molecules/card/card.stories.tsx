@@ -13,6 +13,13 @@ export const available = Template.bind({});
 available.args = {
   variant: "available",
 };
+available.decorators = [
+  (Story) => (
+    <div style={{ maxWidth: 570 }}>
+      <Story />
+    </div>
+  ),
+];
 
 export const message = Template.bind({});
 message.args = {

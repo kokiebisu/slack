@@ -44,6 +44,7 @@ export const WorkspacesAuth: React.FC<{
                   variant="available"
                   name={name}
                   url={id}
+                  extendsTo={{ maxWidth: 570 }}
                   avatarBackground={avatarBackground}
                 />
               </b.Box>

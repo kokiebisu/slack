@@ -45,9 +45,15 @@ export const Globe = () => {
  * Landing Breakout Section
  * @param
  */
-export const Share = ({ fill, ...props }: { fill?: any; props?: any }) => {
+export const Share = ({
+  fill,
+  ...props
+}: {
+  fill?: any;
+  [props: string]: any;
+}) => {
   return (
-    <svg {...props} viewBox="0 0 32 32" fill="none">
+    <svg {...props} viewBox="0 0 32 32">
       <path
         fill={fill}
         d="M23.2001 10.6799H14.1201C13.8549 10.6799 13.6005 10.7853 13.413 10.9728C13.2255 11.1604 13.1201 11.4147 13.1201 11.6799C13.1201 11.9451 13.2255 12.1995 13.413 12.387C13.6005 12.5746 13.8549 12.6799 14.1201 12.6799H23.2001C23.4653 12.6799 23.7197 12.5746 23.9072 12.387C24.0948 12.1995 24.2001 11.9451 24.2001 11.6799C24.2001 11.4147 24.0948 11.1604 23.9072 10.9728C23.7197 10.7853 23.4653 10.6799 23.2001 10.6799V10.6799Z"
@@ -73,10 +79,10 @@ export const ConnectCall = ({
   ...props
 }: {
   fill?: any;
-  props?: any;
+  [props: string]: any;
 }) => {
   return (
-    <svg {...props} fill="none">
+    <svg {...props}>
       <path
         fill={fill}
         d="M33.552 36.763V13.945c0-1.999-1.58-3.619-3.528-3.619H5.292c-1.948 0-3.528 1.62-3.528 3.619v22.818c0 1.998 1.58 3.619 3.528 3.619h24.732c1.948 0 3.528-1.62 3.528-3.619zM33.6 17.834v15.028l9.708 5.747a1.942 1.942 0 001.985.004c.302-.178.553-.435.727-.745.174-.31.265-.661.264-1.019V13.846c0-.357-.09-.709-.264-1.018a2.005 2.005 0 00-.727-.746 1.941 1.941 0 00-1.985.004L33.6 17.834z"
@@ -98,7 +104,7 @@ export const Collaborate = ({
   ...props
 }: {
   fill?: any;
-  props?: any;
+  [props: string]: any;
 }) => {
   return (
     <svg {...props}>
@@ -143,7 +149,13 @@ export const Info = () => {
   );
 };
 
-export const Warning = ({ fill, ...props }: { fill?: any; props?: any }) => {
+export const Warning = ({
+  fill,
+  ...props
+}: {
+  fill?: any;
+  [props: string]: any;
+}) => {
   return (
     <svg {...props} viewBox="0 0 512.001 512.001">
       <g>
@@ -618,7 +630,7 @@ export const CheckCircle = ({
   ...props
 }: {
   fill?: any;
-  props?: any;
+  [props: string]: any;
 }) => {
   return (
     <svg {...props} viewBox="0 0 512 512">
@@ -801,10 +813,19 @@ export const Sidebar = () => {
   );
 };
 
-export const UserAlt = () => {
+export const UserAlt = ({
+  fill,
+  ...props
+}: {
+  fill?: string;
+  [props: string]: any;
+}) => {
   return (
-    <svg viewBox="0 0 512 512">
-      <path d="M256 288c79.5 0 144-64.5 144-144S335.5 0 256 0 112 64.5 112 144s64.5 144 144 144zm128 32h-55.1c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16H128C57.3 320 0 377.3 0 448v16c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48v-16c0-70.7-57.3-128-128-128z" />
+    <svg {...props} viewBox="0 0 512 512">
+      <path
+        fill={fill}
+        d="M256 288c79.5 0 144-64.5 144-144S335.5 0 256 0 112 64.5 112 144s64.5 144 144 144zm128 32h-55.1c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16H128C57.3 320 0 377.3 0 448v16c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48v-16c0-70.7-57.3-128-128-128z"
+      />
     </svg>
   );
 };
@@ -839,7 +860,13 @@ export const BottomArrow = () => {
   );
 };
 
-export const RightArrow = ({ fill, ...props }: { fill?: any; props?: any }) => {
+export const RightArrow = ({
+  fill,
+  ...props
+}: {
+  fill?: any;
+  [props: string]: any;
+}) => {
   return (
     <svg {...props} viewBox="0 0 448 512">
       <path
@@ -886,7 +913,7 @@ export const ThinHashTag = ({
   ...props
 }: {
   fill?: any;
-  props?: any;
+  [props: string]: any;
 }) => {
   return (
     <svg {...props} viewBox="0 0 448 512">
@@ -999,7 +1026,13 @@ export const SmilePlus = () => {
  * Plus
  */
 
-export const BoldPlus = ({ fill, ...props }: { fill?: any; props?: any }) => {
+export const BoldPlus = ({
+  fill,
+  ...props
+}: {
+  fill?: any;
+  [props: string]: any;
+}) => {
   return (
     <svg {...props} viewBox="0 0 448 448">
       <path
