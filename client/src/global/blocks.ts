@@ -254,6 +254,22 @@ export const Flex = styled.div<FlexboxProps & { noHeight?: boolean }>`
     `}
 `;
 
+export const AnimatedSpan = styled(motion.span)<
+  SpaceProps &
+    ColorProps &
+    LayoutProps &
+    BackgroundProps &
+    BorderProps &
+    TypographyProps
+>`
+  ${space}
+  ${color}
+  ${layout}
+  ${background}
+  ${border}
+  ${typography}
+`;
+
 export const Span = styled.span<
   SpaceProps &
     ColorProps &

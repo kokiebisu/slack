@@ -1,40 +1,40 @@
-import React from 'react';
-import { useReducer } from 'react';
+import React from "react";
+import { useReducer } from "react";
 
 // Blocks
-import * as b from 'global/blocks';
+import * as b from "global/blocks";
 
 // Styles
-import { Wrapper, Container } from 'modals/Invite/index.styles';
+import { Wrapper, Container } from "modals/Invite/index.styles";
 
 // Context
-import { useToggleDispatch } from 'context/toggle-context';
+import { useToggleDispatch } from "context/toggle-context";
 
 // Query
-import { Before } from 'modals/Invite/Before';
+import { Before } from "modals/Invite/Before";
 
 // Animation
-import { AnimatePresence } from 'framer-motion';
-import { After } from 'modals/Invite/After';
+import { AnimatePresence } from "framer-motion";
+import { After } from "modals/Invite/After";
 
 // Types
 type State = { email: string; name: string; error: string; done: boolean };
 type Action =
-  | { type: 'add_email'; payload: string }
-  | { type: 'add_name'; payload: string }
-  | { type: 'give_error'; payload: string }
-  | { type: 'done' };
+  | { type: "add_email"; payload: string }
+  | { type: "add_name"; payload: string }
+  | { type: "give_error"; payload: string }
+  | { type: "done" };
 
 // Reducer
 const reducer = (state: State, action: Action) => {
   switch (action.type) {
-    case 'add_email':
+    case "add_email":
       return { ...state, email: action.payload };
-    case 'add_name':
+    case "add_name":
       return { ...state, name: action.payload };
-    case 'give_error':
+    case "give_error":
       return { ...state, error: action.payload };
-    case 'done':
+    case "done":
       return { ...state, done: !state.done };
     default:
       return state;
@@ -45,9 +45,9 @@ export const InviteModal = () => {
   const dispatchToggle = useToggleDispatch();
 
   const [input, dispatchInput] = useReducer(reducer, {
-    email: '',
-    name: '',
-    error: '',
+    email: "",
+    name: "",
+    error: "",
 
     done: false,
   });
@@ -55,28 +55,30 @@ export const InviteModal = () => {
   return (
     <AnimatePresence>
       <Wrapper>
-        <b.Flex justifyContent='center' alignItems='center'>
+        <b.Flex justifyContent="center" alignItems="center">
           <Container animate={{ y: 0 }} initial={{ y: 15 }}>
             {input.done ? (
-              <b.Box
-                key='after'
+              <b.AnimatedBox
+                key="after"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}>
+                exit={{ opacity: 0 }}
+              >
                 <After input={input} dispatchToggle={dispatchToggle} />
-              </b.Box>
+              </b.AnimatedBox>
             ) : (
-              <b.Box
-                key='before'
+              <b.AnimatedBox
+                key="before"
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}>
+                animate={{ opacity: 1 }}
+              >
                 <Before
                   dispatchToggle={dispatchToggle}
                   input={input}
                   dispatchInput={dispatchInput}
-                  finish={() => dispatchInput({ type: 'done' })}
+                  finish={() => dispatchInput({ type: "done" })}
                 />
-              </b.Box>
+              </b.AnimatedBox>
             )}
           </Container>
         </b.Flex>
