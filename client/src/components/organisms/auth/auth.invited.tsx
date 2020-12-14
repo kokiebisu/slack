@@ -130,17 +130,19 @@ export const InvitedAuth: React.FC<{}> = () => {
           }}
         >
           {[
-            { value: "fullname", variant: "plain" },
+            {
+              value: "fullname",
+              variant: "plain",
+            },
             { value: "password", variant: "password" },
           ].map((params, index) => (
             <b.Box key={index}>
               <Input invite info={info} setInfo={setInfo} {...params} />
             </b.Box>
           ))}
-          <Dialog variant="password" password={info.password} />
           <Dialog variant="error" error={errorLog} />
           <b.Box mt={3}>
-            <Button variant="confirm" />
+            <Button variant="confirm" block />
           </b.Box>
         </form>
       )}

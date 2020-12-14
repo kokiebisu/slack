@@ -42,7 +42,7 @@ export const FindAuth: React.FC<{}> = () => {
             )}
           </b.Box>
           <b.Box>
-            <Button variant="confirm" loading={false} />
+            <Button variant="confirm" loading={false} block />
           </b.Box>
         </form>
       )}

@@ -9,23 +9,30 @@ import styled, { ThemeContext } from "styled-components";
 import { CheckCircle } from "assets/svg";
 
 import "util/string";
+import { emailRegex, fullNameRegex } from "util/passwordUtil";
 
 export const PlainInput: React.FC<{
   value?: string;
   info?: any;
   setInfo?: any;
-  criteria?: boolean;
-  placeholder?: string;
 }> = ({
-  value = "property",
+  value = "fullname",
   setInfo,
   info = {
     name: "",
   },
-  placeholder = "Placeholder here",
-  criteria = false,
 }) => {
   const theme = useContext(ThemeContext);
+  const types = {
+    fullname: {
+      placeholder: "Your full name",
+      criteria: info[value]?.match(fullNameRegex),
+    },
+    email: {
+      placeholder: "name@work-email.com",
+      criteria: info[value]?.match(emailRegex),
+    },
+  };
   return (
     <div>
       <b.Box my={2}>
@@ -45,9 +52,9 @@ export const PlainInput: React.FC<{
           border="1px solid"
           borderColor={theme.colors.gray}
           borderRadius={3}
-          placeholder={placeholder}
+          placeholder={types[value].placeholder}
         />
-        {criteria ? (
+        {types[value].criteria ? (
           <IconWrapper position="absolute" top="50%" right={12}>
             <CheckCircle width={18} height={18} fill={theme.colors.blue} />
           </IconWrapper>

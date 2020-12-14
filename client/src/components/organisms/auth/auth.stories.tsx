@@ -44,6 +44,13 @@ export const find = Template.bind({});
 find.args = {
   variant: "find",
 };
+find.decorators = [
+  (Story) => (
+    <div style={{ maxWidth: 370 }}>
+      <Story />
+    </div>
+  ),
+];
 
 export const confirm = Template.bind({});
 confirm.args = {
@@ -54,3 +61,10 @@ export const invited = Template.bind({});
 invited.args = {
   variant: "invited",
 };
+invited.decorators = [
+  (Story) => (
+    <div style={{ maxWidth: 370 }}>
+      <Story />
+    </div>
+  ),
+];

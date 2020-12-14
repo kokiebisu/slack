@@ -14,15 +14,13 @@ export const PasswordInput: React.FC<{
   info?: any;
   setInfo?: any;
   criteria?: boolean;
-  placeholder?: string;
 }> = ({
   value = "password",
   setInfo,
   info = {
     password: "",
   },
-  placeholder = "Placeholder here",
-  criteria = true,
+  criteria = info.password.length > 6,
 }) => {
   const theme = useContext(ThemeContext);
   return (
@@ -43,7 +41,7 @@ export const PasswordInput: React.FC<{
           }
           border="1px solid gray"
           borderRadius={3}
-          placeholder={placeholder}
+          placeholder="6 characters or more"
         />
         <b.Box></b.Box>
         {criteria ? (
@@ -63,8 +61,5 @@ export const PasswordInput: React.FC<{
 };
 
 const IconWrapper = styled(b.Box)`
-  /* position: absolute;
-  top: 50%; */
   transform: translateY(-45%);
-  /* right: 12px; */
 `;

@@ -90,20 +90,14 @@ export const SignUpAuth: React.FC<{}> = () => {
             {
               value: "fullname",
               variant: "plain",
-              placeholder: "Your full name",
-              criteria: info.fullname?.match(fullNameRegex),
             },
             {
               value: "email",
               variant: "plain",
-              placeholder: "name@work-email.com",
-              criteria: info.email?.match(emailRegex),
             },
             {
               value: "password",
               variant: "password",
-              placeholder: "6 characters or more",
-              criteria: info.password?.length > 6,
             },
           ].map((params, index) => (
             <b.Box my={2} key={index}>
