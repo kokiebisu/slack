@@ -1,22 +1,16 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useContext } from "react";
+import { ThemeContext } from "styled-components";
+
+import * as b from "global/blocks";
 
 /** assets */
 import { Hamburger } from "assets/svg";
 
-/** colors */
-import { main } from "global/colors";
-
 export const HamburgerButton: React.FC<{}> = () => {
+  const theme = useContext(ThemeContext);
   return (
-    <Wrapper>
-      <Hamburger width={25} fill={main.colors.black} />
-    </Wrapper>
+    <b.Box border="none" backgroundColor="transparent">
+      <Hamburger width={25} fill={theme.colors.black} />
+    </b.Box>
   );
 };
-
-const Wrapper = styled.button`
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-`;

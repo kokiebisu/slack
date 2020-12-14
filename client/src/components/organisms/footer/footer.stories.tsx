@@ -22,7 +22,7 @@ signin.args = {
   variant: "signin",
 };
 
-export const find = Template.bind({});
-find.args = {
-  variant: "find",
+export const getstarted = Template.bind({});
+getstarted.args = {
+  variant: "getstarted",
 };

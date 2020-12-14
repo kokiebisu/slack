@@ -195,7 +195,7 @@ const Wrapper = styled(b.Box)`
   background-color: rgba(0, 0, 0, 0.8);
 `;
 
-const Container = styled(b.Box)`
+const Container = styled(b.AnimatedBox)`
   background-color: white;
   max-width: 520px;
   width: 100%;

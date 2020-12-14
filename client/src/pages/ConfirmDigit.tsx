@@ -209,7 +209,7 @@ export const ConfirmDigit = () => {
                         <b.Text>Hold on...</b.Text>
                       </LoadingText>
                       <Rotate>
-                        <b.Span
+                        <b.AnimatedSpan
                           transition={spinTransition}
                           animate={{ rotate: 360 }}
                         />

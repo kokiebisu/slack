@@ -19,5 +19,9 @@ export const Input: React.FC<InputProps> = ({
     plain: <PlainInput {...props} />,
     password: <PasswordInput {...props} />,
   };
-  return <div data-testid={`${variant}-input`}>{variants[variant]}</div>;
+  return (
+    <div data-testid={`${variant}-input`} style={extendsTo}>
+      {variants[variant]}
+    </div>
+  );
 };

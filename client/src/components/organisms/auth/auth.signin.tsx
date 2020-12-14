@@ -1,20 +1,25 @@
-import * as React from "react";
-import styled from "styled-components";
+import React, { useContext } from "react";
+import styled, { ThemeContext } from "styled-components";
 /** styles */
 import * as b from "global/blocks";
+import { Button } from "components/atoms/button/button.component";
 
 // Breakpoints;
 import { signin } from "global/sizes";
-/** vectors */
-import { RightArrow } from "assets/svg";
 
 export const SignInAuth: React.FC<{}> = () => {
+  const theme = useContext(ThemeContext);
   return (
-    <Wrapper>
-      <b.Flex flexDirection="column" alignItems="center">
-        <Content>
+    <b.Box>
+      <div>
+        <b.Box
+          backgroundColor={theme.colors.white}
+          border="1px solid"
+          borderColor={theme.colors.white__dark}
+          borderRadius={5}
+        >
           <b.Flex justifyContent="center">
-            <ContentInner py={2}>
+            <b.Box maxWidth={330} width={1} py={2}>
               <b.Box pt={4} pb={3}>
                 <b.Text
                   fontFamily="SlackLato-Bold"
@@ -35,8 +40,17 @@ export const SignInAuth: React.FC<{}> = () => {
               </b.Box>
               <b.Box>
                 <b.Box width={1}>
-                  <b.Flex alignItems="center" justifyContent="center">
-                    <WorkspaceInput placeholder="your-workspace-url" />
+                  <b.Flex alignItems="center" justifyContent="space-between">
+                    <b.Input
+                      border="1px solid"
+                      borderColor={theme.colors.gray}
+                      py={3}
+                      px={2}
+                      borderRadius={6}
+                      fontSize={18}
+                      textAlign="right"
+                      placeholder="your-workspace-url"
+                    />
                     <b.Box ml={2}>
                       <b.Text fontSize={20} fontFamily="SlackLato-Bold">
                         .slack.com
@@ -53,14 +67,7 @@ export const SignInAuth: React.FC<{}> = () => {
                     py={3}
                     width={1}
                   >
-                    <b.Flex justifyContent="center">
-                      <b.Text color="white" fontFamily="SlackLato-Bold">
-                        Continue
-                      </b.Text>
-                      <IconWrapper>
-                        <RightArrow />
-                      </IconWrapper>
-                    </b.Flex>
+                    <Button variant="continue" />
                   </b.Box>
                 </b.Button>
               </b.Box>
@@ -69,57 +76,34 @@ export const SignInAuth: React.FC<{}> = () => {
                   Don't know your workspace URL? Find your workspace
                 </b.Text>
               </b.Box>
-            </ContentInner>
+            </b.Box>
           </b.Flex>
-        </Content>
+        </b.Box>
         <CreateWorkspaceWrapper>
-          <CreateWorkspaceContainer>
-            <b.Box mr={1}>
-              <b.Text fontSize={15}>
-                Need to get your group started on Slack?
-              </b.Text>
-            </b.Box>
-            <b.Box>
-              <b.Anchor
-                href="/get-started"
-                fontSize={15}
-                fontFamily="SlackLato-Black"
-                color="blue"
-              >
-                Create a new workspace
-              </b.Anchor>
-            </b.Box>
-          </CreateWorkspaceContainer>
+          <b.Flex justifyContent="center">
+            <CreateWorkspaceContainer>
+              <b.Box mr={1}>
+                <b.Text fontSize={15}>
+                  Need to get your group started on Slack?
+                </b.Text>
+              </b.Box>
+              <b.Box mr={2}>
+                <b.Anchor
+                  href="/get-started"
+                  fontSize={15}
+                  fontFamily="SlackLato-Black"
+                  color="blue"
+                >
+                  Create a new workspace
+                </b.Anchor>
+              </b.Box>
+            </CreateWorkspaceContainer>
+          </b.Flex>
         </CreateWorkspaceWrapper>
-      </b.Flex>
-    </Wrapper>
+      </div>
+    </b.Box>
   );
 };
-
-const Wrapper = styled(b.Box)`
-  width: fit-content;
-`;
-
-const Content = styled(b.Box)`
-  width: 100%;
-  max-width: 620px;
-  background-color: white;
-  border: 1px solid ${({ theme }) => theme.colors.white__dark};
-  border-radius: 5px;
-`;
-
-const ContentInner = styled(b.Box)`
-  max-width: 330px;
-  width: 100%;
-`;
-
-const WorkspaceInput = styled.input`
-  border-radius: 4px;
-  border: 1px solid gray;
-  padding: 10px 5px;
-  text-align: right;
-  font-size: 18px;
-`;
 
 const CreateWorkspaceWrapper = styled(b.Box)`
   margin: 16px 0;
@@ -154,20 +138,8 @@ const CreateWorkspaceContainer = styled(b.Flex)`
   }
 
   a {
-    margin-top: 5px;
     &:hover {
       text-decoration: underline;
-    }
-  }
-`;
-
-const IconWrapper = styled(b.Box)`
-  margin-left: 10px;
-  svg {
-    width: 13px;
-    height: 13px;
-    path {
-      fill: ${({ theme }) => theme.colors.white};
     }
   }
 `;

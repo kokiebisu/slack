@@ -4,7 +4,7 @@ import * as b from "global/blocks";
 import { size } from "global/sizes";
 import { Bullet } from "components/atoms/bullet/bullet.component";
 
-export const TogetherTemplate: React.FC<{}> = () => {
+export const TogetherPrototype: React.FC<{}> = () => {
   const bullets = ["share", "connect", "collaborate"];
   return (
     <Wrapper>

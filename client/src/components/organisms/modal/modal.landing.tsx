@@ -190,7 +190,7 @@ const Buttons = styled(b.Box)`
   }
 `;
 
-const Button = styled(b.Box)`
+const Button = styled(b.AnimatedBox)`
   & > button {
     font-size: 14px;
     font-family: "CircularPro-Bold";

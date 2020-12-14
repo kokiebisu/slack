@@ -1,9 +1,9 @@
-import styled from 'styled-components';
-import * as b from 'global/blocks';
+import styled from "styled-components";
+import * as b from "global/blocks";
 
-import { size } from 'global/sizes';
+import { size } from "global/sizes";
 
-export const ModalWrapper = styled(b.Box)`
+export const ModalWrapper = styled(b.AnimatedBox)`
   background-color: white;
   position: fixed;
   z-index: 9999;

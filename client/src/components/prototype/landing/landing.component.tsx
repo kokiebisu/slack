@@ -1,11 +1,10 @@
 import React from "react";
 
-/**
- * Templates
- */
-import { ChooseTemplate } from "./landing.choose";
-import { SoftwareTemplate } from "./landing.software";
-import { TogetherTemplate } from "./landing.together";
+/** variants */
+import { ChoosePrototype } from "./landing.choose";
+import { SoftwarePrototype } from "./landing.software";
+import { TogetherPrototype } from "./landing.together";
+import { BannerPrototype } from "./landing.banner";
 
 export interface PrototypeProps {
   variant?: string;
@@ -17,9 +16,10 @@ export const Prototype: React.FC<PrototypeProps> = ({
   ...props
 }) => {
   const variants = {
-    together: <TogetherTemplate {...props} />,
-    software: <SoftwareTemplate {...props} />,
-    choose: <ChooseTemplate {...props} />,
+    together: <TogetherPrototype {...props} />,
+    software: <SoftwarePrototype {...props} />,
+    choose: <ChoosePrototype {...props} />,
+    banner: <BannerPrototype {...props} />,
   };
-  return <div>{variants[variant]}</div>;
+  return <div data-testid={`landing--${variant}`}>{variants[variant]}</div>;
 };

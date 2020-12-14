@@ -1,20 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import * as b from "global/blocks";
 
-import styled from "styled-components";
+import { ThemeContext } from "styled-components";
 
-import { useHistory } from "react-router-dom";
 import { Button } from "components/atoms/button/button.component";
 
 export const AvailableCard: React.FC<{
   name?: string;
   url?: string;
   avatarBackground?: string;
-}> = ({ name = "Channel", url, avatarBackground = "red" }) => {
-  const history = useHistory();
+  onClick?: () => void;
+}> = ({
+  name = "Channel",
+  url,
+  avatarBackground = "red",
+  onClick = () => alert("pressed"),
+}) => {
+  const theme = useContext(ThemeContext);
   return (
-    <Wrapper>
+    <b.Box
+      width={1}
+      height={90}
+      borderBottom="1px solid"
+      borderColor={theme.colors.gray__lighter}
+    >
       <b.Flex alignItems="center" justifyContent="space-between">
         <b.Box>
           <b.Flex>
@@ -23,10 +33,9 @@ export const AvailableCard: React.FC<{
                 backgroundColor={avatarBackground}
                 width={50}
                 height={50}
-                style={{
-                  border: "3px solid gray__light",
-                  borderRadius: "8px",
-                }}
+                border="3px solid"
+                borderColor={theme.colors.gray__lighter}
+                borderRadius={8}
               >
                 <b.Flex alignItems="center" justifyContent="center">
                   <b.Box>
@@ -44,58 +53,21 @@ export const AvailableCard: React.FC<{
             <b.Box>
               <b.Flex alignItems="center">
                 <b.Box>
-                  <WorkspaceName>
-                    <b.Text>{name}</b.Text>
-                  </WorkspaceName>
-                  <WorkspaceURL>
-                    <b.Text>{url}.slack.com</b.Text>
-                  </WorkspaceURL>
+                  <b.Box mb={2}>
+                    <b.Text fontFamily="SlackLato-Bold">{name}</b.Text>
+                  </b.Box>
+                  <b.Box>
+                    <b.Text fontSize={13} color={theme.colors.gray__light}>
+                      {url}.slack.com
+                    </b.Text>
+                  </b.Box>
                 </b.Box>
               </b.Flex>
             </b.Box>
           </b.Flex>
         </b.Box>
-        <Button
-          variant="launch"
-          onClick={() => {
-            history.push(`/client/${url}`);
-          }}
-          title="Launch"
-        />
+        <Button variant="launch" onClick={onClick} title="Launch" />
       </b.Flex>
-    </Wrapper>
+    </b.Box>
   );
 };
-
-const Wrapper = styled(b.Box)`
-  height: 90px;
-  /* padding: 25px 0; */
-  max-width: 570px;
-  width: 100%;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.gray__lighter};
-`;
-
-const IconWrapper = styled(b.Box)`
-  margin-right: 15px;
-`;
-
-const Icon = styled(b.Box)`
-  width: 38px;
-  height: 38px;
-  border-radius: 5px;
-  background-color: blue;
-`;
-
-const WorkspaceName = styled(b.Box)`
-  margin-bottom: 5px;
-  & > p {
-    font-family: "SlackLato-Bold";
-  }
-`;
-
-const WorkspaceURL = styled(b.Box)`
-  & > p {
-    font-size: 13px;
-    color: ${({ theme }) => theme.colors.gray__light};
-  }
-`;

@@ -1,5 +1,5 @@
-import * as React from "react";
-import styled from "styled-components";
+import React, { useContext } from "react";
+import styled, { ThemeContext } from "styled-components";
 
 // Blocks
 import * as b from "global/blocks";
@@ -21,18 +21,32 @@ export const WorkspacesAuth: React.FC<{
     { id: "channel2", name: "Channel 2", avatarBackground: "blue" },
   ],
 }) => {
+  const theme = useContext(ThemeContext);
   return (
     <Container>
       <b.Box>
         <b.Flex justifyContent="center">
-          <Header>
-            <Title>
-              <b.Text>Your workspaces</b.Text>
-            </Title>
-            <Description my={3}>
-              <b.Text>You're already a member of these Slack teams:</b.Text>
-            </Description>
-          </Header>
+          <b.Box
+            width={1}
+            maxWidth={570}
+            border-bottom="0.5px solid"
+            borderColor={theme.colors.gray__lighter}
+          >
+            <b.Box>
+              <b.Text fontSize={24} fontFamily="SlackLato-Black">
+                Your workspaces
+              </b.Text>
+            </b.Box>
+            <b.Box my={3}>
+              <b.Text
+                fontSize={14}
+                fontFamily="SlackLato-Regular"
+                color={theme.colors.gray__light}
+              >
+                You're already a member of these Slack teams:
+              </b.Text>
+            </b.Box>
+          </b.Box>
         </b.Flex>
       </b.Box>
       <b.Box>
@@ -44,6 +58,7 @@ export const WorkspacesAuth: React.FC<{
                   variant="available"
                   name={name}
                   url={id}
+                  extendsTo={{ maxWidth: 570 }}
                   avatarBackground={avatarBackground}
                 />
               </b.Box>
@@ -54,19 +69,32 @@ export const WorkspacesAuth: React.FC<{
       <b.Box>
         <b.Flex justifyContent="center">
           <ShowMore my={4}>
-            <b.Text>Show {teams.length} more workspaces</b.Text>
+            <b.Text
+              fontSize={15}
+              color={theme.colors.blue}
+              fontFamily="SlackLato-Regular"
+            >
+              Show {teams.length} more workspaces
+            </b.Text>
           </ShowMore>
         </b.Flex>
       </b.Box>
       <b.Box>
         <b.Flex justifyContent="center">
-          <NotFound>
-            <b.Text>
+          <b.Box>
+            <b.Text
+              fontFamily="SlackLato-Regular"
+              lineHeight={1.5}
+              fontSize={14}
+              color={theme.colors.gray__light}
+            >
               Looking for a different workspace? You can try{" "}
-              <span className="anotheremail">another email address</span> or ask
-              your Workspace Administrator for an invitation.
+              <Span color={theme.colors.blue} className="anotheremail">
+                another email address
+              </Span>{" "}
+              or ask your Workspace Administrator for an invitation.
             </b.Text>
-          </NotFound>
+          </b.Box>
         </b.Flex>
       </b.Box>
     </Container>
@@ -75,10 +103,6 @@ export const WorkspacesAuth: React.FC<{
 
 const ShowMore = styled(b.Button)`
   & > p {
-    font-size: 15px;
-    color: ${({ theme }) => theme.colors.blue};
-    font-family: "SlackLato-Regular";
-
     &:hover {
       cursor: pointer;
       text-decoration: underline;
@@ -86,18 +110,9 @@ const ShowMore = styled(b.Button)`
   }
 `;
 
-const NotFound = styled(b.Box)`
-  & > p {
-    font-family: "SlackLato-Regular";
-    line-height: 1.5;
-    font-size: 14px;
-    color: ${({ theme }) => theme.colors.gray__light};
-    & > span {
-      color: ${({ theme }) => theme.colors.blue};
-      &:hover {
-        text-decoration: underline;
-      }
-    }
+const Span = styled(b.Span)`
+  &:hover {
+    text-decoration: underline;
   }
 `;
 
@@ -107,31 +122,4 @@ const Container = styled(b.Box)`
     max-width: 570px;
     width: 100%;
   }
-`;
-
-const Header = styled(b.Box)`
-  width: 100%;
-  max-width: 570px;
-  border-bottom: 0.5px solid ${({ theme }) => theme.colors.gray__lighter};
-`;
-
-const Title = styled(b.Box)`
-  & > p {
-    font-size: 24px;
-    font-family: "SlackLato-Black";
-  }
-`;
-
-const Description = styled(b.Box)`
-  & > p {
-    font-size: 14px;
-    font-family: "SlackLato-Regular";
-    color: ${({ theme }) => theme.colors.gray__light};
-  }
-`;
-
-const Top = styled(b.Box)`
-  border-bottom: 2px solid red;
-  max-width: 500px;
-  background-color: red;
 `;
