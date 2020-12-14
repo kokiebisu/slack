@@ -22,67 +22,37 @@ export const PrimaryButton: React.FC<{
 }) => {
   return (
     <Wrapper
-      fill={fill}
-      textColor={textColor}
-      inverse={inverse}
       className={`${size}`}
       onClick={onPress}
+      backgroundColor={inverse ? "transparent" : fill}
+      border="1px solid"
+      borderColor={inverse ? fill : "transparent"}
+      borderRadius={3}
     >
-      {title}
+      <Title
+        color={inverse ? fill : textColor}
+        fontSize={14}
+        letterSpacing={1}
+        fontFamily="CircularPro-Bold"
+      >
+        {title}
+      </Title>
     </Wrapper>
   );
 };
 
-export const Wrapper = styled(b.Box)`
-  cursor: pointer;
-  white-space: nowrap;
-  display: inline-block;
-  font-size: 14px;
-  font-family: "CircularPro-Bold";
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border: 1px solid
-    ${({ inverse, fill }: { inverse: boolean; fill: any }) =>
-      inverse ? fill : "transparent"};
-  background-color: ${({ inverse, fill }: { inverse: boolean; fill: any }) =>
-    inverse ? "transparent" : fill};
-  color: ${({
-    inverse,
-    fill,
-    textColor,
-  }: {
-    inverse: boolean;
-    fill: any;
-    textColor: any;
-  }) => (inverse ? fill : textColor)};
-
+const Wrapper = styled(b.Box)`
   @media ${size.lg} {
     width: auto;
     padding: 0 40px;
   }
 
-  &.inverse {
-    margin-top: 15px;
-    margin-left: 0px;
-    @media ${size.lg} {
-      margin-top: 0;
-      margin-left: 15px;
-    }
-  }
-
   &.sm {
-    padding: 13px 20px;
-    border-radius: 5px;
+    padding: 15px;
   }
+`;
 
-  &.md {
-    padding: 22px 24px;
-    border-radius: 5px;
-  }
-
-  &.lg {
-    padding: 20px;
-    height: 60px;
-    border-radius: 3px;
-  }
+const Title = styled(b.Text)`
+  white-space: nowrap;
+  text-transform: uppercase;
 `;

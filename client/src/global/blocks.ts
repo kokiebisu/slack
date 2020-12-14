@@ -51,6 +51,7 @@ export const Box = styled(motion.div)<BoxProps>`
   ${border}
   ${shadow}
   ${grid}
+  
 
   top: ${({ top }) => `${top}px`};
   bottom: ${({ bottom }) => `${bottom}px`};
