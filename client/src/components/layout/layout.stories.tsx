@@ -1,7 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 import { Layout, LayoutProps } from "components/layout/layout.component";
-import { clearInterval } from "timers";
 
 export default {
   title: "Design System/Layout",

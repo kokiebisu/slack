@@ -137,7 +137,7 @@ export const LandingFooter: React.FC<{}> = () => {
                   <b.Flex>
                     {options.map((option, index) => {
                       return (
-                        <b.Box mr={3}>
+                        <b.Box mr={3} key={index}>
                           <Button
                             variant="transparent"
                             to={option.url}

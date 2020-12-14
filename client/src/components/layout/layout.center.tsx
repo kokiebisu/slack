@@ -4,45 +4,36 @@ import styled from "styled-components";
 import * as b from "global/blocks";
 
 import { Link } from "react-router-dom";
-
+import { Footer } from "components/organisms/footer/footer.component";
 // Svg
 import { Globe } from "assets/svg";
 import { NameLogo } from "assets/svg/Logo";
 
-export const CenterLayout: React.FC<{}> = ({ children }) => {
+export const CenterLayout: React.FC<{}> = ({
+  children = (
+    <b.Box p={6} backgroundColor="gray" borderRadius={15}>
+      <b.Flex alignItems="center" justifyContent="center">
+        <b.Text>Content</b.Text>
+      </b.Flex>
+    </b.Box>
+  ),
+}) => {
   return (
     <Wrapper>
       <Container>
-        <Link to="/">
-          <b.Box pt={4}>
-            <b.Flex justifyContent="center">
+        <b.Box pt={4}>
+          <b.Flex justifyContent="center">
+            <Link to="/">
               <IconWrapper className="namelogo">
                 <NameLogo />
               </IconWrapper>
-            </b.Flex>
-          </b.Box>
-        </Link>
-        <ChildWrapper>{children}</ChildWrapper>
-        <b.Box py={4}>
-          <b.Flex alignItems="center" justifyContent="center">
-            <b.Box mr={2}>
-              <FooterLink href="/legal">Privacy & terms</FooterLink>
-            </b.Box>
-            <b.Box mr={2}>
-              <FooterLink href="/help">Contact us</FooterLink>
-            </b.Box>
-            <b.Box mr={2}>
-              <b.Flex>
-                <IconWrapper mr={1}>
-                  <Globe />
-                </IconWrapper>
-                <b.Box>
-                  <ChangeRegion>Change region</ChangeRegion>
-                </b.Box>
-              </b.Flex>
-            </b.Box>
+            </Link>
           </b.Flex>
         </b.Box>
+        <div>{children}</div>
+        <div>
+          <Footer variant="getstarted" />
+        </div>
       </Container>
     </Wrapper>
   );
@@ -55,10 +46,6 @@ const Wrapper = styled(b.Box)`
 const Container = styled(b.Container)`
   display: grid;
   grid-template-rows: 100px auto 100px;
-`;
-
-const ChildWrapper = styled(b.Box)`
-  flex-grow: 1;
 `;
 
 const IconWrapper = styled(b.Box)`

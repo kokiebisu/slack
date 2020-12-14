@@ -6,7 +6,7 @@ import integrations from "assets/img/slack-integrations.png";
 import enterprise from "assets/img/slack-enterprise.png";
 import { Bullet } from "components/atoms/bullet/bullet.component";
 
-export const SoftwareTemplate: React.FC<{}> = () => {
+export const SoftwarePrototype: React.FC<{}> = () => {
   const bullets = [
     [
       "Connect over 2,200 ready-to-use Slack apps",

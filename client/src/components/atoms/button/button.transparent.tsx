@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import * as b from "global/blocks";
-import styled from "styled-components";
+import styled, { ThemeContext } from "styled-components";
 
 export const TransparentButton: React.FC<{
   title?: string;

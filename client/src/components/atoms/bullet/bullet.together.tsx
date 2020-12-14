@@ -9,18 +9,18 @@ export const TogetherBullet: React.FC<{ together?: string }> = ({
   const theme = useContext(ThemeContext);
   const togethers = {
     share: {
-      icon: <Share width={48} fill={theme.colors.blue} />,
+      icon: <Share width={48} height={48} fill={theme.colors.blue} />,
       title: "Share files",
       subtitle: "Keep files and the messages about them together in channels.",
     },
     connect: {
-      icon: <ConnectCall width={48} fill={theme.colors.blue} />,
+      icon: <ConnectCall width={48} height={48} fill={theme.colors.blue} />,
       title: "Connect on a call",
       subtitle:
         "If working face to face is easier, go from channel to voice or video call in a click",
     },
     collaborate: {
-      icon: <Collaborate width={48} fill={theme.colors.blue} />,
+      icon: <Collaborate width={48} height={48} fill={theme.colors.blue} />,
       title: "Collaborate with partners",
       subtitle:
         "Work faster with external clients, vendors and more by working in a channel",

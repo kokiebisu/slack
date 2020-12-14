@@ -6,7 +6,7 @@ import { size } from "global/sizes";
 /** components */
 import { Button } from "components/atoms/button/button.component";
 
-export const LandingBanner: React.FC<{}> = () => {
+export const BannerPrototype: React.FC<{}> = () => {
   return (
     <Wrapper>
       <b.Container>
