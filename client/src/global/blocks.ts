@@ -27,22 +27,23 @@ import {
 // Sizes
 import { landing } from "global/sizes";
 
-type BoxProps = SpaceProps &
-  ColorProps &
-  LayoutProps &
-  BackgroundProps &
-  BorderProps &
-  ShadowProps &
-  GridProps & {
-    top?: number;
-    bottom?: number;
-    right?: number;
-    left?: number;
-    wp?: number;
-    hp?: number;
-  };
-
-export const Box = styled(motion.div)<BoxProps>`
+export const AnimatedBox = styled(motion.div)<
+  SpaceProps &
+    ColorProps &
+    LayoutProps &
+    BackgroundProps &
+    BorderProps &
+    ShadowProps &
+    GridProps &
+    PositionProps & {
+      top?: number;
+      bottom?: number;
+      right?: number;
+      left?: number;
+      wp?: number;
+      hp?: number;
+    }
+>`
   position: relative;
   ${space}
   ${color}
@@ -51,7 +52,7 @@ export const Box = styled(motion.div)<BoxProps>`
   ${border}
   ${shadow}
   ${grid}
-  
+  ${position}
 
   top: ${({ top }) => `${top}px`};
   bottom: ${({ bottom }) => `${bottom}px`};
@@ -72,30 +73,76 @@ export const Box = styled(motion.div)<BoxProps>`
     `}
 `;
 
-export const Grid = styled(motion.div)<GridProps & LayoutProps>`
+export const Box = styled.div<
+  SpaceProps &
+    ColorProps &
+    LayoutProps &
+    BackgroundProps &
+    BorderProps &
+    ShadowProps &
+    GridProps &
+    PositionProps & {
+      top?: number;
+      bottom?: number;
+      right?: number;
+      left?: number;
+      wp?: number;
+      hp?: number;
+    }
+>`
+  position: relative;
+  ${space}
+  ${color}
+  ${layout}
+  ${background}
+  ${border}
+  ${shadow}
+  ${grid}
+  ${position}
+
+  top: ${({ top }) => `${top}px`};
+  bottom: ${({ bottom }) => `${bottom}px`};
+  right: ${({ right }) => `${right}px`};
+  left: ${({ left }) => `${left}px`};
+
+
+  ${({ wp }) =>
+    wp &&
+    css`
+      width: ${wp}%;
+    `}
+
+  ${({ hp }) =>
+    hp &&
+    css`
+      height: ${hp}%;
+    `}
+`;
+
+export const Grid = styled.div<GridProps & LayoutProps>`
   display: grid;
   ${grid}
   ${layout}
 `;
 
-export const Position = styled(motion.button)<PositionProps>`
+export const Position = styled.button<PositionProps>`
   ${position}
 `;
 
-type ButtonProps = SpaceProps &
-  ColorProps &
-  LayoutProps &
-  BackgroundProps &
-  BorderProps &
-  ShadowProps &
-  GridProps & {
-    noborder?: boolean;
-    uppercase?: boolean;
-    transparent?: boolean;
-    bgColor?: string;
-  };
-
-export const Button = styled(motion.button)<ButtonProps>`
+export const Button = styled(motion.button)<
+  SpaceProps &
+    ColorProps &
+    LayoutProps &
+    BackgroundProps &
+    BorderProps &
+    ShadowProps &
+    GridProps & {
+      noborder?: boolean;
+      uppercase?: boolean;
+      transparent?: boolean;
+      bgColor?: string;
+    }
+>`
   position: relative;
   ${space}
   ${color}
@@ -131,14 +178,14 @@ export const Button = styled(motion.button)<ButtonProps>`
 
 `;
 
-type AnchorProps = SpaceProps &
-  ColorProps &
-  LayoutProps &
-  BackgroundProps &
-  BorderProps &
-  TypographyProps & { uppercase?: boolean; underline?: boolean };
-
-export const Anchor = styled(motion.a)<AnchorProps>`
+export const Anchor = styled.a<
+  SpaceProps &
+    ColorProps &
+    LayoutProps &
+    BackgroundProps &
+    BorderProps &
+    TypographyProps & { uppercase?: boolean; underline?: boolean }
+>`
   position: relative;
   ${space}
   ${color}
@@ -161,13 +208,13 @@ export const Anchor = styled(motion.a)<AnchorProps>`
     `}
 `;
 
-type ContainerProps = SpaceProps & {
-  fluid?: boolean;
-  noHeight?: boolean;
-  signin?: boolean;
-};
-
-export const Container = styled.div<ContainerProps>`
+export const Container = styled.div<
+  SpaceProps & {
+    fluid?: boolean;
+    noHeight?: boolean;
+    signin?: boolean;
+  }
+>`
   ${space}
   position: relative;
   flex-grow: 1;
@@ -204,9 +251,7 @@ export const Container = styled.div<ContainerProps>`
 
 `;
 
-type FlexProps = FlexboxProps & { noHeight?: boolean };
-
-export const Flex = styled.div<FlexProps>`
+export const Flex = styled.div<FlexboxProps & { noHeight?: boolean }>`
   ${flexbox}
   position: relative;
   display: flex;
@@ -230,14 +275,14 @@ export const Flex = styled.div<FlexProps>`
 //     `}
 // `;
 
-type SpanProps = SpaceProps &
-  ColorProps &
-  LayoutProps &
-  BackgroundProps &
-  BorderProps &
-  TypographyProps;
-
-export const Span = styled(motion.span)<SpanProps>`
+export const Span = styled.span<
+  SpaceProps &
+    ColorProps &
+    LayoutProps &
+    BackgroundProps &
+    BorderProps &
+    TypographyProps
+>`
   ${space}
   ${color}
   ${layout}
@@ -246,18 +291,16 @@ export const Span = styled(motion.span)<SpanProps>`
   ${typography}
 `;
 
-type InputProps = SpaceProps & BorderProps & TypographyProps;
-
-export const Input = styled.input<InputProps>`
+export const Input = styled.input<SpaceProps & BorderProps & TypographyProps>`
   ${space}
   ${border}
   ${typography}
 `;
 
-type TextProps = TypographyProps &
-  ColorProps & { uppercase?: boolean; center?: boolean; right?: boolean };
-
-export const H3 = styled(motion.h3)<TextProps>`
+export const H3 = styled.h3<
+  TypographyProps &
+    ColorProps & { uppercase?: boolean; center?: boolean; right?: boolean }
+>`
   ${typography}
   ${color}
   padding: 0;
@@ -282,7 +325,10 @@ export const H3 = styled(motion.h3)<TextProps>`
     `}
 `;
 
-export const P = styled(motion.h3)<TextProps>`
+export const P = styled.p<
+  TypographyProps &
+    ColorProps & { uppercase?: boolean; center?: boolean; right?: boolean }
+>`
   ${typography}
   ${color}
   padding: 0;
@@ -307,7 +353,10 @@ export const P = styled(motion.h3)<TextProps>`
     `}
 `;
 
-export const Text = styled(motion.p)<TextProps>`
+export const Text = styled.p<
+  TypographyProps &
+    ColorProps & { uppercase?: boolean; center?: boolean; right?: boolean }
+>`
   ${typography}
   ${color}
   padding: 0;
@@ -332,8 +381,6 @@ export const Text = styled(motion.p)<TextProps>`
     `}
 `;
 
-type LayoutWrapperProps = SpaceProps;
-
-export const LayoutWrapper = styled.div<LayoutWrapperProps>`
+export const LayoutWrapper = styled.div<SpaceProps>`
   ${space}
 `;

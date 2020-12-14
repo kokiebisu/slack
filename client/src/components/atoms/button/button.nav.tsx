@@ -51,7 +51,11 @@ export const NavButton: React.FC<{
   };
 
   return (
-    <Wrapper
+    <b.AnimatedBox
+      py={2}
+      mx={4}
+      border="none"
+      backgroundColor="transparent"
       className={hovered ? "hovered" : undefined}
       onHoverStart={() => {
         setHovered(true);
@@ -60,67 +64,38 @@ export const NavButton: React.FC<{
         setHovered(false);
       }}
     >
-      <b.Text>{dropdowns[nav].name}</b.Text>
+      <b.Text color="gray" fontSize={16} fontFamily="CircularPro-Book">
+        {dropdowns[nav].name}
+      </b.Text>
       {hovered && (
-        <Dropdown>
+        <Dropdown position="absolute" borderRadius={3} backgroundColor="white">
           {dropdowns[nav].items.map((dropdown, index) => {
             return (
-              <LinkWrapper key={index}>
-                <b.Text>{dropdown.name}</b.Text>
+              <LinkWrapper py={2} key={index}>
+                <b.Text
+                  color="gray"
+                  fontSize={16}
+                  fontFamily="CircularPro-Book"
+                >
+                  {dropdown.name}
+                </b.Text>
               </LinkWrapper>
             );
           })}
         </Dropdown>
       )}
-    </Wrapper>
+    </b.AnimatedBox>
   );
 };
 
-const Wrapper = styled(motion.div)`
-  position: relative;
-  border: none;
-  background-color: transparent;
-  padding: 12px 0px;
-  margin: 0px 15px;
-  font-size: 16px;
-  cursor: pointer;
-  font-family: "CircularPro-Book";
-
-  /* &.hovered {
-    padding-bottom: 30px;
-    padding-right: 10px;
-  } */
-
-  & p {
-    color: ${({ theme }) => theme.colors.gray};
-  }
-
-  & > a {
-    text-decoration: none;
-  }
-`;
-
-const Dropdown = styled.div`
+const Dropdown = styled(b.Box)`
   width: 250px;
-  background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
-  position: absolute;
   top: 45px;
   padding: 13px 20px;
-  border-radius: 5px;
 `;
 
-const LinkWrapper = styled.div`
-  padding: 8px 0;
-  display: flex;
-  & p {
-    color: ${({ theme }) => theme.colors.gray};
-  }
-
-  & > a {
-    text-decoration: none;
-  }
-
+const LinkWrapper = styled(b.Box)`
   &:hover {
     & p {
       color: ${({ theme }) => theme.colors.blue};
