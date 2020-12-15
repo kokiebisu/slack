@@ -3,8 +3,8 @@ import * as b from "global/blocks";
 import styled, { ThemeContext } from "styled-components";
 
 export const TransparentButton: React.FC<{
-  title?: string;
-}> = ({ title = "Transparent Button" }) => {
+  content?: any;
+}> = ({ content = <b.Text nowrap>Transparent Button</b.Text> }) => {
   const theme = useContext(ThemeContext);
   return (
     <Wrapper
@@ -16,7 +16,7 @@ export const TransparentButton: React.FC<{
       border="none"
       color={theme.colors.gray__dark}
     >
-      <b.Text nowrap>{title}</b.Text>
+      {content}
     </Wrapper>
   );
 };

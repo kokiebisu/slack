@@ -7,12 +7,7 @@ import { SignInHeader } from "components/organisms/header/header.signin";
 import { WorkspaceHeader } from "components/organisms/header/header.workspace";
 import { FindHeader } from "./header.find";
 
-export interface HeaderProps {
-  variant?: string;
-  [x: string]: any;
-}
-
-export const Header: React.FC<HeaderProps> = ({
+export const Header: React.FC<{ variant?: string; [x: string]: any }> = ({
   variant = "landing",
   ...props
 }) => {

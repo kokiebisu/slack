@@ -26,6 +26,7 @@ import {
 
 // Sizes
 import { landing } from "global/sizes";
+import { Link } from "react-router-dom";
 
 export const AnimatedBox = styled(motion.div)<
   SpaceProps &
@@ -158,6 +159,12 @@ export const Ul = styled.ul<LayoutProps & SpaceProps>`
   ${layout}
   ${space}
     display: block;
+`;
+
+export const Li = styled.li<LayoutProps & SpaceProps>`
+  ${layout}
+  ${space}
+  display: block;
 `;
 
 export const Grid = styled.div<GridProps & LayoutProps>`
