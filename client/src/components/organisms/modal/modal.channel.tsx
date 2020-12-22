@@ -60,9 +60,9 @@ export const ChannelModal: React.FC<{}> = () => {
           isPublic: !isPrivate,
         },
       });
-    }
-    if (response.data?.createChannel.ok) {
-      dispatchToggle({ type: "toggle_channel" });
+      if (response.data?.createChannel.ok) {
+        dispatchToggle({ type: "toggle_channel" });
+      }
     }
   };
 
@@ -192,7 +192,7 @@ export const ChannelModal: React.FC<{}> = () => {
                     <b.Text
                       fontSize={15}
                       color={theme.colors.gray__light}
-                      fontfamily="SlackLato-Regular"
+                      fontFamily="SlackLato-Regular"
                     >
                       Learn more
                     </b.Text>
@@ -200,16 +200,19 @@ export const ChannelModal: React.FC<{}> = () => {
                 </b.Flex>
               </b.Box>
               <b.Button
-                fontSize={15}
                 borderRadius={5}
                 py={3}
                 px={4}
-                fontFamily="SlackLato-Bold"
-                color={theme.colors.gray}
                 backgroundColor={theme.colors.gray__lighter}
                 onClick={handleSubmit}
               >
-                Create
+                <b.Text
+                  fontSize={15}
+                  fontFamily="SlackLato-Bold"
+                  color={theme.colors.gray}
+                >
+                  Create
+                </b.Text>
               </b.Button>
             </b.Flex>
           </b.Box>

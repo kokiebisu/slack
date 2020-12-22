@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState, useContext } from "react";
+import styled, { ThemeContext } from "styled-components";
 
 /** context */
 import { useToggleDispatch } from "context/toggle-context";
@@ -23,6 +23,7 @@ export const LandingHeader: React.FC<{ data?: any; loading?: boolean }> = ({
   const history = useHistory();
   const [pressed, setPressed] = useState(false);
   const dispatchToggle = useToggleDispatch();
+  const theme = useContext(ThemeContext);
   return (
     <div>
       <b.Box backgroundColor={theme.colors.white} py={3}>
