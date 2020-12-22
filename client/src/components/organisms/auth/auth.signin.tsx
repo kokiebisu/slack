@@ -60,16 +60,7 @@ export const SignInAuth: React.FC<{}> = () => {
                 </b.Box>
               </b.Box>
               <b.Box mt={3} mb={4}>
-                <b.Button width={1}>
-                  <b.Box
-                    borderRadius={5}
-                    backgroundColor="green"
-                    py={3}
-                    width={1}
-                  >
-                    <Button variant="continue" />
-                  </b.Box>
-                </b.Button>
+                <Button variant="next" block />
               </b.Box>
               <b.Box my={3}>
                 <b.Text fontFamily="SlackLato-Regular">

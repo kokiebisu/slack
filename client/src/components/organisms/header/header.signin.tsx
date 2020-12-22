@@ -1,18 +1,17 @@
-import * as React from "react";
+import React, { useContext } from "react";
 
 // Blocks
 
 // Svgs
 import { NameLogo } from "assets/svg/Logo";
 
-import styled from "styled-components";
+import styled, { ThemeContext } from "styled-components";
 import * as b from "global/blocks";
 
 import { signin } from "global/sizes";
 
-interface Props {}
-
-export const SignInHeader: React.FC<Props> = () => {
+export const SignInHeader: React.FC<{}> = () => {
+  const theme = useContext(ThemeContext);
   const navItems = [
     { name: "Product", url: "/product" },
     { name: "Pricing", url: "/pricing" },
@@ -22,20 +21,25 @@ export const SignInHeader: React.FC<Props> = () => {
   ];
 
   return (
-    <HeaderWrapper>
-      <Wrapper>
+    <b.Box position="sticky" top="0" zIndex={99}>
+      <b.Box
+        backgroundColor={theme.colors.white}
+        borderBottom="0.5px solid"
+        borderColor={theme.colors.gray__light}
+        boxShadow="0 1px 1px rgba(0, 0, 0, 0.15)"
+      >
         <b.Container signin>
           <b.Flex alignItems="center" justifyContent="space-between">
-            <Left alignItems="center">
+            <b.Flex alignItems="center">
               <b.Anchor href="/">
                 <b.Box top={2} mr={4}>
-                  <IconWrapper className="namelogo">
-                    <NameLogo />
+                  <IconWrapper>
+                    <NameLogo width={105} height={60} />
                   </IconWrapper>
                 </b.Box>
               </b.Anchor>
-            </Left>
-            <Right alignItems="center">
+            </b.Flex>
+            <b.Flex flexGrow={1} justifyContent="flex-end" alignItems="center">
               <LargeNav>
                 {navItems.map((navItem, index) => {
                   return (
@@ -56,33 +60,13 @@ export const SignInHeader: React.FC<Props> = () => {
                   <b.Text>Menu</b.Text>
                 </SignInItem>
               </SmallNav>
-            </Right>
+            </b.Flex>
           </b.Flex>
         </b.Container>
-      </Wrapper>
-    </HeaderWrapper>
+      </b.Box>
+    </b.Box>
   );
 };
-
-const HeaderWrapper = styled.div`
-  position: sticky;
-  top: 0;
-  z-index: 99;
-`;
-
-const Wrapper = styled.div`
-  background-color: white;
-  height: 70px;
-  border-bottom: 0.5px solid lightgray;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-`;
-
-const Left = styled(b.Flex)``;
-
-const Right = styled(b.Flex)`
-  flex-grow: 1;
-  justify-content: flex-end;
-`;
 
 const LargeNav = styled(b.Box)`
   display: none;
@@ -130,23 +114,19 @@ const SignInItem = styled(b.Box)`
 `;
 
 const IconWrapper = styled(b.Box)`
-  &.namelogo {
-    svg {
-      width: 105px;
-      height: 60px;
-      path {
-        &:nth-child(2) {
-          fill: ${({ theme }) => theme.colors.blue__lighter};
-        }
-        &:nth-child(3) {
-          fill: ${({ theme }) => theme.colors.green__lighter};
-        }
-        &:nth-child(4) {
-          fill: ${({ theme }) => theme.colors.yellow};
-        }
-        &:nth-child(5) {
-          fill: ${({ theme }) => theme.colors.red};
-        }
+  svg {
+    path {
+      &:nth-child(2) {
+        fill: ${({ theme }) => theme.colors.blue__lighter};
+      }
+      &:nth-child(3) {
+        fill: ${({ theme }) => theme.colors.green__lighter};
+      }
+      &:nth-child(4) {
+        fill: ${({ theme }) => theme.colors.yellow};
+      }
+      &:nth-child(5) {
+        fill: ${({ theme }) => theme.colors.red};
       }
     }
   }

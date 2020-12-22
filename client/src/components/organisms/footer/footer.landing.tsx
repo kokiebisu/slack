@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import * as b from "global/blocks";
-import styled from "styled-components";
+import styled, { ThemeContext } from "styled-components";
 import { Link } from "react-router-dom";
 
 /** assets */
@@ -15,6 +15,7 @@ import { size } from "global/sizes";
 import { Button } from "components/atoms/button/button.component";
 
 export const LandingFooter: React.FC<{}> = () => {
+  const theme = useContext(ThemeContext);
   const options = [
     { name: "Status", url: "/" },
     { name: "Privacy & Terms", url: "/" },
@@ -87,7 +88,7 @@ export const LandingFooter: React.FC<{}> = () => {
     <div>
       <b.Box className="footer__logo">
         <b.Container>
-          <Content className="logo">
+          <b.Box py={4} className="logo">
             <b.Flex>
               <Logo>
                 <NoNameLogo width={65} />
@@ -101,20 +102,30 @@ export const LandingFooter: React.FC<{}> = () => {
                           return (
                             <SectionWrapper key={index}>
                               <b.Box>
-                                <SectionName py={2}>
-                                  <b.Text>Product</b.Text>
-                                </SectionName>
-                                <Items>
+                                <b.Box py={2}>
+                                  <b.Text
+                                    color={theme.colors.gray__lighter}
+                                    uppercase
+                                    fontSize={14}
+                                    fontFamily="CircularPro-Bold"
+                                  >
+                                    Product
+                                  </b.Text>
+                                </b.Box>
+                                <b.Box p={0} m={0}>
                                   {subsection.items.map((item, index) => {
                                     return (
-                                      <Item key={index}>
-                                        <ItemLink to={item.url}>
+                                      <b.Li py={3} key={index}>
+                                        <b.Text
+                                          fontSize={14}
+                                          color={theme.colors.gray__light}
+                                        >
                                           {item.name}
-                                        </ItemLink>
-                                      </Item>
+                                        </b.Text>
+                                      </b.Li>
                                     );
                                   })}
-                                </Items>
+                                </b.Box>
                               </b.Box>
                             </SectionWrapper>
                           );
@@ -125,13 +136,13 @@ export const LandingFooter: React.FC<{}> = () => {
                 })}
               </Sections>
             </b.Flex>
-          </Content>
+          </b.Box>
         </b.Container>
       </b.Box>
       <b.Box className="footer__options">
-        <Content className="options" py={4}>
+        <b.Box py={4}>
           <b.Container>
-            <b.Flex>
+            <b.Flex alignItems="center" justifyContent="space-between">
               <OptionsWrapper>
                 <b.Flex alignItems="center">
                   <b.Flex>
@@ -141,25 +152,36 @@ export const LandingFooter: React.FC<{}> = () => {
                           <Button
                             variant="transparent"
                             to={option.url}
-                            title={option.name}
+                            content={<b.Text>{option.name}</b.Text>}
                           />
                         </b.Box>
                       );
                     })}
                   </b.Flex>
-                  <ChangeRegionButton>
-                    <b.Flex alignItems="center">
-                      <IconWrapper className="globe" mr={1}>
-                        <Globe />
-                      </IconWrapper>
-                      <b.Text>Change Region</b.Text>
-                      <b.Box ml={2}>
-                        <IconWrapper className="bottom__arrow">
-                          <BottomArrow />
-                        </IconWrapper>
-                      </b.Box>
-                    </b.Flex>
-                  </ChangeRegionButton>
+                  <Button
+                    variant="transparent"
+                    content={
+                      <b.Flex alignItems="center">
+                        <b.Box mr={1}>
+                          <Globe
+                            width={16}
+                            height={16}
+                            fill={theme.colors.gray}
+                          />
+                        </b.Box>
+                        <b.Text>Change Region</b.Text>
+                        <b.Box ml={2}>
+                          <b.Box>
+                            <BottomArrow
+                              width={8}
+                              height={8}
+                              fill={theme.colors.gray}
+                            />
+                          </b.Box>
+                        </b.Box>
+                      </b.Flex>
+                    }
+                  />
                 </b.Flex>
               </OptionsWrapper>
               <SocialMediaWrapper>
@@ -173,114 +195,25 @@ export const LandingFooter: React.FC<{}> = () => {
               </SocialMediaWrapper>
             </b.Flex>
           </b.Container>
-        </Content>
+        </b.Box>
       </b.Box>
-      <CopyrightWrapper>
+      <b.Box backgroundColor={theme.colors.gray__lighter} py={3}>
         <b.Container>
-          <Copyright>
+          <b.Text fontSize={12}>
             © Copyright 2020 Slack Technologies, Inc. All rights reserved.
             Various trademarks held by their respective owners.
-          </Copyright>
+          </b.Text>
         </b.Container>
-      </CopyrightWrapper>
+      </b.Box>
     </div>
   );
 };
-
-const Content = styled(b.Box)`
-  padding: 24px 0;
-`;
-
-const CopyrightWrapper = styled.div`
-  background-color: gray;
-`;
-
-const Copyright = styled.p`
-  font-size: 12px;
-`;
 
 const OptionsWrapper = styled(b.Box)`
   & > div {
     flex-direction: column;
     @media ${size.sm} {
       flex-direction: row;
-    }
-  }
-`;
-
-const ChangeRegionButton = styled(b.Button)`
-  margin: 30px 0;
-
-  & p {
-    font-size: 14px;
-    color: ${({ theme }) => theme.colors.gray};
-    font-family: "CircularPro-Bold";
-  }
-
-  & > div {
-    & > div {
-      &:nth-child(3) {
-        display: none;
-        @media ${size.sm} {
-          display: block;
-        }
-      }
-    }
-  }
-
-  &:hover {
-    & p {
-      color: ${({ theme }) => theme.colors.blue};
-    }
-
-    & > div {
-      & > div {
-        &:nth-child(1) {
-          & > svg {
-            path {
-              fill: ${({ theme }) => theme.colors.blue} !important;
-            }
-          }
-        }
-        &:nth-child(3) {
-          & > div {
-            & > svg {
-              path {
-                fill: ${({ theme }) => theme.colors.blue} !important;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  @media ${size.sm} {
-    margin: 0px;
-  }
-`;
-
-const IconWrapper = styled(b.Box)`
-  position: relative;
-  &.bottom__arrow {
-    bottom: 2px;
-    svg {
-      width: 8px;
-      height: 8px;
-      path {
-        fill: ${({ theme }) => theme.colors.gray};
-      }
-    }
-  }
-
-  &.globe {
-    top: 2px;
-    svg {
-      width: 16px;
-      height: 16px;
-      path {
-        fill: ${({ theme }) => theme.colors.gray};
-      }
     }
   }
 `;
@@ -303,7 +236,7 @@ const Sections = styled(b.Box)`
   }
 `;
 
-export const SectionWrapper = styled(b.Flex)`
+const SectionWrapper = styled(b.Flex)`
   width: 100%;
   flex-direction: row;
   @media ${size.xs} {
@@ -315,33 +248,7 @@ export const SectionWrapper = styled(b.Flex)`
   }
 `;
 
-export const SectionName = styled(b.Box)`
-  & > p {
-    color: #464646;
-    text-transform: uppercase;
-    font-size: 14px;
-    font-family: "CircularPro-Bold";
-  }
-`;
-
-export const Items = styled.ul`
-  color: #696969;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-`;
-
-export const Item = styled.li`
-  color: #868686;
-  font-family: "SlackLato-Regular";
-  padding: 10px 0;
-  font-size: 14px;
-`;
-
-export const ItemLink = styled(Link)`
-  cursor: pointer;
-  text-decoration: none;
-  color: ${({ theme }) => theme.colors.gray};
+const ItemLink = styled(Link)`
   &:hover {
     color: #1264a3;
   }
