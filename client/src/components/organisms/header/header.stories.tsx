@@ -1,6 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { Header } from "./header.component";
+import { Header, HeaderProps } from "./header.component";
 
 export default {
   title: "Design System/Organisms/Header",
