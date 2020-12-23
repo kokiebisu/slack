@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState, useContext } from "react";
+import styled, { ThemeContext } from "styled-components";
 
 /** context */
 import { useToggleDispatch } from "context/toggle-context";
@@ -14,16 +14,19 @@ import { NameLogo } from "assets/svg/Logo";
 /** components */
 import { Button } from "components/atoms/button/button.component";
 import { Modal } from "../modal/modal.component";
+import { useHistory } from "react-router";
 
 export const LandingHeader: React.FC<{ data?: any; loading?: boolean }> = ({
   data,
   loading,
 }) => {
+  const history = useHistory();
   const [pressed, setPressed] = useState(false);
   const dispatchToggle = useToggleDispatch();
+  const theme = useContext(ThemeContext);
   return (
-    <>
-      <Wrapper py={3}>
+    <div>
+      <b.Box backgroundColor={theme.colors.white} py={3}>
         <b.Flex alignItems="center" justifyContent="space-between">
           <b.Box width={1}>
             <b.Flex alignItems="center">
@@ -62,8 +65,8 @@ export const LandingHeader: React.FC<{ data?: any; loading?: boolean }> = ({
                   <b.Box mr={3}>
                     <Button
                       variant="transparent"
-                      title="Sign in"
-                      to="/signin"
+                      content={<b.Text>Sign in</b.Text>}
+                      onClick={() => history.push("/signin")}
                     />
                   </b.Box>
                   <div>
@@ -85,19 +88,15 @@ export const LandingHeader: React.FC<{ data?: any; loading?: boolean }> = ({
             </>
           )}
         </b.Flex>
-      </Wrapper>
-      {pressed && data?.myTeams.teams ? (
+      </b.Box>
+      {pressed && data?.myTeams?.teams ? (
         <LaunchWrapper>
           <Modal variant="launch" teams={data?.myTeams.teams} />
         </LaunchWrapper>
       ) : null}
-    </>
+    </div>
   );
 };
-
-const Wrapper = styled(b.Box)`
-  background-color: white;
-`;
 
 const Normal = styled.div`
   display: none;

@@ -1,7 +1,7 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import { useState, useReducer } from "react";
 import { useParams } from "react-router-dom";
-
+import styled, { ThemeContext } from "styled-components";
 // Blocks
 import * as b from "global/blocks";
 
@@ -13,8 +13,6 @@ import { Switch } from "components/Workspace/Switch";
 
 // Query
 import { useCreateChannelMutation } from "generated/graphql";
-
-import styled from "styled-components";
 
 // Context
 import { useToggleDispatch } from "context/toggle-context";
@@ -35,21 +33,16 @@ const reducer = (state: State, action: Action) => {
   }
 };
 
-interface SwitchProps {
-  isOn: boolean;
-  switchToggle: () => void;
-}
-
 export const ChannelModal: React.FC<{}> = () => {
   const dispatchToggle = useToggleDispatch();
-
+  const theme = useContext(ThemeContext);
   const [error, setError] = useState("");
   const [isPrivate, setIsPrivate] = useState(false);
   const [input, dispatchInput] = useReducer(reducer, {
     name: "",
     description: "",
   });
-  const { teamId } = useParams();
+  const { teamId }: { teamId?: string } = useParams();
   const [create] = useCreateChannelMutation();
 
   const handleSubmit = async () => {
@@ -58,32 +51,50 @@ export const ChannelModal: React.FC<{}> = () => {
       return;
     }
 
-    const response = await create({
-      variables: {
-        name: input.name,
-        teamId,
-        description: input.description,
-        isPublic: !isPrivate,
-      },
-    });
-    if (response.data?.createChannel.ok) {
-      dispatchToggle({ type: "toggle_channel" });
+    if (teamId) {
+      const response = await create({
+        variables: {
+          name: input.name,
+          teamId,
+          description: input.description,
+          isPublic: !isPrivate,
+        },
+      });
+      if (response.data?.createChannel.ok) {
+        dispatchToggle({ type: "toggle_channel" });
+      }
     }
   };
 
   return (
-    <Wrapper>
+    <b.Box
+      zIndex={1000}
+      height="100vh"
+      width="100vw"
+      position="fixed"
+      backgroundColor="rgba(0, 0, 0, 0.8)"
+    >
       <b.Flex justifyContent="center" alignItems="center">
-        <Container animate={{ y: 0 }} initial={{ y: 15 }}>
-          <Header>
+        <b.AnimatedBox
+          backgroundColor={theme.colors.white}
+          maxWidth={520}
+          width={1}
+          padding={20}
+          borderRadius={10}
+          animate={{ y: 0 }}
+          initial={{ y: 15 }}
+        >
+          <b.Box mb={20}>
             <b.Flex justifyContent="space-between">
-              <Title>
-                {isPrivate ? (
-                  <b.Text>Create a private channel</b.Text>
-                ) : (
-                  <b.Text>Create a channel</b.Text>
-                )}
-              </Title>
+              <b.Box>
+                <b.Text
+                  fontFamily="SlackLato-Black"
+                  fontSize={28}
+                  color={theme.colors.black}
+                >
+                  {isPrivate ? "Create a private channel" : "Create a channel"}
+                </b.Text>
+              </b.Box>
               <IconButtonWrapper
                 className="close"
                 onClick={() => dispatchToggle({ type: "toggle_channel" })}
@@ -91,13 +102,18 @@ export const ChannelModal: React.FC<{}> = () => {
                 <Close />
               </IconButtonWrapper>
             </b.Flex>
-          </Header>
-          <Description>
-            <b.Text>
+          </b.Box>
+          <b.Box>
+            <b.Text
+              fontSize={14}
+              lineHeight={1.5}
+              fontFamily="SlackLato-Regular"
+              color={theme.colors.gray__light}
+            >
               Channels are where your team communicates. They’re best when
               organized around a topic — #marketing, for example.
             </b.Text>
-          </Description>
+          </b.Box>
           <SectionHeader>
             <b.Text>Name</b.Text>
           </SectionHeader>
@@ -167,53 +183,44 @@ export const ChannelModal: React.FC<{}> = () => {
           </PrivateOption>
           <b.Box>
             <b.Flex justifyContent="space-between" alignItems="center">
-              <LearnMore>
+              <b.Box>
                 <b.Flex alignItems="center">
                   <IconButtonWrapper className="info">
                     <Info />
                   </IconButtonWrapper>
                   <b.Box>
-                    <b.Text>Learn more</b.Text>
+                    <b.Text
+                      fontSize={15}
+                      color={theme.colors.gray__light}
+                      fontFamily="SlackLato-Regular"
+                    >
+                      Learn more
+                    </b.Text>
                   </b.Box>
                 </b.Flex>
-              </LearnMore>
-              <LearnButton onClick={handleSubmit}>Create</LearnButton>
+              </b.Box>
+              <b.Button
+                borderRadius={5}
+                py={3}
+                px={4}
+                backgroundColor={theme.colors.gray__lighter}
+                onClick={handleSubmit}
+              >
+                <b.Text
+                  fontSize={15}
+                  fontFamily="SlackLato-Bold"
+                  color={theme.colors.gray}
+                >
+                  Create
+                </b.Text>
+              </b.Button>
             </b.Flex>
           </b.Box>
-        </Container>
+        </b.AnimatedBox>
       </b.Flex>
-    </Wrapper>
+    </b.Box>
   );
 };
-
-const Wrapper = styled(b.Box)`
-  display: relative;
-  z-index: 1000;
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.8);
-`;
-
-const Container = styled(b.AnimatedBox)`
-  background-color: white;
-  max-width: 520px;
-  width: 100%;
-  padding: 20px;
-  border-radius: 10px;
-`;
-
-const Header = styled(b.Box)`
-  margin-bottom: 20px;
-`;
-
-const Title = styled(b.Box)`
-  & > p {
-    font-family: "SlackLato-Black";
-    font-size: 28px;
-    color: ${({ theme }) => theme.colors.black};
-  }
-`;
 
 const IconButtonWrapper = styled(b.Button)`
   position: relative;
@@ -244,15 +251,6 @@ const IconButtonWrapper = styled(b.Button)`
         fill: ${({ theme }) => theme.colors.gray__light};
       }
     }
-  }
-`;
-
-const Description = styled(b.Box)`
-  & > p {
-    font-size: 14px;
-    line-height: 1.5;
-    font-family: "SlackLato-Regular";
-    color: ${({ theme }) => theme.colors.gray__light};
   }
 `;
 
@@ -322,23 +320,6 @@ const PrivateOption = styled(b.Box)`
       }
     }
   }
-`;
-
-const LearnMore = styled(b.Box)`
-  p {
-    font-size: 15px;
-    color: ${({ theme }) => theme.colors.gray__light};
-    font-family: "SlackLato-Regular";
-  }
-`;
-
-const LearnButton = styled(b.Button)`
-  background-color: ${({ theme }) => theme.colors.gray__lighter};
-  color: ${({ theme }) => theme.colors.gray};
-  font-family: "SlackLato-Bold";
-  border-radius: 5px;
-  padding: 10px 18px;
-  font-size: 15px;
 `;
 
 const NameWrapper = styled(b.Box)`
