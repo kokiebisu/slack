@@ -68,7 +68,9 @@ export const GetStartedLayout: React.FC<{
           )}
         </b.Box>
       </b.Container>
-      <b.Box width={1}>{content}</b.Box>
+      <b.Box width={1}>
+        <b.Flex justifyContent="center">{content}</b.Flex>
+      </b.Box>
       <b.Box py={4}>
         <Footer variant="getstarted" />
       </b.Box>

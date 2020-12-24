@@ -22,6 +22,7 @@ export const TransparentButton: React.FC<{
 };
 
 const Wrapper = styled(b.Box)`
+  white-space: nowrap;
   &:hover {
     color: ${({ theme }) => theme.colors.blue};
     border-color: ${({ theme }) => theme.colors.gray};

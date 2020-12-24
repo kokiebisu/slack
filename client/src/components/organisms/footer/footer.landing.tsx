@@ -109,7 +109,7 @@ export const LandingFooter: React.FC<{}> = () => {
                                     fontSize={14}
                                     fontFamily="CircularPro-Bold"
                                   >
-                                    Product
+                                    {subsection.title}
                                   </b.Text>
                                 </b.Box>
                                 <b.Box p={0} m={0}>

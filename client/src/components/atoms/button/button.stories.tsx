@@ -23,9 +23,9 @@ export default {
   ],
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+const TemplateStory: Story<ButtonProps> = (args) => <Button {...args} />;
 
-export const primary = Template.bind({});
+export const primary = TemplateStory.bind({});
 primary.args = {
   variant: "primary",
   onPress: () => alert("button pressed"),
@@ -42,19 +42,19 @@ primary.argTypes = {
   },
 };
 
-export const nav = Template.bind({});
+export const nav = TemplateStory.bind({});
 nav.args = {
   variant: "nav",
   onPress: () => alert("button pressed"),
 };
 
-export const transparent = Template.bind({});
+export const transparent = TemplateStory.bind({});
 transparent.args = {
   variant: "transparent",
   onPress: () => alert("button pressed"),
 };
 
-export const socialmedia = Template.bind({});
+export const socialmedia = TemplateStory.bind({});
 socialmedia.args = {
   variant: "socialmedia",
 };
@@ -67,27 +67,27 @@ socialmedia.argTypes = {
   },
 };
 
-export const link = Template.bind({});
+export const link = TemplateStory.bind({});
 link.args = {
   variant: "link",
 };
 
-export const launch = Template.bind({});
+export const launch = TemplateStory.bind({});
 launch.args = {
   variant: "launch",
 };
 
-export const reaction = Template.bind({});
+export const reaction = TemplateStory.bind({});
 reaction.args = {
   variant: "reaction",
 };
 
-export const confirm = Template.bind({});
+export const confirm = TemplateStory.bind({});
 confirm.args = {
   variant: "confirm",
 };
 
-export const email = Template.bind({});
+export const email = TemplateStory.bind({});
 email.args = {
   variant: "email",
 };
@@ -100,22 +100,27 @@ email.argTypes = {
   },
 };
 
-export const hamburger = Template.bind({});
+export const hamburger = TemplateStory.bind({});
 hamburger.args = {
   variant: "hamburger",
 };
 
-export const workspace = Template.bind({});
+export const workspace = TemplateStory.bind({});
 workspace.args = {
   variant: "workspace",
 };
 
-export const getstarted = Template.bind({});
+export const getstarted = TemplateStory.bind({});
 getstarted.args = {
   variant: "getstarted",
 };
 
-export const next = Template.bind({});
+export const next = TemplateStory.bind({});
 next.args = {
   variant: "next",
+};
+
+export const square = TemplateStory.bind({});
+square.args = {
+  variant: "square",
 };

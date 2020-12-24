@@ -17,6 +17,7 @@ import { ReactionButton } from "./button.reaction";
 import { WorkspaceButton } from "./button.workspace";
 import { GetStartedButton } from "./button.getstarted";
 import { NextButton } from "./button.next";
+import { SquareButton } from "./button.square";
 
 export interface ButtonProps {
   to?: string;
@@ -29,6 +30,7 @@ export const Button: React.FC<ButtonProps> = ({
   to,
   variant = "primary",
   block = false,
+  onClick = () => alert("button clicked"),
   ...props
 }) => {
   const variants = {
@@ -45,6 +47,7 @@ export const Button: React.FC<ButtonProps> = ({
     workspace: <WorkspaceButton {...props} />,
     getstarted: <GetStartedButton {...props} />,
     next: <NextButton {...props} />,
+    square: <SquareButton {...props} />,
   };
   if (to) {
     return <Link to={to}>{variants[variant]}</Link>;
@@ -57,6 +60,7 @@ export const Button: React.FC<ButtonProps> = ({
       backgroundColor="transparent"
       display={block ? "block" : "inline-block"}
       width={block ? 1 : "auto"}
+      onClick={onClick}
     >
       {variants[variant]}
     </b.Button>
