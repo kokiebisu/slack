@@ -1,0 +1,11 @@
+mutation CreateTeam($name: String!, $avatarBackground: String!) {
+  createTeam(name: $name, avatarBackground: $avatarBackground) {
+    ok
+    errorlog
+    team {
+      id
+      name
+      avatarBackground
+    }
+  }
+}

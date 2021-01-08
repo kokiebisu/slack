@@ -1,0 +1,8 @@
+mutation SendMessage($channelId: String!, $teamId: String!, $body: String!) {
+  sendMessage(channelId: $channelId, body: $body, teamId: $teamId) {
+    id
+    fullname
+    body
+    avatarBackground
+  }
+}

@@ -1,0 +1,11 @@
+query MyTeams {
+  myTeams {
+    ok
+    errorlog
+    teams {
+      id
+      name
+      avatarBackground
+    }
+  }
+}

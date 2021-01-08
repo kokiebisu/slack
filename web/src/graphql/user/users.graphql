@@ -1,0 +1,10 @@
+query Users($teamId: String!) {
+  users(teamId: $teamId) {
+    ok
+    errorlog
+    users {
+      id
+      fullname
+    }
+  }
+}

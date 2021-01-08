@@ -1,0 +1,9 @@
+query FetchMessages($channelId: String!) {
+  fetchMessages(channelId: $channelId) {
+    id
+    fullname
+    body
+    avatarBackground
+    createdAt
+  }
+}

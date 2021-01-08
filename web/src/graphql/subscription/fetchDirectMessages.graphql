@@ -1,0 +1,9 @@
+query FetchDirectMessages($fromId: String!) {
+  fetchDirectMessages(fromId: $fromId) {
+    id
+    fullname
+    body
+    avatarBackground
+    createdAt
+  }
+}
