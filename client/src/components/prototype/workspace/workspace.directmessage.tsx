@@ -11,12 +11,13 @@ import { Content } from "components/organisms/content/content.component";
 
 export const DirectMessageWorkspace: React.FC<{}> = () => {
   const { userId } = useParams();
-  const { data: userData } = useUserQuery({ variables: { userId } });
+  // const { data: userData } = useUserQuery({ variables: { userId } });
+  // ${userData?.user.user?.fullname}
   return (
     <>
       <Layout
         variant="workspace"
-        section={`${userData?.user.user?.fullname}`}
+        section={`df`}
         content={<Content variant="directmessage" />}
         options={
           <b.Box>

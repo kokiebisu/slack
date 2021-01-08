@@ -11,8 +11,8 @@ import { Close, Info, ThinHashTag } from "assets/svg";
 // Components
 import { Switch } from "components/Workspace/Switch";
 
-// Query
-import { useCreateChannelMutation } from "generated/graphql";
+// // Query
+// import { useCreateChannelMutation } from "generated/graphql";
 
 // Context
 import { useToggleDispatch } from "context/toggle-context";
@@ -43,7 +43,7 @@ export const ChannelModal: React.FC<{}> = () => {
     description: "",
   });
   const { teamId }: { teamId?: string } = useParams();
-  const [create] = useCreateChannelMutation();
+  // const [create] = useCreateChannelMutation();
 
   const handleSubmit = async () => {
     if (!input.name || !input.description) {
@@ -52,14 +52,14 @@ export const ChannelModal: React.FC<{}> = () => {
     }
 
     if (teamId) {
-      const response = await create({
-        variables: {
-          name: input.name,
-          teamId,
-          description: input.description,
-          isPublic: !isPrivate,
-        },
-      });
+      // const response = await create({
+      //   variables: {
+      //     name: input.name,
+      //     teamId,
+      //     description: input.description,
+      //     isPublic: !isPrivate,
+      //   },
+      // });
       if (response.data?.createChannel.ok) {
         dispatchToggle({ type: "toggle_channel" });
       }

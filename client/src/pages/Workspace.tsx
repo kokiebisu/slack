@@ -14,7 +14,6 @@ import { Modal } from "components/organisms/modal/modal.component";
 // Queries
 import { useMeQuery, useTeamQuery } from "generated/graphql";
 import { useToggleState } from "context/toggle-context";
-import { InviteModal } from "modals/Invite";
 import { useEffect } from "react";
 
 interface Props {
@@ -52,7 +51,7 @@ export const Workspace: React.FC<Props> = ({ route }) => {
             {!teamLoading && !meLoading && (
               <>
                 {state.channel && <Modal variant="channel" />}
-                {state.invite && <InviteModal />}
+                {state.invite && <Modal variant="invite" />}
                 <Header variant="workspace" />
                 {state.menu ? <MenuToggle /> : null}
                 <ContentWrapper>

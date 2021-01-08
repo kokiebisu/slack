@@ -12,7 +12,10 @@ import { TransparentButtonMotion } from "animations/Buttons";
 
 import { useMyTeamsQuery } from "generated/graphql";
 
-export const LandingModal: React.FC<{}> = () => {
+export const LandingModal: React.FC<{ data?: any; loading?: boolean }> = ({
+  data,
+  loading,
+}) => {
   useEffect(() => {
     document.body.style.overflow = "hidden";
     document.body.style.height = "100vh";
@@ -30,8 +33,6 @@ export const LandingModal: React.FC<{}> = () => {
     { name: "Enterprise" },
     { name: "Pricing" },
   ];
-
-  const { data, loading } = useMyTeamsQuery();
 
   return (
     <Wrapper>

@@ -1,7 +1,7 @@
 import React from "react";
-import { PasswordInput } from "./input.password";
 
-/** variants */
+import { ModalInput } from "./input.modal";
+import { PasswordInput } from "./input.password";
 import { PlainInput } from "./input.plain";
 
 export interface InputProps {
@@ -18,6 +18,7 @@ export const Input: React.FC<InputProps> = ({
   const variants = {
     plain: <PlainInput {...props} />,
     password: <PasswordInput {...props} />,
+    modal: <ModalInput {...props} />,
   };
   return (
     <div data-testid={`${variant}-input`} style={extendsTo}>

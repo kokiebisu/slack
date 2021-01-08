@@ -17,41 +17,42 @@ import { Content } from "components/organisms/content/content.component";
 
 export const ChannelWorkspace: React.FC<{}> = () => {
   const { channelId } = useParams();
-  const { data: { getChannelById } = {} } = useGetChannelByIdQuery({
-    variables: { channelId },
-  });
+  // const { data: { getChannelById } = {} } = useGetChannelByIdQuery({
+  //   variables: { channelId },
+  // });
 
-  useEffect(() => {
-    if (getChannelById) {
-      document.title = `Slack | ${getChannelById?.channel!.name}`;
-    }
-  }, [getChannelById]);
+  // useEffect(() => {
+  //   if (getChannelById) {
+  //     document.title = `Slack | ${getChannelById?.channel!.name}`;
+  //   }
+  // }, [getChannelById]);
 
+  // ${getChannelById?.channel!.name }
   return (
-    <>
-      {getChannelById?.channel && (
-        <Layout
-          variant="workspace"
-          section={`# ${getChannelById?.channel!.name}`}
-          subsection={<SubSection variant="channel" channelId={channelId} />}
-          content={<Content variant="channel" />}
-          options={
+    // <>
+    //   {getChannelById?.channel && (
+    <Layout
+      variant="workspace"
+      section={`# `}
+      subsection={<SubSection variant="channel" channelId={channelId} />}
+      content={<Content variant="channel" />}
+      options={
+        <b.Box>
+          <b.Flex alignItems="center">
+            <IconWrapper className="sideoption" mr={2}>
+              <Info />
+            </IconWrapper>
             <b.Box>
-              <b.Flex alignItems="center">
-                <IconWrapper className="sideoption" mr={2}>
-                  <Info />
-                </IconWrapper>
-                <b.Box>
-                  <b.Text fontSize={14} fontFamily="SlackLato-Regular">
-                    Details
-                  </b.Text>
-                </b.Box>
-              </b.Flex>
+              <b.Text fontSize={14} fontFamily="SlackLato-Regular">
+                Details
+              </b.Text>
             </b.Box>
-          }
-        />
-      )}
-    </>
+          </b.Flex>
+        </b.Box>
+      }
+    />
+    //   )}
+    // </>
   );
 };
 

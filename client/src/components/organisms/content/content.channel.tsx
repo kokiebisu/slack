@@ -18,29 +18,29 @@ import { useSendMessageMutation } from "generated/graphql";
 
 export const ChannelContent: React.FC<{}> = () => {
   const { channelId } = useParams();
-  const { data: { getChannelById } = {} } = useGetChannelByIdQuery({
-    variables: { channelId },
-    fetchPolicy: "cache-and-network",
-  });
+  // const { data: { getChannelById } = {} } = useGetChannelByIdQuery({
+  //   variables: { channelId },
+  //   fetchPolicy: "cache-and-network",
+  // });
 
-  const [send] = useSendMessageMutation();
-  const sendMessage = async (message: string) => {
-    if (localStorage.getItem("teamId")) {
-      await send({
-        variables: {
-          channelId,
-          teamId: localStorage.getItem("teamId")!,
-          body: message,
-        },
-      });
-    }
-  };
+  // const [send] = useSendMessageMutation();
+  // const sendMessage = async (message: string) => {
+  //   if (localStorage.getItem("teamId")) {
+  //     await send({
+  //       variables: {
+  //         channelId,
+  //         teamId: localStorage.getItem("teamId")!,
+  //         body: message,
+  //       },
+  //     });
+  //   }
+  // };
 
   return (
     <>
       <Wrapper>
         <b.Box className="section_header">
-          <Title mb={2}>
+          {/* <Title mb={2}>
             {getChannelById?.channel && (
               <b.Text> #{getChannelById?.channel?.name}</b.Text>
             )}
@@ -75,7 +75,7 @@ export const ChannelContent: React.FC<{}> = () => {
                   )}
               </b.Span>
             </b.Text>
-          </Description>
+          </Description> */}
           <Options>
             <b.Flex alignItems="center">
               <Option mr={2}>
@@ -102,7 +102,7 @@ export const ChannelContent: React.FC<{}> = () => {
           </Options>
         </b.Box>
         <MessageContainer />
-        <MessageBox sendMessage={sendMessage} />
+        {/* <MessageBox sendMessage={sendMessage} /> */}
       </Wrapper>
     </>
   );

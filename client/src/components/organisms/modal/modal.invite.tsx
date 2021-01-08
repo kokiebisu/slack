@@ -1,23 +1,13 @@
 import React from "react";
 import { useReducer } from "react";
-
-// Blocks
+import styled from "styled-components";
 import * as b from "global/blocks";
+import { Template } from "../../template/invite";
 
-// Styles
-import { Wrapper, Container } from "modals/Invite/index.styles";
-
-// Context
 import { useToggleDispatch } from "context/toggle-context";
 
-// Query
-import { Before } from "modals/Invite/Before";
-
-// Animation
 import { AnimatePresence } from "framer-motion";
-import { After } from "modals/Invite/After";
 
-// Types
 type State = { email: string; name: string; error: string; done: boolean };
 type Action =
   | { type: "add_email"; payload: string }
@@ -25,7 +15,6 @@ type Action =
   | { type: "give_error"; payload: string }
   | { type: "done" };
 
-// Reducer
 const reducer = (state: State, action: Action) => {
   switch (action.type) {
     case "add_email":
@@ -41,14 +30,13 @@ const reducer = (state: State, action: Action) => {
   }
 };
 
-export const InviteModal = () => {
+export const InviteModal: React.FC<{}> = () => {
   const dispatchToggle = useToggleDispatch();
 
   const [input, dispatchInput] = useReducer(reducer, {
     email: "",
     name: "",
     error: "",
-
     done: false,
   });
 
@@ -64,7 +52,11 @@ export const InviteModal = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                <After input={input} dispatchToggle={dispatchToggle} />
+                <Template
+                  variant="after"
+                  input={input}
+                  dispatchToggle={dispatchToggle}
+                />
               </b.AnimatedBox>
             ) : (
               <b.AnimatedBox
@@ -72,7 +64,8 @@ export const InviteModal = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
               >
-                <Before
+                <Template
+                  variant="before"
                   dispatchToggle={dispatchToggle}
                   input={input}
                   dispatchInput={dispatchInput}
@@ -86,3 +79,20 @@ export const InviteModal = () => {
     </AnimatePresence>
   );
 };
+
+const Wrapper = styled(b.Box)`
+  display: relative;
+  z-index: 1000;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.8);
+`;
+
+const Container = styled(b.AnimatedBox)`
+  background-color: white;
+  max-width: 650px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+`;

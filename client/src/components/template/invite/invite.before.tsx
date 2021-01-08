@@ -1,25 +1,13 @@
 import React from "react";
 import * as b from "global/blocks";
 
-import {
-  Header,
-  Title,
-  IconButtonWrapper,
-  EmailInputs,
-  SendButton,
-  PricingPlans,
-  Footer,
-  IconWrapper,
-  AddOptionText,
-  EmailInputHeader,
-  AddOptions,
-} from "modals/Invite/Before.styles";
+import styled from "styled-components";
 import { GoogleLogo } from "assets/svg/Logo";
 import { UserPlus, Close, PaperPlaneLight } from "assets/svg";
 import { EmailInput } from "modals/Invite/EmailInput";
 import { DefaultChannels } from "modals/Invite/DefaultChannels";
 import { PlusCircle } from "assets/svg";
-import { useSendInvitationMutation } from "generated/graphql";
+// import { useSendInvitationMutation } from "generated/graphql";
 import { useParams } from "react-router-dom";
 import { Dialog } from "components/atoms/dialog/dialog.component";
 
@@ -28,17 +16,19 @@ interface Props {
   input: any;
   dispatchInput: any;
   finish: any;
+  send: any;
 }
 
-export const Before: React.FC<Props> = ({
+export const BeforeInvite: React.FC<Props> = ({
   dispatchToggle,
   input,
   dispatchInput,
   finish,
+  send,
 }) => {
   const { teamId } = useParams();
 
-  const [send] = useSendInvitationMutation();
+  // const [send] = useSendInvitationMutation();
 
   return (
     <>
@@ -155,3 +145,172 @@ export const Before: React.FC<Props> = ({
     </>
   );
 };
+
+const Header = styled(b.Box)`
+  margin-bottom: 20px;
+`;
+
+const Title = styled(b.Box)`
+  & > p {
+    font-family: "SlackLato-Black";
+    font-size: 22px;
+    color: ${({ theme }) => theme.colors.black};
+  }
+`;
+
+const IconWrapper = styled(b.Box)`
+  &.user-plus {
+    & svg {
+      width: 20px;
+      height: 20px;
+      path {
+        fill: ${({ theme }) => theme.colors.blue};
+      }
+    }
+  }
+
+  &.plus-circle {
+    & svg {
+      width: 18px;
+      height: 18px;
+      path {
+        fill: ${({ theme }) => theme.colors.blue__light};
+      }
+    }
+  }
+
+  &.google {
+    & svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &.paper-plane {
+    & svg {
+      width: 15px;
+      height: 15px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray__light};
+      }
+    }
+  }
+`;
+
+const IconButtonWrapper = styled(b.Button)`
+  position: relative;
+  &.close {
+    width: 35px;
+    height: 35px;
+    svg {
+      position: relative;
+      top: 2px;
+      width: 15px;
+      height: 15px;
+      path {
+        fill: ${({ theme }) => theme.colors.black};
+      }
+    }
+
+    &:hover {
+      border-radius: 100%;
+      background-color: ${({ theme }) => theme.colors.white__dark};
+    }
+  }
+  &.info {
+    top: 1.5px;
+    svg {
+      width: 15px;
+      height: 15px;
+      path {
+        fill: ${({ theme }) => theme.colors.gray__light};
+      }
+    }
+  }
+`;
+
+const PricingPlans = styled(b.Box)`
+  background-color: ${({ theme }) => theme.colors.blue__0};
+  border-radius: 3px;
+  border: 1px solid ${({ theme }) => theme.colors.blue__light};
+  margin-bottom: 15px;
+
+  & p {
+    font-family: "SlackLato-Regular";
+    font-size: 15px;
+    text-align: center;
+    line-height: 1.5;
+    & > span {
+      font-family: "SlackLato-Bold";
+    }
+
+    & > a {
+      text-decoration: none;
+      color: ${({ theme }) => theme.colors.blue__light};
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+`;
+
+const EmailInputs = styled(b.Box)`
+  width: 100%;
+  margin-bottom: 20px;
+
+  & > div {
+    width: 100%;
+
+    &:first-child {
+      margin-bottom: 5px;
+    }
+  }
+`;
+
+const EmailInputHeader = styled(b.Box)`
+  width: 50%;
+  & > p {
+    font-size: 15px;
+    font-family: "SlackLato-Bold";
+  }
+`;
+
+const AddOptions = styled(b.Box)`
+  margin-bottom: 25px;
+  & > div {
+    &:first-child {
+      margin-bottom: 5px;
+    }
+  }
+`;
+
+const AddOptionText = styled(b.Box)`
+  position: relative;
+  bottom: 1px;
+  & > p {
+    font-size: 14px;
+    font-family: "SlackLato-Regular";
+
+    & span {
+      color: ${({ theme }) => theme.colors.blue__light};
+    }
+  }
+`;
+
+const Footer = styled(b.Box)`
+  margin-top: 60px;
+
+  & p {
+    font-size: 15px;
+    color: ${({ theme }) => theme.colors.gray__light};
+  }
+`;
+
+const SendButton = styled(b.Button)`
+  background-color: ${({ theme }) => theme.colors.green};
+  padding: 10px 12px;
+  border-radius: 5px;
+  color: ${({ theme }) => theme.colors.white};
+  font-family: "SlackLato-Bold";
+  font-size: 15px;
+`;

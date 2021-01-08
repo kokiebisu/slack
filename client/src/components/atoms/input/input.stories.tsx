@@ -23,14 +23,19 @@ export default {
   ],
 } as Meta;
 
-const Template: Story<InputProps> = (args) => <Input {...args} />;
+const TemplateStory: Story<InputProps> = (args) => <Input {...args} />;
 
-export const plain = Template.bind({});
+export const plain = TemplateStory.bind({});
 plain.args = {
   variant: "plain",
 };
 
-export const password = Template.bind({});
+export const password = TemplateStory.bind({});
 password.args = {
   variant: "password",
+};
+
+export const modal = TemplateStory.bind({});
+modal.args = {
+  variant: "modal",
 };

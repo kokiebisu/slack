@@ -19,12 +19,12 @@ import {
 export const ChannelSubSection: React.FC<{
   channelId?: string;
 }> = ({ channelId = "channelId" }) => {
-  const { data: { getBelongingUsers } = {} } = useGetBelongingUsersQuery({
-    variables: { channelId },
-  });
-  const { data: { getChannelById } = {} } = useGetChannelByIdQuery({
-    variables: { channelId },
-  });
+  // const { data: { getBelongingUsers } = {} } = useGetBelongingUsersQuery({
+  //   variables: { channelId },
+  // });
+  // const { data: { getChannelById } = {} } = useGetChannelByIdQuery({
+  //   variables: { channelId },
+  // });
 
   return (
     <Wrapper>
@@ -36,7 +36,7 @@ export const ChannelSubSection: React.FC<{
             </IconWrapper>
             <b.Box ml={1}>
               <b.Text fontSize={13} color="gray__light">
-                {getBelongingUsers?.belongingUsers?.length}
+                {/* {getBelongingUsers?.belongingUsers?.length} */}
               </b.Text>
             </b.Box>
           </b.Flex>
@@ -67,7 +67,7 @@ export const ChannelSubSection: React.FC<{
           <b.Flex alignItems="center">
             <b.Box className="descriptions__wrapper">
               <b.Span fontSize={13} color="gray__light">
-                {getChannelById?.ok && getChannelById.channel?.topic}
+                {/* {getChannelById?.ok && getChannelById.channel?.topic} */}
               </b.Span>
             </b.Box>
           </b.Flex>
