@@ -1,9 +1,0 @@
-mutation SendDirectMessage($toId: String!, $body: String!) {
-  sendDirectMessage(toId: $toId, body: $body) {
-    id
-    fullname
-    body
-    avatarBackground
-    createdAt
-  }
-}

@@ -1,9 +1,0 @@
-subscription SubscribeToDirectMessages($fromId: String!) {
-  subscribeToDirectMessages(fromId: $fromId) {
-    id
-    fullname
-    body
-    avatarBackground
-    createdAt
-  }
-}

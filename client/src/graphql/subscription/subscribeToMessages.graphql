@@ -1,9 +1,0 @@
-subscription SubscribeToMessages($channelID: String!) {
-  subscribeToMessages(channelID: $channelID) {
-    id
-    fullname
-    body
-    avatarBackground
-    createdAt
-  }
-}

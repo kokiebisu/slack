@@ -1,6 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { Card, CardProps } from "components/molecules/card/card.component";
+import { Card, CardProps } from ".";
 
 export default {
   title: "Design System/Molecules/Card",

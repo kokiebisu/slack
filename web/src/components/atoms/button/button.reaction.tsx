@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 
 import { ThemeContext } from "styled-components";
-import * as b from "global/blocks";
+import * as b from "../../../global/blocks";
 
 // Imgs
-import Thumbsup from "assets/img/thumbsup.png";
+import Thumbsup from "../../../assets/img/thumbsup.png";
 
 export const ReactionButton: React.FC<{}> = () => {
   const theme = useContext(ThemeContext);

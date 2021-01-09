@@ -13,7 +13,7 @@ import { useToggleState } from "context/toggle-context";
 import { ModalWrapper } from "styles/Landing";
 import { Prototype } from "components/prototype/landing/landing.component";
 
-export const Landing: React.FC<{}> = () => {
+export const LandingPage: React.FC<{}> = () => {
   useEffect(() => {
     document.title = "Where work happens | Slack";
   }, []);

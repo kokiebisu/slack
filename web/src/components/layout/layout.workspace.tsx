@@ -3,15 +3,15 @@ import styled from "styled-components";
 import { useCallback } from "react";
 
 // Blocks
-import * as b from "global/blocks";
+import * as b from "../../global/blocks";
 
-import { size } from "global/sizes";
+import { size } from "../../global/sizes";
 
 // Svgs
-import { Sidebar } from "assets/svg";
+import { Sidebar } from "../../assets/svg";
 
 import { useDropzone } from "react-dropzone";
-import { DragDrop } from "components/Workspace/Content/DragDrop";
+import { DragDrop } from "../../components/Workspace/Content/DragDrop";
 
 export const WorkspaceLayout: React.FC<{
   section?: string;

@@ -1,6 +1,0 @@
-query VerifyUserByToken($token: String!) {
-  verifyUserByToken(token: $token) {
-    ok
-    errorlog
-  }
-}

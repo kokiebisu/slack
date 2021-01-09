@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import * as b from "global/blocks";
-import { Input } from "components/atoms/input/input.component";
-import { Dialog } from "components/atoms/dialog/dialog.component";
-import { Button } from "components/atoms/button/button.component";
+import * as b from "../../../global/blocks";
+import { Input } from "../../../components/atoms/input/input.component";
+import { Dialog } from "../../../components/atoms/dialog/dialog.component";
+import { Button } from "../../../components/atoms/button/button.component";
 import { useHistory } from "react-router-dom";
-import { emailRegex, fullNameRegex, weakRegex } from "util/passwordUtil";
-import { randomColor } from "util/randomColor";
-import { profile } from "global/colors";
-import { useRegisterMutation } from "generated/graphql";
+import {
+  emailRegex,
+  fullNameRegex,
+  weakRegex,
+} from "../../../util/passwordUtil";
+import { randomColor } from "../../../util/randomColor";
+import { profile } from "../../../global/colors";
+import { useRegisterMutation } from "../../../generated/graphql";
 
 export const SignUpAuth: React.FC<{}> = () => {
   const history = useHistory();

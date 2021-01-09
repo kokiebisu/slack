@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as b from "global/blocks";
+import * as b from "../../global/blocks";
 import styled from "styled-components";
 
 type Dispatch = (action: Action) => void;

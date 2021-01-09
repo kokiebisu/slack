@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import * as b from 'global/blocks';
+import styled from "styled-components";
+import * as b from "global/blocks";
 
 export const Wrapper = styled(b.Box)`
   max-width: 768px;
@@ -67,7 +67,7 @@ export const Title = styled(b.Box)`
   & > p {
     font-size: 48px;
     color: ${({ theme }) => theme.colors.black__light};
-    font-family: 'Larsseit-Bold';
+    font-family: "Larsseit-Bold";
     text-align: center;
   }
 `;
@@ -77,14 +77,14 @@ export const Description = styled(b.Box)`
     line-height: 1.5;
     text-align: center;
     color: ${({ theme }) => theme.colors.gray};
-    font-family: 'SlackLato-Regular';
+    font-family: "SlackLato-Regular";
     font-size: 20px;
   }
 `;
 
 export const CheckNotice = styled(b.Box)`
   & > p {
-    font-family: 'SlackLato-Thin';
+    font-family: "SlackLato-Thin";
     font-size: 13px;
   }
 `;

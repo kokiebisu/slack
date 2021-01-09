@@ -1,26 +1,24 @@
-import * as React from "react";
-
 import { Redirect, useParams } from "react-router-dom";
 
 // Styles
-import { Wrapper, ContentWrapper } from "styles/Workspace";
+import { Wrapper, ContentWrapper } from "../styles/Workspace";
 
 // Components
-import { Header } from "components/organisms/header/header.component";
-import { Sidebar } from "components/Workspace/Sidebar";
-import { MenuToggle } from "components/Workspace/MenuToggle";
-import { Modal } from "components/organisms/modal/modal.component";
+import { Header } from "../components/organisms/header/header.component";
+import { Sidebar } from "../components/organisms/sidebar";
+import { MenuToggle } from "../components/Workspace/MenuToggle";
+import { Modal } from "../components/organisms/modal/modal.component";
 
 // Queries
-import { useMeQuery, useTeamQuery } from "generated/graphql";
-import { useToggleState } from "context/toggle-context";
+import { useMeQuery, useTeamQuery } from "../generated/graphql";
+import { useToggleState } from "../context/toggle-context";
 import { useEffect } from "react";
 
 interface Props {
-  route: React.ReactNode;
+  route?: React.ReactNode;
 }
 
-export const Workspace: React.FC<Props> = ({ route }) => {
+export const WorkspacePage: React.FC<Props> = ({ route }) => {
   const state = useToggleState();
 
   const { teamId } = useParams();

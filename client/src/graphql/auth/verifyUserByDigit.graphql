@@ -1,6 +1,0 @@
-mutation VerifyUserByDigit($digit: Float!) {
-  verifyUserByDigit(digit: $digit) {
-    ok
-    errorlog
-  }
-}

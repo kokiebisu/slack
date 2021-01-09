@@ -2,34 +2,25 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { ThemeProvider } from "styled-components";
 
-/**
- * Styles
- */
-import { GlobalFonts } from "global/globalFonts";
-import { GlobalStyles } from "global/globalStyles";
-import { main } from "global/colors";
+import { GlobalFonts } from "./global/globalFonts";
+import { GlobalStyles } from "./global/globalStyles";
+import { main } from "./global/colors";
 
-// Apollo
-import { ApolloProvider } from "react-apollo";
-import { ApolloClient } from "apollo-client";
+import {
+  ApolloProvider,
+  ApolloClient,
+  InMemoryCache,
+  ApolloLink,
+} from "@apollo/client";
 import { getMainDefinition } from "apollo-utilities";
 
-import { ApolloLink, split } from "apollo-link";
+import { split } from "apollo-link";
 import { HttpLink } from "apollo-link-http";
+import { WebSocketLink } from "@apollo/client/link/ws";
 
-import { WebSocketLink } from "apollo-link-ws";
+import { ContextProvider } from "./context";
 
-import { InMemoryCache } from "apollo-cache-inmemory";
-
-/**
- * Context
- */
-import { ContextProvider } from "context";
-
-/**
- * Routes
- */
-import { AppRoutes } from "routes/App";
+import { AppRoutes } from "./routes/App";
 
 const httpLink = new HttpLink({
   uri: `http://${

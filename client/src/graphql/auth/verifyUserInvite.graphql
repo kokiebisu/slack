@@ -1,7 +1,0 @@
-query VerifyUserInvite($invitorId: String!, $token: String!) {
-  verifyUserInvite(invitorId: $invitorId, token: $token) {
-    ok
-    errorlog
-    teamId
-  }
-}

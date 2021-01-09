@@ -3,31 +3,31 @@ import { Dispatch, SetStateAction, FormEvent } from "react";
 
 import styled from "styled-components";
 
-import { size } from "global/sizes";
+import { size } from "../global/sizes";
 
 // Blocks
-import * as b from "global/blocks";
+import * as b from "../global/blocks";
 
-import { Header } from "components/organisms/header/header.component";
-import { Modal } from "components/organisms/modal/modal.component";
+import { Header } from "../components/organisms/header/header.component";
+import { Modal } from "../components/organisms/modal/modal.component";
 
 interface Props {
-  title: string;
+  title?: string;
   inputPlaceholder?: string;
   requirePolicy?: boolean;
-  opacity: number;
+  opacity?: number;
   name?: string;
   description?: string;
   buttonName?: string;
   team?: string;
   channel?: string;
   authenticated?: boolean;
-  transaction: (e: FormEvent<HTMLFormElement>) => void;
-  input: string;
-  modifyInput: Dispatch<SetStateAction<string>>;
+  transaction?: (e: FormEvent<HTMLFormElement>) => void;
+  input?: string;
+  modifyInput?: Dispatch<SetStateAction<string>>;
 }
 
-export const CreateTeamLayout: React.FC<Props> = ({
+export const CreateTeamPage: React.FC<Props> = ({
   title,
   inputPlaceholder,
   team,

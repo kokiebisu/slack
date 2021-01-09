@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
 
 // Blocks
-import * as b from "global/blocks";
+import * as b from "../../../global/blocks";
 
-import { Card } from "components/molecules/card/card.component";
+import { Card } from "../../../components/molecules/card";
 
 // Sizes
-import { size } from "global/sizes";
+import { size } from "../../../global/sizes";
 
 export const WorkspacesAuth: React.FC<{
   teams?: {

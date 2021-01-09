@@ -1,6 +1,0 @@
-mutation SendInvitation($email: String!, $name: String, $teamId: String!) {
-  sendInvitation(email: $email, name: $name, teamId: $teamId) {
-    ok
-    errorlog
-  }
-}

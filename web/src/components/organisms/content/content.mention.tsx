@@ -7,7 +7,7 @@ import { AtSign, Close } from "assets/svg";
 
 import styled from "styled-components";
 
-import { Card } from "components/molecules/card/card.component";
+import { Card } from "../../molecules/card";
 
 export const MentionContent: React.FC<{}> = () => {
   return (

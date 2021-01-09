@@ -84,7 +84,7 @@ export const FindHeader: React.FC<{}> = () => {
                   borderRadius={3}
                   ml={3}
                   border="2px solid"
-                  borderColor={theme.colros.gray__dark}
+                  borderColor={theme.colors.gray__dark}
                 >
                   <b.Text>Menu</b.Text>
                 </SignInItem>

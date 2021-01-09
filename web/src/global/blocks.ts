@@ -25,8 +25,7 @@ import {
 } from "styled-system";
 
 // Sizes
-import { landing } from "global/sizes";
-import { Link } from "react-router-dom";
+import { landing } from "./sizes";
 
 export const AnimatedBox = styled(motion.div)<
   SpaceProps &
@@ -86,6 +85,7 @@ export const Box = styled.div<
       wp?: number;
       hp?: number;
       breakall?: boolean;
+      extends?: any;
     }
 >`
   position: relative;
@@ -98,6 +98,7 @@ export const Box = styled.div<
   ${grid}
   ${position}
 
+  ${(props) => props.extends}
 
   ${({ wp }) =>
     wp &&
@@ -171,6 +172,8 @@ export const Grid = styled.div<GridProps & LayoutProps>`
   display: grid;
   ${grid}
   ${layout}
+
+  height: 100%;
 `;
 
 export const Position = styled.button<PositionProps>`

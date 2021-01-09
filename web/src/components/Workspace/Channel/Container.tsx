@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as b from "global/blocks";
 import { DateSeperator } from "components/Workspace/Content/DateSeperator";
-import { Card } from "components/molecules/card/card.component";
+import { Card } from "../../molecules/card";
 import { Wrapper } from "styles/Workspace/Channel/Container";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";

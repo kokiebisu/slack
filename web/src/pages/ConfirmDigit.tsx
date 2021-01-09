@@ -3,10 +3,10 @@ import { useState, useRef, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 
 // Components
-import * as b from "global/blocks";
-import { useVerifyUserByDigitMutation } from "generated/graphql";
-import { Layout } from "components/layout/layout.component";
-import { Button } from "components/atoms/button/button.component";
+import * as b from "../global/blocks";
+import { useVerifyUserByDigitMutation } from "../generated/graphql";
+import { Layout } from "../components/layout/layout.component";
+import { Button } from "../components/atoms/button/button.component";
 
 import {
   Wrapper,
@@ -14,15 +14,15 @@ import {
   Title,
   Description,
   CheckNotice,
-} from "styles/ConfirmDigit";
+} from "../styles/ConfirmDigit";
 import {
   LoadingText,
   Rotate,
   spinTransition,
-} from "styles/ConfirmDigit/Dialog";
-import { Warning } from "assets/svg";
+} from "../styles/ConfirmDigit/Dialog";
+import { Warning } from "../assets/svg";
 
-export const ConfirmDigit = () => {
+export const ConfirmDigitPage: React.FC<{}> = () => {
   const input_1: any = useRef(null);
   const input_2: any = useRef(null);
   const input_3: any = useRef(null);
@@ -93,8 +93,8 @@ export const ConfirmDigit = () => {
                 <Description pt={2} pb={4}>
                   <b.Text>
                     We've sent a 6-digit code to
-                    <b.Span>{location.state.email}</b.Span>. The code expires
-                    shortly, so please enter it soon.
+                    {/* <b.Span>{location?.state?.email || "Email"}</b.Span>. The */}
+                    code expires shortly, so please enter it soon.
                   </b.Text>
                 </Description>
 

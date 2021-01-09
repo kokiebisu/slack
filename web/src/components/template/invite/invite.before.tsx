@@ -1,15 +1,14 @@
-import React from "react";
-import * as b from "global/blocks";
+import { useContext } from "react";
+import * as b from "../../../global/blocks";
 
-import styled from "styled-components";
-import { GoogleLogo } from "assets/svg/Logo";
-import { UserPlus, Close, PaperPlaneLight } from "assets/svg";
-import { EmailInput } from "modals/Invite/EmailInput";
-import { DefaultChannels } from "modals/Invite/DefaultChannels";
-import { PlusCircle } from "assets/svg";
-// import { useSendInvitationMutation } from "generated/graphql";
+import styled, { ThemeContext } from "styled-components";
+import { GoogleLogo } from "../../../assets/svg/Logo";
+import { UserPlus, Close, PaperPlaneLight } from "../../../assets/svg";
+import { EmailInput } from "../../../modals/Invite/EmailInput";
+import { PlusCircle } from "../../../assets/svg";
+import { useSendInvitationMutation } from "../../../generated/graphql";
 import { useParams } from "react-router-dom";
-import { Dialog } from "components/atoms/dialog/dialog.component";
+import { Dialog } from "../../atoms/dialog/dialog.component";
 
 interface Props {
   dispatchToggle: any;
@@ -24,11 +23,11 @@ export const BeforeInvite: React.FC<Props> = ({
   input,
   dispatchInput,
   finish,
-  send,
 }) => {
   const { teamId } = useParams();
+  const theme = useContext(ThemeContext);
 
-  // const [send] = useSendInvitationMutation();
+  const [send] = useSendInvitationMutation();
 
   return (
     <>
@@ -105,7 +104,50 @@ export const BeforeInvite: React.FC<Props> = ({
           </b.Flex>
         </b.Box>
       </AddOptions>
-      <DefaultChannels />
+      <div>
+        <b.Box mb={2}>
+          <b.Text fontSize={14} fontFamily="SlackLato-Bold">
+            Default Channels
+          </b.Text>
+        </b.Box>
+        <b.Box width={1} mb={2}>
+          <input
+            style={{
+              width: "100%",
+              padding: "7px 3px",
+              borderRadius: 4,
+              border: `1px solid ${theme.colors.gray__light}`,
+            }}
+          />
+        </b.Box>
+        <b.Box mb={4}>
+          <b.Text
+            fontSize={14}
+            fontFamily="SlackLato-Regular"
+            color={theme.colors.gray__light}
+          >
+            New <b.Span fontFamily="SlackLato-Bold">members</b.Span> will
+            automatically join these channels and #general{" "}
+            <b.Span fontFamily="SlackLato-Bold">change defaults</b.Span>
+          </b.Text>
+        </b.Box>
+        <b.Box>
+          <b.Flex>
+            <b.Box mr={1}>
+              {/* <Link width={14} height={14} fill={theme.colors.blue__light} /> */}
+            </b.Box>
+            <b.Box>
+              <b.Text
+                fontSize={14}
+                fontFamily="SlackLato-Regular"
+                color={theme.colors.blue__light}
+              >
+                Share invite link
+              </b.Text>
+            </b.Box>
+          </b.Flex>
+        </b.Box>
+      </div>
       <Footer>
         <b.Flex alignItems="center" justifyContent="space-between">
           <b.Box>

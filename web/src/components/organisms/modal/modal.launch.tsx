@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
-import * as b from "global/blocks";
-import { Card } from "components/molecules/card/card.component";
+import * as b from "../../../global/blocks";
+import { Card } from "../../molecules/card";
 
 export const LaunchModal: React.FC<{
   teams?: {

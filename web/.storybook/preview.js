@@ -1,5 +1,5 @@
 import React from "react";
-import { ApolloProvider } from "react-apollo";
+import { ApolloProvider } from "@apollo/client";
 import { MemoryRouter } from "react-router-dom";
 import { ToggleProvider } from "../src/context/toggle-context";
 import { ThemeProvider } from "styled-components";

@@ -1,17 +1,14 @@
 import * as React from "react";
 import { Redirect } from "react-router-dom";
-import { useGetBelongingTeamsQuery } from "generated/graphql";
+import { useGetBelongingTeamsQuery } from "../generated/graphql";
 
-/** styles */
-import { Wrapper } from "styles/FindTeam";
+import { Wrapper } from "../styles/FindTeam";
 
-/** components */
+import { Header } from "../components/organisms/header/header.component";
+import { Footer } from "../components/organisms/footer/footer.component";
+import { Auth } from "../components/organisms/auth/auth.component";
 
-import { Header } from "components/organisms/header/header.component";
-import { Footer } from "components/organisms/footer/footer.component";
-import { Auth } from "components/organisms/auth/auth.component";
-
-export const FindTeam = () => {
+export const FindTeamPage: React.FC<{}> = () => {
   const {
     data: { getBelongingTeams } = {},
     loading,
@@ -24,19 +21,12 @@ export const FindTeam = () => {
         <Redirect to="/" />
       ) : (
         <Wrapper>
-          <>
-            <Header variant="find" />
-            <>
-              {getBelongingTeams?.belongingTeams! &&
-                getBelongingTeams!.belongingTeams!.length > 0 && (
-                  <Auth
-                    variant="find"
-                    teams={getBelongingTeams?.belongingTeams}
-                  />
-                )}
-            </>
-            <Footer variant="find" />
-          </>
+          <Header variant="find" />
+          {getBelongingTeams?.belongingTeams! &&
+            getBelongingTeams!.belongingTeams!.length > 0 && (
+              <Auth variant="find" teams={getBelongingTeams?.belongingTeams} />
+            )}
+          <Footer variant="find" />
         </Wrapper>
       )}
     </>

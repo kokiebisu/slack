@@ -1,6 +1,6 @@
 import React from "react";
 
-import * as b from "global/blocks";
+import * as b from "../../../global/blocks";
 
 /** variants */
 import { SignInAuth } from "./auth.signin";
@@ -10,9 +10,10 @@ import { FindAuth } from "./auth.find";
 import { ConfirmAuth } from "./auth.confirm";
 import { InvitedAuth } from "./auth.invited";
 import { WorkspacesAuth } from "./auth.workspaces";
+import styled, { css } from "styled-components";
 
 export interface AuthProps {
-  variant?: string;
+  variant: string;
   extendsTo?: any;
   [property: string]: any;
 }
@@ -23,18 +24,45 @@ export const Auth: React.FC<AuthProps> = ({
   width,
   ...props
 }) => {
-  const variants = {
-    signin: <SignInAuth {...props} />,
-    getstarted: <GetStartedAuth {...props} />,
-    signup: <SignUpAuth {...props} />,
-    find: <FindAuth {...props} />,
-    confirm: <ConfirmAuth {...props} />,
-    invited: <InvitedAuth {...props} />,
-    workspaces: <WorkspacesAuth {...props} />,
+  const variants: {
+    [variant: string]: {
+      component: JSX.Element;
+      [property: string]: any;
+    };
+  } = {
+    signin: {
+      component: <SignInAuth {...props} />,
+    },
+    getstarted: {
+      component: <GetStartedAuth {...props} />,
+      extendsTo: css`
+        max-width: 800px;
+      `,
+    },
+    signup: {
+      component: <SignUpAuth {...props} />,
+    },
+    find: {
+      component: <FindAuth {...props} />,
+    },
+    confirm: {
+      component: <ConfirmAuth {...props} />,
+    },
+    invited: {
+      component: <InvitedAuth {...props} />,
+    },
+    workspaces: {
+      component: <WorkspacesAuth {...props} />,
+    },
   };
   return (
-    <b.Box data-testid={`${variant}-auth`} style={extendsTo} width={width}>
-      {variants[variant]}
+    <b.Box
+      data-testid={`${variant}-auth`}
+      extends={variants[variant].extendsTo}
+      style={extendsTo}
+      width={width}
+    >
+      {variants[variant].component}
     </b.Box>
   );
 };

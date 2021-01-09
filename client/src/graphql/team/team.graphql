@@ -1,9 +1,0 @@
-query Team($teamId: String!) {
-  team(teamId: $teamId) {
-    ok
-    errorlog
-    team {
-      name
-    }
-  }
-}

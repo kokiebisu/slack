@@ -3,19 +3,19 @@ import { useState, useReducer } from "react";
 import { useParams } from "react-router-dom";
 import styled, { ThemeContext } from "styled-components";
 // Blocks
-import * as b from "global/blocks";
+import * as b from "../../../global/blocks";
 
 // Svgs
-import { Close, Info, ThinHashTag } from "assets/svg";
+import { Close, Info, ThinHashTag } from "../../../assets/svg";
 
 // Components
-import { Switch } from "components/Workspace/Switch";
+import { SwitchToggle } from "../../molecules/switch";
 
 // // Query
-// import { useCreateChannelMutation } from "generated/graphql";
+import { useCreateChannelMutation } from "generated/graphql";
 
 // Context
-import { useToggleDispatch } from "context/toggle-context";
+import { useToggleDispatch } from "../../../context/toggle-context";
 
 type State = { name: string; description: string };
 type Action =
@@ -43,7 +43,7 @@ export const ChannelModal: React.FC<{}> = () => {
     description: "",
   });
   const { teamId }: { teamId?: string } = useParams();
-  // const [create] = useCreateChannelMutation();
+  const [create] = useCreateChannelMutation();
 
   const handleSubmit = async () => {
     if (!input.name || !input.description) {
@@ -52,14 +52,14 @@ export const ChannelModal: React.FC<{}> = () => {
     }
 
     if (teamId) {
-      // const response = await create({
-      //   variables: {
-      //     name: input.name,
-      //     teamId,
-      //     description: input.description,
-      //     isPublic: !isPrivate,
-      //   },
-      // });
+      const response = await create({
+        variables: {
+          name: input.name,
+          teamId,
+          description: input.description,
+          isPublic: !isPrivate,
+        },
+      });
       if (response.data?.createChannel.ok) {
         dispatchToggle({ type: "toggle_channel" });
       }
@@ -174,7 +174,7 @@ export const ChannelModal: React.FC<{}> = () => {
                 </b.Box>
               </b.Box>
               <b.Box>
-                <Switch
+                <SwitchToggle
                   isOn={isPrivate}
                   switchToggle={() => setIsPrivate((isPrivate) => !isPrivate)}
                 />

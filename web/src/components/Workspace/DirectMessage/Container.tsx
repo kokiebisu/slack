@@ -5,16 +5,14 @@ import * as b from "global/blocks";
 
 import { useParams } from "react-router-dom";
 
-// Components
 import { MessageHeader } from "components/Workspace/DirectMessage/MessageHeader";
 
-// Styles
 import { Wrapper } from "styles/Workspace/DirectMessage/Container";
-// Queries
+
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
 import { DateSeperator } from "components/Workspace/Content/DateSeperator";
-import { Card } from "components/molecules/card/card.component";
+import { Card } from "../../molecules/card";
 
 export const MessageContainer = () => {
   const { userId }: { userId: string } = useParams();
