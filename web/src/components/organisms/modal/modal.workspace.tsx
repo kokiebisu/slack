@@ -14,7 +14,7 @@ import teamphoto_3 from "assets/img/createteam_3.png";
 import { stagger, fadeInUp } from "animations/FadeInStagger";
 import styled, { css } from "styled-components";
 
-export const WorkspaceOthers: React.FC<{
+export const WorkspaceModal: React.FC<{
   team?: string;
   channel?: string;
   opacity?: number;

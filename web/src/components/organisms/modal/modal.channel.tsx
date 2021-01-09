@@ -9,10 +9,10 @@ import * as b from "../../../global/blocks";
 import { Close, Info, ThinHashTag } from "../../../assets/svg";
 
 // Components
-import { SwitchToggle } from "../../molecules/switch";
+import { Toggle } from "../../molecules/toggle";
 
 // // Query
-import { useCreateChannelMutation } from "generated/graphql";
+import { useCreateChannelMutation } from "../../../generated/graphql";
 
 // Context
 import { useToggleDispatch } from "../../../context/toggle-context";
@@ -67,157 +67,140 @@ export const ChannelModal: React.FC<{}> = () => {
   };
 
   return (
-    <b.Box
-      zIndex={1000}
-      height="100vh"
-      width="100vw"
-      position="fixed"
-      backgroundColor="rgba(0, 0, 0, 0.8)"
-    >
-      <b.Flex justifyContent="center" alignItems="center">
-        <b.AnimatedBox
-          backgroundColor={theme.colors.white}
-          maxWidth={520}
-          width={1}
-          padding={20}
-          borderRadius={10}
-          animate={{ y: 0 }}
-          initial={{ y: 15 }}
-        >
-          <b.Box mb={20}>
-            <b.Flex justifyContent="space-between">
-              <b.Box>
-                <b.Text
-                  fontFamily="SlackLato-Black"
-                  fontSize={28}
-                  color={theme.colors.black}
-                >
-                  {isPrivate ? "Create a private channel" : "Create a channel"}
-                </b.Text>
-              </b.Box>
-              <IconButtonWrapper
-                className="close"
-                onClick={() => dispatchToggle({ type: "toggle_channel" })}
-              >
-                <Close />
-              </IconButtonWrapper>
-            </b.Flex>
-          </b.Box>
+    <b.Box>
+      <b.Box mb={20}>
+        <b.Flex justifyContent="space-between">
           <b.Box>
             <b.Text
-              fontSize={14}
-              lineHeight={1.5}
-              fontFamily="SlackLato-Regular"
-              color={theme.colors.gray__light}
+              fontFamily="SlackLato-Black"
+              fontSize={28}
+              color={theme.colors.black}
             >
-              Channels are where your team communicates. They’re best when
-              organized around a topic — #marketing, for example.
+              {isPrivate ? "Create a private channel" : "Create a channel"}
             </b.Text>
           </b.Box>
-          <SectionHeader>
-            <b.Text>Name</b.Text>
-          </SectionHeader>
-          <NameWrapper>
-            <b.Box>
-              <ThinHashTag />
-            </b.Box>
-            <StyledInput
-              onChange={(e) =>
-                dispatchInput({ type: "add_name", payload: e.target.value })
-              }
-              value={input.name}
-              placeholder="e.g. plan-budget"
-              className="name"
-            />
-          </NameWrapper>
-          {error && (
-            <b.Box>
-              <b.Text>{error}</b.Text>
-            </b.Box>
-          )}
-          <SectionHeader>
-            <b.Text>Description (optional)</b.Text>
-          </SectionHeader>
+          <IconButtonWrapper
+            className="close"
+            onClick={() => dispatchToggle({ type: "toggle_channel" })}
+          >
+            <Close />
+          </IconButtonWrapper>
+        </b.Flex>
+      </b.Box>
+      <b.Box>
+        <b.Text
+          fontSize={14}
+          lineHeight={1.5}
+          fontFamily="SlackLato-Regular"
+          color={theme.colors.gray__light}
+        >
+          Channels are where your team communicates. They’re best when organized
+          around a topic — #marketing, for example.
+        </b.Text>
+      </b.Box>
+      <SectionHeader>
+        <b.Text>Name</b.Text>
+      </SectionHeader>
+      <NameWrapper>
+        <b.Box>
+          <ThinHashTag />
+        </b.Box>
+        <StyledInput
+          onChange={(e) =>
+            dispatchInput({ type: "add_name", payload: e.target.value })
+          }
+          value={input.name}
+          placeholder="e.g. plan-budget"
+          className="name"
+        />
+      </NameWrapper>
+      {error && (
+        <b.Box>
+          <b.Text>{error}</b.Text>
+        </b.Box>
+      )}
+      <SectionHeader>
+        <b.Text>Description (optional)</b.Text>
+      </SectionHeader>
+      <b.Box>
+        <StyledInput
+          onChange={(e) =>
+            dispatchInput({
+              type: "add_description",
+              payload: e.target.value,
+            })
+          }
+          value={input.description}
+          className="description"
+        />
+      </b.Box>
+      <Hint>
+        <b.Text>What's this channel about?</b.Text>
+      </Hint>
+      <PrivateOption>
+        <b.Flex alignItems="center" justifyContent="space-between">
           <b.Box>
-            <StyledInput
-              onChange={(e) =>
-                dispatchInput({
-                  type: "add_description",
-                  payload: e.target.value,
-                })
-              }
-              value={input.description}
-              className="description"
+            <b.Box className="title">
+              <b.Text>Make Private</b.Text>
+            </b.Box>
+            <b.Box className="description">
+              {isPrivate ? (
+                <b.Text>
+                  <b.Span>This can’t be undone.</b.Span> A private channel
+                  cannot be made public later on.
+                </b.Text>
+              ) : (
+                <b.Text>
+                  When a channel is set to private, it can only be viewed or
+                  joined by invitation.
+                </b.Text>
+              )}
+            </b.Box>
+          </b.Box>
+          <b.Box>
+            <Toggle
+              variant="switch"
+              isOn={isPrivate}
+              switchToggle={() => setIsPrivate((isPrivate) => !isPrivate)}
             />
           </b.Box>
-          <Hint>
-            <b.Text>What's this channel about?</b.Text>
-          </Hint>
-          <PrivateOption>
-            <b.Flex alignItems="center" justifyContent="space-between">
-              <b.Box>
-                <b.Box className="title">
-                  <b.Text>Make Private</b.Text>
-                </b.Box>
-                <b.Box className="description">
-                  {isPrivate ? (
-                    <b.Text>
-                      <b.Span>This can’t be undone.</b.Span> A private channel
-                      cannot be made public later on.
-                    </b.Text>
-                  ) : (
-                    <b.Text>
-                      When a channel is set to private, it can only be viewed or
-                      joined by invitation.
-                    </b.Text>
-                  )}
-                </b.Box>
-              </b.Box>
-              <b.Box>
-                <SwitchToggle
-                  isOn={isPrivate}
-                  switchToggle={() => setIsPrivate((isPrivate) => !isPrivate)}
-                />
-              </b.Box>
-            </b.Flex>
-          </PrivateOption>
+        </b.Flex>
+      </PrivateOption>
+      <b.Box>
+        <b.Flex justifyContent="space-between" alignItems="center">
           <b.Box>
-            <b.Flex justifyContent="space-between" alignItems="center">
+            <b.Flex alignItems="center">
+              <IconButtonWrapper className="info">
+                <Info />
+              </IconButtonWrapper>
               <b.Box>
-                <b.Flex alignItems="center">
-                  <IconButtonWrapper className="info">
-                    <Info />
-                  </IconButtonWrapper>
-                  <b.Box>
-                    <b.Text
-                      fontSize={15}
-                      color={theme.colors.gray__light}
-                      fontFamily="SlackLato-Regular"
-                    >
-                      Learn more
-                    </b.Text>
-                  </b.Box>
-                </b.Flex>
-              </b.Box>
-              <b.Button
-                borderRadius={5}
-                py={3}
-                px={4}
-                backgroundColor={theme.colors.gray__lighter}
-                onClick={handleSubmit}
-              >
                 <b.Text
                   fontSize={15}
-                  fontFamily="SlackLato-Bold"
-                  color={theme.colors.gray}
+                  color={theme.colors.gray__light}
+                  fontFamily="SlackLato-Regular"
                 >
-                  Create
+                  Learn more
                 </b.Text>
-              </b.Button>
+              </b.Box>
             </b.Flex>
           </b.Box>
-        </b.AnimatedBox>
-      </b.Flex>
+          <b.Button
+            borderRadius={5}
+            py={3}
+            px={4}
+            backgroundColor={theme.colors.gray__lighter}
+            onClick={handleSubmit}
+          >
+            <b.Text
+              fontSize={15}
+              fontFamily="SlackLato-Bold"
+              color={theme.colors.gray}
+            >
+              Create
+            </b.Text>
+          </b.Button>
+        </b.Flex>
+      </b.Box>
     </b.Box>
   );
 };

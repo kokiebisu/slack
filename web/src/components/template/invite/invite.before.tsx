@@ -4,7 +4,6 @@ import * as b from "../../../global/blocks";
 import styled, { ThemeContext } from "styled-components";
 import { GoogleLogo } from "../../../assets/svg/Logo";
 import { UserPlus, Close, PaperPlaneLight } from "../../../assets/svg";
-import { EmailInput } from "../../../modals/Invite/EmailInput";
 import { PlusCircle } from "../../../assets/svg";
 import { useSendInvitationMutation } from "../../../generated/graphql";
 import { useParams } from "react-router-dom";
@@ -70,7 +69,28 @@ export const BeforeInvite: React.FC<Props> = ({
             </EmailInputHeader>
           </b.Flex>
         </b.Box>
-        <EmailInput input={input} addInput={dispatchInput} />
+        <b.Box>
+          <b.Flex>
+            <StyledInput>
+              <input
+                value={input.email}
+                placeholder="name@example.com"
+                onChange={(e) =>
+                  addInput({ type: "add_email", payload: e.target.value })
+                }
+              />
+            </StyledInput>
+            <StyledInput>
+              <input
+                value={input.name}
+                placeholder="Optional"
+                onChange={(e) =>
+                  addInput({ type: "add_name", payload: e.target.value })
+                }
+              />
+            </StyledInput>
+          </b.Flex>
+        </b.Box>
       </EmailInputs>
       <AddOptions>
         <b.Box>
@@ -187,6 +207,19 @@ export const BeforeInvite: React.FC<Props> = ({
     </>
   );
 };
+
+const StyledInput = styled(b.Box)`
+  width: 50%;
+  padding-right: 7px;
+  & > input {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid ${({ theme }) => theme.colors.gray__light};
+    font-size: 17px;
+    color: ${({ theme }) => theme.colors.gray};
+    padding: 7px 0 7px 6px;
+  }
+`;
 
 const Header = styled(b.Box)`
   margin-bottom: 20px;

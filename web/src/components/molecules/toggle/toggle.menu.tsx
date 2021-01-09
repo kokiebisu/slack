@@ -1,30 +1,34 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import * as b from 'global/blocks';
-import { Smile } from 'assets/svg';
-import { AngleRight } from 'assets/svg';
+import * as b from "../../../global/blocks";
+import { Smile } from "../../../assets/svg";
+import { AngleRight } from "../../../assets/svg";
 
 // Images
-import slackappicon from 'assets/img/slack-app.png';
-import { useHistory } from 'react-router-dom';
-import { setAccessToken } from 'global/token';
-import { useLogoutMutation } from 'generated/graphql';
+import slackappicon from "../../../assets/img/slack-app.png";
+import { useHistory } from "react-router-dom";
+import { setAccessToken } from "../../../global/token";
+import { useLogoutMutation } from "../../../generated/graphql";
 
 // Styles
-import { Wrapper, IconWrapper, Section } from 'styles/Workspace/MenuToggle';
+import {
+  Wrapper,
+  IconWrapper,
+  Section,
+} from "../../../styles/Workspace/MenuToggle";
 
 const UpdateState: React.FC<{}> = () => {
   return (
     <UpdateStateWrapper>
-      <b.Flex alignItems='center'>
+      <b.Flex alignItems="center">
         <b.Box>
-          <IconWrapper className='smile'>
+          <IconWrapper className="smile">
             <Smile />
           </IconWrapper>
         </b.Box>
         <b.Box ml={3}>
-          <b.Text fontSize={15} color='gray__light'>
+          <b.Text fontSize={15} color="gray__light">
             Update your status
           </b.Text>
         </b.Box>
@@ -59,9 +63,9 @@ const MenuOption: React.FC<MenuOptionProps> = ({
 }) => {
   return (
     <MenuOptionWrapper onClick={clicked}>
-      <b.Flex justifyContent='space-between' alignItems='center'>
+      <b.Flex justifyContent="space-between" alignItems="center">
         <b.Box>
-          <b.Text fontSize={15} fontFamily='SlackLato-Regular' color='gray'>
+          <b.Text fontSize={15} fontFamily="SlackLato-Regular" color="gray">
             {name}
           </b.Text>
         </b.Box>
@@ -69,13 +73,13 @@ const MenuOption: React.FC<MenuOptionProps> = ({
           <b.Box>
             <b.Flex>
               {openApp ? (
-                <IconWrapper className='slackapp'>
+                <IconWrapper className="slackapp">
                   <b.Box>
-                    <img src={slackappicon} alt='slackappicon' />
+                    <img src={slackappicon} alt="slackappicon" />
                   </b.Box>
                 </IconWrapper>
               ) : (
-                <IconWrapper className='angleright'>
+                <IconWrapper className="angleright">
                   <AngleRight />
                 </IconWrapper>
               )}
@@ -124,12 +128,12 @@ const ProfileOption: React.FC<ProfileOptionProps> = ({
     <ProfileOptionWrapper>
       <b.Flex>
         <b.Box pr={2}>
-          <b.Flex justifyContent='center' alignItems='center'>
+          <b.Flex justifyContent="center" alignItems="center">
             <b.Box
               height={35}
               width={35}
               borderRadius={3}
-              backgroundColor='blue'
+              backgroundColor="blue"
             />
           </b.Flex>
         </b.Box>
@@ -137,8 +141,9 @@ const ProfileOption: React.FC<ProfileOptionProps> = ({
           <b.Box mb={1}>
             <b.Text
               fontSize={15}
-              color='black__light'
-              fontFamily='SlackLato-Bold'>
+              color="black__light"
+              fontFamily="SlackLato-Bold"
+            >
               {title}
             </b.Text>
           </b.Box>
@@ -146,19 +151,21 @@ const ProfileOption: React.FC<ProfileOptionProps> = ({
             <b.Flex>
               <b.Box>
                 <b.Text
-                  fontFamily='SlackLato-Regular'
+                  fontFamily="SlackLato-Regular"
                   fontSize={12}
-                  color='gray'>
+                  color="gray"
+                >
                   {subtitle}
-                  <b.Span fontFamily='SlackLato-Bold'>{state}</b.Span> &nbsp;
+                  <b.Span fontFamily="SlackLato-Bold">{state}</b.Span> &nbsp;
                 </b.Text>
               </b.Box>
               {state && (
                 <b.Box>
                   <b.Text
-                    fontFamily='SlackLato-Bold'
+                    fontFamily="SlackLato-Bold"
                     fontSize={12}
-                    color='blue'>
+                    color="blue"
+                  >
                     Change
                   </b.Text>
                 </b.Box>
@@ -169,7 +176,7 @@ const ProfileOption: React.FC<ProfileOptionProps> = ({
       </b.Flex>
       {tier && (
         <b.Box mt={2}>
-          <b.Text fontSize={13} fontFamily='SlackLato-Regular' lineHeight={1.6}>
+          <b.Text fontSize={13} fontFamily="SlackLato-Regular" lineHeight={1.6}>
             Your workspace is currently on the {tier} version of Slack. See
             upgrade options
           </b.Text>
@@ -189,42 +196,42 @@ export const MenuToggle = () => {
 
   return (
     <Wrapper py={2}>
-      <Section className='first'>
+      <Section className="first">
         <b.Box>
           <ProfileOption
-            title='kenichkona'
+            title="kenichkona"
             subtitle="You're set to "
-            state='active'
+            state="active"
           />
           <UpdateState />
-          <MenuOption name='Pause notifications' withToggle />
-          <MenuOption name='View Profile' />
-          <MenuOption name='Preferences' />
+          <MenuOption name="Pause notifications" withToggle />
+          <MenuOption name="View Profile" />
+          <MenuOption name="Preferences" />
         </b.Box>
       </Section>
-      <Section className='second'>
+      <Section className="second">
         <b.Box>
-          <ProfileOption title='asdf' subtitle='url.slack.com' tier='free' />
+          <ProfileOption title="asdf" subtitle="url.slack.com" tier="free" />
         </b.Box>
       </Section>
-      <Section className='third'>
-        <MenuOption name='Invite people to Slack' />
-        <MenuOption name='Settings & administration' withToggle />
-        <MenuOption name='Tools' withToggle />
-        <MenuOption name='Help' withToggle />
+      <Section className="third">
+        <MenuOption name="Invite people to Slack" />
+        <MenuOption name="Settings & administration" withToggle />
+        <MenuOption name="Tools" withToggle />
+        <MenuOption name="Help" withToggle />
         <MenuOption
-          name='Sign out of asdf'
+          name="Sign out of asdf"
           clicked={async () => {
             await logout();
-            setAccessToken('');
+            setAccessToken("");
             client?.clearStore();
-            history.push('/');
+            history.push("/");
           }}
         />
       </Section>
-      <Section className='fourth'>
-        <MenuOption name='Add workspaces' withToggle />
-        <MenuOption name='Open the Slack App' openApp />
+      <Section className="fourth">
+        <MenuOption name="Add workspaces" withToggle />
+        <MenuOption name="Open the Slack App" openApp />
       </Section>
     </Wrapper>
   );

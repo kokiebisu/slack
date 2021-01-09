@@ -6,7 +6,7 @@ import { Wrapper, ContentWrapper } from "../styles/Workspace";
 // Components
 import { Header } from "../components/organisms/header/header.component";
 import { Sidebar } from "../components/organisms/sidebar";
-import { MenuToggle } from "../components/Workspace/MenuToggle";
+import { Toggle } from "../components/molecules/toggle";
 import { Modal } from "../components/organisms/modal/modal.component";
 
 // Queries
@@ -51,7 +51,7 @@ export const WorkspacePage: React.FC<Props> = ({ route }) => {
                 {state.channel && <Modal variant="channel" />}
                 {state.invite && <Modal variant="invite" />}
                 <Header variant="workspace" />
-                {state.menu ? <MenuToggle /> : null}
+                {state.menu ? <Toggle variant="menu" /> : null}
                 <ContentWrapper>
                   <Sidebar />
                   {route}

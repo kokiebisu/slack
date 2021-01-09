@@ -2,12 +2,10 @@ import * as React from "react";
 import styled from "styled-components";
 import * as b from "../../../global/blocks";
 
-export interface SwitchProps {
-  isOn: boolean;
-  switchToggle: () => void;
-}
-
-export const SwitchToggle: React.FC<SwitchProps> = ({ isOn, switchToggle }) => {
+export const SwitchToggle: React.FC<{
+  isOn?: boolean;
+  switchToggle?: () => void;
+}> = ({ isOn, switchToggle }) => {
   return (
     <Wrapper
       className={isOn ? `switch on` : `switch off`}
