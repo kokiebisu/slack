@@ -8,20 +8,10 @@ import styled from "styled-components";
 import { Footer } from "components/organisms/footer/footer.component";
 
 export const GetStartedLayout: React.FC<{
-  content?: any;
+  children?: any;
   title?: string;
   subtitle?: string;
-}> = ({
-  content = (
-    <b.Box height="100%" backgroundColor="lightblue" borderRadius={15}>
-      <b.Flex alignItems="center" justifyContent="center">
-        <b.Text>Content</b.Text>
-      </b.Flex>
-    </b.Box>
-  ),
-  title,
-  subtitle,
-}) => {
+}> = ({ children, title, subtitle }) => {
   const theme = useContext(ThemeContext);
   return (
     <b.Grid height="100%" gridTemplateRows="100px 1fr 100px">
@@ -69,7 +59,7 @@ export const GetStartedLayout: React.FC<{
         </b.Box>
       </b.Container>
       <b.Box width={1}>
-        <b.Flex justifyContent="center">{content}</b.Flex>
+        <b.Flex justifyContent="center">{children}</b.Flex>
       </b.Box>
       <b.Box py={4}>
         <Footer variant="getstarted" />

@@ -42,24 +42,14 @@ export const WorkspacePage: React.FC<Props> = ({ route }) => {
   return (
     <>
       <Wrapper>
-        {error ? (
-          <Redirect to="/" />
-        ) : (
-          <>
-            {!teamLoading && !meLoading && (
-              <>
-                {state.channel && <Modal variant="channel" />}
-                {state.invite && <Modal variant="invite" />}
-                <Header variant="workspace" />
-                {state.menu ? <Toggle variant="menu" /> : null}
-                <ContentWrapper>
-                  <Sidebar />
-                  {route}
-                </ContentWrapper>
-              </>
-            )}
-          </>
-        )}
+        {state.channel && <Modal variant="channel" />}
+        {state.invite && <Modal variant="invite" />}
+        <Header variant="workspace" />
+        {state.menu ? <Toggle variant="menu" /> : null}
+        <ContentWrapper>
+          <Sidebar />
+          {route}
+        </ContentWrapper>
       </Wrapper>
     </>
   );

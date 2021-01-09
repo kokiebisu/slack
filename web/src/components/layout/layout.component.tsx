@@ -6,15 +6,12 @@ import { GetStartedLayout } from "./layout.getstarted";
 import { WorkspaceLayout } from "./layout.workspace";
 
 export interface LayoutProps {
-  variant?: string;
+  variant: string;
   [property: string]: any;
 }
 
-export const Layout: React.FC<LayoutProps> = ({
-  variant = "center",
-  ...props
-}) => {
-  const variants = {
+export const Layout: React.FC<LayoutProps> = ({ variant, ...props }) => {
+  const variants: { [variant: string]: JSX.Element } = {
     workspace: <WorkspaceLayout {...props} />,
     getstarted: <GetStartedLayout {...props} />,
   };
