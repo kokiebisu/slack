@@ -10,9 +10,6 @@ import { size } from "../../global/sizes";
 // Svgs
 import { Sidebar } from "../../assets/svg";
 
-import { useDropzone } from "react-dropzone";
-import { DragDrop } from "../../components/Workspace/Content/DragDrop";
-
 export const WorkspaceLayout: React.FC<{
   section?: string;
   subsection?: React.ReactChild;
@@ -24,21 +21,9 @@ export const WorkspaceLayout: React.FC<{
   options = <h3>Options</h3>,
   content = <h3>Content</h3>,
 }) => {
-  const onDrop = useCallback((acceptedFiles) => {
-    console.log("accepted", acceptedFiles);
-  }, []);
-
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
   return (
-    <div {...getRootProps()}>
+    <div>
       <Wrapper>
-        {/* <DragDrop /> */}
-        {isDragActive && (
-          <>
-            <input {...getInputProps()} />
-            <DragDrop />
-          </>
-        )}
         <b.Box className="top">
           <Top>
             <b.Flex justifyContent="space-between" alignItems="center">

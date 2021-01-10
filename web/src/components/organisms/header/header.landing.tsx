@@ -2,17 +2,17 @@ import React, { useState, useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
 
 /** context */
-import { useToggleDispatch } from "context/toggle-context";
+import { useToggleDispatch } from "../../../context/toggle-context";
 
 /** global */
-import * as b from "global/blocks";
-import { size } from "global/sizes";
+import * as b from "../../../global/blocks";
+import { size } from "../../../global/sizes";
 
 /** assets */
-import { NameLogo } from "assets/svg/Logo";
+import { NameLogo } from "../../../assets/svg/Logo";
 
 /** components */
-import { Button } from "components/atoms/button/button.component";
+import { Button } from "../../atoms/button/button.component";
 import { Modal } from "../modal/modal.component";
 import { useHistory } from "react-router";
 
@@ -23,10 +23,9 @@ export const LandingHeader: React.FC<{ data?: any; loading?: boolean }> = ({
   const history = useHistory();
   const [pressed, setPressed] = useState(false);
   const dispatchToggle = useToggleDispatch();
-  const theme = useContext(ThemeContext);
   return (
     <div>
-      <b.Box backgroundColor={theme.colors.white} py={3}>
+      <b.Box py={3}>
         <b.Flex alignItems="center" justifyContent="space-between">
           <b.Box width={1}>
             <b.Flex alignItems="center">
@@ -62,18 +61,11 @@ export const LandingHeader: React.FC<{ data?: any; loading?: boolean }> = ({
             <>
               <Normal>
                 <b.Flex alignItems="center">
-                  <b.Box mr={3}>
-                    <Button
-                      variant="transparent"
-                      content={<b.Text>Sign in</b.Text>}
-                      onClick={() => history.push("/signin")}
-                    />
-                  </b.Box>
                   <div>
                     <Button
                       variant="primary"
                       size="sm"
-                      title="Get started"
+                      title="Sign in"
                       to="/get-started"
                     />
                   </div>

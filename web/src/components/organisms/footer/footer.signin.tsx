@@ -2,17 +2,17 @@ import React, { useContext } from "react";
 import { useState } from "react";
 
 // Blocks
-import * as b from "global/blocks";
+import * as b from "../../../global/blocks";
 import styled, { ThemeContext } from "styled-components";
 
 // Breakpoints
-import { signin } from "global/sizes";
+import { signin } from "../../../global/sizes";
 
 // Svgs
-import { NoNameLogoMono } from "assets/svg/Logo";
-import { Minus, Plus } from "assets/svg";
+import { NoNameLogoMono } from "../../../assets/svg/Logo";
+import { Minus, Plus } from "../../../assets/svg";
 
-import { Button } from "components/atoms/button/button.component";
+import { Button } from "../../atoms/button/button.component";
 
 export const SignInFooter: React.FC<{}> = () => {
   const theme = useContext(ThemeContext);
@@ -64,7 +64,7 @@ export const SignInFooter: React.FC<{}> = () => {
     },
   ];
 
-  const [revealed, setRevealed] = useState({
+  const [revealed, setRevealed] = useState<{ [property: string]: boolean }>({
     "Using Slack": false,
     Slack: false,
     Legal: false,
@@ -164,10 +164,10 @@ export const SignInFooter: React.FC<{}> = () => {
                       </b.Text>
                     </b.Box>
                     <b.Box mx={2}>
-                      <Button variant="socialmedia" platform="twitter" />
+                      <Button variant="socialmedia" type="twitter" />
                     </b.Box>
                     <b.Box mx={2}>
-                      <Button variant="socialmedia" platform="facebook" />
+                      <Button variant="socialmedia" type="facebook" />
                     </b.Box>
                   </b.Flex>
                 </b.Box>

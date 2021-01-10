@@ -1,18 +1,26 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "styled-components";
-import * as b from "global/blocks";
-import { Button } from "components/atoms/button/button.component";
-import { Globe } from "assets/svg";
+import * as b from "../../../global/blocks";
+import { Button } from "../../../components/atoms/button/button.component";
+import { Globe } from "../../../assets/svg";
 
 export const GetStartedFooter: React.FC<{}> = () => {
   const theme = useContext(ThemeContext);
   return (
     <b.Flex alignItems="center" justifyContent="center">
       <b.Box mr={2}>
-        <Button variant="transparent" to="/legal" title="Privacy & terms" />
+        <Button
+          variant="transparent"
+          to="/legal"
+          content={<b.Text fontSize={15}>Privacy & terms</b.Text>}
+        />
       </b.Box>
       <b.Box mr={2}>
-        <Button variant="transparent" to="/help" title="Contact us" />
+        <Button
+          variant="transparent"
+          to="/help"
+          content={<b.Text fontSize={15}>Contact us</b.Text>}
+        />
       </b.Box>
       <b.Box mr={2}>
         <b.Flex>

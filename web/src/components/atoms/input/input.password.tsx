@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 
 import styled, { ThemeContext } from "styled-components";
 
-import * as b from "global/blocks";
+import * as b from "../../../global/blocks";
 
-import { Bar } from "components/atoms/bar/bar.component";
-import { Dialog } from "components/atoms/dialog/dialog.component";
+import { Bar } from "../bar/bar.component";
+import { Dialog } from "../dialog/dialog.component";
 
-import { CheckCircle } from "assets/svg/Icons";
+import { CheckCircle } from "../../../assets/svg/Icons";
 
 export const PasswordInput: React.FC<{
   value?: string;
@@ -36,7 +36,8 @@ export const PasswordInput: React.FC<{
           width={1}
           autoCapitalize="sentences"
           value={info[value]}
-          onChange={(e) =>
+          fontSize={15}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setInfo({ ...info, [value as string]: e.target.value })
           }
           border="1px solid gray"

@@ -1,8 +1,8 @@
 import React from "react";
-import * as b from "../global/blocks";
-import { Auth } from "src/components/organisms/auth/auth.component";
-import { Footer } from "../components/organisms/footer/footer.component";
-import { Header } from "../components/organisms/header/header.component";
+import * as b from "global/blocks";
+import { Auth } from "components/organisms/auth/auth.component";
+import { Footer } from "components/organisms/footer/footer.component";
+import { Header } from "components/organisms/header/header.component";
 
 export const GetStartedPage: React.FC<{}> = () => {
   return (

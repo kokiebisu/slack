@@ -13,10 +13,7 @@ export const FindTeamPage: React.FC<{}> = () => {
   return (
     <Wrapper>
       <Header variant="find" />
-      {getBelongingTeams?.belongingTeams! &&
-        getBelongingTeams!.belongingTeams!.length > 0 && (
-          <Auth variant="find" teams={getBelongingTeams?.belongingTeams} />
-        )}
+      <Auth variant="find" teams={[]} />
       <Footer variant="find" />
     </Wrapper>
   );

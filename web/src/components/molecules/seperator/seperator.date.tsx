@@ -5,7 +5,9 @@ import * as b from "../../../global/blocks";
 // Components
 import { BottomArrow } from "../../../assets/svg";
 
-export const DateSeperator: React.FC<{ date?: string }> = ({ date }) => {
+export const DateSeperator: React.FC<{ date?: string }> = ({
+  date = "Date",
+}) => {
   return (
     <Wrapper>
       <b.Box className="divider" />

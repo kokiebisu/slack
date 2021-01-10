@@ -3,10 +3,10 @@ import styled, { ThemeContext } from "styled-components";
 import { Link } from "react-router-dom";
 
 /** global */
-import * as b from "global/blocks";
+import * as b from "../../../global/blocks";
 
 /** assets */
-import { NameLogo } from "assets/svg";
+import { NameLogo } from "../../../assets/svg";
 
 export const CreateHeader: React.FC<{}> = () => {
   const theme = useContext(ThemeContext);
@@ -15,7 +15,7 @@ export const CreateHeader: React.FC<{}> = () => {
       <b.Box
         boxShadow="0 1px 1px rgba(0, 0, 0, 0.15)"
         borderBottom="0.5px solid"
-        borderColor={theme.colors.gray__light}
+        borderColor={theme.colors.white__dark}
         height={70}
         backgroundColor={theme.colors.white}
       >
@@ -23,7 +23,7 @@ export const CreateHeader: React.FC<{}> = () => {
           <b.Flex alignItems="center" justifyContent="center">
             <Link to="/">
               <b.Box mr={4}>
-                <NameLogo width={100} height={60} fill={[]} />
+                <NameLogo width={100} height={60} />
               </b.Box>
             </Link>
           </b.Flex>

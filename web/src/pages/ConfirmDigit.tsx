@@ -1,7 +1,7 @@
-import * as React from "react";
+import { useContext } from "react";
 import { useState, useRef, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import styled from "styled-components";
+import styled, { ThemeContext } from "styled-components";
 
 // Components
 import * as b from "../global/blocks";
@@ -69,11 +69,13 @@ export const ConfirmDigitPage: React.FC<{}> = () => {
     }
   };
 
+  const theme = useContext(ThemeContext);
+
   return (
     <Layout variant="getstarted">
       <b.Box py={4}>
         <b.Flex flexDirection="column" alignItems="center">
-          <Wrapper>
+          <b.Box maxWidth={768}>
             <form
               ref={formRef}
               onSubmit={() => {
@@ -81,16 +83,29 @@ export const ConfirmDigitPage: React.FC<{}> = () => {
               }}
             >
               <b.Box>
-                <Title>
-                  <b.Text>Check your email for a code</b.Text>
-                </Title>
-                <Description pt={2} pb={4}>
-                  <b.Text>
+                <b.Box>
+                  <b.Text
+                    fontSize={48}
+                    color={theme.colors.black__light}
+                    fontFamily="Larsseit-Bold"
+                    textAlign="center"
+                  >
+                    Check your email for a code
+                  </b.Text>
+                </b.Box>
+                <b.Box pt={2} pb={4}>
+                  <b.Text
+                    lineHeight={1.5}
+                    textAlign="center"
+                    color={theme.colors.gray}
+                    fontFamily="SlackLato-Regular"
+                    fontSize={20}
+                  >
                     We've sent a 6-digit code to
                     {/* <b.Span>{location?.state?.email || "Email"}</b.Span>. The */}
                     code expires shortly, so please enter it soon.
                   </b.Text>
-                </Description>
+                </b.Box>
 
                 <b.Box>
                   <b.Flex justifyContent="center">
@@ -230,27 +245,24 @@ export const ConfirmDigitPage: React.FC<{}> = () => {
               ) : null}
             </b.Box>
             <b.Flex justifyContent="center">
-              <Button type="email" />
-              <Button type="email" />
+              <b.Box mr={2}>
+                <Button variant="email" type="gmail" />
+              </b.Box>
+              <Button variant="email" type="outlook" />
             </b.Flex>
             <b.Box my={4}>
               <b.Flex justifyContent="center">
-                <CheckNotice>
-                  <b.Text>Can't find your code? Check your spam folder!</b.Text>
-                </CheckNotice>
+                <b.Text fontFamily="SlackLato-Thin" fontSize={13}>
+                  Can't find your code? Check your spam folder!
+                </b.Text>
               </b.Flex>
             </b.Box>
-          </Wrapper>
+          </b.Box>
         </b.Flex>
       </b.Box>
     </Layout>
   );
 };
-
-const Wrapper = styled(b.Box)`
-  max-width: 768px;
-  width: 100%;
-`;
 
 const TextInput = styled.input`
   font-size: 56px;
@@ -306,31 +318,5 @@ const TextInput = styled.input`
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     border-left: none;
-  }
-`;
-
-const Title = styled(b.Box)`
-  & > p {
-    font-size: 48px;
-    color: ${({ theme }) => theme.colors.black__light};
-    font-family: "Larsseit-Bold";
-    text-align: center;
-  }
-`;
-
-const Description = styled(b.Box)`
-  & > p {
-    line-height: 1.5;
-    text-align: center;
-    color: ${({ theme }) => theme.colors.gray};
-    font-family: "SlackLato-Regular";
-    font-size: 20px;
-  }
-`;
-
-const CheckNotice = styled(b.Box)`
-  & > p {
-    font-family: "SlackLato-Thin";
-    font-size: 13px;
   }
 `;

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { useState } from 'react';
+import * as React from "react";
+import { useState } from "react";
 import {
   Switch,
   Route,
@@ -7,38 +7,33 @@ import {
   useRouteMatch,
   useHistory,
   useLocation,
-} from 'react-router-dom';
+} from "react-router-dom";
 
-// Components
-import { CreateTeamLayout } from 'pages/CreateTeam';
-import { ConfirmDigit } from 'pages/ConfirmDigit';
+import { Prototype } from "components/prototype/create";
 
-// Queries
+import { Page } from "pages";
+
 import {
   useMeQuery,
   useCreateTeamMutation,
   useCreateChannelMutation,
-} from 'generated/graphql';
+} from "generated/graphql";
 
-// Util
-import { randomColor } from 'util/randomColor';
-import { avatar } from 'global/colors';
+import { randomColor } from "util/randomColor";
+import { avatar } from "global/colors";
 
 export const CreateRoutes: React.SFC = () => {
   const history = useHistory();
   const match = useRouteMatch();
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const location: any = useLocation();
 
   const avatarBackground = randomColor(avatar);
   const [info, setInfo] = useState({
-    team: '',
-    channel: '',
+    team: "",
+    channel: "",
   });
 
-  /**
-   * Query
-   */
   const { data: { me } = {} } = useMeQuery();
 
   const [createTeam] = useCreateTeamMutation();
@@ -47,53 +42,56 @@ export const CreateRoutes: React.SFC = () => {
   return (
     <>
       <Switch>
-        <Route path={match.url + '/verifyemail'}>
-          <ConfirmDigit />
+        <Route path={match.url + "/verifyemail"}>
+          <Page variant="confirmdigit" />
         </Route>
-        <Route path={match.url + '/teamname'}>
+        <Route path={match.url + "/teamname"}>
           {location.state! && location.state!.authenticated !== undefined ? (
-            <CreateTeamLayout
+            <Prototype
+              variant="create"
               input={input}
               modifyInput={setInput}
               title="What's the name of your company or team?"
-              inputPlaceholder='Ex. Tesla or Tesla Motors'
+              inputPlaceholder="Ex. Tesla or Tesla Motors"
               requirePolicy
               opacity={0.15}
               transaction={(e) => {
                 e.preventDefault();
                 setInfo({ ...info, team: input });
-                setInput('');
-                history.push('/create/channelname');
+                setInput("");
+                history.push("/create/channelname");
               }}
               authenticated={me?.ok}
             />
           ) : (
-            <Redirect to='/get-started' />
+            <Redirect to="/get-started" />
           )}
         </Route>
-        <Route path={match.url + '/channelname'}>
+        <Route path={match.url + "/channelname"}>
           {info.team ? (
-            <CreateTeamLayout
+            <Prototype
+              variant="create"
               input={input}
               modifyInput={setInput}
               title="What's a project your team is working on?"
-              inputPlaceholder='Ex. The very exciting project'
+              inputPlaceholder="Ex. The very exciting project"
               opacity={0.8}
               team={info.team}
               transaction={(e) => {
                 e.preventDefault();
                 setInfo({ ...info, channel: input });
-                setInput('');
-                history.push('/create/tada');
+                setInput("");
+                history.push("/create/tada");
               }}
             />
           ) : (
-            <Redirect exact to='/get-started' />
+            <Redirect exact to="/get-started" />
           )}
         </Route>
-        <Route path={match.url + '/tada'}>
+        <Route path={match.url + "/tada"}>
           {info.team && info.channel ? (
-            <CreateTeamLayout
+            <Prototype
+              variant="create"
               input={input}
               modifyInput={setInput}
               title={`Tada! Meet your team's first channel: #${info.channel}`}
@@ -101,7 +99,7 @@ export const CreateRoutes: React.SFC = () => {
               opacity={1}
               team={info.team}
               channel={info.channel}
-              buttonName='See your channel in Slack'
+              buttonName="See your channel in Slack"
               transaction={async (e) => {
                 e.preventDefault();
                 const { data } = await createTeam({
@@ -114,24 +112,24 @@ export const CreateRoutes: React.SFC = () => {
                 if (data && data?.createTeam?.team!.id) {
                   await createChannel({
                     variables: {
-                      name: 'general',
+                      name: "general",
                       teamId: data.createTeam.team.id,
                       description:
-                        'This channel is for workspace-wide communication and announcements. All members are in this channel.',
+                        "This channel is for workspace-wide communication and announcements. All members are in this channel.",
                       isPublic: true,
                       topic:
-                        'Company-wide announcements and work-based matters',
+                        "Company-wide announcements and work-based matters",
                     },
                   });
 
                   await createChannel({
                     variables: {
-                      name: 'random',
+                      name: "random",
                       teamId: data.createTeam.team.id,
                       description:
                         "A place for non-work-related flimflam, faffing, hodge-podge or jibber-jabber you'd prefer to keep out of more focused work-related channels.",
                       isPublic: true,
-                      topic: 'Non-work banter and water cooler conversation',
+                      topic: "Non-work banter and water cooler conversation",
                     },
                   });
 
@@ -148,7 +146,7 @@ export const CreateRoutes: React.SFC = () => {
               }}
             />
           ) : (
-            <Redirect exact to='/get-started' />
+            <Redirect exact to="/get-started" />
           )}
         </Route>
       </Switch>

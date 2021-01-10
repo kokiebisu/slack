@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
-import * as b from "global/blocks";
+import * as b from "../../../global/blocks";
 
 export const SquareButton: React.FC<{ title?: string }> = ({
   title = "Button",
@@ -8,13 +8,13 @@ export const SquareButton: React.FC<{ title?: string }> = ({
   const theme = useContext(ThemeContext);
   return (
     <Wrapper
-      px={2}
+      px={3}
       py={3}
       borderRadius={3}
       color={theme.colors.gray__dark}
       mr={2}
     >
-      {title}
+      <b.Text fontSize={15}>{title}</b.Text>
     </Wrapper>
   );
 };

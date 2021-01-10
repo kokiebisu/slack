@@ -1,17 +1,17 @@
 import * as React from "react";
 
 // Blocks
-import * as b from "global/blocks";
+import * as b from "../../../global/blocks";
 
 // Components
 
-import { Bullet } from "components/atoms/bullet/bullet.component";
+import { Bullet } from "../../atoms/bullet/bullet.component";
 
 // Imgs
-import teamphoto_1 from "assets/img/createteam_1.png";
-import teamphoto_2 from "assets/img/createteam_2.png";
-import teamphoto_3 from "assets/img/createteam_3.png";
-import { stagger, fadeInUp } from "animations/FadeInStagger";
+import teamphoto_1 from "../../../assets/img/createteam_1.png";
+import teamphoto_2 from "../../../assets/img/createteam_2.png";
+import teamphoto_3 from "../../../assets/img/createteam_3.png";
+import { stagger, fadeInUp } from "../../../animations/FadeInStagger";
 import styled, { css } from "styled-components";
 
 export const WorkspaceModal: React.FC<{

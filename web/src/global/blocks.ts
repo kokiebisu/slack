@@ -370,6 +370,7 @@ export const Text = styled.p<
   text-transform: ${({ uppercase }) => uppercase && "uppercase"};
   white-space: ${({ nowrap }) => nowrap && "nowrap"};
   word-break: ${({ breakall }) => breakall && "break-all"};
+  text-transform: ${({ capitalize }) => capitalize && "capitalize"};
 `;
 
 export const LayoutWrapper = styled.div<SpaceProps>`

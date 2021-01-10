@@ -5,7 +5,7 @@ import { DateSeperator } from "components/Workspace/Content/DateSeperator";
 import { Card } from "../../molecules/card";
 import { Wrapper } from "styles/Workspace/Channel/Container";
 import gql from "graphql-tag";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/client";
 
 export const MessageContainer = () => {
   // const { channelId }: { channelId: string } = useParams();

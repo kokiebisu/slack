@@ -3,12 +3,12 @@ import React, { useContext } from "react";
 import { ThemeContext } from "styled-components";
 
 // Blocks
-import * as b from "global/blocks";
+import * as b from "../../../global/blocks";
 
 // Img
-import Thumbsup from "assets/img/thumbsup.png";
+import Thumbsup from "../../../assets/img/thumbsup.png";
 
-import { Button } from "components/atoms/button/button.component";
+import { Button } from "../../../components/atoms/button/button.component";
 
 export const ActivityCard: React.FC<{}> = () => {
   const theme = useContext(ThemeContext);

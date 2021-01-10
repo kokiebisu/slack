@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 
-import * as b from "global/blocks";
+import * as b from "../../../global/blocks";
 
 import { ThemeContext } from "styled-components";
 
-import { Button } from "components/atoms/button/button.component";
+import { Button } from "../../atoms/button/button.component";
 
 export const AvailableCard: React.FC<{
   name?: string;
@@ -19,12 +19,7 @@ export const AvailableCard: React.FC<{
 }) => {
   const theme = useContext(ThemeContext);
   return (
-    <b.Box
-      width={1}
-      height={90}
-      borderBottom="1px solid"
-      borderColor={theme.colors.gray__lighter}
-    >
+    <b.Box width={1} height={90}>
       <b.Flex alignItems="center" justifyContent="space-between">
         <b.Box>
           <b.Flex>

@@ -59,7 +59,7 @@ socialmedia.args = {
   variant: "socialmedia",
 };
 socialmedia.argTypes = {
-  platform: {
+  type: {
     control: {
       type: "select",
       options: ["twitter", "facebook", "youtube", "linkedin"],
@@ -92,7 +92,7 @@ email.args = {
   variant: "email",
 };
 email.argTypes = {
-  platform: {
+  type: {
     control: {
       type: "select",
       options: ["outlook", "gmail"],

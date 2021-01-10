@@ -10,7 +10,7 @@ import { MessageHeader } from "components/Workspace/DirectMessage/MessageHeader"
 import { Wrapper } from "styles/Workspace/DirectMessage/Container";
 
 import gql from "graphql-tag";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/client";
 import { DateSeperator } from "components/Workspace/Content/DateSeperator";
 import { Card } from "../../molecules/card";
 

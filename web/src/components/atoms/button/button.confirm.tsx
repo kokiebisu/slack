@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import * as b from "global/blocks";
+import * as b from "../../../global/blocks";
 
 export const ConfirmButton: React.FC<{ loading?: boolean }> = ({
   loading = false,
@@ -19,7 +19,12 @@ export const ConfirmButton: React.FC<{ loading?: boolean }> = ({
           variants={confirmVariants}
           animate={loading ? "loading" : "loaded"}
         >
-          <b.Text textAlign="center" color="white" fontFamily="SlackLato-Bold">
+          <b.Text
+            textAlign="center"
+            color="white"
+            fontFamily="SlackLato-Bold"
+            fontSize={15}
+          >
             Confirm
           </b.Text>
         </b.AnimatedBox>

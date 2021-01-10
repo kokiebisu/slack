@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import * as b from "global/blocks";
+import * as b from "../../../global/blocks";
 import { ThemeContext } from "styled-components";
 
 // Svg
-import { BoldPlus } from "assets/svg";
+import { BoldPlus } from "../../../assets/svg";
 
 export const GetStartedButton: React.FC<{ type?: string }> = ({
   type = "signin",
@@ -42,7 +42,7 @@ export const GetStartedButton: React.FC<{ type?: string }> = ({
       borderRadius={5}
     >
       <b.Flex justifyContent="center">
-        <b.Box>{types[type]}</b.Box>
+        <b.Box px={3}>{types[type]}</b.Box>
       </b.Flex>
     </b.Box>
   );

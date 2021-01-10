@@ -13,7 +13,7 @@ import { StaticContext, Redirect } from "react-router";
 import { useMeQuery } from "generated/graphql";
 
 import { Prototype } from "components/prototype/workspace/workspace.component";
-import { Workspace } from "pages/Workspace";
+import { Page } from "pages";
 
 type Props = RouteComponentProps<
   {},
@@ -25,7 +25,7 @@ export const ClientRoutes: React.FC<Props> = () => {
   return (
     <>
       <Switch>
-        <Workspace route={<WorkspaceRoute />} />
+        <Page variant="workspace" route={<WorkspaceRoute />} />
       </Switch>
     </>
   );

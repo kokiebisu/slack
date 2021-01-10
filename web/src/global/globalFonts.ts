@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 import {
   CircularProBook,
   CircularProBold,
@@ -8,7 +8,7 @@ import {
   SlackLatoBold,
   SlackLatoBlack,
   SlackIcons,
-} from 'assets/fonts';
+} from "../assets/fonts";
 
 export const GlobalFonts = createGlobalStyle`
 

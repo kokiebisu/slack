@@ -152,7 +152,9 @@ export const LandingFooter: React.FC<{}> = () => {
                           <Button
                             variant="transparent"
                             to={option.url}
-                            content={<b.Text>{option.name}</b.Text>}
+                            content={
+                              <b.Text fontSize={15}>{option.name}</b.Text>
+                            }
                           />
                         </b.Box>
                       );
@@ -169,7 +171,7 @@ export const LandingFooter: React.FC<{}> = () => {
                             fill={theme.colors.gray}
                           />
                         </b.Box>
-                        <b.Text>Change Region</b.Text>
+                        <b.Text fontSize={15}>Change Region</b.Text>
                         <b.Box ml={2}>
                           <b.Box>
                             <BottomArrow
@@ -188,7 +190,7 @@ export const LandingFooter: React.FC<{}> = () => {
                 {socialmedias.map((socialmedia, index) => {
                   return (
                     <div key={index}>
-                      <Button variant="socialmedia" platform={socialmedia} />
+                      <Button variant="socialmedia" type={socialmedia} />
                     </div>
                   );
                 })}

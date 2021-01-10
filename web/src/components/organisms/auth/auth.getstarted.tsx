@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import * as b from "global/blocks";
+import * as b from "../../../global/blocks";
 
-import { getstarted, size } from "global/sizes";
+import { getstarted, size } from "../../../global/sizes";
 
-import { Button } from "components/atoms/button/button.component";
+import { Button } from "../../atoms/button/button.component";
 
 // Image
-import workspace from "assets/img/slack-workspace.png";
-import lightbulb from "assets/img/lightbulb.png";
+import workspace from "../../../assets/img/slack-workspace.png";
+import lightbulb from "../../../assets/img/lightbulb.png";
 
 export const GetStartedAuth: React.FC<{}> = () => {
   return (

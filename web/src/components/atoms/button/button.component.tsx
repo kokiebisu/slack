@@ -1,7 +1,8 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
-import * as b from "global/blocks";
-import styled from "styled-components";
+
+import * as b from "../../../global/blocks";
+
+import { useHistory } from "react-router-dom";
 
 /** variants */
 import { PrimaryButton } from "./button.primary";
@@ -33,7 +34,9 @@ export const Button: React.FC<ButtonProps> = ({
   onClick = () => alert("button clicked"),
   ...props
 }) => {
-  const variants = {
+  const history = useHistory();
+
+  const variants: { [variant: string]: JSX.Element } = {
     primary: <PrimaryButton {...props} />,
     nav: <NavButton {...props} />,
     transparent: <TransparentButton {...props} />,
@@ -49,9 +52,7 @@ export const Button: React.FC<ButtonProps> = ({
     next: <NextButton {...props} />,
     square: <SquareButton {...props} />,
   };
-  if (to) {
-    return <Link to={to}>{variants[variant]}</Link>;
-  }
+
   return (
     <b.Button
       whileTap={{ scale: 0.99 }}
@@ -60,7 +61,7 @@ export const Button: React.FC<ButtonProps> = ({
       backgroundColor="transparent"
       display={block ? "block" : "inline-block"}
       width={block ? 1 : "auto"}
-      onClick={onClick}
+      onClick={to ? () => history.push(to) : onClick}
     >
       {variants[variant]}
     </b.Button>

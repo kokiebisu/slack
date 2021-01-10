@@ -2,15 +2,15 @@ import React, { useEffect } from "react";
 
 import styled from "styled-components";
 
-import { size } from "global/sizes";
-import * as b from "global/blocks";
-import { Close } from "assets/svg";
-import { NameLogo } from "assets/svg/Logo";
-import { ChevronRight } from "assets/svg";
-import { useToggleDispatch } from "context/toggle-context";
-import { TransparentButtonMotion } from "animations/Buttons";
+import { size } from "../../../global/sizes";
+import * as b from "../../../global/blocks";
+import { Close } from "../../../assets/svg";
+import { NameLogo } from "../../../assets/svg/Logo";
+import { ChevronRight } from "../../../assets/svg";
+import { useToggleDispatch } from "../../../context/toggle-context";
+import { TransparentButtonMotion } from "../../../animations/Buttons";
 
-import { useMyTeamsQuery } from "generated/graphql";
+import { useMyTeamsQuery } from "../../../generated/graphql";
 
 export const LandingModal: React.FC<{ data?: any; loading?: boolean }> = ({
   data,

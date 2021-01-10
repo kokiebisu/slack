@@ -1,25 +1,25 @@
 import React from "react";
 
 /** vectors */
-import { Gmail, Outlook } from "assets/svg/Logo";
+import { Gmail, Outlook } from "../../../assets/svg/Logo";
 
 /** styles */
-import * as b from "global/blocks";
+import * as b from "../../../global/blocks";
 
-export const EmailButton: React.FC<{ platform?: string }> = ({
-  platform = "outlook",
-}) => {
-  const platforms = {
+export const EmailButton: React.FC<{ type?: string }> = ({ type }) => {
+  const types: { [type: string]: JSX.Element } = {
     outlook: <Outlook width={20} height={20} />,
     gmail: <Gmail width={20} height={20} />,
   };
   return (
-    <b.Flex>
-      <b.Box className="outlook" mr={2} bottom={1}>
-        {platforms[platform]}
+    <b.Flex alignItems="center">
+      <b.Box className="outlook" mr={2}>
+        {types[type]}
       </b.Box>
-      <b.Box className="option">
-        <b.Text>Open {platform}</b.Text>
+      <b.Box>
+        <b.Text fontSize={15} capitalize>
+          Open {type}
+        </b.Text>
       </b.Box>
     </b.Flex>
   );

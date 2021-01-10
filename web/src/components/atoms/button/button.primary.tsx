@@ -1,15 +1,14 @@
 import React from "react";
-import * as b from "global/blocks";
+import * as b from "../../../global/blocks";
 import styled from "styled-components";
-import { size } from "global/sizes";
-import { main } from "global/colors";
+import { size } from "../../../global/sizes";
+import { main } from "../../../global/colors";
 
 export const PrimaryButton: React.FC<{
   title?: string;
   inverse?: boolean;
   onPress?: () => void;
   size?: "sm" | "lg";
-  to?: string;
   fill?: any;
   textColor?: any;
 }> = ({

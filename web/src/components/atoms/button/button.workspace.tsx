@@ -28,7 +28,7 @@ export const WorkspaceButton: React.FC<{
       }}
     >
       <b.Flex alignItems="center" justifyContent="space-between">
-        <b.Box>
+        <b.Box mr={2}>
           <b.Flex alignItems="center">
             <b.Box mr={3}>
               <b.Box

@@ -7,10 +7,9 @@ import { SignInAuth } from "./auth.signin";
 import { GetStartedAuth } from "./auth.getstarted";
 import { SignUpAuth } from "./auth.signup";
 import { FindAuth } from "./auth.find";
-import { ConfirmAuth } from "./auth.confirm";
 import { InvitedAuth } from "./auth.invited";
 import { WorkspacesAuth } from "./auth.workspaces";
-import styled, { css } from "styled-components";
+import { css } from "styled-components";
 
 export interface AuthProps {
   variant: string;
@@ -44,9 +43,6 @@ export const Auth: React.FC<AuthProps> = ({
     },
     find: {
       component: <FindAuth {...props} />,
-    },
-    confirm: {
-      component: <ConfirmAuth {...props} />,
     },
     invited: {
       component: <InvitedAuth {...props} />,

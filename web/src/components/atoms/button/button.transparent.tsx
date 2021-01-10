@@ -4,7 +4,13 @@ import styled, { ThemeContext } from "styled-components";
 
 export const TransparentButton: React.FC<{
   content?: any;
-}> = ({ content = <b.Text nowrap>Transparent Button</b.Text> }) => {
+}> = ({
+  content = (
+    <b.Text nowrap fontSize={15}>
+      Transparent Button
+    </b.Text>
+  ),
+}) => {
   const theme = useContext(ThemeContext);
   return (
     <Wrapper

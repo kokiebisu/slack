@@ -23,7 +23,9 @@ export const PlainInput: React.FC<{
   },
 }) => {
   const theme = useContext(ThemeContext);
-  const types = {
+  const types: {
+    [type: string]: { placeholder: string; criteria: boolean };
+  } = {
     fullname: {
       placeholder: "Your full name",
       criteria: info[value]?.match(fullNameRegex),
@@ -44,9 +46,10 @@ export const PlainInput: React.FC<{
           pr={6}
           pl={3}
           width={1}
+          fontSize={15}
           autoCapitalize="sentences"
           value={info[value]}
-          onChange={(e) =>
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setInfo({ ...info, [value as string]: e.target.value })
           }
           border="1px solid"
