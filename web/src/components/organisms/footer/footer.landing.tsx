@@ -151,6 +151,8 @@ export const LandingFooter: React.FC<{}> = () => {
                         <b.Box mr={3} key={index}>
                           <Button
                             variant="transparent"
+                            px={4}
+                            py={3}
                             to={option.url}
                             content={
                               <b.Text fontSize={15}>{option.name}</b.Text>
@@ -162,6 +164,8 @@ export const LandingFooter: React.FC<{}> = () => {
                   </b.Flex>
                   <Button
                     variant="transparent"
+                    px={4}
+                    py={3}
                     content={
                       <b.Flex alignItems="center">
                         <b.Box mr={1}>

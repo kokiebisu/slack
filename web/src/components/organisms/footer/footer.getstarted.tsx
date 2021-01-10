@@ -11,6 +11,8 @@ export const GetStartedFooter: React.FC<{}> = () => {
       <b.Box mr={2}>
         <Button
           variant="transparent"
+          px={4}
+          py={3}
           to="/legal"
           content={<b.Text fontSize={15}>Privacy & terms</b.Text>}
         />
@@ -18,6 +20,8 @@ export const GetStartedFooter: React.FC<{}> = () => {
       <b.Box mr={2}>
         <Button
           variant="transparent"
+          px={4}
+          py={3}
           to="/help"
           content={<b.Text fontSize={15}>Contact us</b.Text>}
         />
