@@ -16,7 +16,7 @@ export const GetStartedLayout: React.FC<{
   return (
     <b.Grid height="100%" gridTemplateRows="auto 1fr 100px">
       <b.Container>
-        <b.Box>
+        <b.Box mt={3}>
           <b.Flex justifyContent="center">
             <b.Box py={2}>
               <NameLogo

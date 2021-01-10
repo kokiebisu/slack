@@ -32,3 +32,8 @@ export const password = Template.bind({});
 password.args = {
   variant: "password",
 };
+
+export const Email = Template.bind({});
+Email.args = {
+  variant: "email",
+};

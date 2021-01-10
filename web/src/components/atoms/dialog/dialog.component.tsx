@@ -1,4 +1,5 @@
 import React from "react";
+import { EmailDialog } from "./dialog.email";
 
 /** variants */
 import { ErrorDialog } from "./dialog.error";
@@ -16,6 +17,7 @@ export const Dialog: React.FC<DialogProps> = ({
   const variants: { [variant: string]: JSX.Element } = {
     error: <ErrorDialog {...props} />,
     password: <PasswordDialog {...props} />,
+    email: <EmailDialog {...props} />,
   };
   return <div data-testid={`${variant}-dialog`}>{variants[variant]}</div>;
 };

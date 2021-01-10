@@ -12,11 +12,11 @@ import "../../../util/string";
 import { emailRegex, fullNameRegex } from "../../../util/passwordUtil";
 
 export const PlainInput: React.FC<{
-  value?: string;
+  type?: string;
   info?: any;
   setInfo?: any;
 }> = ({
-  value = "fullname",
+  type = "fullname",
   setInfo,
   info = {
     name: "",
@@ -28,36 +28,33 @@ export const PlainInput: React.FC<{
   } = {
     fullname: {
       placeholder: "Your full name",
-      criteria: info[value]?.match(fullNameRegex),
+      criteria: info[type]?.match(fullNameRegex),
     },
     email: {
       placeholder: "name@work-email.com",
-      criteria: info[value]?.match(emailRegex),
+      criteria: info[type]?.match(emailRegex),
     },
   };
   return (
     <div>
-      <b.Box my={2}>
-        <b.Text fontFamily="SlackLato-Bold">{value.capitalize()}</b.Text>
-      </b.Box>
       <b.Box>
         <b.Input
-          py={3}
+          py={10}
           pr={6}
           pl={3}
           width={1}
-          fontSize={15}
+          fontSize={18}
           autoCapitalize="sentences"
-          value={info[value]}
+          value={info[type]}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setInfo({ ...info, [value as string]: e.target.value })
+            setInfo({ ...info, [type as string]: e.target.value })
           }
           border="1px solid"
           borderColor={theme.colors.gray}
-          borderRadius={3}
-          placeholder={types[value].placeholder}
+          borderRadius={4}
+          placeholder={types[type].placeholder}
         />
-        {types[value].criteria ? (
+        {types[type].criteria ? (
           <IconWrapper position="absolute" top="50%" right={12}>
             <CheckCircle width={18} height={18} fill={theme.colors.blue} />
           </IconWrapper>

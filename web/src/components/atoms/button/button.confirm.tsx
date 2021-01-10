@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import * as b from "../../../global/blocks";
 
-export const ConfirmButton: React.FC<{ loading?: boolean }> = ({
+export const ConfirmButton: React.FC<{ label?: string; loading?: boolean }> = ({
+  label = "Confirm",
   loading = false,
 }) => {
   return (
@@ -23,9 +24,9 @@ export const ConfirmButton: React.FC<{ loading?: boolean }> = ({
             textAlign="center"
             color="white"
             fontFamily="SlackLato-Bold"
-            fontSize={15}
+            fontSize={18}
           >
-            Confirm
+            {label}
           </b.Text>
         </b.AnimatedBox>
       </b.Flex>

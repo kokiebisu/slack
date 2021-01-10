@@ -31,6 +31,9 @@ export const Prototype: React.FC<PrototypeProps> = ({
   } = {
     signin: {
       component: <SignInAuth {...props} />,
+      extendsTo: css`
+        max-width: 400px;
+      `,
     },
     getstarted: {
       component: <GetStartedAuth {...props} />,

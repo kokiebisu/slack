@@ -5,7 +5,7 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import { Prototype, PrototypeProps } from "components/prototype/auth";
 
 export default {
-  title: "Design System/Organisms/Auth",
+  title: "Design System/Prototype/Auth",
   component: Prototype,
 } as Meta;
 
