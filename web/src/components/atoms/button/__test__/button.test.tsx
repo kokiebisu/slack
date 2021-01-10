@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
-import { Button } from "../button.component";
+import { Button } from "..";
 import { ThemeProvider } from "styled-components";
 import { main } from "global/colors";
 

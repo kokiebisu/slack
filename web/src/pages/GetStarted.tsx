@@ -1,6 +1,6 @@
 import React from "react";
 import * as b from "global/blocks";
-import { Auth } from "components/prototype/auth";
+import { Prototype } from "components/prototype/auth";
 import { Footer } from "components/organisms/footer/footer.component";
 import { Header } from "components/organisms/header/header.component";
 
@@ -13,7 +13,7 @@ export const GetStartedPage: React.FC<{}> = () => {
         </div>
         <b.Box my={5}>
           <b.Flex justifyContent="center">
-            <Auth variant="getstarted" />
+            <Prototype variant="getstarted" />
           </b.Flex>
         </b.Box>
         <div>

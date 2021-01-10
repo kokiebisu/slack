@@ -10,7 +10,7 @@ import { Toggle } from "../components/molecules/toggle";
 import { Modal } from "../components/organisms/modal/modal.component";
 
 // Queries
-import { useMeQuery, useTeamQuery } from "../generated/graphql";
+
 import { useToggleState } from "../context/toggle-context";
 import { useEffect } from "react";
 
@@ -23,13 +23,6 @@ export const WorkspacePage: React.FC<Props> = ({ route }) => {
 
   const { teamId } = useParams<{ teamId: string }>();
   localStorage.setItem("teamId", teamId);
-  const { loading: meLoading, error } = useMeQuery();
-
-  const { loading: teamLoading } = useTeamQuery({
-    variables: {
-      teamId,
-    },
-  });
 
   useEffect(() => {
     document.body.style.overflow = "hidden";

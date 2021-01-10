@@ -10,9 +10,6 @@ import { Options } from "./Options";
 import { SidebarSections } from "./Sections";
 import { Profile } from "./Profile";
 
-// Query
-import { useTeamQuery } from "generated/graphql";
-
 // Styles
 import { Wrapper } from "styles/Workspace/Sidebar";
 
@@ -24,9 +21,9 @@ interface Props {
 export const Sidebar: React.FC<Props> = ({ displayMenu }) => {
   const [hovered, setHovered] = useState(false);
   const { teamId } = useParams<{ teamId: string }>();
-  const { data: { team } = {} } = useTeamQuery({
-    variables: { teamId },
-  });
+  // const { data: { team } = {} } = useTeamQuery({
+  //   variables: { teamId },
+  // });
 
   return (
     <>
@@ -37,7 +34,7 @@ export const Sidebar: React.FC<Props> = ({ displayMenu }) => {
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
         >
-          {team && team.team && <Profile team={team.team} hovered={hovered} />}
+          {/* {team && team.team && <Profile team={team.team} hovered={hovered} />} */}
         </b.Box>
         <b.Box className="sidebar" style={{ overflowY: "scroll" }}>
           <Options />

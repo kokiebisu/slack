@@ -12,7 +12,7 @@ import { NoNameLogo } from "assets/svg/Logo";
 import { size } from "global/sizes";
 
 /** components */
-import { Button } from "components/atoms/button/button.component";
+import { Button } from "components/atoms/button";
 
 export const LandingFooter: React.FC<{}> = () => {
   const theme = useContext(ThemeContext);

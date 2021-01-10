@@ -2,8 +2,6 @@ import * as React from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as b from "global/blocks";
-// Query
-import { useGetChannelByIdQuery } from "generated/graphql";
 
 // Components
 import { Layout } from "components/layout/layout.component";

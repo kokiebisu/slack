@@ -10,11 +10,9 @@ import { LayerPlus, UserPlus } from "assets/svg";
 
 // Components
 import { useParams } from "react-router-dom";
-import { useGetChannelByIdQuery } from "generated/graphql";
 
 import { MessageContainer } from "components/Workspace/Channel/Container";
 import { MessageBox } from "components/Workspace/MessageBox";
-import { useSendMessageMutation } from "generated/graphql";
 
 export const ChannelContent: React.FC<{}> = () => {
   const { channelId } = useParams<{ channelId: string }>();

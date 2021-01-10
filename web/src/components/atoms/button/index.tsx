@@ -19,6 +19,7 @@ import { WorkspaceButton } from "./button.workspace";
 import { GetStartedButton } from "./button.getstarted";
 import { NextButton } from "./button.next";
 import { SquareButton } from "./button.square";
+import { AuthButton } from "./button.auth";
 
 export interface ButtonProps {
   to?: string;
@@ -51,6 +52,7 @@ export const Button: React.FC<ButtonProps> = ({
     getstarted: <GetStartedButton {...props} />,
     next: <NextButton {...props} />,
     square: <SquareButton {...props} />,
+    auth: <AuthButton {...props} />,
   };
 
   return (

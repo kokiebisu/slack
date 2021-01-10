@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 
-// Queries
-import { useVerifyUserInviteQuery } from "generated/graphql";
-
 // Blocks
 import * as b from "global/blocks";
 
@@ -15,19 +12,14 @@ import { Input } from "components/atoms/input/input.component";
 import { fullNameRegex, weakRegex } from "util/passwordUtil";
 import { randomColor } from "util/randomColor";
 import { profile } from "global/colors";
-import { useCreateUserInviteMutation } from "generated/graphql";
 
-import { Button } from "components/atoms/button/button.component";
+import { Button } from "components/atoms/button";
 
 export const InvitedAuth: React.FC<{}> = () => {
   const { invitorId, token } = useParams<{
     invitorId: string;
     token: string;
   }>();
-
-  const { data: VerifyUserInvite } = useVerifyUserInviteQuery({
-    variables: { token, invitorId },
-  });
 
   const history = useHistory();
 
@@ -37,8 +29,6 @@ export const InvitedAuth: React.FC<{}> = () => {
   });
   const [errorLog, setErrorLog] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const [create] = useCreateUserInviteMutation();
 
   const displayError = (phrase: string) => {
     setErrorLog(phrase);
@@ -69,55 +59,32 @@ export const InvitedAuth: React.FC<{}> = () => {
     }
 
     const avatarBackground = randomColor(profile);
-
-    const response = await create({
-      variables: {
-        token,
-        invitorId,
-        name: info.fullname,
-        password: info.password,
-        avatarBackground,
-      },
-    });
-
-    if (response && response.data && response.data.createUserInvite.ok) {
-      history.push({
-        pathname: `/client/${response.data.createUserInvite.teamId}`,
-      });
-    }
-    if (!response?.data?.createUserInvite.ok) {
-      setErrorLog(response?.data?.createUserInvite!.errorlog as string);
-    }
   };
 
   return (
     <div>
-      {token && VerifyUserInvite?.verifyUserInvite.ok ? (
-        <Redirect to={`/client/${VerifyUserInvite?.verifyUserInvite.teamId}`} />
-      ) : (
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            createAccount();
-          }}
-        >
-          {[
-            {
-              value: "fullname",
-              variant: "plain",
-            },
-            { value: "password", variant: "password" },
-          ].map((params, index) => (
-            <b.Box key={index}>
-              <Input invite info={info} setInfo={setInfo} {...params} />
-            </b.Box>
-          ))}
-          <Dialog variant="error" error={errorLog} />
-          <b.Box mt={3}>
-            <Button variant="confirm" block />
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          createAccount();
+        }}
+      >
+        {[
+          {
+            value: "fullname",
+            variant: "plain",
+          },
+          { value: "password", variant: "password" },
+        ].map((params, index) => (
+          <b.Box key={index}>
+            <Input invite info={info} setInfo={setInfo} {...params} />
           </b.Box>
-        </form>
-      )}
+        ))}
+        <Dialog variant="error" error={errorLog} />
+        <b.Box mt={3}>
+          <Button variant="confirm" block />
+        </b.Box>
+      </form>
     </div>
   );
 };

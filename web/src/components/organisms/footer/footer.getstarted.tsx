@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "styled-components";
 import * as b from "../../../global/blocks";
-import { Button } from "../../../components/atoms/button/button.component";
+import { Button } from "../../atoms/button";
 import { Globe } from "../../../assets/svg";
 
 export const GetStartedFooter: React.FC<{}> = () => {

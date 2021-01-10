@@ -7,12 +7,11 @@ import * as b from "../../../global/blocks";
 // import SlackAppIcon from "../../../assets/img/slack-app.png";
 import { useHistory } from "react-router-dom";
 import { setAccessToken } from "../../../global/token";
-import { useLogoutMutation } from "../../../generated/graphql";
+
 import { Option } from "../option";
 
 export const MenuToggle: React.FC<{}> = () => {
   const history = useHistory();
-  const [logout, { client }] = useLogoutMutation();
 
   return (
     <Wrapper py={2}>
@@ -49,9 +48,8 @@ export const MenuToggle: React.FC<{}> = () => {
           variant="menu"
           name="Sign out of asdf"
           clicked={async () => {
-            await logout();
             setAccessToken("");
-            client?.clearStore();
+            // client?.clearStore();
             history.push("/");
           }}
         />

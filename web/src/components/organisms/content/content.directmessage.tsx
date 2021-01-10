@@ -11,7 +11,6 @@ import * as b from "global/blocks";
 // Styles
 
 import { useParams } from "react-router";
-import { useSendDirectMessageMutation, useUserQuery } from "generated/graphql";
 
 export const DirectMessageContent: React.FC<{}> = () => {
   const { userId } = useParams<{ userId: string }>();

@@ -12,7 +12,7 @@ import { signin } from "../../../global/sizes";
 import { NoNameLogoMono } from "../../../assets/svg/Logo";
 import { Minus, Plus } from "../../../assets/svg";
 
-import { Button } from "../../atoms/button/button.component";
+import { Button } from "../../atoms/button";
 
 export const SignInFooter: React.FC<{}> = () => {
   const theme = useContext(ThemeContext);

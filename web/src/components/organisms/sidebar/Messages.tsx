@@ -11,17 +11,10 @@ import {
   Name,
 } from "../../../styles/Workspace/Sidebar/Messages";
 
-// Query
-import { useUsersQuery } from "../../../generated/graphql";
-
 interface Props {}
 
 export const Messages: React.FC<Props> = () => {
   const { teamId } = useParams<{ teamId: string }>();
-  const { data: usersData } = useUsersQuery({
-    variables: { teamId },
-  });
-
   return (
     <b.Box>
       <SlackBot py={2}>
@@ -40,18 +33,19 @@ export const Messages: React.FC<Props> = () => {
           </Name>
         </b.Flex>
       </SlackBot>
-      {usersData &&
-        usersData.users &&
-        usersData.users.users!.map((user, index) => {
-          return (
-            <Message
-              key={index}
-              name={user.fullname}
-              teamId={teamId}
-              userId={user.id}
-            />
-          );
-        })}
     </b.Box>
   );
 };
+
+//  {/* {usersData &&
+//     usersData.users &&
+//     usersData.users.users!.map((user, index) => {
+//       return (
+//         <Message
+//           key={index}
+//           name={user.fullname}
+//           teamId={teamId}
+//           userId={user.id}
+//         />
+//       );
+//     })} */}

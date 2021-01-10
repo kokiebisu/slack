@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import * as b from "../../../global/blocks";
-import { Input } from "../../atoms/input/input.component";
-import { Dialog } from "../../atoms/dialog/dialog.component";
-import { Button } from "../../atoms/button/button.component";
+import * as b from "global/blocks";
+import { Input } from "components/atoms/input/input.component";
+import { Dialog } from "components/atoms/dialog/dialog.component";
+import { Button } from "components/atoms/button";
 import { useHistory } from "react-router-dom";
 import {
   emailRegex,
@@ -10,8 +10,7 @@ import {
   weakRegex,
 } from "../../../util/passwordUtil";
 import { randomColor } from "../../../util/randomColor";
-import { profile } from "../../../global/colors";
-import { useRegisterMutation } from "../../../generated/graphql";
+import { profile } from "global/colors";
 
 export const SignUpAuth: React.FC<{}> = () => {
   const history = useHistory();
@@ -50,28 +49,7 @@ export const SignUpAuth: React.FC<{}> = () => {
     }
 
     const avatarBackground = randomColor(profile);
-
-    const response = await register({
-      variables: {
-        email: info.email,
-        fullname: info.fullname,
-        password: info.password,
-        avatarBackground,
-      },
-    });
-
-    if (response && response.data && response.data.register.ok) {
-      history.push({
-        pathname: "/create/verifyemail",
-        state: info.email,
-      });
-    }
-    if (response && response.data && !response.data.register.ok) {
-      setErrorLog(response.data.register!.errorlog as string);
-    }
   };
-
-  const [register] = useRegisterMutation();
 
   const displayError = (phrase: string) => {
     setErrorLog(phrase);

@@ -4,7 +4,7 @@ import * as b from "../../../global/blocks";
 
 import { getstarted, size } from "../../../global/sizes";
 
-import { Button } from "../../atoms/button/button.component";
+import { Button } from "../../atoms/button";
 
 // Image
 import workspace from "../../../assets/img/slack-workspace.png";

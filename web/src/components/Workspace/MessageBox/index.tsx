@@ -13,7 +13,7 @@ import {
 } from "styles/Workspace/MessageBox/";
 
 // Components
-import { useGetChannelByIdQuery } from "generated/graphql";
+
 import { useParams } from "react-router-dom";
 import { MyEditor } from "./Editor";
 

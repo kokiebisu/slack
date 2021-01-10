@@ -8,7 +8,7 @@ import * as b from "../../../global/blocks";
 // Img
 import Thumbsup from "../../../assets/img/thumbsup.png";
 
-import { Button } from "../../../components/atoms/button/button.component";
+import { Button } from "../../atoms/button";
 
 export const ActivityCard: React.FC<{}> = () => {
   const theme = useContext(ThemeContext);

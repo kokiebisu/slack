@@ -10,12 +10,6 @@ import { size } from "global/sizes";
 // Svgs
 import { User, MapPinAlt } from "assets/svg";
 
-// Query
-import {
-  useGetBelongingUsersQuery,
-  useGetChannelByIdQuery,
-} from "generated/graphql";
-
 export const ChannelSubSection: React.FC<{
   channelId?: string;
 }> = ({ channelId = "channelId" }) => {

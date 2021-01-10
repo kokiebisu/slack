@@ -13,12 +13,6 @@ import { Prototype } from "components/prototype/create";
 
 import { Page } from "pages";
 
-import {
-  useMeQuery,
-  useCreateTeamMutation,
-  useCreateChannelMutation,
-} from "generated/graphql";
-
 import { randomColor } from "util/randomColor";
 import { avatar } from "global/colors";
 
@@ -34,11 +28,6 @@ export const CreateRoutes: React.SFC = () => {
     channel: "",
   });
 
-  const { data: { me } = {} } = useMeQuery();
-
-  const [createTeam] = useCreateTeamMutation();
-  const [createChannel] = useCreateChannelMutation();
-
   return (
     <>
       <Switch>
@@ -46,7 +35,7 @@ export const CreateRoutes: React.SFC = () => {
           <Page variant="confirmdigit" />
         </Route>
         <Route path={match.url + "/teamname"}>
-          {location.state! && location.state!.authenticated !== undefined ? (
+          {/* {location.state! && location.state!.authenticated !== undefined ? (
             <Prototype
               variant="create"
               input={input}
@@ -65,10 +54,10 @@ export const CreateRoutes: React.SFC = () => {
             />
           ) : (
             <Redirect to="/get-started" />
-          )}
+          )} */}
         </Route>
         <Route path={match.url + "/channelname"}>
-          {info.team ? (
+          {/* {info.team ? (
             <Prototype
               variant="create"
               input={input}
@@ -86,10 +75,10 @@ export const CreateRoutes: React.SFC = () => {
             />
           ) : (
             <Redirect exact to="/get-started" />
-          )}
+          )} */}
         </Route>
         <Route path={match.url + "/tada"}>
-          {info.team && info.channel ? (
+          {/* {info.team && info.channel ? (
             <Prototype
               variant="create"
               input={input}
@@ -102,44 +91,44 @@ export const CreateRoutes: React.SFC = () => {
               buttonName="See your channel in Slack"
               transaction={async (e: React.FormEvent<HTMLFormElement>) => {
                 e.preventDefault();
-                const { data } = await createTeam({
-                  variables: {
-                    name: info.team,
-                    avatarBackground,
-                  },
-                });
+                // const { data } = await createTeam({
+                //   variables: {
+                //     name: info.team,
+                //     avatarBackground,
+                //   },
+                // });
 
                 if (data && data?.createTeam?.team!.id) {
-                  await createChannel({
-                    variables: {
-                      name: "general",
-                      teamId: data.createTeam.team.id,
-                      description:
-                        "This channel is for workspace-wide communication and announcements. All members are in this channel.",
-                      isPublic: true,
-                      topic:
-                        "Company-wide announcements and work-based matters",
-                    },
-                  });
+                  // await createChannel({
+                  //   variables: {
+                  //     name: "general",
+                  //     teamId: data.createTeam.team.id,
+                  //     description:
+                  //       "This channel is for workspace-wide communication and announcements. All members are in this channel.",
+                  //     isPublic: true,
+                  //     topic:
+                  //       "Company-wide announcements and work-based matters",
+                  //   },
+                  // });
 
-                  await createChannel({
-                    variables: {
-                      name: "random",
-                      teamId: data.createTeam.team.id,
-                      description:
-                        "A place for non-work-related flimflam, faffing, hodge-podge or jibber-jabber you'd prefer to keep out of more focused work-related channels.",
-                      isPublic: true,
-                      topic: "Non-work banter and water cooler conversation",
-                    },
-                  });
+                  // await createChannel({
+                  //   variables: {
+                  //     name: "random",
+                  //     teamId: data.createTeam.team.id,
+                  //     description:
+                  //       "A place for non-work-related flimflam, faffing, hodge-podge or jibber-jabber you'd prefer to keep out of more focused work-related channels.",
+                  //     isPublic: true,
+                  //     topic: "Non-work banter and water cooler conversation",
+                  //   },
+                  // });
 
-                  await createChannel({
-                    variables: {
-                      name: info.channel,
-                      teamId: data.createTeam.team.id,
-                      isPublic: true,
-                    },
-                  });
+                  // await createChannel({
+                  //   variables: {
+                  //     name: info.channel,
+                  //     teamId: data.createTeam.team.id,
+                  //     isPublic: true,
+                  //   },
+                  // });
 
                   history.push(`/client/${data.createTeam.team.id}`);
                 }
@@ -147,7 +136,7 @@ export const CreateRoutes: React.SFC = () => {
             />
           ) : (
             <Redirect exact to="/get-started" />
-          )}
+          )} */}
         </Route>
       </Switch>
     </>

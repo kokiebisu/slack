@@ -5,9 +5,8 @@ import styled, { ThemeContext } from "styled-components";
 
 // Components
 import * as b from "../global/blocks";
-import { useVerifyUserByDigitMutation } from "../generated/graphql";
 import { Layout } from "../components/layout/layout.component";
-import { Button } from "../components/atoms/button/button.component";
+import { Button } from "../components/atoms/button";
 
 import {
   LoadingText,
@@ -27,7 +26,6 @@ export const ConfirmDigitPage: React.FC<{}> = () => {
 
   const history = useHistory();
   const [error, setError] = useState("");
-  const [verify, { loading }] = useVerifyUserByDigitMutation();
 
   const [first, setFirst] = useState("");
   const [second, setSecond] = useState("");
@@ -50,20 +48,6 @@ export const ConfirmDigitPage: React.FC<{}> = () => {
         `${first}${second}${third}${fourth}${fifth}${sixth}`,
         10
       );
-
-      const response = await verify({
-        variables: { digit: newDigit },
-      });
-
-      if (response && !response.data?.verifyUserByDigit.ok) {
-        setError(response.data?.verifyUserByDigit.errorlog!);
-      }
-      if (response && response.data?.verifyUserByDigit.ok) {
-        history.push({
-          pathname: "/create/teamname",
-          state: { authenticated: true },
-        });
-      }
     } catch (err) {
       setError("something went awfully wrong");
     }
@@ -210,7 +194,7 @@ export const ConfirmDigitPage: React.FC<{}> = () => {
               </b.Box>
             </form>
             <b.Box mt={2} mb={3}>
-              {loading ? (
+              {/* {loading ? (
                 <b.Flex justifyContent="center" alignItems="center">
                   <b.Box>
                     <b.Flex justifyContent="center" alignItems="center">
@@ -242,7 +226,7 @@ export const ConfirmDigitPage: React.FC<{}> = () => {
                     </b.Box>
                   </b.Flex>
                 </b.Flex>
-              ) : null}
+              ) : null} */}
             </b.Box>
             <b.Flex justifyContent="center">
               <b.Box mr={2}>

@@ -14,7 +14,7 @@ export const GetStartedRoutes: React.SFC = () => {
           <Layout
             variant="getstarted"
             content={
-              <Auth variant="getstarted" extendsTo={{ maxWidth: 780 }} />
+              <Prototype variant="getstarted" extendsTo={{ maxWidth: 780 }} />
             }
           />
         </Route>
@@ -23,14 +23,16 @@ export const GetStartedRoutes: React.SFC = () => {
             variant="getstarted"
             title="Let's find your team"
             subtitle="Enter the email you usually collaborate with"
-            content={<Auth variant="find" extendsTo={{ maxWidth: 370 }} />}
+            content={<Prototype variant="find" extendsTo={{ maxWidth: 370 }} />}
           />
         </Route>
         <Route path={`${match.url}/create`}>
           <Layout
             variant="getstarted"
             title="First, create your account"
-            content={<Auth variant="signup" extendsTo={{ maxWidth: 370 }} />}
+            content={
+              <Prototype variant="signup" extendsTo={{ maxWidth: 370 }} />
+            }
           />
         </Route>
         <Route path={`${match.url}/check/:token?`}>
@@ -40,14 +42,14 @@ export const GetStartedRoutes: React.SFC = () => {
             subtitle="We’ve emailed a special link to . Click the link to
                       confirm your address and get started. Wrong email? Please
                       re-enter your address."
-            content={<Auth variant="confirm" />}
+            content={<Prototype variant="confirm" />}
           />
         </Route>
         <Route path={`${match.url}/invited/:invitorId/:token?`}>
           <Layout
             variant="getstarted"
             title="First create your account"
-            content={<Auth variant="invited" extendsTo={{ maxWidth: 370 }} />}
+            content={<Prototype variant="invited" extendsTo={{ maxWidth: 370 }} />}
           />
         </Route>
       </Switch>

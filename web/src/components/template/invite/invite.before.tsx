@@ -5,7 +5,6 @@ import styled, { ThemeContext } from "styled-components";
 import { GoogleLogo } from "../../../assets/svg/Logo";
 import { UserPlus, Close, PaperPlaneLight } from "../../../assets/svg";
 import { PlusCircle } from "../../../assets/svg";
-import { useSendInvitationMutation } from "../../../generated/graphql";
 import { useParams } from "react-router-dom";
 import { Dialog } from "../../atoms/dialog/dialog.component";
 
@@ -18,8 +17,6 @@ export const BeforeInvite: React.FC<{
 }> = ({ dispatchToggle, input, dispatchInput, finish }) => {
   const { teamId } = useParams<{ teamId: string }>();
   const theme = useContext(ThemeContext);
-
-  const [send] = useSendInvitationMutation();
 
   return (
     <>
@@ -185,13 +182,7 @@ export const BeforeInvite: React.FC<{
                 });
                 return;
               }
-              const response = await send({
-                variables: { email: input.email, name: input.name, teamId },
-              });
 
-              if (response.data?.sendInvitation.errorlog) {
-                console.log("there was an error");
-              }
               finish();
             }}
           >

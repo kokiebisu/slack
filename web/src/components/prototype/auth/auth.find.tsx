@@ -4,11 +4,10 @@ import { Input } from "components/atoms/input/input.component";
 import * as b from "global/blocks";
 import { emailRegex } from "util/passwordUtil";
 import { Dialog } from "components/atoms/dialog/dialog.component";
-import { Button } from "components/atoms/button/button.component";
-import { useCheckEmailLazyQuery } from "generated/graphql";
+import { Button } from "components/atoms/button";
 
 export const FindAuth: React.FC<{}> = () => {
-  const [check, { data }] = useCheckEmailLazyQuery();
+  // const [check, { data }] = useCheckEmailLazyQuery();
   const [info, setInfo] = useState({
     email: "",
   });
@@ -17,7 +16,7 @@ export const FindAuth: React.FC<{}> = () => {
       <form
         onSubmit={async (e) => {
           e.preventDefault();
-          check({ variables: { email: info.email } });
+          // check({ variables: { email: info.email } });
         }}
       >
         <b.Box my={2}>
@@ -32,11 +31,11 @@ export const FindAuth: React.FC<{}> = () => {
         </b.Box>
 
         <b.Box height={35} my={2}>
-          {data?.checkEmail && (
+          {/* {data?.checkEmail && (
             <b.Box>
               <Dialog variant="error" />
             </b.Box>
-          )}
+          )} */}
         </b.Box>
         <b.Box>
           <Button variant="confirm" loading={false} block />

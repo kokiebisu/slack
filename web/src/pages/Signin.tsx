@@ -1,8 +1,8 @@
 import React from "react";
-import * as b from "../global/blocks";
 
 /** components */
 import { Layout } from "components/layout/layout.component";
+import { Prototype } from "components/prototype/auth";
 
 export const SignInPage: React.FC<{}> = () => {
   return (

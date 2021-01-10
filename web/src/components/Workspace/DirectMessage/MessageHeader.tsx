@@ -16,9 +16,6 @@ import {
 // Svgs
 import { UserAlt } from "assets/svg";
 
-// Queries
-import { useUserQuery } from "generated/graphql";
-
 export const MessageHeader = () => {
   const { userId } = useParams<{ userId: string }>();
   // const { data: userData } = useUserQuery({

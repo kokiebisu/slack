@@ -9,7 +9,7 @@ import styled, { ThemeContext } from "styled-components";
 import * as b from "global/blocks";
 
 import { signin } from "global/sizes";
-import { Button } from "components/atoms/button/button.component";
+import { Button } from "components/atoms/button";
 
 export const SignInHeader: React.FC<{}> = () => {
   const theme = useContext(ThemeContext);

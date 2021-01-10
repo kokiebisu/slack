@@ -4,7 +4,7 @@ import * as b from "../../../global/blocks";
 
 import { ThemeContext } from "styled-components";
 
-import { Button } from "../../atoms/button/button.component";
+import { Button } from "../../atoms/button";
 
 export const AvailableCard: React.FC<{
   name?: string;

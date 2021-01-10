@@ -10,9 +10,6 @@ import { SidebarSection } from "./Section";
 import { Messages } from "./Messages";
 import { Channels } from "./Channels";
 
-// Query
-import { useChannelsQuery } from "generated/graphql";
-
 // Styles
 import { Wrapper, InviteButton } from "styles/Workspace/Sidebar/Sections";
 import { useToggleState, useToggleDispatch } from "context/toggle-context";
@@ -31,15 +28,9 @@ export const SidebarSections: React.FC<Props> = () => {
 
   const { teamId } = useParams<{ teamId: string }>();
 
-  const { data, loading, refetch } = useChannelsQuery({
-    variables: {
-      teamId,
-    },
-  });
-
-  useEffect(() => {
-    refetch();
-  }, [toggle.channel, refetch]);
+  // useEffect(() => {
+  //   refetch();
+  // }, [toggle.channel, refetch]);
 
   return (
     <Wrapper>
@@ -58,13 +49,13 @@ export const SidebarSections: React.FC<Props> = () => {
           setRevealed({ ...revealed, channels: !revealed.channels });
         }}
       >
-        {!loading && data && (
+        {/* {!loading && data && (
           <>
             {revealed.channels && data.channels ? (
               <Channels data={data!.channels.channels} />
             ) : null}
           </>
-        )}
+        )} */}
       </SidebarSection>
       <SidebarSection
         title="Direct mesages"
@@ -83,7 +74,7 @@ export const SidebarSections: React.FC<Props> = () => {
           setRevealed({ ...revealed, messages: !revealed.messages })
         }
       >
-        {revealed.messages ? <Messages /> : null}
+        {/* {revealed.messages ? <Messages /> : null} */}
       </SidebarSection>
       <SidebarSection
         title="Apps"

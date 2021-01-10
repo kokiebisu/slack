@@ -6,7 +6,7 @@ import * as b from "global/blocks";
 import styled from "styled-components";
 import { Info } from "assets/svg";
 // Query
-import { useUserQuery } from "generated/graphql";
+
 import { Content } from "components/organisms/content/content.component";
 
 export const DirectMessageWorkspace: React.FC<{}> = () => {

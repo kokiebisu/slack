@@ -17,7 +17,7 @@ export interface PrototypeProps {
   [property: string]: any;
 }
 
-export const Prototype: React.FC<AuthProps> = ({
+export const Prototype: React.FC<PrototypeProps> = ({
   variant = "signin",
   extendsTo,
   width,

@@ -5,7 +5,7 @@ import * as b from "../global/blocks";
 import { Header } from "../components/organisms/header/header.component";
 
 import { Footer } from "../components/organisms/footer/footer.component";
-import { useMeQuery, useMyTeamsQuery } from "../generated/graphql";
+
 import { Modal } from "../components/organisms/modal/modal.component";
 import { useToggleState } from "../context/toggle-context";
 import { ModalWrapper } from "../styles/Landing";

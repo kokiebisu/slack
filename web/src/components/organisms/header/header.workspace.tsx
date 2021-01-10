@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useTeamQuery } from "generated/graphql";
+
 import { useParams } from "react-router-dom";
 
 /** styles */
@@ -14,11 +14,6 @@ import { Clock, Magnify, Info } from "assets/svg";
 
 export const WorkspaceHeader: React.FC<{}> = () => {
   const { teamId } = useParams<{ teamId: string }>();
-  const { data: { team } = {}, loading } = useTeamQuery({
-    variables: {
-      teamId,
-    },
-  });
 
   return (
     <b.Box
@@ -28,16 +23,15 @@ export const WorkspaceHeader: React.FC<{}> = () => {
       borderBottomStyle="solid"
       borderBottomColor="primary__lighter"
     >
-      {loading ? null : (
-        <b.Flex alignItems="center" justifyContent="center">
-          <b.Box style={{ flex: 1 }} pr={4} pl={3}>
-            <b.Flex style={{ justifyContent: "flex-end" }}>
-              <IconWrapper className="clock">
-                <Clock />
-              </IconWrapper>
-            </b.Flex>
-          </b.Box>
-          {team && (
+      <b.Flex alignItems="center" justifyContent="center">
+        <b.Box style={{ flex: 1 }} pr={4} pl={3}>
+          <b.Flex style={{ justifyContent: "flex-end" }}>
+            <IconWrapper className="clock">
+              <Clock />
+            </IconWrapper>
+          </b.Flex>
+        </b.Box>
+        {/* {team && (
             <Input borderRadius={5}>
               <b.Box>
                 <b.Flex alignItems="center" justifyContent="center">
@@ -52,20 +46,19 @@ export const WorkspaceHeader: React.FC<{}> = () => {
                 </b.Flex>
               </b.Box>
             </Input>
-          )}
-          <b.Box style={{ flex: 1 }} pr={3} pl={3}>
-            <b.Flex style={{ justifyContent: "flex-end" }}>
-              <b.Button ml={2} background="transparent">
-                <b.Flex alignItems="center">
-                  <IconWrapper className="info">
-                    <Info />
-                  </IconWrapper>
-                </b.Flex>
-              </b.Button>
-            </b.Flex>
-          </b.Box>
-        </b.Flex>
-      )}
+          )} */}
+        <b.Box style={{ flex: 1 }} pr={3} pl={3}>
+          <b.Flex style={{ justifyContent: "flex-end" }}>
+            <b.Button ml={2} background="transparent">
+              <b.Flex alignItems="center">
+                <IconWrapper className="info">
+                  <Info />
+                </IconWrapper>
+              </b.Flex>
+            </b.Button>
+          </b.Flex>
+        </b.Box>
+      </b.Flex>
     </b.Box>
   );
 };

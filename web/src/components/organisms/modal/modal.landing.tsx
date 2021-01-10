@@ -10,8 +10,6 @@ import { ChevronRight } from "../../../assets/svg";
 import { useToggleDispatch } from "../../../context/toggle-context";
 import { TransparentButtonMotion } from "../../../animations/Buttons";
 
-import { useMyTeamsQuery } from "../../../generated/graphql";
-
 export const LandingModal: React.FC<{ data?: any; loading?: boolean }> = ({
   data,
   loading,

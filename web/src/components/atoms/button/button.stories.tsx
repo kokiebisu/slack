@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 import { ThemeProvider } from "styled-components";
-import { Button, ButtonProps } from "./button.component";
+import { Button, ButtonProps } from ".";
 import { main } from "../../../global/colors";
 
 export default {
@@ -123,4 +123,9 @@ next.args = {
 export const square = TemplateStory.bind({});
 square.args = {
   variant: "square",
+};
+
+export const Auth = TemplateStory.bind({});
+Auth.args = {
+  variant: "auth",
 };
