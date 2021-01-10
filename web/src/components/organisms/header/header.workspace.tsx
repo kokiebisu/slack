@@ -13,7 +13,7 @@ import { home, size } from "global/sizes";
 import { Clock, Magnify, Info } from "assets/svg";
 
 export const WorkspaceHeader: React.FC<{}> = () => {
-  const { teamId } = useParams();
+  const { teamId } = useParams<{ teamId: string }>();
   const { data: { team } = {}, loading } = useTeamQuery({
     variables: {
       teamId,

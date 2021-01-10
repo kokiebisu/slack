@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import * as React from "react";
+import { useHistory, useParams } from "react-router-dom";
 
 // Blocks
-import * as b from 'global/blocks';
+import * as b from "global/blocks";
 
 // Svgs
 import {
@@ -14,7 +14,7 @@ import {
   Apps,
   Files,
   ThinHashTag,
-} from 'assets/svg';
+} from "assets/svg";
 
 // Styles
 import {
@@ -22,7 +22,7 @@ import {
   IconWrapper,
   TextWrapper,
   Title,
-} from 'styles/Workspace/Sidebar/Option';
+} from "styles/Workspace/Sidebar/Option";
 
 interface Props {
   name: string;
@@ -32,17 +32,18 @@ interface Props {
 export const Option: React.FC<Props> = ({ name, link }) => {
   const displayingName = name.charAt(0).toUpperCase() + name.slice(1);
   const history = useHistory();
-  const { teamId } = useParams();
+  const { teamId } = useParams<{ teamId: string }>();
 
   return (
     <Wrapper
       onClick={() => {
         history.push(`/client/${teamId}/${link}`);
-      }}>
+      }}
+    >
       <b.Flex>
         <IconWrapper>{renderOption(name)}</IconWrapper>
         <TextWrapper>
-          <Title fontFamily='SlackLato-Light' fontSize={14}>
+          <Title fontFamily="SlackLato-Light" fontSize={14}>
             {displayingName}
           </Title>
         </TextWrapper>
@@ -53,21 +54,21 @@ export const Option: React.FC<Props> = ({ name, link }) => {
 
 const renderOption = (option: string) => {
   switch (option) {
-    case 'threads':
+    case "threads":
       return <Threads />;
-    case 'mentions & reactions':
+    case "mentions & reactions":
       return <MentionReaction />;
-    case 'drafts':
+    case "drafts":
       return <Drafts />;
-    case 'saved items':
+    case "saved items":
       return <SavedItems />;
-    case 'channel browser':
+    case "channel browser":
       return <ThinHashTag />;
-    case 'people':
+    case "people":
       return <People />;
-    case 'apps':
+    case "apps":
       return <Apps />;
-    case 'files':
+    case "files":
       return <Files />;
     default:
       return;

@@ -6,12 +6,7 @@ type Action =
   | { type: "add_email"; payload: string }
   | { type: "add_name"; payload: string };
 
-interface Props {
-  input: { email: string; name: string };
-  addInput: (action: Action) => void;
-}
-
-export const ModalInput: React.FC<{ value: string; onChange: any }> = ({
+export const ModalInput: React.FC<{ value?: string; onChange?: any }> = ({
   value,
   onChange,
 }) => {

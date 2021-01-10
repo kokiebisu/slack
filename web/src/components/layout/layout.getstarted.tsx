@@ -14,7 +14,7 @@ export const GetStartedLayout: React.FC<{
 }> = ({ children, title, subtitle }) => {
   const theme = useContext(ThemeContext);
   return (
-    <b.Grid height="100%" gridTemplateRows="100px 1fr 100px">
+    <b.Grid height="100%" gridTemplateRows="auto 1fr 100px">
       <b.Container>
         <b.Box>
           <b.Flex justifyContent="center">

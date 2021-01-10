@@ -16,7 +16,7 @@ import { Content } from "components/organisms/content/content.component";
 // Styles
 
 export const ChannelWorkspace: React.FC<{}> = () => {
-  const { channelId } = useParams();
+  const { channelId } = useParams<{ channelId: string }>();
   // const { data: { getChannelById } = {} } = useGetChannelByIdQuery({
   //   variables: { channelId },
   // });

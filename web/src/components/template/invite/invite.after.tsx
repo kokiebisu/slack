@@ -6,12 +6,13 @@ import styled from "styled-components";
 // Svg
 import { PaperPlaneLight } from "assets/svg";
 
-interface Props {
-  input: { email: string; name: string; done: boolean };
-  dispatchToggle: any;
-}
-
-export const AfterInvite: React.FC<Props> = ({ input, dispatchToggle }) => {
+export const AfterInvite: React.FC<{
+  input?: { email: string; name: string; done: boolean };
+  dispatchToggle?: any;
+}> = ({
+  input = { email: "email@gmail.com", name: "name", done: false },
+  dispatchToggle,
+}) => {
   return (
     <>
       <Header>

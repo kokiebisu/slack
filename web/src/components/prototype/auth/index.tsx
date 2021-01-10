@@ -11,13 +11,13 @@ import { InvitedAuth } from "./auth.invited";
 import { WorkspacesAuth } from "./auth.workspaces";
 import { css } from "styled-components";
 
-export interface AuthProps {
+export interface PrototypeProps {
   variant: string;
   extendsTo?: any;
   [property: string]: any;
 }
 
-export const Auth: React.FC<AuthProps> = ({
+export const Prototype: React.FC<AuthProps> = ({
   variant = "signin",
   extendsTo,
   width,

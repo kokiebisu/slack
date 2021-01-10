@@ -7,11 +7,11 @@ import { MessageCard } from "./card.message";
 export interface CardProps {
   variant: string;
   extendsTo?: any;
-  [x: string]: any;
+  [property: string]: any;
 }
 
 export const Card: React.FC<CardProps> = ({ variant, extendsTo, ...props }) => {
-  const variants = {
+  const variants: { [variant: string]: JSX.Element } = {
     available: <AvailableCard {...props} />,
     activity: <ActivityCard {...props} />,
     message: <MessageCard {...props} />,

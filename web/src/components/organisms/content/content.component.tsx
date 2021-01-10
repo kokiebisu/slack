@@ -15,7 +15,7 @@ export const Content: React.FC<ContentProps> = ({
   variant = "channel",
   ...props
 }) => {
-  const variants = {
+  const variants: { [variant: string]: JSX.Element } = {
     channel: <ChannelContent {...props} />,
     directmessage: <DirectMessageContent {...props} />,
     thread: <ThreadContent {...props} />,

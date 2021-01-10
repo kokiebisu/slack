@@ -1,14 +1,14 @@
-import * as React from 'react';
-import { useParams, useHistory } from 'react-router';
+import * as React from "react";
+import { useParams, useHistory } from "react-router";
 
 // Blocks
-import * as b from 'global/blocks';
+import * as b from "global/blocks";
 
 // Svgs
-import { Lock, FatHashTag } from 'assets/svg';
+import { Lock, FatHashTag } from "assets/svg";
 
 // Styles
-import { Wrapper, Name, IconWrapper } from 'styles/Workspace/Sidebar/Channel';
+import { Wrapper, Name, IconWrapper } from "styles/Workspace/Sidebar/Channel";
 
 interface Props {
   id: string;
@@ -17,7 +17,7 @@ interface Props {
 }
 
 export const Channel: React.FC<Props> = ({ id, name, isPublic }) => {
-  const { teamId } = useParams();
+  const { teamId } = useParams<{ teamId: string }>();
 
   const history = useHistory();
 
@@ -25,9 +25,10 @@ export const Channel: React.FC<Props> = ({ id, name, isPublic }) => {
     <Wrapper
       onClick={() => {
         history.push(`/client/${teamId}/channel/${id}`);
-      }}>
-      <b.Flex alignItems='center'>
-        <IconWrapper className='tag' pr={2}>
+      }}
+    >
+      <b.Flex alignItems="center">
+        <IconWrapper className="tag" pr={2}>
           {isPublic ? <FatHashTag /> : <Lock />}
         </IconWrapper>
         <Name>

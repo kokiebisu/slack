@@ -15,7 +15,7 @@ export const Bullet: React.FC<BulletProps> = ({
   variant = "together",
   ...props
 }) => {
-  const variants = {
+  const variants: { [variant: string]: any } = {
     together: <TogetherBullet {...props} />,
     check: <CheckBullet {...props} />,
     more: <MoreBullet {...props} />,

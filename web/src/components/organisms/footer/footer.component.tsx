@@ -7,15 +7,12 @@ import { GetStartedFooter } from "./footer.getstarted";
 
 /** props */
 export interface FooterProps {
-  variant?: string;
+  variant: string;
   [x: string]: any;
 }
 
-export const Footer: React.FC<FooterProps> = ({
-  variant = "landing",
-  ...props
-}) => {
-  const variants = {
+export const Footer: React.FC<FooterProps> = ({ variant, ...props }) => {
+  const variants: { [variant: string]: JSX.Element } = {
     landing: <LandingFooter {...props} />,
     signin: <SignInFooter {...props} />,
     getstarted: <GetStartedFooter {...props} />,

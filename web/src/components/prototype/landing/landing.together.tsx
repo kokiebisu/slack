@@ -62,7 +62,7 @@ export const TogetherPrototype: React.FC<{}> = () => {
               {bullets.map((bullet, index) => {
                 return (
                   <BulletWrapper key={index}>
-                    <Bullet variant="together" together={bullet} />
+                    <Bullet variant="together" type={bullet} />
                   </BulletWrapper>
                 );
               })}

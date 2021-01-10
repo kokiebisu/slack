@@ -1,12 +1,12 @@
 import React from "react";
 import { NameCreate } from "./create.name";
 
-export interface PrototypeInterface {
+export interface PrototypeProps {
   variant: string;
   [property: string]: any;
 }
 
-export const Prototype: React.FC<PrototypeInterface> = ({ variant, ...props }) => {
+export const Prototype: React.FC<PrototypeProps> = ({ variant, ...props }) => {
   const variants: { [variant: string]: any } = {
     name: <NameCreate />,
   };

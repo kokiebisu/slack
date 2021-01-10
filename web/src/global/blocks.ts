@@ -361,12 +361,15 @@ export const Text = styled.p<
       uppercase?: boolean;
       nowrap?: boolean;
       breakall?: boolean;
+      capitalize?: boolean;
+      bold?: boolean;
     }
 >`
   ${typography}
   ${color}
   padding: 0;
   margin: 0;
+  font-weight: ${({ bold }) => (bold ? 700 : 500)};
   text-transform: ${({ uppercase }) => uppercase && "uppercase"};
   white-space: ${({ nowrap }) => nowrap && "nowrap"};
   word-break: ${({ breakall }) => breakall && "break-all"};

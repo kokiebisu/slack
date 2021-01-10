@@ -6,7 +6,9 @@ import { Gmail, Outlook } from "../../../assets/svg/Logo";
 /** styles */
 import * as b from "../../../global/blocks";
 
-export const EmailButton: React.FC<{ type?: string }> = ({ type }) => {
+export const EmailButton: React.FC<{ type?: string }> = ({
+  type = "outlook",
+}) => {
   const types: { [type: string]: JSX.Element } = {
     outlook: <Outlook width={20} height={20} />,
     gmail: <Gmail width={20} height={20} />,

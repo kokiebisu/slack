@@ -15,7 +15,7 @@ export const Input: React.FC<InputProps> = ({
   extendsTo,
   ...props
 }) => {
-  const variants = {
+  const variants: { [property: string]: any } = {
     plain: <PlainInput {...props} />,
     password: <PasswordInput {...props} />,
     modal: <ModalInput {...props} />,

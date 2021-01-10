@@ -7,7 +7,7 @@ export const Template: React.FC<{
   variant: string;
   [property: string]: any;
 }> = ({ variant, ...props }) => {
-  const variants = {
+  const variants: { [variant: string]: JSX.Element } = {
     after: <AfterInvite {...props} />,
     before: <BeforeInvite {...props} />,
   };

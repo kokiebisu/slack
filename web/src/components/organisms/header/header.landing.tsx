@@ -1,28 +1,25 @@
 import React, { useState, useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
 
-/** context */
 import { useToggleDispatch } from "../../../context/toggle-context";
 
-/** global */
 import * as b from "../../../global/blocks";
 import { size } from "../../../global/sizes";
 
-/** assets */
 import { NameLogo } from "../../../assets/svg/Logo";
 
-/** components */
 import { Button } from "../../atoms/button/button.component";
 import { Modal } from "../modal/modal.component";
 import { useHistory } from "react-router";
+import { useMeQuery, useMyTeamsQuery } from "generated/graphql";
 
-export const LandingHeader: React.FC<{ data?: any; loading?: boolean }> = ({
-  data,
-  loading,
-}) => {
+export const LandingHeader: React.FC<{}> = () => {
   const history = useHistory();
   const [pressed, setPressed] = useState(false);
   const dispatchToggle = useToggleDispatch();
+
+  // const { data: meData } = useMeQuery();
+  // const { data: teamsData, loading } = useMyTeamsQuery();
   return (
     <div>
       <b.Box py={3}>
@@ -45,47 +42,43 @@ export const LandingHeader: React.FC<{ data?: any; loading?: boolean }> = ({
               </Options>
             </b.Flex>
           </b.Box>
-          {!loading &&
-          data &&
-          data.myTeams.teams! &&
-          data.myTeams.teams!.length > 0 ? (
-            <div>
+
+          {/* <div>
+            <Button
+              variant="primary"
+              size="sm"
+              title="Launch"
+              onPress={() => setPressed(!pressed)}
+            />
+          </div> */}
+
+          <div>
+            <Normal>
+              <b.Flex alignItems="center">
+                <div>
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    title="Sign in"
+                    to="/signin"
+                  />
+                </div>
+              </b.Flex>
+            </Normal>
+            <Mobile>
               <Button
-                variant="primary"
-                size="sm"
-                title="Launch"
-                onPress={() => setPressed(!pressed)}
+                variant="hamburger"
+                onPress={() => dispatchToggle({ type: "toggle_landing" })}
               />
-            </div>
-          ) : (
-            <>
-              <Normal>
-                <b.Flex alignItems="center">
-                  <div>
-                    <Button
-                      variant="primary"
-                      size="sm"
-                      title="Sign in"
-                      to="/get-started"
-                    />
-                  </div>
-                </b.Flex>
-              </Normal>
-              <Mobile>
-                <Button
-                  variant="hamburger"
-                  onPress={() => dispatchToggle({ type: "toggle_landing" })}
-                />
-              </Mobile>
-            </>
-          )}
+            </Mobile>
+          </div>
         </b.Flex>
       </b.Box>
-      {pressed && data?.myTeams?.teams ? (
+      {/* {pressed && teamsData ? (
         <LaunchWrapper>
-          <Modal variant="launch" teams={data?.myTeams.teams} />
+          <Modal variant="launch" teams={teamsData} />
         </LaunchWrapper>
-      ) : null}
+      ) : null} */}
     </div>
   );
 };

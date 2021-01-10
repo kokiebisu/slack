@@ -4,7 +4,7 @@ import styled, { ThemeContext } from "styled-components";
 // Blocks
 import * as b from "../../../global/blocks";
 
-import { Card } from "../../../components/molecules/card";
+import { Card } from "../../molecules/card";
 
 // Sizes
 import { size } from "../../../global/sizes";

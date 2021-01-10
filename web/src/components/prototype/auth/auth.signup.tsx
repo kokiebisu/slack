@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import * as b from "../../../global/blocks";
-import { Input } from "../../../components/atoms/input/input.component";
-import { Dialog } from "../../../components/atoms/dialog/dialog.component";
-import { Button } from "../../../components/atoms/button/button.component";
+import { Input } from "../../atoms/input/input.component";
+import { Dialog } from "../../atoms/dialog/dialog.component";
+import { Button } from "../../atoms/button/button.component";
 import { useHistory } from "react-router-dom";
 import {
   emailRegex,

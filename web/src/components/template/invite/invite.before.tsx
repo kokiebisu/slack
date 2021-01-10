@@ -9,21 +9,14 @@ import { useSendInvitationMutation } from "../../../generated/graphql";
 import { useParams } from "react-router-dom";
 import { Dialog } from "../../atoms/dialog/dialog.component";
 
-interface Props {
-  dispatchToggle: any;
-  input: any;
-  dispatchInput: any;
-  finish: any;
-  send: any;
-}
-
-export const BeforeInvite: React.FC<Props> = ({
-  dispatchToggle,
-  input,
-  dispatchInput,
-  finish,
-}) => {
-  const { teamId } = useParams();
+export const BeforeInvite: React.FC<{
+  dispatchToggle?: any;
+  input?: any;
+  dispatchInput?: any;
+  finish?: any;
+  send?: any;
+}> = ({ dispatchToggle, input, dispatchInput, finish }) => {
+  const { teamId } = useParams<{ teamId: string }>();
   const theme = useContext(ThemeContext);
 
   const [send] = useSendInvitationMutation();
@@ -76,7 +69,8 @@ export const BeforeInvite: React.FC<Props> = ({
                 value={input.email}
                 placeholder="name@example.com"
                 onChange={(e) =>
-                  addInput({ type: "add_email", payload: e.target.value })
+                  // addInput({ type: "add_email", payload: e.target.value })
+                  console.log("presed")
                 }
               />
             </StyledInput>
@@ -84,8 +78,9 @@ export const BeforeInvite: React.FC<Props> = ({
               <input
                 value={input.name}
                 placeholder="Optional"
-                onChange={(e) =>
-                  addInput({ type: "add_name", payload: e.target.value })
+                onChange={
+                  (e) => console.log("presed")
+                  // addInput({ type: "add_name", payload: e.target.value })
                 }
               />
             </StyledInput>

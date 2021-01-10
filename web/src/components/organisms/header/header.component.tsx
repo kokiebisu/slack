@@ -8,15 +8,12 @@ import { WorkspaceHeader } from "components/organisms/header/header.workspace";
 import { FindHeader } from "./header.find";
 
 export interface HeaderProps {
-  variant?: string;
-  [x: string]: any;
+  variant: string;
+  [property: string]: any;
 }
 
-export const Header: React.FC<HeaderProps> = ({
-  variant = "landing",
-  ...props
-}) => {
-  const variants = {
+export const Header: React.FC<HeaderProps> = ({ variant, ...props }) => {
+  const variants: { [variant: string]: JSX.Element } = {
     landing: <LandingHeader {...props} />,
     create: <CreateHeader {...props} />,
     signin: <SignInHeader {...props} />,

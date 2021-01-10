@@ -13,7 +13,7 @@ export const Dialog: React.FC<DialogProps> = ({
   variant = "error",
   ...props
 }) => {
-  const variants = {
+  const variants: { [variant: string]: JSX.Element } = {
     error: <ErrorDialog {...props} />,
     password: <PasswordDialog {...props} />,
   };

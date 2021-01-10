@@ -21,7 +21,7 @@ interface Props {
 export const WorkspacePage: React.FC<Props> = ({ route }) => {
   const state = useToggleState();
 
-  const { teamId } = useParams();
+  const { teamId } = useParams<{ teamId: string }>();
   localStorage.setItem("teamId", teamId);
   const { loading: meLoading, error } = useMeQuery();
 

@@ -20,10 +20,15 @@ import { useCreateUserInviteMutation } from "generated/graphql";
 import { Button } from "components/atoms/button/button.component";
 
 export const InvitedAuth: React.FC<{}> = () => {
-  const { invitorId, token } = useParams();
+  const { invitorId, token } = useParams<{
+    invitorId: string;
+    token: string;
+  }>();
+
   const { data: VerifyUserInvite } = useVerifyUserInviteQuery({
     variables: { token, invitorId },
   });
+
   const history = useHistory();
 
   const [info, setInfo] = useState({

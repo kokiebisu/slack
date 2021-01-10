@@ -9,15 +9,12 @@ import { SavedWorkspace } from "./workspace.saved";
 import { ThreadsWorkspace } from "./workspace.threads";
 
 export interface PrototypeProps {
-  variant?: string;
+  variant: string;
   [property: string]: any;
 }
 
-export const Prototype: React.FC<PrototypeProps> = ({
-  variant = "channel",
-  ...props
-}) => {
-  const variants = {
+export const Prototype: React.FC<PrototypeProps> = ({ variant, ...props }) => {
+  const variants: { [variant: string]: JSX.Element } = {
     channel: <ChannelWorkspace {...props} />,
     directmessage: <DirectMessageWorkspace {...props} />,
     draft: <DraftWorkspace {...props} />,

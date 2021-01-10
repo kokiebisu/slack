@@ -17,7 +17,7 @@ import { MessageBox } from "components/Workspace/MessageBox";
 import { useSendMessageMutation } from "generated/graphql";
 
 export const ChannelContent: React.FC<{}> = () => {
-  const { channelId } = useParams();
+  const { channelId } = useParams<{ channelId: string }>();
   // const { data: { getChannelById } = {} } = useGetChannelByIdQuery({
   //   variables: { channelId },
   //   fetchPolicy: "cache-and-network",

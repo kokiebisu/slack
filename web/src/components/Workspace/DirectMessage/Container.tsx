@@ -11,11 +11,11 @@ import { Wrapper } from "styles/Workspace/DirectMessage/Container";
 
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/client";
-import { DateSeperator } from "components/Workspace/Content/DateSeperator";
+import { Seperator } from "components/molecules/seperator";
 import { Card } from "../../molecules/card";
 
 export const MessageContainer = () => {
-  const { userId }: { userId: string } = useParams();
+  const { userId } = useParams<{ userId: string }>();
 
   // const subscribeToNewMessages = (latestUser: string) =>
   //   subscribeToMore({

@@ -7,15 +7,12 @@ import { TogetherPrototype } from "./landing.together";
 import { BannerPrototype } from "./landing.banner";
 
 export interface PrototypeProps {
-  variant?: string;
-  [x: string]: any;
+  variant: string;
+  [property: string]: any;
 }
 
-export const Prototype: React.FC<PrototypeProps> = ({
-  variant = "together",
-  ...props
-}) => {
-  const variants = {
+export const Prototype: React.FC<PrototypeProps> = ({ variant, ...props }) => {
+  const variants: { [variant: string]: JSX.Element } = {
     together: <TogetherPrototype {...props} />,
     software: <SoftwarePrototype {...props} />,
     choose: <ChoosePrototype {...props} />,

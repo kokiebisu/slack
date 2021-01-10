@@ -3,11 +3,13 @@ import { ThemeContext } from "styled-components";
 import * as b from "global/blocks";
 import { Collaborate, ConnectCall, Share } from "assets/svg/Icons";
 
-export const TogetherBullet: React.FC<{ together?: string }> = ({
-  together = "share",
+export const TogetherBullet: React.FC<{ type?: string }> = ({
+  type = "share",
 }) => {
   const theme = useContext(ThemeContext);
-  const togethers = {
+  const types: {
+    [type: string]: { icon: JSX.Element; title: string; subtitle: string };
+  } = {
     share: {
       icon: <Share width={48} height={48} fill={theme.colors.blue} />,
       title: "Share files",
@@ -28,19 +30,19 @@ export const TogetherBullet: React.FC<{ together?: string }> = ({
   };
   return (
     <b.Box>
-      <b.Box>{togethers[together].icon}</b.Box>
+      <b.Box>{types[type].icon}</b.Box>
       <b.Box my={3}>
         <b.Text
           fontFamily="CircularPro-Bold"
           fontSize={18}
           color="black__light"
         >
-          {togethers[together].title}
+          {types[type].title}
         </b.Text>
       </b.Box>
       <div>
         <b.Text fontSize={18} lineHeight={1.6}>
-          {togethers[together].subtitle}
+          {types[type].subtitle}
         </b.Text>
       </div>
     </b.Box>

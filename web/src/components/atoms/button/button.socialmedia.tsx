@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import * as b from "../../../global/blocks";
+import * as b from "global/blocks";
 
 /** assets */
 import {
@@ -8,11 +8,11 @@ import {
   TwitterLogo,
   LinkedinLogo,
   YoutubeLogo,
-} from "../../../assets/svg";
+} from "assets/svg";
 
 export const SocialMediaButton: React.FC<{
   type?: string;
-}> = ({ type }) => {
+}> = ({ type = "twitter" }) => {
   const types: { [type: string]: JSX.Element } = {
     twitter: <TwitterLogo width={20} height={20} />,
     facebook: <FacebookLogo width={20} height={20} />,

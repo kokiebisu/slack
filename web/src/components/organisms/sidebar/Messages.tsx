@@ -17,7 +17,7 @@ import { useUsersQuery } from "../../../generated/graphql";
 interface Props {}
 
 export const Messages: React.FC<Props> = () => {
-  const { teamId } = useParams();
+  const { teamId } = useParams<{ teamId: string }>();
   const { data: usersData } = useUsersQuery({
     variables: { teamId },
   });

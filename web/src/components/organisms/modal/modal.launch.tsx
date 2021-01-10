@@ -21,6 +21,7 @@ export const LaunchModal: React.FC<{
         return (
           <div key={index}>
             <Card
+              variant="available"
               key={team.id}
               name={team.name}
               url={team.id}

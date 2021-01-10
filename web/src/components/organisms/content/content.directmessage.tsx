@@ -14,7 +14,7 @@ import { useParams } from "react-router";
 import { useSendDirectMessageMutation, useUserQuery } from "generated/graphql";
 
 export const DirectMessageContent: React.FC<{}> = () => {
-  const { userId = undefined } = useParams();
+  const { userId } = useParams<{ userId: string }>();
 
   // const { data, loading } = useUserQuery({
   //   variables: { userId },

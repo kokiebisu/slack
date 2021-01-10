@@ -12,6 +12,7 @@ import { WorkspaceModal } from "./modal.workspace";
 
 export interface ModalProps {
   variant: string;
+  extendsTo?: any;
   [x: string]: any;
 }
 
@@ -45,7 +46,7 @@ export const Modal: React.FC<ModalProps> = ({ variant, ...props }) => {
   return (
     <b.Box
       data-testid={`${variant}-modal`}
-      extendsTo={variants[variant].extendsTo}
+      extends={variants[variant].extendsTo}
     >
       {variants[variant].component}
     </b.Box>

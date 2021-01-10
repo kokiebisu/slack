@@ -2,67 +2,68 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { ThemeProvider } from "styled-components";
 
-import { GlobalFonts } from "./global/globalFonts";
-import { GlobalStyles } from "./global/globalStyles";
-import { main } from "./global/colors";
+import { GlobalFonts } from "global/globalFonts";
+import { GlobalStyles } from "global/globalStyles";
+import { main } from "global/colors";
 
 import {
   ApolloProvider,
   ApolloClient,
   InMemoryCache,
-  ApolloLink,
+  // split,
+  // HttpLink,
 } from "@apollo/client";
-import { getMainDefinition } from "apollo-utilities";
+// import { getMainDefinition } from "@apollo/client/utilities";
+// import { WebSocketLink } from "@apollo/client/link/ws";
+// import { SubscriptionClient } from "subscriptions-transport-ws";
+import { ContextProvider } from "context";
 
-import { split } from "apollo-link";
-import { HttpLink } from "apollo-link-http";
-import { WebSocketLink } from "@apollo/client/link/ws";
+import { AppRoutes } from "routes/App";
 
-import { ContextProvider } from "./context";
+// const httpLink = new HttpLink({
+//   uri: `http://${
+//     process.env.NODE_ENV === "production"
+//       ? process.env.REACT_APP_PRODUCTION_HOST
+//       : process.env.REACT_APP_DEVELOPMENT_HOST
+//   }/graphql`,
+//   credentials: "include",
+// });
 
-import { AppRoutes } from "./routes/App";
+// const wslink = new WebSocketLink(
+//   new SubscriptionClient(
+//     `ws://${
+//       process.env.NODE_ENV === "production"
+//         ? process.env.REACT_APP_PRODUCTION_HOST
+//         : process.env.REACT_APP_DEVELOPMENT_HOST
+//     }/graphql`,
+//     {
+//       reconnect: true,
+//       lazy: true,
+//     }
+//   )
+// );
 
-const httpLink = new HttpLink({
-  uri: `http://${
-    process.env.NODE_ENV === "production"
-      ? process.env.REACT_APP_PRODUCTION_HOST
-      : process.env.REACT_APP_DEVELOPMENT_HOST
-  }/graphql`,
-  credentials: "include",
-});
+// const splitLink = split(
+//   ({ query }) => {
+//     const definition = getMainDefinition(query);
 
-const wsLink = new WebSocketLink({
-  uri: `ws://${
-    process.env.NODE_ENV === "production"
-      ? process.env.REACT_APP_PRODUCTION_HOST
-      : process.env.REACT_APP_DEVELOPMENT_HOST
-  }/graphql`,
-  options: {
-    reconnect: true,
-    lazy: true,
-  },
-});
+//     return (
+//       definition.kind === "OperationDefinition" &&
+//       definition.operation === "subscription"
+//     );
+//   },
+//   // wslink,
+//   httpLink
+// );
 
-const combinedLink = split(
-  // split based on operation type
-  ({ query }) => {
-    const definition = getMainDefinition(query);
-    return (
-      definition.kind === "OperationDefinition" &&
-      definition.operation === "subscription"
-    );
-  },
-  wsLink,
-  httpLink
-);
+// export const client = new ApolloClient({
+//   link: splitLink,
+//   cache: new InMemoryCache(),
+// });
 
-const link = ApolloLink.from([combinedLink]);
-
-const cache = new InMemoryCache();
-
-export const client = new ApolloClient({
-  link,
-  cache,
+const client = new ApolloClient({
+  uri: "http://localhost:4000/graphql",
+  cache: new InMemoryCache(),
 });
 
 ReactDOM.render(

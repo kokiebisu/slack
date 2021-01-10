@@ -16,8 +16,6 @@ export const LandingPage: React.FC<{}> = () => {
     document.title = "Where work happens | Slack";
   }, []);
 
-  const { data: meData } = useMeQuery();
-  const { data: teamsData, loading } = useMyTeamsQuery();
   const state = useToggleState();
   const theme = useContext(ThemeContext);
   return (
@@ -36,7 +34,7 @@ export const LandingPage: React.FC<{}> = () => {
       </AnimatePresence>
       <b.Box zIndex={100} backgroundColor={theme.colors.white__darker}>
         <b.Container>
-          <Header variant="landing" data={teamsData} loading={loading} />
+          <Header variant="landing" />
         </b.Container>
       </b.Box>
       <Prototype variant="banner" />

@@ -15,7 +15,7 @@ export const StatusOption: React.FC<{}> = () => {
       border="1px solid"
       borderColor={theme.colors.gray__lighter}
       borderRadius={5}
-      bgColor="#ffffff"
+      bg="#ffffff"
     >
       <b.Box py={2}>
         <b.Flex alignItems="center">

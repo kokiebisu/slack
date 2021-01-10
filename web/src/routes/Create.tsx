@@ -55,7 +55,7 @@ export const CreateRoutes: React.SFC = () => {
               inputPlaceholder="Ex. Tesla or Tesla Motors"
               requirePolicy
               opacity={0.15}
-              transaction={(e) => {
+              transaction={(e: React.FormEvent<HTMLFormElement>) => {
                 e.preventDefault();
                 setInfo({ ...info, team: input });
                 setInput("");
@@ -77,7 +77,7 @@ export const CreateRoutes: React.SFC = () => {
               inputPlaceholder="Ex. The very exciting project"
               opacity={0.8}
               team={info.team}
-              transaction={(e) => {
+              transaction={(e: React.FormEvent<HTMLFormElement>) => {
                 e.preventDefault();
                 setInfo({ ...info, channel: input });
                 setInput("");
@@ -100,7 +100,7 @@ export const CreateRoutes: React.SFC = () => {
               team={info.team}
               channel={info.channel}
               buttonName="See your channel in Slack"
-              transaction={async (e) => {
+              transaction={async (e: React.FormEvent<HTMLFormElement>) => {
                 e.preventDefault();
                 const { data } = await createTeam({
                   variables: {

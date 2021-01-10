@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 // Blocks
-import * as b from "../../../global/blocks";
+import * as b from "global/blocks";
 
 // Components
 import { Options } from "./Options";
@@ -11,10 +11,10 @@ import { SidebarSections } from "./Sections";
 import { Profile } from "./Profile";
 
 // Query
-import { useTeamQuery } from "../../../generated/graphql";
+import { useTeamQuery } from "generated/graphql";
 
 // Styles
-import { Wrapper } from "../../../styles/Workspace/Sidebar";
+import { Wrapper } from "styles/Workspace/Sidebar";
 
 interface Props {
   team?: string;
@@ -23,7 +23,7 @@ interface Props {
 
 export const Sidebar: React.FC<Props> = ({ displayMenu }) => {
   const [hovered, setHovered] = useState(false);
-  const { teamId } = useParams();
+  const { teamId } = useParams<{ teamId: string }>();
   const { data: { team } = {} } = useTeamQuery({
     variables: { teamId },
   });

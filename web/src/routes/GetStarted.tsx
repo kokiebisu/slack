@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
 
 /** components */
-import { Auth } from "components/organisms/auth/auth.component";
+import { Prototype } from "components/prototype/auth";
 import { Layout } from "components/layout/layout.component";
 
 export const GetStartedRoutes: React.SFC = () => {

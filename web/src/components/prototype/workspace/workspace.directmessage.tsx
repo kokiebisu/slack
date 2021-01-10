@@ -10,7 +10,7 @@ import { useUserQuery } from "generated/graphql";
 import { Content } from "components/organisms/content/content.component";
 
 export const DirectMessageWorkspace: React.FC<{}> = () => {
-  const { userId } = useParams();
+  const { userId } = useParams<{ userId: string }>();
   // const { data: userData } = useUserQuery({ variables: { userId } });
   // ${userData?.user.user?.fullname}
   return (

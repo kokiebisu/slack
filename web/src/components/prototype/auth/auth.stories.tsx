@@ -2,14 +2,14 @@ import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
 /** components */
-import { Auth, AuthProps } from "components/organisms/auth/auth.component";
+import { Prototype, PrototypeProps } from "components/prototype/auth";
 
 export default {
   title: "Design System/Organisms/Auth",
-  component: Auth,
+  component: Prototype,
 } as Meta;
 
-const Template: Story<AuthProps> = (args) => <Auth {...args} />;
+const Template: Story<PrototypeProps> = (args) => <Prototype {...args} />;
 
 export const signin = Template.bind({});
 signin.args = {

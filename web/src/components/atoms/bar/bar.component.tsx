@@ -13,7 +13,7 @@ export const Bar: React.FC<BarProps> = ({
   variant = "validation",
   ...props
 }) => {
-  const variants = {
+  const variants: { [variant: string]: any } = {
     validation: <ValidationBar {...props} />,
   };
   return <b.Box data-testid={`${variant}-bar`}>{variants[variant]}</b.Box>;

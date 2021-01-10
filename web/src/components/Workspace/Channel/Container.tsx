@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as b from "global/blocks";
-import { DateSeperator } from "components/Workspace/Content/DateSeperator";
+import { Seperator } from "components/molecules/seperator";
 import { Card } from "../../molecules/card";
 import { Wrapper } from "styles/Workspace/Channel/Container";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/client";
 
 export const MessageContainer = () => {
-  // const { channelId }: { channelId: string } = useParams();
+  const { channelId } = useParams<{ channelId: string }>();
 
   // const subscribeToNewMessages = (latestChannel: string) =>
   //   subscribeToMore({

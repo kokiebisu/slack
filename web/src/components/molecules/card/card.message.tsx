@@ -24,7 +24,7 @@ export const MessageCard: React.FC<{
   },
 }) => {
   const theme = useContext(ThemeContext);
-  const status = {
+  const types: { [property: string]: JSX.Element } = {
     joined: (
       <b.Box>
         <b.Text
@@ -74,7 +74,7 @@ export const MessageCard: React.FC<{
               </b.Box>
             </b.Flex>
           </b.Box>
-          {body && status[body.type!]}
+          {body && types[body.type!]}
         </b.Box>
       </b.Flex>
     </b.Box>

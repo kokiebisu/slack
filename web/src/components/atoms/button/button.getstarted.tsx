@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
-import * as b from "../../../global/blocks";
+import * as b from "global/blocks";
 import { ThemeContext } from "styled-components";
 
 // Svg
-import { BoldPlus } from "../../../assets/svg";
+import { BoldPlus } from "assets/svg";
 
 export const GetStartedButton: React.FC<{ type?: string }> = ({
   type = "signin",
 }) => {
   const theme = useContext(ThemeContext);
-  const types = {
+  const types: { [type: string]: JSX.Element } = {
     signin: (
       <b.Text fontSize={19} color="primary" fontFamily="SlackLato-Bold" nowrap>
         Sign in to Slack

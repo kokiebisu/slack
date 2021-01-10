@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 // Blocks
-import * as b from "../../../global/blocks";
+import * as b from "global/blocks";
 
 // Components
 import { SidebarSection } from "./Section";
@@ -11,17 +11,11 @@ import { Messages } from "./Messages";
 import { Channels } from "./Channels";
 
 // Query
-import { useChannelsQuery } from "../../../generated/graphql";
+import { useChannelsQuery } from "generated/graphql";
 
 // Styles
-import {
-  Wrapper,
-  InviteButton,
-} from "../../../styles/Workspace/Sidebar/Sections";
-import {
-  useToggleState,
-  useToggleDispatch,
-} from "../../../context/toggle-context";
+import { Wrapper, InviteButton } from "styles/Workspace/Sidebar/Sections";
+import { useToggleState, useToggleDispatch } from "context/toggle-context";
 
 interface Props {}
 
@@ -35,7 +29,7 @@ export const SidebarSections: React.FC<Props> = () => {
     apps: false,
   });
 
-  const { teamId } = useParams();
+  const { teamId } = useParams<{ teamId: string }>();
 
   const { data, loading, refetch } = useChannelsQuery({
     variables: {
