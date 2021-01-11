@@ -6,6 +6,7 @@ import { useToggleState } from "context/toggle-context";
 import React from "react";
 import { useParams } from "react-router-dom";
 import * as b from "global/blocks";
+import { Header } from "components/organisms/header";
 
 export const ClientPage: React.FC<{}> = () => {
   const { teamId, variant } = useParams<{ teamId: string; variant?: string }>();
@@ -15,6 +16,7 @@ export const ClientPage: React.FC<{}> = () => {
     <div>
       <Layout
         variant="workspace"
+        header={!variant && <Header variant="client" />}
         sidebar={<Sidebar variant={variant} />}
         content={<Prototype variant={variant} />}
       />

@@ -139,3 +139,15 @@ export const Close = TemplateStory.bind({});
 Close.args = {
   variant: "close",
 };
+
+export const Search = TemplateStory.bind({});
+Search.args = {
+  variant: "search",
+};
+Search.decorators = [
+  (Story) => (
+    <div style={{ maxWidth: 680 }}>
+      <Story />
+    </div>
+  ),
+];

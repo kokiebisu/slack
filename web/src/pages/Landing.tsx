@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import { ThemeContext } from "styled-components";
 import * as b from "../global/blocks";
-import { Header } from "../components/organisms/header/header.component";
+import { Header } from "../components/organisms/header";
 
 import { Footer } from "../components/organisms/footer/footer.component";
 

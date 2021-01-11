@@ -192,6 +192,7 @@ export const Button = styled(motion.button)<
       uppercase?: boolean;
       transparent?: boolean;
       bgColor?: string;
+      extends?: any;
     }
 >`
   position: relative;
@@ -202,6 +203,8 @@ export const Button = styled(motion.button)<
   ${border}
   ${shadow}
   ${grid}
+
+  ${(props) => props.extends}
   border: none;
   background-color: transparent;
 

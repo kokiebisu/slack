@@ -1,6 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { Header, HeaderProps } from "./header.component";
+import { Header, HeaderProps } from ".";
 
 export default {
   title: "Design System/Organisms/Header",
@@ -19,14 +19,9 @@ create.args = {
   variant: "create",
 };
 
-export const signin = Template.bind({});
-signin.args = {
-  variant: "signin",
-};
-
-export const workspace = Template.bind({});
-workspace.args = {
-  variant: "workspace",
+export const Client = Template.bind({});
+Client.args = {
+  variant: "client",
 };
 
 export const find = Template.bind({});

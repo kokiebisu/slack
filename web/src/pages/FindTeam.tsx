@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Wrapper } from "styles/FindTeam";
 
-import { Header } from "components/organisms/header/header.component";
+import { Header } from "components/organisms/header";
 import { Footer } from "components/organisms/footer/footer.component";
 import { Prototype } from "components/organisms/auth";
 

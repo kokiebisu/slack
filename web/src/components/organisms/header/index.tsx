@@ -1,10 +1,9 @@
-import React from "react";
+import * as b from "global/blocks";
 
 /** variants */
 import { LandingHeader } from "components/organisms/header/header.landing";
 import { CreateHeader } from "components/organisms/header/header.create";
-import { SignInHeader } from "components/organisms/header/header.signin";
-import { WorkspaceHeader } from "components/organisms/header/header.workspace";
+import { ClientHeader } from "components/organisms/header/header.client";
 import { FindHeader } from "./header.find";
 
 export interface HeaderProps {
@@ -16,9 +15,12 @@ export const Header: React.FC<HeaderProps> = ({ variant, ...props }) => {
   const variants: { [variant: string]: JSX.Element } = {
     landing: <LandingHeader {...props} />,
     create: <CreateHeader {...props} />,
-    signin: <SignInHeader {...props} />,
-    workspace: <WorkspaceHeader {...props} />,
+    client: <ClientHeader {...props} />,
     find: <FindHeader {...props} />,
   };
-  return <div data-testid={`${variant}-header`}>{variants[variant]}</div>;
+  return (
+    <b.Box height="100%" data-testid={`${variant}-header`}>
+      {variants[variant]}
+    </b.Box>
+  );
 };
