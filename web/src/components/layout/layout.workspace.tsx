@@ -1,166 +1,44 @@
 import * as React from "react";
 import styled from "styled-components";
-import { useCallback } from "react";
 
 // Blocks
 import * as b from "../../global/blocks";
 
-import { size } from "../../global/sizes";
-
-// Svgs
-import { Sidebar } from "../../assets/svg";
-
 export const WorkspaceLayout: React.FC<{
-  section?: string;
-  subsection?: React.ReactChild;
-  options?: React.ReactChild;
-  content?: React.ReactChild;
+  header?: JSX.Element;
+  sidebar?: JSX.Element;
+  content?: JSX.Element;
 }> = ({
-  section = <h3>Section</h3>,
-  subsection = <h3>SubSection</h3>,
-  options = <h3>Options</h3>,
-  content = <h3>Content</h3>,
+  header = <b.Text>header</b.Text>,
+  sidebar = <b.Text>sidebar</b.Text>,
+  content = <b.Text>Content</b.Text>,
 }) => {
   return (
-    <div>
-      <Wrapper>
-        <b.Box className="top">
-          <Top>
-            <b.Flex justifyContent="space-between" alignItems="center">
-              <b.Box className="top__left">
-                <b.Flex alignItems="center">
-                  <IconWrapper className="sidebar" mr={3}>
-                    <b.Flex alignItems="center">
-                      <Sidebar />
-                    </b.Flex>
-                  </IconWrapper>
-                  <b.Box>
-                    <Section>
-                      <b.Text>{section}</b.Text>
-                    </Section>
-                    {subsection && <b.Box>{subsection}</b.Box>}
-                  </b.Box>
-                </b.Flex>
-              </b.Box>
-              <b.Box className="top__right">{options}</b.Box>
-            </b.Flex>
-          </Top>
-        </b.Box>
-        <b.Box className="bottom">{content}</b.Box>
-      </Wrapper>
-    </div>
+    <Wrapper>
+      <WorkspaceHeader>{header}</WorkspaceHeader>
+      <b.Box>
+        <b.Grid gridTemplateColumns={`250px 1fr`}>
+          <WorkspaceSidebar>{sidebar}</WorkspaceSidebar>
+          <b.Box>{content}</b.Box>
+        </b.Grid>
+      </b.Box>
+    </Wrapper>
   );
 };
 
 export const Wrapper = styled(b.Box)`
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: grid;
-  grid-template-rows: 65px auto;
-
-  & > div {
-    &.top {
-      height: 65px;
-      padding: 15px 0;
-      border-bottom: 1px solid ${({ theme }) => theme.colors.white__dark};
-    }
-
-    &.bottom {
-      height: 100%;
-    }
-  }
+  grid-template-rows: 37px 1fr;
+  overscroll-behavior: none;
 `;
 
-export const Top = styled(b.Box)`
-  padding: 0 19px;
-  height: auto;
-
-  & div {
-    &.top__left {
-      display: flex;
-      flex-grow: 1;
-      flex-direction: column;
-    }
-
-    &.top__right {
-      width: 100px;
-    }
-  }
+export const WorkspaceHeader = styled(b.Box)`
+  background-color: ${({ theme }) => theme.colors.primary};
 `;
 
-export const Bottom = styled(b.Box)`
-  max-width: 420px;
-  text-align: center;
-`;
-
-export const IconWrapper = styled(b.Box)`
-  &.sidebar {
-    width: 35px;
-    height: 35px;
-    & svg {
-      position: relative;
-      top: 2.5px;
-      left: 4.5px;
-      width: 25px;
-      height: 25px;
-      path {
-        fill: ${({ theme }) => theme.colors.gray__light};
-      }
-    }
-
-    @media ${size["7xs"]} {
-      display: none;
-    }
-
-    &:hover {
-      border-radius: 5px;
-      background-color: ${({ theme }) => theme.colors.white__dark};
-    }
-  }
-`;
-
-export const Title = styled(b.Box)`
-  & > p {
-    font-size: 17px;
-    font-family: "SlackLato-Bold";
-    color: ${({ theme }) => theme.colors.black};
-  }
-`;
-
-export const Description = styled(b.Box)`
-  & > p {
-    font-size: 15px;
-    font-family: "SlackLato-Regular";
-    color: ${({ theme }) => theme.colors.gray__light};
-  }
-`;
-
-export const NewMessage = styled(b.Button)`
-  display: inline-block;
-  border: 1px solid ${({ theme }) => theme.colors.gray__lighter};
-  & > p {
-    font-size: 15px;
-    font-family: "SlackLato-Regular";
-    color: ${({ theme }) => theme.colors.black__light};
-  }
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.white__dark};
-  }
-`;
-
-export const Section = styled(b.Box)`
-  & > p {
-    color: ${({ theme }) => theme.colors.black};
-    font-family: "SlackLato-Black";
-    font-size: 15px;
-  }
-`;
-
-export const SubSection = styled(b.Text)`
-  margin: 4px 0;
-  & > p {
-    font-size: 13px;
-    font-family: "SlackLato-Regular";
-    color: ${({ theme }) => theme.colors.gray};
-  }
+export const WorkspaceSidebar = styled(b.Box)`
+  background-color: ${({ theme }) => theme.colors.primary};
+  border: 1px solid ${({ theme }) => theme.colors.primary__light};
 `;

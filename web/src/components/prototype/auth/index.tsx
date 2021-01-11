@@ -4,7 +4,6 @@ import * as b from "../../../global/blocks";
 
 /** variants */
 import { SignInAuth } from "./auth.signin";
-import { GetStartedAuth } from "./auth.getstarted";
 import { SignUpAuth } from "./auth.signup";
 import { FindAuth } from "./auth.find";
 import { InvitedAuth } from "./auth.invited";
@@ -33,12 +32,6 @@ export const Prototype: React.FC<PrototypeProps> = ({
       component: <SignInAuth {...props} />,
       extendsTo: css`
         max-width: 400px;
-      `,
-    },
-    getstarted: {
-      component: <GetStartedAuth {...props} />,
-      extendsTo: css`
-        max-width: 800px;
       `,
     },
     signup: {

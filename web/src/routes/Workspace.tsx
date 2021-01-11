@@ -7,7 +7,7 @@ import {
   useRouteMatch,
   RouteComponentProps,
 } from "react-router-dom";
-import { StaticContext, Redirect } from "react-router";
+import { StaticContext } from "react-router";
 
 import { Prototype } from "components/prototype/workspace/workspace.component";
 import { Page } from "pages";
@@ -20,11 +20,9 @@ type Props = RouteComponentProps<
 
 export const ClientRoutes: React.FC<Props> = () => {
   return (
-    <>
-      <Switch>
-        <Page variant="workspace" route={<WorkspaceRoute />} />
-      </Switch>
-    </>
+    <Switch>
+      <Page variant="workspace" route={<WorkspaceRoute />} />
+    </Switch>
   );
 };
 

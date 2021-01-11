@@ -1,25 +1,37 @@
 import React from "react";
 import * as b from "global/blocks";
-import { Prototype } from "components/prototype/auth";
-import { Footer } from "components/organisms/footer/footer.component";
-import { Header } from "components/organisms/header/header.component";
+import { Prototype } from "components/prototype/getstarted";
+import { Layout } from "components/layout/layout.component";
+import { useLocation } from "react-router-dom";
 
 export const GetStartedPage: React.FC<{}> = () => {
+  const location = useLocation();
+  const hash = location.hash.replace("#", "");
+  const email = "kenichi@fintros.com";
+  const hashes: {
+    [hash: string]: { variant: string; title: string; subtitle: string };
+  } = {
+    create: {
+      variant: "getstarted",
+      title: "First, enter your email",
+      subtitle: "We suggest using the email address you use at work.",
+    },
+    confirmdigit: {
+      variant: "getstarted",
+      title: "Check your email for a code",
+      subtitle: `We’ve sent a 6-digit code to ${email}. The code expires shortly, so please enter it soon.`,
+    },
+  };
+
   return (
-    <b.Box>
-      <b.Grid gridTemplateRows="auto 1fr auto">
-        <div>
-          <Header variant="create" />
-        </div>
-        <b.Box my={5}>
-          <b.Flex justifyContent="center">
-            <Prototype variant="getstarted" />
-          </b.Flex>
-        </b.Box>
-        <div>
-          <Footer variant="getstarted" />
-        </div>
-      </b.Grid>
-    </b.Box>
+    <Layout
+      variant={hashes[hash].variant}
+      title={hashes[hash].title}
+      subtitle={hashes[hash].subtitle}
+    >
+      <b.Box py={2}>
+        <Prototype variant={hash} />
+      </b.Box>
+    </Layout>
   );
 };

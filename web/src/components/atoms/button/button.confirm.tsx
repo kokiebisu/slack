@@ -2,17 +2,19 @@ import React from "react";
 import styled from "styled-components";
 import * as b from "../../../global/blocks";
 
-export const ConfirmButton: React.FC<{ label?: string; loading?: boolean }> = ({
-  label = "Confirm",
-  loading = false,
-}) => {
+export const ConfirmButton: React.FC<{
+  label?: string;
+  loading?: boolean;
+  px?: number;
+  py?: number;
+}> = ({ label = "Confirm", loading = false, px, py }) => {
   return (
     <Wrapper
       display="inline-block"
       width={1}
       borderRadius={5}
-      px={6}
-      py={3}
+      px={px}
+      py={py}
       className="confirmbutton"
     >
       <b.Flex justifyContent="center" alignItems="center">

@@ -1,46 +1,18 @@
 import * as React from "react";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
 
 // Blocks
 import * as b from "global/blocks";
+import { SetupTeamNameSidebar } from "./setup-team-name.sidebar";
 
-// Components
-import { Options } from "./Options";
-import { SidebarSections } from "./Sections";
-import { Profile } from "./Profile";
-
-// Styles
-import { Wrapper } from "styles/Workspace/Sidebar";
-
-interface Props {
-  team?: string;
-  displayMenu?: () => void;
+interface SidebarProps {
+  variant: string;
+  [property: string]: any;
 }
 
-export const Sidebar: React.FC<Props> = ({ displayMenu }) => {
-  const [hovered, setHovered] = useState(false);
-  const { teamId } = useParams<{ teamId: string }>();
-  // const { data: { team } = {} } = useTeamQuery({
-  //   variables: { teamId },
-  // });
+export const Sidebar: React.FC<SidebarProps> = ({ variant, ...props }) => {
+  const variants: { [variant: string]: JSX.Element } = {
+    "setup-team-name": <SetupTeamNameSidebar {...props} />,
+  };
 
-  return (
-    <>
-      <Wrapper>
-        <b.Box
-          className={hovered ? "profile hovered" : "profile"}
-          onClick={displayMenu}
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-        >
-          {/* {team && team.team && <Profile team={team.team} hovered={hovered} />} */}
-        </b.Box>
-        <b.Box className="sidebar" style={{ overflowY: "scroll" }}>
-          <Options />
-          <SidebarSections />
-        </b.Box>
-      </Wrapper>
-    </>
-  );
+  return <b.Box>{variants[variant]}</b.Box>;
 };

@@ -30,6 +30,7 @@ export const SignInPage: React.FC<{}> = () => {
           <div>
             <Button
               noPadding
+              to="/get-started#create"
               variant="transparent"
               content={
                 <b.Text fontSize={15} color={theme.colors.blue}>

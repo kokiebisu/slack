@@ -31,9 +31,6 @@ export const CreateRoutes: React.SFC = () => {
   return (
     <>
       <Switch>
-        <Route path={match.url + "/verifyemail"}>
-          <Page variant="confirmdigit" />
-        </Route>
         <Route path={match.url + "/teamname"}>
           {/* {location.state! && location.state!.authenticated !== undefined ? (
             <Prototype

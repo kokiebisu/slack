@@ -1,11 +1,11 @@
 import React from "react";
-import { ConfirmDigitPage } from "./ConfirmDigit";
+
+import { ClientPage } from "./Client";
 import { CreateTeamPage } from "./CreateTeam";
 import { FindTeamPage } from "./FindTeam";
 import { GetStartedPage } from "./GetStarted";
 import { LandingPage } from "./Landing";
 import { SignInPage } from "./Signin";
-import { WorkspacePage } from "./Workspace";
 
 export interface PageProps {
   variant: string;
@@ -21,8 +21,7 @@ export const Page: React.FC<PageProps> = ({ variant, ...props }) => {
     signin: <SignInPage {...props} />,
     findteam: <FindTeamPage {...props} />,
     createteam: <CreateTeamPage {...props} />,
-    confirmdigit: <ConfirmDigitPage {...props} />,
-    workspace: <WorkspacePage {...props} />,
+    client: <ClientPage {...props} />,
   };
   return variants[variant];
 };

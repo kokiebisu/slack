@@ -270,7 +270,7 @@ export const Container = styled.div<
   position: relative;
   flex-grow: 1;
   margin: 0 auto;
-  width: auto;
+  width: 100%;
   height: 100%;
   padding: 0 calc(5%);
 
