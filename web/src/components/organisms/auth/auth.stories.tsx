@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
 /** components */
-import { Prototype, PrototypeProps } from "components/prototype/auth";
+import { Prototype, PrototypeProps } from "components/organisms/auth";
 
 export default {
   title: "Design System/Prototype/Auth",
@@ -18,18 +18,6 @@ signin.args = {
 signin.decorators = [
   (Story) => (
     <div style={{ maxWidth: 620 }}>
-      <Story />
-    </div>
-  ),
-];
-
-export const getStarted = Template.bind({});
-getStarted.args = {
-  variant: "getstarted",
-};
-getStarted.decorators = [
-  (Story) => (
-    <div style={{ maxWidth: 780 }}>
       <Story />
     </div>
   ),
@@ -75,8 +63,3 @@ invited.decorators = [
     </div>
   ),
 ];
-
-export const workspaces = Template.bind({});
-workspaces.args = {
-  variant: "workspaces",
-};

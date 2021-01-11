@@ -5,7 +5,7 @@ import styled, { ThemeContext } from "styled-components";
 
 // Components
 import * as b from "global/blocks";
-import { Layout } from "components/layout/layout.component";
+import { Layout } from "components/layout";
 import { Button } from "components/atoms/button";
 
 import {
@@ -52,8 +52,6 @@ export const ConfirmDigitGetStarted: React.FC<{}> = () => {
       setError("something went awfully wrong");
     }
   };
-
-  const theme = useContext(ThemeContext);
 
   return (
     <div>

@@ -4,10 +4,10 @@ import { useParams, Redirect, useHistory } from "react-router-dom";
 // Blocks
 import * as b from "global/blocks";
 
-import { Dialog } from "components/atoms/dialog/dialog.component";
+import { Dialog } from "components/atoms/dialog";
 
 // Utils
-import { Input } from "components/atoms/input/input.component";
+import { Input } from "components/atoms/input";
 
 import { fullNameRegex, weakRegex } from "util/passwordUtil";
 import { randomColor } from "util/randomColor";

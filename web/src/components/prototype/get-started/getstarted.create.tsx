@@ -5,7 +5,7 @@ import * as b from "../../../global/blocks";
 import { Button } from "../../atoms/button";
 
 // Image
-import { Input } from "components/atoms/input/input.component";
+import { Input } from "components/atoms/input";
 
 export const CreateGetStarted: React.FC<{}> = () => {
   const theme = useContext(ThemeContext);
@@ -15,7 +15,7 @@ export const CreateGetStarted: React.FC<{}> = () => {
         <Input variant="plain" type="email" />
       </b.Box>
       <div>
-        <Button variant="confirm" label="Continue" block />
+        <Button variant="confirm" label="Continue" block py={10} />
       </div>
       <b.Box my={3}>
         <b.Flex>

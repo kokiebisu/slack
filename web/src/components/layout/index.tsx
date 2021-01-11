@@ -13,7 +13,7 @@ export interface LayoutProps {
 export const Layout: React.FC<LayoutProps> = ({ variant, ...props }) => {
   const variants: { [variant: string]: JSX.Element } = {
     workspace: <WorkspaceLayout {...props} />,
-    getstarted: <GetStartedLayout {...props} />,
+    "get-started": <GetStartedLayout {...props} />,
   };
   return (
     <div style={{ height: "100vh" }} data-testid={`${variant}-layout`}>

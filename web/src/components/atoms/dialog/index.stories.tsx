@@ -1,6 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { Dialog, DialogProps } from "./dialog.component";
+import { Dialog, DialogProps } from ".";
 
 export default {
   title: "Design System/Atoms/Dialog",

@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import * as b from "global/blocks";
 
 /** components */
-import { Layout } from "components/layout/layout.component";
-import { Prototype } from "components/prototype/auth";
+import { Layout } from "components/layout";
 import { Button } from "components/atoms/button";
 import { ThemeContext } from "styled-components";
+
+import { Prototype } from "components/prototype/signin";
 
 export const SignInPage: React.FC<{}> = () => {
   const theme = useContext(ThemeContext);
@@ -17,7 +18,7 @@ export const SignInPage: React.FC<{}> = () => {
         subtitle="Continue with the Google account or email address you use to sign in."
       >
         <b.Box py={4}>
-          <Prototype variant="signin" />
+          <Prototype />
         </b.Box>
       </Layout>
       <div style={{ position: "absolute", top: 30, right: 30 }}>

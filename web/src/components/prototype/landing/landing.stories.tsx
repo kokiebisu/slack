@@ -1,10 +1,9 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 import { ThemeProvider } from "styled-components";
 import { ToggleProvider } from "context/toggle-context";
 import { MemoryRouter } from "react-router-dom";
-import { Prototype, PrototypeProps } from "./landing.component";
-import { main } from "../../../global/colors";
+import { Prototype, PrototypeProps } from ".";
+import { main } from "global/colors";
 
 export default {
   title: "Design System/Prototype/Landing",

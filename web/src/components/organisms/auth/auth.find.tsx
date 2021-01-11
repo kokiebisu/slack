@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { Input } from "components/atoms/input/input.component";
+import { Input } from "components/atoms/input";
 import * as b from "global/blocks";
 import { emailRegex } from "util/passwordUtil";
-import { Dialog } from "components/atoms/dialog/dialog.component";
+import { Dialog } from "components/atoms/dialog";
 import { Button } from "components/atoms/button";
 
 export const FindAuth: React.FC<{}> = () => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 import { ThemeProvider } from "styled-components";
-import { Input, InputProps } from "./input.component";
+import { Input, InputProps } from ".";
 import { main } from "../../../global/colors";
 
 export default {

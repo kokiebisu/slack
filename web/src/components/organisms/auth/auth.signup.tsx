@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as b from "global/blocks";
-import { Input } from "components/atoms/input/input.component";
-import { Dialog } from "components/atoms/dialog/dialog.component";
+import { Input } from "components/atoms/input";
+import { Dialog } from "components/atoms/dialog";
 import { Button } from "components/atoms/button";
 import { useHistory } from "react-router-dom";
 import {

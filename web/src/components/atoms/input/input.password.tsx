@@ -5,7 +5,7 @@ import styled, { ThemeContext } from "styled-components";
 import * as b from "../../../global/blocks";
 
 import { Bar } from "../bar/bar.component";
-import { Dialog } from "../dialog/dialog.component";
+import { Dialog } from "../dialog";
 
 import { CheckCircle } from "../../../assets/svg/Icons";
 

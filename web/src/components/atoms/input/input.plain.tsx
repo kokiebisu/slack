@@ -38,7 +38,7 @@ export const PlainInput: React.FC<{
   return (
     <div>
       <b.Box>
-        <b.Input
+        <Input
           py={10}
           pr={6}
           pl={3}
@@ -66,4 +66,12 @@ export const PlainInput: React.FC<{
 
 const IconWrapper = styled(b.Box)`
   transform: translateY(-45%);
+`;
+
+export const Input = styled(b.Input)`
+  :focus {
+    border-color: ${({ theme }) => theme.colors.blue};
+    box-shadow: 0 0 0 3px rgba(29, 155, 209, 0.3);
+    transition: 0.5s all cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
 `;

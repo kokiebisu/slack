@@ -9,7 +9,7 @@ export const WorkspaceLayout: React.FC<{
   sidebar?: JSX.Element;
   content?: JSX.Element;
 }> = ({
-  header = <b.Text>header</b.Text>,
+  header,
   sidebar = <b.Text>sidebar</b.Text>,
   content = <b.Text>Content</b.Text>,
 }) => {
@@ -17,7 +17,7 @@ export const WorkspaceLayout: React.FC<{
     <Wrapper>
       <WorkspaceHeader>{header}</WorkspaceHeader>
       <b.Box>
-        <b.Grid gridTemplateColumns={`250px 1fr`}>
+        <b.Grid gridTemplateColumns={`260px 1fr`}>
           <WorkspaceSidebar>{sidebar}</WorkspaceSidebar>
           <b.Box>{content}</b.Box>
         </b.Grid>

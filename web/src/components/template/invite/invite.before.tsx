@@ -6,7 +6,7 @@ import { GoogleLogo } from "../../../assets/svg/Logo";
 import { UserPlus, Close, PaperPlaneLight } from "../../../assets/svg";
 import { PlusCircle } from "../../../assets/svg";
 import { useParams } from "react-router-dom";
-import { Dialog } from "../../atoms/dialog/dialog.component";
+import { Dialog } from "../../atoms/dialog";
 
 export const BeforeInvite: React.FC<{
   dispatchToggle?: any;

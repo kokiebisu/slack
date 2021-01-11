@@ -1,7 +1,7 @@
 import React from "react";
 import * as b from "global/blocks";
-import { Prototype } from "components/prototype/getstarted";
-import { Layout } from "components/layout/layout.component";
+import { Prototype } from "components/prototype/get-started";
+import { Layout } from "components/layout";
 import { useLocation } from "react-router-dom";
 
 export const GetStartedPage: React.FC<{}> = () => {
@@ -12,12 +12,12 @@ export const GetStartedPage: React.FC<{}> = () => {
     [hash: string]: { variant: string; title: string; subtitle: string };
   } = {
     create: {
-      variant: "getstarted",
+      variant: "get-started",
       title: "First, enter your email",
       subtitle: "We suggest using the email address you use at work.",
     },
     confirmdigit: {
-      variant: "getstarted",
+      variant: "get-started",
       title: "Check your email for a code",
       subtitle: `We’ve sent a 6-digit code to ${email}. The code expires shortly, so please enter it soon.`,
     },

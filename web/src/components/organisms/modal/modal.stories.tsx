@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import { Modal, ModalProps } from "./modal.component";
+import { Modal, ModalProps } from ".";
 
 export default {
   title: "Design System/Organisms/Modal",
@@ -40,4 +40,9 @@ workspace.argTypes = {
       type: "number",
     },
   },
+};
+
+export const Skip = TemplateStory.bind({});
+Skip.args = {
+  variant: "skip",
 };

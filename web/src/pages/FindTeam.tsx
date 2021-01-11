@@ -4,7 +4,7 @@ import { Wrapper } from "styles/FindTeam";
 
 import { Header } from "components/organisms/header/header.component";
 import { Footer } from "components/organisms/footer/footer.component";
-import { Prototype } from "components/prototype/auth";
+import { Prototype } from "components/organisms/auth";
 
 export const FindTeamPage: React.FC<{}> = () => {
   return (

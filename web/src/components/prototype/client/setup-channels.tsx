@@ -3,35 +3,25 @@ import { Input } from "components/atoms/input";
 import * as b from "global/blocks";
 import React from "react";
 
-export const SetupTeamNameClient: React.FC<{}> = () => {
+export const SetupChannelsClient: React.FC<{}> = () => {
   return (
     <b.Box px={5} pt={4} maxWidth={820}>
       <b.Box>
-        <b.Text fontSize={12}>Step 1 of 3</b.Text>
+        <b.Text fontSize={12}>Step 2 of 3</b.Text>
       </b.Box>
       <b.Box maxWidth={650} my={3}>
         <b.Text fontSize={48} fontFamily="SlackLato-Bold">
-          What's the name of your company or team?
+          What's your team working on right now?
         </b.Text>
       </b.Box>
       <b.Box mb={4}>
         <b.Text>
-          This will be the name of your Slack workspace — choose something that
-          your team will recognize.
+          This could be anything: a project, campaign, event, or the deal you’re
+          trying to close.
         </b.Text>
       </b.Box>
-      <b.Box>
-        <Input variant="plain" />
-      </b.Box>
       <b.Box mt={3}>
-        <b.Flex>
-          <b.Box mr={2}></b.Box>
-          <b.Box>
-            <b.Text>
-              Let anyone with an @fintros.com email join this workspace.
-            </b.Text>
-          </b.Box>
-        </b.Flex>
+        <Input variant="plain" />
       </b.Box>
       <b.Box mt={5}>
         <Button variant="confirm" label="Next" px={5} py={2} />

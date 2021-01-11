@@ -9,6 +9,7 @@ import { ChannelModal } from "./modal.channel";
 import { LandingModal } from "./modal.landing";
 import { InviteModal } from "./modal.invite";
 import { WorkspaceModal } from "./modal.workspace";
+import { SkipModal } from "./modal.skip";
 
 export interface ModalProps {
   variant: string;
@@ -41,6 +42,14 @@ export const Modal: React.FC<ModalProps> = ({ variant, ...props }) => {
     workspace: {
       component: <WorkspaceModal {...props} />,
       extendsTo: css``,
+    },
+    skip: {
+      component: <SkipModal {...props} />,
+      extendsTo: css`
+        width: 500px;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.13);
+        border-radius: 8px;
+      `,
     },
   };
   return (

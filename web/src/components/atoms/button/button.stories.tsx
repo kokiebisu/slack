@@ -129,3 +129,8 @@ export const Auth = TemplateStory.bind({});
 Auth.args = {
   variant: "auth",
 };
+
+export const Modal = TemplateStory.bind({});
+Modal.args = {
+  variant: "modal",
+};

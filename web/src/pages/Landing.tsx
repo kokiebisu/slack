@@ -6,10 +6,10 @@ import { Header } from "../components/organisms/header/header.component";
 
 import { Footer } from "../components/organisms/footer/footer.component";
 
-import { Modal } from "../components/organisms/modal/modal.component";
+import { Modal } from "../components/organisms/modal";
 import { useToggleState } from "../context/toggle-context";
 import { ModalWrapper } from "../styles/Landing";
-import { Prototype } from "../components/prototype/landing/landing.component";
+import { Prototype } from "../components/prototype/landing";
 
 export const LandingPage: React.FC<{}> = () => {
   useEffect(() => {
@@ -19,7 +19,7 @@ export const LandingPage: React.FC<{}> = () => {
   const state = useToggleState();
   const theme = useContext(ThemeContext);
   return (
-    <>
+    <div>
       <AnimatePresence>
         {state.landing && (
           <ModalWrapper
@@ -42,6 +42,6 @@ export const LandingPage: React.FC<{}> = () => {
       <Prototype variant="software" />
       <Prototype variant="choose" />
       <Footer variant="landing" />
-    </>
+    </div>
   );
 };

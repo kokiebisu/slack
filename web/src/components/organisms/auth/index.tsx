@@ -3,7 +3,6 @@ import React from "react";
 import * as b from "../../../global/blocks";
 
 /** variants */
-import { SignInAuth } from "./auth.signin";
 import { SignUpAuth } from "./auth.signup";
 import { FindAuth } from "./auth.find";
 import { InvitedAuth } from "./auth.invited";
@@ -28,12 +27,6 @@ export const Prototype: React.FC<PrototypeProps> = ({
       [property: string]: any;
     };
   } = {
-    signin: {
-      component: <SignInAuth {...props} />,
-      extendsTo: css`
-        max-width: 400px;
-      `,
-    },
     signup: {
       component: <SignUpAuth {...props} />,
     },

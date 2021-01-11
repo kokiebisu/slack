@@ -1,7 +1,6 @@
 import React from "react";
 
 import { ClientPage } from "./Client";
-import { CreateTeamPage } from "./CreateTeam";
 import { FindTeamPage } from "./FindTeam";
 import { GetStartedPage } from "./GetStarted";
 import { LandingPage } from "./Landing";
@@ -17,10 +16,9 @@ export const Page: React.FC<PageProps> = ({ variant, ...props }) => {
     [variant: string]: JSX.Element;
   } = {
     landing: <LandingPage {...props} />,
-    getstarted: <GetStartedPage {...props} />,
+    "get-started": <GetStartedPage {...props} />,
     signin: <SignInPage {...props} />,
     findteam: <FindTeamPage {...props} />,
-    createteam: <CreateTeamPage {...props} />,
     client: <ClientPage {...props} />,
   };
   return variants[variant];

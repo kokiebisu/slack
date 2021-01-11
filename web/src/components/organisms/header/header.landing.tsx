@@ -9,7 +9,7 @@ import { size } from "../../../global/sizes";
 import { NameLogo } from "../../../assets/svg/Logo";
 
 import { Button } from "../../atoms/button";
-import { Modal } from "../modal/modal.component";
+import { Modal } from "../modal";
 import { useHistory } from "react-router";
 
 export const LandingHeader: React.FC<{}> = () => {
