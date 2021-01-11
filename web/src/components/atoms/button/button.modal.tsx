@@ -6,7 +6,7 @@ export const ModalButton: React.FC<{
   transparent?: boolean;
   label?: string;
   bg?: string;
-}> = ({ transparent, label = "Button", bg }) => {
+}> = ({ transparent = false, label = "Button", bg }) => {
   const theme = useContext(ThemeContext);
   return (
     <b.Box
@@ -15,7 +15,7 @@ export const ModalButton: React.FC<{
       borderRadius={4}
       border="1px solid"
       borderColor={transparent ? theme.colors.gray__lighter : bg}
-      bg={!transparent ? bg : undefined}
+      bg={bg}
     >
       <b.Text
         fontSize={15}

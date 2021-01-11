@@ -39,10 +39,7 @@ export const LandingModal: React.FC<{ data?: any; loading?: boolean }> = ({
           <IconWrapper className="logo">
             <NameLogo />
           </IconWrapper>
-          <IconButtonWrapper
-            className="close"
-            onClick={() => dispatchToggle({ type: "toggle_landing" })}
-          >
+          <IconButtonWrapper className="close">
             <Close />
           </IconButtonWrapper>
         </b.Flex>

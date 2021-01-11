@@ -11,7 +11,7 @@ export const NextButton: React.FC<{}> = () => {
     <b.Box borderRadius={5} backgroundColor="green" py={3} px={4} width={1}>
       <b.Flex justifyContent="center" alignItems="center">
         <b.Box mr={3}>
-          <b.Text fontSize={15} bold color="white" fontFamily="SlackLato-Bold">
+          <b.Text fontSize={15} color="white" fontFamily="SlackLato-Bold">
             Continue
           </b.Text>
         </b.Box>

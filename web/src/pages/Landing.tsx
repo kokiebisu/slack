@@ -21,7 +21,7 @@ export const LandingPage: React.FC<{}> = () => {
   return (
     <div>
       <AnimatePresence>
-        {state.landing && (
+        {/* {state.landing && (
           <ModalWrapper
             initial={{ width: 0 }}
             animate={{ width: "100%" }}
@@ -30,7 +30,7 @@ export const LandingPage: React.FC<{}> = () => {
           >
             <Modal variant="landing" />
           </ModalWrapper>
-        )}
+        )} */}
       </AnimatePresence>
       <b.Box zIndex={100} backgroundColor={theme.colors.white__darker}>
         <b.Container>

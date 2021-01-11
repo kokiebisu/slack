@@ -1,11 +1,12 @@
 import * as b from "global/blocks";
 
+import { PlainClient } from "./plain";
 import { SetupChannelsClient } from "./setup-channels";
 import { SetupInvitesClient } from "./setup-invites";
 import { SetupTeamNameClient } from "./setup-team-name";
 
 export interface PrototypeProps {
-  variant: string;
+  variant?: string;
   [property: string]: any;
 }
 
@@ -15,5 +16,5 @@ export const Prototype: React.FC<PrototypeProps> = ({ variant, ...props }) => {
     "setup-channels": <SetupChannelsClient {...props} />,
     "setup-invites": <SetupInvitesClient {...props} />,
   };
-  return <b.Box>{variants[variant]}</b.Box>;
+  return <b.Box>{variant ? variants[variant] : <PlainClient />}</b.Box>;
 };

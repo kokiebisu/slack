@@ -11,6 +11,7 @@ export interface LayoutProps {
 }
 
 export const Layout: React.FC<LayoutProps> = ({ variant, ...props }) => {
+  console.log("var", variant);
   const variants: { [variant: string]: JSX.Element } = {
     workspace: <WorkspaceLayout {...props} />,
     "get-started": <GetStartedLayout {...props} />,

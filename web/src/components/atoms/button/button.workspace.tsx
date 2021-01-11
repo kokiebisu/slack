@@ -43,7 +43,7 @@ export const WorkspaceButton: React.FC<{
                     font-size={18}
                     color={theme.colors.white}
                   >
-                    <b.Text>{name.charAt(0).toUpperCase()}</b.Text>
+                    {name.charAt(0).toUpperCase()}
                   </b.Text>
                 </b.Flex>
               </b.Box>

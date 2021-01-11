@@ -17,7 +17,7 @@ export const AppRoutes = () => {
         <Route path="/get-started">
           <Page variant="get-started" />
         </Route>
-        <Route path="/client/:teamId/:variant">
+        <Route path="/client/:teamId/:variant?">
           <Page variant="client" />
         </Route>
         {/* <Route path="/client/:teamId/:variant">

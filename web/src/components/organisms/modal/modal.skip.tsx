@@ -1,10 +1,12 @@
 import { Button } from "components/atoms/button";
+import { useToggleDispatch } from "context/toggle-context";
 import * as b from "global/blocks";
 import React, { useContext } from "react";
 import { ThemeContext } from "styled-components";
 
 export const SkipModal: React.FC<{}> = () => {
   const theme = useContext(ThemeContext);
+  const dispatch = useToggleDispatch();
   return (
     <b.Box p={24}>
       <b.Box>
@@ -14,7 +16,12 @@ export const SkipModal: React.FC<{}> = () => {
               Skip without inviting?
             </b.Text>
           </b.Box>
-          <b.Box>close</b.Box>
+          <b.Box>
+            <Button
+              variant="close"
+              onClick={() => dispatch({ type: "toggle_skip" })}
+            />
+          </b.Box>
         </b.Flex>
       </b.Box>
       <b.Box mt={3} mb={4}>
@@ -27,10 +34,16 @@ export const SkipModal: React.FC<{}> = () => {
       <b.Box>
         <b.Flex justifyContent="flex-end" alignItems="center">
           <b.Box mr={2}>
-            <Button variant="modal" label="Cancel" transparent />
+            <Button
+              variant="modal"
+              label="Cancel"
+              transparent
+              onClick={() => dispatch({ type: "toggle_skip" })}
+            />
           </b.Box>
           <b.Box>
             <Button
+              onClick={() => dispatch({ type: "toggle_skip" })}
               variant="modal"
               label="Skip Step"
               bg={theme.colors.pink__dark}

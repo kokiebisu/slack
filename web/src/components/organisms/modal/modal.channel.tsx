@@ -14,54 +14,9 @@ import { Toggle } from "../../molecules/toggle";
 // Context
 import { useToggleDispatch } from "../../../context/toggle-context";
 
-type State = { name: string; description: string };
-type Action =
-  | { type: "add_name"; payload: string }
-  | { type: "add_description"; payload: string };
-
-const reducer = (state: State, action: Action) => {
-  switch (action.type) {
-    case "add_name":
-      return { ...state, name: action.payload };
-    case "add_description":
-      return { ...state, description: action.payload };
-    default:
-      return state;
-  }
-};
-
 export const ChannelModal: React.FC<{}> = () => {
-  const dispatchToggle = useToggleDispatch();
   const theme = useContext(ThemeContext);
-  const [error, setError] = useState("");
   const [isPrivate, setIsPrivate] = useState(false);
-  const [input, dispatchInput] = useReducer(reducer, {
-    name: "",
-    description: "",
-  });
-  const { teamId }: { teamId?: string } = useParams();
-
-  const handleSubmit = async () => {
-    if (!input.name || !input.description) {
-      setError("Something is wrong");
-      return;
-    }
-
-    if (teamId) {
-      // const response = await create({
-      //   variables: {
-      //     name: input.name,
-      //     teamId,
-      //     description: input.description,
-      //     isPublic: !isPrivate,
-      //   },
-      // });
-      // if (response.data?.createChannel.ok) {
-      //   dispatchToggle({ type: "toggle_channel" });
-      // }
-    }
-  };
-
   return (
     <b.Box>
       <b.Box mb={20}>
@@ -75,10 +30,7 @@ export const ChannelModal: React.FC<{}> = () => {
               {isPrivate ? "Create a private channel" : "Create a channel"}
             </b.Text>
           </b.Box>
-          <IconButtonWrapper
-            className="close"
-            onClick={() => dispatchToggle({ type: "toggle_channel" })}
-          >
+          <IconButtonWrapper className="close">
             <Close />
           </IconButtonWrapper>
         </b.Flex>
@@ -101,25 +53,18 @@ export const ChannelModal: React.FC<{}> = () => {
         <b.Box>
           <ThinHashTag />
         </b.Box>
-        <StyledInput
-          onChange={(e) =>
-            dispatchInput({ type: "add_name", payload: e.target.value })
-          }
-          value={input.name}
-          placeholder="e.g. plan-budget"
-          className="name"
-        />
+        <StyledInput placeholder="e.g. plan-budget" className="name" />
       </NameWrapper>
-      {error && (
+      {/* {error && (
         <b.Box>
           <b.Text>{error}</b.Text>
         </b.Box>
-      )}
+      )} */}
       <SectionHeader>
         <b.Text>Description (optional)</b.Text>
       </SectionHeader>
       <b.Box>
-        <StyledInput
+        {/* <StyledInput
           onChange={(e) =>
             dispatchInput({
               type: "add_description",
@@ -128,7 +73,7 @@ export const ChannelModal: React.FC<{}> = () => {
           }
           value={input.description}
           className="description"
-        />
+        /> */}
       </b.Box>
       <Hint>
         <b.Text>What's this channel about?</b.Text>
@@ -185,7 +130,6 @@ export const ChannelModal: React.FC<{}> = () => {
             py={3}
             px={4}
             backgroundColor={theme.colors.gray__lighter}
-            onClick={handleSubmit}
           >
             <b.Text
               fontSize={15}

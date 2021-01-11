@@ -13,7 +13,7 @@ export const SignInPage: React.FC<{}> = () => {
   return (
     <div style={{ position: "relative" }}>
       <Layout
-        variant="getstarted"
+        variant="get-started"
         title="Sign in to Slack"
         subtitle="Continue with the Google account or email address you use to sign in."
       >

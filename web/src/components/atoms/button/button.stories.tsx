@@ -134,3 +134,8 @@ export const Modal = TemplateStory.bind({});
 Modal.args = {
   variant: "modal",
 };
+
+export const Close = TemplateStory.bind({});
+Close.args = {
+  variant: "close",
+};

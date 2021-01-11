@@ -1,24 +1,18 @@
 import React, { useState, useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
 
-import { useToggleDispatch } from "../../../context/toggle-context";
+import { useToggleDispatch } from "context/toggle-context";
 
-import * as b from "../../../global/blocks";
-import { size } from "../../../global/sizes";
+import * as b from "global/blocks";
+import { size } from "global/sizes";
 
-import { NameLogo } from "../../../assets/svg/Logo";
+import { NameLogo } from "assets/svg/Logo";
 
-import { Button } from "../../atoms/button";
-import { Modal } from "../modal";
+import { Button } from "components/atoms/button";
+import { Modal } from "components/organisms/modal";
 import { useHistory } from "react-router";
 
 export const LandingHeader: React.FC<{}> = () => {
-  const history = useHistory();
-  const [pressed, setPressed] = useState(false);
-  const dispatchToggle = useToggleDispatch();
-
-  // const { data: meData } = useMeQuery();
-  // const { data: teamsData, loading } = useMyTeamsQuery();
   return (
     <div>
       <b.Box py={3}>
@@ -41,16 +35,6 @@ export const LandingHeader: React.FC<{}> = () => {
               </Options>
             </b.Flex>
           </b.Box>
-
-          {/* <div>
-            <Button
-              variant="primary"
-              size="sm"
-              title="Launch"
-              onPress={() => setPressed(!pressed)}
-            />
-          </div> */}
-
           <div>
             <Normal>
               <b.Flex alignItems="center">
@@ -65,19 +49,11 @@ export const LandingHeader: React.FC<{}> = () => {
               </b.Flex>
             </Normal>
             <Mobile>
-              <Button
-                variant="hamburger"
-                onPress={() => dispatchToggle({ type: "toggle_landing" })}
-              />
+              <Button variant="hamburger" />
             </Mobile>
           </div>
         </b.Flex>
       </b.Box>
-      {/* {pressed && teamsData ? (
-        <LaunchWrapper>
-          <Modal variant="launch" teams={teamsData} />
-        </LaunchWrapper>
-      ) : null} */}
     </div>
   );
 };
