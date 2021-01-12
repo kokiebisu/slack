@@ -46,7 +46,7 @@ export const ClientHeader: React.FC<{}> = () => {
           </b.Flex>
         </b.Box>
         <b.Box pr={3}>
-          <Button variant="avatar" block />
+          <Button variant="avatar" block status="active" />
         </b.Box>
       </b.Flex>
     </b.Box>

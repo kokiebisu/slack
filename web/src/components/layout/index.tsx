@@ -1,4 +1,4 @@
-import React from "react";
+import * as b from "global/blocks";
 
 /** variants */
 import { GetStartedLayout } from "./layout.getstarted";
@@ -11,15 +11,14 @@ export interface LayoutProps {
 }
 
 export const Layout: React.FC<LayoutProps> = ({ variant, ...props }) => {
-  console.log("var", variant);
   const variants: { [variant: string]: JSX.Element } = {
     workspace: <WorkspaceLayout {...props} />,
     "get-started": <GetStartedLayout {...props} />,
     content: <ContentLayout {...props} />,
   };
   return (
-    <div style={{ height: "100vh" }} data-testid={`${variant}-layout`}>
+    <b.Box height="100%" data-testid={`${variant}-layout`}>
       {variants[variant]}
-    </div>
+    </b.Box>
   );
 };

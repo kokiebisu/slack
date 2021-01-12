@@ -6,10 +6,16 @@ import React, { useContext } from "react";
 import { ThemeContext } from "styled-components";
 
 export const ChannelClient: React.FC<{}> = () => {
-  return <Layout variant="content" header={<Header />} content={<Content />} />;
+  return (
+    <Layout
+      variant="content"
+      header={<Header channel="channel" />}
+      content={<Content />}
+    />
+  );
 };
 
-const Header = () => {
+const Header: React.FC<{ channel?: string }> = ({ channel }) => {
   const theme = useContext(ThemeContext);
   return (
     <b.Box px={3} width={1}>
@@ -19,7 +25,7 @@ const Header = () => {
             <b.Flex alignItems="center">
               <b.Box mr={1}>
                 <b.Text fontSize={15} fontFamily="SlackLato-Black">
-                  # randsfa
+                  # {channel}
                 </b.Text>
               </b.Box>
               <b.Box>
@@ -40,7 +46,16 @@ const Header = () => {
         <b.Box>
           <b.Flex alignItems="center">
             <b.Box>
-              <Button variant="avatar" />
+              <b.Flex alignItems="center">
+                <b.Box mr={2}>
+                  <Button variant="avatar" width={24} />
+                </b.Box>
+                <b.Box>
+                  <b.Text fontFamily="SlackLato-Bold" fontSize={12}>
+                    1
+                  </b.Text>
+                </b.Box>
+              </b.Flex>
             </b.Box>
             <b.Box mx={3}>
               <Button variant="add" />
@@ -56,5 +71,5 @@ const Header = () => {
 };
 
 const Content = () => {
-  return <div>channel content</div>;
+  return <b.Box></b.Box>;
 };

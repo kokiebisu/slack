@@ -30,7 +30,7 @@ export const Wrapper = styled(b.Box)`
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-rows: 37px 1fr;
+  grid-template-rows: 37px calc(100vh - 37px);
   overscroll-behavior: none;
 `;
 

@@ -145,7 +145,7 @@ export const Info = ({
   [props: string]: any;
 }) => {
   return (
-    <svg {...props} viewBox="0 0 330 330">
+    <svg {...props} viewBox="0 0 330 330" display="block">
       <g>
         <g>
           <path
@@ -1115,7 +1115,7 @@ export const Plus = ({
   [props: string]: any;
 }) => {
   return (
-    <svg {...props} viewBox="0 0 512 512">
+    <svg {...props} viewBox="0 0 512 512" display="block">
       <g>
         <g>
           <path
