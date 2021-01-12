@@ -12,5 +12,5 @@ COPY --from=builder /app/web/build ./build
 COPY --from=builder /app/web/public ./public
 COPY --from=builder /app/web/package.json .
 RUN yarn --production
-
+EXPOSE 3000
 CMD ["yarn", "start"]
