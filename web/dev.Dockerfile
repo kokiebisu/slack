@@ -5,4 +5,4 @@ COPY /web/package.json .
 RUN yarn
 COPY /web ./
 
-RUN ["yarn", "dev"]
+RUN ["yarn", "start"]
