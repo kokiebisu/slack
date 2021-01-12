@@ -1,7 +1,7 @@
 version: 2
 jobs:
   visual_testing:
-    working_directory: ~/slack/client
+    working_directory: ~/slack/web
     docker:
       - image: circleci/node:10
     steps:
