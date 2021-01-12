@@ -1,9 +1,9 @@
 import React from "react";
 
 /** variants */
-
 import { GetStartedLayout } from "./layout.getstarted";
 import { WorkspaceLayout } from "./layout.workspace";
+import { ContentLayout } from "./layout.content";
 
 export interface LayoutProps {
   variant: string;
@@ -15,6 +15,7 @@ export const Layout: React.FC<LayoutProps> = ({ variant, ...props }) => {
   const variants: { [variant: string]: JSX.Element } = {
     workspace: <WorkspaceLayout {...props} />,
     "get-started": <GetStartedLayout {...props} />,
+    content: <ContentLayout {...props} />,
   };
   return (
     <div style={{ height: "100vh" }} data-testid={`${variant}-layout`}>

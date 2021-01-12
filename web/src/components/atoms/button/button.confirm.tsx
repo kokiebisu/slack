@@ -7,7 +7,7 @@ export const ConfirmButton: React.FC<{
   loading?: boolean;
   px?: number;
   py?: number;
-}> = ({ label = "Confirm", loading = false, px, py }) => {
+}> = ({ label = "Confirm", loading = false, px = 5, py = 2 }) => {
   return (
     <Wrapper
       display="inline-block"

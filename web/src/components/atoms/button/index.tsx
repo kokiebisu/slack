@@ -23,6 +23,8 @@ import { AuthButton } from "./button.auth";
 import { ModalButton } from "./button.modal";
 import { CloseButton } from "./button.close";
 import { SearchButton } from "./button.search";
+import { AvatarButton } from "./button.avatar";
+import { AddButton } from "./button.add";
 
 export interface ButtonProps {
   to?: string;
@@ -117,6 +119,14 @@ export const Button: React.FC<ButtonProps> = ({
         width: 100%;
         display: block;
       `,
+    },
+    avatar: {
+      component: <AvatarButton {...props} />,
+      extends: css``,
+    },
+    add: {
+      component: <AddButton {...props} />,
+      extends: css``,
     },
   };
 

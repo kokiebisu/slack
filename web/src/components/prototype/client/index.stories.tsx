@@ -26,7 +26,7 @@ SetupInvites.args = {
   variant: "setup-invites",
 };
 
-export const Plain = TemplateStory.bind({});
-Plain.args = {
-  variant: "plain",
+export const Channel = TemplateStory.bind({});
+Channel.args = {
+  variant: "channel",
 };

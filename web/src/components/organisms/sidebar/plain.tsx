@@ -8,8 +8,7 @@ export const PlainSidebar: React.FC<{ label?: string }> = ({ label }) => {
     <b.Box>
       <b.Box
         px={3}
-        pt={20}
-        pb={10}
+        py={20}
         bg={theme.colors.primary}
         borderBottom="1px solid"
         borderColor={theme.colors.primary__lighter}

@@ -7,9 +7,12 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import * as b from "global/blocks";
 import { Header } from "components/organisms/header";
+import { useClientState } from "context/client-context";
 
 export const ClientPage: React.FC<{}> = () => {
   const { teamId, variant } = useParams<{ teamId: string; variant?: string }>();
+  const { selected } = useClientState();
+
   const { skip } = useToggleState();
   // fetch data using teamid
   return (
@@ -18,7 +21,7 @@ export const ClientPage: React.FC<{}> = () => {
         variant="workspace"
         header={!variant && <Header variant="client" />}
         sidebar={<Sidebar variant={variant} />}
-        content={<Prototype variant={variant} />}
+        content={<Prototype variant={variant || selected} />}
       />
       {skip && (
         <b.Box

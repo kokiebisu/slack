@@ -382,3 +382,10 @@ export const Text = styled.p<
 export const LayoutWrapper = styled.div<SpaceProps>`
   ${space}
 `;
+
+export const Img = styled.img<BorderProps>`
+  ${border}
+  display: block;
+  width: 100%;
+  height: 100%;
+`;

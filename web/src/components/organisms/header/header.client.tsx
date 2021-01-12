@@ -1,8 +1,8 @@
-import * as React from "react";
+import { useContext } from "react";
 
 /** styles */
 import * as b from "global/blocks";
-import styled from "styled-components";
+import styled, { ThemeContext } from "styled-components";
 
 // Breakpoints
 import { size } from "global/sizes";
@@ -12,9 +12,10 @@ import { Clock, Info } from "assets/svg";
 import { Button } from "components/atoms/button";
 
 export const ClientHeader: React.FC<{}> = () => {
+  const theme = useContext(ThemeContext);
   return (
     <b.Box height="100%">
-      <b.Flex>
+      <b.Flex alignItems="center">
         <b.Box width={1}>
           <b.Flex alignItems="center" justifyContent="center">
             <b.Box height="100%" maxWidth={680} width={1}>
@@ -22,7 +23,7 @@ export const ClientHeader: React.FC<{}> = () => {
                 <b.Box px={3}>
                   <b.Flex style={{ justifyContent: "flex-end" }}>
                     <IconWrapper className="clock">
-                      <Clock width={15} height={15} />
+                      <Clock width={18} height={18} fill={theme.colors.white} />
                     </IconWrapper>
                   </b.Flex>
                 </b.Box>
@@ -44,7 +45,9 @@ export const ClientHeader: React.FC<{}> = () => {
             </b.Box>
           </b.Flex>
         </b.Box>
-        <b.Box pr={3}>avatar</b.Box>
+        <b.Box pr={3}>
+          <Button variant="avatar" block />
+        </b.Box>
       </b.Flex>
     </b.Box>
   );
@@ -72,14 +75,6 @@ const IconWrapper = styled(b.Box)`
     display: none;
     border-radius: 5px;
     padding: 6px 6px 3px 7px;
-    svg {
-      width: 18px;
-      height: 18px;
-      path {
-        fill: ${({ theme }) => theme.colors.white};
-      }
-    }
-
     &:hover {
       background-color: ${({ theme }) => theme.colors.primary__lighter};
     }

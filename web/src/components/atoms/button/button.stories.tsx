@@ -151,3 +151,8 @@ Search.decorators = [
     </div>
   ),
 ];
+
+export const Avatar = TemplateStory.bind({});
+Avatar.args = {
+  variant: "avatar",
+};
