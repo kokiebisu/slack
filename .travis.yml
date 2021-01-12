@@ -8,7 +8,7 @@ before_install:
   - docker build -t kokiebisu/slack-web-test -f ./web/dev.Dockerfile .
 
 script:
-  - docker run -e CI=true kokiebisu/slack-test yarn test
+  - docker run -e CI=true kokiebisu/slack-web-test yarn test
 
 deploy:
   provider: script
