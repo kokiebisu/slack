@@ -8,7 +8,7 @@ export const ContentLayout: React.FC<{
 }> = ({ header, content }) => {
   const theme = useContext(ThemeContext);
   return (
-    <b.Box>
+    <b.Box height="100%">
       <b.Box
         height={58}
         borderBottom="1px solid"
@@ -16,7 +16,7 @@ export const ContentLayout: React.FC<{
       >
         <b.Flex alignItems="center">{header}</b.Flex>
       </b.Box>
-      <b.Box>{content}</b.Box>
+      <b.Box height="calc(100% - 58px)">{content}</b.Box>
     </b.Box>
   );
 };

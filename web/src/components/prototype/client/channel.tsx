@@ -1,6 +1,7 @@
 import { Info, Star } from "assets/svg";
 import { Button } from "components/atoms/button";
 import { Layout } from "components/layout";
+import { TextEditor } from "components/organisms/texteditor";
 import * as b from "global/blocks";
 import React, { useContext } from "react";
 import { ThemeContext } from "styled-components";
@@ -71,5 +72,18 @@ const Header: React.FC<{ channel?: string }> = ({ channel }) => {
 };
 
 const Content = () => {
-  return <b.Box></b.Box>;
+  return (
+    <b.Box position="relative">
+      <b.Box position="fixed" bottom={20} width={1}>
+        <b.Box
+          position="relative"
+          width="calc(100% - 300px)"
+          left={20}
+          right={20}
+        >
+          <TextEditor channel="general" />
+        </b.Box>
+      </b.Box>
+    </b.Box>
+  );
 };

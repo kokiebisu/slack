@@ -25,12 +25,13 @@ import { CloseButton } from "./button.close";
 import { SearchButton } from "./button.search";
 import { AvatarButton } from "./button.avatar";
 import { AddButton } from "./button.add";
+import { TextEditorButton } from "./button.texteditor";
 
 export interface ButtonProps {
   to?: string;
   variant?: string;
   block?: boolean;
-  [x: string]: any;
+  [property: string]: any;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -126,6 +127,10 @@ export const Button: React.FC<ButtonProps> = ({
     },
     add: {
       component: <AddButton {...props} />,
+      extends: css``,
+    },
+    texteditor: {
+      component: <TextEditorButton {...props} />,
       extends: css``,
     },
   };

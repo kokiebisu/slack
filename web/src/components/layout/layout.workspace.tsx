@@ -19,7 +19,7 @@ export const WorkspaceLayout: React.FC<{
       <b.Box>
         <b.Grid gridTemplateColumns={`260px 1fr`}>
           <WorkspaceSidebar>{sidebar}</WorkspaceSidebar>
-          <b.Box>{content}</b.Box>
+          <b.Box height="100%">{content}</b.Box>
         </b.Grid>
       </b.Box>
     </Wrapper>

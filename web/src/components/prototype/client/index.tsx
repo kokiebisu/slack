@@ -17,5 +17,5 @@ export const Prototype: React.FC<PrototypeProps> = ({ variant, ...props }) => {
     "setup-invites": <SetupInvitesClient {...props} />,
     channel: <ChannelClient {...props} />,
   };
-  return <b.Box>{variants[variant]}</b.Box>;
+  return <b.Box height="100%">{variants[variant]}</b.Box>;
 };

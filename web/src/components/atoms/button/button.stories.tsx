@@ -156,3 +156,16 @@ export const Avatar = TemplateStory.bind({});
 Avatar.args = {
   variant: "avatar",
 };
+
+export const TextEditor = TemplateStory.bind({});
+TextEditor.args = {
+  variant: "texteditor",
+};
+TextEditor.argTypes = {
+  type: {
+    control: {
+      type: "select",
+      options: ["lightening", "smile", "paperplane", "paperclip"],
+    },
+  },
+};
