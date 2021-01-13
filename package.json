@@ -16,5 +16,6 @@
   "bugs": {
     "url": "https://github.com/kokiebisu/slack/issues"
   },
-  "homepage": "https://github.com/kokiebisu/slack#readme"
+  "homepage": "https://github.com/kokiebisu/slack#readme",
+  "dependencies": {}
 }
