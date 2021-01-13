@@ -3,8 +3,8 @@ import { Button } from "components/atoms/button";
 import { Layout } from "components/layout";
 import { TextEditor } from "components/organisms/texteditor";
 import * as b from "global/blocks";
-import React, { useContext } from "react";
-import { ThemeContext } from "styled-components";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import styled, { ThemeContext } from "styled-components";
 
 export const ChannelClient: React.FC<{}> = () => {
   return (
@@ -73,18 +73,18 @@ const Header: React.FC<{ channel?: string }> = ({ channel }) => {
 
 const Content = () => {
   return (
-    <b.Box position="relative" width={1} height="100%">
+    <b.Grid gridTemplateRows="1fr auto" width={1} height="100%">
+      <b.Box bg="red" overflowY="scroll"></b.Box>
       <b.Box
-        position="absolute"
-        width="calc(100% - 40px)"
-        bottom={20}
-        left={20}
-        right={20}
+        width="calc(100vw - 260px)"
+        position="relative"
+        height="auto"
+        bottom={0}
+        px={20}
+        pb={20}
       >
-        <b.Box position="relative">
-          <TextEditor channel="general" />
-        </b.Box>
+        <TextEditor channel="general" />
       </b.Box>
-    </b.Box>
+    </b.Grid>
   );
 };
