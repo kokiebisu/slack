@@ -7,6 +7,13 @@ import { Prototype, PrototypeProps } from ".";
 export default {
   title: "Design System/Prototype/Client",
   component: Prototype,
+  decorators: [
+    (Story) => (
+      <div style={{ height: "calc(100vh - 58px)" }}>
+        <Story />
+      </div>
+    ),
+  ],
 } as Meta;
 
 const TemplateStory: Story<PrototypeProps> = (args) => <Prototype {...args} />;

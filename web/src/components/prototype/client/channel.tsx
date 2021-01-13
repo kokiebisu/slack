@@ -73,14 +73,15 @@ const Header: React.FC<{ channel?: string }> = ({ channel }) => {
 
 const Content = () => {
   return (
-    <b.Box position="relative">
-      <b.Box position="fixed" bottom={20} width={1}>
-        <b.Box
-          position="relative"
-          width="calc(100% - 300px)"
-          left={20}
-          right={20}
-        >
+    <b.Box position="relative" width={1} height="100%">
+      <b.Box
+        position="absolute"
+        width="calc(100% - 40px)"
+        bottom={20}
+        left={20}
+        right={20}
+      >
+        <b.Box position="relative">
           <TextEditor channel="general" />
         </b.Box>
       </b.Box>

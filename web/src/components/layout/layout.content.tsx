@@ -8,9 +8,10 @@ export const ContentLayout: React.FC<{
 }> = ({ header, content }) => {
   const theme = useContext(ThemeContext);
   return (
-    <b.Box height="100%">
+    <b.Box height="100%" width={1}>
       <b.Box
         height={58}
+        width={1}
         borderBottom="1px solid"
         borderColor={theme.colors.white__darker}
       >

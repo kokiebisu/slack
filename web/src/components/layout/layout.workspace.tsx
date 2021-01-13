@@ -17,10 +17,10 @@ export const WorkspaceLayout: React.FC<{
     <Wrapper>
       <WorkspaceHeader>{header}</WorkspaceHeader>
       <b.Box>
-        <b.Grid gridTemplateColumns={`260px 1fr`}>
+        <b.Flex>
           <WorkspaceSidebar>{sidebar}</WorkspaceSidebar>
-          <b.Box height="100%">{content}</b.Box>
-        </b.Grid>
+          <WorkspaceContent height="100%">{content}</WorkspaceContent>
+        </b.Flex>
       </b.Box>
     </Wrapper>
   );
@@ -41,4 +41,9 @@ export const WorkspaceHeader = styled(b.Box)`
 export const WorkspaceSidebar = styled(b.Box)`
   background-color: ${({ theme }) => theme.colors.primary};
   border: 1px solid ${({ theme }) => theme.colors.primary__light};
+  width: 260px;
+`;
+
+export const WorkspaceContent = styled(b.Box)`
+  width: calc(100% - 260px);
 `;
