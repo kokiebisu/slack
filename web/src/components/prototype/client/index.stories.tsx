@@ -37,3 +37,10 @@ export const Channel = TemplateStory.bind({});
 Channel.args = {
   variant: "channel",
 };
+Channel.decorators = [
+  (Story) => (
+    <div style={{ height: "100%", width: "calc(100vw - 280px)" }}>
+      <Story />
+    </div>
+  ),
+];

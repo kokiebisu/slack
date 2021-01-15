@@ -3,8 +3,8 @@ import { Button } from "components/atoms/button";
 import { Layout } from "components/layout";
 import { TextEditor } from "components/organisms/texteditor";
 import * as b from "global/blocks";
-import React, { useContext, useEffect, useRef, useState } from "react";
-import styled, { ThemeContext } from "styled-components";
+import React, { useContext } from "react";
+import { ThemeContext } from "styled-components";
 
 export const ChannelClient: React.FC<{}> = () => {
   return (
@@ -81,7 +81,6 @@ const Content = () => {
         height="auto"
         bottom={0}
         px={20}
-        pb={20}
       >
         <TextEditor channel="general" />
       </b.Box>
