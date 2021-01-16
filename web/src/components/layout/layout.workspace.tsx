@@ -39,8 +39,7 @@ export const WorkspaceHeader = styled(b.Box)`
 `;
 
 export const WorkspaceSidebar = styled(b.Box)`
-  background-color: ${({ theme }) => theme.colors.primary};
-  border: 1px solid ${({ theme }) => theme.colors.primary__light};
+  height: 100%;
   width: 260px;
 `;
 
