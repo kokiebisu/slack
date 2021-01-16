@@ -26,6 +26,7 @@ import { SearchButton } from "./button.search";
 import { AvatarButton } from "./button.avatar";
 import { AddButton } from "./button.add";
 import { TextEditorButton } from "./button.texteditor";
+import { NewButton } from "./button.new";
 
 export interface ButtonProps {
   to?: string;
@@ -131,6 +132,10 @@ export const Button: React.FC<ButtonProps> = ({
     },
     texteditor: {
       component: <TextEditorButton {...props} />,
+      extends: css``,
+    },
+    new: {
+      component: <NewButton {...props} />,
       extends: css``,
     },
   };

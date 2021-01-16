@@ -5,8 +5,15 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import { Sidebar, SidebarProps } from ".";
 
 export default {
-  title: "Design System/Prototype/Client",
+  title: "Design System/Organisms/Sidebar",
   component: Sidebar,
+  decorators: [
+    (Story) => (
+      <div style={{ width: 380 }}>
+        <Story />
+      </div>
+    ),
+  ],
 } as Meta;
 
 const TemplateStory: Story<SidebarProps> = (args) => <Sidebar {...args} />;
