@@ -21,3 +21,8 @@ client.argTypes = {
     },
   },
 };
+
+export const User = Template.bind({});
+User.args = {
+  variant: "user",
+};
