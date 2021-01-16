@@ -1,9 +1,11 @@
 import { Info, Star } from "assets/svg";
 import { Button } from "components/atoms/button";
 import { Layout } from "components/layout";
+import { Message } from "components/molecules/message";
+import { Seperator } from "components/molecules/seperator";
 import { TextEditor } from "components/organisms/texteditor";
 import * as b from "global/blocks";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
 
 export const ChannelClient: React.FC<{}> = () => {
@@ -74,17 +76,34 @@ const Header: React.FC<{ channel?: string }> = ({ channel }) => {
 const Content = () => {
   return (
     <b.Grid gridTemplateRows="1fr auto" width={1} height="100%">
-      <b.Box bg="red" overflowY="scroll"></b.Box>
+      <b.Box overflowY="scroll">
+        <b.Box position="relative" height="calc(100vh - 390px)" />
+        <b.Box px={20} pb={2}>
+          <Message variant="client" />
+        </b.Box>
+        <b.Box py={3}>
+          <Seperator variant="date" />
+        </b.Box>
+        <MessageBoxWrapper my={1} px={20} py={2}>
+          <Message variant="user" />
+        </MessageBoxWrapper>
+      </b.Box>
       <b.Box
         width="calc(100vw - 260px)"
         position="relative"
         height="auto"
         bottom={0}
         px={20}
-        pb={20}
       >
         <TextEditor channel="general" />
       </b.Box>
     </b.Grid>
   );
 };
+
+const MessageBoxWrapper = styled(b.Box)`
+  transition: 0.3s all cubic-bezier(0.075, 0.82, 0.165, 1);
+  :hover {
+    background-color: ${({ theme }) => theme.colors.white__dark};
+  }
+`;

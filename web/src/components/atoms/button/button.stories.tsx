@@ -169,3 +169,8 @@ TextEditor.argTypes = {
     },
   },
 };
+
+export const New = TemplateStory.bind({});
+New.args = {
+  variant: "new",
+};

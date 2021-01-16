@@ -19,7 +19,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ variant, ...props }) => {
   };
 
   return (
-    <b.Box>
+    <b.Box height="100%" data-testid={`${variant}-sidebar`}>
       {variant ? variants[variant] : <PlainSidebar {...props} label="Team" />}
     </b.Box>
   );

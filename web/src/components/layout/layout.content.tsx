@@ -10,7 +10,7 @@ export const ContentLayout: React.FC<{
   return (
     <b.Box height="100%" width={1}>
       <b.Box
-        height={58}
+        height={65}
         width={1}
         borderBottom="1px solid"
         borderColor={theme.colors.white__darker}
